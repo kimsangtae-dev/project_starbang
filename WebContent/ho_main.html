@@ -16,6 +16,10 @@
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
 
+		<!-- css 적용 -->
+		<link rel="stylesheet" type="text/css" href="ma_assets/ma_common.css">
+		<link rel="stylesheet" type="text/css" href="ma_assets/ma_main.css">
+
 		<!-- 반응형 웹을 지원하지 않을 경우 -->
 		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
 
@@ -31,7 +35,71 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
-			
+		#body{
+			width : 100%;
+			background-color: blue;
+			min-height: 800px;
+			box-sizing: border-box;
+			height: 540px;
+			position: relative;
+			background: url("https://t1.daumcdn.net/cfile/tistory/27532234572323F611") center center / cover no-repeat;
+			background-size: cover;
+			padding-top: 165px;
+			text-align: center;
+		}
+		#body > div >h1{
+			text-align: center;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			margin: 0px;
+			padding: 0px;
+			margin-bottom: 10px;
+			color: rgb(255, 255, 255);
+			font-size: 42px;
+			font-weight: 700;
+			line-height: 62px;
+			letter-spacing: -1.5px;
+		}
+		#body > div >.desc{
+			text-align: center;
+			box-sizing: border-box;
+			vertical-align: baseline;
+			margin: 0px;
+			padding: 0px;
+			border-width: 0px;
+			color: rgb(255, 255, 255);
+			font-size: 18px;
+			line-height: 30px;
+		}
+		#body > div > .link-sc{
+			box-sizing: border-box;
+			margin: 0px;
+			padding: 0px;
+			display: inline-block;
+			width: 160px;
+			height: 50px;
+			margin-top: 31px;
+			color: rgb(255, 255, 255);
+			font-size: 15px;
+			font-weight: 700;
+			text-align: center;
+			line-height: 50px;
+			box-shadow: rgba(16, 16, 16, 0.18) 0px 8px 19px 0px;
+			background-color: rgb(67, 131, 255);
+			text-decoration: none;
+			border-width: 1px;
+			border-style: solid;
+			border-color: transparent;
+			border-radius: 5px;
+		}
+		.min_t{
+			font-size: 12px;
+			color: gray;
+		}
+		.bigtext{
+			font-size: 95px;
+			color:white;
+		}
 		</style>
 	</head>
 
@@ -41,15 +109,62 @@
 		<div>
 			<!-- 상단 헤더 -->
 			<div id="header">
-				
+				<div class="navbar" role="navigation">
+					<a href="#"><img src="assets/ico/logo_blue.png"></a>
+					<div class="menu-left small-font"><a href="#">회원 사이트</a></div>
+					<!-- 메뉴 항목 -->
+					<div class="pull-right">
+						<div>
+							<a href="ho_rm_add.html">공실등록하기</a>
+							<a href="ho_rmli.html" class="padding-l">공실관리</a>
+							<a href="ad_login.html" class="padding-l">로그인</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- 중앙 영역 -->
-			<div id="content">
+			<div id="body">
+				<div class="bgimg">
+					<h1 class="title">공실 광고 <span class="bigtext">별방</span>에서 무제한 무료</h1>
+					<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
+					<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
+					<a class="link-sc" href="ho_rm_add.html">방주인 시작하기</a>
+				</div>
 				
 			</div>
 			<!-- 하단 영역 -->
 			<div id="footer">
-				
+				<div id="footer-content">
+					<div id="top">
+						<div class="pull-left footer-top-left">
+							<a href="#">팀 소개</a>
+							<a href="#">이용약관</a>
+							<a href="#">개인정보처리방침</a>
+							<a href="#">매물관리규정</a>
+							<a href="#">허위매물규정</a>
+							<a href="#">자동저장서비스</a>
+						</div>
+						<div class="top-btn pull-right"></div>
+						<form class="pull-right">
+							<label for="search-num">
+								<h1>매물번호 조회</h1>
+								<input id="search-num" type="text" name="keyword">
+							</label>
+							<button><i class="glyphicon glyphicon-search"></i></button>
+						</form>
+					</div>
+					<div id="bottom">
+						<p class="team">이젠 1조</p>
+						<p>
+							<span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
+							<br />
+							<span>주소: 서울특별시 서초구 서초대로 77길 54 서초더블유 타워13층</span>
+							<br />
+							<span>고객센터:02-532-6500</span>
+							<span class=min_t>사이트에 대한 문의사항은 aaa@gmail.com으로 부탁드립니다.</span>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- Javascript -->
