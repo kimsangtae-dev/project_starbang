@@ -31,21 +31,50 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
-			
+		#header{
+			min-height: 300px;
+		}
+		#content{
+			width:auto;
+			vertical-align: middle;
+		}
+			#content > .box1{
+				border: 1px solid gold; float: left; width:33%;
+				padding:10px;
+				text-align: center;
+				height:300px;
+				padding-top:130px;
+			}
+			#content > .box2{
+				border: 1px solid red; float: left; width:33%;
+				padding:10px;
+				text-align: center;
+				height:300px;
+				padding-top:130px;
+			}
+			#content > .box3{
+				border: 1px solid blue; float: left; width:33%;
+				padding:10px;
+				text-align: center;
+				height:300px;
+				padding-top:130px;
+			}
 		</style>
 	</head>
 
 	<body>
 		<!-- 브라우저에 보여질 부분 -->
 		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-		<div>
+		<div id="ad_main">
 			<!-- 상단 헤더 -->
 			<div id="header">
-				
+				<span>별방 관리자 사이트</span>
 			</div>
 			<!-- 중앙 영역 -->
 			<div id="content">
-				
+				<div class="box1"><a href="#">방관리</a></div>
+				<div class="box2"><a href="#">회원관리</a></div>
+				<div class="box3"><a href="#">문의관리</a></div>
 			</div>
 			<!-- 하단 영역 -->
 			<div id="footer">
