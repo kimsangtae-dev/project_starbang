@@ -31,27 +31,77 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
-			
+			#admin{
+				min-height: 1200px;
+				vertical-align: middle;
+			}
+			#admin > .box1{
+				padding-top:100px;
+				width: 1800px;
+				height:200px;
+				display: inline-block;
+				text-align: center;
+			}
+			#admin > .loginf{
+				width: 280px;
+				margin:auto;
+				vertical-align: middle;
+			}
+			#admin >.loginf >form > input{
+				height:auto;
+				line-height: normal;
+				padding: .8em .5em	;
+			}
+			input[type=text] { 
+			width: 300px; 
+			/*입력 칸 (input field) 의 폭을 지정하기 위해, 폭 속성 (width property)
+			 를 사용하였습니다.*/ 
+			 padding: 12px 20px; 
+			 margin: 10px 0; 
+			 display: inline-block; 
+			 border: 1px solid #ccc; 
+			 border-radius: 4px; 
+			 box-sizing: border-box; }
+
+			 input[type=password]{
+			width: 300px; 
+			/*입력 칸 (input field) 의 폭을 지정하기 위해, 폭 속성 (width property)
+			 를 사용하였습니다.*/ 
+			 padding: 12px 20px; 
+			 margin: 10px 0; 
+			 display: inline-block; 
+			 border: 1px solid #ccc; 
+			 border-radius: 4px; 
+			 box-sizing: border-box; }
+
+			 input[type=submit] { 
+			width: 300px; 
+			background-color:  rgb(67, 131, 255); 
+			color: white; 
+			padding: 14px 20px; 
+			margin: 8px 0; 
+			border: none; 
+			border-radius: 0px; 
+			cursor: pointer; }
 		</style>
 	</head>
 
-	<body>
-		<!-- 브라우저에 보여질 부분 -->
-		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-		<div>
-			<!-- 상단 헤더 -->
-			<div id="header">
-				
-			</div>
-			<!-- 중앙 영역 -->
-			<div id="content">
-				
-			</div>
-			<!-- 하단 영역 -->
-			<div id="footer">
-				
-			</div>
-		</div>
+			<body>
+				<div id="admin">
+					<div class="box1">	
+						<h1>별방 관리자 사이트</h1>
+					</div>
+					<div class="loginf">
+				 		<form name="login_form" method="post" action="./login_check.php" >
+						<input type="text" name="user_id" placeholder="아이디" />
+						<br />
+						<input type="password" name="user_pass" placeholder="비밀번호"/><br />
+						<input type="submit" value="로그인" />
+					</form>
+					</div>   
+			   </div>
+			</body>
+		</html>
 		<!-- Javascript -->
 		<script src="assets/js/jquery-1.10.2.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
