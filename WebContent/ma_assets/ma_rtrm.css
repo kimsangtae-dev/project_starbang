@@ -1,23 +1,15 @@
 @charset "utf-8";
 
-		/* ---------------------------------------
-        / 탭 위쪽
-        ---------------------------------------- */
-        #content {
-            width: 1200px;
-            min-height: 800px;
-            margin: auto;
-        }
-
         /* ---------------------------------------
-        / 최근본방
+        / 관심목록 전체 박스
         ---------------------------------------- */
 
         .recent{
             margin: 70px auto 150px;
-            height : 450px;
+            height: 450px;
         }
 
+        /* 관심목록 (이 페이지 타이틀) */
         .recent-div0{ 
             width: 1200px;
             margin: 0 auto; }
@@ -30,10 +22,12 @@
             color: black;
         }
 
+        /* 관심목록 하위 탭 (최근본방, 찜한방) */
         .tab1  {
             margin: auto;
             text-align: center;
-            padding-bottom: 60px;
+            padding-bottom: 50px;
+            width: 1200px;
         }
 
         .tab1 .re-bang {
@@ -41,7 +35,7 @@
             padding-right: 10px;
             font-size: 15px;
             display: inline-block;
-            width: 590px;
+            width: 600px;
             height: 50px;
         }
 
@@ -55,24 +49,28 @@
             height: 50px; 
         }
 
-        .tab-con {
-
-        }
-
+        /* 최근본방, 찜한방 하위박스(float과 해제) */
         .re-div1 p {
-            position-right: relative;
+            float: left;
         }
+
+        .re-div1 p span {
+            color: blue;
+        }
+
 
         .re-div2 p {
-            position-left: relative;
+            float: right;
         }
 
-        .tab-con:after {
-            content: ''; 
-            dispaly: none; 
+        .tab-con1:after {
+            display: block;
             clear: both;
-
+            content: '';
         }
+
+
+        
 
       /*      .recent-div1 {
                 line-height: 25px;
@@ -107,16 +105,16 @@
                 
             }*/
 
-            .recent-div3 span {
+            /*.recent-div3 span {
                 color: rgb(102, 102, 102);
                 font-size: 16px;
                 font-weight: 300;
                 line-height: 35px;
                 text-align: left;
-            }
+            }*/
 
             .recent-div4 {
-                width: 1200px;
+                width: 1240px;
                 margin-top: 20px;
                 position: relative;
                 right: 0px;
@@ -126,7 +124,7 @@
             /*박스전체*/
             .recent-div5{
                 float: left;
-                width: 280px;
+                width: 285px;
                 height: 321px;
                 background-color: rgb(255, 255, 255);
                 position: relative;
@@ -140,7 +138,7 @@
 
             /* 좋아요를 위한 엄마박스 -relative */
             .recent-div6{
-                height: 280px;
+                height: 285px;
                 position: relative;
             }
 
