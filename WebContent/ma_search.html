@@ -1,59 +1,333 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Main_search_room</title>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>Main_search_room</title>
 
-		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-		<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+	<!-- 모바일 웹 페이지 설정 -->
+	<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
+	<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
 
-		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 
-		<!-- 나눔고딕 웹 폰트 적용 -->
-		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+	<!-- 나눔고딕 웹 폰트 적용 -->
+	<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
 
-		<!-- 반응형 웹을 지원하지 않을 경우 -->
-		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+	<!-- css 참조 -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="ma_assets/ma_search.css">
+	<link rel="stylesheet" type="text/css" href="assets/header_white.css">
 
-		<!-- IE8 이하 버전 지원 -->
+	<!-- 반응형 웹을 지원하지 않을 경우 -->
+	<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+
+	<!-- IE8 이하 버전 지원 -->
 		<!--[if lt IE 9]>
 		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
 		<script type="text/javascript" src="assets/js/respond.min.js"></script>
-		<![endif]-->
+	<![endif]-->
 
-		<!-- IE10 반응형 웹 버그 보완 -->
+	<!-- IE10 반응형 웹 버그 보완 -->
 		<!--[if gt IE 9]>
 		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
-		<![endif]-->
-		<style type="text/css">
-			
-		</style>
-	</head>
+	<![endif]-->
+	<style type="text/css">
 
-	<body>
-		<!-- 브라우저에 보여질 부분 -->
-		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-		<div>
-			<!-- 상단 헤더 -->
-			<div id="header">
-				
+	</style>
+</head>
+
+<body>
+	<!-- 브라우저에 보여질 부분 -->
+	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
+	<div>
+		<!-- 상단 헤더 -->
+		<div id="header">
+			<div class="navbar" role="navigation">
+					<a href="#"><img src="assets/ico/logo_blue.png"></a>
+					<div class="menu-left small-font"><a href="#">방주인 사이트</a></div>
+					<!-- 메뉴 항목 -->
+					<div class="pull-right">
+						<div>
+							<a href="#">방찾기</a>
+							<a href="#" class="padding-l">관심목록</a>
+							<a href="#" class="padding-l">문의하기</a>
+							<a href="#" class="padding-l">알림</a>
+						</div>
+						<div class="small-font">
+							<a href="#" class="padding-l">회원가입 · 로그인</a>
+						</div>
+					</div>
+				</div>
+		</div>
+		<!-- 중앙 영역 -->
+		<div id="content">
+			<div id="search" class="clearfix">
+				<div class="searchtab">
+					<input type="text" placeholder="검색바" />
+				</div>
+				<!-- 전체 필터 -->
+				<div class="filters clearfix">
+					<!-- 개별 필터 -->
+					<div class="btn-group filter">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							원룸,투·쓰리룸,오피스텔 <span class="caret"></span>
+						</button>
+						<div class="dropdown-menu width1" role="menu">
+							<h1>방종류</h1>
+							<p>중복 선택이 가능합니다.</p>
+						<ul>
+							<li><input type="checkbox" name="room"/><span>원룸</span></li>
+							<li><input type="checkbox" name="room"/><span>투·쓰리룸</span></li>
+							<li><input type="checkbox" name="room"/><span>오피스텔</span></li>
+						</ul>
+					</div>
+					</div>
+					<!-- 개별 필터 끝 -->
+					<!-- 개별 필터 -->
+					<div class="btn-group filter">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							월세,전세,매매 <span class="caret"></span>
+						</button>
+						<div class="dropdown-menu width1" role="menu">
+							<h1>방종류</h1>
+							<p>중복 선택이 가능합니다.</p>
+						<ul>
+							<li><input type="checkbox" name="room"/><span>월세</span></li>
+							<li><input type="checkbox" name="room"/><span>전세</span></li>
+							<li><input type="checkbox" name="room"/><span>매매</span></li>
+						</ul>
+					</div>
+					</div>
+					<!-- 개별 필터 끝 -->
+					<!-- 개별 필터 -->
+					<div class="btn-group filter">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							가격대 <span class="caret"></span>
+						</button>
+						<div class="dropdown-menu width2" role="menu">	
+							<div class="filter-slide">
+								<h1>보증금/전세가<p>무제한</p></h1>
+								<div>슬라이드 플러그인</div>
+							</div>
+							<div class="filter-slide">
+								<h1>월세<p>무제한</p></h1>
+								<div>슬라이드 플러그인</div>
+							</div>
+							<div class="filter-slide">
+								<h1>매매가<p>무제한</p></h1>
+								<div>슬라이드 플러그인</div>
+							</div>
+						<!-- <ul>
+							<li><input type="checkbox" name="room"/><span>월세</span></li>
+							<li><input type="checkbox" name="room"/><span>전세</span></li>
+							<li><input type="checkbox" name="room"/><span>매매</span></li>
+						</ul> -->
+					</div>
+					</div>
+					<!-- 개별 필터 끝 -->
+					<!-- 개별 필터 -->
+					<div class="btn-group filter">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							관리비 <span class="caret"></span>
+						</button>
+						<div class="dropdown-menu width2" role="menu">	
+							<div class="filter-slide">
+								<h1>관리비<p>무제한</p></h1>
+								<div>슬라이드 플러그인</div>
+							</div>
+						<!-- <ul>
+							<li><input type="checkbox" name="room"/><span>월세</span></li>
+							<li><input type="checkbox" name="room"/><span>전세</span></li>
+							<li><input type="checkbox" name="room"/><span>매매</span></li>
+						</ul> -->
+					</div>
+					</div>
+					<!-- 개별 필터 끝 -->
+					<!-- 개별 필터 -->
+					<div class="btn-group filter">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							방크기 <span class="caret"></span>
+						</button>
+						<div class="dropdown-menu width2" role="menu">	
+							<div class="filter-slide">
+								<h1>방크기<p>무제한</p></h1>
+								<div>슬라이드 플러그인</div>
+							</div>
+						<!-- <ul>
+							<li><input type="checkbox" name="room"/><span>월세</span></li>
+							<li><input type="checkbox" name="room"/><span>전세</span></li>
+							<li><input type="checkbox" name="room"/><span>매매</span></li>
+						</ul> -->
+					</div>
+					</div>
+					<!-- 개별 필터 끝 -->
+				</div>
+				<!-- 전체 필터 끝 -->
+				<!-- 초기화 버튼 -->
+				<div class="filter-reset"><i class="glyphicon glyphicon-refresh"></i>초기화</div>
 			</div>
-			<!-- 중앙 영역 -->
-			<div id="content">
-				
-			</div>
-			<!-- 하단 영역 -->
-			<div id="footer">
-				
+			<div id="contentbox">
+				<div class="gallery">
+					<div class="gallery-header">
+						<span>조건에 맞는 방 </span>
+						<span class="room-count">0000</span><span>개</span>
+					</div>
+					<div class="gallery-content clearfix">
+						<ul>
+							<li>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<!-- 좋아요 버튼 -->
+										<div class="recent-div7">
+											<div class="recent-div8"></div>
+										</div>
+										<!-- 좋아요 끝 -->
+										<!-- 전체 링크화 -->
+										<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+											<!-- 이미지 -->
+											<div class="recent-a-div"></div>
+											<!-- 확인매물 div -->
+											<div class="recent-a-confirm">
+												<div class="recent-a-confirm-div">
+													<span class="bold">확인매물</span>
+													<span>19.09.25</span>
+												</div>
+											</div>
+											<!-- 확인매물 끝 -->
+											<p class="recent-a-p1">투룸</p>
+											<p class="recent-a-p2">
+												<span>전세 1억4000</span>
+											</p>
+											<p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
+											<p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<!-- 좋아요 버튼 -->
+										<div class="recent-div7">
+											<div class="recent-div8"></div>
+										</div>
+										<!-- 좋아요 끝 -->
+										<!-- 전체 링크화 -->
+										<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+											<!-- 이미지 -->
+											<div class="recent-a-div recent-a-div2"></div>
+											<!-- 확인매물 div -->
+											<div class="recent-a-confirm">
+												<div class="recent-a-confirm-div">
+													<span class="bold">확인매물</span>
+													<span>19.09.22</span>
+												</div>
+											</div>
+											<!-- 확인매물 끝 -->
+											<p class="recent-a-p1">원룸</p>
+											<p class="recent-a-p2">
+												<span>월세 1000/45</span>
+											</p>
+											<p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
+											<p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<!-- 좋아요 버튼 -->
+										<div class="recent-div7">
+											<div class="recent-div8"></div>
+										</div>
+										<!-- 좋아요 끝 -->
+										<!-- 전체 링크화 -->
+										<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+											<!-- 이미지 -->
+											<div class="recent-a-div"></div>
+											<!-- 확인매물 div -->
+											<div class="recent-a-confirm">
+												<div class="recent-a-confirm-div">
+													<span class="bold">확인매물</span>
+													<span>19.09.25</span>
+												</div>
+											</div>
+											<!-- 확인매물 끝 -->
+											<p class="recent-a-p1">원룸</p>
+											<p class="recent-a-p2">
+												<span>월세 10/45</span>
+											</p>
+											<p class="recent-a-p34">2층, 23.14m², 관리비 15만</p>
+											<p class="recent-a-p34">❤100%실매물/장기/단기가능/리모델링/저보증금 ~ ❤</p>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<!-- 좋아요 버튼 -->
+										<div class="recent-div7">
+											<div class="recent-div8"></div>
+										</div>
+										<!-- 좋아요 끝 -->
+										<!-- 전체 링크화 -->
+										<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+											<!-- 이미지 -->
+											<div class="recent-a-div"></div>
+											<!-- 확인매물 div -->
+											<div class="recent-a-confirm">
+												<div class="recent-a-confirm-div">
+													<span class="bold">확인매물</span>
+													<span>19.09.25</span>
+												</div>
+											</div>
+											<!-- 확인매물 끝 -->
+											<p class="recent-a-p1">원룸</p>
+											<p class="recent-a-p2">
+												<span>월세 200/25</span>
+											</p>
+											<p class="recent-a-p34">2층, 19.83m², 관리비 5만</p>
+											<p class="recent-a-p34">🍋🍓🍑편의점 10초거리🍋🍓🍑풀옵션 신축 주방분리형원룸🍋🍓🍑</p>
+										</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="gallery-footer">
+						<div class="gallery-index">
+							<button class="prev-btn"><span>&lt;</span></button>
+							<ul class="index-list">
+								<li><a class="index-indiv index-active">1</a></li>
+								<li><a class="index-indiv">2</a></li>
+								<li><a class="index-indiv">3</a></li>
+								<li><a class="index-indiv">4</a></li>
+								<li><a class="index-indiv">5</a></li>
+								<li><a class="index-indiv">6</a></li>
+								<li><a class="index-indiv">7</a></li>
+							</ul>
+							<button class="next-btn"><span>&gt;</span></button>
+						</div>
+					</div>
+				</div>
+				<div class="map-container">
+					<div class="map">지도</div>
+				</div>
 			</div>
 		</div>
-		<!-- Javascript -->
-		<script src="assets/js/jquery-1.10.2.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-	</body>
+		<!-- 하단 영역 -->
+		<div id="footer">
+
+		</div>
+	</div>
+	<!-- Javascript -->
+	<script src="assets/js/jquery-1.10.2.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+</body>
 </html>
