@@ -31,33 +31,66 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
+		#ad_main{
+			width: auto;
+		}
 		#header{
 			min-height: 300px;
+			
 		}
 		#content{
-			width:auto;
+			width:1400px;
 			vertical-align: middle;
+			margin: auto;
+			background-color: green;
 		}
+		#content> div
+		{
+		height:200px;
+		border-radius: 20px;}
 			#content > .box1{
-				border: 1px solid gold; float: left; width:33%;
-				padding:10px;
+				border: 1px solid rgb(67, 131, 255); float: left;
+				background-color: rgb(67, 131, 255);;
+				width: 20%; 
+				margin-left: 60px;
+				margin-right: 30px;
 				text-align: center;
-				height:300px;
 				padding-top:130px;
+				display: inline-block;
+				margin-right : 150px;
 			}
 			#content > .box2{
-				border: 1px solid red; float: left; width:33%;
+				background-color: rgb(67, 131, 255);;
+				border: 1px solid rgb(67, 131, 255);; float: left; 
+				width: 20%;
 				padding:10px;
 				text-align: center;
-				height:300px;
 				padding-top:130px;
+				display: inline-block;
+				margin-right : 150px;
 			}
 			#content > .box3{
-				border: 1px solid blue; float: left; width:33%;
+				background-color: rgb(67, 131, 255);
+				border: 1px solid rgb(67, 131, 255); float: left;
+				width: 20%;
 				padding:10px;
 				text-align: center;
-				height:300px;
 				padding-top:130px;
+				display: inline-block;
+			}
+			#content > div > a {
+				color:white;
+				font-size:40px;
+				width: 240px;
+				height: 240px;
+				display: inline-block;
+				text-decoration: none;
+				margin-top:-80px;
+			}
+			#header >h1{
+				text-align : center;
+				display: block;
+				padding-top : 120px;
 			}
 		</style>
 	</head>
@@ -68,7 +101,7 @@
 		<div id="ad_main">
 			<!-- 상단 헤더 -->
 			<div id="header">
-				<span>별방 관리자 사이트</span>
+				<h1>별방 관리자 사이트</h1>
 			</div>
 			<!-- 중앙 영역 -->
 			<div id="content">
