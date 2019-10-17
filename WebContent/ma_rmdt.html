@@ -13,6 +13,9 @@
 		<!-- bootstrap -->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 
+		<!-- reset.css -->
+		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
 
@@ -31,7 +34,273 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
+			* { 
+				padding: 0px;
+				margin: 0px;
+				list-style: none;
+				text-decoration: none;
+			}
+			/*추후에 지우기*/
+			#header {
+				min-height: 70px;
+				background-color: #eee;				
+				text-align: center;
+			}
+
+			#content {
+				width: 1200px;
+				min-height: 800px;
+				margin: auto;
+			}
+
+			#box1 {
+				width: 100%;
+				height: 105px;
+				padding: 30px 0px 30px 0px;
+			}
+
+			h1 {
+				line-height: 5px;
+				font-size: 30px;
+			}
+
+			.abc {
+				width: 230px;
+				height: 50px;
+				border-right: 1px solid rgb(235, 235, 235);
+				margin-top: 10px;
+			}
+
+			.greyfont {
+				color: #505050;
+				font-size: 14px;
+				position: relative;
+				bottom: 20px;
+			}
+
+			.greyfontwon {
+				color: #505050;
+				font-size: 14px;
+			}
+
+			.greyfontnm {
+				color: #505050;
+				font-size: 14px;
+			}	
+
+			#month{
+				margin-left: 30px;
+			}
+
+			.chbt {
+				width: 40px;
+				height: 30px;
+				font-size: 12px;
+				background-color: white;
+				border-style: solid;
+				border-color: rgb(213, 213, 213);
+				border-width: 1px;
+				border-radius: 3px;
+				position: relative;
+				left: 120px;
+				bottom: 17px;
+			}
+
+			li .grml {
+				width: 116px;
+				height: 38px;
+				font-size: 14px;
+				background-color: white;
+				border-style: solid;
+				border-color: rgb(213, 213, 213);
+				border-width: 1px;
+				border-radius: 18px;
+				position: relative;
+				bottom: 10px;
+			}
+
+			#iconlist {
+				width: 100%;
+				height: 20px;
+				font-size: 21px;
+				display: inline-block;
+			}
+
+			#iconlist .glyphicon-stop {
+				font-size: 7px;
+				margin: 5px;
+				position: relative;
+				bottom: 30px;
+			}
+
+			.honame {
+				font-weight: bold;
+				padding-top : 0px;
+				position: relative;
+				top: 16px;
+				right: 120px;
+			}
+
+			.eTgAil {
+			   width: 100%;
+			   height: 36px;
+			   background-color: rgb(54, 101, 206);
+			   margin-top: 20px;
+			}
+			.eTgAil::after {
+			    display: block;
+			    content: "";
+			    clear: both;
+			}
+
+			.gknGpv {
+			    float: left;
+			    height: 36px;
+			    color: rgb(255, 255, 255);
+			    font-size: 12px;
+			    font-weight: 500;
+			    line-height: 36px;
+			    background-color: rgb(6, 73, 192);
+			    padding: 0px 20px 0px 15px;
+			}
+
+			p {
+			    display: block;
+			    margin: 0px;
+			}
+
+			.cETKtB {
+			    float: left;
+			    color: rgb(255, 255, 255);
+			    font-size: 13px;
+			    font-weight: 400;
+			    position: relative;
+			    padding: 6px 0px 0px 17px;
+			}
+
+			.gknGpv > span {
+			    margin-left: 3px;
+			    color: rgb(165, 194, 245);
+			    font-weight: 400;
+			}
+
+			.mola {
+				color: rgb(18, 60, 156);
+			}
+
+			.mola img {
+				width: 20px;
+				height: 25px;
+			}
+
+			.iuNQqL {
+			    width: 100%;
+			    height: px;
+			    border-top: 2px solid rgb(34, 34, 34);
+			}
+
+			.iuNQqL > li {
+			    float: left;
+			    width: 25%;
+			    height: 50px;
+			    line-height: 50px;
+			    border-bottom: 1px solid rgb(235, 235, 235);
+			}
+
+			.gWdVQs::before {
+			    content: "·";
+			    float: left;
+			    color: rgb(34, 34, 34);
+			    margin-right: 7px;
+			}
+
+			.gPsGgb {
+			    float: left;
+			    width: 100px;
+			    color: rgb(136, 136, 136);
+			    font-size: 14px;
+			}
+		
+			.bHPFKV {
+				width: 40px;
+				height: 23px;
+				font-size: 10px;
+				background-color: white;
+				border-style: solid;
+				border-color: rgb(213, 213, 213);
+				border-width: 1px;
+				border-radius: 3px;
+				position: relative;
+				left: 10px;
+				top: 5px;
+			}
+			.bHPFKV > span {
+			    color: rgb(34, 34, 34);
+			    font-size: 11px;
+			    position: absolute;
+			    top: 45%;
+			    right: 8px;
+			    transform: translateY(-50%);
+			}
+
+			.confirmsm {
+				position: relative;
+				bottom: 10px;
+			}
+
+			.bigviewul {
+				width: auto;
+				height: 480px;
+				background-color: yellow;
+				padding-top: 30px;
+			}
+
+			.bigviewigli {
+				width: 620px;
+				min-height: 60px;
+				float: left;
+			}
+
+			.bigviewigli img{
+				width: 620px;
+				height: 420px;
+			}
+
+			.bigviewiglism {
+				width: 280px;
+				height: 210px;
+				float: left;
+			}
+
+			.bigviewiglism img {
+				width: 280px;
+				height: 210px;
+				display: inline-block;
+			}
+
+			#explanall {
+				margin: auto;
+			}
+
+			#bigexplan {
+				background-color: green;
+				width: 520px;
+				height: 130px;
+				float: left;
+			}
+
+			#smallexplan {
+				background-color: yellow;
+				width: 520px;
+				height: 130px;
+				float: left;
+
+			}
 			
+
+		} /*content 끝*/
+			
+
 		</style>
 	</head>
 
@@ -41,11 +310,129 @@
 		<div>
 			<!-- 상단 헤더 -->
 			<div id="header">
-				
+				헤더부분
 			</div>
 			<!-- 중앙 영역 -->
-			<div id="content">
-				
+			<div id="content"> <!-- 전체 면적 설정 -->
+				<div id="summury"><!--상단 내용 시작-->
+					<ul id="box1">
+						<li class="pull-left abc">
+							<span class="greyfont">매물종류(원룸)</span>
+							<h1>월세 3000/55<span class="greyfontwon">만원</span></h1>
+						</li> 					
+						<li class="pull-left abc" id="month">
+							<span class="greyfont">전용면적</span>
+							<h1>36.36㎡</h1>
+							<button type="button" class="chbt"><span class="glyphicon glyphicon-refresh">평</span></button>
+						</li>
+						<li class="pull-right"> <!--방주인 이메일보기-->
+							<p class="honame">방주인 조수민님</p>
+							<button type="button" class="grml"><span class="glyphicon glyphicon-envelope">이메일보기</span></button>
+						</li>
+					</ul>
+				</div> <!--상단 내용 끝-->
+				<div id="iconlist"> <!--찜,이메일,공유,허위매물신고 시작-->
+					<span class="glyphicon glyphicon glyphicon-star-empty"></span>
+					<span class="glyphicon glyphicon glyphicon-stop"></span>
+					
+					<span class="glyphicon glyphicon glyphicon-link"></span>
+					<span class="glyphicon glyphicon glyphicon-stop"></span>
+					<span class="glyphicon glyphicon glyphicon-bullhorn"></span>
+					<span class="greyfontnm">허위매물신고</span>
+				</div> <!--찜,이메일,공유,허위매물신고 끝-->
+				<div id="confirm room"> <!--확인매물 푸른색바 시작-->
+					<div class="eTgAil" type="confirm">
+					    <p class="gknGpv" type="confirm">확인매물<span>19.09.18</span>
+					    </p>
+					    <p class="cETKtB">
+					        <span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
+					        <a href="#" class="mola">
+					        	<img src="ma_assets/ma_img/confirmq.png">
+					        </a>
+					    </p>
+					</div>
+				</div> <!--확인매물 푸른색바 끝-->
+				<div id="summury-option"><!--방등록시 상세 옵션값들 시작-->
+					<ul class="iuNQqL clearfix" id="list">
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">해당층/건물층</p>
+					        <div class="gbAeEp">5층 / 6층</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">전용/공급면적</p>
+					        <div class="gbAeEp">
+					            <span>26.44 / 33.05㎡</span>
+					            <button type="button" class="bHPFKV"><span class="glyphicon glyphicon-refresh">평</span></button>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">난방종류</p>
+					        <div class="gbAeEp">개별난방</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">빌트인</p>
+					        <div class="gbAeEp">아님</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">엘리베이터</p>
+					        <div class="gbAeEp">있음</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">반려동물</p>
+					        <div class="gbAeEp">가능</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">베란다/발코니</p>
+					        <div class="gbAeEp">없음</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">전세자금대출</p>
+					        <div class="gbAeEp">가능</div>
+					    </li>
+					    <li class="gWdVQs">
+					        <p class=" gPsGgb">입주가능일</p>
+					        <div class="gbAeEp">즉시 입주</div>
+					    </li>
+					    <li></li>
+					    <li></li>
+					    <li></li>
+					</ul>					
+				</div> <!--방등록시 상세 옵션값들 끝-->
+				<div id="bigview"><!--매물 이미지 시작-->
+					<ul class="bigviewul">
+						<li class="bigviewigli"><a href="#"><img src="ma_assets/ma_img/roph01.jfif" /></a></li>
+						<li class="bigviewiglism"><a href="#"><img src="ma_assets/ma_img/roph02.jfif" /></a></li>
+						<li class="bigviewiglism"><a href="#"><img src="ma_assets/ma_img/roph03.jfif" /></a></li>
+						<li class="bigviewiglism"><a href="#"><img src="ma_assets/ma_img/roph04.jfif" /></a></li>
+						<li class="bigviewiglism"><a href="#"><img src="ma_assets/ma_img/roph04.jfif" /></a></li>
+					</ul>
+				</div>
+				</div><!--매물 이미지 끝-->
+				  <div id="explanall"><!--사용자 매물 설명 시작-->
+					<div id="bigexplan">
+							<div class="explan1">
+								신축 1년된깔끔한 풀옵션원룸~급전세~3천입니다.
+							</div>				
+						</div><!--매물 설명 큰 폰트-->
+						<div id="smallexplan">
+							<div class="explan1">
+								신축 1년된깔끔한 풀옵션원룸~급전세~3천입니다.
+							</div>	
+						</div><!--매물 설명 작은 폰트-->
+				 	</div><!--사용자 매물 설명 끝-->
+				<div id="movebar">
+					
+				</div><!--스크롤 발생 시 움직이는 파란색바-->
+				<div id="rader">
+					
+				</div><!--다방면스코어-->
+				<div id="priceinfo">
+					
+				</div><!--가격정보-->
+				<div id="pictogram">
+					
+				</div><!--상세 옵션들 아이콘으로 보여줌-->
+				<div id="map">
+					
+				</div><!--위치 30미터 반경만 표시-->
 			</div>
 			<!-- 하단 영역 -->
 			<div id="footer">
@@ -55,5 +442,6 @@
 		<!-- Javascript -->
 		<script src="assets/js/jquery-1.10.2.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+
 	</body>
 </html>
