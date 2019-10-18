@@ -1,51 +1,43 @@
 @charset "utf-8";
-/** { padding: 0; margin: 0; }
-ul, li {
-	list-style: none;
-}*/
+/* gallery 스크롤 수정 필요 */
 
-/* 해상도별 gallery, map-container 박스 크기 지정 */
-/*@media (max-width: 992px) {
-     #contentbox .gallery { width: 980px; }
-     #contentbox .map-container { width: 479px; left: 720px; }
-}*/
+body > div { height: 100%; overflow: hidden; }
 
 @media (max-width: 1699px) {
-     /*#contentbox { width: 1 }*/
      #contentbox .gallery { width: 980px; }
      #contentbox .map-container { width: 719px; left: 980px; }
 }
 
 @media (min-width: 1700px) {
-     /*#contentbox { width: 1 }*/
      #contentbox .gallery { width: 1240px; }
      #contentbox .map-container { max-width: 680px; left: 1240px; }
 }
 
  /*---------------------------------
-/	content > search (검색, 필터)
+/   content > search (검색, 필터)
 ----------------------------------------*/
 /* 전체 박스 크기 조정 */
 #search {
-	width: 100%;
-    min-width: 1200px;
-	height: 66px;
+    width: 100%;
+    /*min-width: 1200px;*/
+    height: 66px;
     border-bottom: 1px solid #eee;
     box-shadow: 0px 1px 1px #ddd;
+    position: relative;
 }
 
 /* 검색창 */
 #search .searchtab {
-	border-right: 1px solid #eee;
+    border-right: 1px solid #eee;
      float: left;
 }
 
 #search .searchtab input {
-	border: none;
-	background-color: #ffffff;
-	font-size: 16px;
-	line-height: 65px;
-	padding: 0 50px 0 30px;
+    border: none;
+    background-color: #ffffff;
+    font-size: 16px;
+    line-height: 65px;
+    padding: 0 50px 0 30px;
 }
 
 /* 검색창 테두리 제거 */
@@ -55,7 +47,11 @@ ul, li {
 
 /* 필터 */
 #search .filters {
-     float: left;
+     /*float: left;*/
+     /*display: inline-block;*/
+     /*position: absolute;
+     top: 3px;
+     left: 250px;*/
      margin-top: 15.5px;
 }
 
@@ -130,6 +126,7 @@ ul, li {
 /* 초기화 버튼 */
 #search .filter-reset {
     float: right;
+    width: 96px;
     font-size: 14px;
     height: 100%;
     line-height: 65px;
@@ -138,6 +135,9 @@ ul, li {
     padding-right: 18px;
     border-left: 1px solid #eee;
     cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 /* 초기화 아이콘 */
@@ -149,98 +149,111 @@ ul, li {
 }
 
  /*---------------------------------
-/	content > contentbox (갤러리, 지도)
+/   content > contentbox (갤러리, 지도)
 ----------------------------------------*/
 /* 전체 박스 크기 지정 */
 #contentbox {
-	width: 100%;
-	min-width: 1200px;
-	position: relative;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    position: relative;
+    /*overflow: hidden;*/
 }
 
  /*---------------------------------
-/	갤러리
+/   갤러리
 ----------------------------------------*/
 #contentbox .gallery {
-	/*width: 1180px;*/
-	height: 100%;
-	float: left;
+    /*width: 1180px;*/
+    float: left;
+    height: 100%;
+   /* padding-left: 15px;
+    padding-right: 30px;*/
 }
 
 /* 갤러리 상단 제목 */
 #contentbox .gallery .gallery-header {
-	width: 100%;
-	padding-top: 30px;
-	padding-bottom: 20px;
-	margin-left: 30px;
+    /*width: 100%;*/
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin: 0 30px;
+    border-bottom: 1px solid #eee;
 }
 
 #contentbox .gallery .gallery-header span {
-	font-size: 22px;
-	line-height: 20px;
+    font-size: 22px;
+    line-height: 20px;
 }
+
+#contentbox .gallery .gallery-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    max-height: 750px;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
 
 /** 갤러리 전체 박스 하단 패딩 */
 #contentbox .gallery .gallery-content {
     padding-bottom: 40px;
 }
-
 #contentbox .gallery .gallery-content ul {
-	display: block;
-	padding-top: 20px;
-	margin: 0 30px 0 15px;
+    display: block;
+    padding-top: 20px;
+    /*margin: 0 30px 0 15px;*/
 }
 
 #contentbox .gallery .gallery-content li {
-	display: inline-block;
-	width: 25%;
-	float: left;
-	padding-left: 15px;
-	margin-bottom: 50px;
+    display: inline-block;
+    width: 25%;
+    float: left;
+    padding-left: 15px;
+    margin-bottom: 50px;
 }
 
 /* 갤러리 박스 시작 */
 /*박스전체*/
 #contentbox .gallery .gallery-content li .recent-div5{
-	width: 100%;
-	height: 325px;
-	background-color: rgb(255, 255, 255);
-	position: relative;
-	border-radius: 5px;
+    width: 100%;
+    height: 325px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 5px;
 }
 
 /* 좋아요를 위한 엄마박스 -relative */
 .recent-div6{
-	height: 280px;
-	position: relative;
+    height: 280px;
+    position: relative;
 }
 
 /* <div>좋아요 자식박스 -absolute */
 .recent-div7{
-	width: 36px;
-	position: absolute;
-	top: 3px;
-	right: 7px;
-	z-index: 1;
-	cursor: pointer;
+    width: 36px;
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    z-index: 1;
+    cursor: pointer;
 }
 /* <div>좋아요 - <div> */
 .recent-div8{
-	width: 32px;
-	height: 30px;
-	margin: 0px auto;
-	background: url(ma_img/like.svg) center center / cover;
+    width: 32px;
+    height: 30px;
+    margin: 0px auto;
+    background: url(ma_img/like.svg) center center / cover;
 }  
 
 /* <a> 태그 */
 .recent-a{
-	display: block;
+    display: block;
 }
 
 /* 부트스트랩에 마진이 들어가있어서 <a> 부분만 초기화시켜주기 */
 /*.recent-a p{
-	margin: 0px;
+    margin: 0px;
 }*/
 
 /* 텍스트 마우스오버 시 발생하는 효과 제거 */
@@ -470,18 +483,21 @@ ul, li {
 }
 
  /*---------------------------------
-/	지도
+/   지도
 ----------------------------------------*/
 #contentbox .map-container {
-	position: absolute;
-	/*left: 1180px;*/
-	background-color: #ff66ff;
-	/*width: 100%;*/
-	height: 800px;
-	/*float: left;*/
-	/*overflow: hidden;*/
+    position: absolute;
+    background-color: #ff66ff;
+    width: 720px;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+#contentbox .map-container2 {
+    overflow: hidden;
 }
 
 #contentbox .map {
-    width: 100%
+    width: 100%;
+    height: 750px;
 }
