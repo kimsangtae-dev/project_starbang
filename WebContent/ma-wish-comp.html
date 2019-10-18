@@ -13,6 +13,9 @@
 		<!-- bootstrap -->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 
+		<!-- reset.css -->
+    	<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
 		<!-- 반응형 웹을 지원하지 않을 경우 -->
@@ -152,7 +155,6 @@
 	}
 
 
-
 	/* ---------------------------------------
 	/ <Content> 상단 tbody
 	----------------------------------------*/
@@ -172,7 +174,7 @@
 		height: 9px;
 		background-color: transparent;
 		position: absolute;
-		top: 29px;
+		top: 22px;
 		right: 14px;
 		border-width: 0px;
 		border-style: initial;
@@ -241,8 +243,6 @@
 		line-height: 25px;
 	}
 
-	
-
 
 	/* ---------------------------------------
 	/ <Content> - table2
@@ -277,15 +277,14 @@
 	}
 
 
-
-
-
-	/* table3 */
+	/* ---------------------------------------
+	/ <Content> - table3
+	----------------------------------------*/
 
 	/* 3번째 테이블 여백-패딩 */
 	.table3-padding { padding: 0px 25px 0px 20px; }
 
-	/* 상세정보 */
+	/* 상세정보 <p>태그 설정 */
 	.table3-detail-lp {
 		float: left;
     	color: rgb(102, 102, 102);
@@ -303,7 +302,10 @@
     	padding: 4px 0px;
 	}
 
-	/* table4 */
+
+	/* ---------------------------------------
+	/ <Content> - table4
+	----------------------------------------*/
 	.table4-padding {
 	    padding: 20px 25px 20px 20px;
 	}
@@ -316,6 +318,76 @@
     	text-align: left;
     	line-height: 28px;
 	}
+
+	/* ---------------------------------------
+	/ <Content> - table5
+	----------------------------------------*/
+
+	/* 여백 */
+
+	.table5-padding {
+		padding: 20px 25px 20px 20px;
+	}
+
+	.table5-option-p {
+		height: 28px;
+		color : rgb(102, 102, 102);
+		font-size: 14px;
+		text-align: left;
+		line-height: 20px;
+		padding: 4px 0;
+	}
+
+
+	/* 마지막버튼 - 문의하기 - 맨아래 드롭다운 기능 */
+	.last-contact-td {
+		height: 50px;
+	}
+
+	.last-contact-div {
+		width: 100%;
+		height: 50px;
+		background-color: rgb(0, 108, 255);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 0 15px;
+		transition: height 300ms ease-in-out 0s, background-color 250ms ease-out 0s;
+    	overflow: hidden;
+	}
+
+	.last-contact-div > div {
+		display: table;
+		width: calc(100% - 30px);
+		height: 65px;
+		position: absolute;
+		left: 15px;
+		bottom: 50px;
+		border-bottom: 1px solid rgba(255,255,255,0.2);
+
+	}
+
+	.last-contact-div > div > div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.last-contact-div > button { 
+		width: 100%;
+		height: 50px;
+		color: rgb(255, 255, 255);
+		font-size: 15px;
+		font-weight: 500;
+		background-color: transparent;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border-width: 0;
+	}
+
+
+
+
 
 
 </style>
@@ -532,15 +604,94 @@
 								</tr>
 							</tbody>
 						</table>
-						<!-- 테이블 4번째  -->
-				</table>
+						<!-- 테이블 4번째 -->
+						<!-- 테이블 5번째 -->
+						<table class="tableconfig">
+    					<colgroup>
+    					    <col width="33.3%"><col width="33.3%"><col width="33.3%"></colgroup>
+    					            <tbody>
+    					                <tr>
+    					                    <th>기타</th>
+    					                    <th>기타</th>
+    					                    <th>기타</th>
+    					                </tr>
+    					                <tr>
+    					                    <td class="table5-padding">
+    					                        <p class="table5-option-p">개별난방</p>
+    					                        <p class="table5-option-p">빌트인 아님</p>
+    					                        <p class="table5-option-p">엘리베이터 있음</p>
+    					                        <p class="table5-option-p">반려동물 가능</p>
+    					                        <p class="table5-option-p">발코니/베란다 없음</p>
+    					                        <p class="table5-option-p">전세자금대출 가능</p>
+    					                        <p class="table5-option-p">날짜 협의</p>
+    					                        <p class="table5-option-p">공인중개사 중개거래</p>
+    					                    </td>
+    					                    <td class="table5-padding">
+    					                        <p class="table5-option-p">개별난방</p>
+    					                        <p class="table5-option-p">빌트인 아님</p>
+    					                        <p class="table5-option-p">엘리베이터 있음</p>
+    					                        <p class="table5-option-p">반려동물 가능</p>
+    					                        <p class="table5-option-p">발코니/베란다 없음</p>
+    					                        <p class="table5-option-p">전세자금대출 가능</p>
+    					                        <p class="table5-option-p">날짜 협의</p>
+    					                        <p class="table5-option-p">공인중개사 중개거래</p>
+    					                    </td>
+    					                    <td class="table5-padding">
+    					                        <p class="table5-option-p">개별난방</p>
+    					                        <p class="table5-option-p">빌트인 주방</p>
+    					                        <p class="table5-option-p">엘리베이터 있음</p>
+    					                        <p class="table5-option-p">반려동물 가능</p>
+    					                        <p class="table5-option-p">발코니/베란다 없음</p>
+    					                        <p class="table5-option-p">전세자금대출 가능</p>
+    					                        <p class="table5-option-p">즉시 입주</p>
+    					                        <p class="table5-option-p">공인중개사 중개거래</p>
+    					                    </td>
+    					                </tr>
+    					                <tr>
+    					                    <td class="last-contact-td">
+    					                        <div class="last-contact-div">
+    					                            <div>
+    					                                <div>
+    					                                    <p>금강공인중개사사무소</p>
+    					                                    <p>선미진</p>
+    					                                </div>
+    					                            </div>
+    					                            <button>문의하기</button>
+    					                        </div>
+    					                    </td>
+    					                    <td class="last-contact-td">
+    					                        <div class="last-contact-div">
+    					                            <div>
+    					                                <div>
+    					                                    <p>라임공인중개사사무소</p>
+    					                                    <p>이병근</p>
+    					                                </div>
+    					                            </div>
+    					                            <button>문의하기</button>
+    					                        </div>
+    					                    </td>
+    					                    <td class="last-contact-td">
+    					                        <div class="last-contact-div">
+    					                            <div>
+    					                                <div>
+    					                                    <p>(주)래미안복덕방부동산중개법인</p>
+    					                                    <p>김정식</p>
+    					                                </div>
+    					                            </div>
+    					                            <button>문의하기</button>
+    					                        </div>
+    					                    </td>
+    					                </tr>
+    					            </tbody>
+    					        </table>
+						</table>
+					</div>
+				</div>
+				<!-- /.modal-content -->
 			</div>
+			<!-- /.modal-dialog -->
 		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
+		<!-- /.modal -->
 
 		<!-- 화면 영역 -->
 		<div class="container">
