@@ -1,59 +1,129 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Main_login</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>modal</title>
 
-		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-		<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+        <!-- 모바일 웹 페이지 설정 -->
+        <link rel="shortcut icon" href="assets/ico/logo_bb.png" />
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
 
-		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+        <!-- bootstrap -->
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
 
-		<!-- 나눔고딕 웹 폰트 적용 -->
-		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+        <!-- reset.css -->
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+        
+        <!-- 나눔고딕 웹 폰트 적용 -->
+        <link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
 
-		<!-- 반응형 웹을 지원하지 않을 경우 -->
-		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+        <!-- style 적용 -->
+        <link rel="stylesheet" type="text/css" href="ma_assets/ma_login.css" />
 
-		<!-- IE8 이하 버전 지원 -->
-		<!--[if lt IE 9]>
-		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
-		<script type="text/javascript" src="assets/js/respond.min.js"></script>
-		<![endif]-->
+        <!-- 반응형 웹을 지원하지 않을 경우 -->
+        <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
 
-		<!-- IE10 반응형 웹 버그 보완 -->
-		<!--[if gt IE 9]>
-		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-		<script type="text/javascript" src="assets/js/ie10.js"></script>
-		<![endif]-->
-		<style type="text/css">
-			
-		</style>
-	</head>
+        <!-- IE8 이하 버전 지원 -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="assets/js/respond.min.js"></script>
+        <![endif]-->
 
-	<body>
-		<!-- 브라우저에 보여질 부분 -->
-		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-		<div>
-			<!-- 상단 헤더 -->
-			<div id="header">
-				
-			</div>
-			<!-- 중앙 영역 -->
-			<div id="content">
-				
-			</div>
-			<!-- 하단 영역 -->
-			<div id="footer">
-				
-			</div>
-		</div>
-		<!-- Javascript -->
-		<script src="assets/js/jquery-1.10.2.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-	</body>
+        <!-- IE10 반응형 웹 버그 보완 -->
+        <!--[if gt IE 9]>
+        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+        <script type="text/javascript" src="assets/js/ie10.js"></script>
+        <![endif]-->
+
+    </head>
+
+<body>
+    <!-- modal -->
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- modal-dialog -->
+        <div class="modal-dialog">
+            <!-- modal-content -->
+            <div class="modal-content" style="width:420px;" data-dismiss="modal">
+                <!-- 닫기버튼 -->
+                <button class="styled__CloseBtn-sc-1lg6dnp-3 eYCiCi">
+                	<svg width="30" height="30" viewBox="0 0 32 32">
+                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+                			<g class="Close" stroke-linecap="round" stroke-width="2">
+                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+                			</g>
+                		</g>
+                	</svg>
+                </button>
+                </button>
+                <!-- 상단 전체박스 시작 -->
+            	<div class="topbox-div">
+            		<!-- 제목 -->
+                	<h3 class="login-h3"><b>로그인</b></h3>
+                	<!-- 로그인윗부분 -->
+                	<div class="login" id="">
+                	    <form class="">
+                	    	<!-- 아이디 / 패스워드 -->
+                	        <input autocomplete="off" class="idpass" type="text" placeholder="아이디" name="email" value="" />
+                	        <input autocomplete="off" class="idpass" type="password" placeholder="비밀번호" name="password" value="" />
+                	        <div class="checkbox-div">
+                	        	<!-- 아이디저장 - 체크박스 -->
+                	            <label class="checkbox-label clearfix" size="22">
+                	                <input type="checkbox" class="checkbox-input" name="isSaved" value="">
+                	                <span class="checkbox-span"></span>
+                	                <p class="checkbox-p">아이디 저장</p>
+                	            </label>
+                	            <!-- 비밀번호 찾기 -->
+                	            <a class="findpw-a">비밀번호 찾기</a>
+                	        </div>
+                	        <button class="login-button" type="submit">
+                	            <span class="login-span">로그인</span>
+                	        </button>
+                	    </form>
+                	    <div class="joinus-div">
+                	        <p>아직 회원이 아니세요?
+                	            <a href="#">이메일로 회원가입</a>
+                	        </p>
+                	    </div>   
+                	</div>
+                </div>
+                <!-- /상단 전체박스 -->
+                <!-- <div class="owner">
+                	 <div>
+                		<label class="owner-label">임대인이세요?</label>
+                		<a class="owner-a" href="ho_main.html">
+                			<div>
+                				<img src="assets/ico/logo_blue.png">
+                			</div>
+                			<span>방주인</span>
+                			<svg width="8" height="8" viewBox="0 0 8 8">
+                				<g transform="translate(0 0)">
+                					<path fill="#326CF9" d="M3.564.124v3.584H.018v3.585H7.11V.123z"></path>
+                				</g>
+                			</svg>
+                		</a>
+                	</div> -->
+                </div>                	
+            </div>
+            <!-- /modal-content -->
+        </div>
+        <!-- /modal-dialog -->
+    </div>
+    <!-- /modal -->
+
+        
+
+        <!-- 화면 영역 -->
+        <div class="container">
+            <h1>Bootstrap Modal Popup</h1>
+            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
+        </div>
+        <!-- 화면 영역 끝 -->
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.10.2.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+    </body>
 </html>
