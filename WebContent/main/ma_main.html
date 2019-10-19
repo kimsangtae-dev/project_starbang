@@ -1,221 +1,343 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Main</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Main</title>
 
-    <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+  <!-- 모바일 웹 페이지 설정 -->
+  <link rel="shortcut icon" href="assets/ico/logo_bb.png" />
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+  <!-- bootstrap -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
 
-    <!-- reset.css -->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+  <!-- reset.css -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
 
-    <!-- 나눔고딕 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+  <!-- 나눔고딕 웹 폰트 적용 -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
 
-    <!-- css 적용 -->
-    <link rel="stylesheet" type="text/css" href="ma_assets/ma_common.css">
-    <link rel="stylesheet" type="text/css" href="ma_assets/ma_main.css">
+  <!-- css 적용 -->
+  <link rel="stylesheet" type="text/css" href="ma_assets/ma_common.css">
+  <link rel="stylesheet" type="text/css" href="ma_assets/ma_main.css">
 
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+  <!-- 테마별 방보기 (slide) 플러그인 -->
+  <link rel="stylesheet" href="ma_assets/plugins/superslides/stylesheets/superslides.css">
 
-    <!-- IE8 이하 버전 지원 -->
+
+  <!-- 반응형 웹을 지원하지 않을 경우 -->
+  <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+
+  <!-- IE8 이하 버전 지원 -->
     <!--[if lt IE 9]>
     <script type="text/javascript" src="assets/js/html5shiv.js"></script>
     <script type="text/javascript" src="assets/js/respond.min.js"></script>
-    <![endif]-->
+  <![endif]-->
 
-    <!-- IE10 반응형 웹 버그 보완 -->
+  <!-- IE10 반응형 웹 버그 보완 -->
     <!--[if gt IE 9]>
     <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
     <script type="text/javascript" src="assets/js/ie10.js"></script>
-    <![endif]-->
-    
-  </head>
+  <![endif]-->
 
-  <body>
-    <!-- 브라우저에 보여질 부분 -->
-    <!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-    <div>
-      <!-- 상단 헤더 -->
-      <div id="header">
-        <div class="navbar" role="navigation">
-          <a href="#"><img src="assets/ico/logo_blue.png"></a>
-          <div class="menu-left small-font"><a href="ho_main.html">방주인 사이트</a></div>
-          <!-- 메뉴 항목 -->
-          <div class="pull-right">
-            <div>
-              <a href="ma_search.html">방찾기</a>
-              <a href="ma_rtrm.html" class="padding-l">관심목록</a>
-              <a href="ma-rmdt.html" class="padding-l">문의하기</a>
-            </div>
-            <div class="small-font">
-              <a href="ma_login.html#myModal" class="padding-l">회원가입 · 로그인</a>
-            </div>
+  <style type="text/css">
+
+
+
+  </style>
+
+</head>
+
+<body>
+  <!-- 브라우저에 보여질 부분 -->
+  <!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
+  <div>
+    <!-- 상단 헤더 -->
+    <div id="header">
+      <div class="navbar" role="navigation">
+        <a href="#"><img src="../assets/ico/logo_blue.png"></a>
+        <div class="menu-left small-font"><a href="ho_main.html">방주인 사이트</a></div>
+        <!-- 메뉴 항목 -->
+        <div class="pull-right">
+          <div>
+            <a href="ma_search.html">방찾기</a>
+            <a href="ma_rtrm.html" class="padding-l">관심목록</a>
+            <a href="ma-rmdt.html" class="padding-l">문의하기</a>
           </div>
-        </div>
-      </div>
-
-      <!-- 중앙 영역 시작 -->
-      <div id="content">
-        <!-- 검색창 시작 -->
-        <div id="search">
-          <div class="text-center">
-            <p class="text-center"><span class="text-center">어떤 동네, 어떤 방</span>에서</p>
-            <p>살고 싶으신가요?</p>
-          </div>
-          <form>
-            <div>
-              <input type="text" name="">
-              <i class="glyphicon glyphicon-search"></i>
-              <button href="#" class="btn btn-primary">방 찾기</button>
-            </div>
-          </form>
-        </div>
-        <!-- 검색창 끝 -->
-
-        <!-- 쉬운방찾기시작 -->
-        <div id="easyfind">
-          <div class="text-center easy-box1">
-            <span >쉬운 방찾기</span>
-            <p>방 찾기 초보를 위한 초간단 솔루션!</p>
-          </div>
-
-          <div class="plugin temp1">플러그인 자리입니다. 마우스를 올려보세요.</div>
-          <!-- <div class="easy-box3">
-            <p class="easy-box3-p1">01</p>
-            <p class="easy-box3-p2">02</p> -->
-        </div>
-        <!-- 쉬운방찾기 끝 -->
-
-        <!-- 최근본방/찜한 방 -->
-        <div id="recent" class="recent">
-          <div class="recent-div0">
-            <div class="recent-div1">김기홍님의 최근 본 방</div>
-            <div class="recent-div2">찜한 방</div>
-            <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
-            <!-- 갤러리 전체 박스 -->
-            <div class="recent-div4"> 
-              <!-- 각각 갤러리 시작 -->
-              <!-- 1번째 갤러리 -->
-              <div class="recent-div5">
-                <div class="recent-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="recent-div7">
-                    <div class="recent-div8"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-                    <!-- 이미지 -->
-                    <div class="recent-a-div"></div>
-                    <!-- 확인매물 div -->
-                    <div class="recent-a-confirm">
-                      <div class="recent-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.25</span>
-                      </div>
-                    </div>
-                    <!-- 확인매물 끝 -->
-                    <p class="recent-a-p1">투룸</p>
-                    <p class="recent-a-p2">
-                      <span>전세 1억4000</span>
-                    </p>
-                    <p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-                    <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 첫번째 갤러리 끝 -->
-
-              <!-- 2번째 갤러리 -->
-              <div class="recent-div5 margin">
-                <div class="recent-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="recent-div7">
-                    <div class="recent-div8"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-                    <!-- 이미지 -->
-                    <div class="recent-a-div recent-a-div2"></div>
-                    <!-- 확인매물 div -->
-                    <div class="recent-a-confirm">
-                      <div class="recent-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.22</span>
-                      </div>
-                    </div>
-                    <!-- 확인매물 끝 -->
-                    <p class="recent-a-p1">원룸</p>
-                    <p class="recent-a-p2">
-                      <span>월세 1000/45</span>
-                    </p>
-                    <p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
-                    <p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 두번째 갤러리 끝 -->
-
-              <!-- 3번째 갤러리 시작 -->
-              <div class="recent-div5-vacant margin">
-                <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-              </div>
-              <!-- 4번째 갤러리 끝 -->
-
-              <!-- 4번째 갤러리 시작 -->
-              <div class="recent-div5-vacant margin">
-                <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-              </div>
-              <!-- 4번째 갤러리 끝 -->
-            </div>
+          <div class="small-font">
+            <a href="ma_login.html#myModal" class="padding-l">회원가입 · 로그인</a>
           </div>
         </div>
       </div>
     </div>
 
-      <!-- 하단 영역 -->
-      <div id="footer">
-        <div id="footer-content">
-          <div id="top">
-            <div class="pull-left footer-top-left">
-              <a href="#">팀 소개</a>
-              <a href="#">이용약관</a>
-              <a href="#">개인정보처리방침</a>
-              <a href="#">매물관리규정</a>
-              <a href="#">허위매물규정</a>
-              <a href="#">자동저장서비스</a>
+    <!-- 중앙 영역 시작 -->
+    <div id="content">
+      <!-- 검색창 시작 -->
+      <div id="search">
+        <div class="text-center">
+          <p class="text-center"><span class="text-center">어떤 동네, 어떤 방</span>에서</p>
+          <p>살고 싶으신가요?</p>
+        </div>
+        <form>
+          <div>
+            <input type="text" name="">
+            <i class="glyphicon glyphicon-search"></i>
+            <button href="#" class="btn btn-primary">방 찾기</button>
+          </div>
+        </form>
+      </div>
+      <!-- 검색창 끝 -->
+
+      <!-- 쉬운방찾기시작 -->
+      <div id="easyfind">
+        <div class="text-center easy-box1">
+          <span >쉬운 방찾기</span>
+          <p>방 찾기 초보를 위한 초간단 솔루션!</p>
+        </div>
+        <div class="slide-div1">
+          <div class="slide-div2" id="slide-container">
+            <div class="slide-div3" id="slides" style="right: 0px;">
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up1"></div>
+                  <div class="slide-a-div1-down">
+                    <p>월세 + 관리비</p>
+                    <p>월 50 이하 원룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up2"></div>
+                  <div class="slide-a-div1-down">
+                    <p>보증금</p>
+                    <p>500 이하 원룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up3"></div>
+                  <div class="slide-a-div1-down">
+                    <p>반려동물</p>
+                    <p>가능한 원룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up4"></div>
+                  <div class="slide-a-div1-down">
+                    <p>낭만적인</p>
+                    <p>옥탑방 원룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up5"></div>
+                  <div class="slide-a-div1-down">
+                    <p>2억 이하</p>
+                    <p>전세 투쓰리룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up6"></div>
+                  <div class="slide-a-div1-down">
+                    <p>전세자금대출
+                    </p>
+                    <p>
+                    가능한 투쓰리룸</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up7"></div>
+                  <div class="slide-a-div1-down">
+                    <p>보증금
+                    </p>
+                    <p>1천 이하 오피스텔</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up8"></div>
+                  <div class="slide-a-div1-down">
+                    <p>단기임대</p>
+                    <p>가능한 오피스텔</p>
+                  </div>
+                </div>
+              </a>
+              <a class="slide-a" href="">
+                <div class="slide-a-div1">
+                  <div class="slide-a-div1-up9"></div>
+                  <div class="slide-a-div1-down">
+                    <p>3억 이하</p>
+                    <p>전세 아파트</p>
+                  </div>
+                </div>
+              </a>
             </div>
-            <div class="top-btn pull-right"></div>
-            <form class="pull-right">
-              <label for="search-num">
-                <h1>매물번호 조회</h1>
-                <input id="search-num" type="text" name="keyword">
-              </label>
-              <button><i class="glyphicon glyphicon-search"></i></button>
-            </form>
           </div>
-          <div id="bottom">
-            <p class="team">이젠 1조</p>
-            <p>
-              <span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
-              <span class="blank">주소 : 어쩌구</span>
-            </p>
+          
+          <div class="slides-navigation">
+          <button class="slide-button next">
+            <svg width="10" height="16" viewBox="0 0 10 16">
+              <path fill="none" fill-rule="evenodd" stroke="#666" d="M2 14l6-6-6-6"></path>
+            </svg>
+          </button>
           </div>
+        
+        </div>
+        <div class="slidepage-div">
+          <p class="slidepage-p1">01</p>
+          <p class="slidepage-p2">02</p>
         </div>
       </div>
     </div>
-    <!-- Javascript -->
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-  </body>
+    <!-- 쉬운방찾기 끝 -->
+
+    <!-- 최근본방/찜한 방 -->
+    <div id="recent" class="recent">
+      <div class="recent-div0">
+        <div class="recent-div1">김기홍님의 최근 본 방</div>
+        <div class="recent-div2" id="slides">찜한 방</div>
+        <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
+        <!-- 갤러리 전체 박스 -->
+        <div class="recent-div4"> 
+          <!-- 각각 갤러리 시작 -->
+          <!-- 1번째 갤러리 -->
+          <div class="recent-div5">
+            <div class="recent-div6">
+              <!-- 좋아요 버튼 -->
+              <div class="recent-div7">
+                <div class="recent-div8"></div>
+              </div>
+              <!-- 좋아요 끝 -->
+              <!-- 전체 링크화 -->
+              <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                <!-- 이미지 -->
+                <div class="recent-a-div"></div>
+                <!-- 확인매물 div -->
+                <div class="recent-a-confirm">
+                  <div class="recent-a-confirm-div" type="">
+                    <span class="bold">확인매물</span>
+                    <span>19.09.25</span>
+                  </div>
+                </div>
+                <!-- 확인매물 끝 -->
+                <p class="recent-a-p1">투룸</p>
+                <p class="recent-a-p2">
+                  <span>전세 1억4000</span>
+                </p>
+                <p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
+                <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
+              </a>
+            </div>
+          </div>
+          <!-- 첫번째 갤러리 끝 -->
+
+          <!-- 2번째 갤러리 -->
+          <div class="recent-div5 margin">
+            <div class="recent-div6">
+              <!-- 좋아요 버튼 -->
+              <div class="recent-div7">
+                <div class="recent-div8"></div>
+              </div>
+              <!-- 좋아요 끝 -->
+              <!-- 전체 링크화 -->
+              <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                <!-- 이미지 -->
+                <div class="recent-a-div recent-a-div2"></div>
+                <!-- 확인매물 div -->
+                <div class="recent-a-confirm">
+                  <div class="recent-a-confirm-div" type="">
+                    <span class="bold">확인매물</span>
+                    <span>19.09.22</span>
+                  </div>
+                </div>
+                <!-- 확인매물 끝 -->
+                <p class="recent-a-p1">원룸</p>
+                <p class="recent-a-p2">
+                  <span>월세 1000/45</span>
+                </p>
+                <p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
+                <p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
+              </a>
+            </div>
+          </div>
+          <!-- 두번째 갤러리 끝 -->
+
+          <!-- 3번째 갤러리 시작 -->
+          <div class="recent-div5-vacant margin">
+            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+          </div>
+          <!-- 4번째 갤러리 끝 -->
+
+          <!-- 4번째 갤러리 시작 -->
+          <div class="recent-div5-vacant margin">
+            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+          </div>
+          <!-- 4번째 갤러리 끝 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 하단 영역 -->
+<div id="footer">
+  <div id="footer-content">
+    <div id="top">
+      <div class="pull-left footer-top-left">
+        <a href="#">팀 소개</a>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">매물관리규정</a>
+        <a href="#">허위매물규정</a>
+        <a href="#">자동저장서비스</a>
+      </div>
+      <div class="top-btn pull-right"></div>
+      <form class="pull-right">
+        <label for="search-num">
+          <h1>매물번호 조회</h1>
+          <input id="search-num" type="text" name="keyword">
+        </label>
+        <button><i class="glyphicon glyphicon-search"></i></button>
+      </form>
+    </div>
+    <div id="bottom">
+      <p class="team">이젠 1조</p>
+      <p>
+        <span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
+        <span class="blank">주소 : 어쩌구</span>
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Javascript -->
+<script src="assets/js/jquery-1.10.2.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="ma_assets/plugins/superslides/jquery.superslides.min.js"></script>
+
+<script type="text/javascript">
+  $(function() {
+    /** `#slides`요소에 대해 플러그인 적용 */
+    $('#slides').superslides({
+              inherit_width_from: '#slide-container',   // 슬라이드의 넓이를 구성할 부모 요소
+              inherit_height_from: '#slide-container',  // 슬라이드의 높이를 구성할 부모 요소
+              play: 500,          // 재생시간 (1/1000초 단위). 미지정시 자동재생 안됨.
+              animation: 'slide'   // 애니메이션 옵션(fade/slide) (미적용시 슬라이드)
+            });
+  });
+</script>
+</body>
 </html>

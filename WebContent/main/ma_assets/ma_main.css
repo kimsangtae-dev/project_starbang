@@ -1,14 +1,5 @@
 @charset "utf-8";
 
-		
-		/* ---------------------------------------
-        / 공통
-        ---------------------------------------- */
-
-		* {margin:0 ; padding:0;}
-
-        a{ text-decoration: none !important; }
-
         /* ---------------------------------------
         / content
         ---------------------------------------- */
@@ -89,7 +80,7 @@
         ---------------------------------------- */
         /* main */
         #easyfind {
-                width: 1200px;
+                width: 1180px;
                 height: 350px;
                 border-top: 1px solid #eee;
                 margin: 0 auto;
@@ -99,7 +90,7 @@
         .easy-box1 { margin-top: 36px; }
 
             /* 글씨 */
-        #easyfind span {
+        .easy-box1 > span {
             display: inline-block;
             width: 100%;
             color: rgb(34, 34, 34);
@@ -108,7 +99,7 @@
             line-height: 37px;
         }
 
-        #easyfind p {
+        #easy-box1 > p {
             display: block;
             color: rgb(102, 102, 102);
             font-size: 16px;
@@ -116,26 +107,189 @@
             line-height: 24px;
         }
 
+        /* 슬라이드 div(1) */
 
-        /* ################# 임시  */
-
-        .temp1 {
-           width: 100%;
-           height: 240px;
-          margin-top: 26px;
-           position: relative;
+        .slide-div1 {
+            width: 100%;
+            height: 172px;
+            margin-top: 26px;
+            position: relative;
         }
 
-        .temp2 {
+        /* 슬라이드 div(1)-(2) */        
+
+        .slide-div2 {
             width: 100%;
             height: 100%;
             position: relative;
             overflow: hidden;
         }
 
-        .plugin:hover{
-            background: url(ma_img/hover.png);
-            background-size: 100%;
+        /* 슬라이드 div(1)-(2)-(3) */
+        .slide-div3 {
+            width: 1777px;
+            height: 172px;
+            position: relative;
+            transition: right 300ms ease-out 0s;
+        }
+
+        /* 슬라이드div(3)-<a> 갤러리 하나 링크 */
+        .slide-a {
+            float: left;
+            width: 185px;
+            height: 172px;
+        }
+
+        .slide-a + a {
+            margin-left: 14px;
+        }
+
+        /* 슬라이드 <a>-div(4) 링크 내부 부모박스 */
+        .slide-a-div1 {
+            width: 185px;
+            height: 172px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+        }
+
+        /* 슬라이드 <a>-div(4)-(5) 링크 내부 사진 박스 (위) */
+        .slide-a-div1-up1 {
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+            background: url(ma_img/main/slide1.png) center center / cover no-repeat;
+        }
+
+        .slide-a-div1-up2{
+            background: url(ma_img/main/slide2.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up3 {
+            background: url(ma_img/main/slide3.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up4 {
+            background: url(ma_img/main/slide4.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up5 {
+            background: url(ma_img/main/slide5.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up6 {
+            background: url(ma_img/main/slide6.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up7 {
+            background: url(ma_img/main/slide6.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        .slide-a-div1-up8 {
+            background: url(ma_img/main/slide6.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        .slide-a-div1-up9 {
+            background: url(ma_img/main/slide6.png) center center / cover no-repeat;
+            width: 100%;
+            height: 100px;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+
+        /* 슬라이드 <a>-div(4)-(5) 링크 내부 텍스트 박스 (아래) */  
+        .slide-a-div1-down {
+            width: 100%;
+            height: 72px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            padding: 14px;
+            border-left: 1px solid rgb(238, 238, 238);
+            border-right: 1px solid rgb(238, 238, 238);
+            border-bottom: 1px solid rgb(238, 238, 238);
+        }
+
+
+        /* 갤러리 슬라이드 " > " <button>  */
+        .slide-button {
+            width: 40px;
+            height: 40px;
+            box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            transform: translateY(-50%);
+            z-index: 1;
+            border-width: 0px;
+            border-radius: 50%;
+        }
+
+        .slide-button > svg{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        /*  */
+        .slidepage-div{
+            margin-top: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .slidepage-p1 {
+            display: inline-block;
+            height: 24px;
+            margin-right: 24px;
+            color: rgb(34, 34, 34);
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid rgb(34, 34, 34);
+        }
+
+        .slidepage-p2 {
+            display: inline-block;
+            height: 24px;
+            margin-right: 24px;
+            color: rgb(158, 156, 156);
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
         }
 
         /* ---------------------------------------
@@ -350,8 +504,6 @@
                 overflow: hidden;
             }
 
-
-
             /* <a>태그 - <p>lent방식 / 금액 */
             .recent-a-p2{
                 color: rgb(34, 34, 34);
@@ -378,7 +530,6 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
-
 
             /* 보지 않은방 */
             .recent-div5-vacant{
