@@ -41,16 +41,16 @@
     text-align: center;
 }
 #content> .box{
-width: 500px;
-height:200px;
-border-radius: 20px;
+    width: 500px;
+    height:200px;
+    border-radius: 20px;
 }
 /* 부트스트랩 컴포넌트 사용으로 인한 버튼 추가 설정 */
 #content > div >.btn-lg{
-font-size: 30px;
-line-height: 190px;
-width:200px;
-height: 200px;
-margin : 80px;
-background-color: #4383FF;
+    font-size: 30px;
+    line-height: 190px;
+    width:200px;
+    height: 200px;
+    margin : 80px;
+    background-color: #4383FF;
 }
