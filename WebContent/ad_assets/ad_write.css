@@ -1,1 +1,44 @@
 @charset "utf-8";
+
+	#content .pick { padding: 50px 0 30px 0; }
+
+	#content { min-width: 1200px; }
+
+	#content {
+		padding bottom: 70px;
+	}
+
+	h1 {
+		border-bottom: 1px solid #eee;
+		width: 80%;
+		margin: auto;
+		padding-bottom: 15px;
+		font-size: 36px;
+	}
+
+	#content > div {
+		width: 600px;
+		margin: auto;
+	}
+
+	#content span {
+		text-align: center;
+	}
+
+	#content .input-group1 {
+		padding-bottom: 25px;
+	}
+
+	#content .input-group2 input {
+		height: 300px;
+
+	}
+
+	#content .btn1 {
+		padding-top: 25px;
+
+	}
+
+	#content .btn-primary {
+		margin-right: 10px;
+	}

@@ -31,7 +31,7 @@
         }
 
         .tab1 .re-bang {
-            border-bottom: 1px solid rgb(221, 221, 221);
+            border-bottom: 1px solid #080808;
             padding-right: 10px;
             font-size: 15px;
             display: inline-block;
@@ -156,7 +156,7 @@
                 width: 32px;
                 height: 30px;
                 margin: 0px auto;
-                background: url(ma_img/like.svg) center center / cover;
+                background: url(ma_img/star.png) center center / cover;
             }  
 
                 /* <a> 태그 */
