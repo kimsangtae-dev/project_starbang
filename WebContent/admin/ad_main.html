@@ -12,9 +12,15 @@
 
 		<!-- bootstrap -->
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		
+		<!-- CSS적용-->
+		<link rel="stylesheet" type="text/css" href="ad_assets/ad_main.css">
 
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 		<!-- 반응형 웹을 지원하지 않을 경우 -->
 		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
@@ -31,91 +37,35 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
-		#ad_main{
-			width: auto;
-		}
-		#header{
-			min-height: 300px;
-			
-		}
-		#content{
-			width:1400px;
-			vertical-align: middle;
-			margin: auto;
-			background-color: green;
-		}
-		#content> div
-		{
-		height:200px;
-		border-radius: 20px;}
-			#content > .box1{
-				border: 1px solid rgb(67, 131, 255); float: left;
-				background-color: rgb(67, 131, 255);;
-				width: 20%; 
-				margin-left: 60px;
-				margin-right: 30px;
-				text-align: center;
-				padding-top:130px;
-				display: inline-block;
-				margin-right : 150px;
-			}
-			#content > .box2{
-				background-color: rgb(67, 131, 255);;
-				border: 1px solid rgb(67, 131, 255);; float: left; 
-				width: 20%;
-				padding:10px;
-				text-align: center;
-				padding-top:130px;
-				display: inline-block;
-				margin-right : 150px;
-			}
-			#content > .box3{
-				background-color: rgb(67, 131, 255);
-				border: 1px solid rgb(67, 131, 255); float: left;
-				width: 20%;
-				padding:10px;
-				text-align: center;
-				padding-top:130px;
-				display: inline-block;
-			}
-			#content > div > a {
-				color:white;
-				font-size:40px;
-				width: 240px;
-				height: 240px;
-				display: inline-block;
-				text-decoration: none;
-				margin-top:-80px;
-			}
-			#header >h1{
-				text-align : center;
-				display: block;
-				padding-top : 120px;
-			}
+		
 		</style>
 	</head>
 
 	<body>
 		<!-- 브라우저에 보여질 부분 -->
-		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 		<div id="ad_main">
 			<!-- 상단 헤더 -->
 			<div id="header">
-				<h1>별방 관리자 사이트</h1>
+				<div class="title">
+				<img src="../assets/ico/logo_blue.png"><p>별방 관리자 사이트</p></img>
+			</div>
 			</div>
 			<!-- 중앙 영역 -->
 			<div id="content">
-				<div class="box1"><a href="#">방관리</a></div>
-				<div class="box2"><a href="#">회원관리</a></div>
-				<div class="box3"><a href="#">문의관리</a></div>
+				<div class="box1">
+				<!--부트스트랩 버튼 요소 적용-->
+				<a class="btn btn-primary btn-lg" href="#" role="button">방관리</a>
+				<a class="btn btn-primary btn-lg" href="#" role="button">회원관리</a>
+				<!-- 부트스트랩 드롭다운 요소 적용을 위한 선언-->
+				<a class="btn btn-primary btn-lg" href="#" role="button"data-toggle="dropdown">문의관리<span class="caret"></span></a>
+				</div>
 			</div>
 			<!-- 하단 영역 -->
 			<div id="footer">
-				
-			</div>
-		</div>
+
 		<!-- Javascript -->
 		<script src="assets/js/jquery-1.10.2.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	</body>
 </html>
