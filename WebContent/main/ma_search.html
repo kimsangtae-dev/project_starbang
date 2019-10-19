@@ -22,18 +22,18 @@
 	<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
 
 	<!-- 반응형 웹을 지원하지 않을 경우 -->
-	<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+	<!-- <link rel="stylesheet" href="../assets/css/non-responsive.css" /> -->
 
 	<!-- IE8 이하 버전 지원 -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
-		<script type="text/javascript" src="assets/js/respond.min.js"></script>
+		<script type="text/javascript" src="../assets/js/html5shiv.js"></script>
+		<script type="text/javascript" src="../assets/js/respond.min.js"></script>
 	<![endif]-->
 
 	<!-- IE10 반응형 웹 버그 보완 -->
 		<!--[if gt IE 9]>
-		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-		<script type="text/javascript" src="assets/js/ie10.js"></script>
+		<link rel="stylesheet" type="text/css" href="../assets/css/ie10.css" />
+		<script type="text/javascript" src="../assets/js/ie10.js"></script>
 	<![endif]-->
 	<style type="text/css">
 
@@ -421,7 +421,15 @@
 	</div>
 </div>
 <!-- Javascript -->
-<script src="assets/js/jquery-1.10.2.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery-1.10.2.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var wHeight = window.innerHeight;
+		var gHeight = wHeight - 206;
+		gHeight += "px";
+		$(".gallery-container").css("height", gHeight);
+	})
+</script>
 </body>
 </html>
