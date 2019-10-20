@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- 메인사이트 마이페이지 -->
+<!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
@@ -31,13 +32,32 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
+			#out {
+				text-decoration:underline;  
+			}
+
+			h1 {
+				height: 54px;
+				margin: 70px;
+			}
+
 			#content {
 				text-align: center;
 			}
 
+			#content .h {
+				height: 156px;
+			}
+
+			#content .h2 {
+				height: 100px;
+				padding-top: 57px;
+				padding-bottom: 30px;
+			}
+
 			#content img {
-				height: 80px;
-				width: 100px;
+				height: 76px;
+				width: 76px;
 			}
 
 			#content div h3 {
@@ -66,6 +86,35 @@
 				width: 1200px;
 			}
 
+			#submit {
+				background-color: blue;
+				color: white;
+				height: 50px;
+				width: 200px;
+			}
+
+			#resert {
+				height: 50px;
+				width: 200px;
+			}
+
+			#div2 {
+				height: 130px;
+				padding: 10px;
+			}
+
+			#div2 img {
+				margin: 10px;
+			}
+
+			#pwd1 {
+				margin-bottom: 3px;
+			}
+
+			#pwd2 {
+				margin-bottom: 3px;
+			}
+
 		</style>
 	</head>
 
@@ -79,15 +128,19 @@
 			</div>
 			<!-- 중앙 영역 -->
 			<div id="content" class="container box">
-				<h1>MY별방</h1>
-				<h2>정보수정</h2>
-				<img src="assets/ico/logo_bb.png">
-				<br/>
-				<button type="button" class="btn btn-default" class="blue">프로필 사진 변경</button>
+				<div class="h">
+					<h1>MY별방</h1>
+					<h2>정보수정</h2>
+				</div>
+				<div id="div2">
+					<img src="assets/ico/logo_bb.png">
+					<br/>
+					<button type="button" class="btn btn-default" class="blue">프로필 사진 변경</button>
+				</div>
 				<hr/>
 				<div>
 					<h3>본인 성명</h3>
-					<input type="text" name="myname" placeholder="홍길동" readonly>
+					<input type="text" name="myname" placeholder="홍길동">
 					<h3>이메일주소</h3>
 					<input type="text" name="pon" placeholder="sledxd" readonly>
 					<h3>휴대폰 번호</h3>
@@ -95,12 +148,19 @@
 					<input type="pont" name="pont2" id="pon2" placeholder="3434" readonly> - 
 					<input type="pont" name="pont3" id="pon3" placeholder="3463" readonly>
 					<button type="button" class="btn btn-default">변경</button>
+					<h3>휴대폰 번호</h3>
+					<input type="passwd" name="pwd1" id="pwd1" placeholder="현재비밀번호를 입력하세요" >
+					<br/>
+					<input type="passwd" name="pwd2" id="pwd2" placeholder="변경될 비밀번호를 입력하세요" >
+					<br/>  
+					<input type="passwd" name="pwd3" id="pwd3" placeholder="변경될 비밀번호를 한 번 더 입력하세요" >
+					<br/>
 				</div>
 				<hr/>
-				<button type="resert" class="btn btn-default">취소</button>
-				<button type="submit" class="btn btn-default">확인</button>
+				<button type="resert" id="resert" class="btn btn-default">취소</button>
+				<button type="submit" id="submit" class="btn btn-default">확인</button>
 				<br/>
-				<button type="button" class="btn btn-link">회원탈퇴</button>
+				<button type="button" id="out" class="btn btn-link">회원탈퇴</button>
 			</div>
 			<!-- 하단 영역 -->
 			<div id="footer">

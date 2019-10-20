@@ -26,7 +26,7 @@
         .tab1  {
             margin: auto;
             text-align: center;
-            padding-bottom: 50px;
+            padding-bottom: 30px;
             width: 1200px;
         }
 
@@ -156,7 +156,7 @@
                 width: 32px;
                 height: 30px;
                 margin: 0px auto;
-                background: url(ma_img/star.png) center center / cover;
+                background: url(../ma_assets/ma_img/star.png) center center / cover;
             }  
 
                 /* <a> 태그 */
@@ -193,7 +193,7 @@
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(ma_img/1.jpeg) center center / cover no-repeat;
+                background: url(../ma_assets/ma_img/1.jpeg) center center / cover no-repeat;
             }
 
             .recent-a-div:after {
@@ -214,7 +214,7 @@
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(ma_img/2.jpeg) center center / cover no-repeat;
+                background: url(../ma_assets/ma_img/2.jpeg) center center / cover no-repeat;
             }
 
             .recent-a-div2:after {
