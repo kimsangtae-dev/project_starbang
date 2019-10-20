@@ -8,7 +8,7 @@
     /*background: url("https://t1.daumcdn.net/cfile/tistory/27532234572323F611") center center / cover no-repeat;*/
     background-size: cover;
     z-index: 3;
-    width: 1800px;
+    width: auto;
 }
 
 img{
@@ -23,21 +23,21 @@ img{
     /* 왼쪽 메뉴 박스 크기 및 위치 설정(absolute) */
 .leftf {
     position: absolute;
-    left: 80px;
-    top: 15px;
+    left: 215px;
+    top: 4px;
 }
 
     /* 왼쪽 메뉴 로고 이미지 설정 */
 .navbar>.leftf>a>img {
-    width: 70px;
+    width: 65px;
 }
 
     /* 왼쪽 메뉴 텍스트 박스 크기 위치 설정*/
 .navbar>.leftf> div {
     position: absolute;
     width: 100px;
-    top: 25px;
-    left: 90px;
+    top: 20px;
+    left: 80px;
     font-size: 1.3em;
 }
     /* 박스 내 a 링크 처리 */
@@ -47,17 +47,18 @@ img{
 }
     /* 오른쪽 메뉴 박스 위치 설정 */
 .navbar>.pull-right{
-    width: 500px;
-    padding-top:30px;
+    width: 520px;
+    padding-top:24px;
 }
     /* 오른쪽 메뉴 박스 a링크 설정 */
 .navbar>.pull-right>a{
     display: inline-block;
-    margin:9px;
-    font-size: 1.3em;
+    font-size: 13.7px;
     text-decoration: none;
     color:white;
-    font-weight: 600;
+    font-weight: 700;
+    padding: 0 17px;
+    
 }
     /* 3번째 요소에 대한 텍스트 조정 */
 .navbar>.pull-right>a:nth-child(3){
