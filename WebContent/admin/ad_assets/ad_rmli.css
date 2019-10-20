@@ -24,13 +24,12 @@
 #content .input-group {	
 	width: 300px;
 	position: relative;
-	/*text-align: right;*/
+	margin-left: 215px;
 }
 
 
 .adm-radio, .adm-btn { display: inline-block; }
 
-#content .adm-radio {
-	line-height: 34px;
-	margin-right: 20px;
-}
+#content .adm-radio { line-height: 34px; margin-right: 10px; }
+
+#content .adm-radio label { margin-right: 10px; }
