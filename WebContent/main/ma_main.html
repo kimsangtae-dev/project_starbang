@@ -24,7 +24,7 @@
   <link rel="stylesheet" type="text/css" href="ma_assets/ma_main.css">
 
   <!-- 테마별 방보기 (slide) 플러그인 -->
-  <link rel="stylesheet" href="ma_assets/plugins/superslides/stylesheets/superslides.css">
+  
 
 
   <!-- 반응형 웹을 지원하지 않을 경우 -->
@@ -58,16 +58,16 @@
     <div id="header">
       <div class="navbar" role="navigation">
         <a href="#"><img src="../assets/ico/logo_blue.png"></a>
-        <div class="menu-left small-font"><a href="ho_main.html">방주인 사이트</a></div>
+        <div class="menu-left small-font"><a href="../host/ho_main.html">방주인 사이트</a></div>
         <!-- 메뉴 항목 -->
         <div class="pull-right">
           <div>
             <a href="ma_search.html">방찾기</a>
             <a href="ma_rtrm.html" class="padding-l">관심목록</a>
-            <a href="ma-rmdt.html" class="padding-l">문의하기</a>
+            <a href="ma_faq.html" class="padding-l">문의하기</a>
           </div>
           <div class="small-font">
-            <a href="ma_login.html#myModal" class="padding-l">회원가입 · 로그인</a>
+            <a href="ma_login.html" class="padding-l">회원가입 · 로그인</a>
           </div>
         </div>
       </div>
@@ -100,7 +100,7 @@
         <div class="slide-div1">
           <div class="slide-div2" id="slide-container">
             <div class="slide-div3" id="slides" style="right: 0px;">
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up1"></div>
                   <div class="slide-a-div1-down">
@@ -109,7 +109,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up2"></div>
                   <div class="slide-a-div1-down">
@@ -118,7 +118,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up3"></div>
                   <div class="slide-a-div1-down">
@@ -127,7 +127,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up4"></div>
                   <div class="slide-a-div1-down">
@@ -136,7 +136,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up5"></div>
                   <div class="slide-a-div1-down">
@@ -145,7 +145,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up6"></div>
                   <div class="slide-a-div1-down">
@@ -156,7 +156,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up7"></div>
                   <div class="slide-a-div1-down">
@@ -166,7 +166,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up8"></div>
                   <div class="slide-a-div1-down">
@@ -175,7 +175,7 @@
                   </div>
                 </div>
               </a>
-              <a class="slide-a" href="">
+              <a class="slide-a" href="ma_rmdt.html">
                 <div class="slide-a-div1">
                   <div class="slide-a-div1-up9"></div>
                   <div class="slide-a-div1-down">
@@ -222,7 +222,7 @@
               </div>
               <!-- 좋아요 끝 -->
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+              <a target="_blank" rel="" class="recent-a" href="ma_rmdt.html">
                 <!-- 이미지 -->
                 <div class="recent-a-div"></div>
                 <!-- 확인매물 div -->
@@ -253,7 +253,7 @@
               </div>
               <!-- 좋아요 끝 -->
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+              <a target="_blank" rel="" class="recent-a" href="ma_rmdt.html">
                 <!-- 이미지 -->
                 <div class="recent-a-div recent-a-div2"></div>
                 <!-- 확인매물 div -->
@@ -326,18 +326,10 @@
 <!-- Javascript -->
 <script src="assets/js/jquery-1.10.2.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="ma_assets/plugins/superslides/jquery.superslides.min.js"></script>
+
 
 <script type="text/javascript">
-  $(function() {
-    /** `#slides`요소에 대해 플러그인 적용 */
-    $('#slides').superslides({
-              inherit_width_from: '#slide-container',   // 슬라이드의 넓이를 구성할 부모 요소
-              inherit_height_from: '#slide-container',  // 슬라이드의 높이를 구성할 부모 요소
-              play: 500,          // 재생시간 (1/1000초 단위). 미지정시 자동재생 안됨.
-              animation: 'slide'   // 애니메이션 옵션(fade/slide) (미적용시 슬라이드)
-            });
-  });
+
 </script>
 </body>
 </html>
