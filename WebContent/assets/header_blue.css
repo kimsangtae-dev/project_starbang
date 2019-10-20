@@ -4,8 +4,7 @@
 body { min-width: 1366px; }
 
 /* 텍스트 기본 설정 */
-body * { color: #ffffff; }
-a { text-decoration: none !important; }
+#header * { color: #ffffff; }
 
  /*------------------------------
 /	header
