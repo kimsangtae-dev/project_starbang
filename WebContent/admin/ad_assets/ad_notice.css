@@ -1,6 +1,17 @@
 @charset "utf-8";
 
-/** content와 감싸는 div 폭 결정*/
+/** a태그 속성 정의 */
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/** content의 가로폭 정의 */
+
 #content { min-width: 1200px; }
 
 #content > div {
@@ -8,28 +19,31 @@
 	margin: auto;
 }
 
-/** h1 글씨 설정 */
-#content .title {
-	min-height: 60px;
-	margin-bottom: 10px;
+/** 상단 검색바 및 버튼들 위치 정의 */
+#content .adm-header {
+	height: 80px;
+	margin-bottom: 15px;
 }
 
 #content h1 { 
-	text-align: left; 
+	float: left; 
 	font-size: 30px;
 }
 
-/** 검색, 글쓰기, 삭제 버튼 위치 조정 */
-#content .input-group {	
-	width: 300px; 
-	position: absolute;
+#content .adm {	float: right; }
+
+#content .adm > div { padding-top: 10px; }
+
+#content .input-group {	width: 300px; }
+
+/** hidden text 정의 */
+.tab-panel {
+	width: auto;
+	border-top: 2px solid black;
 }
 
-#content .pull-right { float: right; }
+/** 표 속성 정의 */
 
-#content .pull-right:after {
-	content: ''; 
-	display: table; 
-	clear: both }
-} 
-
+td {
+	text-align: center;
+}
