@@ -87,42 +87,38 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="text-center"><input type="checkbox"></th>
+							<th class="text-center"><input type="checkbox" id="all_check"></th>
 							<th class="text-center">이름</th>
 							<th class="text-center">이메일</th>
 							<th class="text-center">휴대폰</th>
 							<th class="text-center">방등록여부</th>
-							<th class="text-center">기타</th>
 							<th class="text-center">허위매물신고건수</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="text-center"><input type="checkbox"></td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center">박지원</td>
 							<td class="text-center">bbb@abcd.com</td>
 							<td class="text-center">010-0100-0010</td>
 							<td class="text-center">1개</td>
-							<td class="text-center"></td>
 							<td class="text-center">1건</td>
 						</tr>
 						<tr>
-							<td class="text-center"><input type="checkbox"></td>
-							<td class="text-center">박지원</td>
-							<td class="text-center">bbb@abcd.com</td>
-							<td class="text-center">010-0100-0010</td>
-							<td class="text-center">1개</td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center"></td>
-							<td class="text-center">1건</td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
 						</tr>
 						<tr>
-							<td class="text-center"><input type="checkbox"></td>
-							<td class="text-center">박지원</td>
-							<td class="text-center">bbb@abcd.com</td>
-							<td class="text-center">010-0100-0010</td>
-							<td class="text-center">1개</td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center"></td>
-							<td class="text-center">1건</td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
+							<td class="text-center"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -136,5 +132,13 @@
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		 $(function() {
+            /* 체크박스 전체선택 */
+            $("#all_check").change(function() {
+                $(".userlist").prop('checked', $(this).prop('checked'));
+            });
+        });
+	</script>
 </body>
 </html>
