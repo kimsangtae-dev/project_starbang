@@ -12,17 +12,17 @@
 	<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
 	<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
 
+	<!-- reset.css -->
+	<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+
 	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
 
 	<!-- CSS적용 -->
 	<link rel="stylesheet" type="text/css" href="ad_assets/ad_main.css">
 
 	<!-- 나눔고딕 웹 폰트 적용 -->
-	<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
 
 	<!-- 반응형 웹을 지원하지 않을 경우 -->
 	<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
@@ -60,18 +60,26 @@
 				<a class="btn btn-primary btn-lg" href="#" role="button">방관리</a>
 				<a class="btn btn-primary btn-lg" href="#" role="button">회원관리</a>
 				<!-- 부트스트랩 드롭다운 요소 적용을 위한 선언-->
-				<a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="dropdown">문의관리<span
-						class="caret"></span></a>
+				<div class="dropdown">
+						<a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span >문의관리
+								<span class="caret"></span>
+						</span></a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><a href="#">자주묻는질문</a></li>
+					<li class="divider"></li>
+					<li><a href="#">공지사항</a></li>
+					<!--<li><a href="#">리스트3</a></li>-->
+				</ul>
 			</div>
 		</div>
-		<!-- 하단 영역 -->
-		<div id="footer">
+	</div>
+	<!-- 하단 영역 -->
+	<div id="footer">
 
-			<!-- Javascript -->
-			<script src="assets/js/jquery-1.10.2.min.js"></script>
-			<script src="assets/js/bootstrap.min.js"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
-			</script>
+		<!-- Javascript -->
+		<script src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		</script>
 </body>
 
 </html>

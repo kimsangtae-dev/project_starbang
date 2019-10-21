@@ -39,18 +39,39 @@
 #content{
     width:1800px;
     text-align: center;
+    display: inline;
 }
-#content> .box{
-    width: 500px;
-    height:200px;
-    border-radius: 20px;
+#content > div {
+    width:1500px;
+    padding-top: 50px;
 }
+
 /* 부트스트랩 컴포넌트 사용으로 인한 버튼 추가 설정 */
-#content > div >.btn-lg{
+#content > div >.btn{
     font-size: 30px;
     line-height: 190px;
+    margin:60px;
     width:200px;
     height: 200px;
-    margin : 80px;
     background-color: #4383FF;
+}
+#content > div > div{
+    position: absolute;
+    text-decoration: none;
+    background-color: #4383FF;
+    display: inline-block;
+    font-size: 30px;
+    margin:60px;
+    width:200px;
+    height: 200px;
+    border-radius: 5px;
+}
+#content > div > div>a{
+    text-decoration: none;
+    color:white;
+    display: block;
+    padding-top: 80px;
+}
+#content > div > div >ul{
+    width: 200px;
 }
