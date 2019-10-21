@@ -1,10 +1,11 @@
+<!-- 회원가입(약관동의) -->
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<title>Main_agree_user</title>
+		<title>Main_new_user</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
 		<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
@@ -15,6 +16,10 @@
 
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 		<!-- 반응형 웹을 지원하지 않을 경우 -->
 		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
@@ -31,29 +36,120 @@
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
 		<style type="text/css">
-			
+			.siz {
+				width: 610px;
+				height: 520px;
+			}
+
+			/** 닫는 버튼 동그라미로 */
+			.radius {
+				border-radius: 50%;
+				border: 1px black; 
+				background-color: #fff;
+			}
+
+			p {
+				display: inline-block;
+				width: 100px;
+				height: 20px;
+			}
+
+			#pin1, #pin2, #pin3 {
+				width: 90px;
+			}
+
+			#updown {
+				margin: 15px;
+			}
+
+			#downp {
+				width: 400px;
+			}
 		</style>
 	</head>
-
 	<body>
 		<!-- 브라우저에 보여질 부분 -->
 		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-		<div>
-			<!-- 상단 헤더 -->
-			<div id="header">
-				
-			</div>
-			<!-- 중앙 영역 -->
-			<div id="content">
-				
-			</div>
-			<!-- 하단 영역 -->
-			<div id="footer">
-				
-			</div>
+
+        <!-- 화면 영역 -->
+		<div class="container">
+    		<h1 class="page-header">Bootstrap Modal Open</h1>
+    		<!-- 링크로 모달 열기 -->
+    		<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">open modal</a>
 		</div>
+        <!-- 화면 영역 끝 -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" class="siz">
+    		<div class="modal-dialog modal-sm siz">
+    		    <div class="modal-content">
+        		    <div class="modal-header">
+            		    <button type="button" class="close radius" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true" class="radius"/>&times;</span></button>
+		                <h4 class="modal-title">약관동의</h4>
+    		        </div>
+            	<div class="modal-body">
+            		<div id="updown">
+            			<div>
+            				<p>이름</p>
+		                	<input type="text" name="userId"/>
+		            	</div>
+		            	<div>
+            				<p>이메일</p>
+		                	<input type="text" name="useremail"/>
+		            	</div>
+		           		<select>
+		                	<option>naver.com</option>
+		           	    	<option>gmail.com</option>
+		          		</select>
+		            	<div>
+            				<p>비밀번호</p>
+		            	    <input type="passwd" name="passwd"/>
+		            	</div>
+		            	<div>
+            				<p>비밀번호확인</p>
+		                	<input type="passwd" name="repasswd"/>
+		            	</div>
+		         	   	<div>
+            				<p>휴대폰 번호</p>
+		                	<input type="number" name="pin1" id="pin1"/> -
+		            	    <input type="number" name="pin2" id="pin2"/> -
+		            	    <input type="number" name="pin3" id="pin3"/>
+		            	    <button>인증번호 요청</button>
+		            	</div>
+		            	<div>
+		            		<p></p>
+		            		<input type="number" name="pingaree"/>
+		            		<button>인증번호 확인</button>
+		            	</div>
+		            	<div>
+		            		<p id="downp">*만 14세 이상 회원 가입 가능합니다. 해당 내용은 <a href="#">이용약관 및 정책	</a>에서도 확인이 가능합니다</p>
+		            	</div>
+		        	</div>
+		        </div>
+		        <div>
+		        	<button>이메일 회원가입</button>
+		        </div>
+            </div>
+        </div>
+
 		<!-- Javascript -->
 		<script src="assets/js/jquery-1.10.2.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+  			$(function () {
+    		    
+		</script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
