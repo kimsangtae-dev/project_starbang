@@ -19,6 +19,11 @@
 		<!-- 나눔고딕 웹 폰트 적용 -->
 		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
 
+		<!-- 페이지 css-->
+		<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
+		<link rel="stylesheet" type="text/css" href="../assets/footer_black.css">
+		<link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_rmdt.css" />
+
 		<!-- 반응형 웹을 지원하지 않을 경우 -->
 		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
 
@@ -33,465 +38,6 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
-		<style type="text/css">
-			* { 
-				padding: 0px;
-				margin: 0px;
-				list-style: none;
-				text-decoration: none;
-			}
-
-			a {
-				color: rgb(136, 136, 136);
-			}
-
-			#footer {
-				min-height: 70px;
-				background-color: #eee;				
-				text-align: center;
-			}
-
-			/*추후에 지우기*/
-			#header {
-				min-height: 70px;
-				background-color: #eee;				
-				text-align: center;
-			}
-
-			#content {
-				width: 1200px;
-				min-height: 1000px;
-				margin: auto;
-			}
-
-			#box1 {
-				width: 100%;
-				height: 105px;
-				padding: 30px 0px 30px 0px;
-			}
-
-			h1 {
-				line-height: 5px;
-				font-size: 30px;
-			}
-
-			.abc {
-				width: 230px;
-				height: 50px;
-				border-right: 1px solid rgb(235, 235, 235);
-				margin-top: 10px;
-			}
-
-			.greyfont {
-				color: #505050;
-				font-size: 14px;
-				position: relative;
-				bottom: 20px;
-			}
-
-			.greyfontwon {
-				color: #505050;
-				font-size: 14px;
-			}
-
-			.greyfontnm {
-				color: #505050;
-				font-size: 14px;
-			}	
-
-			#month{
-				margin-left: 30px;
-			}
-
-			.chbt {
-				width: 40px;
-				height: 30px;
-				font-size: 12px;
-				background-color: white;
-				border-style: solid;
-				border-color: rgb(213, 213, 213);
-				border-width: 1px;
-				border-radius: 3px;
-				position: relative;
-				left: 120px;
-				bottom: 17px;
-			}
-
-			li .grml {
-				width: 116px;
-				height: 38px;
-				font-size: 14px;
-				background-color: white;
-				border-style: solid;
-				border-color: rgb(213, 213, 213);
-				border-width: 1px;
-				border-radius: 18px;
-				position: relative;
-				bottom: 10px;
-			}
-
-			#iconlist {
-				width: 100%;
-				height: 20px;
-				font-size: 21px;
-				display: inline-block;
-			}
-
-			#iconlist .glyphicon-stop {
-				font-size: 7px;
-				margin: 5px;
-				position: relative;
-				bottom: 30px;
-			}
-
-			.honame {
-				font-weight: bold;
-				padding-top : 0px;
-				position: relative;
-				top: 16px;
-				right: 120px;
-			}
-
-			.eTgAil {
-			   width: 100%;
-			   height: 36px;
-			   background-color: rgb(54, 101, 206);
-			   margin-top: 20px;
-			}
-			.eTgAil::after {
-			    display: block;
-			    content: "";
-			    clear: both;
-			}
-
-			.gknGpv {
-			    float: left;
-			    height: 36px;
-			    color: rgb(255, 255, 255);
-			    font-size: 12px;
-			    font-weight: 500;
-			    line-height: 36px;
-			    background-color: rgb(6, 73, 192);
-			    padding: 0px 20px 0px 15px;
-			}
-
-			p {
-			    display: block;
-			    margin: 0px;
-			}
-
-			.cETKtB {
-			    float: left;
-			    color: rgb(255, 255, 255);
-			    font-size: 13px;
-			    font-weight: 400;
-			    position: relative;
-			    padding: 6px 0px 0px 17px;
-			}
-
-			.gknGpv > span {
-			    margin-left: 3px;
-			    color: rgb(165, 194, 245);
-			    font-weight: 400;
-			}
-
-			.mola {
-				color: rgb(18, 60, 156);
-			}
-
-			.mola img {
-				width: 20px;
-				height: 25px;
-			}
-
-			.iuNQqL {
-			    width: 100%;
-			    height: px;
-			    border-top: 2px solid rgb(34, 34, 34);
-			}
-
-			.iuNQqL > li {
-			    float: left;
-			    width: 25%;
-			    height: 50px;
-			    line-height: 50px;
-			    border-bottom: 1px solid rgb(235, 235, 235);
-			}
-
-			.gWdVQs::before {
-			    content: "·";
-			    float: left;
-			    color: rgb(34, 34, 34);
-			    margin-right: 7px;
-			}
-
-			.gPsGgb {
-			    float: left;
-			    width: 100px;
-			    color: rgb(136, 136, 136);
-			    font-size: 14px;
-			}
-		
-			.bHPFKV {
-				width: 40px;
-				height: 23px;
-				font-size: 10px;
-				background-color: white;
-				border-style: solid;
-				border-color: rgb(213, 213, 213);
-				border-width: 1px;
-				border-radius: 3px;
-				position: relative;
-				left: 10px;
-				top: 5px;
-			}
-			.bHPFKV > span {
-			    color: rgb(34, 34, 34);
-			    font-size: 11px;
-			    position: absolute;
-			    top: 45%;
-			    right: 8px;
-			    transform: translateY(-50%);
-			}
-
-			.confirmsm {
-				position: relative;
-				bottom: 10px;
-			}
-
-			.bigviewul {
-				width: 100%;
-				height: 480px;
-				padding-top: 30px;
-			}
-
-			.bigviewigli {
-				width: 620px;
-				min-height: 60px;
-				float: left;
-			}
-
-			.bigviewigli img{
-				width: 620px;
-				height: 420px;
-			}
-
-			.bigviewiglism {
-				width: 280px;
-				height: 210px;
-				float: left;
-			}
-
-			.bigviewiglism img {
-				width: 300px;
-				height: 210px;
-				display: inline-block;
-			}
-
-			#explanall {
-				width: 1200px;
-				height: 210px;
-				margin: auto;
-			}
-
-			#bigexplan {
-				width: 600px;
-				height: 130px;
-				float: left;
-			}
-
-			#smallexplan {
-				width: 600px;
-				height: 130px;
-				float: left;
-
-			}
-
-			.smexp {
-				font-size: 16px;
-			}
-			
-			.explan1 {
-				font-size: 26px;
-			}
-
-			.jQYbpN {
-			    height: 24px;
-			    color: rgb(20, 118, 252);
-			    font-size: 15px;
-			    border-style: none;
-			    background-color: white;
-			}
-			
-			#movebar {
-				border-top: 1px solid rgb(221, 221, 221);			
-			}
-
-			#scrdft {
-				border-top: 1px solid rgb(221, 221, 221);	
-			}
-
-			.xOEdU {
-			    width: 1180px;
-			    height: 58px;
-			    background-color: rgb(255, 255, 255);
-			    position: relative;
-			    z-index: 2;
-			    display: table;
-			    table-layout: fixed;
-			    margin: 0px auto;
-			}
-
-			.eYDrrB {
-			    display: table-cell;
-			    color: rgb(136, 136, 136);
-			    font-size: 15px;
-			    text-align: center;
-			    cursor: pointer;
-			    vertical-align: middle;
-			}
-			/* 다방면 스코어 시작
-			*-------------------------------------*/
-			
-
-			.kBQneM {
-			    width: 1180px;
-			    position: relative;
-			    margin: 0px auto;
-			}
-
-			.dbrfvk {
-			    color: rgb(34, 34, 34);
-			    font-size: 28px;
-			    font-weight: 400;
-			    text-align: center;
-			    line-height: 41px;
-			}
-
-			.fCword {
-			    padding-top: 40px;
-			    text-align: center;
-			    position: relative;
-			}
-
-			.fCword > h1 {
-			    color: rgb(21, 100, 249);
-			    font-size: 28px;
-			    font-weight: 400;
-			    line-height: 41px;
-			}
-
-			.kZTRnS {
-			    width: 100%;
-			}
-
-			.fCword > p {
-			    margin-bottom: 30px;
-			    color: rgb(68, 68, 68);
-			    font-size: 19px;
-			    line-height: 28px;
-			}
-
-			.yKDHp > p > svg {
-			    margin-right: 5px;
-			    position: relative;
-			    top: 6px;
-			}
-			
-			svg[Attributes Style] {
-			    width: 19;
-			    height: 23;
-			}
-
-			svg:not(:root) {
-			    overflow: hidden;
-			}
-
-			.yKDHp > p > span {
-			    color: rgb(136, 136, 136);
-			    font-size: 14px;
-			}
-
-			.yKDHp > p {
-			    float: left;
-			}
-
-			.yKDHp > p + p {
-			    margin-left: 20px;
-			}
-
-			.yKDHp > p {
-			    float: left;
-			}
-
-			.yKDHp::after {
-			    display: block;
-			    content: "";
-			    clear: both;
-			}
-
-			.yKDHp {
-			    position: absolute;
-			    top: 146px;
-			    right: 140px;
-			}
-
-			svg[Attributes Style] {
-			    width: 400;
-			    height: 330;
-			}
-
-			svg:not(:root) {
-			    overflow: hidden;
-			}
-
-			/* 가격정보 시작
-			-------------------------------------*/
-			.jFMhNO {
-			    padding-top: 100px;
-			    padding-bottom: 120px;
-			    border-top: 1px solid rgb(221, 221, 221);
-			}
-
-			.GYLAC {
-			    color: rgb(34, 34, 34);
-			    font-size: 28px;
-			    font-weight: 400;
-			    text-align: center;
-			    line-height: 41px;
-			}
-
-			.bdln {
-				width : 850px; 
-				border : 1px solid black;
-				text-align : center;
-				margin: auto;
-			}
-
-			.bdlntr {
-				width : 300px; 
-				border : 1px solid black;
-				text-align : center;
-			}
-
-			.bdlnth {
-				width:50px;
-				height:50px; 
-				text-align:center;
-				border : 1px solid black;
-			}
-			.bdlntd {
-				width:50px;
-				height:50px; 
-				text-align:center;
-				border : 1px solid black;
-			}
-
-
-		} /*content 끝*/
-			
-
-		</style>
 	</head>
 
 	<body>
@@ -499,9 +45,23 @@
 		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 		<div>
 			<!-- 상단 헤더 -->
-			<div id="header">
-				헤더부분
-			</div>
+		    <div id="header">
+		      <div class="navbar" role="navigation">
+		        <a href="#"><img src="../assets/ico/logo_blue.png"></a>
+		        <div class="menu-left small-font"><a href="ho_main.html">방주인 사이트</a></div>
+		        <!-- 메뉴 항목 -->
+		        <div class="pull-right">
+		          <div>
+		            <a href="ma_search.html">방찾기</a>
+		            <a href="ma_rtrm.html" class="padding-l">관심목록</a>
+		            <a href="ma-rmdt.html" class="padding-l">문의하기</a>
+		          </div>
+		          <div class="small-font">
+		            <a href="ma_login.html#myModal" class="padding-l">회원가입 · 로그인</a>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
 			<!-- 중앙 영역 -->
 			<div id="content"> <!-- 전체 면적 설정 -->
 				<div id="summury"><!--상단 내용 시작-->
@@ -599,7 +159,7 @@
 				  <div id="explanall"><!--사용자 매물 설명 시작-->
 					<div id="bigexplan">
 							<div class="explan1">
-								중동역 인근. 방3 욕실2 베란다3. 단독세대. 주인분이 깔끔하게 관리.
+								중동역 인근. 방욕실베란다3. 단독세대. 주인분이 깔끔하게 관리.
 							</div>				
 						</div><!--매물 설명 큰 폰트-->
 						<div id="smallexplan">
@@ -615,9 +175,9 @@
 								※진실된 정보만(ONLY FACT) 제공하겠습니다<br /><br />
 								</span>
 							</div>
-							<button class="styled__ShowBtn-sc-1xkewlx-3 jQYbpN">
+							<button class="styled__ShowBtn-sc-1xkewlx-jQYbpN">
 							상세설명 더보기<svg width="16" height="12" viewBox="0 0 16 12">
-				            <path fill="none" fill-rule="evenodd" stroke="#1476FC" d="M2 3l6 6 6-6"></path>
+				            <path fill="none" fill-rule="evenodd" stroke="#1476FC" d="M3l6 6 6-6"></path>
 						    </svg>
 						</button>	
 					</div><!--매물 설명 작은 폰트-->						
@@ -633,13 +193,13 @@
 				 </div><!--스크롤 발생 시 움직이는 파란색바 끝-->
 				<div id="rader"> <!-- 다방면 스코어 시작-->
 					<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score" id="score" style="border-top: 0px;">
-				    <div class="styled__ContentBox-sc-123hsgh-2 jFMhNO styled__Box-sc-123hsgh-1 kBQneM">
-				        <h1 class="styled__Title-ce0o94-0 dbrfvk">다방면 스코어</h1>
+				    <div class="styled__ContentBox-sc-123hsgh-jFMhNO styled__Box-sc-123hsgh-1 jFMhNO kBQneM">
+				        <h1 class="styled__Title-ce0o94-0 dbrfvk kBQneM">다방면 스코어</h1>
 				        <div class="styled__ChartWrap-ce0o94-1 fCword">
 				            <h1>75.5<span>점</span>
 				            </h1>
 				            <p>가격대비 괜찮은 방!</p>
-				            <div class="styled__Labels-ce0o94-2 yKDHp">
+				            <div class="styled__Labels-ce0o94-yKDHp">
 				                <p>
 				                    <svg width="19" height="23" viewBox="0 0 16 19">
 				                        <path fill="#5E90F3" fill-rule="evenodd" d="M7.995.5L.5 4.827v8.655l7.495 4.327 7.495-4.327V4.827z"></path>
@@ -697,10 +257,11 @@
 				</div><!--다방면스코어 끝-->
 				<div id="priceinfo" class="jFMhNO kBQneM"><!--가격정보 시작-->
 					<h1 class="GYLAC">가격정보</h1>
+					<div class="taln">
 						<!-- 표 영역 -->
-						<table class="bdln">
+						<table class="tabdln">
 							<!-- 제목 영역 -->
-							<thead>
+							<thead class="bdlnthd">
 								<tr class="bdlntr">
 									<th class="bdlnth">월세</th>
 									<th class="bdlnth">전세</th>
@@ -710,8 +271,8 @@
 								</tr>
 							</thead>
 							<!-- 본문 영역 -->
-							<tbody>
-								<tr class="bdlntr">
+							<tbody class="bdlntdy">
+								<tr class="bdlnbtr">
 									<td class="bdlntd">-</td>
 									<td class="bdlntd">9500만원</td>
 									<td class="bdlntd">7만원</td>
@@ -720,19 +281,105 @@
 								</tr>
 							</tbody>
 						</table> 
-
+					</div>
 				</div><!--가격정보 끝 -->
-				<div id="pictogram">
-					
-				</div><!--상세 옵션들 아이콘으로 보여줌-->
-				<div id="map">
-					
+				<div id="pictogram" class="jFMhNO kBQneM"><!--상세 옵션들 아이콘으로 보여줌 시작-->
+					<h1 class="GYLAC">옵션</h1>
+
+					<div class="dDctva">
+					    <div class="gqtsIc">
+					        <div class="dNeTFF"></div>
+					        <p>에어컨</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="bisIQz"></div>
+					        <p>세탁기</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="ecqNej"></div>
+					        <p>옷장</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="gdTorF"></div>
+					        <p>TV</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="fuJjGK"></div>
+					        <p>신발장</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="gdMhEY"></div>
+					        <p>냉장고</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="dQLnLP"></div>
+					        <p>가스레인지</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="krFgu"></div>
+					        <p>인덕션</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="cnLAIn"></div>
+					        <p>전자레인지</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="fkeEgq"></div>
+					        <p>전자도어락</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="iAeGhw"></div>
+					        <p>비데</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="mCsgX"></div>
+					        <p>침대</p>
+					    </div>
+					    <div class="gqtsIc">
+					        <div class="gaOEWf"></div>
+					        <p>책상</p>
+					    </div>
+					</div>
+				</div><!--상세 옵션들 아이콘으로 보여줌 끝-->
+				<div id="location" class="jFMhNO kBQneM">
+					<h1 class="fIqmuM">위치</h1>
+					<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
+
+					<div id="map"><!-- 맵 api 시작-->
+						kakao api 위치
+					</div> <!-- 맵 api 끝-->
 				</div><!--위치 30미터 반경만 표시-->
 			</div>
 		</div><!--매물 이미지 끝-->
 		 	<!-- 하단 영역 -->
 			<div id="footer">
-				푸터
+			  <div id="footer-content">
+			    <div id="top">
+			      <div class="pull-left footer-top-left">
+			        <a href="#">팀 소개</a>
+			        <a href="#">이용약관</a>
+			        <a href="#">개인정보처리방침</a>
+			        <a href="#">매물관리규정</a>
+			        <a href="#">허위매물규정</a>
+			        <a href="#">자동저장서비스</a>
+			      </div>
+			      <div class="top-btn pull-right"></div>
+			      <form class="pull-right">
+			        <label for="search-num">
+			          <h1>매물번호 조회</h1>
+			          <input id="search-num" type="text" name="keyword">
+			        </label>
+			        <button><i class="glyphicon glyphicon-search"></i></button>
+			      </form>
+			    </div>
+			    <div id="bottom">
+			      <p class="team">이젠 1조</p>
+			      <p>
+			        <span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
+			        <span class="blank">주소 : 어쩌구</span>
+			      </p>
+			    </div>
+			  </div>
 			</div>
 		</div>
 		<!-- Javascript -->
