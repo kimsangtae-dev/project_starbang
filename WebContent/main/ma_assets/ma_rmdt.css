@@ -1,1 +1,609 @@
 @charset "utf-8";
+* { 
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+
+a {
+	color: rgb(136, 136, 136);
+}
+
+#content {
+	width: 1200px;
+	min-height: 1000px;
+	margin: auto;
+}
+
+#box1 {
+	width: 100%;
+	height: 105px;
+	padding: 30px 0px 30px 0px;
+}
+
+h1 {
+	line-height: 5px;
+	font-size: 30px;
+}
+
+.abc {
+	width: 230px;
+	height: 50px;
+	border-right: 1px solid rgb(235, 235, 235);
+	margin-top: 10px;
+}
+
+.greyfont {
+	color: #505050;
+	font-size: 14px;
+	position: relative;
+	bottom: 20px;
+}
+
+.greyfontwon {
+	color: #505050;
+	font-size: 14px;
+}
+
+.greyfontnm {
+	color: #505050;
+	font-size: 14px;
+}	
+
+#month{
+	margin-left: 30px;
+}
+
+.chbt {
+	width: 40px;
+	height: 30px;
+	font-size: 12px;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(213, 213, 213);
+	border-width: 1px;
+	border-radius: 3px;
+	position: relative;
+	left: 120px;
+	bottom: 17px;
+}
+
+li .grml {
+	width: 116px;
+	height: 38px;
+	font-size: 14px;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(213, 213, 213);
+	border-width: 1px;
+	border-radius: 18px;
+	position: relative;
+	bottom: 10px;
+}
+
+#iconlist {
+	width: 100%;
+	height: 20px;
+	font-size: 21px;
+	display: inline-block;
+}
+
+#iconlist .glyphicon-stop {
+	font-size: 7px;
+	margin: 5px;
+	position: relative;
+	bottom: 30px;
+}
+
+.honame {
+	font-weight: bold;
+	padding-top : 0px;
+	position: relative;
+	top: 16px;
+	right: 120px;
+}
+
+.eTgAil {
+   width: 100%;
+   height: 36px;
+   background-color: rgb(54, 101, 206);
+   margin-top: 20px;
+}
+.eTgAil::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.gknGpv {
+    float: left;
+    height: 36px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 36px;
+    background-color: rgb(6, 73, 192);
+    padding: 0px 20px 0px 15px;
+}
+
+p {
+    display: block;
+    margin: 0px;
+}
+
+.cETKtB {
+    float: left;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    padding: 6px 0px 0px 17px;
+}
+
+.gknGpv > span {
+    margin-left: 3px;
+    color: rgb(165, 194, 245);
+    font-weight: 400;
+}
+
+.mola {
+	color: rgb(18, 60, 156);
+}
+
+.mola img {
+	width: 20px;
+	height: 25px;
+}
+
+.iuNQqL {
+    width: 100%;
+    height: px;
+    border-top: 2px solid rgb(34, 34, 34);
+}
+
+.iuNQqL > li {
+    float: left;
+    width: 25%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.gWdVQs::before {
+    content: "·";
+    float: left;
+    color: rgb(34, 34, 34);
+    margin-right: 7px;
+}
+
+.gPsGgb {
+    float: left;
+    width: 100px;
+    color: rgb(136, 136, 136);
+    font-size: 14px;
+}
+
+.bHPFKV {
+	width: 40px;
+	height: 23px;
+	font-size: 10px;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(213, 213, 213);
+	border-width: 1px;
+	border-radius: 3px;
+	position: relative;
+	left: 10px;
+	top: 5px;
+}
+.bHPFKV > span {
+    color: rgb(34, 34, 34);
+    font-size: 11px;
+    position: absolute;
+    top: 45%;
+    right: 8px;
+    transform: translateY(-50%);
+}
+
+.confirmsm {
+ color: white;
+}
+
+.bigviewul {  
+	width: 100%;
+	height: 480px;
+	padding-top: 30px;
+}
+
+.bigviewigli {
+	width: 620px;
+	min-height: 60px;
+	float: left;
+}
+
+.bigviewigli img{
+	width: 620px;
+	height: 420px;
+}
+
+.bigviewiglism {
+	width: 280px;
+	height: 210px;
+	float: left;
+}
+
+.bigviewiglism img {
+	width: 300px;
+	height: 210px;
+	display: inline-block;
+}
+
+#explanall {
+	width: 1200px;
+	height: 210px;
+	margin: auto;
+}
+
+#bigexplan {
+	width: 600px;
+	height: 130px;
+	float: left;
+}
+
+#smallexplan {
+	width: 600px;
+	height: 130px;
+	float: left;
+
+}
+
+.smexp {
+	font-size: 16px;
+}
+
+.explan1 {
+	font-size: 26px;
+}
+
+.jQYbpN {
+    height: 24px;
+    color: rgb(20, 118, 252);
+    font-size: 15px;
+    border-style: none;
+    background-color: white;
+}
+
+#movebar {
+	border-top: 1px solid rgb(221, 221, 221);			
+}
+
+#scrdft {
+	border-top: 1px solid rgb(221, 221, 221);	
+}
+
+.xOEdU {
+    width: 1180px;
+    height: 58px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 2;
+    display: table;
+    table-layout: fixed;
+    margin: 0px auto;
+}
+
+.eYDrrB {
+    display: table-cell;
+    color: rgb(136, 136, 136);
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+}
+/* 다방면 스코어 시작
+*-------------------------------------*/
+
+
+.kBQneM {
+    width: 1180px;
+    position: relative;
+    margin: 0px auto;
+}
+
+.dbrfvk {
+    color: rgb(34, 34, 34);
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 41px;
+}
+
+.fCword {
+    padding-top: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.fCword > h1 {
+    color: rgb(21, 100, 249);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 41px;
+}
+
+.kZTRnS {
+    width: 100%;
+}
+
+.fCword > p {
+    margin-bottom: 30px;
+    color: rgb(68, 68, 68);
+    font-size: 19px;
+    line-height: 28px;
+}
+
+.yKDHp > p > svg {
+    margin-right: 5px;
+    position: relative;
+    top: 6px;
+}
+
+svg[Attributes Style] {
+    width: 19;
+    height: 23;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.yKDHp > p > span {
+    color: rgb(136, 136, 136);
+    font-size: 14px;
+}
+
+.yKDHp > p {
+    float: left;
+}
+
+.yKDHp > p + p {
+    margin-left: 20px;
+}
+
+.yKDHp > p {
+    float: left;
+}
+
+.yKDHp::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.yKDHp {
+    position: absolute;
+    top: 146px;
+    right: 140px;
+}
+
+svg[Attributes Style] {
+    width: 400;
+    height: 330;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* 가격정보 시작
+-------------------------------------*/
+.jFMhNO {
+    padding-top: 100px;
+    padding-bottom: 120px;
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.GYLAC {
+    color: rgb(34, 34, 34);
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 41px;
+}
+
+/* 가격정보의 표
+*------------------------------*/
+.taln {
+	margin-top: 30px;
+}
+
+.bdlnthd {
+	border-top: 1px solid rgb(204, 204, 204);
+}
+
+.tabdln {
+	width : 850px;
+	text-align : center;
+	margin: auto;
+	padding-top: 30px;
+}
+
+.bdlntr {
+	width : 300px; 
+	text-align : center;
+}
+
+.bdlnth {
+	width:50px;
+	height:50px; 
+	text-align:center;
+	border-right: 1px solid rgb(238, 238, 238);
+} /*중앙에만 보더*/
+
+.bdlnth:last-child{
+	border-style: none;
+} /*오른쪽 보더 없앰*/
+
+.bdlntd:last-child {
+	border-right: none;
+}
+
+.bdlntd {
+	width:50px;
+	height:100px; 
+	text-align:center;
+	border-right: 1px solid rgb(238, 238, 238);
+	border-top: 1px solid rgb(238, 238, 238);
+	border-bottom: 1px solid rgb(204, 204, 204);
+}
+ /* option 이미지들 시작
+  *-----------------------*/
+.dDctva {
+    width: 1180px;
+    margin-top: 32px;
+    padding: 0px 104px;
+}
+
+.gqtsIc:nth-child(1), .gqtsIc:nth-child(2), .gqtsIc:nth-child(3), .gqtsIc:nth-child(4), .gqtsIc:nth-child(5), .gqtsIc:nth-child(6) {
+    margin-top: 0px;
+}
+
+.gqtsIc {
+    float: left;
+    width: 162px;
+    height: 70px;
+    margin-top: 40px;
+}
+
+.dNeTFF {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/aircondition.svg) center center / cover no-repeat;
+}	
+.gqtsIc > p {
+    margin-top: 5px;
+    color: rgb(68, 68, 68);
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.bisIQz {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/laundry.svg) no-repeat;
+}	
+
+.dDctva::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.ecqNej {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/closet.svg) no-repeat;
+}	
+.gdTorF {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/telv.svg) no-repeat;
+}
+.fuJjGK {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/shoes.svg) no-repeat;
+}
+.gdMhEY {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/refrigerator.svg) no-repeat;
+}
+.dQLnLP {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/gas.svg) no-repeat;
+}
+.krFgu {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/induction.svg) no-repeat;
+}
+.cnLAIn {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/microoven.svg) no-repeat;
+}
+.fkeEgq {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/doorlock.svg) no-repeat;
+}
+.iAeGhw {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/bidet.svg) no-repeat;
+}
+.mCsgX {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/bed.svg) no-repeat;
+}
+.gaOEWf {
+    width: 40px;
+    height: 40px;
+    margin: 0px auto;
+    background: url(../../assets/ico/dtoption/desk.svg) no-repeat;
+}
+ /* option 이미지들 끝
+  *-----------------------*/
+
+  /* map 부분 시작
+  *-----------------------*/
+  .location {
+	height: 820px;
+  }
+
+  .hwnvlX {
+    color: rgb(102, 102, 102);
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    margin: 3px 0px 27px;
+}
+
+.fIqmuM {
+    color: rgb(34, 34, 34);
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 41px;
+    position: relative;
+    z-index: 10;
+}
+
+#map {
+	margin: auto;
+	width : 850px;
+	height : 400px;
+	background-color: #abcdef;
+}
+  /* map 부분 끝
+  *-----------------------*/
+
+}
+} /*content 끝*/
