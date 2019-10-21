@@ -28,15 +28,15 @@
   <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
 
   <!-- IE8 이하 버전 지원 -->
-		<!--[if lt IE 9]>
-		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
-		<script type="text/javascript" src="assets/js/respond.min.js"></script>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
+        <script type="text/javascript" src="assets/js/respond.min.js"></script>
   <![endif]-->
 
   <!-- IE10 반응형 웹 버그 보완 -->
-		<!--[if gt IE 9]>
-		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-		<script type="text/javascript" src="assets/js/ie10.js"></script>
+        <!--[if gt IE 9]>
+        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+        <script type="text/javascript" src="assets/js/ie10.js"></script>
   <![endif]-->
   <style type="text/css">
 
@@ -46,7 +46,7 @@
 ------------------------------------------- */
 
 /* 전체박스 1 #root */
-html, body, #root {
+body, #root {
     height: 100%;
 }
 
@@ -54,7 +54,6 @@ html, body, #root {
 .box {
     width: 100%;
     min-width: 1440px;
-    height: 100%;
 }
 
 /* ------------------------------------------
@@ -152,7 +151,7 @@ html, body, #root {
     color: rgb(255, 255, 255);
     font-size: 14px;
     position: relative;
-    padding: 13px 25px 13px 16px;
+    padding: 13px 15px 13px 16px;
 }
 
 /* 헤더 - 드롭박스 (li2) */
@@ -170,6 +169,7 @@ html, body, #root {
     background-color: rgb(255, 255, 255);
     color: rgb(102, 102, 102);
     border-width: 0px;
+    padding: 0;
 }
 
 /* 열렸을 때 */
@@ -181,7 +181,7 @@ html, body, #root {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.12) 0 1px 3px 0;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    border-image: initialindent
+    border-image: initial;
     border-radius: 3px;
 }
 
@@ -191,7 +191,7 @@ html, body, #root {
     color: white;
     font-size: 14px;
     position: relative;
-    padding: 13px 25px 13px 16px;
+    padding: 13px 15px 13px 16px;
     color: #666666;
 }
 
@@ -258,7 +258,6 @@ html, body, #root {
         position: relative;
         cursor: pointer;
         padding: 10px 0px 10px 15px;
-        border-radius: 3px;
         border-width: 1px;
         border-style: solid;
         border-color: rgb(211, 211, 211);
@@ -282,6 +281,13 @@ html, body, #root {
         display: block;
     }
 
+    .isroom-dropdown-opened svg, .isroom-dropdown-closed svg {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
     /* dropdown opened */
     .isroom-dropdown-opened {
         z-index: 10;
@@ -289,7 +295,9 @@ html, body, #root {
         width: 135px;
         background-color: rgb(255, 255, 255);
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
-        border-width: 1px solid rgb(211, 211, 211);
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(211, 211, 211);
         border-image: initial;
         border-radius: 3px;
     }
@@ -325,18 +333,119 @@ html, body, #root {
         vertical-align: middle !important   ;
     }
 
+    .table-span1 {
+        color : rgb(41, 128, 185);
+        font-size: 17px;
+        font-weight: 550;
+    }
+
+    .table-span1-1 {
+        color: #333333;
+        font-size: 17px;
+        font-weight: 550;
+    }
+
+    .table-span2{
+        color: #333333;
+        font-size: 12px;
+    }
+
+    .table-div > span {
+        margin-left: 25px; 
+    }
+
+
+
+
 
 /* ------------------------------------------
 |   Footer
 ------------------------------------------- */
 
-    #footer {
-        border-top: 1px solid #ddd;
+    .footer-div {
+        height: 253px;
+        position: relative;
+        padding: 60px 180px;
+        margin: 100px auto 0;
+        border-top: 1px solid rgb(220, 220, 220);
     }
 
-    #top {
-        border: 0;
+    .footer-div2{
+        width: 100%;
+        /*min-width: 1440px;*/
+        height: 100%;
+        background-color: rgb(255, 255, 255);
     }
+
+    .footer-h1 {
+        margin-bottom: 18px;
+        color: rgb(136, 136, 136);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 13px;
+    }
+
+    .footer-p1 {
+        color: rgb(136, 136, 136);
+        font-size: 13px;
+        height: 13px;
+    }  
+
+    .footer-p1 > span {
+        float: left;
+        line-height: 13px;
+    }
+
+    .footer-p1 > span + span::before {
+    content: "";
+    float: left;
+    height: 12px;
+    margin-left: 8px;
+    padding-left: 9px;
+    position: relative;
+    bottom: 1px;
+    border-left: 1px solid rgb(211, 211, 211);
+}
+
+    .footer-p1 + p {
+        margin-top: 7px;
+    }
+
+    .footer-p2 {
+        margin-bottom: 37px;
+        color: rgb(136, 136, 136);
+        font-size: 13px;
+        opacity: 0.6;
+    }
+
+    
+
+    .last > li {
+        float: left;
+    }
+
+    .last > li > a {
+        color: #888888;
+        font-size: 13px;
+    }
+
+    .last > li + li::before {
+        content: "";
+        float: left;
+        height: 12px;
+        margin-left: 8px;
+        padding-left: 9px;
+        position: relative;
+        bottom: 1px;
+        border-left: 1px solid rgb(211, 211, 211);
+    }
+
+    .last::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
 
 </style>
 </head>
@@ -400,21 +509,22 @@ html, body, #root {
                                     <g transform="translate(180.000000, 263.000000)">
                                         <g transform="translate(945.000000, 0.000000)">
                                             <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]"></path></g></g></g></g></svg>
-                        <!-- <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1235.000000, -281.000000)" fill="#444444">
-                                    <g transform="translate(180.000000, 263.000000)">
-                                        <g transform="translate(945.000000, 0.000000)">
-                                            <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]" transform="translate(115.000000, 20.500000) scale(1, -1) translate(-115.000000, -20.500000) "></path></g></g></g></g></svg> -->
                     </li>
                     <li name="option" value="1" class="isroom-dropdown-li2">공개</li>
                     <li name="option" value="2" class="isroom-dropdown-li2">비공개</li>
                 </ul>
             </div>
 
-            <div class="container">
+        <div class="container">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
+                    <colgroup>
+                        <col width="10%">
+                        <col width="45%">
+                        <col width="15%">
+                        <col width="15%">
+                        <col width="15%">
+                    </colgroup>
                     <thead>
                         <tr>
                             <th class="text-center">공실번호</th>
@@ -428,79 +538,110 @@ html, body, #root {
                         <tr>
                             <td class="text-center">11469</td>
                             <td>
-                                <div>
-                                    <span>원룸 500/30</span><br>
-                                    <span>서울특별시 관악구 봉천동 945-17</span><br>
+                                <div class="table-div">
+                                    <span class="table-span1">원룸</span>
+                                    <b class="table-span1-1">월세 500/30</b><br>
+                                    <span class="table-span2">서울특별시 관악구 봉천동 945-17</span><br>
                                     <span>2019.09.24</span>
                                 </div>
                             </td>
-                            <td class="text-center">소유자 확인중</td>
-                            <td class="text-center">수정하기 삭제</td>
-                            <td class="text-center">공실상태전환</td>
+                            <td class="text-center">
+                                <span class="label label-info">소유자 확인중</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">공실상태전환</button>
+                            </td>
                         </tr>
+                        <tr>
                             <td class="text-center">11469</td>
                             <td>
-                                <div>
-                                    <span>전세 5000</span><br>
-                                    <span>서울특별시 강북구 수유동 945-17</span><br>
+                                <div class="table-div">
+                                    <span class="table-span1">투룸</span>
+                                    <b class="table-span1-1">전세 1억</b><br>
+                                    <span class="table-span2">서울특별시 강북구 수유동 945-17</span><br>
                                     <span>2019.09.15</span>
                                 </div>
                             </td>
-                            <td class="text-center">소유자 확인중</td>
-                            <td class="text-center">수정하기 삭제</td>
-                            <td class="text-center">공실상태전환</td>
-                        <tr>
-
+                            <td class="text-center">
+                                <span class="label label-info">소유자 확인중</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">공실상태전환</button>
+                            </td>
                         </tr>
                         <tr>
                             <td class="text-center">11469</td>
-                            <td><div>
-                                    <span>매매 3억</span><br>
-                                    <span>서울특별시 강북구 미아동 235</span><br>
+                            <td>
+                                <div class="table-div">
+                                    <span class="table-span1">쓰리룸</span> 
+                                    <b class="table-span1-1">매매 3억</b><br>
+                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
                                     <span>2019.09.21</span>
-                                </div></td>
-                            <td class="text-center">소유자 확인중</td>
-                            <td class="text-center">수정하기 삭제</td>
-                            <td class="text-center">공실상태전환</td>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span class="label label-danger">소유자 확인실패</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">공실상태전환</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        <!-- </div>
-            <div class="">
-                <h1 class="">등록된 공실이 없습니다.</h1>
-                <p class="">공실을 등록하면 중개사무소가 다방에 광고를 합니다.</p>
-                <a class="" href="/gong-sil/add">공실 등록하기</a>
-            </div>
-        </div> -->
 
-        
-        <!-- 하단 영역 -->
-        <div id="footer">
-          <div id="footer-content">
-            <div id="top">
-              <div class="pull-left footer-top-left">
-                <a href="#">팀 소개</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">매물관리규정</a>
-                <a href="#">허위매물규정</a>
-                <a href="#">자동저장서비스</a>
             </div>
-            <div class="top-btn pull-right"></div>
-            
-      </div>
-      <div id="bottom">
-          <p class="team">이젠 1조</p>
-          <p>
-            <span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
-            <span class="blank">주소 : 어쩌구</span>
-        </p>
+            <!--/ .table-responsive -->
+        </div>
+        <!-- / .table container -->
     </div>
+    <!-- / content -->
+
+    <div class="footer-div">
+        <div class="footer-div2">
+            <h1 class="footer-h1">파이썬기반 빅데이터분석 CLASS </h1>
+            <p class="footer-p1">
+                <span>강사 : 주영아강사님 </span>
+                <span>주소 : 서울특별시 서초구 1303-37 서초W타워 13층 (주) 이젠컴퓨터 아카데미 </span>
+            </p>
+            <p class="footer-p1">
+                <span>고객센터 : 02-532-6500</span>
+                <span>통신판매업신고번호 : 2016-서울서초-1204 호</span>
+            </p>
+            <p class="footer-p2">COPYRIGHT BY EZEN. ALL RIGHTS RESERVED.</p>
+            <ul class="last">
+                <li>
+                    <a target="_blank" rel="noopener noreferrer" href="http://www.station3.co.kr/" class="styled__NewTabA-i9z00c-6 hSJyTf">회사소개</a>
+                </li>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer" class="styled__NewTabLink-i9z00c-7 cyCySk" href="/term/9">이용약관</a>
+                </li>
+                <li>
+                    <a target="_blank" rel="noopener noreferrer" class="styled__NewTabLink-i9z00c-7 cyCySk" href="/term/10">개인정보처리방침</a>
+                </li>
+                <li>
+                    <span class="styled__WithdrawalBtn-i9z00c-8 bSCpvT">회원탈퇴</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+
+    </div>
+    <!--/ .box -->
 </div>
-</div>
-</div>
-</div>
+<!--/ #root -->
 
 
 <!-- Javascript -->
@@ -510,9 +651,14 @@ html, body, #root {
     $(function () {
         $(".header-dropbox").hover(function() {
             $(this).toggleClass('header-dropbox header-dropbox-open')
+        });
 
+        $(".isroom-dropdown-closed").click(function() {
+            $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
         });
     });
+
+
 
 </script>
 </body>
