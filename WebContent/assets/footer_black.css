@@ -21,7 +21,17 @@
 	border-bottom: 1px solid rgb(69, 69, 69);
 }
 
-#top a, h1, span {
+#top a{
+	font-size: 13px;
+	color: rgb(144, 144, 144);
+	display: inline-block;
+}
+#top h1{
+	font-size: 13px;
+	color: rgb(144, 144, 144);
+	display: inline-block;
+}
+#top span {
 	font-size: 13px;
 	color: rgb(144, 144, 144);
 	display: inline-block;
@@ -52,7 +62,15 @@
 	line-height: 69px;
 }
 
-#top form input, button {
+#top form input {
+	display: inline-block;
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid rgb(69, 69, 69);
+	padding: 0;
+	background-color: #373737;
+}
+#top form button {
 	display: inline-block;
 	margin: 0;
 	border: none;
