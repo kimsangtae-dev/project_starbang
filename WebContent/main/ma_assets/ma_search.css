@@ -1,8 +1,8 @@
 @charset "utf-8";
-/* gallery 스크롤 수정 필요 */
 
 body > div { height: 100%; overflow: hidden; }
 
+/* 화면 크기에 따른 갤러리와 지도 크기 조정 */
 @media (max-width: 1699px) {
      #contentbox .gallery { width: 980px; }
      #contentbox .map-container { width: 719px; left: 980px; }
@@ -10,7 +10,7 @@ body > div { height: 100%; overflow: hidden; }
 
 @media (min-width: 1700px) {
      #contentbox .gallery { width: 1240px; }
-     #contentbox .map-container { max-width: 680px; left: 1240px; }
+     #contentbox .map-container { width: 860px; left: 1240px; }
 }
 
  /*---------------------------------
@@ -46,6 +46,7 @@ body > div { height: 100%; overflow: hidden; }
     outline: none;
 }
 
+/* 검색 아이콘 */
 #search .searchtab i {
     font-size: 20px;
     color: #666;
@@ -56,13 +57,9 @@ body > div { height: 100%; overflow: hidden; }
 }
 
 /* 필터 */
-#search .filters {
-     margin-top: 15.5px;
-}
-
-#search .filter {
-     margin-left: 10px;
-}
+/* 필터 위치, 여백 */
+#search .filters { margin-top: 15.5px; }
+#search .filter { margin-left: 10px; }
 
 #search .filter button {
      background-color: #fff;
@@ -83,6 +80,15 @@ body > div { height: 100%; overflow: hidden; }
      color: #222;
 }
 
+/* 필터 메뉴 클릭 시 색 변경 */
+#search .btn-group.open .dropdown-toggle {
+    box-shadow: none;
+    background-color: #006cff;
+    color: #fff;
+}
+#search .btn-group.open .dropdown-toggle .caret { color: #fff; }
+
+/* 체크박스형 필터 */
 /* 필터 메뉴 > 중복선택 문구 */
 #search .filter div p {
      font-size: 13px;
@@ -91,8 +97,7 @@ body > div { height: 100%; overflow: hidden; }
      margin-bottom: 15px;
 }
 
-/* 체크박스형 필터 */
-/* 필터 메뉴 > 각 항목 */
+/* 필터 메뉴 > 각 항목 크기, 위치 */
 #search .filter div li {
      height: 22px;
      position: relative;
@@ -100,6 +105,7 @@ body > div { height: 100%; overflow: hidden; }
      cursor: pointer;
 }
 
+/* 필터 메뉴 > 각 항목 > 글씨 */
 #search .filter .checkText {
      font-size: 15px;
      line-height: 22px;
@@ -114,6 +120,7 @@ body > div { height: 100%; overflow: hidden; }
     font-weight: normal;
 }
 
+/* 체크박스 스타일 */
 #search .filter input[type="checkbox"] {
     width: 1px; height: 1px;
     opacity: 0;
@@ -131,6 +138,7 @@ body > div { height: 100%; overflow: hidden; }
     border-radius: 3px;
 }
 
+/* 체크박스 스타일 - checked */
 #search .filter input[type="checkbox"]:checked + .checkBox {
     background-color: #006cff;
     border: 1px solid #006cff;
@@ -167,9 +175,7 @@ body > div { height: 100%; overflow: hidden; }
      line-height: 30px;
 }
 
-#search .filter .filter-slide h1 {
-    margin-bottom: 15px;
-}
+#search .filter .filter-slide h1 { margin-bottom: 15px; }
 
 #search .filter .filter-slide li {
     float: left;
@@ -191,6 +197,7 @@ body > div { height: 100%; overflow: hidden; }
     margin-top: 10px;
 }
 
+/* 조건삭제 아이콘 */
 #search .filter-reset i {
     font-size: 12px;
     margin-right: 5px;
@@ -237,16 +244,12 @@ body > div { height: 100%; overflow: hidden; }
 /   갤러리
 ----------------------------------------*/
 #contentbox .gallery {
-    /*width: 1180px;*/
     float: left;
     height: 100%;
-   /* padding-left: 15px;
-    padding-right: 30px;*/
 }
 
 /* 갤러리 상단 제목 */
 #contentbox .gallery .gallery-header {
-    /*width: 100%;*/
     padding-top: 30px;
     padding-bottom: 20px;
     margin: 0 30px;
@@ -258,24 +261,24 @@ body > div { height: 100%; overflow: hidden; }
     line-height: 20px;
 }
 
+/* 갤러리 전체 박스 */
 #contentbox .gallery .gallery-container {
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%;
-    /*max-height: 750px;*/
     padding-left: 15px;
     padding-right: 30px;
 }
-
 
 /** 갤러리 전체 박스 하단 패딩 */
 #contentbox .gallery .gallery-content {
     padding-bottom: 40px;
 }
+
+/*----- 갤러리 내용부분 -----*/
 #contentbox .gallery .gallery-content ul {
     display: block;
     padding-top: 20px;
-    /*margin: 0 30px 0 15px;*/
 }
 
 #contentbox .gallery .gallery-content li {
@@ -286,7 +289,7 @@ body > div { height: 100%; overflow: hidden; }
     margin-bottom: 50px;
 }
 
-/* 갤러리 박스 시작 */
+/* 갤러리 개별 박스 시작 */
 /*박스전체*/
 #contentbox .gallery .gallery-content li .recent-div5{
     width: 100%;
@@ -323,11 +326,6 @@ body > div { height: 100%; overflow: hidden; }
 .recent-a{
     display: block;
 }
-
-/* 부트스트랩에 마진이 들어가있어서 <a> 부분만 초기화시켜주기 */
-/*.recent-a p{
-    margin: 0px;
-}*/
 
 /* 텍스트 마우스오버 시 발생하는 효과 제거 */
 .recent-a:hover{
@@ -432,8 +430,6 @@ body > div { height: 100%; overflow: hidden; }
     overflow: hidden;
 }
 
-
-
 /* <a>태그 - <p>lent방식 / 금액 */
 .recent-a-p2{
     color: rgb(34, 34, 34);
@@ -442,7 +438,6 @@ body > div { height: 100%; overflow: hidden; }
     line-height: 25px;
     margin: 3px 0px 6px !important;
 }
-
 
 /* <a>태그 - <p>lent방식 / 금액 - <span> */
 .recent-a-p2 span{
@@ -461,10 +456,7 @@ body > div { height: 100%; overflow: hidden; }
     overflow: hidden;
 }
 
-#gallery .gallery-content .gallery-text {
-    padding-left: 10px;
-}
-
+/* 브라우저의 넓이가 1700px 미만일 때의 갤러리 개별 박스와 이미지 크기 조정 */
 @media (max-width: 1699px) {
      #contentbox .gallery .gallery-content li .recent-div5 { height: 280px; }
      .recent-a-div { height: 145px; }
@@ -480,7 +472,6 @@ body > div { height: 100%; overflow: hidden; }
 #contentbox .gallery .gallery-footer-box {
  width: 100%;
  height: 180px;
- background-color: #0000ff;
 }
 
 #contentbox .gallery-index {
@@ -514,16 +505,16 @@ body > div { height: 100%; overflow: hidden; }
 #contentbox .gallery-index .prev-btn span { margin-right: 2px; }
 #contentbox .gallery-index .next-btn span { margin-left: 2px; }
 
-#contentbox .gallery-index .index-list {
-     float: left;
-}
+#contentbox .gallery-index .index-list { float: left; }
 
+/* 인덱스 각 버튼 정렬 */
 #contentbox .gallery-index .index-list li {
      display: inline-table;
      width: 32px;
      height: 32px;
 }
 
+/* 인덱스 각 버튼 스타일*/
 #contentbox .gallery-index .index-list li a {
      display: table-cell;
      width: 100%;
@@ -538,16 +529,17 @@ body > div { height: 100%; overflow: hidden; }
      border-image: initial;
      border-radius: 50%;
 }
-
 #contentbox .gallery-index .index-list li .index-indiv {
      color: rgb(20, 118, 252);
 }
 
+/* 인덱스 버튼 마우스 오버 */
 #contentbox .gallery-index .index-list li .index-indiv:hover {
      border-color: rgb(20, 118, 252);
      text-decoration: none;
 }
 
+/* 인덱스 버튼 - 현재 페이지 */
 #contentbox .gallery-index .index-list li .index-active {
      color: rgb(255, 255, 255);
      background-color: rgb(20, 118, 252);
@@ -564,7 +556,7 @@ body > div { height: 100%; overflow: hidden; }
 
 #contentbox .map {
     width: 100%;
-    /* height: 750px; */
+    height: 100%;
 }
 
 #contentbox .map #map {
