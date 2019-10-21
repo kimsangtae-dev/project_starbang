@@ -300,6 +300,7 @@
 		transition: height 300ms ease-in-out 0s, background-color 250ms ease-out 0s;
     	overflow: hidden;
 	}
+
 	.last-contact-div > div {
 		display: table;
 		width: calc(100% - 30px);
@@ -325,6 +326,60 @@
 		bottom: 0;
 		border-width: 0;
 	}
+
+
+	/* 클릭했을 때 */
+
+	.last-contact-div-open {
+		width: 100%;
+		height: 115px;
+		background-color: rgb(35, 45, 74);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding: 0 15px;
+		transition: height 300ms ease-in-out 0s, background-color 250ms ease-out 0s;
+    	overflow: hidden;
+	}
+
+	.last-contact-div-open > div {
+    	display: table;
+    	width: calc(100% - 30px);
+    	height: 65px;
+    	position: absolute;
+    	left: 15px;
+    	bottom: 50px;
+    	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.last-contact-div-open > div > div {
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+
+	.last-contact-div-open > button { 
+		width: 100%;
+		height: 50px;
+		color: rgb(255, 255, 255);
+		font-size: 15px;
+		font-weight: 500;
+		background-color: transparent;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border-width: 0;
+	}
+
+	.last-contact-div-open > div > div > p {
+		color: rgb(255, 255, 255);
+    	font-size: 15px;
+    	text-align: center;
+    	line-height: 22px;
+	}
+
+
+
+
 </style>
 
 </head>
@@ -592,7 +647,7 @@
     					                                    <p>선미진</p>
     					                                </div>
     					                            </div>
-    					                            <button>이메일보기</button>
+    					                            <button>문의하기</button>
     					                        </div>
     					                    </td>
     					                    <td class="last-contact-td">
@@ -603,7 +658,7 @@
     					                                    <p>이병근</p>
     					                                </div>
     					                            </div>
-    					                            <button>이메일보기</button>
+    					                            <button>문의하기</button>
     					                        </div>
     					                    </td>
     					                    <td class="last-contact-td">
@@ -614,7 +669,7 @@
     					                                    <p>김정식</p>
     					                                </div>
     					                            </div>
-    					                            <button>이메일보기</button>
+    					                            <button>문의하기</button>
     					                        </div>
     					                    </td>
     					                </tr>
@@ -635,15 +690,16 @@
 			<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
 		</div>
 
-		<script type="text/javascript">
-			$(function(e) {
-				e.preventDefault();
-			}
-		</script>
-
 		
 		<!-- Javascript -->
 		<script src="../assets/js/jquery-1.10.2.min.js"></script>
 		<script src="../assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".last-contact-div").click(function() {
+					$(this).toggleClass("last-contact-div last-contact-div-open");
+				});
+			});
+		</script>
 	</body>
 </html>
