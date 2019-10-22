@@ -24,11 +24,13 @@
 #content .input-group {	
 	width: 300px;
 	position: relative;
-	margin-left: 246px;
 }
 
+/* 검색바, 버튼들 우측 정렬 */
+.input-group { float: right; }
+.box { float: right; }
 
-.adm-radio, .adm-btn { display: inline-block; }
+.adm-radio, .adm-btn { float: left; }
 
 #content .adm-radio { line-height: 34px; margin-right: 10px; }
 
