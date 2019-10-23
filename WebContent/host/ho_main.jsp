@@ -57,7 +57,7 @@
 				<!-- 메뉴 항목 -->
 				<div class="pull-right">
 					<a href="ho_rm_add.html">공실 등록하기</a>
-					<a href="ho_rmli.html">공실관리</a>
+					<a href="ho_rmli.jsp">공실관리</a>
 					<a href="../main/ma_login.html">로그인</a>
 				</div>
 			</div>
@@ -65,12 +65,12 @@
 		<!-- 중앙 영역 -->
 		<div id="body">
 			<div class="bgimg">
-				<h1 class="title">공실 광고<img src="../assets/ico/logo_white.png"></span>에서 무제한 무료</h1>
+				<h1 class="title">공실 광고<img src="../assets/ico/logo_white.png">에서 무제한 무료</h1>
 				<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
 				<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
 				<a class="link-sc" href="ho_rm_add.html">방주인 시작하기</a>
 			</div>
-
+			</div>
 		</div>
 		<!-- 하단 영역 -->
 		<div id="footer">
