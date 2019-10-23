@@ -1,58 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>공실관리</title>
 
-  <!-- 모바일 웹 페이지 설정 -->
-  <link rel="shortcut icon" href="../assets/ico/logo_bb.png" />
-  <link rel="apple-touch-icon-precomposed" href="../assets/ico/logo_bb.png" />
+<%@ include file="../assets/inc/meta.jsp"%>
+<title>공실관리</title>
+ 
+<!-- header, footer, ho_rmli css 참조 -->
+<link rel="stylesheet" type="text/css" href="ho_assets/ho_rmli.css" />
+<link rel="stylesheet" type="text/css" href="ho_assets/ho_common.css" />
 
-  <!-- bootstrap -->
-  <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-
-  <!-- reset.css 적용 -->
-  <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-
-  <!-- 나눔고딕 웹 폰트 적용 -->
-  <link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
-
-  <!-- header, footer, ho_rmli css 참조 -->
-  <link rel="stylesheet" type="text/css" href="ho_assets/ho_rmli.css" />
-
-  <!-- 반응형 웹을 지원하지 않을 경우 -->
-  <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-
-  <!-- IE8 이하 버전 지원 -->
-        <!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- IE10 반응형 웹 버그 보완 -->
-        <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
-  <![endif]-->
 </head>
 
 <body>
-    <div id="root">
-        <div class="box">
-            <!-- 헤더 -->
-            <%@ include file="ho_header.jsp" %> 
+<div id="root">
+    <div class="box">
+        <!-- 헤더 -->
+        <%@ include file="ho_assets/ho_inc/ho_header.jsp" %> 
 
         <!-- content -->
         <!-- 공실관리 -->
@@ -174,7 +141,7 @@
     <!-- / content -->
 	
 	<!-- footer -->
-    <%@ include file="ho_footer.jsp" %> 
+    <%@ include file="ho_assets/ho_inc/ho_footer.jsp" %> 
     
     </div>
     <!--/ .box -->
