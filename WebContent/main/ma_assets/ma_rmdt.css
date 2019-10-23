@@ -12,7 +12,7 @@ a {
 
 #content {
 	width: 1200px;
-	min-height: 1000px;
+	min-height: auto;
 	margin: auto;
 }
 
@@ -273,15 +273,87 @@ p {
     border-style: none;
     background-color: white;
 }
-
-#movebar {
-	border-top: 1px solid rgb(221, 221, 221);			
+/*--- 움직이는 스크롤 헤더 시작 ---*/
+#bluebar {
+	min-width: 1366px;
+    height: 90px;
+    padding: 0px 100px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 7px 0px, rgba(0, 0, 0, 0.08) 0px 2px 2px 0px;
+    background-color: rgb(20, 118, 252);
+    position: relative;
+    z-index: 3;
+}
+#lol {
+	width : 1200px;
+	margin : auto;
 }
 
-#scrdft {
-	border-top: 1px solid rgb(221, 221, 221);	
+.lvc {
+	margin : auto;
+	padding-right : 15px;
 }
 
+.textht {
+	color: white;
+	line-height: 90px;
+}
+
+.texthth1 {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400px;
+    text-align: center;
+}
+.textht2 {
+	color: #fff;
+	padding-left: 32px;
+	padding-right: 14px;
+    font-size: 22px;
+    text-align: left;
+    padding-top: 11px;
+}
+.textht3 {
+	color: white;
+	line-height: 90px;
+	font-size: 20px;
+}
+.skyblue {
+	color: rgb(255, 255, 255);
+	font-size: 16px;
+	opacity: 0.7;
+}
+.inbl {
+	height: 44px;
+    color: rgb(0, 108, 255);
+    font-size: 14px;
+    font-weight: 400;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    bottom: -23px;
+    padding: 0px 23px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 44px;
+}
+
+.quest {
+	position : relative;
+	bottom : 23px;
+	color: rgb(0, 108, 255);
+}
+
+.nowqt {
+	color : white;
+	margin : 15px;
+	padding-top : 15px;
+	font-size : 22px;
+	
+}
+
+
+/*--- 움직이는 스크롤 헤더 끝 ---*/
 .xOEdU {
     width: 1180px;
     height: 58px;
@@ -575,7 +647,7 @@ svg:not(:root) {
   /* map 부분 시작
   *-----------------------*/
   .location {
-	height: 820px;
+	height : 100px;
   }
 
   .hwnvlX {
@@ -594,6 +666,10 @@ svg:not(:root) {
     line-height: 41px;
     position: relative;
     z-index: 10;
+}
+
+.map {
+	min-height : 100px;
 }
 
 #map {
