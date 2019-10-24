@@ -1,18 +1,16 @@
 @charset "utf-8";
 
-        /* ---------------------------------------
-        / 관심목록 전체 박스
-        ---------------------------------------- */
+        /* 공통 */
+        
+        #content {
+            width: 1200px;
+            margin: auto;
+        }
 
         .recent{
             margin: 70px auto 150px;
             height: 450px;
         }
-
-        /* 관심목록 (이 페이지 타이틀) */
-        .recent-div0{ 
-            width: 1200px;
-            margin: 0 auto; }
 
         .interest {
             display: block;
@@ -22,6 +20,8 @@
             color: black;
         }
 
+/*************************************************************************************/
+        
         /* 관심목록 하위 탭 (최근본방, 찜한방) */
         .tab1  {
             margin: auto;
@@ -49,6 +49,7 @@
             height: 50px; 
         }
 
+
         /* 최근본방, 찜한방 하위박스(float과 해제) */
         .re-div1 p {
             float: left;
@@ -68,50 +69,7 @@
             clear: both;
             content: '';
         }
-
-
         
-
-      /*      .recent-div1 {
-                line-height: 25px;
-                border-right: 1px solid rgb(221, 221, 221);
-                padding-left: 0px;
-                display: inline-block;
-                height: 25px;
-                color: rgb(197, 197, 197);
-                font-size: 28px;
-                font-weight: 300;
-                text-align: center;
-                cursor: pointer;
-                padding: 0px 16px 0 0;
-                margin: auto;
-            }
-
-            .recent-div2 { 
-                display: inline-block;
-                height: 25px;
-                color: rgb(197, 197, 197);
-                font-size: 28px;
-                font-weight: 300;
-                text-align: center;
-                cursor: pointer;
-                padding: 0px 16px; 
-                margin: auto;
-            }
-
-            .recent-div3 {
-                display: block;
-                height: 35px;
-                
-            }*/
-
-            /*.recent-div3 span {
-                color: rgb(102, 102, 102);
-                font-size: 16px;
-                font-weight: 300;
-                line-height: 35px;
-                text-align: left;
-            }*/
 
             .recent-div4 {
                 width: 1240px;
@@ -156,7 +114,7 @@
                 width: 32px;
                 height: 30px;
                 margin: 0px auto;
-                background: url(../ma_assets/ma_img/star.png) center center / cover;
+                background: url(ma_img/like.svg) center center / cover;
             }  
 
                 /* <a> 태그 */
@@ -169,10 +127,6 @@
                 margin: 0px;
             }
 
-            /* 글자에 호버가 들어가서 디버깅해야함 */
-            /*.recent-a:hover{
-                color:;
-            }*/
 
             /* <a> 태그 - <div>이미지 */
             .recent-a-div{
@@ -271,7 +225,6 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
-
 
 
             /* <a>태그 - <p>lent방식 / 금액 */

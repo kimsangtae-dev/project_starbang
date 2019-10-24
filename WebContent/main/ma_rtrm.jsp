@@ -1,71 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>ma_rtrm</title>
+<head>
+<%@ include file="../assets/inc/meta.jsp"%>
 
-    <!-- 모바일 웹 페이지 설정 -->
-    <link rel="shortcut icon" href="../assets/ico/logo_bb.png" />
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/logo_bb.png" />
-
-    <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-
-    <!-- 나눔고딕 웹 폰트 적용 -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
-
-    <!-- css 적용 -->
     <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="../assets/header_white.css">
     <link rel="stylesheet" type="text/css" href="../assets/footer_black.css">
-    <link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_rtrm.css">
+    <link rel="stylesheet" type="text/css" href="ma_assets/ma_rtrm.css">
+</head>
 
-    <!-- 반응형 웹을 지원하지 않을 경우 -->
-    <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-
-    <!-- IE8 이하 버전 지원 -->
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-    <script type="text/javascript" src="assets/js/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- IE10 반응형 웹 버그 보완 -->
-    <!--[if gt IE 9]>
-    <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-    <script type="text/javascript" src="assets/js/ie10.js"></script>
-    <![endif]-->
-    <style type="text/css">
-      
-    </style>
-  </head>
-
-  <body>
-
-    <!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-    <div class="root">
-      <!-- 상단 헤더 -->
-      <div id="header">
-        <div class="navbar" role="navigation">
-          <a href="#"><img src="../assets/ico/logo_blue.png"></a>
-          <div class="menu-left small-font"><a href="#">방주인 사이트</a></div>
-          <!-- 메뉴 항목 -->
-          <div class="pull-right">
-            <div>
-              <a href="#">방찾기</a>
-              <a href="#" class="padding-l">관심목록</a>
-              <a href="#" class="padding-l">문의하기</a>
-              <a href="#" class="padding-l">알림</a>
-            </div>
-            <div class="small-font">
-              <a href="#" class="padding-l">회원가입 · 로그인</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 중앙 영역 -->
+<body>
+	<!-- 상단 헤더 -->
+	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
+	
+	<!-- 중앙 영역 -->
       <div id="content">
           <!-- 최근본방/찜한 방 -->
         <div id="recent" class="recent">
@@ -208,39 +160,12 @@
     </div> <!-- 최근본방/찜한 방 끝-->
   </div> <!-- content 끝 -->
 
-      <!-- 하단 영역 -->
-      <div id="footer">
-        <div id="footer-content">
-          <div id="top">
-            <div class="pull-left footer-top-left">
-              <a href="#">팀 소개</a>
-              <a href="#">이용약관</a>
-              <a href="#">개인정보처리방침</a>
-              <a href="#">매물관리규정</a>
-              <a href="#">허위매물규정</a>
-              <a href="#">자동저장서비스</a>
-            </div>
-            <div class="top-btn pull-right"></div>
-            <form class="pull-right">
-              <label for="search-num">
-                <h1>매물번호 조회</h1>
-                <input id="search-num" type="text" name="keyword">
-              </label>
-              <button><i class="glyphicon glyphicon-search"></i></button>
-            </form>
-          </div>
-          <div id="bottom">
-            <p class="team">이젠 1조</p>
-            <p>
-              <span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span>
-              <span class="blank">주소 : 어쩌구</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> <!-- root 끝 -->
-    <!-- Javascript -->
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-  </body>
+	<!-- 하단 영역 -->
+	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
+	
+<!-- Javascript -->
+	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript"></script>
+</body>
 </html>
