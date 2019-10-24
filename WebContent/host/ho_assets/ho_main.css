@@ -161,3 +161,30 @@ img{
     font-size: 12px;
     color: gray;
 }
+    .last > li {
+        float: left;
+        list-style:none;
+    }
+
+    .last > li > a {
+        color: #888888;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+    .last > li + li::before {
+        content: "";
+        float: left;
+        height: 12px;
+        margin-left: 8px;
+        padding-left: 9px;
+        position: relative;
+        bottom: -3px;
+        border-left: 1px solid rgb(211, 211, 211);
+    }
+
+    .last::after {
+        display: block;
+        content: "";
+        clear: both;
+    }
