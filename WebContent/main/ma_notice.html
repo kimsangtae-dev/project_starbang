@@ -35,10 +35,18 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
 		<script type="text/javascript" src="assets/js/ie10.js"></script>
 		<![endif]-->
+
+
+
 		<style type="text/css">
 			* {
 				padding: 0;
 				margin: 0;
+			}
+
+			h1, h2, h3 {
+				margin: 0px;
+				padding: 0px;
 			}
 
 			/** 자주묻는 질문, 공지사항 **/
@@ -48,12 +56,17 @@
 				text-align: center;
 			}
 
-			h1 {
+			.h1 {
 				height: 53px;
-				margin-top: 70px;
-				margin-bottom: 45px;
+				margin-top: 60px;
+				margin-bottom: 35px;
 				font-size: 32px;
 				color: black;
+				font-weight: 8px;
+			}
+
+			.nav {
+				border-bottom: 1px solid #d5d5d5; 
 			}
 
 			.nav div {
@@ -78,11 +91,14 @@
 			}
 
 			/** 자주묻는 질문, 공지사항 끝 **/
-		
+
+
+
 		/** 자주묻는 질문 리스트 */
 		/* 전체 박스 크기 및 정렬 */
-			.collapse {
-				width: 500px;
+			#collapse {
+				width: 100%;
+				min-height: 700px;
 				margin: auto;
 			}
 
@@ -91,15 +107,13 @@
 				border-top: 1px solid #d5d5d5;
 				text-align: center;
 			}
-    	.collapse-title2 { border-top: 1px solid #d5d5d5;}
-    	.collapse-itemtop { border-top: 1px solid black;}
+
     	.collapse-title3 { border-bottom: 1px solid #d5d5d5;}
 
 			/** 제목영역의 링크에 대한 크기, 글자모양 */
 			.collapse-title a {
 				display: block;
 				width: auto;
-				padding: 20px;
 				color: #222;
 				font-size: 22px;
 				text-decoration: none;
@@ -123,30 +137,51 @@
 			/** 여기서부터 추가*/
     	.collapse-item p {
     		display: inline-block;
+    		font-size: 15px;
+    		margin-top: 5px; 
     	}
-
-		.collapse-item {
-			margin: -20px;
-		}
 
     	img {
     		display: inline-block;
+
     	}
 
 		.title {
-			padding: 72px 0;
-			height: 209px;
+			padding-top: 72px;
+			padding-bottom: 0px;
+		    height: 190px;
+		}
+
+		.text {
+			font-size: 15px;
+			color: rgb(102, 102, 102);
+			font-weight: 100;
 		}
 
 		#content .title p {
 			font-size: 22px;
+		    font-weight: 100;
 			height: 32px;
 			padding: 0px;
+			color: rgb(102, 102, 102);
+			margin: 0px;
 		}
 
 		span {
 			color: #1564F9;
 			font-size: 22px;
+			font-weight: 100;
+		}
+
+		.a {
+			height: 60px;
+			font-size: 15px;
+			padding-top: 15px;
+		}
+
+		#collapse #itme {
+			padding: 0px;
+			margin: 0px;
 		}
 
 		.inup {
@@ -180,13 +215,20 @@
 			font-size: 20px; 
 		}
 
+		.pddw {
+			height: 20px;
+		}
+
 		/** 자주묻는 질문 리스트 끝 */
 
 		/** 밑줄 */
 		.nav #now {
-			border-bottom: 1px solid black;
+			border-bottom: 2px solid black;
 		}
 		</style>
+
+
+
 	</head>
 
 	<body>
@@ -221,27 +263,27 @@
 					<div  id="now"><a href="ma_notice.html">공지사항</a></div>
 				</div>
 
-				<br/>
+				<div>
+					<p class="pddw"></p>
+				</div>
 
 				<div id="collapse">
 					<!-- 게시글 하나 단위 -->
     				<div class='collapse-item'>
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-itemtop text'><a href="#content1"><p class="inup">제목</p><p class="outup">날짜</p></a></h2>
-            			<!-- 게시글 내용영역 -->
-    					<div id="content1" class="content">제목1에 해당하는 내용입니다.</div>
+    					<h2 class='collapse-title text'><a href="#" class="a"><p class="inup">제목</p><p class="outup">날짜</p></a></h2>
 	    			</div>
 	    			<!-- 게시글 하나 단위 -->
-    				<div class='collapse-item'>
+    				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-title2 text'><a href="#content2"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
+    					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content">제목1에 해당하는 내용입니다.</div>
 	    			</div>
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item'>
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-title2 text'><a href="#content3"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
+    					<h2 class='collapse-title collapse-title2 text'><a href="#content3" class="a"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content3" class="content">제목1에 해당하는 내용입니다.</div>
 	    			</div>
@@ -315,9 +357,3 @@
 		</script>
 	</body>
 </html>
-
-
-
-
-
-

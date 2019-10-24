@@ -8,14 +8,14 @@
 		<title>Main_new_user</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-		<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+		<link rel="shortcut icon" href="../assets/ico/logo_bb.png" />
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/logo_bb.png" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
 
 		<!-- 나눔고딕 웹 폰트 적용 -->
-		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -37,8 +37,8 @@
 		<![endif]-->
 		<style type="text/css">
 			.siz {
-				width: 610px;
-				height: 520px;
+				width: 717px;
+				min-height: 1000px;
 			}
 
 			/** 닫는 버튼 동그라미로 */
@@ -46,6 +46,95 @@
 				border-radius: 50%;
 				border: 1px black; 
 				background-color: #fff;
+			}
+			
+			p {
+				display: inline-block;
+				padding-left: 11px;
+				width: 101px;
+				height: 45px;
+			}
+			
+			input {
+				display: inline-block;
+				width: 570px;
+				height: 45px;
+			}
+			
+			select {
+				display: inline-block;
+				width: 300px;
+				height: 45px;
+			}
+			
+			.email {
+				width: 250px;
+			}
+			
+			.pin {
+				width: 143px;
+			}
+			
+			.number {
+				width: 450px;
+				margin-left: 105px;
+			}
+			
+			.numberdiv {
+				margin-bottom: 15px;				
+			}
+			
+			.p {
+				width: 600px;
+			}
+			
+			.joinbutton {
+				width: 610px;
+				height: 45px;
+			}
+			
+			.btn-color {
+				color: blue;
+				border: 1px solid blue;
+				background-color: white;
+			}
+			
+			.btn-colordown {
+				color: white;
+				background-color: blue;
+			}
+
+			/** 입력 폼 큰 단위 */
+			.Information {
+				margin-top: 2px;
+			}
+			.Information2 {
+				margin-top: 11px;
+			}
+			.Information3 {
+				margin-left: 30px;
+			}
+
+			/** 회원가입 높이 */
+			.hheader {
+				    height: 60px;
+				    margin-top: 12px;
+			}
+
+			/** 모델창 위치 */
+			.modaltop {
+				margin: 60px auto;
+			}
+
+			/** 모델 헤더 text */
+			.modal-title {
+				font-size: 20px;
+			}
+
+			.buttontlzl {
+				margin-top: 0px;
+				height: 60px;
+				width: 100%;
 			}
 		</style>
 	</head>
@@ -63,58 +152,60 @@
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" class="siz">
-    		<div class="modal-dialog modal-sm siz">
+    		<div class="modal-dialog modal-sm siz modaltop">
     		    <div class="modal-content">
-        		    <div class="modal-header">
-            		    <button type="button" class="close radius" data-dismiss="modal" aria-label="Close">
+        		    <div class="modal-header hheader">
+            		    <button type="button" class="close radius" data-dismiss="modal" aria-label="Close" 
+            		    class="btn btn-primary">
 	                    <span aria-hidden="true" class="radius"/>&times;</span></button>
 		                <h4 class="modal-title">회원가입</h4>
     		        </div>
-            	<div class="modal-body">
-            		<div>
-            			<p>이름</p>
-		                <input type="text" name="userId"/>
+            		<div class="modal-body">
+            			<div class="Information2">
+            				<p>이름</p>
+		        	        <input type="text" name="userId"/>
+		        	    </div>
+		        	    <div class="Information">
+            				<p>이메일</p>
+		        	        <input type="text" name="useremail" class="email" /> @ 
+		        	   		<select>
+		        	        		<option>naver.com</option>
+		        	        		<option>gmail.com</option>
+		        	  		</select>
+		        	    </div>
+		        	    <div class="Information">
+            				<p>비밀번호</p>
+		       		         <input type="passwd" name="passwd"/>
+		        	    </div>
+		        	    <div class="Information">
+            				<p>비밀번호확인</p>
+		        	   	     <input type="passwd" name="repasswd"/>
+		        	    </div>
+		        	    <div class="Information">
+            				<p>휴대폰 번호</p>
+		           		     <input type="number" name="pin1" class="pin"/> -
+		            	    <input type="number" name="pin2" class="pin"/> -
+		            	    <input type="number" name="pin3" class="pin"/>
+		            	    <button class="btn btn-primary btn-color">인증번호 요청</button>
+		            	</div class="Information">
+		            	<div class="numberdiv">
+		            		<input type="number" name="pingaree" class="number" />
+		            		<button class="btn btn-primary btn-color">인증번호 확인</button>
+		            	</div>
 		            </div>
-		            <div>
-            			<p>이메일</p>
-		                <input type="text" name="useremail"/>
-		            </div>
-		            <select>
-		                	<option>naver.com</option>
-		                	<option>gmail.com</option>
-		          	</select>
-		            <div>
-            			<p>비밀번호</p>
-		                <input type="passwd" name="passwd"/>
-		            </div>
-		            <div>
-            			<p>비밀번호확인</p>
-		                <input type="passwd" name="repasswd"/>
-		            </div>
-		            <div>
-            			<p>휴대폰 번호</p>
-		                <input type="number" name="pin1"/> -
-		                <input type="number" name="pin2"/> -
-		                <input type="number" name="pin3"/>
-		                <button>인증번호 요청</button>
-		            </div>
-		            <div>
-		            	<input type="number" name="pingaree"/>
-		            	<button>인증번호 확인</button>
-		            </div>
-		            <div>
-		            	<p>*만 14세 이상 회원 가입 가능합니다. 해당 내용은 <a href="#">이용약관 및 정책</a>에서도 확인이 가능합니다</p>
+		            <div class="Information3">
+		            	<p class="p">*만 14세 이상 회원 가입 가능합니다. 해당 내용은 <a href="#">이용약관 및 정책</a>에서도 확인이 가능합니다</p>
 		            </div>
 		        </div>
 		        <div>
-		        	<button>이메일 회원가입</button>
+		        	<button class="joinbutton btn btn-colordown buttontlzl">이메일 회원가입</button>
 		        </div>
             </div>
         </div>
 
 		<!-- Javascript -->
-		<script src="assets/js/jquery-1.10.2.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
   			$(function () {
     		    

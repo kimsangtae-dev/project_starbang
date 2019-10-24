@@ -8,14 +8,14 @@
 		<title>Main_new_user</title>
 
 		<!-- 모바일 웹 페이지 설정 -->
-		<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-		<link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+		<link rel="shortcut icon" href="../assets/ico/logo_bb.png" />
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/logo_bb.png" />
 
 		<!-- bootstrap -->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
 
 		<!-- 나눔고딕 웹 폰트 적용 -->
-		<link rel="stylesheet" type="text/css" href="assets/css/nanumfont.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -37,7 +37,7 @@
 		<![endif]-->
 		<style type="text/css">
 			.siz {
-				width: 610px;
+				width: 540px;
 				height: 520px;
 			}
 
@@ -46,6 +46,11 @@
 				border-radius: 50%;
 				border: 1px black; 
 				background-color: #fff;
+			}
+
+			.modal-body {
+				position: relative;
+				padding: 0 15px 15px 15px; 
 			}
 
 			p {
@@ -60,16 +65,19 @@
 
 			#updown {
 				margin: 15px;
+
 			}
 
 			#downp {
 				width: 400px;
 			}
 			
-/** */
+			/** */
 			
-			p {
+			.p {
 				display: inline-black;
+				width: 300px;
+				margin-top: 10px;
 			}
 			
 			span {
@@ -78,14 +86,52 @@
 			}
 			
 			.whp {
-				width: 550px;
-				height: 100px;
+				width: 500px;
+				height: 300px;
 				overflow-y: scroll;
+				background-color: #eee;
 			}
 			
-			.whcbox {
-				width: 500px;
-				height: 100px;
+			
+			
+			.lnMlai {
+				width: 100%;
+				height:45px;
+				text-align: center;
+			}
+			
+			.modal-fet .joinbutton {
+				width: 610px;
+				height: 
+			}
+			
+			.modal-fet .btn-colordown {
+				color: white;
+				background-color: blue;
+			}
+			
+			#img {
+				margin-left: 150px;
+			}
+			
+			p {
+				font-size: 15px;
+			}
+
+			/** 모두 동의합니다 */
+			.all {
+				width: 110px;
+			}
+			
+			/** 모델창 위치 */
+			.modaltop {
+				margin: 60px auto;
+			}
+
+			/** 회원가입 높이 */
+			.hheader {
+				    height: 60px;
+				    margin-top: 12px;
 			}
 		</style>
 	</head>
@@ -103,57 +149,64 @@
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" class="siz">
-    		<div class="modal-dialog modal-sm siz">
+    		<div class="modal-dialog modal-sm siz modaltop">
     		    <div class="modal-content">
-        		    <div class="modal-header">
-            		    <button type="button" class="close radius" data-dismiss="modal" aria-label="Close">
+        		    <div class="modal-header hheader">
+            		    <button type="button" class="close radius" data-dismiss="modal" aria-label="Close" class="btn btn-primary">
 	                    <span aria-hidden="true" class="radius"/>&times;</span></button>
 		                <h4 class="modal-title">약관동의</h4>
     		        </div>
             	<div class="modal-body">
             		<div id="updown">
             			<div>
-            				<p>다방 서비스 약관 동의 <span>(필수)</span></p>
+            				<p class="p">다방 서비스 약관 동의 <span>(필수)</span></p>
+            				<img src="../main/ma_assets/ma_img/cak.PNG" id="img" />
 		                	<div class="whp">
 		                		<div class="whc">
-		                			<div>
-			                			<h3>제 1조 (약관 적용 목적)</h3>
-			                			<svg width="30" height="30" viewBox="0 0 31 31">
-			                				<g fill="none" fill-rule="evenodd"><g>
-			                					<circle class="Circle__fill" cx="15.5" cy="15.5" r="15.5"></circle>
-			                					<circle class="Circle__border" cx="15.5" cy="15.5" r="14.9" stroke-width="1.2"></circle>
-			                				</g>
-			                				<path class="Circle__check" stroke-width="2.4" d="M7.154 15.369l6.027 6.027L23.846 10.73"></path>
-			                				</g>
-			                				</svg>
-			                		</div>
-		                			<img alt="" src="">
-		                			<p class="whcbox"> 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조  1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조  1조 </p>
+			                			<h5>제 1조 (약관 적용 목적)</h5>
+		                			<p class="whcbox"> 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 </p>
 		                		</div>
 		                	</div>
 		            	</div>
 		            	<div>
-            				<p>다방 서비스 약관 동의 <span>(필수)</span></p>
+            				<p class="p">다방 서비스 약관 동의 <span>(필수)</span></p>
+            				<img src="../main/ma_assets/ma_img/check.png" id="img" />
 		                	<div class="whp">
 		                		<div class="whc">
 		                			<h3>제 1조 (약관 적용 목적)</h3>
-		                			<p class="whcbox">아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네 아리아리랑 스리스리랑 아라리가 났네</p>
+		                			<p class="whcbox"> 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 </p>
+		                		</div>
+		                	</div>
+		            	</div>
+		            	<div>
+            				<p class="p">다방 서비스 약관 동의 <span>(필수)</span></p>
+            				<img src="/ma_assets/ma_img/cak.PNG" id="img" /> 
+		                	<div class="whp">
+		                		<div class="whc">
+		                			<h3>제 1조 (약관 적용 목적)</h3>
+		                			<p class="whcbox"> 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 1조 </p>
 		                		</div>
 		                	</div>
 		            	</div>
 		        	</div>
+		        	<div class="lnMlai">
+		        		<label>
+		        			<p class="all">모두 동의합니다</p>
+		        			<img src="ma_assets/ma_img/cak.PNG" />
+		        		</label>
+		        	</div>
 		        </div>
-		        <div>
-		        	<button>이메일 회원가입</button>
+		        <div class="modal-fet">
+		        	<button class="joinbutton btn btn-colordown">확인</button>
 		        </div>
             </div>
         </div>
 
 		<!-- Javascript -->
-		<script src="assets/js/jquery-1.10.2.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-  			$(function () {
+  			
     		    
 		</script>
 	</body>
