@@ -177,8 +177,10 @@ div >div> div> p span {
 		<div id="bottom">
 			<p class="team">이젠 1조</p>
 			<p>
-				<span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span> <span class="blank">주소
-					: 어쩌구</span>
+			<span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span> <br /> <span>주소:
+			서울특별시 서초구 서초대로 77길 54 서초더블유 타워13층</span> <br /> <span class="tel">고객센터:02-532-6500</span>
+		<br /> <span class="min_t">사이트에 대한 문의사항은 aaa@gmail.com으로
+			부탁드립니다.</span>
 			</p>
 		</div>
 	</div>
