@@ -8,8 +8,6 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="../assets/header_white.css" />
-<link rel="stylesheet" type="text/css" href="../assets/footer_black.css" />
 <link rel="stylesheet" type="text/css" href="ma_assets/ma_main.css">
 
 </head>
