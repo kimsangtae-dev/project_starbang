@@ -1,97 +1,188 @@
 @charset "utf-8";
 
+/** 맨 위 상단의 약관동의 s */
+.modal-title {
+	font-size: 22px;
+	font-weight: bold;
+	padding-left: 13px;
+	padding-top: 5px;
+}
+
+.radius {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+/** 박스 보더 제거 s */
+.modal-content {
+	border-radius: 0px;
+	height : 800px;
+}
+
+/** 동의박스 제어 s */
+.agpbox {
+	padding-bottom: 30px;
+}
+
+.agpbox > #check1 {
+	width : 30px;
+	height : 30px;
+	float : right;
+}
+
+#lnMlai > #check2 {
+	width : 30px;
+	height : 30px;
+}
+
+.p3 {
+    font-size: 13px;
+	margin: 0.0px 0.0px 0.0px 0.0px;
+    line-height: 20px;
+    color: #212121;
+    -webkit-text-stroke: #212121;
+}
+span.s1 {
+    font-kerning: none;
+}
+.p1 {
+    font-size: 14px;
+}
+
+.ul1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+li.li3, li.li5 {
+    font-size: 13px;
+    margin: 0.0px 0.0px 5.0px 0.0px;
+    color: #212121;
+    -webkit-text-stroke: #212121;
+}
+
+
+/** 회색박스 속 폰트 제어*/
+.whcbox {
+	font-size: 13px;
+	margin: 0.0px 0.0px 0.0px 0.0px;
+    line-height: 20px;
+    color: #212121;
+    -webkit-text-stroke: #21212
+}
+
+.whc > b {
+	margin-bottom : 20px;
+}
+
+/** 회색박스 여백 제어 */
+.lReCa {
+    width: 100%;
+    height: 120px;
+    background-color: rgb(244, 244, 244);
+    padding: 15px 0px 15px 15px;
+    white-space: nomal;
+	overflow-y: scroll;
+}
+
 .siz {
-				width: 540px;
-				height: 520px;
-			}
+	width: 540px;
+	height: 520px;
+}
 
-			/** 닫는 버튼 동그라미로 */
-			.radius {
-				border-radius: 50%;
-				border: 1px black; 
-				background-color: #fff;
-			}
+/** 닫는 버튼 동그라미로 */
+.radius {
+	border-radius: 50%;
+	border: 1px black;
+	background-color: #fff;
+}
 
-			.modal-body {
-				position: relative;
-				padding: 0 15px 15px 15px; 
-			}
+.modal-body {
+	position: relative;
+	padding: 0 15px 15px 15px;
+}
 
-			p {
-				display: inline-block;
-				width: 100px;
-				height: 20px;
-			}
+p {
+	display: inline-block;
+	height: 20px;
+}
 
-			#pin1, #pin2, #pin3 {
-				width: 90px;
-			}
+#pin1, #pin2, #pin3 {
+	width: 90px;
+}
 
-			#updown {
-				margin: 15px;
+#updown {
+	margin: 15px;
+}
 
-			}
+#downp {
+	width: 400px;
+}
 
-			#downp {
-				width: 400px;
-			}
-			
-			/** */
-			
-			.p {
-				display: inline-black;
-				width: 300px;
-				margin-top: 10px;
-			}
-			
-			span {
-				color: blue;
-				display: inline-black;
-			}
-			
-			.whp {
-				width: 500px;
-				height: 300px;
-				overflow-y: scroll;
-				background-color: #eee;
-			}
-			
-			.lnMlai {
-				width: 100%;
-				height:45px;
-				text-align: center;
-			}
-			
-			.modal-fet .joinbutton {
-				width: 610px;
-				height: 
-			}
-			
-			.modal-fet .btn-colordown {
-				color: white;
-				background-color: blue;
-			}
-			
-			#img {
-				margin-left: 150px;
-			}
-			
-			p {
-				font-size: 15px;
-			}
+/** */
+.p {
+	display: inline-black;
+	width: 300px;
+	margin-top: 10px;
+}
 
-			/** 모두 동의합니다 */
-			.all {
-				width: 110px;
-			}
-			
-			/** 모델창 위치 */
-			.modaltop {
-				margin: 60px auto;
-			}
+span {
+	color: rgb(57, 107, 243);
+	display: inline-black;
+}
 
-			/** 회원가입 높이 */
-			.hheader {
-				    height: 60px;
-				    margin-top: 12px;
-			}
+.whp {
+	width: 480px;
+	height: 120px;
+	white-space: nomal;
+	overflow-y: scroll;
+	background-color: #eee;
+}
+
+#lnMlai {
+	width: 100%;
+	height: 45px;
+	text-align: center;
+}
+
+.modal-fet .joinbutton {
+	width: 610px;
+	height:
+}
+
+.modal-fet .btn-colordown {
+	color: white;
+	font-size: 17px;
+	background-color: rgb(26, 90, 232);
+	width : 540px;
+	height: 70px;
+	border-radius: none;
+	position : relative;
+	right : 1px;
+	top: 10px;
+}
+
+#img {
+	margin-left: 150px;
+}
+
+p {
+	font-size: 15px;
+}
+
+/** 모두 동의합니다 */
+.all {
+	width: 110px;
+	margin: auto;
+}
+
+/** 모델창 위치 */
+.modaltop {
+	margin: 60px auto;
+}
+
+/** 회원가입 높이 */
+.hheader {
+	height: 80px;
+	margin-top: 12px;
+}
