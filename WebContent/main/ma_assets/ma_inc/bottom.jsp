@@ -23,17 +23,7 @@
 	border-bottom: 1px solid rgb(69, 69, 69);
 }
 
-#top a{
-	font-size: 13px;
-	color: rgb(144, 144, 144);
-	display: inline-block;
-}
-#top h1{
-	font-size: 13px;
-	color: rgb(144, 144, 144);
-	display: inline-block;
-}
-#top span {
+#top *{
 	font-size: 13px;
 	color: rgb(144, 144, 144);
 	display: inline-block;
@@ -136,7 +126,7 @@
 	padding-top: 29px;
 }
 
-#buttom p {
+#bottom p {
 	text-align: left;
 	font-size: 12px;
 	color: rgb(144, 144, 144);
@@ -152,9 +142,7 @@
 #bottom .blank {
 	margin-left: 10px;
 }
-div >div> div> p span {
-	color :white;
-}
+
 </style>
 <!-- 하단 영역 -->
 <div id="footer">
