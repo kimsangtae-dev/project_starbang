@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @charset "utf-8";
 
 #out {
@@ -31,45 +33,55 @@
 			.blue {
 				color: #0099FF;
 			}
-			
+						
 			/* 입력받은 값 공간 */
-			.textcontent input{
-				margin-top: 10px;
-				margin-bottom: 10px;
-				margin-left: -90px;
-				height: 40px;
-				width: 500px;
-				text-align: left;
+			.h31 {
+				font-size: 18px;
+				font-weight: 100;
+				margin: 5px 5px 5px -530px;
 			}
 			
-			.textcontent h3 {
-				height: 30px;
-				width: 80px;
-				margin-bottom: -8px;
+			.h32 {
+				font-size: 18px;
+				font-weight: 100;
+				margin: 5px 5px 5px -515px;
 			}
 			
-			.textcontent button {
-				height: 40px;
-				width: 50px;
+			.h33 {
+				font-size: 18px;
+				font-weight: 100;
+				margin: 5px 5px 5px -510px;
 			}
 			
-			.pwd {
-				margin-top: 10px;
-				margin-bottom: 10px;
+			.h34 {
+				font-size: 18px;
+				font-weight: 100;
+				margin: 5px 5px 5px -510px;
 			}
-
+			
 			input {
-				width: 270px;
+				width: 600px;
+				height: 40px;
+				margin: 5px;
 			}
-
+			
+			.pon {
+				display: inline-block;
+				width: 160px;
+				margin: 5px;
+			}
+			
+			.ponbutton {
+				width: 60px;
+				height: 40px;
+				margin: 5px;
+				font-size: 15px;
+				text-align: center;
+			}
+			
 			/* input박스 클릭시 파랑색 테두리 없애기 */
 			.focus:focus {
 				outline: none;
-			}
-
-			#pon1, #pon2, #pon3 {
-				width: 60px;
-				text-align: center;
 			}
 
 			#content {
@@ -78,7 +90,6 @@
 				padding: 0px;
 			}
 			
-
 			#submit {
 				background-color: blue;
 				color: white;
@@ -99,11 +110,14 @@
 			#div2 img {
 				margin: 10px;
 			}
-
-			#pwd1 {
-				margin-bottom: 3px;
+			
+			/** 회원가입 버튼 공간 */
+			.rhdrks {
+				display: block;
+				height: 10px;
 			}
-
-			#pwd2 {
-				margin-bottom: 3px;
+			
+			.rhdrks2 {
+				display: block;
+				height: 15px;
 			}
