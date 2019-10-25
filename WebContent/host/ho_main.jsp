@@ -48,7 +48,7 @@
 
 #root {
     background-color: rgb(67, 131, 255);
-    /*background: url("https://t1.daumcdn.net/cfile/tistory/27532234572323F611") center center / cover no-repeat;*/
+    background: url("./ho_assets/ho_img/bghs.jpg") center center / cover no-repeat;
     background-size: cover;
     z-index: 3;
     width: auto;
@@ -114,9 +114,8 @@ img{
 
       /* body 전체 구성 설정 */
 #body {
-    min-height: 800px;
+    min-height: 630px;
     box-sizing: border-box;
-    height: 540px;
     padding-top: 165px;
     text-align: center;
 }
@@ -178,20 +177,7 @@ img{
 	<div id="root">
 		<!-- 상단 헤더 -->
 		<div id="header">
-			<div class="navbar" role="navigation">
-				<div class="leftf">
-					<a href="../main/ma_main.html"><img
-						src="../assets/ico/logo_white.png"></a>
-					<div class="menu-left">
-						<a href="../main/ma_main.html">회원사이트</a>
-					</div>
-				</div>
-				<!-- 메뉴 항목 -->
-				<div class="pull-right">
-					<a href="ho_rm_add.html">공실 등록하기</a> <a href="ho_rmli.jsp">공실관리</a>
-					<a href="../main/ma_login.html">로그인</a>
-				</div>
-			</div>
+        <%@ include file="ho_assets/ho_inc/ho_header.jsp" %> 
 		</div>
 		<!-- 중앙 영역 -->
 		<div id="body">
