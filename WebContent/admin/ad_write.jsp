@@ -13,9 +13,8 @@
 </head>
 
 <body>
-	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
+	<div class="root">
 		<!-- 상단 영역 -->
 		<%@ include file="ad_inc/header.jsp"%>
 		<!-- 중앙 영역 -->
@@ -27,7 +26,7 @@
 				<input type="text" class="form-control" placeholder=" 제목 : 자주묻는 질문 & 공지사항">
 			</div>  
 			<div class="input-group2">
-				<input type="text" class="form-control" placeholder=" 내용을 입력하세요">
+				<textarea class="form-control textli" style="resize: none;" placeholder=" 내용을 입력하세요."></textarea>
 			</div> 
 			<div class="btn1 text-center">
 				<button type="submit" class="btn btn-primary btn-lg">완료</button>
@@ -37,7 +36,7 @@
 	
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
-	</div>
+	</div> <!-- root 끝 -->
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>

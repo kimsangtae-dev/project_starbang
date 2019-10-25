@@ -13,14 +13,12 @@
 </head>
 
 <body>
-	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
+	<div class="root">
 		<!-- 상단 영역 -->
 		<%@ include file="ad_inc/header.jsp"%>
 		<!-- 중앙 영역 -->
 		<div id="content">
-			<div>
 			<div class="pick">
 				<span><h1>관리자 글수정</h1></span>
 			</div>
@@ -28,16 +26,16 @@
 				<input type="text" class="form-control" placeholder=" 제목 : [기존 게시물의 제목. 자주묻는 질문 & 공지사항]">
 			</div>  
 			<div class="input-group2">
-				<input type="text" class="form-control" placeholder=" 기존 게시물의 내용">
+				<textarea class="form-control textli" style="resize: none;" placeholder=" 기존 게시물의 내용?&#13;&#10; 글자수 제한 200자"></textarea>
 			</div> 
 			<div class="btn1 text-center">
 				<button type="submit" class="btn btn-primary btn-lg">완료</button>
+				<button type="submit" class="btn btn-warning btn-lg">취소</button>
 			</div> 
-		</div>
 		</div>
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
-	</div>
+	</div> <!-- root 끝 -->
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
