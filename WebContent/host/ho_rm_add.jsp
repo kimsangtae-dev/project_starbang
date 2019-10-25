@@ -24,6 +24,7 @@
 
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="ho_assets/ho_rm_add.css" />
 
 <!-- 반응형 웹을 지원하지 않을 경우 -->
 <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->

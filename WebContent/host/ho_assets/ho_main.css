@@ -5,9 +5,8 @@
 
 #root {
     background-color: rgb(67, 131, 255);
-    /*background: url("https://t1.daumcdn.net/cfile/tistory/27532234572323F611") center center / cover no-repeat;*/
+    background: url("ho_img/cp_architecture.jpg") center center / cover no-repeat;
     background-size: cover;
-    z-index: 3;
     width: auto;
 }
 
@@ -16,6 +15,8 @@ img{
     padding-bottom: 40px;
 
 }
+
+
 /* ---------------------------------------
  / 상단 부분
   ---------------------------------------- */
@@ -71,9 +72,8 @@ img{
 
       /* body 전체 구성 설정 */
 #body {
-    min-height: 800px;
+    min-height: 630px;
     box-sizing: border-box;
-    height: 540px;
     padding-top: 165px;
     text-align: center;
 }
@@ -117,7 +117,7 @@ img{
     text-align: center;
     line-height: 50px;
     box-shadow: rgba(16, 16, 16, 0.18) 0px 8px 19px 0px;
-    background-color: #FFE400;
+    background-color: rgb(81, 136, 244);
     text-decoration: none;
     border-width: 1px;
     border-style: solid;
@@ -125,66 +125,3 @@ img{
     border-radius: 5px;
 }
 
-/* ---------------------------------------
- / 하단 부분
-  ---------------------------------------- */
-
-      /* footer 전체 설정 */
-#footer {
-    border-top: solid 3px black;
-    vertical-align: baseline;
-    margin: 0px;
-    padding: 0px;
-    border-width: 0px;
-    width: 100%;
-    min-width: 1440px;
-    height: 253px;
-    background-color: white;
-}
-
-    /* footer 내 div 내용 크기 설정 */
-.footer-content {
-    box-sizing: border-box;
-    border-width: 0px;
-    height: 100%;
-    padding: 60px 180px;
-    margin: 0px auto;
-}
-
-    /* footer div내 h1요소 조정 */
-#footer>.footer-content>h1{
-    font-size:1.6em;
-    padding-bottom: 15px;
-}
-    /* 작은 소개글 요소 설정 */
-.min_t {
-    font-size: 12px;
-    color: gray;
-}
-    .last > li {
-        float: left;
-        list-style:none;
-    }
-
-    .last > li > a {
-        color: #888888;
-        font-size: 13px;
-        text-decoration: none;
-    }
-
-    .last > li + li::before {
-        content: "";
-        float: left;
-        height: 12px;
-        margin-left: 8px;
-        padding-left: 9px;
-        position: relative;
-        bottom: -3px;
-        border-left: 1px solid rgb(211, 211, 211);
-    }
-
-    .last::after {
-        display: block;
-        content: "";
-        clear: both;
-    }
