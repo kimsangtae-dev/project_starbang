@@ -19,20 +19,20 @@
 	<!--스크롤 발생 시 움직이는 파란색바 시작-->
 	<div id="bluebar">
 		<div id="lol">
-		<h1 class="textht pull-left texthth1">월세 200/30</h1>
-		<span class="glyphicon glyphicon glyphicon-star-empty textht2">0</span>
-		<span class="glyphicon glyphicon glyphicon-link textht3"></span> <a
-			href="#"><span
-			class="nowqt glyphicon glyphicon glyphicon-bullhorn pull-right "></span></a>	
-		<button type="submit" class="pull-right textht inbl">
+			<h1 class="textht pull-left texthth1">월세 200/30</h1>
+			<span class="glyphicon glyphicon glyphicon-star-empty textht2">0</span>
+			<span class="glyphicon glyphicon glyphicon-link textht3"></span> <a
+				href="#"><span
+				class="nowqt glyphicon glyphicon glyphicon-bullhorn pull-right "></span></a>
+			<button type="submit" class="pull-right textht inbl">
 				<span class="quest">문의하기</span>
-		</button>
-		<span class="textht pull-right skyblue lvc"> 조수민님</span> <span
-			class="textht pull-right lvc">방주인</span>
+			</button>
+			<span class="textht pull-right skyblue lvc"> 조수민님</span> <span
+				class="textht pull-right lvc">방주인</span>
 		</div>
 	</div>
 	<!--스크롤 발생 시 움직이는 파란색바 끝-->
-	
+
 	<!--별방 방찾기 헤더 끝-->
 	<!-- 중앙 영역 -->
 	<div id="content">
@@ -52,9 +52,42 @@
 				<li class="pull-right">
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
-					<button type="button" class="grml">
-						<span class="glyphicon glyphicon-envelope">문의하기</span>
+					<button type="button" class="btn btn-primary grml"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+						<span class="glyphicon glyphicon-envelope" >문의하기</span>
 					</button>
+					<!-- 모달창 구현 -->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="exampleModalLabel">문의하기</h4>
+								</div>
+								<div class="modal-body">
+									<form>
+										<div class="form-group">
+											<label for="recipient-name" class="control-label">받는사람:</label>
+											<input type="text" class="form-control" id="recipient-name">
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="control-label">문의내용:</label>
+											<textarea class="form-control" id="message-text"></textarea>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">닫기</button>
+									<button type="button" class="btn btn-primary">문의 보내기</button>
+								</div>
+							</div>
+						</div>
+					</div> <!-- modal내용 끝 -->
 				</li>
 			</ul>
 		</div>
@@ -175,11 +208,11 @@
 		</div>
 		<!--사용자 매물 설명 끝-->
 		<div id="smhead">
-		<div class="xOEdU">
-			<a class="eYDrrB">다방면 스코어</a> <a class="eYDrrB">가격정보</a> <a
-				class="eYDrrB">옵션</a> <a class="eYDrrB">위치</a> <a class="eYDrrB">인기매물</a>
+			<div class="xOEdU">
+				<a class="eYDrrB">다방면 스코어</a> <a class="eYDrrB">가격정보</a> <a
+					class="eYDrrB">옵션</a> <a class="eYDrrB">위치</a> <a class="eYDrrB">인기매물</a>
+			</div>
 		</div>
-	</div>
 		<div id="rader">
 			<!-- 다방면 스코어 시작-->
 			<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score"
@@ -372,20 +405,20 @@
 			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
 
 			<!-- 맵 api 시작-->
-			
-				<div id="map"></div>
+
+			<div id="map"></div>
 
 			<!-- 맵 api 끝-->
 			<!--위치 30미터 반경만 표시-->
 		</div>
 		<!-- 지도 끝 -->
-		</div> 
+	</div>
 
 	<!--매물 이미지 끝-->
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
-	
-	
+
+
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
@@ -410,34 +443,31 @@
 		/* kakao map API */
 		$(function() {
 			var container = document.getElementById('map');
-			
+
 			var options = {
 				center : new kakao.maps.LatLng(37.5025398, 127.0243207),
 				level : 3
 			};
 
 			var map = new kakao.maps.Map(container, options);
-	         
-	         var circle = new kakao.maps.Circle({
-	             center : new kakao.maps.LatLng(37.5025398, 127.0243207),  // 원의 중심좌표 입니다 
-	             radius: 30, // 미터 단위의 원의 반지름입니다 
-	             strokeWeight: 2, // 선의 두께입니다 
-	             strokeColor: '#1564f9', // 선의 색깔입니다
-	             strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-	             strokeStyle: 'solid', // 선의 스타일 입니다
-	             fillColor: '#1564f9', // 채우기 색깔입니다
-	             fillOpacity: 0.3  // 채우기 불투명도 입니다   
-	         });
-	         
-	         // 지도에 원을 표시합니다 
-	         circle.setMap(map);
+
+			var circle = new kakao.maps.Circle({
+				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다 
+				radius : 30, // 미터 단위의 원의 반지름입니다 
+				strokeWeight : 2, // 선의 두께입니다 
+				strokeColor : '#1564f9', // 선의 색깔입니다
+				strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+				strokeStyle : 'solid', // 선의 스타일 입니다
+				fillColor : '#1564f9', // 채우기 색깔입니다
+				fillOpacity : 0.3
+			// 채우기 불투명도 입니다   
+			});
+
+			// 지도에 원을 표시합니다 
+			circle.setMap(map);
 		})
-		
+
 		var map = new kakao.maps.Map(container, options);
-         
-		
-         
-		
 	</script>
 </body>
 </html>
