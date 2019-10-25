@@ -5,8 +5,8 @@
   ---------------------------------------- */
 
     /* head 부분 크기 설정 */
-    #admin{
-    min-width:2000px;
+#admin{
+    width:auto;	
     }
 .header{
 	margin:auto;

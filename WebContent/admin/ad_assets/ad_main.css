@@ -1,7 +1,11 @@
 @charset "utf-8";
 
+#ad_main{
+	min-width:auto;
+}
   /* ---------------------------------------
  / 상단 부분
+
   ---------------------------------------- */
 
 /* head 부분 크기 설정 */
@@ -37,13 +41,11 @@
 }
 /* 본문 크기 및 위치 설정 div 가운데 정렬 */
 #content{
-
     width:auto;
-    text-align: center;
-    display: inline;
 }
 #content > div {
-    width:1500px;
+	margin:auto;
+	width: 800px;
     padding-top: 60px;
 }
 
@@ -67,12 +69,16 @@
     height: 200px;
     border-radius: 5px;
 }
+#dLabel > span:nth-child(1){
+	padding-left:40px;
+}
 #content > div > div>a{
     text-decoration: none;
     color:white;
     display: block;
     padding-top: 80px;
 }
+
 #content > div > div >ul{
     width: 200px;
 }
