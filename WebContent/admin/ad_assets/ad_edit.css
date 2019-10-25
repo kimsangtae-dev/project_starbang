@@ -30,10 +30,21 @@
 		padding-bottom: 25px;
 	}
 
-	#content .input-group2 input {
+	#content .input-group2 textarea {
+		width: 600px;
 		height: 300px;
 	}
 
 	#content .btn1 {
 		padding-top: 25px;
 	}
+
+	/** 버튼 부분 */
+	#content .btn1 {
+		padding-top: 25px;
+	}
+
+	#content .btn {
+		margin-right: 10px;
+	}
+
