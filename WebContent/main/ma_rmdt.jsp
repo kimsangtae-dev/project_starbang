@@ -410,13 +410,34 @@
 		/* kakao map API */
 		$(function() {
 			var container = document.getElementById('map');
+			
 			var options = {
 				center : new kakao.maps.LatLng(37.5025398, 127.0243207),
 				level : 3
 			};
 
 			var map = new kakao.maps.Map(container, options);
+	         
+	         var circle = new kakao.maps.Circle({
+	             center : new kakao.maps.LatLng(37.5025398, 127.0243207),  // 원의 중심좌표 입니다 
+	             radius: 30, // 미터 단위의 원의 반지름입니다 
+	             strokeWeight: 2, // 선의 두께입니다 
+	             strokeColor: '#1564f9', // 선의 색깔입니다
+	             strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	             strokeStyle: 'solid', // 선의 스타일 입니다
+	             fillColor: '#1564f9', // 채우기 색깔입니다
+	             fillOpacity: 0.3  // 채우기 불투명도 입니다   
+	         });
+	         
+	         // 지도에 원을 표시합니다 
+	         circle.setMap(map);
 		})
+		
+		var map = new kakao.maps.Map(container, options);
+         
+		
+         
+		
 	</script>
 </body>
 </html>
