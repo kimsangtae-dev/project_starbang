@@ -2,6 +2,9 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <!-- 헤더 -->
 <style>
+/*-----a 태그 클릭시 점선 테두리 없애기 -----*/
+a:focus{outline:none;}
+
 /* ------------------------------------------
 |   헤더
 ------------------------------------------- */
@@ -30,7 +33,7 @@
 /* 헤더 - 왼쪽 홈 링크 */
 .header-div1-a {
     width: 52.44px;
-    height: 45px;
+    height: 25px;
     position: absolute;
     top: 5px;
     left: 40px;
@@ -59,6 +62,10 @@
     list-style:none;
 }
 
+.header-div2-ul>li>p >a{
+text-decoration:none;
+color:white;
+}
 /* 헤더 - 탭 내부 - p */
 .header-div2-p {
     display: inline;
@@ -151,13 +158,13 @@
                         <div class="header-div2"><a href="../main/ma_main.html">회원사이트</a></div> -->
 			<ul class="header-div2-ul">
 				<li>
-					<p class="header-div2-p">방주인 소개</p>
+					<p class="header-div2-p"><a onfocus="blur()" href="#">방주인소개</a></p>
 				</li>
 				<li>
-					<p class="header-div2-p">공실 등록하기</p>
+					<p class="header-div2-p"><a onfocus="blur()" href="ho_rm_add.jsp">공실 등록하기</a></p>
 				</li>
 				<li>
-					<p class="header-div2-p">공실관리</p>
+					<p class="header-div2-p"><a onfocus="blur()" href="ho_rmli.jsp">공실관리</a></p>
 				</li>
 			</ul>
 			<!-- 드롭박스 -->
