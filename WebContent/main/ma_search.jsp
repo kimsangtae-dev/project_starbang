@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -22,8 +23,11 @@
 		<div id="content">
 			<div id="search" class="clearfix">
 				<div class="searchtab">
-					<input type="text" placeholder="검색바" /> <i
-						class="glyphicon glyphicon-search"></i>
+					<form id="search-form">
+						<input type="text" placeholder="검색바" name="search" /><i
+							class="glyphicon glyphicon-search"></i>
+						<button type="submit"></button>
+					</form>
 				</div>
 				<!-- 전체 필터 -->
 				<div class="filters clearfix">
@@ -202,7 +206,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -229,7 +233,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -256,7 +260,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -283,7 +287,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -311,7 +315,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -338,7 +342,7 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
@@ -365,18 +369,17 @@
 										<div class="recent-div6">
 											<!-- 좋아요 버튼 -->
 											<div class="recent-div7">
-												<div class="recent-div8"></div>
+												<div class="recent-div8 off" data-value="on"></div>
 											</div>
 											<!-- 좋아요 끝 -->
 											<!-- 전체 링크화 -->
 											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
 												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
+												<div class="recent-a-div"></div> <!-- 확인매물 div --> <!-- <div class="recent-a-confirm">
 													<div class="recent-a-confirm-div">
 														<span class="bold">확인매물</span> <span>19.09.25</span>
 													</div>
-												</div> <!-- 확인매물 끝 -->
+												</div> --> <!-- 확인매물 끝 -->
 												<p class="recent-a-p1">투룸</p>
 												<p class="recent-a-p2">
 													<span>전세 1억4000</span>
@@ -429,7 +432,8 @@
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
 	<script src="../assets/plugin/ion.rangeSlider.js"></script>
 	<script type="text/javascript">
 		/* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
@@ -446,8 +450,14 @@
 				contentSize();
 			});
 		});
+
+		$(function() {
+			$(".recent-div8").click(function(e) {
+				$(this).toggleClass('on off');
+			})
+		})
 	</script>
-	
+
 	<!-- 지도 api -->
 	<script type="text/javascript">
 		/* kakao map API */
@@ -455,44 +465,80 @@
 			var container = document.getElementById('map');
 			var options = {
 				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 지도의 중심 좌표
-				level : 9	// 지도 확대 레벨
+				level : 9 // 지도 확대 레벨
 			};
 
 			var map = new kakao.maps.Map(container, options);
-			
-			 // 마커 클러스터러를 생성합니다 
-		    var clusterer = new kakao.maps.MarkerClusterer({
-		        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-		        averageCenter: false, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-		        minLevel: 1, // 클러스터 할 최소 지도 레벨 
-		        styles: [{ // calculator 각 사이 값 마다 적용될 스타일을 지정한다
-	                minWidth: '40px', height : '40px',
-	                padding: '5px 11px',
-	                background: 'rgb(20, 118, 252)',
-	                borderRadius: '40px',
-	                border: '3px solid rgb(20, 118, 252)',
-	                color: '#fff',
-	                fontSize: '13px',
-	                textAlign: 'center',
-	                fontWeight: 'bold',
-	                lineHeight: '24px'
-	            }]
-		    });
-		    
-		    // 데이터 가져오기
-		    $.get("ma_assets/address.json", function(data) {
-		    	 var markers = $(data.positions).map(function(i, position) {
-		             return new kakao.maps.Marker({
-		                 position : new kakao.maps.LatLng(position.lat, position.lng)
-		             });
-		         });
-		    	 
-		    	// 클러스터러에 마커들을 추가합니다
-		        clusterer.addMarkers(markers);
-		    })
+
+			// 마커 클러스터러를 생성합니다 
+			var clusterer = new kakao.maps.MarkerClusterer({
+				map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+				averageCenter : false, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+				minLevel : 1,	// 클러스터 할 최소 지도 레벨 
+				styles : [ {	// calculator에 적용될 스타일
+					minWidth : '40px',
+					height : '40px',
+					padding : '5px 11px',
+					background : 'rgb(20, 118, 252)',
+					borderRadius : '40px',
+					border : '3px solid rgb(20, 118, 252)',
+					color : '#fff',
+					fontSize : '13px',
+					textAlign : 'center',
+					fontWeight : 'bold',
+					lineHeight : '24px'
+				} ]
+			});
+
+			// 데이터 가져오기
+			$.get("ma_assets/address.json", function(data) {
+				var markers = $(data.positions).map(
+						function(i, position) {
+							return new kakao.maps.Marker({
+								position : new kakao.maps.LatLng(position.lat,
+										position.lng)
+							});
+						});
+
+				// 클러스터러에 마커들을 추가합니다
+				clusterer.addMarkers(markers);
+			})
+
+			// 검색값 가져와서 지도 위치 변경하기
+			$("#search-form").submit(function(e) {
+				e.preventDefault();
+				
+				// 장소 검색 객체 생성
+				var ps = new kakao.maps.services.Places();
+				// input값 가져오기
+				var value = $('input[name=search]').val();
+				
+				// 키워드로 장소 검색
+				ps.keywordSearch(value, placesSearchCB);
+				
+				// 키워드 검색 완료 시 호출되는 콜백함수
+				function placesSearchCB(data, status, pagination) {
+					if (status === kakao.maps.services.Status.OK) {
+
+						// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+						// LatLngBounds 객체에 좌표 추가
+						var bounds = new kakao.maps.LatLngBounds();
+
+						for (var i = 0; i < data.length; i++) {
+							/* displayMarker(data[i]); */
+							bounds.extend(new kakao.maps.LatLng(
+									data[i].y, data[i].x));
+						}
+
+						// 검색된 장소 위치를 기준으로 지도 범위 재설정
+						map.setBounds(bounds);
+					}
+				}
+			})
+
 		})
 	</script>
-	
+
 	<!-- 필터 -->
 	<script type="text/javascript">
 		/* 필터 -드롭다운 - 자동 toggle 해제 */

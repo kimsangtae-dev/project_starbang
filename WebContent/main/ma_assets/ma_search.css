@@ -56,6 +56,8 @@ body > div { height: 100%; overflow: hidden; }
     transform: translateY(-50%);
 }
 
+#search .searchtab button { display: none; }
+
 /* 필터 */
 /* 필터 위치, 여백 */
 #search .filters { margin-top: 15.5px; }
@@ -319,8 +321,11 @@ body > div { height: 100%; overflow: hidden; }
     width: 32px;
     height: 30px;
     margin: 0px auto;
-    background: url(ma_img/like.svg) center center / cover;
-}  
+    /* background: url(ma_img/like.svg) center center / cover; */
+}
+
+.recent-div8.off{ background: url(ma_img/like.svg) center center / cover; }
+.recent-div8.on{ background: url(ma_img/like-on.svg) center center / cover; }
 
 /* <a> 태그 */
 .recent-a{
