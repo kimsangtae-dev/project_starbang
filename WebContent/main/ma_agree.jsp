@@ -40,7 +40,7 @@
 					<div id="updown">
 						<div class="agpbox">
 							<p class="p">
-								다방 서비스 약관 동의 <span>(필수)</span>
+								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
 							<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
 							<div class="lReCa">
@@ -571,7 +571,7 @@
 						<!--  -->
 						<div class="agpbox">
 							<p class="p">
-								개인정보 처리방침 <span>(필수)</span>
+								개인정보 처리방침 <span id="ftcl">(필수)</span>
 							</p>
 							<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
 							<div class="lReCa">
@@ -592,9 +592,9 @@
 							</div>
 						</div>
 						<!--  -->
-						<div class="agpbox">
+						<div class="agpbox pad">
 							<p class="p">
-								마케팅 정보 수신에 대한 동의 <span>(선택)</span>
+								마케팅 정보 수신에 대한 동의 <span id="ftcl">(선택)</span>
 							</p>
 							<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
 							<div class="lReCa">
