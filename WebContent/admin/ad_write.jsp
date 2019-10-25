@@ -52,6 +52,7 @@
         $('#counter').html("(200 / 최대 200자)");
     	}
 	});
+	</script>
 
 </body>
 </html>
