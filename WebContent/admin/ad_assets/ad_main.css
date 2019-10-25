@@ -22,7 +22,7 @@
     position: absolute;
     width:350px;
     height:100px;
-    left: 280px;
+    left: 250px;
     top: 160px;
     border-bottom : solid 2px gray;
 }
@@ -36,7 +36,7 @@
     position: absolute;
     top: 16px;
     left: 100px;
-    font-size:1.8em;
+    font-size:1.7em;
     margin-top: 40px;
 }
 /* 본문 크기 및 위치 설정 div 가운데 정렬 */
@@ -46,7 +46,7 @@
 #content > div {
 	margin:auto;
 	width: 900px;
-    padding-top: 60px;
+    padding-top: 15px;
 }
 
 /* 부트스트랩 컴포넌트 사용으로 인한 버튼 추가 설정 */
