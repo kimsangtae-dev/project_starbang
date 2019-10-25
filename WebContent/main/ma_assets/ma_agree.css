@@ -16,7 +16,7 @@
 /** 박스 보더 제거 s */
 .modal-content {
 	border-radius: 0px;
-	height : 800px;
+	height : 774px;
 }
 
 /** 동의박스 제어 s */
@@ -24,12 +24,16 @@
 	padding-bottom: 30px;
 }
 
+.pad {
+	padding-bottom: 0px;
+}
+
 .agpbox > #check1 {
 	width : 30px;
 	height : 30px;
 	float : right;
 }
-
+/** 동의하기 체크 이미지*/
 #lnMlai > #check2 {
 	width : 30px;
 	height : 30px;
@@ -119,14 +123,13 @@ p {
 	width: 400px;
 }
 
-/** */
 .p {
 	display: inline-black;
 	width: 300px;
 	margin-top: 10px;
 }
 
-span {
+#ftcl {
 	color: rgb(57, 107, 243);
 	display: inline-black;
 }
@@ -150,15 +153,17 @@ span {
 	height:
 }
 
+.btn {
+	border-radius: 0px;
+}
+
 .modal-fet .btn-colordown {
 	color: white;
 	font-size: 17px;
 	background-color: rgb(26, 90, 232);
-	width : 540px;
+	width : 538px;
 	height: 70px;
-	border-radius: none;
 	position : relative;
-	right : 1px;
 	top: 10px;
 }
 
@@ -174,6 +179,7 @@ p {
 .all {
 	width: 110px;
 	margin: auto;
+	
 }
 
 /** 모델창 위치 */
