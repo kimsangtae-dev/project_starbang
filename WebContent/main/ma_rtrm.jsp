@@ -7,15 +7,17 @@
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="../assets/header_white.css">
     <link rel="stylesheet" type="text/css" href="../assets/footer_black.css">
     <link rel="stylesheet" type="text/css" href="ma_assets/ma_rtrm.css">
 </head>
 
 <body>
-	<!-- 상단 헤더 -->
-	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
+	<!-- 브라우저에 보여질 부분 -->
+	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
+	<div>
+		<!-- 상단 헤더 -->
+		<%@ include file="./ma_assets/ma_inc/top.jsp"%>
 	
 	<!-- 중앙 영역 -->
       <div id="content">
