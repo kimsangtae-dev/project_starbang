@@ -11,11 +11,16 @@
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="ho_assets/ho_rmli.css" />
-<link rel="stylesheet" type="text/css" href="ho_assets/ho_common.css" />
 
 </head>
 
 <body>
+<style>
+/* 헤더 */
+.header-nav {
+    background-color: rgb(81, 136, 244);
+}
+</style>
 <div id="root">
     <div class="box">
         <!-- 헤더 -->

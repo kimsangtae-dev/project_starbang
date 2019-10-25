@@ -12,19 +12,17 @@
 <link rel="shortcut icon" href="assets/ico/logo_bb.png" />
 <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
 
+<!-- bootstrap -->
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+
 <!-- reset.css -->
 <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-
-<!-- bootstrap -->
-<link rel="stylesheet" type="text/css"
-	href="../assets/css/bootstrap.min.css" />
 
 <!-- 나눔고딕 웹 폰트 적용 -->
 <link rel="stylesheet" type="text/css"
 	href="../assets/css/nanumfont.css" />
 
 <!-- css 적용 -->
-<!--<link rel="stylesheet" type="text/css" href="ho_assets/ho_main.css">  -->
 
 <!-- 반응형 웹을 지원하지 않을 경우 -->
 <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
@@ -50,7 +48,7 @@
     background-color: rgb(67, 131, 255);
     background: url("./ho_assets/ho_img/bghs.jpg") center center / cover no-repeat;
     background-size: cover;
-    z-index: 3;
+    z-index: 2;
     width: auto;
 }
 
@@ -59,6 +57,8 @@ img{
     padding-bottom: 40px;
 
 }
+
+
 /* ---------------------------------------
  / 상단 부분
   ---------------------------------------- */
@@ -159,7 +159,7 @@ img{
     text-align: center;
     line-height: 50px;
     box-shadow: rgba(16, 16, 16, 0.18) 0px 8px 19px 0px;
-    background-color: #FFE400;
+    background-color: rgb(81, 136, 244);
     text-decoration: none;
     border-width: 1px;
     border-style: solid;
@@ -198,6 +198,18 @@ img{
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(function () {
+        $(".header-dropbox").hover(function() {
+            $(this).toggleClass('header-dropbox header-dropbox-open')
+        });
+
+        $(".isroom-dropdown-closed").click(function() {
+            $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
+        });
+    });
+
+</script>
 </body>
 
 </html>
