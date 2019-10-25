@@ -8,7 +8,7 @@
 <title>Main</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="assets/ico/logo_bb.png" />
+<link rel="shortcut icon" href="../assets/ico/logo_bb.png" />
 <link rel="apple-touch-icon-precomposed"
 	href="../assets/ico/logo_bb.png" />
 
