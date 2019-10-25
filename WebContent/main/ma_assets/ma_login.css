@@ -1,11 +1,9 @@
 @charset "utf-8";
 
 
-	/*모달구현*/
-    .modal-dialog {
-		width: 420px;
-		margin: 8% auto 0px;
-	}
+    /* -----------------------------------------
+    |   Modal
+    ------------------------------------------ */
 
 	/* .modal-content의 div*/
     .modal-content {
@@ -17,16 +15,17 @@
 	 	z-index: 1001;
 	 	margin: 0 auto;
 	 	transition: width 300ms ease-in-out 0s;
+	 	margin-top: 8%;
     }
 
-   /* -----------------------------------------
-   |   Modal-로그인 창 내용
-   ------------------------------------------ */
+    /* -----------------------------------------
+    |   Modal-로그인 창 내용
+    ------------------------------------------ */
 
-   /* -----------------------------------------
-   |   닫기버튼
-   ------------------------------------------ */
-    .eYCiCi {
+    /* -----------------------------------------
+    |   닫기버튼
+    ------------------------------------------ */
+    .btnclose {
  	   	width: 30px;
  	   	height: 30px;
  	   	background-color: transparent ;
@@ -39,7 +38,7 @@
  	   	border-image: initial;
     }
    
-    .eYCiCi > svg {
+    .btnclose > svg {
  	   position: absolute;
  	   top: 0px;
  	   left: 0px;
@@ -56,7 +55,7 @@
  	   transform: translate(1, 1);
     }
    
-    .eYCiCi > svg .Circle {
+    .btnclose > svg .Circle {
  	   fill: rgb(255, 255, 255);
  	   stroke: rgb(151, 151, 151);
  	   opacity: 0.3;
@@ -68,15 +67,15 @@
 	    r: 15;
     }
    
-	.eYCiCi > svg .Close {
+	.btnclose > svg .Close {
 	 stroke: rgb(35, 45, 74);
 	}
 	
-	.eYCiCi > svg .Close {
+	.btnclose > svg .Close {
 	 stroke: rgb(35, 45, 74);
 	}
 	
-	.eYCiCi > svg:hover .Circle {
+	.btnclose > svg:hover .Circle {
 	 opacity: 0.6;
 	}
 
@@ -190,6 +189,7 @@
 	    color: rgb(136, 136, 136);
 	    font-size: 14px;
 	    line-height: 22px;
+	    font-weight: 500;
     }
 
    /* ------------------------------------------
@@ -213,11 +213,12 @@
 	   height:60px; 
 	   background-color: rgb(26, 90, 232); 
 	   border:0; 
-	   color:white;
+	   
 	}
 
 	.login-button > span {
 		font-weight: 500;
+		color:white !important;
 	}
 
    /* -----------------------------------------

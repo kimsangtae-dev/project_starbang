@@ -1,53 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>modal</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 
-        <!-- 모바일 웹 페이지 설정 -->
-        <link rel="shortcut icon" href="assets/ico/logo_bb.png" />
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/logo_bb.png" />
+<head>
+	<link rel="stylesheet" type="text/css" href="ma_assets/ma_login.css">
+</head>
 
-        <!-- bootstrap -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-
-        <!-- reset.css -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-        
-        <!-- 나눔고딕 웹 폰트 적용 -->
-        <link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
-
-        <!-- style 적용 -->
-        <link rel="stylesheet" type="text/css" href="ma_assets/ma_login.css" />
-
-        <!-- 반응형 웹을 지원하지 않을 경우 -->
-        <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
-
-        <!-- IE8 이하 버전 지원 -->
-        <!--[if lt IE 9]>
-        <script type="text/javascript" src="assets/js/html5shiv.js"></script>
-        <script type="text/javascript" src="assets/js/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- IE10 반응형 웹 버그 보완 -->
-        <!--[if gt IE 9]>
-        <link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-        <script type="text/javascript" src="assets/js/ie10.js"></script>
-        <![endif]-->
-
-    </head>
-
-<body>
-    <!-- modal -->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <!-- modal-dialog -->
-        <div class="modal-dialog">
-            <!-- modal-content -->
-            <div class="modal-content" style="width:420px;" data-dismiss="modal">
+			<div class="modal-content">
                 <!-- 닫기버튼 -->
-                <button class="styled__CloseBtn-sc-1lg6dnp-3 eYCiCi">
+                <button class="btnclose"  data-dismiss="modal">
                 	<svg width="30" height="30" viewBox="0 0 32 32">
                 		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
                 			<circle class="Circle" cx="15" cy="15" r="15"></circle>
@@ -76,7 +36,7 @@
                 	                <p class="checkbox-p">아이디 저장</p>
                 	            </label>
                 	            <!-- 비밀번호 찾기 -->
-                	            <a class="findpw-a">비밀번호 찾기</a>
+                	            <a href="ma_pwd.html" data-toggle="modal" data-target="#myModal" class="findpw-a">비밀번호 찾기</a>
                 	        </div>
                 	        <button class="login-button" type="submit">
                 	            <span class="login-span">로그인</span>
@@ -106,24 +66,3 @@
                 		</a>
                 	</div> -->
                 </div>                	
-            </div>
-            <!-- /modal-content -->
-        </div>
-        <!-- /modal-dialog -->
-    </div>
-    <!-- /modal -->
-
-        
-
-        <!-- 화면 영역 -->
-        <div class="container">
-            <h1>Bootstrap Modal Popup</h1>
-            <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
-        </div>
-        <!-- 화면 영역 끝 -->
-
-        <!-- Javascript -->
-        <script src="../assets/js/jquery-1.10.2.min.js"></script>
-        <script src="../assets/js/bootstrap.min.js"></script>
-    </body>
-</html>
