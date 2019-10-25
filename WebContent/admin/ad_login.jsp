@@ -49,13 +49,13 @@
 	<div id="admin">
 		<div class="header">
 			<div class="title">
-				<img src="../assets/ico/logo_blue.png">
-				<p>관리자 사이트</p></img>
+				<img src="../assets/ico/logo_blue.png"></img>
+				<p>관리자 사이트</p>
 			</div>
 		</div>
 		<div id="content">
 			<div class="loginf form-group">
-				<form name="login_form" method="post" action="./login_check.jsp">
+				<form name="login_form" method="post" action="ad_main.jsp">
 					<label for="admin_id">
 						<input type="text" name="admin_id" placeholder="아이디" />
 					</label>

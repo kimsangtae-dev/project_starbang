@@ -42,8 +42,8 @@
     display: inline;
 }
 #content > div {
-    width:1500px;
-    padding-top: 50px;
+    width:1600px;
+    padding-top: 60px;
 }
 
 /* 부트스트랩 컴포넌트 사용으로 인한 버튼 추가 설정 */
