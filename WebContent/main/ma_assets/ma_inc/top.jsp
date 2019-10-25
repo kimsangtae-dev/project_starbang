@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
+</head>
+
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
@@ -16,7 +20,7 @@
 				<a href="ma_faq.jsp" class="padding-l">문의하기</a>
 			</div>
 			<div class="small-font">
-				<a href="ma_login.html" class="padding-l" data-toggle="modal" data-target="myModal">회원가입 · 로그인</a>
+				<a href="ma_modal/ma_pwd.html" class="padding-l" data-toggle="modal" data-target="#myModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>
