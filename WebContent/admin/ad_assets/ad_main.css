@@ -37,12 +37,13 @@
 }
 /* 본문 크기 및 위치 설정 div 가운데 정렬 */
 #content{
-    width:1800px;
+
+    width:auto;
     text-align: center;
     display: inline;
 }
 #content > div {
-    width:1600px;
+    width:1500px;
     padding-top: 60px;
 }
 

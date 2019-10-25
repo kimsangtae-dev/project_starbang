@@ -9,6 +9,7 @@
     min-width:2000px;
     }
 .header{
+	margin:auto;
 }
     /* title 부분 크기 설정 */
 #admin > div >.title{
@@ -38,6 +39,8 @@
   ---------------------------------------- */
 
 #content{
+	
+	margin:auto;
 }
 
     /* loign form 크기 및 위치 설정 */
