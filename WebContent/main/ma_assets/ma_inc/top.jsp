@@ -20,7 +20,7 @@
 				<a href="ma_faq.jsp" class="padding-l">문의하기</a>
 			</div>
 			<div class="small-font">
-				<a href="ma_login.html" class="padding-l" data-toggle="modal" data-target="#myModal">회원가입 · 로그인</a>
+				<a href="ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#myModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>

@@ -43,15 +43,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	$(function() {
-		$('.modal').on('hidden.bs.modal', function(e) {
-			$(this).removeData('bs.modal');
-		});
-		
-		$('#modal').on('hidden.bs.modal', function(e) {
-
-		});
-	});
-</script>
