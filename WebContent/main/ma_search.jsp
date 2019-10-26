@@ -41,7 +41,7 @@
 							<h1>방종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
-								<li><label class="clearfix"> <input type="checkbox"
+								<li><label> <input type="checkbox"
 										name="room-type" checked /> <span class="checkBox"></span> <span
 										class="checkText">원룸</span>
 								</label></li>
@@ -126,7 +126,7 @@
 									<li>무제한</li>
 								</ul>
 							</div>
-							<button type="button" class="filter-reset">
+							<button type="button" id="filter-reset1" class="filter-reset">
 								<i class="glyphicon glyphicon-refresh"></i>조건삭제
 							</button>
 						</div>
@@ -151,7 +151,7 @@
 									<li>무제한</li>
 								</ul>
 							</div>
-							<button type="button" class="filter-reset">
+							<button type="button" id="filter-reset2" class="filter-reset">
 								<i class="glyphicon glyphicon-refresh"></i>조건삭제
 							</button>
 						</div>
@@ -176,7 +176,7 @@
 									<li>무제한</li>
 								</ul>
 							</div>
-							<button type="button" class="filter-reset">
+							<button type="button" id="filter-reset3" class="filter-reset">
 								<i class="glyphicon glyphicon-refresh"></i>조건삭제
 							</button>
 						</div>
@@ -185,7 +185,7 @@
 				</div>
 				<!-- 전체 필터 끝 -->
 				<!-- 초기화 버튼 -->
-				<div class="filters-reset">
+				<div id="filters-reset" class="filters-reset">
 					<i class="glyphicon glyphicon-refresh"></i>초기화
 				</div>
 			</div>
@@ -546,6 +546,7 @@
 		$(".dropdown-toggle").dropdown();
 
 		/* 필터 - Range plugin(ion.rangeSlider) */
+		// 보증금/전세가
 		var price1_value = [ 0, 100, 200, 300, 400, 500, 1000, 1500, 2000,
 				2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000,
 				7500, 8000, 8500, 9000, 9500, 10000, 11000, 12000, 13000,
@@ -561,10 +562,13 @@
 			from : price1_from,
 			to : price1_to,
 			values : price1_value,
+			from_max : price1_value.indexOf(90000),
 			skin : "round",
 			hide_min_max : true
 		});
-
+		var slide1_value = $("#slide-price1").data("ionRangeSlider");
+		
+		// 월세
 		var price2_value = [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60,
 				65, 70, 80, 90, 100, 110, 120, 130, 140, 150, "무제한" ];
 		var price2_from = price2_value.indexOf(0);
@@ -580,7 +584,9 @@
 			hide_from_to : false,
 			hide_min_max : true
 		});
-
+		var slide2_value = $("#slide-price2").data("ionRangeSlider");
+		
+		// 매매가
 		var price3_value = [ 0, 3000, 5000, 10000, 15000, 20000, 25000, 30000,
 				35000, 40000, 45000, 50000, 60000, 70000, 80000, 90000, 100000,
 				110000, 120000, 130000, 140000, 150000, "무제한" ];
@@ -594,7 +600,9 @@
 			skin : "round",
 			hide_min_max : true
 		});
-
+		var slide3_value = $("#slide-price3").data("ionRangeSlider");
+		
+		// 관리비
 		var price4_value = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 				15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
 				31, 32, 33, 34, 35, 36, 38, 40, 42, 44, 46, 48, 50, "무제한" ];
@@ -608,16 +616,53 @@
 			skin : "round",
 			hide_min_max : true
 		});
-
+		var slide4_value = $("#slide-price4").data("ionRangeSlider");
+		
+		// 방크기
 		$("#slide-size").ionRangeSlider({
 			type : "double",
-			min : 16,
+			min : 0,
 			max : 115,
 			step : 1,
 			from : 0,
 			skin : "round",
 			hide_min_max : true
 		});
+		var slide5_value = $("#slide-size").data("ionRangeSlider");
+		
+		// 필터 초기화
+		$(function() {
+			// 가격대 조건삭제
+			$("#filter-reset1").click(function(e) {
+				e.preventDefault();
+				slide1_value.reset();
+				slide2_value.reset();
+				slide3_value.reset();
+			})
+			
+			// 관리비 조건삭제
+			$("#filter-reset2").click(function(e) {
+				e.preventDefault();
+				slide4_value.reset();
+			})
+			
+			// 방크기 조건삭제
+			$("#filter-reset3").click(function(e) {
+				e.preventDefault();
+				slide5_value.reset();
+			})
+			
+			// 전체 필터 초기화
+			$("#filters-reset").click(function(e) {
+				e.preventDefault();
+				$("input[type='checkbox']").prop('checked', true);
+				slide1_value.reset();
+				slide2_value.reset();
+				slide3_value.reset();
+				slide4_value.reset();
+				slide5_value.reset();
+			});
+		})
 	</script>
 </body>
 </html>
