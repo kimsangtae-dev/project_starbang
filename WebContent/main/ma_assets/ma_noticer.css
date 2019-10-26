@@ -15,6 +15,7 @@
 				width: 1200px;
 				margin: auto;
 				text-align: center;
+				min-height: 1000px;
 			}
 
 			h1 {
@@ -44,6 +45,10 @@
 				text-decoration: none;
 				color: black;
 			}
+			
+			.hwdd {
+				height: 15px;
+			}
 
 			hr {
 				margin-top: 0px; 
@@ -51,7 +56,9 @@
 			}
 
 			/** 자주묻는 질문, 공지사항 끝 **/
-		
+
+
+
 		/** 자주묻는 질문 리스트 */
 		/* 전체 박스 크기 및 정렬 */
 			#collapse {
@@ -65,20 +72,8 @@
 				border-top: 1px solid #d5d5d5;
 				text-align: center;
 			}
-    	.collapse-title3 {
-    	 border-bottom: 1px solid #d5d5d5;
-    	}
 
-    	.title {
-			padding: 72px 0;
-			height: 209px;
-		}
-
-		#content .title p {
-			font-size: 22px;
-			height: 32px;
-			padding: 0px;
-		}
+    	.collapse-title3 { border-bottom: 1px solid #d5d5d5;}
 
 			/** 제목영역의 링크에 대한 크기, 글자모양 */
 			.collapse-title a {
@@ -92,32 +87,26 @@
 
 			/** 내용영역의 여백, 글자크기, 태두리, 숨김 */
 			.content {
-				padding: 10px 30px;
+				padding: 20px 40px;
 				font-size: 12px;
 				border: 1px solid #d5d5d5;
-				background-color: rgb(251, 251, 251);
-				color: rgb(102, 102, 102);
-				margin-left: 300px;
+				background-color: rgb(245, 245, 245);
+    			border-top: 1px solid rgb(238, 238, 238);
+    			border-bottom: 1px solid rgb(204, 204, 204);
 				text-align: left;
 				display: none;
 			}
 			
-			.dnlcl {
-				margin-left: -100px;
-			}
-			
-			#collapse .collapse-item .content .topcontent {
-				text-align: left;
-				padding-left: -200px;
-				color: blue;
+			.pre {
+				font-size: 15px;
+				background-color: rgb(245, 245, 245);
+				color: rgb(102, 102, 102);
 			}
 
 			/** 마지막 내용 박스의 테두리 보정 */
-			/**
 			.content:last-child {
 				border-bottom: 1px solid #d5d5d5;
-			} 쓰면 마지막 내용 박스 누르면 이상해
-			*/
+			}
 
 			/** 여기서부터 추가*/
     	.collapse-item p {
@@ -128,6 +117,7 @@
 
     	img {
     		display: inline-block;
+
     	}
 
 		.title {
@@ -158,14 +148,49 @@
 		}
 
 		.a {
-			height: 70px;
+			height: 60px;
 			font-size: 15px;
-			padding-top: 10px;
+			padding-top: 15px;
 		}
 
 		#collapse #itme {
 			padding: 0px;
 			margin: 0px;
+		}
+
+		.inup {
+			display: inline-block;
+			width: 900px;
+			text-align: center;
+			margin-top: 11px;
+			font-size: 20px; 
+		}
+
+		.outup {
+			display: inline-block;
+			width: 300px;
+			text-align: center;
+			margin-top: 11px;
+			font-size: 20px; 
+		}
+
+		.in {
+			display: inline-block;
+			width: 900px;
+			margin-top: 11px;
+			font-size: 20px; 
+		}
+
+		.out {
+			display: inline-block;
+			width: 300px;
+			text-align: center;
+			margin-top: 11px;
+			font-size: 20px; 
+		}
+
+		.pddw {
+			height: 20px;
 		}
 
 		/** 자주묻는 질문 리스트 끝 */
