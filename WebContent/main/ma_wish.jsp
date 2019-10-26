@@ -37,7 +37,6 @@
 	<!-----------------------------------
 	|   content-gallery
 	------------------------------------>
-
 	<!--본문영역시작 gallery 시작 -->
 	<div class="gallery-wholebox">
 
@@ -385,7 +384,7 @@
 			
 			<div class="compare-btn-box" width="238">
 				<button class="compare-btn-cancel" width="80">취소</button>
-				<button class="compare-btn-compare" disabled="">비교하기</button>
+				<button class="compare-btn-compare"> <!-- disabled="" -->비교하기</button>
 			</div>
 
 		</div>
@@ -405,5 +404,13 @@
 ----------------------------------------->
 <%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
 
+
+<script src="../assets/js/jquery-1.10.2.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script>
+
+
+
+</script>
 </body>
 </html>
