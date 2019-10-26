@@ -20,19 +20,21 @@
 	<div id="bluebar">
 		<div id="lol">
 			<h1 class="textht pull-left texthth1">월세 200/30</h1>
-			<span class="glyphicon glyphicon glyphicon-star-empty textht2">0</span>
-			<span class="glyphicon glyphicon glyphicon-link textht3"></span> <a
+			<div class="recent-div8 off" data-value="on"></div>
+			<span>0</span> <span
+				class="glyphicon glyphicon glyphicon-link textht3"></span> <a
 				href="#"><span
-				class="nowqt glyphicon glyphicon glyphicon-bullhorn pull-right "></span></a>
-			<button type="submit" class="pull-right textht inbl">
-				<span class="quest">문의하기</span>
-			</button>
-			<span class="textht pull-right skyblue lvc"> 조수민님</span> <span
-				class="textht pull-right lvc">방주인</span>
+				class="nowqt glyphicon glyphicon glyphicon-bullhorn"></span></a>
+			<div id="plrt">
+				<button type="submit" class="textht inbl">
+					<span class="quest">문의하기</span>
+				</button>
+				<span class="textht skyblue lvc"> 조수민님</span> <span
+					class="texthtlvc">방주인</span>
+			</div>
 		</div>
 	</div>
 	<!--스크롤 발생 시 움직이는 파란색바 끝-->
-
 	<!--별방 방찾기 헤더 끝-->
 	<!-- 중앙 영역 -->
 	<div id="content">
@@ -45,17 +47,18 @@
 						월세 3000/55<span class="greyfontwon">만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont">전용면적</span>
-					<h1>36.36㎡</h1>
+					<h1 id="chnum">43.33</h1><!-- <div>㎡</div> -->
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
 				<li class="pull-right">
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
-					<button type="button" class="btn btn-primary grml"data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-						<span class="glyphicon glyphicon-envelope" >문의하기</span>
-					</button>
-					<!-- 모달창 구현 -->
+					<button type="button" class="btn btn-primary grml"
+						data-toggle="modal" data-target="#exampleModal"
+						data-whatever="@mdo">
+						<span class="glyphicon glyphicon-envelope">문의하기</span>
+					</button> <!-- 모달창 구현 -->
 					<div class="modal fade" id="exampleModal" tabindex="-1"
 						role="dialog" aria-labelledby="exampleModalLabel"
 						aria-hidden="true">
@@ -94,9 +97,8 @@
 		<!--상단 내용 끝-->
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
-			<a href="#"><span
-				class="glyphicon glyphicon glyphicon-star-empty"></span></a> <span
-				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
+			<div class="recent-div8 off" data-value="on"></div>
+			<span class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-link"></span></a> <span
 				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-bullhorn"></span></a> <span
@@ -209,10 +211,13 @@
 		<!--사용자 매물 설명 끝-->
 		<div id="smhead">
 			<div class="xOEdU">
-				<a class="eYDrrB">다방면 스코어</a> <a class="eYDrrB">가격정보</a> <a
-					class="eYDrrB">옵션</a> <a class="eYDrrB">위치</a> <a class="eYDrrB">인기매물</a>
+				<a class="eYDrrB" href="#rader">다방면 스코어</a> <a class="eYDrrB"
+					href="#priceinfo">가격정보</a> <a class="eYDrrB" href="#pictogram">옵션</a>
+				<a class="eYDrrB" href="#location">위치</a>
+				<!-- <a class="eYDrrB">인기매물</a> -->
 			</div>
 		</div>
+		<!-- 파란색 헤더바 여기서 부터 시작 -->
 		<div id="rader">
 			<!-- 다방면 스코어 시작-->
 			<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score"
@@ -418,10 +423,80 @@
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
 
-
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/plugin/handlebars/handlebars-v4.0.11.js"></script>
+	<script>
+		/* 좋아요 클릭 -> 하트 색 변경 */
+		$(function() {
+			$(".recent-div8").click(function(e) {
+				$(this).toggleClass('on off');
+			})
+		})
+	</script>
+	<!-- 평수 바꾸기 -->
+	<script>
+		$(function() {
+			$(".chbt").click(function(e) {
+				/** 버튼 클릭 이벤트 */
+				var h1 = $("#chnum").html();
+				var result = Math.floor(h1 / 3.3);
+				$("#chnum").html("<h1 id='chnum'>"+result + "평" + "</h1>");
+			});
+		});
+	</script>
+	<!-- <script>
+		$(window).scroll(function() {
+			//스크롤 이벤트 발생 시 
+			var contentHeight = $(window).height();
+			//content의 높이 변수 선언 
+			var scrollValue = $(window).scrollTop();
+			//현재 scroll 위치 변수 선언 
+			if (scrollValue> contentHeight) {
+				//현재 scroll 위치가 content의 높이보다 높을 경우
+				$("#bluebar").css("display", "block");
+				//이벤트 stop 
+			} else {
+				$("#bluebar").css("display", "none");
+				//button이 스크롤따라 움직임 
+			}
+		});
+	</script> -->
+	<!-- <script>
+		// Hide Header on on scroll down 
+		var didScroll;
+		var lastScrollTop = 0;
+		var delta = 0;
+		var navbarHeight = $("#smhead").outerHeight();
+		$(window).scroll(function(event) {
+			didScroll = true;
+		});
+		setInterval(function() {
+			if (didScroll) {
+				hasScrolled();
+				didScroll = false;
+			}
+		}, 250);
+		function hasScrolled() {
+			var st = $(this).scrollTop();
+			// Make sure they scroll more than delta 
+			if (Math.abs(lastScrollTop - st) <= delta)
+				return;
+			// If they scrolled down and are past the navbar, add class .nav-up. 
+			// This is necessary so you never see what is "behind" the navbar. 
+			if (st > lastScrollTop && st > navbarHeight) {
+				// Scroll Down 
+				$("#bluebar").css("display", "block");
+			} else {
+				// Scroll Up 
+				if (st + $(window).height() < $(document).height()) {
+					$("#bluebar").css("display", "none");
+				}
+			}
+			lastScrollTop = st;
+		}
+	</script> -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
 	<script type="text/javascript">
@@ -469,5 +544,6 @@
 
 		var map = new kakao.maps.Map(container, options);
 	</script>
+
 </body>
 </html>
