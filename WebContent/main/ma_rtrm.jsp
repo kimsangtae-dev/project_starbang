@@ -40,7 +40,7 @@
                 <div class="recent-div6">
                   <!-- 좋아요 버튼 -->
                   <div class="recent-div7">
-                    <div class="recent-div8"></div>
+                    <div class="recent-div8 off data-value="on"></div>
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
@@ -168,6 +168,13 @@
 <!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+	/* 좋아요 클릭 -> 하트 색 변경 */
+	$(function() {
+	   $(".recent-div8").click(function(e) {
+	      $(this).toggleClass('on off');
+	   })
+	})
+	</script>
 </body>
 </html>

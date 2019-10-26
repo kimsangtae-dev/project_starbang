@@ -114,8 +114,16 @@
                 width: 32px;
                 height: 30px;
                 margin: 0px auto;
-                background: url(ma_img/like.svg) center center / cover;
+                /*background: url(ma_img/like.svg) center center / cover;*/
             }  
+            
+            .recent-div8.off { 
+            background: url(ma_img/like.svg) center center / cover; 
+            }
+            
+			.recent-div8.on { 
+			background: url(ma_img/like-on.svg) center center / cover; 
+			}
 
                 /* <a> 태그 */
             .recent-a{
