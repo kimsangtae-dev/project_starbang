@@ -43,28 +43,28 @@
 					<thead>
 						<tr>
 							<th class="text-center"><input type="checkbox"></th>
-							<th class="text-center">글번호</th>
-							<th class="text-center">제목</th>
-							<th class="text-center">업로드 날짜</th>
-							<th class="text-center">수정된 날짜</th>
+							<th class="text-center col-md-1">글번호</th>
+							<th class="text-center col-md-5">제목</th>
+							<th class="text-center col-md-3">업로드 날짜</th>
+							<th class="text-center col-md-3">수정된 날짜</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!-- collapse 시작 (1)-->
 						<tr class="collapse-title">
 							<td class="text-center"><input type="checkbox"></td>
-							<td class="text-center">1</td>
-							<td class="text-center"><a href="#col-page-1">별방사이트에 가입해주셔서 감사합니다.</a></td>
-							<td class="text-center">2019-10-19 23:10:24</td>
-							<td class="text-center">65</td>
+							<td class="text-center col-md-1">1</td>
+							<td class="text-center col-md-5"><a href="#col-page-1">별방사이트에 가입해주셔서 감사합니다.</a></td>
+							<td class="text-center col-md-3">2019-10-19 23:10:24</td>
+							<td class="text-center col-md-3">65</td>
 						</tr>						
 						<!--hidden test-->
 							<tr id="col-page-1" class="content">
-								<td class="tab-panel">
-								<td></td>
-								<td>안녕하십니까 <br> 먼저 저희 사이틀 방문해 주시고 이용해 주셔서 감사드립니다.<br> 저희 사이트는 부동산 중개 사이트로 원하시는 매물을 살 수도 있고, 그것을 찜 할 수도 있습니다.<br> 또한 회원님께서도 매물이 있으면 저희 사이트를 통해서 판매가 가능합니다.</td>
-								<td></td>
-								<td></td>
+								<td class="tab-panel ">
+								<td class="col-md-1"></td>
+								<td class="col-md-5">안녕하십니까 <br> 먼저 저희 사이틀 방문해 주시고 이용해 주셔서 감사드립니다.<br> 저희 사이트는 부동산 중개 사이트로 원하시는 매물을 살 수도 있고, 그것을 찜 할 수도 있습니다.<br> 또한 회원님께서도 매물이 있으면 저희 사이트를 통해서 판매가 가능합니다.</td>
+								<td class="col-md-3"></td>
+								<td class="col-md-3"></td>
 								</td>	
 							</tr>
 						<!--hidden test-->
@@ -73,18 +73,19 @@
 						<!-- collapse 시작 (2)-->
 						<tr class="collapse-title">
 							<td class="text-center"><input type="checkbox"></td>
-							<td class="text-center">2</td>
-							<td class="text-center"><a href="#col-page-2">[이벤트] 100번째 행운을 잡아라!!!</a></td>
-							<td class="text-center">2019-10-20 17:51:25</td>
-							<td class="text-center">65</td>
+							<td class="text-center col-md-1">2</td>
+							<td class="text-center col-md-5"><a href="#col-page-2">[이벤트] 100번째 행운을 잡아라!!!</a></td>
+							<td class="text-center col-md-3">2019-10-20 17:51:25</td>
+							<td class="text-center col-md-3">65</td>
 						</tr>						
 						<!--hidden test-->
 							<tr id="col-page-2" class="content">
 								<td class="tab-panel">
-								<td></td>
-								<td>별방 사이트에서 고마우신 회원님들을 대상으로 100번째 행운을 잡는 이벤트를 마련하였습니다. <br /> 사이트를 이용하시면 중간에 뜨는 100이라는 숫자 팝업을 클릭해주시면 이벤트에 자동 응모됩니다.</td></td>
-								<td></td>
-								<td></td>	
+								<td class="col-md-1"></td>
+								<td class="col-md-5">별방 사이트에서 고마우신 회원님들을 대상으로 100번째 행운을 잡는 이벤트를 마련하였습니다. <br /> 사이트를 이용하시면 중간에 뜨는 100이라는 숫자 팝업을 클릭해주시면 이벤트에 자동 응모됩니다.</td>
+								<td class="col-md-3"></td>
+								<td class="col-md-3"></td>	
+							</td>
 							</tr>
 						<!--hidden test-->
 						<!-- collapse 끝 (2)-->
