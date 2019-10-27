@@ -2,10 +2,11 @@
 p { margin: 0; }
 
 /* 전체 모달 창 */
-.modal-content {
+.whole {
 	width: 610px;
 	border: none;
 	border-radius: 0;
+	margin: 4% auto 0;
 }
 
 /** 모달창 위치 */
@@ -52,14 +53,14 @@ p.subtitle {
 	line-height: 45px;
 }
 
-input {
+.input1 {
 	height: 46px;
 	display: block;
 	float: left;
 	padding: 0 15px;
 }
 
-select {
+.select1 {
 	display: block;
 	float: left;
 	height: 46px;

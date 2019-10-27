@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="ma_assets/ma_login.css">
 </head>
 
-			<div class="modal-content">
+			<div class="modal-content love">
                 <!-- 닫기버튼 -->
                 <button class="btnclose"  data-dismiss="modal">
                 	<svg width="30" height="30" viewBox="0 0 32 32">
@@ -28,15 +28,15 @@
                 	    	<!-- 아이디 / 패스워드 -->
                 	        <input autocomplete="off" class="idpass" type="text" placeholder="아이디" name="email" value="" />
                 	        <input autocomplete="off" class="idpass" type="password" placeholder="비밀번호" name="password" value="" />
-                	        <div class="checkbox-div">
+                	        <div class="checkbox-d">
                 	        	<!-- 아이디저장 - 체크박스 -->
-                	            <label class="checkbox-label clearfix" size="22">
-                	                <input type="checkbox" class="checkbox-input" name="isSaved" value="">
-                	                <span class="checkbox-span"></span>
+                	            <label class="checkbox-l clearfix" size="22">
+                	                <input type="checkbox" class="checkbox-i" name="isSaved" value="">
+                	                <span class="checkbox-s"></span>
                 	                <p class="checkbox-p">아이디 저장</p>
                 	            </label>
                 	            <!-- 비밀번호 찾기 -->
-                	            <a href="ma_pwd.html" data-toggle="modal" data-target="#myModal" class="findpw-a">비밀번호 찾기</a>
+                	            <a href="ma_pwd.jsp" data-dismiss="modal" data-toggle="modal" data-target="#passwdModal" class="findpw-a">비밀번호 찾기</a>
                 	        </div>
                 	        <button class="login-button" type="submit">
                 	            <span class="login-span">로그인</span>
@@ -44,7 +44,7 @@
                 	    </form>
                 	    <div class="joinus-div">
                 	        <p>아직 회원이 아니세요?
-                	            <a href="#">이메일로 회원가입</a>
+                	            <a href="ma_join.jsp" id="join" data-dismiss="modal" data-toggle="modal" data-target="#joinModal">이메일로 회원가입</a>
                 	        </p>
                 	    </div>   
                 	</div>

@@ -26,7 +26,7 @@
 	</div>
 </div>
 
-<!-- Modal loader1 -->
+<!-- 로그인용 모달 로더 -->
 <div class="modal fade" id="loginModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
@@ -35,8 +35,17 @@
 	</div>
 </div>
 
-<!-- Modal loader2 -->
+<!-- 비밀번호 찾기용 모달 로더 -->
 <div class="modal fade" id="passwdModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<!-- 회원가입용 모달 로더 -->
+<div class="modal fade" id="joinModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			

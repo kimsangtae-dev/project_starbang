@@ -6,11 +6,6 @@
 
 	/* 공통부분 */
 
-	/* 모달창 상단 여백 */
-	.modal-dialog {
-		margin-top: 10%;
-	}
-
 	/* 전체박스 */
 	.findpwd-div {
 		width: 450px;
@@ -18,7 +13,7 @@
 		z-index: 1001;
 		overflow-x: hidden;
 		overflow-y: auto;
-		margin: 0px auto;
+		margin: 8% auto 0;
 		border: 0px;
 		border-radius: 0px;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;

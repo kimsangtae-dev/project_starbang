@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+
 <head>
 	<link rel="stylesheet" type="text/css" href="ma_assets/ma_pwd.css">
 </head>
