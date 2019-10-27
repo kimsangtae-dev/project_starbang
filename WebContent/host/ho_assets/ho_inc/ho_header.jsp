@@ -116,6 +116,10 @@ color:white;
     padding: 18px 16px !important;
 }
 
+.header-dropbox-li2 p {
+	cursor: pointer;
+} 
+
 /* 헤더 - 드롭박스 (li3) 버튼 */
 .header-dropbox-li3 {
     font-size: 14px;
@@ -124,6 +128,7 @@ color:white;
     color: rgb(102, 102, 102);
     border-width: 0px;
     padding: 0;
+    outline: none;
 }
 
 /* 열렸을 때 */
