@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/header_white.css" />
 <link rel="stylesheet" type="text/css" href="../assets/footer_black.css" />
 <link rel="stylesheet" type="text/css" href="ma_assets/ma_wish.css">
+<link rel="stylesheet" type="text/css" href="ma_assets/ma_wish_comp.css" />
 
 </head>
 <body>
@@ -383,8 +384,10 @@
 			</div>
 			
 			<div class="compare-btn-box" width="238">
-				<button class="compare-btn-cancel" width="80">취소</button>
-				<button class="compare-btn-compare"> <!-- disabled="" -->비교하기</button>
+					<button class="compare-btn-cancel" width="80">취소</button>
+				<a href="ma_wish_comp.jsp" data-toggle="modal" data-target="#myModal">
+					<button class="compare-btn-compare"><!-- disabled="" -->비교하기</button>
+				</a>
 			</div>
 
 		</div>
@@ -408,7 +411,12 @@
 <script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script>
-
+	$(function() {
+		$(".compare-btn-compare").click(function(){
+			var atag = '<a href="ma_wish_comp.html" data-toggle="modal" data-target="#myModal"></a>'
+			$(this).(atag)
+		});
+	});
 
 
 </script>
