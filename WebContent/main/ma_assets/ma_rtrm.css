@@ -2,8 +2,13 @@
 
         /* 공통 */
         
+        html body #root {
+			width: 100%;
+		}
+        
         #content {
             width: 1200px;
+            height: 800px;
             margin: auto;
         }
 
@@ -13,55 +18,61 @@
         }
 
         .interest {
-            display: block;
-            text-align: center;
-            font-size: 30px;
-            padding-bottom: 60px;
-            color: black;
-        }
+            height: 53px;
+			margin-top: 70px;
+			color: #222222;
+			font-size: 34px;
+			font-weight: 400;
+			text-align: center;
+		}
 
 /*************************************************************************************/
         
         /* 관심목록 하위 탭 (최근본방, 찜한방) */
-        .tab1  {
-            margin: auto;
-            text-align: center;
-            padding-bottom: 30px;
-            width: 1200px;
-        }
+        .tab-menu  {
+            display: table;
+			height: 40px;
+			width: 1200px;
+			margin: 45px auto 0;
+			border-bottom: 1px solid #eee;
+		
+		}
 
-        .tab1 .re-bang {
-            border-bottom: 1px solid #080808;
-            padding-right: 10px;
-            font-size: 15px;
-            display: inline-block;
-            width: 600px;
-            height: 50px;
-        }
+        .st-bang {
+			display: table-cell;
+		    width: 50%;
+		    color: rgb(136, 136, 136);
+		    font-size: 16px;
+		    text-align: center;
+		    cursor: pointer;
+		}
 
-        .tab1 .pk-bang {
-            font-size: 25px;
-            padding-left: 10px;  
-            font-size: 15px;
-            border-bottom: 1px solid rgb(221, 221, 221);
-            display: inline-block; 
-            width: 590px;
-            height: 50px; 
+		.st-bang.active{
+			color: rgb(34, 34, 34);
+		    font-weight: 500;
+		    border-bottom: 2px solid rgb(34, 34, 34);
+		}
+		
+		.tab-text {
+            padding: 60px 0 10px 0;
         }
 
 
         /* 최근본방, 찜한방 하위박스(float과 해제) */
         .re-div1 p {
             float: left;
+            font-size: 15px;
         }
 
         .re-div1 p span {
-            color: blue;
+            color: #1564F9;
+            font-size: 15px;
         }
 
 
         .re-div2 p {
             float: right;
+            font-size: 15px;
         }
 
         .tab-con1:after {

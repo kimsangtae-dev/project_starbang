@@ -13,6 +13,7 @@
 </head>
 
 <body>
+	<div class="root">
 	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
@@ -24,11 +25,11 @@
           <!-- 최근본방/찜한 방 -->
         <div id="recent" class="recent">
             <h1 class="interest">관심목록</h1>
-        <div class="tab1">
-          <a class="re-bang" href="#">최근 본 방</a>
-          <a class="pk-bang" href="#">찜한 방</a>
+        <div class="tab-menu">
+          <a class="st-bang active" href="#">최근 본 방</a>
+          <a class="st-bang" href="ma_wish.jsp">찜한 방</a>
         </div>
-        <div class="tab-con1">
+        <div class="tab-text">
         <div class="re-div1"><p>총 <span>12개</span>의 최근 본 방이 있습니다</p></div>
         <div class="re-div2"><p>최근에 본 방은 최대 50개까지 저장됩니다</p></div>
         </div>
@@ -40,7 +41,7 @@
                 <div class="recent-div6">
                   <!-- 좋아요 버튼 -->
                   <div class="recent-div7">
-                    <div class="recent-div8 off data-value="on"></div>
+                    <div class="recent-div8 off" data-value="on"></div>
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
@@ -71,7 +72,7 @@
                 <div class="recent-div6">
                   <!-- 좋아요 버튼 -->
                   <div class="recent-div7">
-                    <div class="recent-div8"></div>
+                    <div class="recent-div8 off" data-value="on"></div>
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
@@ -102,7 +103,7 @@
                 <div class="recent-div6">
                   <!-- 좋아요 버튼 -->
                   <div class="recent-div7">
-                    <div class="recent-div8"></div>
+                    <div class="recent-div8 off" data-value="on"></div>
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
@@ -133,7 +134,7 @@
                 <div class="recent-div6">
                   <!-- 좋아요 버튼 -->
                   <div class="recent-div7">
-                    <div class="recent-div8"></div>
+                    <div class="recent-div8 off" data-value="on"></div>
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
@@ -161,6 +162,7 @@
        </div><!-- 갤러리 전체 끝 -->
     </div> <!-- 최근본방/찜한 방 끝-->
   </div> <!-- content 끝 -->
+  </div> <!-- root 끝 -->
 
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
@@ -173,8 +175,8 @@
 	$(function() {
 	   $(".recent-div8").click(function(e) {
 	      $(this).toggleClass('on off');
-	   })
-	})
+	   });
+	});
 	</script>
 </body>
 </html>
