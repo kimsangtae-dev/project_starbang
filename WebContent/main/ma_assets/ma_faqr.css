@@ -13,7 +13,7 @@
 			/** 자주묻는 질문, 공지사항 **/
 			#content {
 				width: 1200px;
-				margin: auto;
+				margin: 10px auto 150px auto;
 				text-align: center;
 				min-height: 1000px;
 			}
@@ -156,6 +156,6 @@
 		/** 자주묻는 질문 리스트 끝 */
 
 		/** 밑줄 */
-		.nav #now {
+		.nav .now {
 			border-bottom: 2px solid black;
 		}
