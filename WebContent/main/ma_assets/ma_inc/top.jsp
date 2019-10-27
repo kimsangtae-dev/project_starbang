@@ -20,8 +20,26 @@
 				<a href="ma_faq.jsp" class="padding-l">문의하기</a>
 			</div>
 			<div class="small-font">
-				<a href="ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#myModal">회원가입 · 로그인</a>
+				<a href="ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal loader1 -->
+<div class="modal fade" id="loginModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<!-- Modal loader2 -->
+<div class="modal fade" id="passwdModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
 		</div>
 	</div>
 </div>

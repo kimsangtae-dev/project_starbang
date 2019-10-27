@@ -35,11 +35,3 @@
 	</div>
 </div>
 
-<!-- Modal loader -->
-<div class="modal fade" id="myModal">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
-	</div>
-</div>
