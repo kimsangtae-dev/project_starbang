@@ -152,7 +152,7 @@
 
     }
 
-    .checkbox-l > .checkbox-span {
+    .checkbox-l > .checkbox-s {
     	float: left;
     	width: 22px;
     	height: 22px;
@@ -162,7 +162,7 @@
     	border-radius: 3px;
     }
 
-    .checkbox-i:checked + .checkbox-span {
+    .checkbox-i:checked + .checkbox-s {
 	    background-color: rgb(0, 108, 255);
 	    border-width: 1px;
 	    border-style: solid;
@@ -170,7 +170,7 @@
 	    border-image: initial;
     }
 
-	.checkbox-i:checked + .checkbox-span::after {
+	.checkbox-i:checked + .checkbox-s::after {
 	    content: "";
 	    display: block;
 	    width: 47%;
