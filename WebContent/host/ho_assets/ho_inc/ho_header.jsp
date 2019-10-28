@@ -5,6 +5,11 @@
 /*-----a 태그 클릭시 점선 테두리 없애기 -----*/
 a:focus{outline:none;}
 
+/*----a태그 색깔 조정------*/
+.acl {
+color: #666666;
+}
+
 /* ------------------------------------------
 |   헤더
 ------------------------------------------- */
@@ -160,11 +165,8 @@ color:white;
 			src="../assets/ico/logo_white.png"></a>
 		<div class="header-div2">
 			<!-- <a href="../main/ma_main.html" class="header-div1-a"><img src="../assets/ico/logo_white.png"></a>
-                        <div class="header-div2"><a href="../main/ma_main.html">회원사이트</a></div> -->
+                        <div class="header-div2"><a href="../main/ma_main.jsp">회원사이트</a></div> -->
 			<ul class="header-div2-ul">
-				<li>
-					<p class="header-div2-p"><a onfocus="blur()" href="#">방주인소개</a></p>
-				</li>
 				<li>
 					<p class="header-div2-p"><a onfocus="blur()" href="ho_rm_add.jsp">공실 등록하기</a></p>
 				</li>
@@ -180,7 +182,7 @@ color:white;
                             </svg>
 				</li>
 				<li class="header-dropbox-li2">
-					<p>회원정보</p>
+					<p><a class="acl" href="../main/ma_mypage.jsp">회원정보</a></p>
 				</li>
 				<li>
 					<button class="header-dropbox-li3">로그아웃</button>
