@@ -33,20 +33,25 @@ a {
 	font-size: 30px;
 }
 
+#chnum1 {
+	line-height: 5px;
+	font-size: 30px;
+	display: block;
+}
+
 h1 {
 	line-height: 5px;
 	font-size: 30px;
 }
 
-
 .recent-div8.off {
 	background: url(ma_img/like.svg) center center/cover;
-	display : inline-block;
+	display: inline-block;
 }
 
 .recent-div8.on {
 	background: url(ma_img/like-on.svg) center center/cover;
-	display : inline-block;
+	display: inline-block;
 }
 
 .abc {
@@ -90,7 +95,19 @@ h1 {
 	left: 120px;
 	bottom: 17px;
 }
-
+.chbt1 {
+	width: 40px;
+	height: 30px;
+	font-size: 12px;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(213, 213, 213);
+	border-width: 1px;
+	border-radius: 3px;
+	position: relative;
+	left: 120px;
+	bottom: 17px;
+}
 li .grml {
 	width: 116px;
 	height: 38px;
@@ -455,20 +472,30 @@ svg[Attributes Style] {
 }
 
 svg
+
+
 :not
+
  
+
 (
 :root
+
  
+
 )
 {
 overflow
+
+
 :
+
  
+
 hidden
+
+
 ;
-
-
 }
 .yKDHp>p>span {
 	color: rgb(136, 136, 136);
@@ -505,20 +532,30 @@ svg[Attributes Style] {
 }
 
 svg
+
+
 :not
+
  
+
 (
 :root
+
  
+
 )
 {
 overflow
+
+
 :
+
  
+
 hidden
+
+
 ;
-
-
 }
 
 /* 가격정보 시작

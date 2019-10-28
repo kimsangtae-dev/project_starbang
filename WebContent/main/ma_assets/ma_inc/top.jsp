@@ -18,6 +18,7 @@
 				<a href="ma_search.jsp">방찾기</a> 
 				<a href="ma_rtrm.jsp" class="padding-l">관심목록</a> 
 				<a href="ma_faq.jsp" class="padding-l">문의하기</a>
+				<a href="ma_pprm.jsp" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
 				<a href="ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>

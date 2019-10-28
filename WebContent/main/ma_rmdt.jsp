@@ -8,8 +8,6 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 <link rel="stylesheet" type="text/css"
 	href="../main/ma_assets/ma_rmdt.css" />
-<link rel="stylesheet" type="text/css" href="../assets/header_white.css" />
-<link rel="stylesheet" type="text/css" href="../assets/footer_black.css" />
 </head>
 
 <body>
@@ -47,7 +45,8 @@
 						월세 3000/55<span class="greyfontwon">만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont">전용면적</span>
-					<h1 id="chnum">43.33</h1><!-- <div>㎡</div> -->
+					<h1 id="chnum">43.33</h1>
+					<!-- <div>㎡</div> -->
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
@@ -218,7 +217,7 @@
 			</div>
 		</div>
 		<!-- 파란색 헤더바 여기서 부터 시작 -->
-		<div id="rader">
+		<div id="radarChart">
 			<!-- 다방면 스코어 시작-->
 			<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score"
 				id="score" style="border-top: 0px;">
@@ -230,85 +229,6 @@
 							75.5<span>점</span>
 						</h1>
 						<p>가격대비 괜찮은 방!</p>
-						<div class="styled__Labels-ce0o94-yKDHp">
-							<p>
-								<svg width="19" height="23" viewBox="0 0 16 19">
-				                        <path fill="#5E90F3" fill-rule="evenodd"
-										d="M7.995.5L.5 4.827v8.655l7.495 4.327 7.495-4.327V4.827z"></path>
-				                    </svg>
-								<span>이 방</span>
-							</p>
-							<p>
-								<svg width="19px" height="23px" viewBox="0 0 16 19">
-				                        <path fill="none" fill-rule="evenodd"
-										stroke="#000" stroke-dasharray="1,2,1,2"
-										stroke-linecap="round" stroke-linejoin="round"
-										d="M7.995.5L.5 4.827v8.655l7.495 4.327 7.495-4.327V4.827z"></path>
-				                    </svg>
-								<span>이 지역 평균</span>
-							</p>
-						</div>
-						<svg width="400" height="330" viewBox="0 0 400 330">
-				                <defs>
-				                    <filter x="0" y="0" width="1" height="1"
-								id="solid">
-				                        <feFlood
-								flood-color="rgba(255, 255, 255, 0.5)"></feFlood>
-				                        <feComposite in="SourceGraphic"></feComposite>
-				                    </filter>
-				                </defs>
-				                <g transform="translate(200.0000,175.0000)">
-				                    <g>
-				                        <path cx="0" cy="0"
-								d="M0.0000,-140.0000L133.1479,-43.2624L82.2899,113.2624L-82.2899,113.2624L-133.1479,-43.2624z"
-								stroke="#dfdfdf" fill="none"></path>
-				                        <path cx="0" cy="0"
-								d="M0.0000,-70.0000L66.5740,-21.6312L41.1450,56.6312L-41.1450,56.6312L-66.5740,-21.6312z"
-								stroke="#dfdfdf" fill="none"></path>
-				                    </g>
-				                    <g>
-				                        <polyline
-								points="0.0000,0.0000 0.0000,-140.0000" stroke="#dfdfdf"></polyline>
-				                        <polyline
-								points="0.0000,0.0000 133.1479,-43.2624" stroke="#dfdfdf"></polyline>
-				                        <polyline
-								points="0.0000,0.0000 82.2899,113.2624" stroke="#dfdfdf"></polyline>
-				                        <polyline
-								points="0.0000,0.0000 -82.2899,113.2624" stroke="#dfdfdf"></polyline>
-				                        <polyline
-								points="0.0000,0.0000 -133.1479,-43.2624" stroke="#dfdfdf"></polyline>
-				                    </g>
-				                    <g>
-				                        <text x="1" y="-135" filter="url(#solid)"
-								fill="rgba(0, 0, 0, 0.7)" font-size="12" text-anchor="middle">100</text>
-				                        <text x="0" y="-65" filter="url(#solid)"
-								fill="rgba(0, 0, 0, 0.7)" font-size="12" text-anchor="middle">50</text>
-				                    </g>
-				                    <g>
-				                        <text x="0.0000" y="-159.1250" dy="8"
-								font-size="16" text-anchor="middle">가격</text>
-				                        <text x="160.3719" y="-49.1723" dy="8"
-								font-size="16" text-anchor="middle">관리비</text>
-				                        <text x="99.1153" y="128.7348" dy="8"
-								font-size="16" text-anchor="middle">옵션</text>
-				                        <text x="-99.1153" y="128.7348" dy="8"
-								font-size="16" text-anchor="middle">편의시설</text>
-				                        <text x="-160.3719" y="-49.1723" dy="8"
-								font-size="16" text-anchor="middle">교통</text>
-				                    </g>
-				                    <g>
-				                        <path
-								d="M0.0000,-112.0000L106.5183,-34.6099L65.8319,90.6099L-65.8319,90.6099L-106.5183,-34.6099z"
-								stroke="#232323" stroke-width="2" stroke-dasharray="3,3"
-								fill="none"></path>
-				                    </g>
-				                    <g>
-				                        <path
-								d="M0.0000,-99.7500L79.8887,-25.9574L74.0609,101.9361L-65.8319,90.6099L-106.5183,-34.6099z"
-								stroke="none" fill="#0755ED" fill-opacity=".65"></path>
-				                    </g>
-				                </g>
-				            </svg>
 					</div>
 				</div>
 			</div>
@@ -427,6 +347,37 @@
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/plugin/handlebars/handlebars-v4.0.11.js"></script>
+	<script src="../assets/plugin/billboard/billboard.min.js"></script>
+	<script src="../assets/plugin/billboard/billboard.min.css"></script>
+	<script>
+		var chart = bb
+				.generate({
+					data : {
+						x : "x",
+						columns : [
+								[ "x", "Data A", "Data B", "Data C", "Data D",
+										"Data E" ],
+								[ "data1", 330, 350, 200, 380, 150 ],
+								[ "data2", 130, 100, 30, 200, 80 ],
+								[ "data3", 230, 153, 85, 300, 250 ] ],
+						type : "radar",
+						labels : true
+					},
+					radar : {
+						axis : {
+							max : 400
+						},
+						level : {
+							depth : 4
+						},
+						direction : {
+							clockwise : true
+						}
+					},
+					bindto : "#radarChart"
+				});
+	</script>
+
 	<script>
 		/* 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
@@ -442,7 +393,7 @@
 				/** 버튼 클릭 이벤트 */
 				var h1 = $("#chnum").html();
 				var result = Math.floor(h1 / 3.3);
-				$("#chnum").html("<h1 id='chnum'>"+result + "평" + "</h1>");
+				$("#chnum").html("<h1 id='chnum'>" + result + "평" + "</h1>");
 			});
 		});
 	</script>

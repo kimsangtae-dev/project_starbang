@@ -5,8 +5,6 @@
 <html lang="ko">
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css" href="../assets/header_white.css" />
-<link rel="stylesheet" type="text/css" href="../assets/footer_black.css" />
 
 <link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_mypage.css" />
 
