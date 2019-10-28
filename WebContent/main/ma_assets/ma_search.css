@@ -5,12 +5,12 @@ body > div { height: 100%; overflow: hidden; }
 /* 화면 크기에 따른 갤러리와 지도 크기 조정 */
 @media (max-width: 1699px) {
      #contentbox .gallery { width: 980px; }
-     #contentbox .map-container { width: 719px; left: 980px; }
+     #contentbox .map-container { left: 980px; }
 }
 
 @media (min-width: 1700px) {
      #contentbox .gallery { width: 1240px; }
-     #contentbox .map-container { width: 860px; left: 1240px; }
+     #contentbox .map-container { left: 1240px; }
 }
 
  /*---------------------------------
@@ -557,6 +557,11 @@ body > div { height: 100%; overflow: hidden; }
 ----------------------------------------*/
 #contentbox .map-container {
     position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 2;
+    overflow: hidden;
 }
 
 #contentbox .map {
@@ -564,7 +569,40 @@ body > div { height: 100%; overflow: hidden; }
     height: 100%;
 }
 
-#contentbox .map #map {
+#contentbox #map {
     width: 100%;
     height: 100%;
+}
+
+/* 지도 확대/축소 버튼 */
+#contentbox .zoom {
+    width: 44px;
+    height: 82px;
+    padding: 1px 6px;
+    background-color: #fff;
+    z-index: 100;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    border: 1px solid rgba(122, 123, 125, 0.8);
+    border-radius: 2px;
+}
+
+#contentbox .zoom button {
+    width: 100%;
+    height: 50%;
+    background-color: #fff;
+    border: none;
+    font-size: 25px;
+    color: #676767;
+    font-weight: bold;
+    text-align: center;
+}
+
+#contentbox .zoom button:focus {
+    outline: none;
+}
+
+#contentbox .zoom button.zoom-out {
+    border-top: 1px solid #d6d6d6;
 }

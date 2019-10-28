@@ -7,6 +7,8 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="ma_assets/ma_search.css">
+<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
+
 <link rel="stylesheet" href="../assets/plugin/ion.rangeSlider.css">
 
 </head>
@@ -31,33 +33,31 @@
 				<div class="filters clearfix">
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
+						<button type="button" class="btn dropdown-toggle btn-rt"
 							data-toggle="dropdown">
 							원룸,투·쓰리룸,오피스텔 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
+						<form id="room-type">
 							<h1>방종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
-								<li><label> <input type="checkbox"
-										name="room-type" checked /> <span class="checkBox"></span> <span
-										class="checkText">원룸</span>
+								<li><label> <input type="checkbox" name="room-type" value="oneroom" checked /> 
+									<span class="checkBox"></span> <span class="checkText">원룸</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="room-type"
-										checked /> <span class="checkBox"></span> <span
-										class="checkText">투·쓰리룸</span>
+								<li><label> <input type="checkbox" name="room-type" value="tworoom" checked /> 
+									<span class="checkBox"></span> <span class="checkText">투·쓰리룸</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="room-type"
-										checked /> <span class="checkBox"></span> <span
-										class="checkText">오피스텔</span>
+								<li><label> <input type="checkbox" name="room-type" value="officetel" checked /> 
+									<span class="checkBox"></span> <span class="checkText">오피스텔</span>
 								</label></li>
-							</ul>
+							</ul></form>
 						</div>
 					</div>
 					<!-- 개별 필터 끝 -->
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
+						<button type="button" class="btn dropdown-toggle btn-st"
 							data-toggle="dropdown">
 							월세,전세,매매 <span class="caret"></span>
 						</button>
@@ -65,17 +65,14 @@
 							<h1>방종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
-								<li><label> <input type="checkbox" name="sale-type"
-										checked /> <span class="checkBox"></span> <span
-										class="checkText">월세</span>
+								<li><label> <input type="checkbox" name="sale-type" value="monthly" checked /> 
+									<span class="checkBox"></span> <span class="checkText">월세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										checked /> <span class="checkBox"></span> <span
-										class="checkText">전세</span>
+								<li><label> <input type="checkbox" name="sale-type" value="charter" checked /> 
+									<span class="checkBox"></span> <span class="checkText">전세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										checked /> <span class="checkBox"></span> <span
-										class="checkText">매매</span>
+								<li><label> <input type="checkbox" name="sale-type" value="buying" checked /> 
+									<span class="checkBox"></span> <span class="checkText">매매</span>
 								</label></li>
 							</ul>
 						</div>
@@ -417,8 +414,10 @@
 				</div>
 				<!-- 지도 -->
 				<div class="map-container">
-					<div class="map">
-						<div id="map"></div>
+					<div id="map"></div>
+					<div class="zoom">
+						<button class="zoom-in">+</button>
+						<button class="zoom-out">-</button>
 					</div>
 				</div>
 				<!-- 지도 끝 -->
@@ -440,7 +439,7 @@
 			var gHeight = wHeight - 206;
 			var mHeight = wHeight - 136;
 			$(".gallery-container").css("height", gHeight);
-			$(".map").css("height", mHeight);
+			$(".map-container").css("height", mHeight);
 		}
 		$(function() {
 			contentSize();
@@ -533,7 +532,19 @@
 					}
 				}
 			})
-
+			
+			// 지도 확대 메서드
+			function zoomIn() {
+			    map.setLevel(map.getLevel() - 1);
+			}
+			// 지도 축소 메서드
+			function zoomOut() {
+ 			   map.setLevel(map.getLevel() + 1);
+			}
+			
+			// 버튼 클릭과 기능 연결
+			$(".zoom-in").click(function() { zoomIn(); })
+			$(".zoom-out").click(function() { zoomOut(); })
 		})
 	</script>
 
@@ -627,6 +638,24 @@
 			hide_min_max : true
 		});
 		var slide5_value = $("#slide-size").data("ionRangeSlider");
+		
+		// 체크박스 클릭 시 드롭다운 버튼 내용 변경 ***추후 구현
+		/* var getCheck = $("input[type='checkbox']");
+		
+		var rt = $("input[name='room-type']").map(function() {return this.value;}).get().join(",");
+		rt = rt.replace("oneroom", "원룸").replace("tworoom", "투·쓰리룸").replace("officetel", "오피스텔");
+		$(".btn-rt").html(rt + " <span class='caret'></span>"); */
+		/* $("#room-type label").click(function() {
+			var rt = $("input[name='room-type']").map(function() {return this.value;}).get().join(",");
+			rt = rt.replace("oneroom", "원룸").replace("tworoom", "투·쓰리룸").replace("officetel", "오피스텔");
+			$(".btn-rt").html(rt + " <span class='caret'></span>");
+		}); */
+		/* $(function(){
+		    $("#room-type").on("change", "input:checkbox", function(e){
+		    	e.preventDefault();
+		        $("#room-type").submit();
+		    });
+		}); */
 		
 		// 필터 초기화
 		$(function() {
