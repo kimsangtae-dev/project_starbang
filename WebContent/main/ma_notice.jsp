@@ -38,7 +38,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
+    					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="moticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content"><pre class="pre">안녕하세요. 다방 운영팀입니다.
 항상 다방을 이용해주시는 회원님들께 감사 인사 드립니다.
