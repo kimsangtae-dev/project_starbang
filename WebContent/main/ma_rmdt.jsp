@@ -45,8 +45,7 @@
 						월세 3000/55<span class="greyfontwon">만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont">전용면적</span>
-					<h1 id="chnum">43.33</h1>
-					<!-- <div>㎡</div> -->
+					<h1 id="chnum">43.33</h1> <!-- <div>㎡</div> -->
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
@@ -217,7 +216,7 @@
 			</div>
 		</div>
 		<!-- 파란색 헤더바 여기서 부터 시작 -->
-		<div id="radarChart">
+		<div id="radar">
 			<!-- 다방면 스코어 시작-->
 			<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score"
 				id="score" style="border-top: 0px;">
@@ -230,6 +229,7 @@
 						</h1>
 						<p>가격대비 괜찮은 방!</p>
 					</div>
+					<div id="radarChart"></div>
 				</div>
 			</div>
 		</div>
@@ -346,36 +346,42 @@
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/plugin/handlebars/handlebars-v4.0.11.js"></script>
-	<script src="../assets/plugin/billboard/billboard.min.js"></script>
-	<script src="../assets/plugin/billboard/billboard.min.css"></script>
-	<script>
-		var chart = bb
-				.generate({
-					data : {
-						x : "x",
-						columns : [
-								[ "x", "Data A", "Data B", "Data C", "Data D",
-										"Data E" ],
-								[ "data1", 330, 350, 200, 380, 150 ],
-								[ "data2", 130, 100, 30, 200, 80 ],
-								[ "data3", 230, 153, 85, 300, 250 ] ],
-						type : "radar",
-						labels : true
-					},
-					radar : {
-						axis : {
-							max : 400
-						},
-						level : {
-							depth : 4
-						},
-						direction : {
-							clockwise : true
-						}
-					},
-					bindto : "#radarChart"
-				});
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="../main/ma_assets/billboard.min.js"></script>
+	<script type="text/javascript">
+		var chart = bb.generate({
+			data : {
+				x : "x",
+				columns : [ [ "x", "가격", "관리비", "옵션", "편의시설", "교통" ],
+						[ "data1", 70, 50, 90, 80, 70 ]
+				// ["data2", 130, 100, 30, 200, 80],
+				// ["data3", 230, 153, 85, 300, 250]
+				],
+				type : "radar",
+				labels : true
+			},
+			radar : {
+				axis : {
+					max : 100
+				},
+				level : {
+					depth : 1
+				},
+				direction : {
+					clockwise : true
+				},
+				line : {
+					connectNull : true,
+					classes : [ "line-class1", "line-class2" ]
+				},
+
+			},
+			bindto : "#radarChart"
+		});
+
+		chart.data.colors({
+			data1 : "#0040FF",
+		});
 	</script>
 
 	<script>
