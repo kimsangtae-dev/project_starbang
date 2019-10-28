@@ -567,14 +567,25 @@ html body #root {
 .compare-btn-compare {
 	width: 120px;
     height: 45px;
-    color: rgb(255, 255, 255);
-    font-size: 14px;
-    font-weight: 500;
-    text-align: center;
+    
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 2px 0px;
     background-color: rgb(24, 105, 216);
     border-width: 1px;
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.3);
     border-image: initial;
+}
+
+.dis-block {
+	display: block;
+	width: auto;
+	color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+	
+}
+
+.dis-block:hover, .dis-block:focus {
+	color: white;
 }

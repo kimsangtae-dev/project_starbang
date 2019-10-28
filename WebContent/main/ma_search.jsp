@@ -7,8 +7,6 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="ma_assets/ma_search.css">
-<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
-
 <link rel="stylesheet" href="../assets/plugin/ion.rangeSlider.css">
 
 </head>

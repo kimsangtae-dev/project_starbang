@@ -7,7 +7,6 @@
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="ad_assets/ad_userli.css" />
-<link rel="stylesheet" type="text/css" href="../assets/header_blue.css" />
 
 </head>
 
