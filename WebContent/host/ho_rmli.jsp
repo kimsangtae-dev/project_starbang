@@ -38,7 +38,7 @@
                     <span>0</span>건의 공실이 있습니다.
                 </p>
                 <p class="isroom-p2">공실상태</p>
-                <ul width="135" class="isroom-dropdown-closed">
+                <!-- <ul width="135" class="isroom-dropdown-closed">
                     <li name="option" value="0" class="isroom-dropdown-li">전체
                         <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -49,12 +49,19 @@
                     </li>
                     <li name="option" value="1" class="isroom-dropdown-li2">공개</li>
                     <li name="option" value="2" class="isroom-dropdown-li2">비공개</li>
-                </ul>
+                </ul> -->
+                <select class="isroom-dropdown-closed">
+							<option class="isroom-dropdown-li2">전체</option>
+							<option class="isroom-dropdown-li2">공개</option>
+							<option class="isroom-dropdown-li2">비공개</option>
+							
+						</select>
+                
             </div>
 
         <div class="container">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table table-striped table-bordered table-hover margin-bottom">
                     <colgroup>
                         <col width="10%">
                         <col width="45%">
@@ -157,10 +164,10 @@
 <script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    $(function () {
+    /* $(function () {
         $(".header-dropbox").hover(function() {
             $(this).toggleClass('header-dropbox header-dropbox-open')
-        });
+        }); */
 
         $(".isroom-dropdown-closed").click(function() {
             $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
