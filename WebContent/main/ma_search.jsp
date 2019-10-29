@@ -455,6 +455,57 @@
 		})
 	</script>
 
+	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+	<script id="gallery-data" type="text/x-handlebars-template">
+		{{#each gallery}}
+		<li>
+			<div class="recent-div5">
+				<div class="recent-div6">
+					{{!-- 좋아요 버튼 --}}
+					<div class="recent-div7">
+						<div class="recent-div8 off" data-value="on"></div>
+					</div>
+					{{!-- 좋아요 끝 --}}
+					{{!-- 전체 링크화 --}}
+					<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+						{{!-- 이미지 --}}
+						<div class="recent-a-div"></div>
+						{{!-- 확인매물 div --}}
+						<div class="recent-a-confirm">
+							<div class="recent-a-confirm-div">
+								<span class="bold">확인매물</span> <span>{{confirm}}</span>
+							</div>
+						</div>
+						{{!-- 확인매물 끝 --}}
+						<p class="recent-a-p1">{{roomtype}}</p>
+						<p class="recent-a-p2">
+							<span>{{saletype}} {{price}}</span>
+						</p>
+						<p class="recent-a-p34">{{floor}}층, {{size}}m², 관리비 {{adexpense}}만</p>
+						<p class="recent-a-p34">{{comment}}</p>
+					</a>
+				</div>
+			</div>
+		</li>
+		{{/each}}
+	</script>
+	<script type="text/javascript">
+		/* 임시 클릭 이벤트 - index 좌측 버튼 클릭시 gallery.json값 추가 */
+		$(function() {
+			$(".prev-btn").click(function() {
+				$.get('ma_assets/gallery.json', function(req) {
+					var template = Handlebars.compile($("#gallery-data").html());
+					var html = template(req);
+					$("#gallery-list").append(html);
+				});
+			});
+			
+			/* 조건에 맞는 방 개수 */
+			var n = $( ".recent-div5" ).length;
+			$(".room-count").html(n);
+		});
+	</script>
+
 	<!-- 지도 api -->
 	<script type="text/javascript">
 		/* kakao map API */
