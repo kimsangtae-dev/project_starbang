@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
 <style>
-	 /*------------------------------
+/*------------------------------
 /	footer
 ----------------------------------*/
 /* 푸터 전체 색상, 크기 지정 */
@@ -24,16 +25,18 @@
 	border-bottom: 1px solid rgb(69, 69, 69);
 }
 
-#top a{
+#top a {
 	font-size: 13px;
 	color: rgb(144, 144, 144);
 	display: inline-block;
 }
-#top h1{
+
+#top h1 {
 	font-size: 13px;
 	color: rgb(144, 144, 144);
 	display: inline-block;
 }
+
 #top span {
 	font-size: 13px;
 	color: rgb(144, 144, 144);
@@ -73,6 +76,7 @@
 	padding: 0;
 	background-color: #373737;
 }
+
 #top form button {
 	display: inline-block;
 	margin: 0;
@@ -145,18 +149,39 @@
 }
 
 #ftbottom .team {
+	font-size: 12px;
+	line-height: 18px;
 	font-weight: 700;
 	margin-bottom: 12px;
 	color: rgb(144, 144, 144);
-	margin-left : 10px;
-	padding-top : 17px;
 }
 
 #ftbottom .greyfont {
-	padding-top : 7px;
+	padding-top: 7px;
 	margin-left: 10px;
-	font-size:12px;
-	color:rgb(144,144,144);
+	font-size: 12px;
+	color: rgb(144, 144, 144);
+}
+
+.copyright {
+	display: inline-block;
+	margin-top: 16px;
+	color: rgb(133, 133, 133);
+	font-size: 12px
+}
+
+.text {
+	color: rgb(144, 144, 144);
+	font-size: 12px;
+	line-height: 18px;
+}
+
+span {
+	color: rgb(144, 144, 144)
+}
+
+.text>span+span {
+	margin-left: 10px;
 }
 </style>
 </head>
@@ -174,7 +199,8 @@
 			<div class="top-btn pull-right"></div>
 			<form class="pull-right">
 				<label for="search-num">
-					<h1>매물번호 조회</h1> <input id="search-num" type="text" name="keyword">
+					<h1>매물번호 조회</h1>
+					<input id="search-num" type="text" name="keyword">
 				</label>
 				<button>
 					<i class="glyphicon glyphicon-search"></i>
@@ -183,12 +209,18 @@
 		</div>
 		<div id="ftbottom">
 			<p class="team">파이썬기반 빅데이터반 1조</p>
-			<p>
-				<span class="greyfont">팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span> 
-				<p class="greyfont">서울특별시 서초구 서초대로77길 55 에이프로스퀘어 3층</p>
-				<p class="greyfont">고객센터: 02-532-6509</p>
-				<p class="greyfont">문의하기 : aaa@gmail.com</p>
+			<p class="text">
+				<span>팀원 : 조수민, 김기홍, 이명섭, 김상태, 박지원, 김수진</span> <span>주소
+					:서울특별시 서초구 서초대로77길 55 에이프로스퀘어 3층</span>
 			</p>
+			<p class="text">
+				<span>고객센터: 02-532-6509</span> <span>문의하기 : narabyeol@gmail.com</span>
+			</p>
+			<p class="text">
+				<span>사업자번호: 220-88-59156</span> <span>통신판매업신고번호 : 제2013-서울 강남-02884호</span> <span>프로모션/사업 제휴문의
+					: narabyeol@gmail.com</span>
+			</p>
+			<p class="copyright">Station3, Inc. All rights reserved.</p>
 		</div>
 	</div>
 </div>
