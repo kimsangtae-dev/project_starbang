@@ -551,8 +551,9 @@
 	<!-- 필터 -->
 	<script type="text/javascript">
 		/* 필터 -드롭다운 - 자동 toggle 해제 */
-		$(document).off(".data-api");
-		$(".dropdown-toggle").dropdown();
+		$('.dropdown-menu').click(function(e) {
+	        e.stopPropagation();
+	    })
 
 		/* 필터 - Range plugin(ion.rangeSlider) */
 		// 보증금/전세가
