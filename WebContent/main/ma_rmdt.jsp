@@ -7,7 +7,11 @@
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
 <link rel="stylesheet" type="text/css"
+	href="../main/ma_assets/billboard.min.css" />
+<link rel="stylesheet" type="text/css"
 	href="../main/ma_assets/ma_rmdt.css" />
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/sweetalert2.css" />
 </head>
 
 <body>
@@ -40,80 +44,46 @@
 		<div id="summury">
 			<!--상단 내용 시작-->
 			<ul id="box1">
-				<li class="pull-left abc"><span class="greyfont">매물종류(원룸)</span>
-					<h1>
-						월세 3000/55<span class="greyfontwon">만원</span>
+				<li class="pull-left abc"><span class="greyfont1">매물종류(원룸)</span>
+					<h1 class="monthman">
+						월세 3000/55<span class="greyfontwon1">만원</span>
 					</h1></li>
-				<li class="pull-left abc" id="month"><span class="greyfont">전용면적</span>
-					<h1 id="chnum">43.33</h1> <!-- <div>㎡</div> -->
+				<li class="pull-left abc" id="month"><span class="greyfont1">전용면적</span>
+					<h1 id="chnum">43.33</h1> <span id="pang">㎡</span> <!-- <div>㎡</div> -->
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
 				<li class="pull-right">
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
-					<button type="button" class="btn btn-primary grml"
-						data-toggle="modal" data-target="#exampleModal"
-						data-whatever="@mdo">
+					<button type="button" class="btn btn-primary grml">
 						<span class="glyphicon glyphicon-envelope">문의하기</span>
-					</button> <!-- 모달창 구현 -->
-					<div class="modal fade" id="exampleModal" tabindex="-1"
-						role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<h4 class="modal-title" id="exampleModalLabel">문의하기</h4>
-								</div>
-								<div class="modal-body">
-									<form>
-										<div class="form-group">
-											<label for="recipient-name" class="control-label">받는사람:</label>
-											<input type="text" class="form-control" id="recipient-name">
-										</div>
-										<div class="form-group">
-											<label for="message-text" class="control-label">문의내용:</label>
-											<textarea class="form-control" id="message-text"></textarea>
-										</div>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">닫기</button>
-									<button type="button" class="btn btn-primary">문의 보내기</button>
-								</div>
-							</div>
-						</div>
-					</div> <!-- modal내용 끝 -->
+					</button>
 				</li>
 			</ul>
 		</div>
 		<!--상단 내용 끝-->
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
-			<div class="recent-div8 off" data-value="on"></div>
+			<div class="recent-div9 off" data-value="on"></div>
 			<span class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-link"></span></a> <span
 				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-bullhorn"></span></a> <span
-				class="greyfontnm">허위매물신고</span>
+				class="greyfontnm1">허위매물신고</span>
 		</div>
 		<!--찜,이메일,공유,허위매물신고 끝-->
 		<div id="confirm room">
 			<!--확인매물 푸른색바 시작-->
-			<div class="eTgAil" type="confirm">
-				<p class="gknGpv" type="confirm">
+			<div class="eTgAil confirm">
+				<p class="gknGpv onfirm">
 					확인매물<span>19.09.18</span>
 				</p>
 				<p class="cETKtB">
-					<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span> <a
-						href="#" class="mola"> <img
-						src="ma_assets/ma_img/confirmq.png">
-					</a>
+					<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
+					<button class="mola">
+						<img src="ma_assets/ma_img/confirmq.png">
+					</button>
 				</p>
 			</div>
 		</div>
@@ -127,42 +97,41 @@
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">전용/공급면적</p>
-					<div class="gbAeEp">
-						<span>26.44 / 33.05㎡</span>
-						<button type="button" class="bHPFKV">
-							<span class="glyphicon glyphicon-refresh">평</span>
-						</button>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">난방종류</p>
-							<div class="gbAeEp">개별난방</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">빌트인</p>
-							<div class="gbAeEp">아님</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">엘리베이터</p>
-							<div class="gbAeEp">있음</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">반려동물</p>
-							<div class="gbAeEp">가능</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">베란다/발코니</p>
-							<div class="gbAeEp">없음</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">전세자금대출</p>
-							<div class="gbAeEp">가능</div>
-						</li>
-						<li class="gWdVQs">
-							<p class=" gPsGgb">입주가능일</p>
-							<div class="gbAeEp">즉시 입주</div>
-						</li>
-						<li></li>
-						<li></li>
-						<li></li>
+					<div class="gbAeEp"></div> <span>26.44 / 33.05㎡</span>
+					<button type="button" class="bHPFKV">
+						<span class="glyphicon glyphicon-refresh">평</span>
+					</button>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">난방종류</p>
+					<div class="gbAeEp">개별난방</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">빌트인</p>
+					<div class="gbAeEp">아님</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">엘리베이터</p>
+					<div class="gbAeEp">있음</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">반려동물</p>
+					<div class="gbAeEp">가능</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">베란다/발코니</p>
+					<div class="gbAeEp">없음</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">전세자금대출</p>
+					<div class="gbAeEp">가능</div>
+				</li>
+				<li class="gWdVQs">
+					<p class=" gPsGgb">입주가능일</p>
+					<div class="gbAeEp">즉시 입주</div>
+				</li>
+				<li></li>
+				<li></li>
+				<li></li>
 			</ul>
 		</div>
 		<!--방등록시 상세 옵션값들 끝-->
@@ -189,20 +158,22 @@
 			</div>
 			<!--매물 설명 큰 폰트-->
 			<div id="smallexplan">
-				<div>
-					<span class="smexp"> ※해당매물은 직접 현장 답사하여 찍은 100% 실제 사진과 모습입니다※<br />
-						<br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br /> ※부동산 어플에 허위매물이
-						절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된 정보만(ONLY FACT)
-						제공하겠습니다<br /> <br />
-					</span>
+				<div class="explan-off" data-value="explan-on">
+					<div>
+						<span class="smexp"> ※해당매물은 직접 현장 답사하여 찍은 100% 실제 사진과
+							모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br /> ※부동산
+							어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
+							정보만(ONLY FACT) 제공하겠습니다<br /> <br />※해당매물은 직접 현장 답사하여 찍은 100% 실제
+							사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
+							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
+							정보만(ONLY FACT) 제공하겠습니다<br /> <br />※해당매물은 직접 현장 답사하여 찍은 100% 실제
+							사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
+							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
+							정보만(ONLY FACT) 제공하겠습니다<br /> <br />
+						</span>
+					</div>
 				</div>
-				<button class="styled__ShowBtn-sc-1xkewlx-jQYbpN">
-					상세설명 더보기
-					<svg width="16" height="12" viewBox="0 0 16 12">
-				            <path fill="none" fill-rule="evenodd" stroke="#1476FC"
-							d="M3l6 6 6-6"></path>
-						    </svg>
-				</button>
+				<button class="jQYbpN more">상세설명 더보기</button>
 			</div>
 			<!--매물 설명 작은 폰트-->
 		</div>
@@ -218,134 +189,161 @@
 		<!-- 파란색 헤더바 여기서 부터 시작 -->
 		<div id="radar">
 			<!-- 다방면 스코어 시작-->
-			<div class="styled__Block-sc-123hsgh-0 kZTRnS" name="score"
-				id="score" style="border-top: 0px;">
-				<div
-					class="styled__ContentBox-sc-123hsgh-jFMhNO styled__Box-sc-123hsgh-1 jFMhNO kBQneM">
-					<h1 class="styled__Title-ce0o94-0 dbrfvk kBQneM">다방면 스코어</h1>
-					<div class="styled__ChartWrap-ce0o94-1 fCword">
-						<h1>
-							75.5<span>점</span>
-						</h1>
-						<p>가격대비 괜찮은 방!</p>
-					</div>
-					<div id="radarChart"></div>
+			<div class="jFMhNO kBQneM">
+				<h1 class="dbrfvk kBQneM">다방면 스코어</h1>
+				<div class="fCword">
+					<h1>
+						75.5<span>점</span>
+					</h1>
+					<p>가격대비 괜찮은 방!</p>
 				</div>
+				<div id="radarChart"></div>
 			</div>
 		</div>
-		<!--다방면스코어 끝-->
-		<div id="priceinfo" class="jFMhNO kBQneM">
-			<!--가격정보 시작-->
-			<h1 class="GYLAC">가격정보</h1>
-			<div class="taln">
-				<!-- 표 영역 -->
-				<table class="tabdln">
-					<!-- 제목 영역 -->
-					<thead class="bdlnthd">
-						<tr class="bdlntr">
-							<th class="bdlnth">월세</th>
-							<th class="bdlnth">전세</th>
-							<th class="bdlnth">관리비</th>
-							<th class="bdlnth">주차비</th>
-							<th class="bdlnth">단기임대</th>
-						</tr>
-					</thead>
-					<!-- 본문 영역 -->
-					<tbody class="bdlntdy">
-						<tr class="bdlnbtr">
-							<td class="bdlntd">-</td>
-							<td class="bdlntd">9500만원</td>
-							<td class="bdlntd">7만원</td>
-							<td class="bdlntd">10만원</td>
-							<td class="bdlntd">불가능</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!--가격정보 끝 -->
-		<div id="pictogram" class="jFMhNO kBQneM">
-			<!--상세 옵션들 아이콘으로 보여줌 시작-->
-			<h1 class="GYLAC">옵션</h1>
-
-			<div class="dDctva">
-				<div class="gqtsIc">
-					<div class="dNeTFF"></div>
-					<p>에어컨</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="bisIQz"></div>
-					<p>세탁기</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="ecqNej"></div>
-					<p>옷장</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gdTorF"></div>
-					<p>TV</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="fuJjGK"></div>
-					<p>신발장</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gdMhEY"></div>
-					<p>냉장고</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="dQLnLP"></div>
-					<p>가스레인지</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="krFgu"></div>
-					<p>인덕션</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="cnLAIn"></div>
-					<p>전자레인지</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="fkeEgq"></div>
-					<p>전자도어락</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="iAeGhw"></div>
-					<p>비데</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="mCsgX"></div>
-					<p>침대</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gaOEWf"></div>
-					<p>책상</p>
-				</div>
-			</div>
-		</div>
-		<!--상세 옵션들 아이콘으로 보여줌 끝-->
-		<!-- 지도 시작 -->
-		<div id="location" class="jFMhNO kBQneM">
-			<h1 class="fIqmuM">위치</h1>
-			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
-
-			<!-- 맵 api 시작-->
-
-			<div id="map"></div>
-
-			<!-- 맵 api 끝-->
-			<!--위치 30미터 반경만 표시-->
-		</div>
-		<!-- 지도 끝 -->
 	</div>
+	<!--다방면스코어 끝-->
+	<div id="priceinfo" class="jFMhNO kBQneM">
+		<!--가격정보 시작-->
+		<h1 class="GYLAC">가격정보</h1>
+		<div class="taln">
+			<!-- 표 영역 -->
+			<table class="tabdln">
+				<!-- 제목 영역 -->
+				<thead class="bdlnthd">
+					<tr class="bdlntr">
+						<th class="bdlnth">월세</th>
+						<th class="bdlnth">전세</th>
+						<th class="bdlnth">관리비</th>
+						<th class="bdlnth">주차비</th>
+						<th class="bdlnth">단기임대</th>
+					</tr>
+				</thead>
+				<!-- 본문 영역 -->
+				<tbody class="bdlntdy">
+					<tr class="bdlnbtr">
+						<td class="bdlntd">-</td>
+						<td class="bdlntd">9500만원</td>
+						<td class="bdlntd">7만원</td>
+						<td class="bdlntd">10만원</td>
+						<td class="bdlntd">불가능</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--가격정보 끝 -->
+	<div id="pictogram" class="jFMhNO kBQneM">
+		<!--상세 옵션들 아이콘으로 보여줌 시작-->
+		<h1 class="GYLAC">옵션</h1>
+
+		<div class="dDctva">
+			<div class="gqtsIc">
+				<div class="dNeTFF"></div>
+				<p>에어컨</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="bisIQz"></div>
+				<p>세탁기</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="ecqNej"></div>
+				<p>옷장</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="gdTorF"></div>
+				<p>TV</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="fuJjGK"></div>
+				<p>신발장</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="gdMhEY"></div>
+				<p>냉장고</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="dQLnLP"></div>
+				<p>가스레인지</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="krFgu"></div>
+				<p>인덕션</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="cnLAIn"></div>
+				<p>전자레인지</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="fkeEgq"></div>
+				<p>전자도어락</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="iAeGhw"></div>
+				<p>비데</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="mCsgX"></div>
+				<p>침대</p>
+			</div>
+			<div class="gqtsIc">
+				<div class="gaOEWf"></div>
+				<p>책상</p>
+			</div>
+		</div>
+	</div>
+	<!--상세 옵션들 아이콘으로 보여줌 끝-->
+	<!-- 지도 시작 -->
+	<div id="location" class="jFMhNO kBQneM">
+		<h1 class="fIqmuM">위치</h1>
+		<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
+
+		<!-- 맵 api 시작-->
+
+		<div id="map"></div>
+
+		<!-- 맵 api 끝-->
+		<!--위치 30미터 반경만 표시-->
+	</div>
+	<!-- 지도 끝 -->
+
 
 	<!--매물 이미지 끝-->
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
 
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/jquery-3.2.1min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+
+	<script src="../assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+	<script>
+		$(function() {
+			/*문의하기 클릭*/
+			$(".grml")
+					.click(
+							function() {
+								// 메시지 내용만 적용하여 확인창 표시
+								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/>*문의에티켓을 지켜주세요.");
+							});
+			/*허위매물신고 클릭*/
+			$(".nowqt").click(
+					function() {
+						swal('확인매물이란?',
+								'확인매물은 아래 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.',
+								'question');
+					});
+			/*확인매물 바의 물음표 클릭*/
+			$(".mola")
+					.click(
+							function() {
+								swal(
+										'확인매물이란?',
+										'확인매물은 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.<hr /> 방주인 확인 - <br>방주인이 직접 거래가격, 위치, 중개사무소까지 확인했어요! <hr /> 인증날짜 확인 - <br>인증날짜를 확인하세요.<br>최근에 인증된 방이 더욱 믿을 수 있어요!',
+										'question');
+							});
+		});
+	</script>
+
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="../main/ma_assets/billboard.min.js"></script>
 	<script type="text/javascript">
@@ -353,7 +351,7 @@
 			data : {
 				x : "x",
 				columns : [ [ "x", "가격", "관리비", "옵션", "편의시설", "교통" ],
-						[ "data1", 70, 50, 90, 80, 70 ]
+						[ "data1", 70, 50, 50, 80, 70 ]
 				// ["data2", 130, 100, 30, 200, 80],
 				// ["data3", 230, 153, 85, 300, 250]
 				],
@@ -384,33 +382,62 @@
 		});
 	</script>
 
+	<!-- 상세설명 더보기 토글 -->
+	<script type="text/javascript">
+		$(function() {
+			$(".more").click(
+					function(e) {
+						$("#smallexplan > div").toggleClass(
+								'explan-on explan-off', 400);
+					});
+		});
+	</script>
+
 	<script>
 		/* 좋아요 클릭 -> 하트 색 변경 */
+		$(function() {
+			$(".recent-div9").click(function(e) {
+				$(this).toggleClass('on off');
+			})
+		});
+	</script>
+
+	<script>
+		/* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
 			})
-		})
+		});
 	</script>
+
 	<!-- 평수 바꾸기 -->
+	<!-- /** 버튼 클릭 이벤트 */ -->
 	<script>
 		$(function() {
 			$(".chbt").click(function(e) {
-				/** 버튼 클릭 이벤트 */
 				var h1 = $("#chnum").html();
-				var result = Math.floor(h1 / 3.3);
-				$("#chnum").html("<h1 id='chnum'>" + result + "평" + "</h1>");
-			});
+				if (a = !isNaN) {
+					var result = h1 * 3.3;
+					$("#chnum").html("<h1 id='chnum'>" + result + "</h1>");
+				} else
+					(isNaN)
+				{
+					var result = Math.floor(h1 / 3.3);
+					$("#chnum").html("<h1 id='chnum'>" + result + "</h1>");
+					return a;
+				}
+			})
 		});
 	</script>
-	<!-- <script>
+	<script>
 		$(window).scroll(function() {
 			//스크롤 이벤트 발생 시 
 			var contentHeight = $(window).height();
 			//content의 높이 변수 선언 
 			var scrollValue = $(window).scrollTop();
 			//현재 scroll 위치 변수 선언 
-			if (scrollValue> contentHeight) {
+			if (scrollValue > contentHeight) {
 				//현재 scroll 위치가 content의 높이보다 높을 경우
 				$("#bluebar").css("display", "block");
 				//이벤트 stop 
@@ -419,7 +446,8 @@
 				//button이 스크롤따라 움직임 
 			}
 		});
-	</script> -->
+	</script>
+
 	<!-- <script>
 		// Hide Header on on scroll down 
 		var didScroll;
@@ -457,28 +485,13 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
 	<script type="text/javascript">
-		/* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
-		function contentSize() {
-			var wHeight = $(window).height();
-			var gHeight = wHeight - 206;
-			var mHeight = wHeight - 136;
-			$(".gallery-container").css("height", gHeight);
-			$(".map").css("height", mHeight);
-		}
-		$(function() {
-			contentSize();
-			$(window).resize(function(e) {
-				contentSize();
-			});
-		});
-
 		/* kakao map API */
 		$(function() {
 			var container = document.getElementById('map');
 
 			var options = {
 				center : new kakao.maps.LatLng(37.5025398, 127.0243207),
-				level : 3
+				level : 2
 			};
 
 			var map = new kakao.maps.Map(container, options);
@@ -498,8 +511,6 @@
 			// 지도에 원을 표시합니다 
 			circle.setMap(map);
 		})
-
-		var map = new kakao.maps.Map(container, options);
 	</script>
 
 </body>

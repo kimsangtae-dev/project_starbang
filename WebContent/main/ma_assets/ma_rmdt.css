@@ -11,21 +11,24 @@ a {
 	color: rgb(136, 136, 136);
 }
 
+/* 푸른색바의 오른쪽 3개 묶음*/
 #plrt {
 	display: inline-block;
 	float: right;
 }
 
+/* 중앙영역 전체면적 맞추기*/
 #content {
 	width: 1200px;
 	min-height: auto;
 	margin: auto;
 }
 
+/* 매물종류 & 전용면적 위치*/
 #box1 {
 	width: 100%;
 	height: 105px;
-	padding: 30px 0px 30px 0px;
+	padding: 40px 0px 30px 0px;
 }
 
 #chnum {
@@ -39,18 +42,42 @@ a {
 	display: block;
 }
 
-h1 {
+.monthman {
 	line-height: 5px;
 	font-size: 30px;
 }
 
+/* h1 {
+	line-height: 5px;
+	font-size: 30px;
+} */
+.recent-div8 {
+	width: 30px;
+	height: 30px;
+}
+
+.recent-div9 {
+	width: 25px;
+	height: 25px;
+}
+
 .recent-div8.off {
-	background: url(ma_img/like.svg) center center/cover;
+	background: url(ma_img/like-on.svg) center center/cover;
 	display: inline-block;
 }
 
 .recent-div8.on {
-	background: url(ma_img/like-on.svg) center center/cover;
+	background: url(ma_img/like.svg) center center/cover;
+	display: inline-block;
+}
+
+.recent-div9.off {
+	background: url(ma_img/blacklv.svg) center center/cover;
+	display: inline-block;
+}
+
+.recent-div9.on {
+	background: url(ma_img/blacklv-on.svg) center center/cover;
 	display: inline-block;
 }
 
@@ -61,19 +88,19 @@ h1 {
 	margin-top: 10px;
 }
 
-.greyfont {
+.greyfont1 {
 	color: #505050;
 	font-size: 14px;
 	position: relative;
 	bottom: 20px;
 }
 
-.greyfontwon {
+.greyfontwon1 {
 	color: #505050;
 	font-size: 14px;
 }
 
-.greyfontnm {
+.greyfontnm1 {
 	color: #505050;
 	font-size: 14px;
 }
@@ -95,19 +122,13 @@ h1 {
 	left: 120px;
 	bottom: 17px;
 }
-.chbt1 {
-	width: 40px;
-	height: 30px;
-	font-size: 12px;
-	background-color: white;
-	border-style: solid;
-	border-color: rgb(213, 213, 213);
-	border-width: 1px;
-	border-radius: 3px;
-	position: relative;
-	left: 120px;
-	bottom: 17px;
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+	.btn-primary.active, .open .dropdown-toggle.btn-primary {
+	background-color: #fff;
+	border: 1px solid #000;
 }
+
 li .grml {
 	width: 116px;
 	height: 38px;
@@ -188,10 +209,14 @@ p {
 }
 
 .mola {
-	color: rgb(18, 60, 156);
+	color: rgb(6, 73, 192);
+	background-color : rgb(54, 101, 206);
+	border-style : none;
 }
 
 .mola img {
+	position:relative;
+	top: 1px;
 	width: 20px;
 	height: 25px;
 }
@@ -282,7 +307,8 @@ p {
 
 #explanall {
 	width: 1200px;
-	height: 210px;
+	min-height: 260px;      /*추가*/
+    padding-bottom: 130px;   /*추가*/
 	margin: auto;
 }
 
@@ -297,6 +323,30 @@ p {
 	height: 130px;
 	float: left;
 }
+
+/*------------------------------------------------*/
+#smallexplan > div {
+   overflow: hidden;
+   /* -webkit-transition: all 0.5s;
+   -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+   transition: height 400ms ease 0.5s !important; */
+}
+#smallexplan > div.explan-on {
+   height: auto;
+   /* -webkit-transition: all 0.5s;
+   transition: height 400ms ease 0.5s;
+   -moz-transition: all 0.5s;
+    -o-transition: all 0.5s; */
+}
+#smallexplan > div.explan-off {
+   height: 130px;
+   /* -webkit-transition: all 0.5s;
+   transition: height 400ms ease 0.5s;
+   -moz-transition: all 0.5s;
+    -o-transition: all 0.5s; */
+}
+/*------------------------------------------------*/
 
 .smexp {
 	font-size: 16px;
@@ -454,108 +504,10 @@ p {
 }
 
 .fCword>p {
-	margin-bottom: 30px;
+	margin-bottom: 80px;
 	color: rgb(68, 68, 68);
 	font-size: 19px;
 	line-height: 28px;
-}
-
-.yKDHp>p>svg {
-	margin-right: 5px;
-	position: relative;
-	top: 6px;
-}
-
-svg[Attributes Style] {
-	width: 19;
-	height: 23;
-}
-
-svg
-
-
-:not
-
- 
-
-(
-:root
-
- 
-
-)
-{
-overflow
-
-
-:
-
- 
-
-hidden
-
-
-;
-}
-.yKDHp>p>span {
-	color: rgb(136, 136, 136);
-	font-size: 14px;
-}
-
-.yKDHp>p {
-	float: left;
-}
-
-.yKDHp>p+p {
-	margin-left: 20px;
-}
-
-.yKDHp>p {
-	float: left;
-}
-
-.yKDHp::after {
-	display: block;
-	content: "";
-	clear: both;
-}
-
-.yKDHp {
-	position: absolute;
-	top: 146px;
-	right: 140px;
-}
-
-svg[Attributes Style] {
-	width: 400;
-	height: 330;
-}
-
-svg
-
-
-:not
-
- 
-
-(
-:root
-
- 
-
-)
-{
-overflow
-
-
-:
-
- 
-
-hidden
-
-
-;
 }
 
 /* 가격정보 시작
