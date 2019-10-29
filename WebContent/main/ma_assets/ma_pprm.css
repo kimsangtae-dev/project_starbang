@@ -1,72 +1,74 @@
 @charset "utf-8";
 
-        /* 공통 */
+/************ 공통 ************/
+	        
+	        #content {
+	            width: 1200px;
+	            height: 800px;
+	            margin: auto;
+	        }
+	
+	        .hit_bang {
+	            margin: 70px auto 150px;
+	            height: 450px;
+	        }
+	
+	        .hit_title {
+	            height: 53px;
+				margin-top: 70px;
+				color: #222222;
+				font-size: 34px;
+				font-weight: 400;
+				text-align: center;
+			}
+
+/************************************************************************/
         
-        #content {
-            width: 1200px;
-            height: 800px;
-            margin: auto;
-        }
-
-        .hit_bang {
-            margin: 70px auto 150px;
-            height: 450px;
-        }
-
-        .hit_title {
-            height: 53px;
-			margin-top: 70px;
-			color: #222222;
-			font-size: 34px;
-			font-weight: 400;
-			text-align: center;
-		}
-
-/*************************************************************************************/
+/************ 갤러리 시작 부분 ************/
         
-        /* 관심목록 하위 탭 (인기매물) */
-        .tab-menu  {
-            display: table;
-			height: 40px;
-			width: 1180px;
-			margin: 45px auto 0;
-			border-bottom: 2px solid #eee;
-		
-		}
+	        /* 관심목록 하위 탭 (인기매물) */
+	        .tab-menu  {
+	            display: table;
+				height: 40px;
+				width: 1180px;
+				margin: 45px auto 0;
+				border-bottom: 1px solid #eee;
+			}
+	
+			.tab-text {
+	            padding: 60px 0 10px 0;
+	        }
+	        
+	        .re-div1 span {
+	        	color: #1564F9;
+	        }
+	
+	
+	        /* 최근본방, 찜한방 하위박스(float과 해제) */
+	
+	        .re-div1 {
+	            float: left;
+	            font-size: 15px;
+	        }
+	
+	        .tab-con1:after {
+	            display: block;
+	            clear: both;
+	            content: '';
+	        }
+	        
 
-		.tab-text {
-            padding: 60px 0 10px 0;
-        }
-        
-        .re-div2 span {
-        	color: #1564F9;
-        }
-
-
-        /* 최근본방, 찜한방 하위박스(float과 해제) */
-
-        .re-div2 p {
-            float: right;
-            font-size: 15px;
-        }
-
-        .tab-con1:after {
-            display: block;
-            clear: both;
-            content: '';
-        }
-        
-
-            .recent-div4 {
+            .hit-div4 {
                 width: 1240px;
                 margin-top: 20px;
                 position: relative;
                 right: 0px;
             }
 
+
             /* 갤러리 박스 시작 */
             /*박스전체*/
-            .recent-div5{
+            .hit-div5{
                 float: left;
                 width: 285px;
                 height: 321px;
@@ -81,13 +83,13 @@
             }
 
             /* 좋아요를 위한 엄마박스 -relative */
-            .recent-div6{
+            .hit-div6{
                 height: 285px;
                 position: relative;
             }
 
             /* <div>좋아요 자식박스 -absolute */
-            .recent-div7{
+            .hit-div7{
                 width: 36px;
                 position: absolute;
                 top: 3px;
@@ -96,34 +98,34 @@
                 cursor: pointer;
             }
             /* <div>좋아요 - <div> */
-            .recent-div8{
+            .hit-div8{
                 width: 32px;
                 height: 30px;
                 margin: 0px auto;
                 /*background: url(ma_img/like.svg) center center / cover;*/
             }  
             
-            .recent-div8.off { 
+            .hit-div8.off { 
             background: url(ma_img/like.svg) center center / cover; 
             }
             
-			.recent-div8.on { 
+			.hit-div8.on { 
 			background: url(ma_img/like-on.svg) center center / cover; 
 			}
 
                 /* <a> 태그 */
-            .recent-a{
+            .hit-a{
                 display: block;
             }
 
             /* 부트스트랩에 마진이 들어가있어서 <a> 부분만 초기화시켜주기 */
-            .recent-a p{
+            .hit-a p{
                 margin: 0px;
             }
 
 
             /* <a> 태그 - <div>이미지 */
-            .recent-a-div{
+            .hit-a-div{
                 width: 100%;
                 height: 186px;
                 margin-bottom: 12px;
@@ -134,17 +136,17 @@
             }
 
             /* body태그에 이미지가 따로들어가있음 주의 @@*/
-            .recent-a-div:before {
+            .hit-a-div:before {
                 content: "";
                 height: 100%;
                 position: absolute;
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(../ma_assets/ma_img/1.jpeg) center center / cover no-repeat;
+                background: url(../ma_assets/ma_img/1234.jpg) center center / cover no-repeat;
             }
 
-            .recent-a-div:after {
+            .hit-a-div:after {
                 content: "";
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.1);
@@ -155,7 +157,7 @@
             }
 
             /* body태그에 이미지가 따로들어가있음 주의 @@ */
-            .recent-a-div2:before {
+            .hit-a-div2:before {
                 content: "";
                 height: 100%;
                 position: absolute;
@@ -165,7 +167,7 @@
                 background: url(../ma_assets/ma_img/2.jpeg) center center / cover no-repeat;
             }
 
-            .recent-a-div2:after {
+            .hit-a-div2:after {
                 content: "";
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.1);
@@ -176,12 +178,12 @@
             }
 
             /* <a>태그 - <div>확인매물 박스 */
-            .recent-a-confirm{
+            .hit-a-confirm{
                 height: 21px;
                 margin-bottom: 3px;
             }
 
-            .recent-a-confirm span {
+            .hit-a-confirm span {
                 display: inline-block;
                 color: rgb(50, 108, 249);
                 font-size: 11px;
@@ -195,7 +197,7 @@
             }
 
             /* <a>태그 - <div>확인매물 박스 - <div>인박스 */
-            .recent-a-confirm-div{
+            .hit-a-confirm-div{
                 display: inline-block;
                 height: 21px;
                 line-height: 19px;
@@ -209,7 +211,7 @@
             }
 
             /* <a>태그 - <p>방 종류 */
-            .recent-a-p1{
+            .hit-a-p1{
                 width: 100%;
                 color: rgb(102, 102, 102);
                 font-size: 12px;
@@ -222,7 +224,7 @@
 
 
             /* <a>태그 - <p>lent방식 / 금액 */
-            .recent-a-p2{
+            .hit-a-p2{
                 color: rgb(34, 34, 34);
                 font-size: 20px;
                 font-weight: 700;
@@ -232,12 +234,12 @@
 
 
             /* <a>태그 - <p>lent방식 / 금액 - <span> */
-            .recent-a-p2 span{
+            .hit-a-p2 span{
                 vertical-align: middle;    
             }
 
             /* <a>태그 - 3th, 4th <p> */
-            .recent-a-p34 {
+            .hit-a-p34 {
                 width: 100%;
                 color: rgb(102, 102, 102);
                 font-size: 14px;
@@ -250,7 +252,7 @@
 
 
             /* 보지 않은방 */
-            .recent-div5-vacant{
+            .hit-div5-vacant{
                 float: left;
                 width: 280px;
                 height: 186px;
@@ -262,7 +264,7 @@
                 border-radius: 3px;
             }
 
-            .recent-div5-vacant-p{
+            .hit-div5-vacant-p{
                 color: rgb(148, 152, 160);
                 font-size: 14px;
                 font-weight: 300;

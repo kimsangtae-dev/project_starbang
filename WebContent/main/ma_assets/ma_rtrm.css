@@ -1,87 +1,89 @@
 @charset "utf-8";
 
-        /* 공통 */
         
-        html body #root {
-			width: 100%;
-		}
+/************ 공통 ************/
         
-        #content {
-            width: 1200px;
-            height: 800px;
-            margin: auto;
-        }
-
-        .recent{
-            margin: 70px auto 150px;
-            height: 450px;
-        }
-
-        .interest {
-            height: 53px;
-			margin-top: 70px;
-			color: #222222;
-			font-size: 34px;
-			font-weight: 400;
-			text-align: center;
-		}
-
-/*************************************************************************************/
+	        html body #root {
+				width: 100%;
+			}
+	        
+	        #content {
+	            width: 1200px;
+	            height: 800px;
+	            margin: auto;
+	        }
+	
+	        .recent{
+	            margin: 70px auto 150px;
+	            height: 450px;
+	        }
         
-        /* 관심목록 하위 탭 (최근본방, 찜한방) */
-        .tab-menu  {
-            display: table;
-			height: 40px;
-			width: 1200px;
-			margin: 45px auto 0;
-			border-bottom: 1px solid #eee;
-		
-		}
-
-        .st-bang {
-			display: table-cell;
-		    width: 50%;
-		    color: rgb(136, 136, 136);
-		    font-size: 16px;
-		    text-align: center;
-		    cursor: pointer;
-		}
-
-		.st-bang.active{
-			color: rgb(34, 34, 34);
-		    font-weight: 500;
-		    border-bottom: 2px solid rgb(34, 34, 34);
-		}
-		
-		.tab-text {
-            padding: 60px 0 10px 0;
-        }
-
-
-        /* 최근본방, 찜한방 하위박스(float과 해제) */
-        .re-div1 p {
-            float: left;
-            font-size: 15px;
-        }
-
-        .re-div1 p span {
-            color: #1564F9;
-            font-size: 15px;
-        }
-
-
-        .re-div2 p {
-            float: right;
-            font-size: 15px;
-        }
-
-        .tab-con1:after {
-            display: block;
-            clear: both;
-            content: '';
-        }
+/************************************************************************/
         
+/************ 갤러리 전까지 상단 부분 ************/
+        
+			/* 페이지 제목 h1태그 */
+	        .interest {
+	            height: 53px;
+				margin-top: 70px;
+				color: #222222;
+				font-size: 34px;
+				font-weight: 400;
+				text-align: center;
+			}
+	        
+			/* 관심목록 하위 탭 (최근본방, 찜한방) */
+	        .tab-menu  {
+	            display: table;
+				height: 40px;
+				width: 1200px;
+				margin: 45px auto 0;
+				border-bottom: 1px solid #eee;
+			}
+	
+			/* 상단 탭 부분 */
+	        .st-bang {
+				display: table-cell;
+			    width: 50%;
+			    color: rgb(136, 136, 136);
+			    font-size: 16px;
+			    text-align: center;
+			    cursor: pointer;
+			}
+	
+			.st-bang.active{
+				color: rgb(34, 34, 34);
+			    font-weight: 500;
+			    border-bottom: 2px solid rgb(34, 34, 34);
+			}
 
+			/* 최근본방, 찜한방 하위박스(float과 해제) */
+	        .tab-text {
+	            padding: 60px 0 10px 0;
+	        }
+	        
+	        .re-div1 p {
+	            float: left;
+	            font-size: 15px;
+	        }
+	
+	        .re-div1 p span {
+	            color: #1564F9;
+	            font-size: 15px;
+	        }
+	
+	
+	        .re-div2 p {
+	            float: right;
+	            font-size: 15px;
+	        }
+	
+	        .tab-con1:after {
+	            display: block;
+	            clear: both;
+	            content: '';
+	        }
+	        
             .recent-div4 {
                 width: 1240px;
                 margin-top: 20px;
@@ -89,8 +91,17 @@
                 right: 0px;
             }
 
-            /* 갤러리 박스 시작 */
-            /*박스전체*/
+/************ 갤러리 시작 부분 ************/
+
+            /* 갤러리를 감싸는 박스 */
+            .recent-div4 {
+                width: 1240px;
+                margin-top: 20px;
+                position: relative;
+                right: 0px;
+            }
+            
+            /* 갤러리 박스전체 */
             .recent-div5{
                 float: left;
                 width: 285px;
@@ -120,6 +131,7 @@
                 z-index: 1;
                 cursor: pointer;
             }
+            
             /* <div>좋아요 - <div> */
             .recent-div8{
                 width: 32px;
@@ -136,7 +148,7 @@
 			background: url(ma_img/like-on.svg) center center / cover; 
 			}
 
-                /* <a> 태그 */
+            /* <a> 태그 */
             .recent-a{
                 display: block;
             }
@@ -145,7 +157,6 @@
             .recent-a p{
                 margin: 0px;
             }
-
 
             /* <a> 태그 - <div>이미지 */
             .recent-a-div{
@@ -166,31 +177,10 @@
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(../ma_assets/ma_img/1.jpeg) center center / cover no-repeat;
+                background: url(../ma_assets/ma_img/1234.jpg) center center / cover no-repeat;
             }
 
             .recent-a-div:after {
-                content: "";
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.1);
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                right: 0px;
-            }
-
-            /* body태그에 이미지가 따로들어가있음 주의 @@ */
-            .recent-a-div2:before {
-                content: "";
-                height: 100%;
-                position: absolute;
-                top: 0px;
-                right: 0px;
-                left: 0px;
-                background: url(../ma_assets/ma_img/2.jpeg) center center / cover no-repeat;
-            }
-
-            .recent-a-div2:after {
                 content: "";
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.1);
@@ -245,7 +235,6 @@
                 overflow: hidden;
             }
 
-
             /* <a>태그 - <p>lent방식 / 금액 */
             .recent-a-p2{
                 color: rgb(34, 34, 34);
@@ -254,7 +243,6 @@
                 line-height: 25px;
                 margin: 3px 0px 6px !important;
             }
-
 
             /* <a>태그 - <p>lent방식 / 금액 - <span> */
             .recent-a-p2 span{
@@ -272,7 +260,6 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
             }
-
 
             /* 보지 않은방 */
             .recent-div5-vacant{

@@ -6,14 +6,16 @@
 <html lang="ko">
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
+
+    <link rel="stylesheet" type="text/css" href="../assets/header_white.css">
+    <link rel="stylesheet" type="text/css" href="../assets/footer_black.css">
     <link rel="stylesheet" type="text/css" href="ma_assets/ma_rtrm.css">
 </head>
 
 <body>
-	<div class="root">
-	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
+	<div class="root">
+	
 		<!-- 상단 헤더 -->
 		<%@ include file="./ma_assets/ma_inc/top.jsp"%>
 	
@@ -42,7 +44,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -73,7 +75,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -104,7 +106,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -135,7 +137,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
