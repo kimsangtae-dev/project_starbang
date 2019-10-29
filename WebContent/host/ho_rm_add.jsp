@@ -23,10 +23,9 @@
 </style>
 <div id="root">
     <div class="box">
-        <!-- 헤더 -->
+        <!-- header 시작 -->
         <%@ include file="ho_assets/ho_inc/ho_header.jsp" %> 
-
-                <!-- header 끝 -->
+        <!-- header 끝 -->
             <!-- content 시작 -->
             <div id="content">
                 <div class="sell_room_box">
@@ -55,9 +54,6 @@
                                     <label class="Square_box"><input type="radio" name="room_type">
                                         <p>오피스텔(도시형)</p>
                                     </label>
-                                    <label class="Square_box"><input type="radio" name="room_type">
-                                        <p>아파트</p>
-                                    </label>
                                 </td>
                             </tr>
                             <tr>
@@ -71,9 +67,6 @@
                                     </label>
                                     <label class="Square_box"><input type="radio" name="building_type">
                                         <p>빌라/연립/다세대</p>
-                                    </label>
-                                    <label class="Square_box"><input type="radio" name="building_type">
-                                        <p>상가주택</p>
                                     </label>
                                 </td>
                             </tr>
@@ -93,12 +86,16 @@
                                             <span class="glyphicon glyphicon-exclamation-sign"></span>
                                             <span>도로명, 건물명, 지번에 대해 통합검색이 가능합니다.</span>
                                         </p>
-                                        <form class="loc_div"><input autocomplete="off" class="loc_inp_box input_box" name="keyword" placeholder="예)번동 10-1, 강북구 번동" value=""><button type="submit" class="loc_div1">주소검색</button>
+                                        <form class="loc_div">
+                                            <input type="text" class="address1" placeholder=" 주소" readonly>
+                                            <input type="button" class="address2" onclick="sample5_execDaumPostcode()" value="주소 검색">
                                         </form>
-                                        <div class="loc_de"></div>
-                                        <div class="kXKUhT">
-                                            <div class="jlsyRm gnEBbX"><input autocomplete="off" class="bVCGUR input_box" name="dong" placeholder="예)101동" value=""></div>
-                                            <div class="xUWNs gnEBbX"><input autocomplete="off" class="gVtYYG input_box" name="ho" placeholder="예)201호" value=""></div>
+                                        <div class="loc_de">
+                                            <input type="text" style="border:none"  id="point_address" placeholder="" readonly>
+                                        </div>
+                                        <div class="dongho_div">
+                                            <div class="dong"><input autocomplete="off" class="dongho input_box" name="dong" placeholder="예)101동" value=""></div>
+                                            <div class="ho"><input autocomplete="off" class="dongho input_box" name="ho" placeholder="예)201호" value=""></div>
                                         </div>
                                         <div class="loc_check">
                                             <label class="clearfix check_box" size="22"><input type="checkbox" class=" PcMeW" name="is_noinfo_dong" value=""><span class="CheckBox"></span>
@@ -110,7 +107,14 @@
                                             <a>주소가 검색되지 않으세요?</a>
                                         </p>
                                     </div>
-                                    <div class="map_box">
+                                    <div id="box" class="map_box" style="display:none">
+                                       <!-- <div class="map_box1">
+                                            <span class="glyphicon glyphicon-map-marker"></span>
+                                        </div>
+                                        <p class="map_text">주소 검색을 하시면</p>
+                                        <p class="map_text">해당 위치가 지도에 표시됩니다.</p> -->
+                                    </div>
+                                    <div id="pon_box" class="map_box">
                                         <div class="map_box1">
                                             <span class="glyphicon glyphicon-map-marker"></span>
                                         </div>
@@ -573,9 +577,9 @@
 
             <!-- footer 시작 -->
       <!-- 하단 영역 -->
-	<div id="footer">
-		<%@ include file="ho_assets/ho_inc/ho_footer.jsp" %> 
-	</div>
+    <div id="footer">
+        <%@ include file="ho_assets/ho_inc/ho_footer.jsp" %> 
+    </div>
             <!-- footer 끝 -->
         </div> <!-- total 끝 -->
           
@@ -583,17 +587,57 @@
 <!-- Javascript -->
         <script src="../assets/js/jquery-1.10.2.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-    $(function () {
-        $(".header-dropbox").hover(function() {
-            $(this).toggleClass('header-dropbox header-dropbox-open')
-        });
+        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
+<script>
+    var mapContainer = document.getElementById('box'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
 
-        $(".isroom-dropdown-closed").click(function() {
-            $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
-        });
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
     });
 
+
+    function sample5_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = data.address; // 최종 주소 변수
+
+                // 주소 정보를 해당 필드에 넣는다.
+                <!--document.getElementById("sample5_address").value = addr;-->
+                document.getElementById("point_address").value = addr;
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+
+                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        // 기존에 있던 박스를 숨긴다.
+                        $("#pon_box").css("display", "none")
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+            }
+        }).open();
+    }
 </script>
     </body>
 </html>

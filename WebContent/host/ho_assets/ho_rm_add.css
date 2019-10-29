@@ -1,16 +1,18 @@
 @charset "utf-8";
 
-/************************************ 공통 ************************************/
+/************ 공통 ************/
 
-/* 화면 폭 결정 */
+/***** 화면 폭 결정 *****/
 #content {
     width: 1200px;
     margin: 0px auto;
     padding-top: 70px;
 }
 
-/* 아이콘 크기 결정 */
 
+/***** 아이콘 크기 결정 *****/
+
+/* 사진등록의 사진아이콘 */
 .glyphicon-picture {
     font-size: 50px;
     padding-bottom: 45px;
@@ -20,8 +22,28 @@
     font-size: 20px;
 }
 
-/** 테이블 공통 속성*/
+.glyphicon-map-marker {
+    font-size: 50px;
+}
 
+
+/***** 페이지 전체 input박스 속성 *****/
+.input_box {
+    height: 46px;
+    color: rgb(68, 68, 68);
+    font-size: 15px;
+    background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    padding: 0px 15px;
+    border: 1px solid rgb(208, 210, 214);
+    border-image: initial;
+    border-radius: 0px;
+    outline: none;
+}
+
+
+/** 테이블 공통 속성*/
 .tableframe > h1 {
     height: 60px;
     color: rgb(34, 34, 34);
@@ -90,6 +112,7 @@
 .tableframe > table tr + tr {
     border-top: 1px solid rgb(238, 238, 238);
 }
+
 
 /************************************ 방내놓기 ************************************/
 
@@ -160,7 +183,6 @@
 .loc_box_pd { padding: 20px; }
 
 /* 위치정보 박스 안쪽 속성 */
-
 .loc_box {
     float: left;
     width: 530px;
@@ -169,62 +191,25 @@
 }
 
 /* 위치정보 첫번째 글씨 */
-
-.loc_p_t > svg { 
-    position: relative;     
-    top: 1px;
-}
-
 .loc_p_t > span {
     color: rgb(136, 136, 136);
     bottom: 2px;
 }
 
 /* 주소검색폼 */
-.loc_div { margin: 15px 0px 10px; }
-
-/* 위치정보 input박스크기 */
-.loc_inp_box {
-    float: left;
+input.address1 {
     width: 430px;
-}
-/* 페이지 전체 input박스 속성 */
-.input_box {
     height: 46px;
-    color: rgb(68, 68, 68);
-    font-size: 15px;
-    background-color: rgb(255, 255, 255);
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    padding: 0px 15px;
-    border: 1px solid rgb(208, 210, 214);
-    border-image: initial;
-    border-radius: 0px;
-    outline: none;
 }
 
 /* 주소검색 버튼 */
-.loc_div1 {
-    width: 90px;
+input.address2 {
+    border: 0;
+    width: 95px;
     height: 46px;
-    margin-left: 10px;
     color: rgb(255, 255, 255);
-    font-size: 14px;
-    font-weight: 500;
     background-color: rgb(35, 45, 74);
-    /*user-select: none;*/
-    border-width: 0px;
-/*    border-style: initial;
-    border-color: initial;
-    border-image: initial;*/
     border-radius: 3px;
-}
-
-/* 주소검색창 after */
-.loc_div::after {
-    display: block;
-    content: "";
-    clear: both;
 }
 
 /* 상세주소 검색창 */
@@ -239,14 +224,25 @@
     border-image: initial;
 }
 
+/* 상세주소  크기 */
+#point_address {
+    width: 500px;
+    height:46px;
+}
+
+/* 상세주소  부트스트랩 기능 삭제 */
+#point_address:focus {
+    outline: none;
+}
+
 /* 동호 박스 마진 */
-.kXKUhT {
+.dongho_div {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-/* 동 박스 */
-.gnEBbX {
+/* 동/호 박스 */
+.dong, .ho {
     float: left;
     width: 260px;
     padding-right: 48px;
@@ -254,16 +250,17 @@
 }
 
 /* 동, 호 input비율 */
-.bVCGUR, .gVtYYG  {
+.dongho {
     width: 100%;
 }
 
+
 /* 위치정보 input틀 */
-.jlsyRm::after {
+.dong::after {
     content: "동";
 }
 
-.gnEBbX::after {
+.dong::after {
     width: 48px;
     height: 46px;
     color: rgb(102, 102, 102);
@@ -277,29 +274,44 @@
 }
 
 /* 동,호 사이 마진 추가*/
-.gnEBbX + div {
+.dong + div {
     margin-left: 10px;
 }
 
-.xUWNs::after {
+.ho::after {
     content: "호";
 }
 
+.ho::after {
+    width: 48px;
+    height: 46px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    text-align: center;
+    line-height: 44px;
+    box-sizing: border-box;
+    position: absolute;
+    border: 1px solid rgb(208, 210, 214);
+    border-image: initial;
+}
+
 /* 주소 박스 float 삭제*/
-.kXKUhT::after {
-    display: block;
-    content: "";
-    clear: both;
+.dongho_div::after {
+    content: ''; 
+    dispaly: table;
+    clear: both
 }
 
 /* 동정보 안내박스 */
 .loc_check {
-    margin-bottom: 18px;
+    margin: 5px 0 18px 0;
+
     user-select: none;
 }
 
 .loc_check > label {
     float: left;
+    margin-top: 15px;
 }
 
 /* 동정보안내 입력 없애기 */
@@ -348,16 +360,17 @@
     clear: both;
 }
 
+
 /* 주소 없을 때 체크하는 창 */
 .loc_p_t {
     height: 20px;
     line-height: 20px;
     user-select: none;
+    margin-bottom: 15px;
 }
 
-.loc_p_t > svg {
-    position: relative;
-    top: 1px;
+form.loc_div {
+    padding-bottom: 10px;
 }
 
 .loc_p_t > a {
