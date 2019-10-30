@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="ma_assets/modal/ma_login.css">
+	<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_login.css">
 </head>
 
 			<div class="modal-content love">

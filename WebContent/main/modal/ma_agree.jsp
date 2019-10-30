@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 
-<link rel="stylesheet" type="text/css" href="ma_assets/modal/ma_agree.css" />
+<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_agree.css" />
 
 </head>
 
