@@ -3,16 +3,14 @@
 
 <head>
 	<style>
-		/* 브라우저 최소 넓이 지정 */
-body { min-width: 1366px; }
-
-/* 텍스트 기본 설정 */
-body * { color: rgb(34, 34, 34); }
-a { text-decoration: none !important; }
-
- /*------------------------------
-/	header
+		
+/*---------------------------------
+|	header * css
 ----------------------------------*/
+
+/* 브라우저 최소 넓이 지정 */
+.header { min-width: 1366px; }
+
 /* 메뉴바 크기, 여백, 테두리 */
 #header .navbar {
 	height: 70px;
@@ -39,6 +37,7 @@ a { text-decoration: none !important; }
 	display: inline-block;
 	line-height: 70px;
 	font-size: 15px;
+	color: #222;
 }
 
 /* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
@@ -68,6 +67,9 @@ a { text-decoration: none !important; }
 	</style>
 </head>
 
+<!---------------------------------
+|	header * body
+---------------------------------->
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">

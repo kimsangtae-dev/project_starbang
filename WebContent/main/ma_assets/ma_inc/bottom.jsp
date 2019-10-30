@@ -176,9 +176,9 @@
 	line-height: 18px;
 }
 
-span {
+/* span {
 	color: rgb(144, 144, 144)
-}
+} */
 
 .text>span+span {
 	margin-left: 10px;
