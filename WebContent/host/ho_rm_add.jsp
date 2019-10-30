@@ -102,10 +102,6 @@
                                                 <span class="ch_box_text">등본에 동정보가 없는 경우 선택해 주세요.</span>
                                             </label>
                                         </div>
-                                        <p class="loc_p_t">
-                                            <span class="glyphicon glyphicon-exclamation-sign"></span>
-                                            <a>주소가 검색되지 않으세요?</a>
-                                        </p>
                                     </div>
                                     <div id="box" class="map_box" style="display:none">
                                        <!-- <div class="map_box1">
@@ -565,7 +561,7 @@
             </div>
         </div>
         <div class="low_box">
-            <label class="low_text" size="22">
+            <label class="low_text check_box" size="22">
                 <input type="checkbox" class="PcMeW" name="isAgree" value="">
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
