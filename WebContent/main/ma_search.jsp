@@ -7,7 +7,6 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="ma_assets/ma_search.css">
-<link rel="stylesheet" type="text/css" href="../assets/header_white.css">
 
 <link rel="stylesheet" href="../assets/plugin/ion.rangeSlider.css">
 
@@ -602,6 +601,8 @@
 	<!-- 필터 -->
 	<script type="text/javascript">
 		/* 필터 -드롭다운 - 자동 toggle 해제 */
+		/* $(document).off(".data-api");
+		$(".dropdown-toggle").dropdown(); */
 		$('.dropdown-menu').click(function(e) {
 	        e.stopPropagation();
 	    })
@@ -623,12 +624,13 @@
 			from : price1_from,
 			to : price1_to,
 			values : price1_value,
+			to_min : price1_value.indexOf(100),
 			from_max : price1_value.indexOf(90000),
 			skin : "round",
 			hide_min_max : true
 		});
 		var slide1_value = $("#slide-price1").data("ionRangeSlider");
-		
+
 		// 월세
 		var price2_value = [ 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60,
 				65, 70, 80, 90, 100, 110, 120, 130, 140, 150, "무제한" ];
@@ -641,12 +643,14 @@
 			from : price2_from,
 			to : price2_to,
 			values : price2_value,
+			to_min : price2_value.indexOf(5),
+			from_max : price2_value.indexOf(150),
 			skin : "round",
 			hide_from_to : false,
 			hide_min_max : true
 		});
 		var slide2_value = $("#slide-price2").data("ionRangeSlider");
-		
+
 		// 매매가
 		var price3_value = [ 0, 3000, 5000, 10000, 15000, 20000, 25000, 30000,
 				35000, 40000, 45000, 50000, 60000, 70000, 80000, 90000, 100000,
@@ -658,11 +662,13 @@
 			from : price3_from,
 			to : price3_to,
 			values : price3_value,
+			to_min : price3_value.indexOf(3000),
+			from_max : price3_value.indexOf(150000),
 			skin : "round",
 			hide_min_max : true
 		});
 		var slide3_value = $("#slide-price3").data("ionRangeSlider");
-		
+
 		// 관리비
 		var price4_value = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
 				15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
@@ -674,11 +680,13 @@
 			from : price4_from,
 			to : price4_to,
 			values : price4_value,
+			to_min : price4_value.indexOf(1),
+			from_max : price4_value.indexOf(50),
 			skin : "round",
 			hide_min_max : true
 		});
 		var slide4_value = $("#slide-price4").data("ionRangeSlider");
-		
+
 		// 방크기
 		$("#slide-size").ionRangeSlider({
 			type : "double",
@@ -690,7 +698,7 @@
 			hide_min_max : true
 		});
 		var slide5_value = $("#slide-size").data("ionRangeSlider");
-		
+
 		// 체크박스 클릭 시 드롭다운 버튼 내용 변경 ***추후 구현
 		/* var getCheck = $("input[type='checkbox']");
 		
@@ -708,7 +716,7 @@
 		        $("#room-type").submit();
 		    });
 		}); */
-		
+
 		// 필터 초기화
 		$(function() {
 			// 가격대 조건삭제
@@ -718,19 +726,19 @@
 				slide2_value.reset();
 				slide3_value.reset();
 			})
-			
+
 			// 관리비 조건삭제
 			$("#filter-reset2").click(function(e) {
 				e.preventDefault();
 				slide4_value.reset();
 			})
-			
+
 			// 방크기 조건삭제
 			$("#filter-reset3").click(function(e) {
 				e.preventDefault();
 				slide5_value.reset();
 			})
-			
+
 			// 전체 필터 초기화
 			$("#filters-reset").click(function(e) {
 				e.preventDefault();
