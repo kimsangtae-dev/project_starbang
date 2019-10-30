@@ -161,7 +161,7 @@ color:white;
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="../main/ma_main.html" class="header-div1-a"><img
+		<a href="../main/ma_main.jsp" class="header-div1-a"><img
 			src="../assets/ico/logo_white.png"></a>
 		<div class="header-div2">
 			<!-- <a href="../main/ma_main.html" class="header-div1-a"><img src="../assets/ico/logo_white.png"></a>
