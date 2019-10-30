@@ -521,8 +521,9 @@
 			var clusterer = new kakao.maps.MarkerClusterer({
 				map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
 				averageCenter : false, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-				minLevel : 1,	// 클러스터 할 최소 지도 레벨 
-				styles : [ {	// calculator에 적용될 스타일
+				minLevel : 2, // 클러스터 할 최소 지도 레벨 
+				disableClickZoom: true, // 클릭 시 확대기능 해제
+				styles : [ { // calculator에 적용될 스타일
 					minWidth : '40px',
 					height : '40px',
 					padding : '5px 11px',
@@ -535,6 +536,23 @@
 					fontWeight : 'bold',
 					lineHeight : '24px'
 				} ]
+			});
+			
+			// 마커 스타일 설정
+			var markone = '<div class="marker">1</div>';
+			// 데이터 가져오기
+			$.get("ma_assets/address.json", function(data) {
+				var markers = $(data.positions).map(
+					function(i, position) {
+						return new kakao.maps.CustomOverlay({
+					    	position: new kakao.maps.LatLng(position.lat,
+									position.lng),
+					    	content: markone  
+						});
+					});
+
+				// 클러스터러에 마커 추가
+				clusterer.addMarkers(markers);
 			});
 
 			// 데이터 가져오기
