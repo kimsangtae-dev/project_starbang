@@ -35,7 +35,7 @@
             <!--  -->
             <div class="isroom-div">
                 <p class="isroom-p1">
-                    <span>0</span>건의 공실이 있습니다.
+                    <span>3</span>건의 공실이 있습니다.
                 </p>
                 <p class="isroom-p2">공실상태</p>
                 <!-- <ul width="135" class="isroom-dropdown-closed">
@@ -164,10 +164,10 @@
 <script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    /* $(function () {
+    $(function () {
         $(".header-dropbox").hover(function() {
             $(this).toggleClass('header-dropbox header-dropbox-open')
-        }); */
+        });
 
         $(".isroom-dropdown-closed").click(function() {
             $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
