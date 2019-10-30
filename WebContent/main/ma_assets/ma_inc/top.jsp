@@ -84,7 +84,7 @@ a { text-decoration: none !important; }
 				<a href="ma_pprm.jsp" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
-				<a href="ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
+				<a href="modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>
@@ -101,6 +101,15 @@ a { text-decoration: none !important; }
 
 <!-- 비밀번호 찾기용 모달 로더 -->
 <div class="modal fade" id="passwdModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<!-- 동의하기용 모달 로더 -->
+<div class="modal fade" id="agreeModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			
