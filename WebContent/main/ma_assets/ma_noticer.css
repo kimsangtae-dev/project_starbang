@@ -19,7 +19,7 @@
 				margin-bottom: 100px;
 			}
 
-			h1 {
+			.h1 {
 				height: 53px;
 				margin-top: 105px;
 				margin-bottom: 45px;
@@ -142,7 +142,7 @@
 			margin: 0px;
 		}
 
-		span {
+		.span {
 			color: #1564F9;
 			font-size: 22px;
 			font-weight: 100;
@@ -175,18 +175,20 @@
 			font-size: 20px; 
 		}
 
-		.in {
+		.noticein {
 			display: inline-block;
 			width: 900px;
 			margin-top: 11px;
 			font-size: 20px; 
 		}
 
+
 		.out {
 			display: inline-block;
 			width: 300px;
 			text-align: center;
 			margin-top: 11px;
+			padding-left: 0px;
 			font-size: 20px; 
 		}
 

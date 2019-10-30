@@ -5,7 +5,6 @@
 <html lang="ko">
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_rmdt.css" />
 <link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_noticer.css" />
 
 </head>
@@ -15,7 +14,7 @@
 
 	 <!-- 중앙 영역 -->
 			<div id="content">
-				<h1>문의하기</h1>
+				<h1 class="h1">문의하기</h1>
 				<div class="nav">
 					<div><a href="ma_faq.jsp">자주 묻는 질문</a></div>
 					<div class="now"><a href="ma_notice.jsp">공지사항</a></div>
@@ -35,7 +34,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="moticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
+    					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="noticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content"><pre class="pre">안녕하세요. 다방 운영팀입니다.
 항상 다방을 이용해주시는 회원님들께 감사 인사 드립니다.
@@ -74,7 +73,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item'>
           				<!-- 게시글 제목영역 -->
-    					<h2 class='collapse-title collapse-title3 text'><a href="#content3" class="a"><p class="in">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
+    					<h2 class='collapse-title collapse-title3 text'><a href="#content3" class="a"><p class="noticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content3" class="content"><pre class="pre">안녕하세요. 다방 운영팀입니다.
 항상 다방을 이용해주시는 회원 여러분께 감사 드리며, 새로운 이용약관 시행에 관한 안내 말씀 드립니다.

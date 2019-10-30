@@ -5,7 +5,6 @@
 <html lang="ko">
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_rmdt.css" />
 <link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_faqr.css" />
 
 </head>
@@ -15,7 +14,7 @@
     
     <!-- 중앙 영역 -->
 			<div id="content">
-				<h1 class"h1">문의하기</h1>
+				<h1 class="h1">문의하기</h1>
 				<div class="nav">
 					<div class="now"><a href="ma_faq.jsp">자주 묻는 질문</a></div>
 					<div><a href="ma_notice.jsp">공지사항</a></div>
