@@ -43,7 +43,7 @@
 	
 			/* 상단 탭 부분 */
 	        .st-bang {
-				display: block;
+				display: table-cell;
 			    width: 50%;
 			    color: rgb(136, 136, 136);
 			    font-size: 16px;
