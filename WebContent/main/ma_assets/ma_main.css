@@ -242,6 +242,13 @@
 	border-bottom: 1px solid rgb(238, 238, 238);
 }
 
+.slide-a-div1-down > p {
+	height: 21px;
+	line-height: 21px;
+	color: #444;
+	fontsize: 15px;
+}
+
 /* 갤러리 슬라이드 " > " <button>  */
 .slide-button {
 	width: 40px;
@@ -801,6 +808,52 @@
 	line-height: 186px;
 	text-align: center;
 }
+
+
+
+/* ---------------------------------------
+/	오른쪽 밑 방찾기 버튼 (btn-searchrm)
+---------------------------------------- */
+.btn-searchrm{
+	width: 170px;
+    height: 72px;
+    box-shadow: rgba(6, 68, 192, 0.82) 0px 15px 30px -14px;
+    background-color: rgb(21, 100, 249);
+    position: fixed;
+    right: 110px;
+    bottom: 30px;
+    z-index: 8;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    border-radius: 36px;
+    display: none;
+}
+
+.btn-searchrm svg {
+	position: relative;
+    top: 2px;
+    right: 2px;
+}
+
+.btn-searchrm span {
+	margin-left: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    position: relative;
+    bottom: 2px;
+}
+
+
+
+
+
+
+
+
 
 
 /* ---------------------------------------

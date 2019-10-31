@@ -40,7 +40,7 @@
         </div>
         <form>
           <div>
-            <input type="text" name="">
+            <input type="text" name="" id="searching-for">
             <i class="glyphicon glyphicon-search"></i>
             <button href="#" class="btn btn-primary">방 찾기</button>
           </div>
@@ -448,6 +448,18 @@
     </div>
     <!-- 최근본방 / 찜한방 끝  -->
     
+    
+    <button class="btn-searchrm" style="bottom: 30px;">
+    	<svg width="20" height="20" viewBox="0 0 20 20">
+    		<g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2">
+    			<circle cx="8.5" cy="8.5" r="6.5"></circle>
+    			<path d="M13 13l5 5"></path>
+    		</g>
+    	</svg>
+    	<span>방 찾기</span>
+    </button>
+    
+    
   </div>
 <!-- content 끝 -->
 
@@ -479,16 +491,29 @@
 		});
 	})
 	
-	/* 모달 창 닫기 이벤트 */
+	/* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
 	$(function() {
-		$('.modal').on('hidden.bs.modal', function(e) {
-			$(this).removeData('bs.modal');
+		$(window).scroll(function() {
+			var num = $(window).scrollTop();
+				
+			if(num > 370) {
+					$(".btn-searchrm").fadeIn(1).css("display","block").css("bottom", "30px");
+				} else {
+					$(".btn-searchrm").fadeOut(1);
+				}
+			
+			var height = $(window).scrollTop()-1150+"px";
+			if ( num > 1153 ) {	
+				$(".btn-searchrm").css("bottom", height);
+			} 
+				
 		});
 		
-		$('#modal').on('hidden.bs.modal', function(e) {
-
+		$(".btn-searchrm").click(function(){
+			$("#searching-for").focus();
 		});
 	});
+	
 </script>
 
 </body>
