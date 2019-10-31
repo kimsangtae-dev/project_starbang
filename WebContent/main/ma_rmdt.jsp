@@ -11,7 +11,8 @@
 <link rel="stylesheet" type="text/css"
 	href="../main/ma_assets/ma_rmdt.css" />
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/sweetalert2.css" />
+	href="../assets/plugin/sweetalert/sweetalert2.css" />
+
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 	<div id="bluebar">
 		<div id="lol">
 			<h1 class="textht pull-left texthth1">월세 200/30</h1>
-			<div class="recent-div8 off" data-value="on"></div>
+			<div class="recent-div8 on" data-value="off"></div>
 			<span>0</span> <span
 				class="glyphicon glyphicon glyphicon-link textht3"></span> <a
 				href="#"><span
@@ -49,7 +50,7 @@
 						월세 3000/55<span class="greyfontwon1">만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont1">전용면적</span>
-					<h1 id="chnum">43.33</h1> <span id="pang">㎡</span> <!-- <div>㎡</div> -->
+					<h1 id="chnum">43.33<span>㎡</span></h1>
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
@@ -66,6 +67,7 @@
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
 			<div class="recent-div9 off" data-value="on"></div>
+			<span id="lkct">1</span>
 			<span class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-link"></span></a> <span
 				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
@@ -163,11 +165,11 @@
 						<span class="smexp"> ※해당매물은 직접 현장 답사하여 찍은 100% 실제 사진과
 							모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br /> ※부동산
 							어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
-							정보만(ONLY FACT) 제공하겠습니다<br /> <br />※해당매물은 직접 현장 답사하여 찍은 100% 실제
-							사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
+							정보만(ONLY FACT) 제공하겠습니다<br /> <br /> ※해당매물은 직접 현장 답사하여 찍은 100%
+							실제 사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
 							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
-							정보만(ONLY FACT) 제공하겠습니다<br /> <br />※해당매물은 직접 현장 답사하여 찍은 100% 실제
-							사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
+							정보만(ONLY FACT) 제공하겠습니다<br /> <br /> ※해당매물은 직접 현장 답사하여 찍은 100%
+							실제 사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
 							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
 							정보만(ONLY FACT) 제공하겠습니다<br /> <br />
 						</span>
@@ -312,10 +314,10 @@
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
 
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-3.2.1min.js"></script>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/plugin/sweetalert/sweetalert2.min.js"></script>
 
-	<script src="../assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 	<script>
 		$(function() {
 			/*문의하기 클릭*/
@@ -323,7 +325,7 @@
 					.click(
 							function() {
 								// 메시지 내용만 적용하여 확인창 표시
-								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/>*문의에티켓을 지켜주세요.");
+								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/><br/>*문의에티켓을 지켜주세요.");
 							});
 			/*허위매물신고 클릭*/
 			$(".nowqt").click(
@@ -337,8 +339,8 @@
 					.click(
 							function() {
 								swal(
-										'확인매물이란?',
-										'확인매물은 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.<hr /> 방주인 확인 - <br>방주인이 직접 거래가격, 위치, 중개사무소까지 확인했어요! <hr /> 인증날짜 확인 - <br>인증날짜를 확인하세요.<br>최근에 인증된 방이 더욱 믿을 수 있어요!',
+										'확인매물이란?<br/>',
+										'확인매물은 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.<hr /> 방주인 확인 -<br><br>방주인이 직접 거래가격, 위치, 중개사무소까지 확인했어요! <hr /> 인증날짜 확인 - <br><br>인증날짜를 확인하세요.<br>최근에 인증된 방이 더욱 믿을 수 있어요!',
 										'question');
 							});
 		});
@@ -382,7 +384,6 @@
 		});
 	</script>
 
-	<!-- 상세설명 더보기 토글 -->
 	<script type="text/javascript">
 		$(function() {
 			$(".more").click(
@@ -412,24 +413,27 @@
 	</script>
 
 	<!-- 평수 바꾸기 -->
-	<!-- /** 버튼 클릭 이벤트 */ -->
-	<script>
-		$(function() {
-			$(".chbt").click(function(e) {
-				var h1 = $("#chnum").html();
-				if (a = !isNaN) {
-					var result = h1 * 3.3;
-					$("#chnum").html("<h1 id='chnum'>" + result + "</h1>");
-				} else
-					(isNaN)
-				{
-					var result = Math.floor(h1 / 3.3);
-					$("#chnum").html("<h1 id='chnum'>" + result + "</h1>");
-					return a;
+	<script type="text/javascript">
+	$(function() {
+		v1 = 44.33;
+		result = v1;
+
+		$(".chbt").click(function(e) {
+
+				if (result == v1) {
+					result = Math.floor(v1/3.3);
+					$('#chnum').html("<span>" + result + "평</span>");
+
+				} else {
+					result = v1;
+					$('#chnum').html("<span>" + result + "㎡</span>");
+					result = v1;
+					
 				}
-			})
+			});
 		});
-	</script>
+</script>
+
 	<script>
 		$(window).scroll(function() {
 			//스크롤 이벤트 발생 시 
