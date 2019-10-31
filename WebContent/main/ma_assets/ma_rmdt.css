@@ -1,12 +1,5 @@
 @charset "utf-8";
 
-* {
-	padding: 0px;
-	margin: 0px;
-	list-style: none;
-	text-decoration: none;
-}
-
 a {
 	color: rgb(136, 136, 136);
 }
@@ -47,18 +40,11 @@ a {
 	font-size: 30px;
 }
 
-/* h1 {
-	line-height: 5px;
-	font-size: 30px;
-} */
+/*파란색 헤더 하트 토글*/
+
 .recent-div8 {
 	width: 30px;
 	height: 30px;
-}
-
-.recent-div9 {
-	width: 25px;
-	height: 25px;
 }
 
 .recent-div8.off {
@@ -71,6 +57,11 @@ a {
 	display: inline-block;
 }
 
+/*좋아요 헤더 하트 토글*/
+.recent-div9 {
+	width: 22px;
+	height: 22px;
+}
 .recent-div9.off {
 	background: url(ma_img/blacklv.svg) center center/cover;
 	display: inline-block;
@@ -79,6 +70,13 @@ a {
 .recent-div9.on {
 	background: url(ma_img/blacklv-on.svg) center center/cover;
 	display: inline-block;
+}
+
+/*좋아요 갯수 카운트*/
+#lkct {
+	font-size: 16.5px;
+	position : relative;
+	bottom : 5px;
 }
 
 .abc {
@@ -140,6 +138,10 @@ li .grml {
 	border-radius: 18px;
 	position: relative;
 	bottom: 10px;
+}
+
+.glyphicon {
+	color : black;
 }
 
 #iconlist {
@@ -210,12 +212,12 @@ p {
 
 .mola {
 	color: rgb(6, 73, 192);
-	background-color : rgb(54, 101, 206);
-	border-style : none;
+	background-color: rgb(54, 101, 206);
+	border-style: none;
 }
 
 .mola img {
-	position:relative;
+	position: relative;
 	top: 1px;
 	width: 20px;
 	height: 25px;
@@ -307,9 +309,11 @@ p {
 
 #explanall {
 	width: 1200px;
-	min-height: 260px;      /*추가*/
-    padding-bottom: 130px;   /*추가*/
+	min-height: 260px; /*추가*/ 
+	padding-bottom : 130px; /*추가*/
+	height: 210px;
 	margin: auto;
+	padding-bottom: 130px;
 }
 
 #bigexplan {
@@ -323,7 +327,6 @@ p {
 	height: 130px;
 	float: left;
 }
-
 /*------------------------------------------------*/
 #smallexplan > div {
    overflow: hidden;
@@ -347,7 +350,6 @@ p {
     -o-transition: all 0.5s; */
 }
 /*------------------------------------------------*/
-
 .smexp {
 	font-size: 16px;
 }
