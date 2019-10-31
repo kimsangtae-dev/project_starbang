@@ -21,9 +21,9 @@ body > div { height: 100%; overflow: hidden; }
     width: 100%;
     /*min-width: 1200px;*/
     height: 66px;
-    border-bottom: 1px solid #eee;
     box-shadow: 0px 1px 1px #ddd;
     position: relative;
+    z-index: 10;
 }
 
 /* 검색창 */
@@ -574,25 +574,36 @@ body > div { height: 100%; overflow: hidden; }
     height: 100%;
 }
 
-.marker {
+.gu-marker {
     cursor: pointer;
     min-width: 40px;
     height: 40px;
     padding: 5px 11px;
-    background: #1476fc;
+    background: #fff;
     border-radius: 40px;
-    border: 3px solid #1476fc;
-    color: rgb(255, 255, 255);
+    border: 3px solid #fff;
+    color: #1476fc;
     font-size: 13px;
     text-align: center;
     font-weight: bold;
     line-height: 24px;
+    opacity: 0.9;
 }
+
+/*.gu-marker:hover {
+    background: #1476fc !important;
+    color: #fff !important;
+}*/
 
 /* 마커와 클러스터러 마우스오버 스타일 */
 #map > div > div > div > div > div:hover {
     background: #fff !important;
     color: #1476fc !important;
+    
+}
+
+#map > div > div > div > div:hover {
+    z-index: 100;
 }
 
 /* 지도 확대/축소 버튼 */

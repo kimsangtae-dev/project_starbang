@@ -513,17 +513,19 @@
 			var container = document.getElementById('map');
 			var options = {
 				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 지도의 중심 좌표
-				level : 9 // 지도 확대 레벨
+				level : 9,
+				maxLevel: 9
+			// 지도 확대 레벨
 			};
 
 			var map = new kakao.maps.Map(container, options);
 
-			// 마커 클러스터러를 생성합니다 
+			// 마커 클러스터러를 생성합니다
 			var clusterer = new kakao.maps.MarkerClusterer({
 				map : map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
 				averageCenter : false, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-				minLevel : 2, // 클러스터 할 최소 지도 레벨 
-				disableClickZoom: true, // 클릭 시 확대기능 해제
+				minLevel : 1, // 클러스터 할 최소 지도 레벨 
+				disableClickZoom : true, // 클릭 시 확대기능 해제
 				styles : [ { // calculator에 적용될 스타일
 					minWidth : '40px',
 					height : '40px',
@@ -539,23 +541,6 @@
 				} ]
 			});
 			
-			// 마커 스타일 설정
-			var markone = '<div class="marker">1</div>';
-			// 데이터 가져오기
-			$.get("ma_assets/address.json", function(data) {
-				var markers = $(data.positions).map(
-					function(i, position) {
-						return new kakao.maps.CustomOverlay({
-					    	position: new kakao.maps.LatLng(position.lat,
-									position.lng),
-					    	content: markone  
-						});
-					});
-
-				// 클러스터러에 마커 추가
-				clusterer.addMarkers(markers);
-			});
-
 			// 데이터 가져오기
 			$.get("ma_assets/address.json", function(data) {
 				var markers = $(data.positions).map(
@@ -565,55 +550,89 @@
 										position.lng)
 							});
 						});
+				clusterer.setMinClusterSize(1);
 
-				// 클러스터러에 마커들을 추가합니다
+				// 클러스터러에 마커 추가
 				clusterer.addMarkers(markers);
-			})
+			});
+			
+			/*kakao.maps.event.addListener( clusterer, 'clusterover', function( cluster ) {
+			    $(this).css("z-index", "100");
+			});*/
+
+			// 서울시 구 별로 마커 생성하기
+			$.getJSON("ma_assets/guPosition.json", function(data) {
+				var guPositions = data;
+				for (var i = 0; i < guPositions.length; i++) {
+					var gumark = '<div class="gu-marker">'
+							+ guPositions[i].guName + '</div>';
+					var customOverlay = new kakao.maps.CustomOverlay({
+						position : new kakao.maps.LatLng(guPositions[i].lat,
+								guPositions[i].lng),
+						content : gumark
+					});
+					customOverlay.setMap(map);
+					/* kakao.maps.event.addListener(map, 'zoom_changed', function() {
+					    var level = map.getLevel();
+					    if(level > 7){
+					    	customOverlay.setMap(map);
+					    } else {
+					    	customOverlay.setMap(null);
+					    }
+					}); */
+					//customOverlay.setMap(map);
+				}
+			});
 
 			// 검색값 가져와서 지도 위치 변경하기
-			$("#search-form").submit(function(e) {
-				e.preventDefault();
-				
-				// 장소 검색 객체 생성
-				var ps = new kakao.maps.services.Places();
-				// input값 가져오기
-				var value = $('input[name=search]').val();
-				
-				// 키워드로 장소 검색
-				ps.keywordSearch(value, placesSearchCB);
-				
-				// 키워드 검색 완료 시 호출되는 콜백함수
-				function placesSearchCB(data, status, pagination) {
-					if (status === kakao.maps.services.Status.OK) {
+			$("#search-form").submit(
+					function(e) {
+						e.preventDefault();
 
-						// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-						// LatLngBounds 객체에 좌표 추가
-						var bounds = new kakao.maps.LatLngBounds();
+						// 장소 검색 객체 생성
+						var ps = new kakao.maps.services.Places();
+						// input값 가져오기
+						var value = $('input[name=search]').val();
 
-						for (var i = 0; i < data.length; i++) {
-							/* displayMarker(data[i]); */
-							bounds.extend(new kakao.maps.LatLng(
-									data[i].y, data[i].x));
+						// 키워드로 장소 검색
+						ps.keywordSearch(value, placesSearchCB);
+
+						// 키워드 검색 완료 시 호출되는 콜백함수
+						function placesSearchCB(data, status, pagination) {
+							if (status === kakao.maps.services.Status.OK) {
+
+								// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+								// LatLngBounds 객체에 좌표 추가
+								var bounds = new kakao.maps.LatLngBounds();
+
+								for (var i = 0; i < data.length; i++) {
+									/* displayMarker(data[i]); */
+									bounds.extend(new kakao.maps.LatLng(
+											data[i].y, data[i].x));
+								}
+
+								// 검색된 장소 위치를 기준으로 지도 범위 재설정
+								map.setBounds(bounds);
+							}
 						}
+					})
 
-						// 검색된 장소 위치를 기준으로 지도 범위 재설정
-						map.setBounds(bounds);
-					}
-				}
-			})
-			
 			// 지도 확대 메서드
 			function zoomIn() {
-			    map.setLevel(map.getLevel() - 1);
+				map.setLevel(map.getLevel() - 1);
 			}
 			// 지도 축소 메서드
 			function zoomOut() {
- 			   map.setLevel(map.getLevel() + 1);
+				map.setLevel(map.getLevel() + 1);
 			}
-			
+
 			// 버튼 클릭과 기능 연결
-			$(".zoom-in").click(function() { zoomIn(); })
-			$(".zoom-out").click(function() { zoomOut(); })
+			$(".zoom-in").click(function() {
+				zoomIn();
+			});
+			$(".zoom-out").click(function() {
+				zoomOut();
+			});
 		})
 	</script>
 
