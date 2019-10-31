@@ -455,6 +455,7 @@
 	</script>
 
 	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+	<script src="../assets/plugin/handlebars-v4.0.11.js"></script>
 	<script id="gallery-data" type="text/x-handlebars-template">
 		{{#each gallery}}
 		<li>
