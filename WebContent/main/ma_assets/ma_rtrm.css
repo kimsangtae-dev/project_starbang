@@ -43,7 +43,7 @@
 	
 			/* 상단 탭 부분 */
 	        .st-bang {
-				display: table-cell;
+				display: block;
 			    width: 50%;
 			    color: rgb(136, 136, 136);
 			    font-size: 16px;
@@ -55,6 +55,8 @@
 				color: rgb(34, 34, 34);
 			    font-weight: 500;
 			    border-bottom: 2px solid rgb(34, 34, 34);
+			    position: relative;
+			    top: 1px;
 			}
 
 			/* 최근본방, 찜한방 하위박스(float과 해제) */

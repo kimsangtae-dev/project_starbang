@@ -24,8 +24,6 @@
           <!-- 최근본방/찜한 방 -->
         <div id="hit" class="hit_bang">
             <h1 class="hit_title">인기매물</h1>
-        <div class="tab-menu">
-        </div> 
         <div class="tab-text">
      		<div class="re-div1"><p>인기매물은 최대 <span>50개</span>까지 보여집니다</p></div>
         </div>

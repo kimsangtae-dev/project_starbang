@@ -27,16 +27,9 @@
 /************ 갤러리 시작 부분 ************/
         
 	        /* 관심목록 하위 탭 (인기매물) */
-	        .tab-menu  {
-	            display: table;
-				height: 40px;
-				width: 1180px;
-				margin: 45px auto 0;
-				border-bottom: 1px solid #eee;
-			}
 	
 			.tab-text {
-	            padding: 60px 0 10px 0;
+	            padding: 90px 0 10px 0;
 	        }
 	        
 	        .re-div1 span {

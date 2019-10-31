@@ -400,15 +400,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>빌트인
-                            <div class="dROiWG">
-                            <!-- 추후 구현-->
-                            <!-- <div class="styled__FlyBox-sc-1u6ustj-8 imVndG">
-                                <h1>빌트인이란?</h1>
-                                <p>냉장고나 싱크대 등을 돌출시키지 않은 일체형 인테리어</p>
-                                 </div> -->
-                            </div>
-                        </th>
+                        <th>빌트인</th>
                         <td class="add_info" colspan="1">
                             <label class="add1 Square_box"><input type="radio" name="built_in" checked="">
                                 <p>없음</p>
@@ -511,7 +503,7 @@
                     <tr>
                         <th>상세 설명</th>
                         <td class="detail_box">
-                            <textarea class="detail_des" name="memo" placeholder="
+                            <textarea class="detail_des" style="resize: none;" name="memo" placeholder="
 
  ※상세설명 작성 주의사항
                                 
@@ -520,12 +512,6 @@
 
 * 주의사항 위반시 허위매물로 간주되어 매물 삭제 및 이용의 제한이 있을 수 있습니다.
 * 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다."></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>비공개 메모</th>
-                        <td class="detail_box">
-                            <textarea class="detail_priv" name="private_memo" placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."></textarea>
                         </td>
                     </tr>
                 </tbody>
