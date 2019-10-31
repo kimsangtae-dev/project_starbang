@@ -1,12 +1,16 @@
 @charset "utf-8";
-p { margin: 0; }
 
 /* 전체 모달 창 */
 .wholething {
 	width: 610px;
 	border: none;
 	border-radius: 0;
-	margin: 4% auto 0;
+	background-color: white;
+	position: relative;
+	z-index: 1001;
+	margin: 0 auto;
+	transition: width 300ms ease-in-out 0s;
+	margin-top: 8%;
 }
 
 /** 모달창 위치 */
@@ -24,7 +28,7 @@ p { margin: 0; }
 /** 닫는 버튼 동그라미로 */
 .radius {
 	border-radius: 50%;
-	border: 1px black; 
+	border: 1px solid black; 
 	background-color: #fff;
 }
 
@@ -58,6 +62,7 @@ p.subtitle {
 	display: block;
 	float: left;
 	padding: 0 15px;
+    width: 449px;
 }
 
 .select1 {
@@ -110,17 +115,31 @@ p.subtitle {
 /* 회원가입 버튼 */
 .btn-colordown {
 	color: white;
-	background-color: #1a5ae8;
+	background-color: rgb(26, 90, 232);
+	width: 100%;
+	height: 60px;
 }
 
-.btn-colordown:hover {
+.buttonup:checked {
 	color: white;
 }
 
-.joinbutton {
+.buttonup:hover {
+	color: white;
+	font-size: 14px;
+	background-color: rgb(26, 90, 232);
 	width: 100%;
-	height: 45px;
-	border-radius: 0;
+	height: 60px;
+	position : relative;
+}
+
+.buttonup:target {
+	color: white;
+	font-size: 14px;
+	background-color: rgb(26, 90, 232);
+	width: 100%;
+	height: 60px;
+	position : relative;
 }
 
 /** 회원가입 높이 */
@@ -137,8 +156,26 @@ p.subtitle {
 }
 
 /* 이용약관 */
-.p {
+.Information3 .p {
 	margin-top: 20px;
 	width: 100%;
 	font-size: 13px;
 }
+
+/** 인증번호 새로운 팝업창 */
+.requested {
+	width: 100px;
+	height: 300px;
+	margin: 300px 650px 300px 650px;
+}
+
+.modalbody {
+	width: 100px;
+	height: 200px;
+}
+
+
+
+
+
+

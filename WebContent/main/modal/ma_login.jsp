@@ -17,7 +17,6 @@
                 		</g>
                 	</svg>
                 </button>
-                </button>
                 <!-- 상단 전체박스 시작 -->
             	<div class="topbox-div">
             		<!-- 제목 -->

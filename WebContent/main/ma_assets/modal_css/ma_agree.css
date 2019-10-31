@@ -17,8 +17,9 @@
 /** 박스 보더 제거 s */
 .whole {
 	border-radius: 0px;
-	height : 740px;
+	height : 783px;
 	border: 0;
+	margin-bottom: 100px;
 }
 
 /** 동의박스 제어 s */
@@ -92,8 +93,8 @@ li.li3, li.li5 {
 }
 
 .siz {
-	width: 540px;
-	height: 520px;
+	width: 600px;
+	height: 783px;
 	margin: 5% auto 0;
 }
 
@@ -109,11 +110,6 @@ li.li3, li.li5 {
 	padding: 0 15px 15px 15px;
 }
 
-p {
-	display: inline-block;
-	height: 20px;
-}
-
 #pin1, #pin2, #pin3 {
 	width: 90px;
 }
@@ -126,10 +122,11 @@ p {
 	width: 400px;
 }
 
-.p {
+.agpbox .p {
 	display: inline-black;
 	width: 300px;
 	margin-top: 10px;
+	font-size: 15px;
 }
 
 #ftcl {
@@ -164,7 +161,7 @@ p {
 	color: white;
 	font-size: 17px;
 	background-color: rgb(26, 90, 232);
-	width : 538px;
+	width : 600px;
 	height: 70px;
 	position : relative;
 	top: 10px;
@@ -174,15 +171,12 @@ p {
 	margin-left: 150px;
 }
 
-p {
-	font-size: 15px;
-}
 
 /** 모두 동의합니다 */
 .all {
 	width: 110px;
 	margin: auto;
-	
+	display: inline-block;
 }
 
 /* 확인창 */
@@ -204,3 +198,12 @@ p {
 	height: 80px;
 	margin-top: 12px;
 }
+
+/** 부모스크롤 없애기 */
+
+
+
+
+
+
+

@@ -7,10 +7,9 @@
 
 <link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_join.css" />
 
+
 </head>
 
-
-<body>
 	 <!-- 화면 영역 -->
 <!-- 	<div class="container">
 		<h1 class="page-header">Bootstrap Modal Open</h1>
@@ -23,12 +22,20 @@
 	<!-- <div class="modal fade" id="myModal" class="siz">
 		<div class="modal-dialog siz modaltop"> -->
 			<div class="modal-content wholething">
-				<div class="modal-header hheader">
-					<button type="button" class="close radius" data-dismiss="modal" aria-label="Close" 
-					class="btn btn-primary">
-					<span aria-hidden="true" class="radius"/>&times;</span></button>
+				<div class="modal-header">
 					<h4 class="modal-title">회원가입</h4>
-				</div>
+					<!-- 닫기버튼 -->
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
+ 	            </div>
 				<div class="modal-body padding">
 					<div class="information clearfix">
 						<p class="subtitle">이름</p>
@@ -43,12 +50,12 @@
 							<option>naver.com</option>
 							<option>gmail.com</option>
 						</select>
-						<button class="btn btn-color">인증번호 요청</button>
+						<button class="btn btn-color" data-toggle="modal" data-target="#requested">인증번호 요청</button>
 					</div>
 					<div class="information information2 numberdiv clearfix">
 						<p class="subtitle"></p>
 						<input type="text" name="pingaree" class="number input1" />
-						<button class="btn btn-color">인증번호 확인</button>
+						<button class="btn btn-color" data-toggle="modal" data-target="#requestednumber">인증번호 확인</button>
 					</div>
 					<div class="information information2 clearfix">
 						<p class="subtitle">비밀번호</p>
@@ -77,6 +84,73 @@
 					</div>
 				</div>
 				<div>
-					<button class="joinbutton btn btn-colordown buttontlzl">이메일 회원가입</button>
+					<button id="buttonjoin" class="buttonup btn btn-colordown buttontlzl">이메일 회원가입</button>
 				</div>
 			</div>
+			
+			<!-- 인증번호 Modal -->
+			<!-- <div class="modal fade" id="myModal" class="siz">
+		<div class="modal-dialog siz modaltop"> -->
+		<div class="modal fade" id="requested">
+			<div class="modal-content">
+				<div class="modal-header">
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
+ 	            </div>
+				<div class="modal-body modalbody">
+					<h4 class="modal-title">인증번호 발송했습니다</h4>
+				</div>
+			</div>
+		</div>
+			
+			
+		<!-- 인증번호 확인 ok Modal -->
+		<div class="modal fade" id="requestednumber">
+			<div class="modal-content requested">
+				<div class="modal-header">
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
+ 	            </div>
+				<div class="modal-body modalbody">					
+					<h4 class="modal-title">인증번호 확인되었습니다</h4>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 인증번호 확인 not Modal -->
+		<div class="modal fade" id="requestednumbernot">
+			<div class="modal-content">
+				<div class="modal-header">
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
+ 	            </div>
+				<div class="modal-body modalbody">					
+					<h4 class="modal-title">인증번호가 틀렸습니다</h4>
+				</div>
+			</div>
+		</div>
+		

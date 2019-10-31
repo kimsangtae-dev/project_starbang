@@ -7,18 +7,33 @@
 
 <link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_agree.css" />
 
+<script type="text/javascript">
+$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
+$('#agree').on('scroll touchmove mousewheel', function(event) { 
+	event.preventDefault();     event.stopPropagation();     return false; 
+	});
+
+</script>
+
 </head>
 
 <body>
 	<div class="siz">
-		<div class="modal-content whole">
+		<div id="agree" class="modal-content whole">
 			<div class="modal-header hheader">
-				<button type="button" class="close radius" data-dismiss="modal"
-					aria-label="Close" class="btn btn-primary">
-					<span aria-hidden="true" class="radius">&times;</span>
-				</button>
 				<h1 class="modal-title modal-title1">약관동의</h1>
-			</div>
+					<!-- 닫기버튼 -->
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
+ 	        </div>
 			<div class="modal-body modal-body1">
 				<div id="updown">
 					<div class="agpbox">

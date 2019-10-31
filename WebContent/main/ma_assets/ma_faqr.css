@@ -20,10 +20,12 @@
 
 			.h1 {
 				height: 53px;
-				margin-top: 105px;
-				margin-bottom: 45px;
-				font-size: 32px;
-				color: black;
+				margin-top: 70px;
+				margin-bottom: 25px;
+				font-size: 34px;
+				color: #222222;
+				font-weight: 400;
+				text-align: center;
 			}
 
 			.nav {
@@ -40,7 +42,7 @@
 				width: 600px;
 				height: 57px;
 				font-size: 15px;
-				padding-top: 10px;
+				padding-top: 20px;
 				/** 밑줄 제거 */
 				text-decoration: none;
 				color: black;
