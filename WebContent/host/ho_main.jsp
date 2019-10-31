@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,7 +17,7 @@
 	<div id="root">
 		<!-- 상단 헤더 -->
 		<div id="header">
-        <%@ include file="ho_assets/ho_inc/ho_header.jsp" %> 
+			<%@ include file="ho_assets/ho_inc/ho_header.jsp"%>
 		</div>
 		<!-- 중앙 영역 -->
 		<div id="body">
@@ -32,23 +33,36 @@
 	</div>
 	<!-- 하단 영역 -->
 	<div id="footer">
-		<%@ include file="ho_assets/ho_inc/ho_footer.jsp" %> 
+		<%@ include file="ho_assets/ho_inc/ho_footer.jsp"%>
 	</div>
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-    $(function () {
-        $(".header-dropbox").hover(function() {
-            $(this).toggleClass('header-dropbox header-dropbox-open')
-        });
+/* 		$(function() {
+			$(".header-dropbox").hover(function() {
+				$(this).toggleClass('header-dropbox header-dropbox-open')
+			});
 
-        $(".isroom-dropdown-closed").click(function() {
-            $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
-        });
-    });
+			$(".isroom-dropdown-closed")
+					.click(
+							function() {
+								$(this)
+										.toggleClass(
+												'isroom-dropdown-closed isroom-dropdown-opened')
+							});
+		}); */
+		/* 모달 창 닫기 이벤트 */
+			$(function() {
+		$('.modal').on('hidden.bs.modal', function(e) {
+			$(this).removeData('bs.modal');
+		});
+		
+		$('#modal').on('hidden.bs.modal', function(e) {
 
-</script>
+		});
+	});
+	</script>
 </body>
 
 </html>
