@@ -8,9 +8,16 @@
 
 <%@ include file="../assets/inc/meta.jsp"%>
 <title>방주인 방등록</title>
+<style>
+		/** DatePicker의 글꼴 설정 */
+		.datepicker-container { font-family: 'Hevetica;', '나눔고딕', '맑은고딕' }
+
+	</style>
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="ho_assets/ho_rm_add.css" />
+<link rel="stylesheet" href="../assets/plugin/datepicker/datepicker.min.css"/>
+
 
 </head>
 
@@ -187,36 +194,6 @@
                                         <option value="18">18층</option>
                                         <option value="19">19층</option>
                                         <option value="20">20층</option>
-                                        <option value="21">21층</option>
-                                        <option value="22">22층</option>
-                                        <option value="23">23층</option>
-                                        <option value="24">24층</option>
-                                        <option value="25">25층</option>
-                                        <option value="26">26층</option>
-                                        <option value="27">27층</option>
-                                        <option value="28">28층</option>
-                                        <option value="29">29층</option>
-                                        <option value="30">30층</option>
-                                        <option value="31">31층</option>
-                                        <option value="32">32층</option>
-                                        <option value="33">33층</option>
-                                        <option value="34">34층</option>
-                                        <option value="35">35층</option>
-                                        <option value="36">36층</option>
-                                        <option value="37">37층</option>
-                                        <option value="38">38층</option>
-                                        <option value="39">39층</option>
-                                        <option value="40">40층</option>
-                                        <option value="41">41층</option>
-                                        <option value="42">42층</option>
-                                        <option value="43">43층</option>
-                                        <option value="44">44층</option>
-                                        <option value="45">45층</option>
-                                        <option value="46">46층</option>
-                                        <option value="47">47층</option>
-                                        <option value="48">48층</option>
-                                        <option value="49">49층</option>
-                                        <option value="50">50층</option>
                                     </select>
                                 </td>
                             </tr>
@@ -254,37 +231,7 @@
                                         <option value="18">18층</option>
                                         <option value="19">19층</option>
                                         <option value="20">20층</option>
-                                        <option value="21">21층</option>
-                                        <option value="22">22층</option>
-                                        <option value="23">23층</option>
-                                        <option value="24">24층</option>
-                                        <option value="25">25층</option>
-                                        <option value="26">26층</option>
-                                        <option value="27">27층</option>
-                                        <option value="28">28층</option>
-                                        <option value="29">29층</option>
-                                        <option value="30">30층</option>
-                                        <option value="31">31층</option>
-                                        <option value="32">32층</option>
-                                        <option value="33">33층</option>
-                                        <option value="34">34층</option>
-                                        <option value="35">35층</option>
-                                        <option value="36">36층</option>
-                                        <option value="37">37층</option>
-                                        <option value="38">38층</option>
-                                        <option value="39">39층</option>
-                                        <option value="40">40층</option>
-                                        <option value="41">41층</option>
-                                        <option value="42">42층</option>
-                                        <option value="43">43층</option>
-                                        <option value="44">44층</option>
-                                        <option value="45">45층</option>
-                                        <option value="46">46층</option>
-                                        <option value="47">47층</option>
-                                        <option value="48">48층</option>
-                                        <option value="49">49층</option>
-                                        <option value="50">50층</option>
-                                    </select>
+                                     </select>
                                 </td>
                             </tr>
                             <tr>
@@ -301,9 +248,21 @@
                             <tr>
                                 <th>입주 가능일</th>
                                 <td class="base_line" colspan="3">
-                                    <button class="in_date">즉시 입주</button>
+                                 <label class="in_date"><input type="radio" name="datetime">
+                                <p>즉시 입주</p>
+                                </label>
+                                <label class="in_date"><input type="radio" name="datetime">
+                                <p>날짜 협의</p>
+                                </label>
+                                <label class="in_date"><input type="radio" id="cal" name="datetime">
+                                <p>날짜 선택</p>
+                                </label>
+                                <input type="text" id="datepicker" readonly />
+                                   <!-- <button class="in_date">즉시 입주</button>
                                     <button class="in_date">날짜 협의</button>
-                                    <button class="in_date">날짜 선택</button>
+                                    <button id="cal" class="in_date">날짜 선택</button>
+                                    <input type="text" id="datepicker" readonly />
+                                    <div id="datepicker"></div> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -567,10 +526,24 @@
           
            
 <!-- Javascript -->
-        <script src="../assets/js/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
+<script src="../assets/plugin/datepicker/datepicker.min.js"></script>
+    <script src="../assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+            	showOn: "both",
+                autoHide: true,         // 날짜 선택 후 자동 숨김 (true/false)
+                format: 'yyyy-mm-dd',   // 날짜 형식
+                language: 'ko-KR',      // 언어
+                weekStart: 0,            // 시작요일(0=일요일~6=토요일)
+                trigger:'#cal'     // 클릭시 달력을 표시할 요소의 id
+            });
+        });
+	</script>		
 <script>
     var mapContainer = document.getElementById('box'), // 지도를 표시할 div
         mapOption = {
@@ -621,5 +594,18 @@
         }).open();
     }
 </script>
-    </body>
+<script>
+/* 동정보 체크박스 -> 동 삭제 */
+$(function() {
+   $(".loc_check > label").click(function(e) {
+      var check_dong = $(".loc_check .PcMeW").prop("checked");
+      if (check_dong) {
+         $(".dong").css("display", "none");
+      } else {
+         $(".dong").css("display", "block");
+      }
+   });
+});
+</script>
+</body>
 </html>

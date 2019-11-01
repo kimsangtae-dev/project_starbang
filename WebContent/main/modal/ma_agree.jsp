@@ -5,10 +5,9 @@
 <html lang="ko">
 <head>
 
-<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_agree.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/ma_assets/modal_css/ma_agree.css" />
 
 <script type="text/javascript">
-$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
 $('#agree').on('scroll touchmove mousewheel', function(event) { 
 	event.preventDefault();     event.stopPropagation();     return false; 
 	});
@@ -568,6 +567,7 @@ $('#agree').on('scroll touchmove mousewheel', function(event) {
 						<p class="p">
 							개인정보 처리방침 <span id="ftcl">(필수)</span>
 						</p>
+						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
 						<div class="lReCa">
 							<div class="whc">
 								<b>개인 사용자 가입</b> <br /> <br />
@@ -613,7 +613,6 @@ $('#agree').on('scroll touchmove mousewheel', function(event) {
 									<b></b> <br>
 								</p>
 								<br />
-						
 								<p class="p1">
 									<b>전송내용</b>
 								</p>
@@ -646,44 +645,12 @@ $('#agree').on('scroll touchmove mousewheel', function(event) {
 			</div>
 			<div id="lnMlai">
 				<p class="all">모두 동의합니다</p>
-				<div id="chimg">
-					<img id="check2" src="../main/ma_assets/ma_img/greycheck.png" class="chimg check2" />
-				</div>
+				<img id="check2" src="../main/ma_assets/ma_img/greycheck.png" />
 			</div>
 			<div class="modal-fet">
-				<a href="modal/ma_join.jsp" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
+				<a href="<%=request.getContextPath()%>/main/modal/ma_join.jsp" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
 			</div>
 		</div>
 	</div>
-	
-	<script type="text/javascript">
-	/** 클릭하면 이미지 바뀜 */
-	$(function() {
-		$("#check2").click(function(e) {
-			var check2 = document.getElementById('check2'); 
-			
-			if (check2.src = "../main/ma_assets/ma_img/greycheck.png") {
-				$check2 = $('#check2').attr('src', "../main/ma_assets/ma_img/bluecheck.png");
-			}else {
-				$check2 = $('#check2').attr('src', "../main/ma_assets/ma_img/greycheck.png");
-			}
-			
-		});
-	})
-	</script>
 </body>
 </html>
-
-
-<!-- 
-<svg width="30" height="30" viewBox="0 0 31 31" class="chimg2">
-							<g fill="none" fill-rule="evenodd">
-								<g>
-									<circle class="Circle__fill" cx="15.5" cy="15.5" r="15.5"></circle>
-									<circle class="Circle__border" cx="15.5" cy="15.5" r="14.9" stroke-width="1.2"></circle>
-									<path class="Circle__check" stroke-width="2.4" d="M7.154 15.369l6.027 6.027L23.846 10.73"></path>
-								</g>
-							</g>
-						</svg>
-						
--->

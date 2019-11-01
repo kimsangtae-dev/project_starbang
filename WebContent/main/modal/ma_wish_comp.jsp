@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_wish_comp.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/ma_assets/modal_css/ma_wish_comp.css" />
 </head>
 
 <!-- .modal -->
