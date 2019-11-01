@@ -328,14 +328,14 @@ form.loc_div {
     box-sizing: border-box;
     position: absolute;
     border: 1px solid rgb(208, 210, 214);
+    border-left: none;
     border-image: initial;
 }
 
 /* 동,호 사이 마진 추가*/
-.dong + div {
-    margin-left: 10px;
+.dong {
+    margin-right: 9px;
 }
-
 /* 주소 박스 float 삭제*/
 .dongho_div::after {
     content: ''; 
@@ -517,9 +517,15 @@ form.loc_div {
 }
 
 /* 입주 가능일 탭 속성 */
-.in_date {
-    float: left;
-    width: 90px;
+
+.in_date > input[type="radio"]:checked + p {
+    color: rgb(255, 255, 255);
+    background-color: rgb(26, 90, 232);
+    border-color: rgb(26, 90, 232);
+}
+
+.in_date > p {
+    min-width: 82px;
     height: 46px;
     color: rgb(102, 102, 102);
     font-size: 14px;
@@ -528,7 +534,40 @@ form.loc_div {
     background-color: rgb(255, 255, 255);
     padding: 0px 15px;
     border-radius: 3px;
-    border: 1px solid rgb(224, 224, 224);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(224, 224, 224);
+    border-image: initial;
+}
+
+.in_date > input[type="radio"] {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.in_date {
+    float: left;
+    user-select: none;
+    position: relative;
+    margin-right: 10px;
+}
+
+.base_line::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+#datepicker {
+	border-style: none;
+	width: 120px;
+	position: relative;
+	left: 10px;
+	top: 15px;
 }
 
 .check_box > .CheckBox {
@@ -551,8 +590,17 @@ form.loc_div {
     box-sizing: border-box;
     padding: 0px 15px;
     border: 1px solid rgb(208, 210, 214);
-    /*background: url(ho_assets/ho_img/arrow_down.png) right 15px center / 10px no-repeat rgb(255, 255, 255);*/
+    background: url(ho_img/arrow.svg) right 15px center / 10px no-repeat rgb(255, 255, 255);
+ }
+  
+select {
+	-moz-appearance:none; /* Firefox */  
+	-webkit-appearance:none; /* Safari and Chrome */  
+	 appearance:none;
 }
+ select::-ms-expand { display:none; } 
+
+
 
 /* 입주가능일 버튼 마진 */
 .in_date + button {
