@@ -494,19 +494,23 @@
 	/* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
 	$(function() {
 		$(window).scroll(function() {
-			var num = $(window).scrollTop();
 				
-			if(num > 370) {
+			console.log("height : "+$(window).height());
+			console.log("scrolltop : "+$(window).scrollTop());
+			console.log("document : " +$(document).height());
+			console.log( $(document).height() - $(window).scrollTop() );
+			
+			if( $(window).scrollTop() > 370) {
 					$(".btn-searchrm").fadeIn(1).css("display","block").css("bottom", "30px");
 				} else {
 					$(".btn-searchrm").fadeOut(1);
 				}
 			
-			var height = $(window).scrollTop()-1150+"px";
-			if ( num > 1153 ) {	
-				$(".btn-searchrm").css("bottom", height);
-			} 
-				
+			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
+				var control = 0;
+				control = 280 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
+				$(".btn-searchrm").css("bottom", control+"px");
+			}
 		});
 		
 		$(".btn-searchrm").click(function(){
