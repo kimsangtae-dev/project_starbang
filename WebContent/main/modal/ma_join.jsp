@@ -5,15 +5,8 @@
 <html lang="ko">
 <head>
 
-<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_join.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/ma_assets/modal_css/ma_join.css" />
 
-<script type="text/javascript">
-	$(function () {
-		$("#requested").click(function(e) {
-			alert("", "인증번호가 요청되었습니다");
-		});
-	});
-</script>
 
 </head>
 
@@ -57,7 +50,7 @@
 							<option>naver.com</option>
 							<option>gmail.com</option>
 						</select>
-						<button class="btn btn-color" data-toggle="modal" data-target="#requested" id="requested">인증번호 요청</button>
+						<button class="btn btn-color" data-toggle="modal" data-target="#requested">인증번호 요청</button>
 					</div>
 					<div class="information information2 numberdiv clearfix">
 						<p class="subtitle"></p>
@@ -123,6 +116,16 @@
 		<div class="modal fade" id="requestednumber">
 			<div class="modal-content requested">
 				<div class="modal-header">
+	                <button class="btnclose"  data-dismiss="modal">
+	                	<svg width="30" height="30" viewBox="0 0 32 32">
+	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	                			<g class="Close" stroke-linecap="round" stroke-width="2">
+	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+	                			</g>
+	                		</g>
+	                	</svg>
+ 	               </button>
  	            </div>
 				<div class="modal-body modalbody">					
 					<h4 class="modal-title">인증번호 확인되었습니다</h4>
