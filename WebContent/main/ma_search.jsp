@@ -194,7 +194,7 @@
 					<div class="gallery-container">
 						<!-- 갤러리 내용 영역 -->
 						<div class="gallery-content clearfix">
-							<ul>
+							<ul id="gallery-list">
 								<li>
 									<div class="recent-div5">
 										<div class="recent-div6">
