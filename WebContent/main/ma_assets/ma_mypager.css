@@ -182,16 +182,16 @@
 			}
 			
 			/** 버튼 클릭시 */
-			.defocs {
-				border: 1px solid blue;
-				background-color: white;
-				color: blue;
+			.focse {
+				border: 1px solid blue !important;
+				background-color: white !important;
+				color: blue !important;
 			}
 			
-			.focs:focus {
-				border: 1px solid blue;
-				background-color: white;
-				color: blue;
+			.focse:focus {
+				border: 1px solid blue !important;
+				background-color: white !important;
+				color: blue !important;
 			}
 			
 			.focs:before {
@@ -210,14 +210,12 @@
 			.filebox label { 
 				display: inline-block; 
 				padding: .5em .75em; 
-				color: #eee; 
+				color: blue; 
 				font-size: inherit; 
 				line-height: normal; 
 				vertical-align: middle; 
-				background-color: #fdfdfd; 
+				background-color: white; 
 				cursor: pointer; 
-				border: 1px solid #ebebeb; 
-				border-bottom-color: #e2e2e2; 
 				border-radius: .25em; } 
 				
 			.filebox input[type="file"] { 

@@ -120,6 +120,14 @@ p.subtitle {
 	height: 60px;
 }
 
+.buttonup:focus {
+	color: white;
+}
+
+.btn:focus {
+	color: white !important;
+}
+
 .buttonup:checked {
 	color: white;
 }

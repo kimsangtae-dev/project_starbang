@@ -3,8 +3,8 @@
 /** 맨 위 상단의 약관동의  */
 
 .modal-title1 {
+	color: rgb(34, 34, 34);
 	font-size: 22px;
-	font-weight: bold;
 	padding-left: 13px;
 	padding-top: 5px;
 }
@@ -174,7 +174,8 @@ li.li3, li.li5 {
 
 /** 모두 동의합니다 */
 .all {
-	width: 110px;
+	width: 100%;
+	text-align: center;
 	margin: auto;
 	display: inline-block;
 }
@@ -195,11 +196,78 @@ li.li3, li.li5 {
 
 /** 회원가입 높이 */
 .hheader {
-	height: 80px;
+	height: 90px;
 	margin-top: 12px;
 }
 
 /** 부모스크롤 없애기 */
+
+/** 버튼 */
+.chimg {
+	height: 30px;
+	right: 30px;
+	display: inline-block;
+}
+
+.chimg2 {
+	box-sizing: border-box;
+	color: -internal-root-color;
+}
+
+g[Attributes Style] {
+    fill: none;
+    fill-rule: evenodd;
+}
+user agent stylesheet
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+label {
+    cursor: default;
+}
+
+.ebouDA + svg .Circle__fill {
+    fill: rgb(255, 255, 255);
+}
+
+circle[Attributes Style] {
+    cx: 15.5;
+    cy: 15.5;
+    r: 15.5;
+}
+
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+label {
+    cursor: default;
+}
+
+.ebouDA + svg .Circle__border {
+    stroke: rgb(221, 221, 221);
+}
+
+circle[Attributes Style] {
+    cx: 15.5;
+    cy: 15.5;
+    r: 14.9;
+    stroke-width: 1.2;
+}
+
+.ebouDA + svg .Circle__check {
+    stroke: rgb(204, 204, 204);
+}
+
+path[Attributes Style] {
+    stroke-width: 2.4;
+    d: path("M 7.154 15.369 l 6.027 6.027 L 23.846 10.73");
+}
+
+
+
+
 
 
 

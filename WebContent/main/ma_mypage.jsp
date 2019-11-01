@@ -38,16 +38,16 @@
 					<h3 class="h32">이메일주소</h3>
 
 					<input type="text" name="email" id="email" disabled value="dlekdse@gmail.com" class="email">
-					<button type="button" class="btn btn-default focs ponbutton" id="reemail" onClick = "">변경</button>
+					<button type="button" class="btn btn-default focse ponbutton" id="reemail">변경</button>
 					<div id="emailinumberdiv">
 						<input type="number" name="emailinumber" id="emailinumber" class="emailinumber email">
-						<button type="button" class="btn btn-default focs reemailinumber" id="reemailinumber">인증번호</button>
+						<button type="button" class="btn btn-default focse reemailinumber" id="reemailinumber">인증번호</button>
 					</div>
 					<h3 class="h33">휴대폰 번호</h3>
 					<input type="number" name="pont1" id="pon1" value="010" disabled class=" pon input"> - 
 					<input type="number" name="pont2" id="pon2" value="3434" disabled class="pon input"> - 
 					<input type="number" name="pont3" id="pon3" value="3463" disabled class="pon input">
-					<button type="button" class="btn btn-default defocs focs ponbutton" id="repon">변경</button>
+					<button type="button" class="btn btn-default focse ponbutton" id="repon">변경</button>
 					<h3 class="h34">휴대폰 번호</h3>
 					<input type="passwd" name="pwd1" id="pwd1" class="pwd input" placeholder="현재비밀번호를 입력하세요">
 					<br/>
