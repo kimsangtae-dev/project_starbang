@@ -318,13 +318,15 @@ p {
 
 #bigexplan {
 	width: 600px;
-	height: 130px;
+	min-height: 260px; /*추가*/ 
+	padding-bottom : 130px; /*추가*/
 	float: left;
 }
 
 #smallexplan {
 	width: 600px;
-	height: 130px;
+	min-height: 260px; /*추가*/ 
+	padding-bottom : 130px; /*추가*/
 	float: left;
 }
 /*------------------------------------------------*/
@@ -359,7 +361,8 @@ p {
 }
 
 .jQYbpN {
-	height: 24px;
+	position : relative;
+	top : 30px;
 	color: rgb(20, 118, 252);
 	font-size: 15px;
 	border-style: none;
@@ -369,8 +372,6 @@ p {
 #bluebar {
 	margin: auto;
 	min-width: 1366px;
-	height: 90px;
-	padding: 0px 100px;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 7px 0px, rgba(0, 0, 0, 0.08) 0px
 		2px 2px 0px;
 	background-color: rgb(20, 118, 252);
