@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
 <link rel="stylesheet" type="text/css"
-	href="../main/ma_assets/billboard.min.css" />
+	href="../assets/plugin/billboard.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="../main/ma_assets/ma_rmdt.css" />
 <link rel="stylesheet" type="text/css"
@@ -50,7 +50,9 @@
 						월세 3000/55<span class="greyfontwon1">만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont1">전용면적</span>
-					<h1 id="chnum">43.33<span>㎡</span></h1>
+					<h1 id="chnum">
+						43.33<span>㎡</span>
+					</h1>
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
@@ -67,8 +69,8 @@
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
 			<div class="recent-div9 off" data-value="on"></div>
-			<span id="lkct">1</span>
-			<span class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
+			<span id="lkct">1</span> <span
+				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-link"></span></a> <span
 				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
 				class="glyphicon glyphicon glyphicon-bullhorn"></span></a> <span
@@ -347,7 +349,7 @@
 	</script>
 
 	<script src="https://d3js.org/d3.v5.min.js"></script>
-	<script src="../main/ma_assets/billboard.min.js"></script>
+	<script src="../assets/plugin/billboard.min.js"></script>
 	<script type="text/javascript">
 		var chart = bb.generate({
 			data : {
@@ -414,27 +416,31 @@
 
 	<!-- 평수 바꾸기 -->
 	<script type="text/javascript">
-	$(function() {
-		v1 = 44.33;
-		result = v1;
+		$(function() {
+			v1 = 44.33;
+			result = v1;
 
-		$(".chbt").click(function(e) {
+			$(".chbt").click(function(e) {
 
 				if (result == v1) {
-					result = Math.floor(v1/3.3);
+					result = Math.floor(v1 / 3.3);
 					$('#chnum').html("<span>" + result + "평</span>");
 
 				} else {
 					result = v1;
 					$('#chnum').html("<span>" + result + "㎡</span>");
 					result = v1;
-					
+
 				}
 			});
 		});
-</script>
-
+	</script>
+	
 	<script>
+	console.log($(window).scrollTop());
+	</script>
+
+	<!-- <script>
 		$(window).scroll(function() {
 			//스크롤 이벤트 발생 시 
 			var contentHeight = $(window).height();
@@ -450,7 +456,7 @@
 				//button이 스크롤따라 움직임 
 			}
 		});
-	</script>
+	</script> -->
 
 	<!-- <script>
 		// Hide Header on on scroll down 
@@ -486,6 +492,7 @@
 			lastScrollTop = st;
 		}
 	</script> -->
+	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
 	<script type="text/javascript">
