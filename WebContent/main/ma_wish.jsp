@@ -285,10 +285,6 @@
 				</a>
 			</div>
 		</li>
-
-
-
-
 	</ul>
 	<!-- ul 끝 -->
 
@@ -320,26 +316,17 @@
 	</div>
 <!-- 갤러리 쪽번호 끝 -->
 
-
-
 	<!-----------------------------------
 	|   content-compare bar
 	------------------------------------>
-
-	<!-- 비교하기버튼 -->
+	<!-- 비교하기 버튼 -->
 	<div id="bar-compare">
 		<button class="btn-compare">방 비교하기</button>
 	</div>
-	
+	<!-- 비교하기 바가 붙는 위치 -->
 	<div id="summon"></div>
-
-	
-
 </div>
 <!-- 갤러리 끝 -->
-
-
-
 
 
 <!----------------------------------------
@@ -363,9 +350,22 @@
 
 
 	$(function(){
+		
 		$(document).on('click', '.btn-compare', function(e) {
+			/* 방 비교하기 버튼 지우기 */
             $("#bar-compare").empty();
             
+			/* checkbox 만들기 */
+            var chbox = "";
+            chbox += '<div class="comp-chkbox-d">'
+        	chbox += '<label class="clearfix comp-chkbox-l" size="22">'
+    		chbox += '<input type="checkbox" class="comp-chkbox-i" name="" value="">'
+    		chbox += '<span class="comp-chkbox-s"></span></label></div>'
+    		
+    		/* checkbox 붙이기 */
+            $(".gallery-d2-pic").append(chbox);
+    		
+            /* ajax로 불러오기 */
             $.ajax( {
 				/** ajax 기본 옵션 */
 				url: '<%=request.getContextPath()%>/assets/modal/bar_compare.jsp',// 읽어들일 파일의 경로
@@ -379,11 +379,26 @@
 			}); // end $.ajax
         }); // end .on
         
+        /* 취소하기 눌렀을 때, 비교하기 바 지우고 다시 방 비교하기 버튼 생성 */
         $(document).on('click', '.compare-btn-cancel', function(e) {
 			$(this).parents("#summon").empty();
-			
+			$(".comp-chkbox-d").remove();
 			$("#bar-compare").html("<button class='btn-compare'>방 비교하기</button>");
         });
+        
+         /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
+        /* $(document).on('click', '.comp-chkbox-s', function(e) {
+    	var type = $(this).parents(".gallery-d1-a").children(".gallery-p1").html(); 
+    	var price = $(this).parents(".gallery-d1-a").children(".gallery-p2").html();
+		var put = '<span class="compbar-newspan">'+ type + '</span>';
+			put += '<p class="compbar-newp"> + price + </p>';
+			put += '<button class="compbar-newbtn"></button>';
+			
+			console.log(put);
+			
+		$(".compare-select").html(put);
+       }); */
+        
 	});
 </script>
 </body>
