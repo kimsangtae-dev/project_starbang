@@ -86,7 +86,7 @@
 				<a href="ma_pprm.jsp" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
-				<a href="<%=request.getContextPath()%>/main/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
+				<a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>
