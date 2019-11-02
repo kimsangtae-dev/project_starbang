@@ -183,8 +183,8 @@ a:focus {
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a href="<%=request.getContextPath()%>/main/modal/ma_login.jsp" class="padding-l" data-toggle="modal"
-							data-target="#loginModal" data-backdrop="true">로그인</a>
+						<a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal"
+							data-target="#loginModal">로그인</a>
 					</p>
 				</li>
 			</ul>
