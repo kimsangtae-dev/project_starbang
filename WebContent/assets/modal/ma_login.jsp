@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_login.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_login.css">
 </head>
 
 			<div class="modal-content love">
@@ -35,7 +35,8 @@
                 	                <p class="checkbox-p">아이디 저장</p>
                 	            </label>
                 	            <!-- 비밀번호 찾기 -->
-                	            <a href="modal/ma_pwd.jsp" data-dismiss="modal" data-toggle="modal" data-target="#passwdModal" class="findpw-a">비밀번호 찾기</a>
+                	            <a href="<%=request.getContextPath()%>/assets/modal/ma_pwd.jsp" data-dismiss="modal" 
+                	            data-toggle="modal" data-target="#passwdModal" class="findpw-a">비밀번호 찾기</a>
                 	        </div>
                 	        <button class="login-button" type="submit">
                 	            <span class="login-span">로그인</span>
@@ -43,7 +44,7 @@
                 	    </form>
                 	    <div class="joinus-div">
                 	        <p>아직 회원이 아니세요?
-                	            <a href="modal/ma_agree.jsp" id="join" data-dismiss="modal" data-toggle="modal" data-target="#agreeModal">이메일로 회원가입</a>
+                	            <a href="<%=request.getContextPath()%>/assets/modal/ma_agree.jsp" id="join" data-dismiss="modal" data-toggle="modal" data-target="#agreeModal">이메일로 회원가입</a>
                 	        </p>
                 	    </div>   
                 	</div>

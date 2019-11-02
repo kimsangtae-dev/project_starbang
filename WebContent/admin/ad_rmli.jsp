@@ -26,7 +26,7 @@
 								class="glyphicon glyphicon-search"></span>
 							</span> <input type="text" class="form-control" /> <span
 								class="input-group-btn">
-								<button class="btn btn-default" type="button">검색</button>
+								<button class="btn btn-default" type="sumbit">검색</button>
 							</span>
 						</div>
 						<br>

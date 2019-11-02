@@ -35,7 +35,7 @@
             <!--  -->
             <div class="isroom-div">
                 <p class="isroom-p1">
-                    <span>3</span>건의 공실이 있습니다.
+                    <span>6</span>건의 공실이 있습니다.
                 </p>
                 <p class="isroom-p2">공실상태</p>
                 <!-- <ul width="135" class="isroom-dropdown-closed">
@@ -61,7 +61,7 @@
 
         <div class="container">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover margin-bottom">
+                <table class="table table-hover margin-bottom">
                     <colgroup>
                         <col width="10%">
                         <col width="45%">
@@ -97,7 +97,9 @@
                                 <button class="btn btn-default">삭제</button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-default">공실상태전환</button>
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -118,7 +120,9 @@
                                 <button class="btn btn-default">삭제</button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-default">공실상태전환</button>
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -139,7 +143,78 @@
                                 <button class="btn btn-default">삭제</button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-default">공실상태전환</button>
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">11469</td>
+                            <td>
+                                <div class="table-div">
+                                    <span class="table-span1">쓰리룸</span> 
+                                    <b class="table-span1-1">매매 3억</b><br>
+                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
+                                    <span>2019.09.21</span>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span class="label label-danger">소유자 확인실패</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">11469</td>
+                            <td>
+                                <div class="table-div">
+                                    <span class="table-span1">쓰리룸</span> 
+                                    <b class="table-span1-1">매매 3억</b><br>
+                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
+                                    <span>2019.09.21</span>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span class="label label-primary">&nbsp;공개&nbsp;</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">11469</td>
+                            <td>
+                                <div class="table-div">
+                                    <span class="table-span1">쓰리룸</span> 
+                                    <b class="table-span1-1">매매 3억</b><br>
+                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
+                                    <span>2019.09.21</span>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <span class="label label-primary">&nbsp;공개&nbsp;</span>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-default">수정</button>
+                                <button class="btn btn-default">삭제</button>
+                            </td>
+                            <td class="text-center">
+                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+                                	<button class="btn btn-default">공실상태전환</button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -159,6 +234,36 @@
     <!--/ .box -->
 </div>
 <!--/ #root -->
+
+
+<!-- 로그인용 모달 로더 -->
+<div class="modal fade" id="chmodeModal">
+	<div class="modal-dialog">
+		<div class="modal-content modal-whole-chmode">
+			<p class="chmode-title">공실 상태를 변경합니다.</p>
+			<div class="chmode-div clearfix">
+				<a>
+					<span>공개</span>
+					<p>게시글을 공개상태로 전환합니다.</p>
+				</a>
+			</div>
+			<div class="chmode-div clearfix">
+				<a>
+					<span>비공개</span>
+					<p>게시글을 비공개 상태로 전환합니다.</p>
+				</a>
+			</div>
+			<div class="chmode-div clearfix">
+				<a>
+					<span>거래완료</span>
+					<p>거래를 완료했습니다.</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 
 <!-- Javascript -->
 <script src="../assets/js/jquery-1.10.2.min.js"></script>

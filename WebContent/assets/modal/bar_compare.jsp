@@ -51,7 +51,7 @@
 		<div class="compare-btn-box" width="238">
 			<button class="compare-btn-cancel" width="80">취소</button>
 			<button class="compare-btn-compare">
-				<a class="dis-block" href="modal/ma_wish_comp.jsp" data-toggle="modal" data-target="#compareModal">비교하기</a>
+				<a class="dis-block" href="<%=request.getContextPath()%>/assets/modal/ma_wish_comp.jsp" data-toggle="modal" data-target="#compareModal">비교하기</a>
 			</button>
 		</div>
 	</div>

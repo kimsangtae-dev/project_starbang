@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_wish_comp.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_wish_comp.css" />
 </head>
 
 <!-- .modal -->
@@ -13,8 +13,8 @@
 		<!-- .modal-content -->
 		<!-- 여기가 나오는부분 -->
 		<div class="modal-content mainbox">
-			<div id="header" class="height header">
-				<h1 class="text-center">방 비교하기</h1>
+			<div id="header" class="height">
+				<h1>방 비교하기</h1>
 			</div>
 			<div class="content">
 				<table class="tableconfig">

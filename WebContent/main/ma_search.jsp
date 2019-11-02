@@ -194,196 +194,8 @@
 					<div class="gallery-container">
 						<!-- 갤러리 내용 영역 -->
 						<div class="gallery-content clearfix">
-							<ul>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">투룸</p>
-												<p class="recent-a-p2">
-													<span>전세 1억4000</span>
-												</p>
-												<p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-												<p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div recent-a-div2"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.22</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">원룸</p>
-												<p class="recent-a-p2">
-													<span>월세 1000/45</span>
-												</p>
-												<p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
-												<p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">원룸</p>
-												<p class="recent-a-p2">
-													<span>월세 10/45</span>
-												</p>
-												<p class="recent-a-p34">2층, 23.14m², 관리비 15만</p>
-												<p class="recent-a-p34">❤100%실매물/장기/단기가능/리모델링/저보증금 ~ ❤</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">원룸</p>
-												<p class="recent-a-p2">
-													<span>월세 200/25</span>
-												</p>
-												<p class="recent-a-p34">2층, 19.83m², 관리비 5만</p>
-												<p class="recent-a-p34">🍋🍓🍑편의점 10초거리🍋🍓🍑풀옵션 신축
-													주방분리형원룸🍋🍓🍑</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">투룸</p>
-												<p class="recent-a-p2">
-													<span>전세 1억4000</span>
-												</p>
-												<p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-												<p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div -->
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">투룸</p>
-												<p class="recent-a-p2">
-													<span>전세 1억4000</span>
-												</p>
-												<p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-												<p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-											</a>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<!-- 좋아요 버튼 -->
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<!-- 좋아요 끝 -->
-											<!-- 전체 링크화 -->
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<!-- 이미지 -->
-												<div class="recent-a-div"></div> <!-- 확인매물 div --> <!-- <div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>19.09.25</span>
-													</div>
-												</div> --> <!-- 확인매물 끝 -->
-												<p class="recent-a-p1">투룸</p>
-												<p class="recent-a-p2">
-													<span>전세 1억4000</span>
-												</p>
-												<p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-												<p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-											</a>
-										</div>
-									</div>
-								</li>
+							<ul id="gallery-list">
+								
 							</ul>
 						</div>
 						<!-- 갤러리 내용 영역 -->
@@ -490,19 +302,26 @@
 		{{/each}}
 	</script>
 	<script type="text/javascript">
-		/* 임시 클릭 이벤트 - index 좌측 버튼 클릭시 gallery.json값 추가 */
+		/* 페이지 로딩시 gallery.json 템플릿 통해 추가 */
 		$(function() {
-			$(".prev-btn").click(function() {
+			/* $(".prev-btn").click(function() {
 				$.get('ma_assets/gallery.json', function(req) {
 					var template = Handlebars.compile($("#gallery-data").html());
 					var html = template(req);
 					$("#gallery-list").append(html);
 				});
-			});
-			
-			/* 조건에 맞는 방 개수 */
-			var n = $( ".recent-div5" ).length;
-			$(".room-count").html(n);
+			}); */
+			$(document).ready(function(){
+				$.get('ma_assets/gallery.json', function(req) {
+					var template = Handlebars.compile($("#gallery-data").html());
+					var html = template(req);
+					$("#gallery-list").append(html);
+				
+					/* 조건에 맞는 방 개수 */
+					var n = $( ".recent-div5" ).length;
+					$(".room-count").html(n);
+				});
+			});	
 		});
 	</script>
 

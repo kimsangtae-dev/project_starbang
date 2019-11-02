@@ -590,20 +590,15 @@ body > div { height: 100%; overflow: hidden; }
     opacity: 0.9;
 }
 
-/*.gu-marker:hover {
-    background: #1476fc !important;
-    color: #fff !important;
-}*/
+.gu-marker:hover {
+    border-color: #1476fc;
+}
 
 /* 마커와 클러스터러 마우스오버 스타일 */
 #map > div > div > div > div > div:hover {
     background: #fff !important;
     color: #1476fc !important;
     
-}
-
-#map > div > div > div > div:hover {
-    z-index: 100;
 }
 
 /* 지도 확대/축소 버튼 */
