@@ -70,6 +70,7 @@
     <!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/"></script>
 	<script type="text/javascript">
 	$(function() {
 	    /** 변경 버튼 */

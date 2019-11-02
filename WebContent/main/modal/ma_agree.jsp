@@ -8,10 +8,10 @@
 <link rel="stylesheet" type="text/css" href="ma_assets/modal_css/ma_agree.css" />
 
 <script type="text/javascript">
-$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
-$('#agree').on('scroll touchmove mousewheel', function(event) { 
-	event.preventDefault();     event.stopPropagation();     return false; 
-	});
+//$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
+//$('#agree').on('scroll touchmove mousewheel', function(event) { 
+//	event.preventDefault();     event.stopPropagation();     return false; 
+//	});
 
 </script>
 
