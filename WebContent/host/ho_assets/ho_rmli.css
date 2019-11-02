@@ -41,7 +41,7 @@ body, #root {
     /* 몇 건의 공실이 있습니다 전체박스 */
     .isroom-div {
         position: relative;
-        margin-top: 60px;
+        margin-top: 30px;
         height: 41px;
         padding: 7px 0px;
     }
@@ -145,24 +145,40 @@ body, #root {
         color: rgb(102, 102, 102);
     }
 
-    /* table */
-
+/* ------------------------------------------
+|   table settings
+------------------------------------------- */
+	
+	/* 테이블 담는 박스 */
     .container {
         margin-top: 30px;
         width: 1080px;
         padding: 0;
     }
-
+	
+ 	th {
+ 		background-color: #F8F8F8;
+ 		border-top: 1px solid #000 !important;
+ 	}
+ 	
+ 	
+	/* td 세로 정렬하기 */
     td { 
-        vertical-align: middle !important   ;
+        vertical-align: middle !important;
     }
-
+    
+    tr:last-child {
+    	border-bottom: 1px solid #000;
+    }
+	
+	/*  */
     .table-span1 {
         color : rgb(41, 128, 185);
         font-size: 17px;
         font-weight: 550;
     }
-
+	
+	/*  */
     .table-span1-1 {
         color: #333333;
         font-size: 17px;
@@ -181,4 +197,86 @@ body, #root {
 
 	.margin-bottom {
 		margin-bottom: 80px;
+	}
+	
+	.btn {
+		
+	}
+	
+	.changemode {
+		display: block;
+		width: auto;
+	}
+	
+	
+/* ------------------------------------------
+|   Modal
+------------------------------------------- */
+	
+	/* 모달창 위치 지정 */
+	.modal-dialog {
+		width: 420px;
+		margin: 15% auto 0;
+	}
+	
+	/* 내부전체박스 */
+	.modal-whole-chmode {
+		width: 420px;
+	}
+	
+	/* 모달창 타이틀 */
+	.chmode-title {
+		width: auto;
+		height: 60px;
+		line-height: 60px;
+		text-align: center;
+		font-size: 19px;
+		font-weight: 550;
+	}
+	
+	/* 맨 아래 여백 */
+	.chmode-div:last-child {
+		margin-bottom: 30px;
+	}
+	
+	/* 내부 div 박스 - 한줄 */
+	.chmode-div {
+		height: 50px;
+		margin-top: 10px;
+	}
+	
+	/* a태그 선택가능하도록 만들기 */
+	.chmode-div > a {
+			display: block;
+			width: auto;
+			height: 50px;
+			cursor: pointer;
+			
+	}
+	
+	
+	/* 한줄로 만들기 */
+	.chmode-div span, .chmode-div p {
+		display: block;
+		float: left;
+		
+	}
+		
+	/* 왼쪽 네모 */
+	.chmode-div span {
+		width: 65px;
+		height: 25px;
+		line-height: 25px;
+		margin: 12.5px 14px 12.5px 40px;
+		background-color: rgb(52, 152, 219);
+		text-align: center;
+		font-size: 13px;
+		color: white;
+		border-radius: 5px;
+	}
+	
+	/* 오른쪽 글씨 */
+	.chmode-div p{
+		line-height: 50px;
+		color: #222;
 	}
