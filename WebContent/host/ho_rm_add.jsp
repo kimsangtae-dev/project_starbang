@@ -164,9 +164,9 @@
                                 </th>
                                 <td class="base_line">
                                     <p class="base_title">공급 면적</p>
-                                    <input autocomplete="off" class="base_pd input_box" name="provision_size_pyeong" value="">
+                                    <input type="text" id="pyeong1" class="base_pd input_box" onkeyup="calculator(1);">
                                     <p class="base_kiho">평</p>
-                                    <input autocomplete="off" class="base_pd input_box" name="provision_size" value="">
+                                    <input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);">
                                     <p class="base_kiho">㎡</p>
                                 </td>
                                 <th rowspan="2">건물 층수</th>
@@ -200,9 +200,9 @@
                             <tr>
                                 <td class="base_line">
                                     <p class="base_title">전용 면적</p>
-                                    <input autocomplete="off" class="base_pd input_box" name="room_size_pyeong" value="">
+                                    <input type="text" id="ator1" class="base_pd input_box" onkeyup="ator(1);">
                                     <p class=" base_kiho">평</p>
-                                    <input autocomplete="off" class="base_pd input_box" name="room_size" value="">
+                                    <input type="text" id="ator2" class="base_pd input_box" onkeyup="ator(2);">
                                     <p class="base_kiho">㎡</p>
                                 </td>
                                 <td class="base_line">
@@ -528,9 +528,63 @@
 <!-- Javascript -->
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
+<!-- 카카오 지도 -->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
-<script src="../assets/plugin/datepicker/datepicker.min.js"></script>
+        <script>
+		    var mapContainer = document.getElementById('box'), // 지도를 표시할 div
+		        mapOption = {
+		            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+		            level: 5 // 지도의 확대 레벨
+		        };
+		
+		    //지도를 미리 생성
+		    var map = new daum.maps.Map(mapContainer, mapOption);
+		    //주소-좌표 변환 객체를 생성
+		    var geocoder = new daum.maps.services.Geocoder();
+		    //마커를 미리 생성
+		    var marker = new daum.maps.Marker({
+		        position: new daum.maps.LatLng(37.537187, 127.005476),
+		        map: map
+		    });
+		
+		
+		    function sample5_execDaumPostcode() {
+		        new daum.Postcode({
+		            oncomplete: function(data) {
+		                var addr = data.address; // 최종 주소 변수
+		
+		                // 주소 정보를 해당 필드에 넣는다.
+		                <!--document.getElementById("sample5_address").value = addr;-->
+		                document.getElementById("point_address").value = addr;
+		                // 주소로 상세 정보를 검색
+		                geocoder.addressSearch(data.address, function(results, status) {
+		                    // 정상적으로 검색이 완료됐으면
+		                    if (status === daum.maps.services.Status.OK) {
+		
+		                        var result = results[0]; //첫번째 결과의 값을 활용
+		
+		                        // 해당 주소에 대한 좌표를 받아서
+		                        var coords = new daum.maps.LatLng(result.y, result.x);
+		                        // 기존에 있던 박스를 숨긴다.
+		                        $("#pon_box").css("display", "none")
+		                        // 지도를 보여준다.
+		                        mapContainer.style.display = "block";
+		                        map.relayout();
+		                        // 지도 중심을 변경한다.
+		                        map.setCenter(coords);
+	                        // 마커를 결과값으로 받은 위치로 옮긴다.
+	                        marker.setPosition(coords)
+	                    }
+	                });
+	            }
+	        }).open();
+	    }
+</script>
+<!-- 카카오 지도 -->
+
+<!-- datepicker-->
+	<script src="../assets/plugin/datepicker/datepicker.min.js"></script>
     <script src="../assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
     <script>
         $(function() {
@@ -543,57 +597,9 @@
                 trigger:'#cal'     // 클릭시 달력을 표시할 요소의 id
             });
         });
-	</script>		
-<script>
-    var mapContainer = document.getElementById('box'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-            level: 5 // 지도의 확대 레벨
-        };
+	</script>	
+<!-- datepicker -->	
 
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
-    //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map
-    });
-
-
-    function sample5_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                var addr = data.address; // 최종 주소 변수
-
-                // 주소 정보를 해당 필드에 넣는다.
-                <!--document.getElementById("sample5_address").value = addr;-->
-                document.getElementById("point_address").value = addr;
-                // 주소로 상세 정보를 검색
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
-
-                        var result = results[0]; //첫번째 결과의 값을 활용
-
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-                        // 기존에 있던 박스를 숨긴다.
-                        $("#pon_box").css("display", "none")
-                        // 지도를 보여준다.
-                        mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-                    }
-                });
-            }
-        }).open();
-    }
-</script>
 <script>
 /* 동정보 체크박스 -> 동 삭제 */
 $(function() {
@@ -607,5 +613,30 @@ $(function() {
    });
 });
 </script>
+
+<!-- 공급면적 평수 계산기 -->
+<script>
+function calculator(chk){
+	  if(chk==1){ 
+	      document.getElementById('pyeong2').value = parseFloat(document.getElementById('pyeong1').value) * 3.3058;
+	  }
+	  else { 
+	      document.getElementById('pyeong1').value = parseFloat(document.getElementById('pyeong2').value) / 3.3058;
+	  }
+	}
+</script>
+<!-- 평수 계산기 -->
+<!-- 전용면적 평수 계산기 -->
+<script>
+function ator(chk){
+	  if(chk==1){ 
+	      document.getElementById('ator2').value = parseFloat(document.getElementById('ator1').value) * 3.3058;
+	  }
+	  else { 
+	      document.getElementById('ator1').value = parseFloat(document.getElementById('ator2').value) / 3.3058;
+	  }
+	}
+</script>
+<!-- 평수 계산기 끝-->
 </body>
 </html>

@@ -275,6 +275,7 @@ input.address2 {
 #point_address {
     width: 500px;
     height:46px;
+    margin-top: 5px;
 }
 
 /* 상세주소  부트스트랩 기능 삭제 */
