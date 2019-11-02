@@ -86,6 +86,11 @@ a {
 	margin-top: 10px;
 }
 
+/**빌보드 차트 data1 안보이기*/
+.bb-legend-item {
+	display : none;
+}
+
 .greyfont1 {
 	color: #505050;
 	font-size: 14px;
