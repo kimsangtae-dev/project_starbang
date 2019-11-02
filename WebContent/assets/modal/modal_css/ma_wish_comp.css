@@ -346,7 +346,7 @@ tr {
 	outline: none;
 }
 
-.last-contact-div-open>div>div>p {
+.last-contact-div-open>div>div>p, .last-contact-div>div>div>p {
 	color: rgb(255, 255, 255);
 	font-size: 15px;
 	text-align: center;
