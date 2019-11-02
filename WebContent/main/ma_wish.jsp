@@ -368,7 +368,7 @@
             
             $.ajax( {
 				/** ajax 기본 옵션 */
-				url: 'modal/bar_compare.jsp',// 읽어들일 파일의 경로
+				url: '<%=request.getContextPath()%>/assets/modal/bar_compare.jsp',// 읽어들일 파일의 경로
 				method: 'get',			 // 통신방법 (get(기본값), post)
 				data: {},				 // 접속대상에게 전달할 파라미터
 				dataType: 'html',		 // 읽어올 내용 형식 (html,xml,json)
