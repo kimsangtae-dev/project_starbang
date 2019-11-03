@@ -348,19 +348,18 @@
 <script src="../assets/js/bootstrap.min.js"></script>
 <script>
 
-
 	$(function(){
-		
 		$(document).on('click', '.btn-compare', function(e) {
 			/* 방 비교하기 버튼 지우기 */
             $("#bar-compare").empty();
-            
+			
 			/* checkbox 만들기 */
             var chbox = "";
             chbox += '<div class="comp-chkbox-d">'
         	chbox += '<label class="clearfix comp-chkbox-l" size="22">'
     		chbox += '<input type="checkbox" class="comp-chkbox-i" name="" value="">'
     		chbox += '<span class="comp-chkbox-s"></span></label></div>'
+    		
     		
     		/* checkbox 붙이기 */
             $(".gallery-d2-pic").append(chbox);
@@ -415,6 +414,20 @@
 		
        */
 		}); 
+	});
+	
+	
+	/* footer와 비교하기바가 겹치지 않기위한 이벤트 */
+	$(function() {
+		$(window).scroll(function() {
+			
+			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
+				var control = 0;
+				control = 250 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
+				$(".compare-d1").css("bottom", control+"px");
+			}
+			
+		});
 	});
 </script>
 </body>

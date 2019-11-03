@@ -461,7 +461,6 @@ html body #root {
     box-shadow: rgba(0, 0, 0, 0.25) 0px -1px 6px 0px;
     background-color: rgb(24, 105, 216);
     position: fixed;
-    bottom: 0px;
     z-index: 10;
     margin: 0px auto;
 }
