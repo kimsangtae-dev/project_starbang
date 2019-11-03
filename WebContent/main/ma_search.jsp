@@ -382,24 +382,26 @@
 			// 서울시 구 별로 마커 생성하기
 			$.getJSON("ma_assets/guPosition.json", function(data) {
 				var guPositions = data;
+				var gumark;
 				for (var i = 0; i < guPositions.length; i++) {
-					var gumark = '<div class="gu-marker">'
-							+ guPositions[i].guName + '</div>';
+					gumark = '<div class="gu-marker" id="gu-marker' + i + '">'
+							+ guPositions[i].guName + '<span id="lat" style="display:none;">'+ guPositions[i].lat +'</span>' 
+							+ '<span id="lng" style="display:none;">'+ guPositions[i].lng +'</span>' + '</div>';
 					var customOverlay = new kakao.maps.CustomOverlay({
 						position : new kakao.maps.LatLng(guPositions[i].lat,
 								guPositions[i].lng),
-						content : gumark
+						clickable: false,
+						content : gumark,
+						zIndex : 3
 					});
 					customOverlay.setMap(map);
-					/* kakao.maps.event.addListener(map, 'zoom_changed', function() {
-					    var level = map.getLevel();
-					    if(level > 7){
-					    	customOverlay.setMap(map);
-					    } else {
-					    	customOverlay.setMap(null);
-					    }
-					}); */
-					//customOverlay.setMap(map);
+					var a = guPositions[i].lat;
+					$("#gu-marker" + i).click(function() {
+						var poslat = $(this).children("#lat").html();
+						var poslng = $(this).children("#lng").html();
+						map.setLevel(map.getLevel() - 1);
+						map.setCenter(new kakao.maps.LatLng(poslat, poslng));
+					});
 				}
 			});
 
