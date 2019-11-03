@@ -97,12 +97,12 @@
 							<font>19.10.11</font>
 						</div>
 					</div>
-					<p class="gallery-p-common gallery-p1">쓰리룸</p>
+					<p class="gallery-p-common gallery-p1">원룸</p>
 					<p class="gallery-p-common gallery-p1">
-						<span class="gallery-p2">전세 1억1000</span>
+						<span class="gallery-p2 select-span">월세500/30</span>
 					</p>
-					<p class="gallery-p-common">3층, 82.5m², 관리비 5만</p>
-					<p class="gallery-p-common">🆕 🌸 신규 🌸  향남 2지구 신축급 깨끗하고 입지 최상 쓰리룸 전세 ♡</p>
+					<p class="gallery-p-common">3층, 35.5m², 관리비 5만</p>
+					<p class="gallery-p-common">🆕  향남 2지구 원룸 월세 ♡</p>
 				</a>
 			</div>
 		</li>
@@ -156,12 +156,12 @@
 							<font>19.10.11</font>
 						</div>
 					</div>
-					<p class="gallery-p1 gallery-p-common">쓰리룸</p>
-					<p class="gallery-p2 gallery-p-common">
-						<span>전세 1억1000</span>
+					<p class="gallery-p1 gallery-p-common">투룸</p>
+					<p class="gallery-p1 gallery-p-common">
+						<span class="gallery-p2">전세 5000천</span>
 					</p>
-					<p class="gallery-p-common">3층, 82.5m², 관리비 5만</p>
-					<p class="gallery-p-common">🆕 🌸 신규 🌸  향남 2지구 신축급 깨끗하고 입지 최상 쓰리룸 전세 ♡</p>
+					<p class="gallery-p-common">3층, 82.5m², 관리비 8만</p>
+					<p class="gallery-p-common">🆕 짱짱짱 투룸 좋아요 ♡</p>
 				</a>
 			</div>
 		</li>
@@ -216,9 +216,9 @@
 							<font>19.10.11</font>
 						</div>
 					</div>
-					<p class="gallery-p-common gallery-p1">쓰리룸</p>
+					<p class="gallery-p-common gallery-p1">오피스텔</p>
 					<p class="gallery-p-common gallery-p1">
-						<span class="gallery-p2">전세 1억1000</span>
+						<span class="gallery-p2">전세 2억1000</span>
 					</p>
 					<p class="gallery-p-common">3층, 82.5m², 관리비 5만</p>
 					<p class="gallery-p-common">🆕 🌸 신규 🌸  향남 2지구 신축급 깨끗하고 입지 최상 쓰리룸 전세 ♡</p>
@@ -248,7 +248,7 @@
 					</div>
 					<p class="gallery-p-common gallery-p1">쓰리룸</p>
 					<p class="gallery-p-common gallery-p1">
-						<span class="gallery-p2">전세 1억1000</span>
+						<span class="gallery-p2">전세 3억5000</span>
 					</p>
 					<p class="gallery-p-common">3층, 82.5m², 관리비 5만</p>
 					<p class="gallery-p-common">🆕 🌸 신규 🌸  향남 2지구 신축급 깨끗하고 입지 최상 쓰리룸 전세 ♡</p>
@@ -276,9 +276,9 @@
 							<font>19.10.11</font>
 						</div>
 					</div>
-					<p class="gallery-p-common gallery-p1">쓰리룸</p>
+					<p class="gallery-p-common gallery-p1">투룸</p>
 					<p class="gallery-p-common gallery-p1">
-						<span class="gallery-p2">전세 1억1000</span>
+						<span class="gallery-p2">전세 1억</span>
 					</p>
 					<p class="gallery-p-common">3층, 82.5m², 관리비 5만</p>
 					<p class="gallery-p-common">🆕 🌸 신규 🌸  향남 2지구 신축급 깨끗하고 입지 최상 쓰리룸 전세 ♡</p>
@@ -387,18 +387,34 @@
         });
         
          /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
-        /* $(document).on('click', '.comp-chkbox-s', function(e) {
-    	var type = $(this).parents(".gallery-d1-a").children(".gallery-p1").html(); 
-    	var price = $(this).parents(".gallery-d1-a").children(".gallery-p2").html();
-		var put = '<span class="compbar-newspan">'+ type + '</span>';
-			put += '<p class="compbar-newp"> + price + </p>';
+         $(document).on('click', '.comp-chkbox-s', function(e) {
+        	 
+        var type = $(this).parents(".gallery-d1-a").children(".gallery-p1").html();
+        var price = $(this).parents(".gallery-d1-a").find(".gallery-p2").html();
+		var put = '<span class="compbar-newspan">' + type + '</span>';
+			put += '<p class="compbar-newp">' + price + '</p>';
 			put += '<button class="compbar-newbtn"></button>';
+				
+			$("#select1").html(put);
+		
+		/* var check_list = $(".comp-chkbox-i:checked");
+		var value1 = $(check_list[0]).val();
+		var value2 = $(check_list[1]).val();
+		var value3 = $(check_list[2]).val();
+		
+		
+		if(value1==false) {
 			
-			console.log(put);
-			
-		$(".compare-select").html(put);
-       }); */
-        
+		} 
+		if(value1==true) {
+			$("#select2").html(put);
+		}
+		if(value1 == true && value2 == true ) {
+			$("#select3").html(put);
+		}
+		
+       */
+		}); 
 	});
 </script>
 </body>
