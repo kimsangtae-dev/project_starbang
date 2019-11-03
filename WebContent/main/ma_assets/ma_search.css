@@ -587,11 +587,12 @@ body > div { height: 100%; overflow: hidden; }
     text-align: center;
     font-weight: bold;
     line-height: 24px;
-    opacity: 0.9;
+    opacity: 0.8;
+    position: absolute;
 }
 
 .gu-marker:hover {
-    border-color: #1476fc;
+    opacity: 1;
 }
 
 /* 마커와 클러스터러 마우스오버 스타일 */
