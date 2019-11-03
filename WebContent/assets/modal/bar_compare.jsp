@@ -7,7 +7,7 @@
 			<p class="compare-exp-p1">방 비교하기</p>
 			<p class="compare-exp-p2" size="13">최대 3개까지 비교할 수 있습니다.</p>
 		</div>
-		<div class="compare-select">
+		<div class="compare-select" id="select1">
 			<div class="compare-select-d">
 				<svg width="30" height="30" viewBox="0 0 32 32">
 					<g fill="none" fill-rule="evenodd">
@@ -20,7 +20,7 @@
 			</div>
 			<p class="compare-select-p">비교할 방을 선택해주세요</p>
 		</div>
-		<div class="compare-select">
+		<div class="compare-select" id="select2">
 			<div class="compare-select-d">
 				<svg width="30" height="30" viewBox="0 0 32 32">
 					<g fill="none" fill-rule="evenodd">
@@ -34,7 +34,7 @@
 			<p class="compare-select-p">비교할 방을 선택해주세요</p>
 		</div>
 		
-		<div class="compare-select">
+		<div class="compare-select" id="select3">
 			<div class="compare-select-d">
 				<svg width="30" height="30" viewBox="0 0 32 32">
 					<g fill="none" fill-rule="evenodd">
