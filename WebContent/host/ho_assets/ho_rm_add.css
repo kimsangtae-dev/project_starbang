@@ -635,6 +635,17 @@ select {
 }
 
 /***************************** 추가정보 **************************/
+.check_box > .CheckBox {
+    float: left;
+    width: 22px;
+    height: 22px;
+    background-color: rgb(255, 255, 255);
+    /* position: absolute; */
+    /* top: 0px; */
+    /* left: 0px; */
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 3px;
+}
 
 /** 체크박스 숨김 */
 .Square_box > input[type="radio"] {
@@ -674,9 +685,19 @@ select {
     display: block;
     content: "";
     clear: both;
+    float:none;
 }
 
+
 /* 관리비항목 선택창 */
+
+.main {
+	float: left;
+    position: relative;
+    left: 20px;
+    top: 10px;
+	
+}
 .add_m {
     float: left;
     margin-right: 20px;

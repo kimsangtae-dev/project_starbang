@@ -258,11 +258,6 @@
                                 <p>날짜 선택</p>
                                 </label>
                                 <input type="text" id="datepicker" readonly />
-                                   <!-- <button class="in_date">즉시 입주</button>
-                                    <button class="in_date">날짜 협의</button>
-                                    <button id="cal" class="in_date">날짜 선택</button>
-                                    <input type="text" id="datepicker" readonly />
-                                    <div id="datepicker"></div> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -278,13 +273,14 @@
                     <tr>
                         <th rowspan="2">관리비</th>
                         <td class="add_info" colspan="3">
-                            <label class="Square_box add1"><input type="radio" name="maintenance" checked="">
-                                <p>없음</p>
-                            </label>
-                            <label class="Square_box add1"><input type="radio" name="maintenance">
-                                <p>있음</p>
-                            </label><input autocomplete="off" class="add2 input_box" type="text" name="maintenance_cost" disabled="" value="">
+							<input id="btnn" class="add2 input_box" type="text" name="maintenance_cost" disabled="" value="">
                             <p class="add3">만원</p>
+                            <div class="main">
+                            <label class="check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value="" checked="" onclick="btnn_on();">
+                            <span class="CheckBox"></span>
+                            <span class="deal_text">관리비 없음</span>
+                            </label>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -294,31 +290,31 @@
                                 <p>(다중선택가능)</p>
                             </div>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>인터넷</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>유선TV</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>청소비</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>수도세</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>도시가스</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>전기세</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items">
+                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
                                 <p>기타</p>
                             </label>
                         </td>
@@ -327,14 +323,14 @@
                         <th>주차여부</th>
                         <td class="add_info">
                             <label class="add1 Square_box">
-                                <input type="radio" name="parking" checked="">
+                                <input type="radio" name="parking" checked="" onclick="btnn1_off();">
                                 <p>불가능</p>
                             </label>
                             <label class="add1 Square_box">
-                                <input type="radio" name="parking">
+                                <input type="radio" name="parking" onclick="btnn1_on();">
                                 <p>가능</p>
                             </label>
-                            <input autocomplete="off" class="add2 input_box" type="text" name="parking_cost" disabled="" value="">
+                            <input id="btnn1" class="add2 input_box" type="text" name="parking_cost" disabled="" value="">
                             <p class="add3">만원</p>
                         </td>
                     </tr>
@@ -528,7 +524,7 @@
 <!-- Javascript -->
         <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="../assets/js/bootstrap.min.js"></script>
-<!-- 카카오 지도 -->
+<!-- 카카오 지도 시작-->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
         <script>
@@ -581,9 +577,9 @@
 	        }).open();
 	    }
 </script>
-<!-- 카카오 지도 -->
+<!-- 카카오 지도 끝 -->
 
-<!-- datepicker-->
+<!-- datepicker 시작 -->
 	<script src="../assets/plugin/datepicker/datepicker.min.js"></script>
     <script src="../assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
     <script>
@@ -598,8 +594,8 @@
             });
         });
 	</script>	
-<!-- datepicker -->	
-
+<!-- datepicker 끝 -->	
+<!-- 동정보 위치이동 시작 -->	
 <script>
 /* 동정보 체크박스 -> 동 삭제 */
 $(function() {
@@ -613,15 +609,16 @@ $(function() {
    });
 });
 </script>
+<!-- 동정보 위치이동 끝 -->	
 
 <!-- 공급면적 평수 계산기 -->
 <script>
 function calculator(chk){
 	  if(chk==1){ 
-	      document.getElementById('pyeong2').value = parseFloat(document.getElementById('pyeong1').value) * 3.3058;
+	      document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
 	  }
 	  else { 
-	      document.getElementById('pyeong1').value = parseFloat(document.getElementById('pyeong2').value) / 3.3058;
+	      document.getElementById('pyeong1').value = parseFloat((document.getElementById('pyeong2').value) / 3.3058).toFixed(2);
 	  }
 	}
 </script>
@@ -630,13 +627,41 @@ function calculator(chk){
 <script>
 function ator(chk){
 	  if(chk==1){ 
-	      document.getElementById('ator2').value = parseFloat(document.getElementById('ator1').value) * 3.3058;
+	      document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
 	  }
 	  else { 
-	      document.getElementById('ator1').value = parseFloat(document.getElementById('ator2').value) / 3.3058;
+	      document.getElementById('ator1').value = parseFloat((document.getElementById('ator2').value) / 3.3058).toFixed(2);
 	  }
 	}
 </script>
 <!-- 평수 계산기 끝-->
+<script>
+var btnn;
+ //버튼활성화
+ function btnn_on() {
+  btnn = document.getElementById('btnn');
+  btnn.disabled = false;
+ }
+ 
+ //버튼비활성화
+ function btnn_off() {
+  btnn = document.getElementById('btnn');
+  btnn.disabled = 'disabled';
+ }
+</script>
+<script>
+var btnn1;
+ //버튼활성화
+ function btnn1_on() {
+  btnn1 = document.getElementById('btnn1');
+  btnn1.disabled = false;
+ }
+ 
+ //버튼비활성화
+ function btnn1_off() {
+  btnn1 = document.getElementById('btnn1');
+  btnn1.disabled = 'disabled';
+ }
+</script>
 </body>
 </html>
