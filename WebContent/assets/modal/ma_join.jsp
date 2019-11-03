@@ -8,6 +8,20 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_join.css" />
 
 
+<script type="text/javascript">
+
+	$(document).on('hidden.bs.modal', function (event) {
+
+		if ($('.modal:visible').length) {
+
+			$('body').addClass('modal-open');
+
+		}
+
+	});
+
+</script>
+
 </head>
 
 	 <!-- 화면 영역 -->

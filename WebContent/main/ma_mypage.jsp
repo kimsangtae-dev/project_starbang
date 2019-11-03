@@ -10,6 +10,8 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_mypager.css" />
+<script src="../assets/js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
 
 </head>
 <body>
@@ -37,10 +39,11 @@
 					<input type="text" name="myname" value="홍길동" class="input" >
 					<h3 class="h32">이메일주소</h3>
 
-					<input type="text" name="email" id="email" disabled value="dlekdse@gmail.com" class="email">
+					<input type="text" name="email" id="email" disabled value="dlekdse@gmail.com" class="emailmypage">
 					<button type="button" class="btn btn-default focse ponbutton" id="reemail">변경</button>
+					<button type="button" class="btn btn-default focse ponbutton reemailaut" id="reemailaut">인증</button>
 					<div id="emailinumberdiv">
-						<input type="number" name="emailinumber" id="emailinumber" class="emailinumber email">
+						<input type="number" name="emailinumber" id="emailinumber" class="emailinumber emailmypage">
 						<button type="button" class="btn btn-default focse reemailinumber" id="reemailinumber">인증번호</button>
 					</div>
 					<h3 class="h33">휴대폰 번호</h3>
@@ -57,10 +60,10 @@
 					<br/>
 				</div>
 				<hr class="hr" />
-				<button type="resert" id="resert" class="btn btn-default">취소</button>
+				<button type="reset" id="resert" class="btn btn-default focse" onclick="location='ma_main.jsp'">취소</button>
 				<button type="submit" id="submit" class="btn btn-default">확인</button>
 				<p class="rhdrks"></p>
-				<button type="button" id="out" class="btn btn-link">회원탈퇴</button>
+				<button id="out" class="btn btn-link bot outall" data-toggle="modal" data-target="#outall">회원탈퇴</button>
 				<p class="rhdrks2"></p>
 			</div>
 			
@@ -71,16 +74,19 @@
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/"></script>
+	<script src="../assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+	<!-- 모달창 -->
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script type="text/javascript">
 	$(function() {
 	    /** 변경 버튼 */
 		$("#reemail").click(function(e) {
 			var reemail = document.getElementById('reemail'); 
 			var email = document.getElementById('email'); 
-			var email = document.getElementById('email'); 
 			var reemailinumber = document.getElementById("reemailinumber");
 		    var emailinumber = document.getElementById("emailinumber");
 		    var emailinumberdiv = document.getElementById("emailinumberdiv");
+		    var reemailaut = document.getElementById("reemailaut");
 			email.readonly = true;
 	
 			$reemail = $('#email').attr('disabled', true);
@@ -88,6 +94,8 @@
 			reemailinumber.style.display = 'block';
 			emailinumber.style.display = 'block';
 			emailinumberdiv.style.height = '60px';
+			$reemail = $('#reemail').attr('display', none);
+			$reemailaut = $('#reemailaut').attr('display', inline-block);
 		});
 	    
 		$("#repon").click(function(e) {
@@ -106,10 +114,92 @@
 			$repon = $('#pon3').attr('disabled', false);
 			
 		});
+		
+		/** 회원탈퇴 */
+//		$("#out").click(function() {
+//			swal({
+//				title: "회원탈퇴를 신청하기전에 아래 안내 사항을 한번 더 확인해주세요.",	
+//				text: " 1. 회원 탈퇴 시, 현재 로그인된 아이디는 즉시 탈퇴 처리됩니다. 2. 회원 탈퇴 시, 회원 전용 웹 서비스 이용이 불가합니다. 3. 탈퇴 시 회원 정보 및 찜 서비스, 등록한 게시물 이용 기록이 모두 삭제됩니다. 4. 회원 정보 및 서비스 이용 기록은 모두 삭제되며, 삭제된 데이터는복구되지 않습니다. 5. 광고를 위한 매물이 등록되어 있을 경우, 탈퇴 시 모든 정보는 삭제 처리됩니다.",
+//				type: "warning",
+//				confirmButtonText: "Yes",
+//				showCancelButton: true,
+//				cancelButtonText: "No",
+//			}).then(function(result) {
+//				if(result.value) {
+//					swal("탈퇴성공", "성공적으로 탈퇴하였습니다", "success");
+//				}else if(result.dismiss === "cancel") {
+//					swal("탈퇴취소", "탈퇴에 취소하셨습니다", "error");
+//				}
+//			});
+//		});
+		
+		/** 확인창 */
+		$("#reemailinumber").click(function() {
+			if (reemailinumber.style.display = '') {
+			swal("인증번호를 보냈습니다");
+			}
+		});
+		
+		
+		
+//		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;"></button>
+//
+//<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+//  <div class="modal-dialog" role="document">
+//    <div class="modal-content">
+//      <div class="modal-header">
+//        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+//        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
+//      </div>
+//      <div class="modal-body">
+//        Modal 내용
+//      </div>
+//      <div class="modal-footer">
+//        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+//      </div>
+//    </div>
+//  </div>
+//</div>
+		$('#modal').modal("hide"); //닫기 
+			
 	});
 		</script>
 		
 </body>
+
+
+
+		<!-- 탈퇴 -->
+		<div class="modal fade modalwit" id="outall">
+			<div class="modal-content modal-contentwit">
+				<div class="modal-header">
+	                <h4>회원탈퇴</h4>
+ 	            </div>
+				<div class="modal-body modalbody">					
+					<h4 class="modal-title">회원탈퇴를 신청하기전에 아래 안내 사항을 한번 더 확인해주세요.</h4>
+					<pre class="mypagepre">
+1. 회원 탈퇴 시, 현재 로그인된 아이디는 즉시 탈퇴 처리됩니다. 
+2. 회원 탈퇴 시, 회원 전용 웹 서비스 이용이 불가합니다. 
+3. 탈퇴 시 회원 정보 및 찜 서비스, 등록한 게시물 이용 기록이 모두 삭제됩니다. 
+4. 회원 정보 및 서비스 이용 기록은 모두 삭제되며, 삭제된 데이터는복구되지 않습니다. 
+5. 광고를 위한 매물이 등록되어 있을 경우, 탈퇴 시 모든 정보는 삭제 처리됩니다.
+					</pre>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="modalsubmit" class="btn btn-default btnmodalsubmit" data-dismiss="modal" >확인</button>
+					<button type="reset" id="modalresert" class="btn btn-default btnmodalresert" data-dismiss="modal" >취소</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
 
 
 

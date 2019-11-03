@@ -36,7 +36,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class='collapse-title collapse-title2 text'><a href="#content2" class="a"><p class="noticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content2" class="content"><pre class="pre">안녕하세요. 다방 운영팀입니다.
+    					<div id="content2" class="content"><pre class="precolor">안녕하세요. 다방 운영팀입니다.
 항상 다방을 이용해주시는 회원님들께 감사 인사 드립니다.
 
 다방은 더욱 철저한 정보보호 관리체계를 갖추기 위해 개인정보 처리방침 규정을 일부 개정했습니다.
@@ -75,7 +75,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class='collapse-title collapse-title3 text'><a href="#content3" class="a"><p class="noticein">[공지사항] 개인정보 처리방침 주요 개정사항 안내</p><p class="out">2019.10.20</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content3" class="content"><pre class="pre">안녕하세요. 다방 운영팀입니다.
+    					<div id="content3" class="content"><pre class="precolor">안녕하세요. 다방 운영팀입니다.
 항상 다방을 이용해주시는 회원 여러분께 감사 드리며, 새로운 이용약관 시행에 관한 안내 말씀 드립니다.
 
 오는 30일부터 만 14세 미만 사용자는 다방 신규 회원가입이 불가하며, 기존 회원 중에도 만 14세 미만 사용자는 서비스 이용계약이 해지될 수 있습니다.

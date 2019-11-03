@@ -174,7 +174,6 @@ li.li3, li.li5 {
 
 /** 모두 동의합니다 */
 .all {
-	width: 100%;
 	text-align: center;
 	margin: auto;
 	display: inline-block;
@@ -201,6 +200,11 @@ li.li3, li.li5 {
 }
 
 /** 부모스크롤 없애기 */
+.agreebody {
+overflow:hidden; 
+height: 100%;
+width: 100%;
+}	
 
 /** 버튼 */
 .chimg {

@@ -32,7 +32,7 @@
     					<h2 class=' collapse-title text'><a class="a" href="#content1"><img src="ma_assets/ma_img/Q.PNG"><p>별방은 어떤 서비스인가요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content1" class="content">
-    						<pre class="pre"><span class="contentspan">A.</span>다방은 어떤 서비스인가요?
+    						<pre class="precolor"><span class="contentspan">A.</span>다방은 어떤 서비스인가요?
    국내 최초 오픈형 부동산 플랫폼 ‘다방’에서 살고 싶은 집을 만나보세요.
    [원룸부터 아파트까지. 다 있다! 다방]
 
@@ -65,7 +65,7 @@
     					<h2 class=' collapse-title text'><a class="a" href="#content2"><img src="ma_assets/ma_img/Q.PNG"><p>회원가입을 하면 어떤 점이 좋나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content">
-    						<pre class="pre"><span class="contentspan">A.</span>다방앱에 회원가입 후 로그인을 하시면
+    						<pre class="precolor"><span class="contentspan">A.</span>다방앱에 회원가입 후 로그인을 하시면
 
    ▶ ‘관심목록'의 내용을 안전하게 저장!
    원룸∙투룸∙오피스텔 등 다양한 전∙월세 매물을 살펴보는 과정에서 매물을 조회하고 찜한 내역이 쌓이는 ‘관심목록'의 내용을 PC와 모바일에서 동
@@ -89,7 +89,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class=' collapse-title text'><a class="a" href="#content3"><img src="ma_assets/ma_img/Q.PNG"><p>회원탈퇴는 어떻게 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content3" class="content"><pre class="pre"><span class="contentspan">A.</span>다방 서비스 회원탈퇴를 원하실 경우
+    					<div id="content3" class="content"><pre class="precolor"><span class="contentspan">A.</span>다방 서비스 회원탈퇴를 원하실 경우
 
    ▶ 다방앱의 ‘더보기’ 메뉴에서 ‘정보수정’으로 이동 후 화면 하단에 '회원탈퇴'를 탭하시면 탈퇴가 가능합니다.
 
@@ -103,7 +103,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class=' collapse-title text'><a class="a" href="#content4"><img src="ma_assets/ma_img/Q.PNG"><p>직거래는 어떻게 방을 내놓나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content4" class="content"><pre class="pre"><span class="contentspan">A.</span>개인회원의 경우 직거래 매물 1건에 대해 무료 광고가 가능합니다.
+    					<div id="content4" class="content"><pre class="precolor"><span class="contentspan">A.</span>개인회원의 경우 직거래 매물 1건에 대해 무료 광고가 가능합니다.
 
    ▶ 다방앱의 '더보기'메뉴에서 ‘방 내놓기’ 버튼을 탭한 후 매물의 위치 정보, 방 종류, 거래 종류(전세∙월세 등) 등의 매물 기본 정보와 관리비, 
    옵션 사항 등 추가 정보를 상세히 입력하시면 됩니다.
@@ -117,7 +117,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class=' collapse-title text'><a class="a" href="#content5"><img src="ma_assets/ma_img/Q.PNG"><p>별방에 등록된 방은 믿을 수 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content5" class="content"><pre class="pre"><span class="contentspan">A.</span>별방은 사용자 분들에게 믿을 수 있는 정보를 제공하는 것을 최우선으로 합니다.
+    					<div id="content5" class="content"><pre class="precolor"><span class="contentspan">A.</span>별방은 사용자 분들에게 믿을 수 있는 정보를 제공하는 것을 최우선으로 합니다.
 
    ▶ 매물의 정확한 위치를 지도 위에 표시하고, 매물 근처의 편의시설 등을 한 눈에 볼 수 있도록 하여 발품을 팔지 않고도 주변 환경까지 확인하
    실 수 있도록 했습니다.
@@ -131,7 +131,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class=' collapse-title text'><a class="a" href="#content6"><img src="ma_assets/ma_img/Q.PNG"><p>허위매물은 어떻게 관리 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content6" class="content"><pre class="pre"><span class="contentspan">A.</span>허위매물 전담팀이 수시로 매물을 살펴보고 허위매물을 필터링하고 있습니다.
+    					<div id="content6" class="content"><pre class="precolor"><span class="contentspan">A.</span>허위매물 전담팀이 수시로 매물을 살펴보고 허위매물을 필터링하고 있습니다.
 
    ▶ 지역구별 평균 시세를 파악해 시세에 비해 확연히 저렴한 매물이나 실사진이 아닌 사진이 포함된 경우 직접 연락을 취해 정보 수정을 요청합니
    다.
@@ -147,7 +147,7 @@
           				<!-- 게시글 제목영역 -->
     					<h2 class=' collapse-title collapse-title3 text'><a class="a" href="#content7"><img src="ma_assets/ma_img/Q.PNG"><p>매물개수 제한이 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
-    					<div id="content7" class="content"><pre class="pre"><span class="contentspan">A.</span>직거래 매물의 경우 1개 계정 당 1개 매물 업로드를 기준으로 합니다. 무분별한 매물 업로드를 통한 허위 정보의 발생을 막기 위해 허위매물 전담팀
+    					<div id="content7" class="content"><pre class="precolor"><span class="contentspan">A.</span>직거래 매물의 경우 1개 계정 당 1개 매물 업로드를 기준으로 합니다. 무분별한 매물 업로드를 통한 허위 정보의 발생을 막기 위해 허위매물 전담팀
    이 계속해서 직접 매물 정보를 확인하게 됩니다.</pre>
    						</div>
 	    			</div>

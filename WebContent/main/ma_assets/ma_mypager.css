@@ -59,7 +59,7 @@
 				margin: 5px 5px 5px 5px;
 			}
 			
-			.email {
+			.emailmypage {
 				width: 325px;
 				height: 45px;
 				margin: 5px 5px 5px 5px;
@@ -228,5 +228,77 @@
 				clip:rect(0,0,0,0); 
 				border: 0;
 			}
+			
+/** 탈퇴버튼 */
+.bot:active {
+	border: 0px !important;
+}
 
+.bot:disabled {
+	border: 0px !important;
+}
+
+.bot:after {
+	border: 0px !important;
+}
+
+.bot:checked {
+	border: 0px !important;
+}
+
+.bot:focus {
+	border: 0px !important;
+}			
+			
+/** 탈퇴 크기 */
+.modalwit {
+	height: 100%;
+	width: 100%;
+}
+
+.mypagepre {
+	background-color: white;
+}
+
+.modal-contentwit {
+	height: 350px;
+    width: 710px;
+    margin-top: 100px;
+    margin-left: 27%;
+}
+
+/** 탈퇴확인창 btnmodalsubmit, btnmodalresert */
+.btnmodalsubmit {
+	width: 100px;
+}
+			
+.btnmodalresert {
+	width: 100px;
+}
+	
+/** 인증버튼 */		
+.reemailaut {
+	display: none;
+}
+
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
