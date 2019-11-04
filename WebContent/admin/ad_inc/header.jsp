@@ -51,11 +51,11 @@ body {
 	font-size: 13px;
 	color: #ffffff;
 }
-
 /* 메뉴에 마우스오버 시 색 변경 설정 */
-#header a:hover {
-	color: #ffffff;
+.navbar a:hover {
+	color: black;
 }
+
 
 /* 각 메뉴들 간 여백 설정 */
 .padding-l {
