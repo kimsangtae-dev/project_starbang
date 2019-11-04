@@ -12,33 +12,30 @@
 	href="../main/ma_assets/ma_rmdt.css" />
 <link rel="stylesheet" type="text/css"
 	href="../assets/plugin/sweetalert/sweetalert2.css" />
-
 </head>
 
 <body>
 	<!-- 상단 헤더 -->
 	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
-	<!--별방 방찾기 상세페이지 헤더 시작-->
-	<!--스크롤 발생 시 움직이는 파란색바 시작-->
-	<div id="bluebar">
-		<div id="lol">
+	
+	<div id="bluebar"><!--별방 방찾기 상세페이지 헤더 시작-->
+		<div id="lol"><!--스크롤 발생 시 움직이는 파란색바 시작-->
 			<h1 class="textht pull-left texthth1">월세 200/30</h1>
 			<div class="recent-div8 on" data-value="off"></div>
-			<span>0</span> <span
-				class="glyphicon glyphicon glyphicon-link textht3"></span> <a
-				href="#"><span
-				class="nowqt glyphicon glyphicon glyphicon-bullhorn"></span></a>
+			<span class="cntlk">0</span>
+			<button class="icngbl ulcp"><img src="./ma_assets/ma_img/whlink.png"></button>
+			<button class="icngbl">
+			<img class="siren notce" src="./ma_assets/ma_img/whsiren.png"></button> 
 			<div id="plrt">
+			<span class="texthtlvc">방주인</span>
+				<span class="textht skyblue lvc"> 조수민님</span>
 				<button type="submit" class="textht inbl">
-					<span class="quest">문의하기</span>
+					<span class="quest grml">문의하기</span>
 				</button>
-				<span class="textht skyblue lvc"> 조수민님</span> <span
-					class="texthtlvc">방주인</span>
-			</div>
-		</div>
-	</div>
-	<!--스크롤 발생 시 움직이는 파란색바 끝-->
-	<!--별방 방찾기 헤더 끝-->
+				</div>
+		</div><!--스크롤 발생 시 움직이는 파란색바 끝-->
+	</div><!--별방 방찾기 헤더 끝-->
+		
 	<!-- 중앙 영역 -->
 	<div id="content">
 		<!-- 전체 면적 설정 -->
@@ -60,7 +57,8 @@
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
 					<button type="button" class="btn btn-primary grml">
-						<span class="glyphicon glyphicon-envelope">문의하기</span>
+					<img src="./ma_assets/ma_img/mail.png" class="mailsize">
+					<span class="que">문의하기</span>
 					</button>
 				</li>
 			</ul>
@@ -69,12 +67,21 @@
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
 			<div class="recent-div9 off" data-value="on"></div>
-			<span id="lkct">1</span> <span
-				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
-				class="glyphicon glyphicon glyphicon-link"></span></a> <span
-				class="glyphicon glyphicon glyphicon-stop"></span> <a href="#"><span
-				class="glyphicon glyphicon glyphicon-bullhorn"></span></a> <span
-				class="greyfontnm1">허위매물신고</span>
+			<span id="lkct">1</span>
+			<!-- 도트 -->
+			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
+			<!-- 링크 -->
+			<button class="linkimg"><img src="./ma_assets/ma_img/link.png" class="linksize"></button>
+			<!-- url 복사 -->
+			<input type="hidden" id="link-area" class="link-area" value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
+			<!-- 도트 --> 
+			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
+			<!-- 사이렌 -->   
+			<button class="notce">
+			<img class="siren" src="./ma_assets/ma_img/siren.png" 
+			onmouseover='this.src="./ma_assets/ma_img/redsiren.png"' 
+			onmouseout='this.src="./ma_assets/ma_img/siren.png"'>
+			<span class="greyfontnm1">허위매물신고</span></button> 
 		</div>
 		<!--찜,이메일,공유,허위매물신고 끝-->
 		<div id="confirm room">
@@ -181,6 +188,10 @@
 			</div>
 			<!--매물 설명 작은 폰트-->
 		</div>
+		<div id="bbblue">
+		<h1>200/30</h1>
+		</div>
+		
 		<!--사용자 매물 설명 끝-->
 		<div id="smhead">
 			<div class="xOEdU">
@@ -204,7 +215,7 @@
 				<div id="radarChart"></div>
 			</div>
 		</div>
-	</div>
+	
 	<!--다방면스코어 끝-->
 	<div id="priceinfo" class="jFMhNO kBQneM">
 		<!--가격정보 시작-->
@@ -309,9 +320,8 @@
 		<!--위치 30미터 반경만 표시-->
 	</div>
 	<!-- 지도 끝 -->
-
-
 	<!--매물 이미지 끝-->
+	</div>
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
 
@@ -330,12 +340,27 @@
 								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/><br/>*문의에티켓을 지켜주세요.");
 							});
 			/*허위매물신고 클릭*/
-			$(".nowqt").click(
+			$(".notce").click(
 					function() {
-						swal('확인매물이란?',
-								'확인매물은 아래 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.',
-								'question');
-					});
+						// 옵션 지정하여 메시지 창 표시
+		                swal({
+		                    title: '<font color="red">허위매물신고</font>', // 제목
+		                    html: '실제로 허위매물이 맞습니까?<br/><font color="red">*거짓신고 시 사이트이용이 제한됩니다.</font>', // 내용
+		                    type: 'error',              // 종류
+		                    showCloseButton: true,      // 닫기 버튼 표시 여부
+		                    confirmButtonText: '신고',  // 확인버튼 표시 문구
+		                    confirmButtonColor: '#a00', // 확인버튼 색상
+		                    showCancelButton: true,     // 취소버튼 표시 여부
+		                    cancelButtonText: '취소',   // 취소버튼 표시 문구
+		                    cancelButtonColor: '#f60'   // 취소버튼 색상
+		                }).then(function(result) {        // 버튼이 눌러졌을 경우의 콜백 연결
+		                    if (result.value) {           // 신고 버튼이 눌러진 경우
+		                        swal('신고', '신고가 완료되었습니다.', 'success');
+		                    } else if (result.dismiss === 'cancel') {   // 취소버튼이 눌러진 경우
+		                        swal('취소', '신고가 취소되었습니다.', 'error');
+		                    };
+		                });
+		            });
 			/*확인매물 바의 물음표 클릭*/
 			$(".mola")
 					.click(
@@ -436,6 +461,32 @@
 		});
 	</script>
 	
+	<!-- 파란색 헤더의 url 복사 -->
+	<script>
+		$(".ulcp").click(function(){
+			$("#link-area").attr("type","text");
+			$("#link-area").select();
+			var success = document.execCommand("copy");
+			$("#link-area").attr("type","hidden");
+			if (success) {
+				swal("링크가 복사되었습니다.");
+			}
+		});
+	</script>
+	
+	<!-- 하얀색 헤더의 url 복사 -->
+	<script>
+		$(".linkimg").click(function(){
+			$("#link-area").attr("type","text");
+			$("#link-area").select();
+			var success = document.execCommand("copy");
+			$("#link-area").attr("type","hidden");
+			if (success) {
+				swal("링크가 복사되었습니다.");
+			}
+		});
+	</script>
+		
 	<script>
 	console.log($(window).scrollTop());
 	</script>
