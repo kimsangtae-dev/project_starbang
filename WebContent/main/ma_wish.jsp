@@ -421,11 +421,24 @@
 	$(function() {
 		$(window).scroll(function() {
 			
+			/* 스크롤 이벤트시, footer 위에 붙기 */
+			if ($(window).scrollTop() + $(window).height() - 250 < $(document).height() ) {
+				var control = 0;
+				control = 250 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
+				$(".compare-d1").css("bottom", 0);
+			}
+			
+			console.log("scroll="+$(window).scrollTop());
+			console.log("height="+$(window).height());
+			console.log("docu="+$(document).height());
+			
+			/* 스크롤 올릴 때, 더 올라가는 버그 수정 */
 			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
 				var control = 0;
 				control = 250 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
 				$(".compare-d1").css("bottom", control+"px");
 			}
+			
 			
 		});
 	});
