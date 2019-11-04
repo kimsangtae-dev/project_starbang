@@ -2,13 +2,17 @@
 	pageEncoding="UTF-8"%>
 <head>
 <style>
-	/* 브라우저 최소 넓이 지정 */
-body { min-width: 1366px; }
+/* 브라우저 최소 넓이 지정 */
+body {
+	min-width: 1366px;
+}
 
 /* 텍스트 기본 설정 */
-#header * { color: #ffffff; }
+#header * {
+	color: #ffffff;
+}
 
- /*------------------------------
+/*------------------------------
 /	header
 ----------------------------------*/
 /* 헤더 배경 색 지정 */
@@ -25,7 +29,7 @@ body { min-width: 1366px; }
 }
 
 /* 로고 이미지 크기, 위치 설정 */
-#header .navbar img { 
+#header .navbar img {
 	height: 45px;
 	margin: 8px 0 12px 0;
 }
@@ -40,7 +44,6 @@ body { min-width: 1366px; }
 #header a {
 	display: inline-block;
 	line-height: 70px;
-	font-size: 15px;
 }
 
 /* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
@@ -67,20 +70,43 @@ body { min-width: 1366px; }
 #con {
 	height: 800px;
 }
+
+#sidefont {
+	color: black;
+	font-size: 13px;
+	text-align: center;
+}
+
+.dropdown-menu {
+	min-width: 120px;
+	font-size: 9px;
+}
+
+.dropdown-menu>li {
+	text-align: center;
+}
 </style>
 </head>
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
-		<a href="#"><img src="../assets/ico/logo_white.png"></a>
+		<a href="../main/ma_main.jsp"><img src="../assets/ico/logo_white.png"></a>
 		<div class="menu-left small-font">
 			<a href="../main/ma_main.jsp">회원 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="ad_userli.jsp" class="padding-l">회원관리</a> <a href="ad_rmli.jsp" class="padding-l">방관리</a>
-				<a href="ad_faq.jsp" class="padding-l">문의관리</a>
+				<a href="ad_userli.jsp" class="padding-l">회원관리</a> <a
+					href="ad_rmli.jsp" class="padding-l">방관리</a>
+				<div class="dropdown">
+					<a href="ad_faq.jsp" data-toggle="dropdown" class="padding-l">문의관리</a>
+					<ul class="dropdown-menu" role="menu"
+						aria-labelledby="dropdownMenu1">
+						<li><a id="sidefont" href="ad_faq.jsp">자주묻는질문</a></li>
+						<li><a id="sidefont" href="ad_notice.jsp">공지사항</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
