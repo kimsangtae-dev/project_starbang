@@ -237,8 +237,9 @@
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
 	</div>
+	
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
@@ -262,11 +263,10 @@
 		$(function() {
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
-			})
-		})
+			});
+		});
 	</script>
-
-	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
 	<script src="../assets/plugin/handlebars-v4.0.11.js"></script>
 	<script id="gallery-data" type="text/x-handlebars-template">
 		{{#each gallery}}
@@ -285,7 +285,7 @@
 						{{!-- 확인매물 div --}}
 						<div class="recent-a-confirm">
 							<div class="recent-a-confirm-div">
-								<span class="bold">확인매물</span> <span>{{confirm}}</span>
+								<span class="bold">확인매물</span> <span class="confirm-date">{{confirm}}</span>
 							</div>
 						</div>
 						{{!-- 확인매물 끝 --}}
@@ -302,26 +302,23 @@
 		{{/each}}
 	</script>
 	<script type="text/javascript">
-		/* 페이지 로딩시 gallery.json 템플릿 통해 추가 */
+		/* gallery.json을 가져와 화면에 출력 */
+		/*** 좋아요 toggle이 안됨! 해결하기 ***/
+		function get_gallery() {
+			$.get('ma_assets/gallery.json', function(req) {
+				var template = Handlebars.compile($("#gallery-data").html());
+				var html = template(req);
+				$("#gallery-list").append(html);
+
+				/* 조건에 맞는 방 개수 */
+				var n = $(".recent-div5").length;
+				$(".room-count").html(n);
+				//alert(req.gallery[0].confirm);
+			});
+		}
+		// 페이지가 열림과 동시에 호출
 		$(function() {
-			/* $(".prev-btn").click(function() {
-				$.get('ma_assets/gallery.json', function(req) {
-					var template = Handlebars.compile($("#gallery-data").html());
-					var html = template(req);
-					$("#gallery-list").append(html);
-				});
-			}); */
-			$(document).ready(function(){
-				$.get('ma_assets/gallery.json', function(req) {
-					var template = Handlebars.compile($("#gallery-data").html());
-					var html = template(req);
-					$("#gallery-list").append(html);
-				
-					/* 조건에 맞는 방 개수 */
-					var n = $( ".recent-div5" ).length;
-					$(".room-count").html(n);
-				});
-			});	
+			get_gallery();
 		});
 	</script>
 
