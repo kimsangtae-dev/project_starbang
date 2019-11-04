@@ -24,43 +24,24 @@ a {
 	padding: 40px 0px 30px 0px;
 }
 
+/** 상단의 전용면적  h1*/
 #chnum {
 	line-height: 5px;
 	font-size: 30px;
 }
 
-#chnum1 {
-	line-height: 5px;
-	font-size: 30px;
-	display: block;
-}
-
+/** 상단의 전월세 금액*/
 .monthman {
 	line-height: 5px;
 	font-size: 30px;
-}
-
-/*파란색 헤더 하트 토글*/
-
-.recent-div8 {
-	width: 30px;
-	height: 30px;
-}
-
-.recent-div8.off {
-	background: url(ma_img/like-on.svg) center center/cover;
-	display: inline-block;
-}
-
-.recent-div8.on {
-	background: url(ma_img/like.svg) center center/cover;
-	display: inline-block;
 }
 
 /*좋아요 헤더 하트 토글*/
 .recent-div9 {
 	width: 22px;
 	height: 22px;
+	position: relative;
+	bottom:-0.5px;
 }
 .recent-div9.off {
 	background: url(ma_img/blacklv.svg) center center/cover;
@@ -72,13 +53,14 @@ a {
 	display: inline-block;
 }
 
-/*좋아요 갯수 카운트*/
+/*좋아요 갯수 카운트 글씨 수정*/
 #lkct {
 	font-size: 16.5px;
 	position : relative;
 	bottom : 5px;
 }
 
+/**상단의 매물종류(원룸) 위치 조정*/
 .abc {
 	width: 230px;
 	height: 50px;
@@ -86,9 +68,41 @@ a {
 	margin-top: 10px;
 }
 
-/**빌보드 차트 data1 안보이기*/
-.bb-legend-item {
-	display : none;
+/** 아이콘 리스트*/
+.dotsize {
+	width: 5px;
+	height: 5px;
+	margin : 2px;
+	position: relative;
+	bottom : 5px;
+}
+
+.linkimg {
+	padding:0px;
+	border-style:none;
+	background-color:white;
+	margin : 5px;
+	position:relative;
+	bottom : 4.5px;
+}
+
+.notce {
+	padding:0px;
+	border-style:none;
+	background-color:white;
+	margin : 5px;
+	position:relative;
+	bottom : 4.5px;
+}
+
+.linksize {
+	width: 23px;
+	height: 23px;
+}
+
+.siren{
+	width: 22px;
+	height: 22px;
 }
 
 .greyfont1 {
@@ -112,6 +126,7 @@ a {
 	margin-left: 30px;
 }
 
+/** 평수바꾸기 버튼 */
 .chbt {
 	width: 40px;
 	height: 30px;
@@ -126,27 +141,15 @@ a {
 	bottom: 17px;
 }
 
+/**빌보드 차트 data1 안보이기*/
+.bb-legend-item {
+	display : none;
+}
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
 	.btn-primary.active, .open .dropdown-toggle.btn-primary {
 	background-color: #fff;
 	border: 1px solid #000;
-}
-
-li .grml {
-	width: 116px;
-	height: 38px;
-	font-size: 14px;
-	background-color: white;
-	border-style: solid;
-	border-color: rgb(213, 213, 213);
-	border-width: 1px;
-	border-radius: 18px;
-	position: relative;
-	bottom: 10px;
-}
-
-.glyphicon {
-	color : black;
 }
 
 #iconlist {
@@ -156,13 +159,7 @@ li .grml {
 	display: inline-block;
 }
 
-#iconlist .glyphicon-stop {
-	font-size: 7px;
-	margin: 5px;
-	position: relative;
-	bottom: 30px;
-}
-
+/**방주인 ~~님*/
 .honame {
 	font-weight: bold;
 	padding-top: 0px;
@@ -170,7 +167,30 @@ li .grml {
 	top: 16px;
 	right: 120px;
 }
-
+/*문의하기 메일아이콘 */
+.mailsize {
+	width: 20px;
+	height: 20px;
+	position:relative;
+	right: 4.1px;
+	bottom : 1.3px;
+}
+.que {
+	font-size: 14px;
+	color:black;
+}
+/** 문의하기 버튼 */
+li .grml {
+	width: 116px;
+	height: 38px;
+	background-color: white;
+	border-style: solid;
+	border-color: rgb(213, 213, 213);
+	border-width: 1px;
+	border-radius: 18px;
+	position: relative;
+	bottom: 10px;
+}
 .eTgAil {
 	width: 100%;
 	height: 36px;
@@ -373,22 +393,64 @@ p {
 	border-style: none;
 	background-color: white;
 }
+
+.icngbl:focus {
+	outline:none;
+}
+
 /*--- 움직이는 스크롤 헤더 시작 ---*/
+
 #bluebar {
 	margin: auto;
-	min-width: 1366px;
+	width: 100%;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 7px 0px, rgba(0, 0, 0, 0.08) 0px
 		2px 2px 0px;
 	background-color: rgb(20, 118, 252);
 	position: fixed;
 	z-index: 3;
 	transition: top 0.2s ease-in-out;
-	display: none;
+}
+
+.blicose {
+	margin : 1px;
+}
+
+/***/
+#bbblue {
+	min-width:2600px;
+	height:90px;
+	background:blue;
+}
+
+/*파란색 헤더 하트 토글*/
+.recent-div8 {
+	margin-left:20px;
+	position:relative;
+	top:30px;
+	width: 30px;
+	height: 30px;
+}
+
+.recent-div8.off {
+	background: url(ma_img/like-on.svg) center center/cover;
+	display: inline-block;
+}
+
+.recent-div8.on {
+	background: url(ma_img/like.svg) center center/cover;
+	display: inline-block;
+}
+
+.cntlk {
+	color : white;
+	margin: 10px;
+	position: relative;
+	top: 20px;
 }
 
 #lol {
 	width: 1200px;
-	margin: 0px 60px;
+	margin : auto;
 }
 
 .lvc {
@@ -408,19 +470,27 @@ p {
 	text-align: center;
 }
 
-.textht2 {
-	color: #fff;
-	padding-left: 32px;
-	padding-right: 14px;
-	font-size: 22px;
-	text-align: left;
-	padding-top: 11px;
+.icngbl{
+	background-color:rgb(20, 118, 252);
+	border-style:none;
 }
 
-.textht3 {
+.texthtlvc {
 	color: white;
-	line-height: 90px;
-	font-size: 20px;
+}
+
+.icngbl > img {
+	background-color:rgb(20, 118, 252);
+	margin : 4px;
+	width: 26.5px;
+	height: 26.5px;
+	position:relative;
+	top : 18px;
+}
+
+.linksize1 {
+	width: 23px;
+	height: 23px;
 }
 
 .skyblue {
@@ -534,6 +604,13 @@ p {
 	line-height: 41px;
 }
 
+.smhead {
+	position: fixed;
+	bottom: 100p x;
+	z-index: 10;
+	transition: top 0.2s ease-in-out;
+}
+
 /* 가격정보의 표
 *------------------------------*/
 .taln {
@@ -561,7 +638,8 @@ p {
 	height: 50px;
 	text-align: center;
 	border-right: 1px solid rgb(238, 238, 238);
-} /*중앙에만 보더*/
+} 
+/*중앙에만 보더*/
 .bdlnth:last-child {
 	border-style: none;
 } /*오른쪽 보더 없앰*/
