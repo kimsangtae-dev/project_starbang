@@ -15,6 +15,16 @@
 //		return false; 
 //	});
 
+$(document).on('hidden.bs.modal', function (event) {
+
+		if ($('.modal:visible').length) {
+
+			$('body').addClass('modal-open');
+
+		}
+
+	});
+
 </script>
 
 </head>

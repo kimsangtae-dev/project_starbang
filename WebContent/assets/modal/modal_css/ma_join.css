@@ -124,10 +124,6 @@ p.subtitle {
 	color: white;
 }
 
-.btn:focus {
-	color: white !important;
-}
-
 .buttonup:checked {
 	color: white;
 }
@@ -182,8 +178,25 @@ p.subtitle {
 	height: 200px;
 }
 
+/** 인증번호 sweetalert */
+.inclick {
+	position:absolute;
+	z-index: 3;
+}
 
+.buttonre:checked {
+	color: blue !important;
+	position : relative;
+}
 
+.buttonre:focus {
+	color: blue;
+	position : relative;
+}
 
+.buttonre:active {
+	color: blue;
+	position : relative;
+}
 
 
