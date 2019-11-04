@@ -134,7 +134,7 @@
                                 <td class="deal_box_pd">
                                     <button class="deal_btn">월세</button>
                                     <button class="deal_btn">전세</button>
-                                    <button class="deal_btn">매매</button>
+                                 	<button class="deal_btn">매매</button>
                                     <div class="deal_shot">
                                         <label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
                                             <span class="deal_text">단기가능</span>
@@ -476,14 +476,11 @@
             <h1>사진 등록</h1>
             <div class="photo_box">
                 <div class="photo_btn">
-                    <button class="photo_btn1">일반사진</button>
+                    <button class="photo_btn1" disabled>일반사진</button>
                 </div>
                 <div class="photo_info">
                     <p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
                     <p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-                    <p>- 사진은 최소 3장 이상 등록해야하며, 최대 15장 까지 권장합니다. 그 이상 등록할 경우 업로드 시간이 다소 지연될 수 있습니다.</p>
-                </div>
-                <div class="photo_pick">
                     <div class="photo_pic1"></div>
                     <div class="photo_pic2">
                         <span class="glyphicon glyphicon-picture"></span>
@@ -647,7 +644,7 @@ var btnn;
  //버튼비활성화
  function btnn_off() {
   btnn = document.getElementById('btnn');
-  btnn.disabled = 'disabled';
+  btnn.disabled = 'true';
  }
 </script>
 <script>
@@ -661,7 +658,7 @@ var btnn1;
  //버튼비활성화
  function btnn1_off() {
   btnn1 = document.getElementById('btnn1');
-  btnn1.disabled = 'disabled';
+  btnn1.disabled = 'true';
  }
 </script>
 </body>

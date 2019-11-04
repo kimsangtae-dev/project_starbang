@@ -35,14 +35,9 @@
     height: 46px;
     color: rgb(68, 68, 68);
     font-size: 15px;
-    background-color: rgb(255, 255, 255);
     box-sizing: border-box;
-    -webkit-appearance: none;
     padding: 0px 15px;
     border: 1px solid rgb(208, 210, 214);
-    border-image: initial;
-    border-radius: 0px;
-    outline: none;
 }
 
 
@@ -87,9 +82,7 @@
     width: 100%;
     margin-bottom: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 5px 0px;
-    background-color: rgb(255, 255, 255);
     border-radius: 4px;
-    border-image: initial;
     overflow: hidden;
     border: 1px solid rgb(226, 226, 226);
 }
@@ -130,7 +123,6 @@ input, button, textarea {
 .PcMeW:checked + .CheckBox {
     background-color: rgb(0, 108, 255);
     border: 1px solid rgb(0, 108, 255);
-    border-image: initial;
 }
 
 /* 체크박스 체크요소 숨기기 */
@@ -138,9 +130,9 @@ input, button, textarea {
     width: 1px;
     height: 1px;
     opacity: 0;
-    position: absolute;
+    position: relative;
     top: 0px;
-    left: 0px;
+    left: 60px;
 }
 
 /* 체크박스 체크 무늬 */
@@ -159,7 +151,6 @@ input, button, textarea {
 }
 
 
-
 /************************************ 방내놓기 ************************************/
 
 /* h1 속성 */
@@ -172,11 +163,12 @@ input, button, textarea {
     margin: 70px auto 45px;
 }
 
+
 /************************************ 하위박스 ************************************/
 .sell_info_box {
     width: 100%;
     margin: 30px 0 30px 0;
-    background-color: rgb(255, 255, 255);
+    
     padding: 21px 35px;
     border-radius: 4px;
     border: 1px solid rgb(226, 226, 226);
@@ -189,6 +181,7 @@ input, button, textarea {
     position: relative;
     list-style: disc;
 }
+
 
 /* ----------------------------- 매물종류 -------------------------------- */
 
@@ -208,11 +201,9 @@ input, button, textarea {
     font-size: 14px;
     line-height: 44px;
     text-align: center;
-    background-color: rgb(255, 255, 255);
     padding: 0px 15px;
     border-radius: 3px;
     border: 1px solid rgb(224, 224, 224);
-    border-image: initial;
 }
 
 /* 매물종류 버튼 마진 */
@@ -224,6 +215,7 @@ input, button, textarea {
     content: "";
     clear: both;
 }
+
 
 /************************************* 위치정보 *******************************/
 
@@ -255,7 +247,7 @@ input, button, textarea {
     float: left;
     width: 22px;
     height: 22px;
-    background-color: rgb(255, 255, 255);
+    
     position: absolute;
     top: 0px;
     left: 0px;
@@ -263,12 +255,14 @@ input, button, textarea {
     border-radius: 3px;
 }
 
+
 /************************* 주소 검색 부분, 상세주소 검색 부분 *************************/
 /* 주소검색폼 */
 input.address1 {
+	padding: 10px;
     width: 425px;
     height: 46px;
-        border: 1px solid rgb(208, 210, 214);
+    border: 1px solid rgb(208, 210, 214);
 }
 
 /* 주소검색 버튼 */
@@ -287,11 +281,10 @@ input.address2 {
     display: blockl;
     width: 529px;
     height: 100px;
-    background-color: rgb(255, 255, 255);
+    
     vertical-align: middle;
     padding: 20px 15px;
     border: 1px solid rgb(208, 210, 214);
-    border-image: initial;
 }
 
 /* 상세주소  크기 */
@@ -353,7 +346,6 @@ form.loc_div {
     position: absolute;
     border: 1px solid rgb(208, 210, 214);
     border-left: none;
-    border-image: initial;
 }
 
 /* 동,호 사이 마진 추가*/
@@ -373,8 +365,6 @@ form.loc_div {
     margin-top: 30px;
 }
 
-
-
 /* 체크박스 글씨위치 조정 */
 .ch_box_text {
     position: relative;
@@ -389,7 +379,6 @@ form.loc_div {
     clear: both;
 }
 
-
 /* 지도 표시 박스 */
 .map_box {
     float: right;
@@ -399,7 +388,6 @@ form.loc_div {
     border-width: 1px;
     border-style: solid;
     border-color: rgb(221, 221, 221);
-    border-image: initial;
 }
 
 .map_box1 {
@@ -427,24 +415,23 @@ form.loc_div {
     padding: 20px;
 }
 
+
 /************************************* 거래정보 *********************************/
 
 .deal_check_box {
     display: block;
     height: 22px;
-    padding-left: 23px;
     position: relative;
     cursor: pointer;
+    left: 100px;
 }
 
 .deal_check_box > .CheckBox {
     float: left;
     width: 22px;
     height: 22px;
-    background-color: rgb(255, 255, 255);
     position: relative;
     top: 0px;
-    left: 70px;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 3px;
 }
@@ -460,8 +447,6 @@ form.loc_div {
     border: 1px solid rgb(68, 68, 68);
     border-radius: 3px;
 }
-
-
 
 /* 거래정보 행박스 */
 .deal_box_pd {
@@ -498,7 +483,6 @@ form.loc_div {
     margin-left: 7px;
     position: relative;
     top: 2px;
-    left: 70px;
 }
 
 /* 거래종류 안내문 */
@@ -560,13 +544,9 @@ form.loc_div {
     font-size: 14px;
     line-height: 44px;
     text-align: center;
-    background-color: rgb(255, 255, 255);
     padding: 0px 15px;
     border-radius: 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(224, 224, 224);
-    border-image: initial;
+    border: 1px solid rgb(224, 224, 224);
 }
 
 .in_date > input[type="radio"] {
@@ -650,6 +630,7 @@ select {
     text-align: center;
 }
 
+
 /***************************** 추가정보 **************************/
 .add_check_box {
     display: block;
@@ -663,7 +644,6 @@ select {
     float: left;
     width: 22px;
     height: 22px;
-    background-color: rgb(255, 255, 255);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -695,7 +675,6 @@ select {
     border-color: rgb(26, 90, 232);
 }
 
-
 /* 금액입력창 */
 .add2 {
     float: left;
@@ -718,7 +697,6 @@ select {
     clear: both;
     float:none;
 }
-
 
 /* 관리비항목 선택창 */
 
@@ -772,7 +750,6 @@ select {
     padding: 0px 15px;
 }
 
-
 /* 관리비 항목 선택시 */
 .ma_box > input[type="checkbox"]:checked + p {
     color: rgb(255, 255, 255);
@@ -784,13 +761,11 @@ select {
     color: rgb(102, 102, 102);
     font-size: 14px;
     text-align: center;
-    background-color: rgb(255, 255, 255);
     padding: 0px 15px;
     border-radius: 3px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(224, 224, 224);
-    border-image: initial;
 }
 
 /* 복층 선택박스 */
@@ -819,6 +794,7 @@ select {
     top: 0px;
     left: 0px;
 }
+
 
 /*********************************** 상세설명 **********************************/
 
@@ -854,7 +830,7 @@ select {
     width: 100%;
     margin-bottom: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 5px 0px;
-    background-color: rgb(255, 255, 255);
+    
     border-radius: 4px;
     border: 1px solid rgb(226, 226, 226);
     overflow: hidden;
@@ -897,6 +873,7 @@ select {
     padding: 20px 30px;
     margin: 15px 0px;
     border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(244, 244, 244);
 }
 
 .photo_info > p {
@@ -950,16 +927,13 @@ select {
 .filebox label { 
     display: inline-block; 
     font-size: 14px;
-    padding: 10px 15px; 
+    padding: 20px 30px; 
     margin: 5px;
     color: rgb(255, 255, 255); 
-    line-height: normal; 
     vertical-align: middle; 
     background-color: rgb(35, 45, 74); 
     cursor: pointer; 
-    border: 1px solid #ebebeb; 
-    border-bottom-color: #e2e2e2; 
-    border-radius: .25em; 
+    border-radius: 5px;
 } 
 
 .filebox input {
@@ -1000,6 +974,7 @@ select {
 
 /******************************** low_box ******************************/
 
+/* 체크박스 속성 */
 .low_check_box {
     display: block;
     height: 22px;
@@ -1012,7 +987,6 @@ select {
     float: left;
     width: 22px;
     height: 22px;
-    background-color: rgb(255, 255, 255);
     position: absolute;
     top: 0px;
     left: 0px;
@@ -1020,6 +994,7 @@ select {
     border-radius: 3px;
 }
 
+/* content와 footer 사이의 박스 전체 */
 .low_box {
     width: 100%;
     margin-top: 30px;
@@ -1038,19 +1013,14 @@ select {
     float: left;
     width: 22px;
     height: 22px;
-    background-color: rgb(255, 255, 255);
     position: absolute;
     top: 0px;
     left: 0px;
     border: 1px solid rgb(221, 221, 221);
-    border-image: initial;
     border-radius: 3px;
 }
 
-.low_box > label {
-    display: block;
-}
-
+/* 글씨 속성 */
 .low_text1 {
     display: inline-block;
     height: 20px;
@@ -1062,6 +1032,7 @@ select {
     bottom: 7px;
 }
 
+/* 버튼 속성 */
 .low_btn1 {
     width: 160px;
     height: 50px;
@@ -1070,7 +1041,6 @@ select {
     font-size: 15px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(204, 204, 204);
-    border-image: initial;
 }
 
 .low_btn2 {
@@ -1082,8 +1052,5 @@ select {
     font-size: 15px;
     background-color: rgb(26, 90, 232);
     border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
 }
 
