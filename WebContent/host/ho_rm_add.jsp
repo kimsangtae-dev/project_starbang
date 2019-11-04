@@ -5,20 +5,12 @@
 <html lang="ko">
 
 <head>
-
 <%@ include file="../assets/inc/meta.jsp"%>
 <title>방주인 방등록</title>
-<style>
-		/** DatePicker의 글꼴 설정 */
-		.datepicker-container { font-family: 'Hevetica;', '나눔고딕', '맑은고딕' }
-
-	</style>
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="ho_assets/ho_rm_add.css" />
 <link rel="stylesheet" href="../assets/plugin/datepicker/datepicker.min.css"/>
-
-
 </head>
 
 <body>
@@ -43,6 +35,7 @@
                     <li>일반 회원은 1개의 매물만 내놓을 수 있고, 직거래로 표시됩니다.</li>
                 </ul>
                 <div class="tableframe" name="roomType">
+                <!-- 매물종류 -->
                     <h1>매물 종류</h1>
                     <table>
                         <tbody>
@@ -80,6 +73,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- 위치정보 -->
                 <div class="tableframe" name="location">
                     <h1>위치 정보<span>*등기부등본 상의 주소를 입력해 주세요.</span>
                     </h1>
@@ -105,7 +99,8 @@
                                             <div class="ho"><input autocomplete="off" class="dongho input_box" name="ho" placeholder="예)201호" value=""></div>
                                         </div>
                                         <div class="loc_check">
-                                            <label class="clearfix check_box" size="22"><input type="checkbox" class=" PcMeW" name="is_noinfo_dong" value=""><span class="CheckBox"></span>
+                                            <label class="loc_check_box" size="22"><input type="checkbox" class=" PcMeW" name="is_noinfo_dong" value="">
+                                            <span class="CheckBox"></span>
                                                 <span class="ch_box_text">등본에 동정보가 없는 경우 선택해 주세요.</span>
                                             </label>
                                         </div>
@@ -129,6 +124,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- 거래정보 -->
                 <div class="tableframe" name="dealType">
                     <h1>거래 정보</h1>
                     <table>
@@ -138,21 +134,22 @@
                                 <td class="deal_box_pd">
                                     <button class="deal_btn">월세</button>
                                     <button class="deal_btn">전세</button>
+                                    <button class="deal_btn">매매</button>
                                     <div class="deal_shot">
-                                        <label class="clearfix check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
+                                        <label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
                                             <span class="deal_text">단기가능</span>
                                         </label>
                                     </div>
                                     <p class="deal_text1">
                                         <span class="glyphicon glyphicon-exclamation-sign"></span>
-                                        <span>처음에 선택한 거래 종류가 우선노출됩니다. 예치금이 있는 경우 보증금 입력란에 필히
-                                                                                    입력하세요.</span>
+                                        <span>처음에 선택한 거래 종류가 우선노출됩니다.</span>
                                     </p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <!-- 기본정보 -->
                 <div class="tableframe" name="baseInfo">
                     <h1>기본 정보</h1>
                     <table>
@@ -265,6 +262,7 @@
                 </div>
             </tr>
         </tbody>
+        <!-- 추가정보 -->
         <div class="tableframe" name="additional">
             <h1>추가정보</h1>
             <table>
@@ -276,9 +274,9 @@
 							<input id="btnn" class="add2 input_box" type="text" name="maintenance_cost" disabled="" value="">
                             <p class="add3">만원</p>
                             <div class="main">
-                            <label class="check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value="" checked="" onclick="btnn_on();">
+                            <label class="add_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value="" checked="" onclick="btnn_on();">
                             <span class="CheckBox"></span>
-                            <span class="deal_text">관리비 없음</span>
+                            <span class="add_text">관리비 없음</span>
                             </label>
                             </div>
                         </td>
@@ -447,6 +445,7 @@
                 </tbody>
             </table>
         </div>
+        <!-- 상세설명 -->
         <div class="tableframe" name="detailInfo">
             <h1>상세 설명</h1>
             <table>
@@ -472,6 +471,7 @@
                 </tbody>
             </table>
         </div>
+        <!-- 사진등록 -->
         <div class="photo_frame" name="photo">
             <h1>사진 등록</h1>
             <div class="photo_box">
@@ -501,8 +501,9 @@
                 </p>
             </div>
         </div>
+        <!-- lowbox -->
         <div class="low_box">
-            <label class="low_text check_box" size="22">
+            <label class="low_text low_check_box" size="22">
                 <input type="checkbox" class="PcMeW" name="isAgree" value="">
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
