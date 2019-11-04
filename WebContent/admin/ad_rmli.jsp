@@ -115,7 +115,7 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function() {

@@ -208,7 +208,6 @@ body > div { height: 100%; overflow: hidden; }
 /* 전체 초기화 버튼 */
 #search .filters-reset {
     float: right;
-    width: 96px;
     font-size: 14px;
     height: 100%;
     line-height: 65px;

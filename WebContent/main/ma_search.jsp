@@ -237,8 +237,9 @@
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
 	</div>
+	
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
@@ -262,11 +263,10 @@
 		$(function() {
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
-			})
-		})
+			});
+		});
 	</script>
-
-	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
 	<script src="../assets/plugin/handlebars-v4.0.11.js"></script>
 	<script id="gallery-data" type="text/x-handlebars-template">
 		{{#each gallery}}
@@ -285,7 +285,7 @@
 						{{!-- 확인매물 div --}}
 						<div class="recent-a-confirm">
 							<div class="recent-a-confirm-div">
-								<span class="bold">확인매물</span> <span>{{confirm}}</span>
+								<span class="bold">확인매물</span> <span class="confirm-date">{{confirm}}</span>
 							</div>
 						</div>
 						{{!-- 확인매물 끝 --}}
@@ -302,26 +302,23 @@
 		{{/each}}
 	</script>
 	<script type="text/javascript">
-		/* 페이지 로딩시 gallery.json 템플릿 통해 추가 */
+		/* gallery.json을 가져와 화면에 출력 */
+		/*** 좋아요 toggle이 안됨! 해결하기 ***/
+		function get_gallery() {
+			$.get('ma_assets/gallery.json', function(req) {
+				var template = Handlebars.compile($("#gallery-data").html());
+				var html = template(req);
+				$("#gallery-list").append(html);
+
+				/* 조건에 맞는 방 개수 */
+				var n = $(".recent-div5").length;
+				$(".room-count").html(n);
+				//alert(req.gallery[0].confirm);
+			});
+		}
+		// 페이지가 열림과 동시에 호출
 		$(function() {
-			/* $(".prev-btn").click(function() {
-				$.get('ma_assets/gallery.json', function(req) {
-					var template = Handlebars.compile($("#gallery-data").html());
-					var html = template(req);
-					$("#gallery-list").append(html);
-				});
-			}); */
-			$(document).ready(function(){
-				$.get('ma_assets/gallery.json', function(req) {
-					var template = Handlebars.compile($("#gallery-data").html());
-					var html = template(req);
-					$("#gallery-list").append(html);
-				
-					/* 조건에 맞는 방 개수 */
-					var n = $( ".recent-div5" ).length;
-					$(".room-count").html(n);
-				});
-			});	
+			get_gallery();
 		});
 	</script>
 
@@ -331,9 +328,9 @@
 		$(function() {
 			var container = document.getElementById('map');
 			var options = {
-				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 지도의 중심 좌표
+				center : new kakao.maps.LatLng(37.5642135, 127.0243207), // 지도의 중심 좌표
 				level : 9,
-				maxLevel: 9
+				maxLevel : 9
 			// 지도 확대 레벨
 			};
 
@@ -359,25 +356,39 @@
 					lineHeight : '24px'
 				} ]
 			});
-			
+
 			// 데이터 가져오기
 			$.get("ma_assets/address.json", function(data) {
 				var markers = $(data.positions).map(
-						function(i, position) {
-							return new kakao.maps.Marker({
-								position : new kakao.maps.LatLng(position.lat,
-										position.lng)
-							});
+					function(i, position) {
+						return new kakao.maps.Marker({
+							position : new kakao.maps.LatLng(position.lat,
+									position.lng)
 						});
+					});
 				clusterer.setMinClusterSize(1);
 
 				// 클러스터러에 마커 추가
-				clusterer.addMarkers(markers);
-			});
-			
-			/*kakao.maps.event.addListener( clusterer, 'clusterover', function( cluster ) {
-			    $(this).css("z-index", "100");
-			});*/
+				//clusterer.addMarkers(markers);
+				
+				// 지도 레벨에 따라 마커 생성/제거 
+				var changeMarker = function(){
+				    var level = map.getLevel();
+
+				    if (1 <= level && level <= 7) {
+				    	clusterer.addMarkers(markers);
+				    } else if (8 <= level && level <= 10) {
+				    	clusterer.removeMarkers( markers );
+				    }
+				};
+
+				kakao.maps.event.addListener(map, 'zoom_changed', changeMarker);
+				changeMarker();
+				
+				kakao.maps.event.addListener( clusterer, 'clusterclick', function( cluster ) {
+				    console.log( cluster.getMarkers() );
+				});
+			}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
 			$.getJSON("ma_assets/guPosition.json", function(data) {
@@ -385,12 +396,15 @@
 				var gumark;
 				for (var i = 0; i < guPositions.length; i++) {
 					gumark = '<div class="gu-marker" id="gu-marker' + i + '">'
-							+ guPositions[i].guName + '<span id="lat" style="display:none;">'+ guPositions[i].lat +'</span>' 
-							+ '<span id="lng" style="display:none;">'+ guPositions[i].lng +'</span>' + '</div>';
+							+ guPositions[i].guName
+							+ '<span id="lat" style="display:none;">'
+							+ guPositions[i].lat + '</span>'
+							+ '<span id="lng" style="display:none;">'
+							+ guPositions[i].lng + '</span>' + '</div>';
 					var customOverlay = new kakao.maps.CustomOverlay({
 						position : new kakao.maps.LatLng(guPositions[i].lat,
 								guPositions[i].lng),
-						clickable: false,
+						clickable : false,
 						content : gumark,
 						zIndex : 3
 					});
@@ -399,8 +413,8 @@
 					$("#gu-marker" + i).click(function() {
 						var poslat = $(this).children("#lat").html();
 						var poslng = $(this).children("#lng").html();
-						map.setLevel(map.getLevel() - 1);
 						map.setCenter(new kakao.maps.LatLng(poslat, poslng));
+						map.setLevel(map.getLevel() - 1, {animate: true});
 					});
 				}
 			});
