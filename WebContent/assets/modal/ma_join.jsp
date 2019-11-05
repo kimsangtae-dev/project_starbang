@@ -9,16 +9,13 @@
 <!-- sweetalert --> 
 <link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
 
+<script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 
 	$(document).on('hidden.bs.modal', function (event) {
-
 		if ($('.modal:visible').length) {
-
 			$('body').addClass('modal-open');
-
 		}
-
 	});
 	
 	$(function() {

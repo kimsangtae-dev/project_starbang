@@ -4,9 +4,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_agree.css" />
 
+<script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 //$('#agreehtml, .#agreebody').css({'overflow': 'hidden', 'height': '100%'}); 
 //	$('#agree').on('scroll touchmove mousewheel', function(event) { 
@@ -15,15 +18,19 @@
 //		return false; 
 //	});
 
-$(document).on('hidden.bs.modal', function (event) {
 
-		if ($('.modal:visible').length) {
+//$(document).on('hidden.bs.modal', function (event) {
+//	if ($('.modal:visible').length) {
+//		$('body').addClass('modal-open');
+//	}
+//});
 
-			$('body').addClass('modal-open');
-
-		}
-
-	});
+	
+//$(function() {
+//    $("#toggle").click(function(e) {
+//        $(this).toggleClass('off on');
+//    });
+//});
 
 </script>
 
@@ -53,6 +60,7 @@ $(document).on('hidden.bs.modal', function (event) {
 							다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 						</p>
 						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
+<!-- <button id="toggle" class="toggle-button on" data-value="off">OFF</button> -->
 						<div class="lReCa">
 							<div class="whc">
 								<p class="whcbox">
@@ -667,3 +675,36 @@ $(document).on('hidden.bs.modal', function (event) {
 	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

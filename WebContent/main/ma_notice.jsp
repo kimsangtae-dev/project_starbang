@@ -17,7 +17,7 @@
 				<h1 class="h1">문의하기</h1>
 				<div class="nav">
 					<div><a href="ma_faq.jsp">자주 묻는 질문</a></div>
-					<div class="now"><a href="ma_notice.jsp">공지사항</a></div>
+					<div class="now"><a class="anotice" href="ma_notice.jsp">공지사항</a></div>
 				</div>
 
 				<div>
