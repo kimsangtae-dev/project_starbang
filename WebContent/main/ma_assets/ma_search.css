@@ -177,7 +177,12 @@ body > div { height: 100%; overflow: hidden; }
      line-height: 30px;
 }
 
-#search .filter .filter-slide h1 { margin-bottom: 15px; }
+#search .filter .filter-slide ul:after {
+    content: "";
+    display: block;
+    clear: both;
+    float: none;
+}
 
 #search .filter .filter-slide li {
     float: left;

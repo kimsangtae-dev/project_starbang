@@ -37,20 +37,24 @@
 							원룸,투·쓰리룸,오피스텔 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
-						<form id="room-type">
-							<h1>방종류</h1>
-							<p>중복 선택이 가능합니다.</p>
-							<ul>
-								<li><label> <input type="checkbox" name="room-type" value="oneroom" checked /> 
-									<span class="checkBox"></span> <span class="checkText">원룸</span>
-								</label></li>
-								<li><label> <input type="checkbox" name="room-type" value="tworoom" checked /> 
-									<span class="checkBox"></span> <span class="checkText">투·쓰리룸</span>
-								</label></li>
-								<li><label> <input type="checkbox" name="room-type" value="officetel" checked /> 
-									<span class="checkBox"></span> <span class="checkText">오피스텔</span>
-								</label></li>
-							</ul></form>
+							<form id="room-type">
+								<h1>방종류</h1>
+								<p>중복 선택이 가능합니다.</p>
+								<ul>
+									<li><label> <input type="checkbox"
+											name="room-type" value="oneroom" checked /> <span
+											class="checkBox"></span> <span class="checkText">원룸</span>
+									</label></li>
+									<li><label> <input type="checkbox"
+											name="room-type" value="tworoom" checked /> <span
+											class="checkBox"></span> <span class="checkText">투·쓰리룸</span>
+									</label></li>
+									<li><label> <input type="checkbox"
+											name="room-type" value="officetel" checked /> <span
+											class="checkBox"></span> <span class="checkText">오피스텔</span>
+									</label></li>
+								</ul>
+							</form>
 						</div>
 					</div>
 					<!-- 개별 필터 끝 -->
@@ -64,14 +68,17 @@
 							<h1>방종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
-								<li><label> <input type="checkbox" name="sale-type" value="monthly" checked /> 
-									<span class="checkBox"></span> <span class="checkText">월세</span>
+								<li><label> <input type="checkbox" name="sale-type"
+										value="monthly" checked /> <span class="checkBox"></span> <span
+										class="checkText">월세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type" value="charter" checked /> 
-									<span class="checkBox"></span> <span class="checkText">전세</span>
+								<li><label> <input type="checkbox" name="sale-type"
+										value="charter" checked /> <span class="checkBox"></span> <span
+										class="checkText">전세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type" value="buying" checked /> 
-									<span class="checkBox"></span> <span class="checkText">매매</span>
+								<li><label> <input type="checkbox" name="sale-type"
+										value="buying" checked /> <span class="checkBox"></span> <span
+										class="checkText">매매</span>
 								</label></li>
 							</ul>
 						</div>
@@ -87,7 +94,7 @@
 							<div class="filter-slide">
 								<h1>
 									보증금/전세가
-									<p>무제한</p>
+									<p id="filter1-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price1" name="">
 								<ul>
@@ -99,7 +106,7 @@
 							<div class="filter-slide mar-top">
 								<h1>
 									월세
-									<p>무제한</p>
+									<p id="filter2-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price2" name="">
 								<ul>
@@ -111,7 +118,7 @@
 							<div class="filter-slide mar-top">
 								<h1>
 									매매가
-									<p>무제한</p>
+									<p id="filter3-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price3" name="">
 								<ul>
@@ -136,7 +143,7 @@
 							<div class="filter-slide">
 								<h1>
 									관리비
-									<p>무제한</p>
+									<p id="filter4-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price4" name="">
 								<ul>
@@ -161,7 +168,7 @@
 							<div class="filter-slide">
 								<h1>
 									방크기
-									<p>무제한</p>
+									<p id="filter5-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-size" name="">
 								<ul>
@@ -195,7 +202,29 @@
 						<!-- 갤러리 내용 영역 -->
 						<div class="gallery-content clearfix">
 							<ul id="gallery-list">
-								
+								<li>
+									<div class="recent-div5">
+										<div class="recent-div6">
+											<div class="recent-div7">
+												<div class="recent-div8 off" data-value="on"></div>
+											</div>
+											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
+												<div class="recent-a-div"></div>
+												<div class="recent-a-confirm">
+													<div class="recent-a-confirm-div">
+														<span class="bold">확인매물</span> <span class="confirm-date">19.11.01</span>
+													</div>
+												</div>
+												<p class="recent-a-p1">투룸</p>
+												<p class="recent-a-p2">
+													<span>월세 100/10</span>
+												</p>
+												<p class="recent-a-p34">2층, 35m², 관리비 6만</p>
+												<p class="recent-a-p34">💖작은방넓어요+식탁놓을공간있어요💖신축 풀옵투룸 첫입주💖</p>
+											</a>
+										</div>
+									</div>
+								</li>
 							</ul>
 						</div>
 						<!-- 갤러리 내용 영역 -->
@@ -237,7 +266,6 @@
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
 	</div>
-	
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
@@ -477,8 +505,8 @@
 		/* $(document).off(".data-api");
 		$(".dropdown-toggle").dropdown(); */
 		$('.dropdown-menu').click(function(e) {
-	        e.stopPropagation();
-	    })
+			e.stopPropagation();
+		})
 
 		/* 필터 - Range plugin(ion.rangeSlider) */
 		// 보증금/전세가
@@ -492,14 +520,22 @@
 		var price1_to = price1_value.indexOf("무제한");
 		$("#slide-price1").ionRangeSlider({
 			type : "double",
-			// min: 0,
-			// max: 1000,
 			from : price1_from,
 			to : price1_to,
 			values : price1_value,
 			to_min : price1_value.indexOf(100),
 			from_max : price1_value.indexOf(90000),
 			skin : "round",
+			onChange: function (data) {
+				if(data.from_value == 0 && data.to_value == "무제한") {
+					$("#filter1-value").html("무제한");
+				} else if (data.to_value == "무제한") {
+					$("#filter1-value").html(data.from_value + "만 원 ~" + data.to_value);
+				} else {
+					$("#filter1-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+				}
+	        },
+	        hide_from_to : true,
 			hide_min_max : true
 		});
 		var slide1_value = $("#slide-price1").data("ionRangeSlider");
@@ -519,7 +555,16 @@
 			to_min : price2_value.indexOf(5),
 			from_max : price2_value.indexOf(150),
 			skin : "round",
-			hide_from_to : false,
+			onChange: function (data) {
+				if(data.from_value == 0 && data.to_value == "무제한") {
+					$("#filter2-value").html("무제한");
+				} else if (data.to_value == "무제한") {
+					$("#filter2-value").html(data.from_value + "만 원 ~" + data.to_value);
+				} else {
+					$("#filter2-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+				}
+	        },
+		    hide_from_to : true,
 			hide_min_max : true
 		});
 		var slide2_value = $("#slide-price2").data("ionRangeSlider");
@@ -538,6 +583,16 @@
 			to_min : price3_value.indexOf(3000),
 			from_max : price3_value.indexOf(150000),
 			skin : "round",
+			onChange: function (data) {
+				if(data.from_value == 0 && data.to_value == "무제한") {
+					$("#filter3-value").html("무제한");
+				} else if (data.to_value == "무제한") {
+					$("#filter3-value").html(data.from_value + "만 원 ~" + data.to_value);
+				} else {
+					$("#filter3-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+				}
+	        },
+		    hide_from_to : true,
 			hide_min_max : true
 		});
 		var slide3_value = $("#slide-price3").data("ionRangeSlider");
@@ -556,6 +611,16 @@
 			to_min : price4_value.indexOf(1),
 			from_max : price4_value.indexOf(50),
 			skin : "round",
+			onChange: function (data) {
+				if(data.from_value == 0 && data.to_value == "무제한") {
+					$("#filter4-value").html("무제한");
+				} else if (data.to_value == "무제한") {
+					$("#filter4-value").html(data.from_value + "만 원 ~" + data.to_value);
+				} else {
+					$("#filter4-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+				}
+	        },
+		    hide_from_to : true,
 			hide_min_max : true
 		});
 		var slide4_value = $("#slide-price4").data("ionRangeSlider");
@@ -568,6 +633,18 @@
 			step : 1,
 			from : 0,
 			skin : "round",
+			onChange: function (data) {
+				var from = data.from;
+				var to = data.to;
+				if(from == 0 && to == 115) {
+					$("#filter5-value").html("무제한");
+				} else if (to == 115) {
+					$("#filter5-value").html(from + "㎡(" + Math.floor(from/3.3) + "평) ~ 무제한");
+				} else {
+					$("#filter5-value").html(from + "㎡(" + Math.floor(from/3.3) + "평) ~ " + to + "㎡(" + Math.floor(to/3.3) + "평)");
+				}
+	        },
+		    hide_from_to : true,
 			hide_min_max : true
 		});
 		var slide5_value = $("#slide-size").data("ionRangeSlider");
