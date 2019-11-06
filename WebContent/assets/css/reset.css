@@ -67,3 +67,7 @@ table {
 }
 
 a { text-decoration: none !important; }
+
+*:focus {
+	outline:none;
+}
