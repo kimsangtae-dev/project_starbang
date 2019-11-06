@@ -35,9 +35,4 @@
 		<script type="text/javascript" src="assets/js/respond.min.js"></script>
 		<![endif]-->
 
-<!-- IE10 반응형 웹 버그 보완 -->
-<!--[if gt IE 9]>
-		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
-		<script type="text/javascript" src="assets/js/ie10.js"></script>
-		<![endif]-->
-
+<!-- IE10 반�

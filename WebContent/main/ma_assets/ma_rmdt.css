@@ -807,43 +807,4 @@ p {
 	margin: 0px auto;
 	background: url(../../assets/ico/dtoption/desk.svg) no-repeat;
 }
-/* option 이미지들 끝
-  *-----------------------*/
-
-/* map 부분 시작
-  *-----------------------*/
-.location {
-	height: 100px;
-}
-
-.hwnvlX {
-	color: rgb(102, 102, 102);
-	font-size: 15px;
-	line-height: 22px;
-	text-align: center;
-	margin: 3px 0px 27px;
-}
-
-.fIqmuM {
-	color: rgb(34, 34, 34);
-	font-size: 28px;
-	font-weight: 400;
-	text-align: center;
-	line-height: 41px;
-	position: relative;
-}
-
-.map {
-	min-height: 100px;
-}
-
-#map {
-	margin: auto;
-	width: 850px;
-	height: 400px;
-	background-color: #abcdef;
-}
-/* map 부분 끝
-  *-----------------------*/
-}
-} /*content 끝*/
+/* option 이미지들 �
