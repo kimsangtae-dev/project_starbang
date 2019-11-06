@@ -34,5 +34,3 @@
 		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
 		<script type="text/javascript" src="assets/js/respond.min.js"></script>
 		<![endif]-->
-
-<!-- IE10 ë°˜ì

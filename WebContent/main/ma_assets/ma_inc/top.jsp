@@ -113,4 +113,19 @@
 </div>
 
 <!-- 동의하기용 모달 로더 -->
-<div class="m
+<div class="modal fade" id="agreeModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<!-- 회원가입용 모달 로더 -->
+<div class="modal fade" id="joinModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
