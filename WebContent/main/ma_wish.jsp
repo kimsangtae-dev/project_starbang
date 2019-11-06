@@ -343,6 +343,80 @@
 	</div>
 </div>
 
+<!-- 비슷한 방 추천 모달 로더 -->
+<div class="modal fade" id="similarModal">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content modal-recomand" width="940"> <!-- bTxOpP -->
+		    
+		    <header class="modal-head"> <!--isCBcC  -->
+		        <h1>비슷한 조건의 다른 방</h1>
+		        <button class="modal-head-btn" data-dismiss="modal"> <!-- kXLdvu -->
+		            <svg width="30" height="30" viewBox="0 0 32 32">
+		                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+		                    <circle class="Circle" cx="15" cy="15" r="15"></circle>
+		                    <g class="Close" stroke-linecap="round" stroke-width="2">
+		                        <path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+		                    </g>
+		                </g>
+		            </svg>
+		        </button>
+		    </header>
+		    <div class="mg-whole-d"> <!-- jAnJGq -->
+		        <div class="mg-1d"> <!-- Euntq -->
+		            <div class="mg-2d"> <!-- OUJOU -->
+		                <div class="mg-heart-d"> <!-- gYMri -->
+		                    <div class="mg-heart-2d"></div> <!-- hjVNgq -->
+		                </div>
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
+		                    <div class="mg-a-pic1"></div> <!-- kLfyDR -->
+		                    <p class="mg-roomtype">쓰리룸</p> <!-- kCTBqT jBkVAv -->
+		                    <p class="mg-price"> <!-- glovZ,jBkVAv -->
+		                        <span>월세 1000/80</span>
+		                    </p>
+		                    <p class="mg-p34"> 11층, 38.64m², 관리비 7만</p> <!-- jBkVAv -->
+		                    <p class="mg-p34">⭐️까치산역 초역세권 옵션 투룸 귀한 월세⭐️ // 빠른입주가능. 대리석바닥. 막힘없는 11층 고층 뷰!</p> <!-- jBkVAv -->
+		                </a>
+		            </div>
+		        </div>
+		        
+		        <div class="mg-1d">
+		            <div class="mg-2d">
+		                <div class="mg-heart-d">
+		                    <div class="mg-heart-2d"></div>
+		                </div>
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp">
+		                    <div class="mg-a-pic1 mg-a-pic2"></div> <!-- jBvkCW -->
+		                    <p class="mg-roomtype">쓰리룸</p>
+		                    <p class="mg-price">
+		                        <span>전세 2억4900</span>
+		                    </p>
+		                    <p class="mg-p34">2층, 66m², 관리비 3만</p>
+		                    <p class="mg-p34">😍 [안심대출HUG가능] 깔끔 쓰리룸 . 좋은 가격 . 입주 하시가능 . 골목 없는 집 !!</p>
+		                </a>
+		            </div>
+		        </div>
+		        <div class="mg-1d">
+		            <div class="mg-2d">
+		                <div class="mg-heart-d">
+		                    <div class="mg-heart-2d"></div>
+		                </div>
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
+		                    <div class="mg-a-pic1 mg-a-pic3"></div> <!-- eunTmP -->
+		                    <p class="mg-roomtype">투룸</p>
+		                    <p class="mg-price">
+		                        <span>전세 1억3000</span>
+		                    </p>
+		                    <p class="mg-p34">4층, 52.89m², 관리비 1만</p>
+		                    <p class="mg-p34">⭐️안심전세90%가능⭐️탁트인 전망.채광굿.정남향.바로입주가능.주차가능.올수리!리모델링 투룸.중소기업청년전세 가능!~</p>
+		                </a>
+		            </div>
+		        </div>
+		    </div>
+			
+		</div>
+	</div>
+</div>
+
 
 <script src="../assets/js/jquery-1.10.2.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
@@ -442,6 +516,16 @@
 			
 		});
 	});
+	
+	/* script용 모달열기 */
+	$(function () {
+        $(".complete-smcover").click(function(e) {
+            // 스크립트를 사용하여 특정 Modal을 강제로 열기
+            $("#similarModal").modal('show');
+            // 아래는 창을 강제로 닫기 처리
+            //$("#myModal").modal('hide');
+        });
+    });
 </script>
 </body>
 </html>

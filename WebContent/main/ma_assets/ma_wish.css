@@ -668,6 +668,7 @@ html body #root {
 
 /* 비교하기 바 - 체크박스 클릭시 꾸미기 CSS */
 
+/* 새로 생긴 비교하기바 꾸미기 - span 태그 */
 .compbar-newspan {
     height: 22px;
     color: rgb(255, 255, 255);
@@ -677,6 +678,7 @@ html body #root {
     opacity: 0.6;
 }
 
+/* 새로 생긴 비교하기바 꾸미기 - p태그 */
 .compbar-newp {
     color: rgb(255, 255, 255);
     font-size: 18px;
@@ -684,6 +686,7 @@ html body #root {
     text-align: left;
 }
 
+/* 새로 생긴 비교하기바 꾸미기 - 닫기버튼 */
 .compbar-newbtn {
     width: 22px;
     height: 22px;
@@ -700,16 +703,19 @@ html body #root {
     padding: 0;
 }
 
+/* 새로 생긴 비교하기바 꾸미기 - 닫기버튼 after속성 */
 .compbar-newbtn::after {
     width: 1px;
     height: 11.3137px;
 }
 
+/* 새로 생긴 비교하기바 꾸미기 - 닫기버튼 before속성 */
 .compbar-newbtn::before {
     width: 11.3137px;
     height: 1px;
 }
 
+/* 새로 생긴 비교하기바 꾸미기 - before,after 공통속성 */
 .compbar-newbtn::before, .compbar-newbtn::after {
     content: "";
     background-color: rgb(146, 175, 255);
@@ -717,4 +723,194 @@ html body #root {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/******************************************************
+* modal * 거래완료, 비공개된 매물 비슷한방 보여주기 modal 		  *
+******************************************************/
+
+/* modal 바깥여백 조절 */
+.modal-dialog {
+	width: auto;
+}
+
+/* 모달창 전체 박스 */
+	.modal-recomand{
+		width: 940px;
+		background-color: white;
+		margin: 7% auto;
+		box-shadow: rgba(0,0,0,0.25);
+	}
+
+/* modal - <header> */
+	.modal-head{
+		padding : 28px 30px 24px;
+		border-bottom: 1px solid #eee;
+		position: relative;
+	}
+
+/* modal - <header> - <h1> */
+	.modal-head > h1 {
+		font-size: 22px;
+	    line-height: 30px;
+	    font-weight: 700;
+	    text-align: center;
+	}
+	
+
+/* modal - <header> - <button> */
+	.modal-head-btn {
+		width: 30px;
+	    height: 30px;
+	    background-color: transparent;
+	    position: absolute;
+	    top: 28px;
+	    right: 30px;
+	    border-width: 0px;
+	}
+	
+	.modal-head-btn > svg {
+		position: absolute;
+	    top: 0px;
+	    left: 0px;
+    }
+    
+    g[Attributes Style] {
+	    fill: none;
+	    fill-rule: evenodd;
+    transfo	rm: translate(1, 1);
+	}
+
+	:not(svg) {
+	    transform-origin: 0px 0px;
+	}
+	
+	.modal-head-btn > svg .Circle {
+	    fill: rgb(255, 255, 255);
+	    stroke: rgb(151, 151, 151);
+	    opacity: 0.3;
+	}
+	
+	.modal-head-btn > svg .Close {
+   		stroke: rgb(35, 45, 74);
+	}
+
+/* modal - <gallery> - 전체를 감싸는 div */
+.mg-whole-d {
+	width: 880px;
+    height: 360px;
+    padding-top: 30px;
+    position: relative;
+    right: 0px;
+    margin: 0px auto;
+}
+
+/* modal - <gallery> - 각 갤러리 - 1depth div */
+.mg-1d {
+	position: relative;
+    float: left;
+    width: 280px;
+    height: 317px;
+    margin-bottom: 60px;
+    margin-right: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.mg-1d:last-child {
+	margin-right: 0;
+}
+
+/* modal - <gallery> - 각 갤러리 - 2depth div */
+.mg-2d {
+	height: 280px;
+    position: relative;
+}
+
+/* modal - <gallery> - heart - 1depth div */
+.mg-heart-d{
+	width: 36px;
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* modal - <gallery> - heart - 2depth div  */
+.mg-heart-2d{
+	width: 32px;
+    height: 30px;
+    margin: 0px auto;
+    background: url(ma_img/like.svg) center center / cover;
+}
+
+/* modal - <gallery> - 각 갤러리 2div - a태그 */
+.mg-a {
+	display: block;
+}
+
+/* modal - <gallery> - 각 갤러리 2d - a태그 - 사진 div */
+.mg-a-pic1 {
+	width: 100%;
+    height: 186px;
+    margin-bottom: 12px;
+    background-color: rgb(239, 240, 242);
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mg-a-pic1::before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;    
+}
+
+.mg-a-pic1::before {background: url(ma_img/comp1.jpeg) center center / cover no-repeat;}
+.mg-a-pic2::before {background: url(ma_img/comp2.jpeg) center center / cover no-repeat;}
+.mg-a-pic3::before {background: url(ma_img/comp3.jpeg) center center / cover no-repeat;}
+
+.mg-a-pic::after {
+    content: "";
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+/* modal - <gallery> - div - 각 갤러리 2-lv div - a태그 - 1매물타입 */
+.mg-roomtype {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* modal - <gallery> - div - 각 갤러리 2-lv div - a태그 - 2금액  */
+.mg-price {
+    color: rgb(34, 34, 34);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    margin: 3px 0px 6px;
+}
+
+.mg-price > span {
+    vertical-align: middle;
+}
+
+/* modal - <gallery> - div - 각 갤러리 2-lv div - a태그 - 3정보 , 4타이틀  */
+.mg-p34 {
+    width: 100%;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
