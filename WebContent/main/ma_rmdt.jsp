@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,25 +16,32 @@
 <body>
 	<!-- 상단 헤더 -->
 	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
-	
-	<div id="bluebar"><!--별방 방찾기 상세페이지 헤더 시작-->
-		<div id="lol"><!--스크롤 발생 시 움직이는 파란색바 시작-->
+
+	<!-- <div id="bluebar">
+		별방 방찾기 상세페이지 헤더 시작
+		<div id="lol">
+			스크롤 발생 시 움직이는 파란색바 시작
 			<h1 class="textht pull-left texthth1">월세 200/30</h1>
 			<div class="recent-div8 on" data-value="off"></div>
 			<span class="cntlk">0</span>
-			<button class="icngbl ulcp"><img src="./ma_assets/ma_img/whlink.png"></button>
+			<button class="icngbl ulcp">
+				<img src="./ma_assets/ma_img/whlink.png">
+			</button>
 			<button class="icngbl">
-			<img class="siren notce" src="./ma_assets/ma_img/whsiren.png"></button> 
+				<img class="siren notce" src="./ma_assets/ma_img/whsiren.png">
+			</button>
 			<div id="plrt">
-			<span class="texthtlvc">방주인</span>
-				<span class="textht skyblue lvc"> 조수민님</span>
+				<span class="texthtlvc">방주인</span> <span class="textht skyblue lvc">
+					조수민님</span>
 				<button type="submit" class="textht inbl">
 					<span class="quest grml">문의하기</span>
 				</button>
-				</div>
-		</div><!--스크롤 발생 시 움직이는 파란색바 끝-->
-	</div><!--별방 방찾기 헤더 끝-->
-		
+			</div>
+		</div>
+		스크롤 발생 시 움직이는 파란색바 끝
+	</div>
+	별방 방찾기 헤더 끝 -->
+
 	<!-- 중앙 영역 -->
 	<div id="content">
 		<!-- 전체 면적 설정 -->
@@ -57,8 +63,8 @@
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
 					<button type="button" class="btn btn-primary grml">
-					<img src="./ma_assets/ma_img/mail.png" class="mailsize">
-					<span class="que">문의하기</span>
+						<img src="./ma_assets/ma_img/mail.png" class="mailsize"> <span
+							class="que">문의하기</span>
 					</button>
 				</li>
 			</ul>
@@ -71,17 +77,21 @@
 			<!-- 도트 -->
 			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
 			<!-- 링크 -->
-			<button class="linkimg"><img src="./ma_assets/ma_img/link.png" class="linksize"></button>
+			<button class="linkimg">
+				<img src="./ma_assets/ma_img/link.png" class="linksize">
+			</button>
 			<!-- url 복사 -->
-			<input type="hidden" id="link-area" class="link-area" value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
-			<!-- 도트 --> 
+			<input type="hidden" id="link-area" class="link-area"
+				value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
+			<!-- 도트 -->
 			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
-			<!-- 사이렌 -->   
+			<!-- 사이렌 -->
 			<button class="notce">
-			<img class="siren" src="./ma_assets/ma_img/siren.png" 
-			onmouseover='this.src="./ma_assets/ma_img/redsiren.png"' 
-			onmouseout='this.src="./ma_assets/ma_img/siren.png"'>
-			<span class="greyfontnm1">허위매물신고</span></button> 
+				<img class="siren" src="./ma_assets/ma_img/siren.png"
+					onmouseover='this.src="./ma_assets/ma_img/redsiren.png"'
+					onmouseout='this.src="./ma_assets/ma_img/siren.png"'> <span
+					class="greyfontnm1">허위매물신고</span>
+			</button>
 		</div>
 		<!--찜,이메일,공유,허위매물신고 끝-->
 		<div id="confirm room">
@@ -161,7 +171,6 @@
 						src="../main/ma_assets/ma_img/roph04.jfif" /></a></li>
 			</ul>
 		</div>
-
 		<div id="explanall">
 			<!--사용자 매물 설명 시작-->
 			<div id="bigexplan">
@@ -188,14 +197,52 @@
 			</div>
 			<!--매물 설명 작은 폰트-->
 		</div>
-		<div id="bbblue">
-		<h1>200/30</h1>
+		<!-- 
+		---------------------
+		파란색 바 스크롤 위치 고정작업
+		---------------------
+		 -->
+		<div id="fxed">
+			<div id="bbblue">
+				<div id="lol">
+					<!--스크롤 발생 시 움직이는 파란색바 시작-->
+					<h1 class="textht pull-left texthth1">월세 200/30</h1>
+					<div class="recent-div8 on" data-value="off"></div>
+					<span class="cntlk">0</span>
+					<button class="icngbl ulcp">
+						<img src="./ma_assets/ma_img/whlink.png">
+					</button>
+					<button class="icngbl">
+						<img class="siren notce" src="./ma_assets/ma_img/whsiren.png">
+					</button>
+					<div id="plrt">
+						<span class="texthtlvc">방주인</span> <span
+							class="textht skyblue lvc"> 조수민님</span>
+						<button type="submit" class="textht inbl">
+							<span class="quest grml">문의하기</span>
+						</button>
+					</div>
+				</div>
+				<!--스크롤 발생 시 움직이는 파란색바 끝-->
+			</div>
+			<!--사용자 매물 설명 끝-->
+			<div id="smhead">
+				<div class="xOEdU">
+					<a class="eYDrrB" href="#radar">다방면 스코어</a> <a class="eYDrrB"
+						href="#priceinfo">가격정보</a> <a class="eYDrrB" href="#pictogram">옵션</a>
+					<a class="eYDrrB" href="#location">위치</a>
+					<!-- <a class="eYDrrB">인기매물</a> -->
+				</div>
+			</div>
 		</div>
-		
-		<!--사용자 매물 설명 끝-->
-		<div id="smhead">
+		<!-- 
+		----------------------
+		파란색 바 스크롤 위치 고정작업
+		----------------------
+		 -->
+		<div id="simsim">
 			<div class="xOEdU">
-				<a class="eYDrrB" href="#rader">다방면 스코어</a> <a class="eYDrrB"
+				<a class="eYDrrB" href="#radar">다방면 스코어</a> <a class="eYDrrB"
 					href="#priceinfo">가격정보</a> <a class="eYDrrB" href="#pictogram">옵션</a>
 				<a class="eYDrrB" href="#location">위치</a>
 				<!-- <a class="eYDrrB">인기매물</a> -->
@@ -215,112 +262,112 @@
 				<div id="radarChart"></div>
 			</div>
 		</div>
-	
-	<!--다방면스코어 끝-->
-	<div id="priceinfo" class="jFMhNO kBQneM">
-		<!--가격정보 시작-->
-		<h1 class="GYLAC">가격정보</h1>
-		<div class="taln">
-			<!-- 표 영역 -->
-			<table class="tabdln">
-				<!-- 제목 영역 -->
-				<thead class="bdlnthd">
-					<tr class="bdlntr">
-						<th class="bdlnth">월세</th>
-						<th class="bdlnth">전세</th>
-						<th class="bdlnth">관리비</th>
-						<th class="bdlnth">주차비</th>
-						<th class="bdlnth">단기임대</th>
-					</tr>
-				</thead>
-				<!-- 본문 영역 -->
-				<tbody class="bdlntdy">
-					<tr class="bdlnbtr">
-						<td class="bdlntd">-</td>
-						<td class="bdlntd">9500만원</td>
-						<td class="bdlntd">7만원</td>
-						<td class="bdlntd">10만원</td>
-						<td class="bdlntd">불가능</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<!--가격정보 끝 -->
-	<div id="pictogram" class="jFMhNO kBQneM">
-		<!--상세 옵션들 아이콘으로 보여줌 시작-->
-		<h1 class="GYLAC">옵션</h1>
 
-		<div class="dDctva">
-			<div class="gqtsIc">
-				<div class="dNeTFF"></div>
-				<p>에어컨</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="bisIQz"></div>
-				<p>세탁기</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="ecqNej"></div>
-				<p>옷장</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="gdTorF"></div>
-				<p>TV</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="fuJjGK"></div>
-				<p>신발장</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="gdMhEY"></div>
-				<p>냉장고</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="dQLnLP"></div>
-				<p>가스레인지</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="krFgu"></div>
-				<p>인덕션</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="cnLAIn"></div>
-				<p>전자레인지</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="fkeEgq"></div>
-				<p>전자도어락</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="iAeGhw"></div>
-				<p>비데</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="mCsgX"></div>
-				<p>침대</p>
-			</div>
-			<div class="gqtsIc">
-				<div class="gaOEWf"></div>
-				<p>책상</p>
+		<!--다방면스코어 끝-->
+		<div id="priceinfo" class="jFMhNO kBQneM">
+			<!--가격정보 시작-->
+			<h1 class="GYLAC">가격정보</h1>
+			<div class="taln">
+				<!-- 표 영역 -->
+				<table class="tabdln">
+					<!-- 제목 영역 -->
+					<thead class="bdlnthd">
+						<tr class="bdlntr">
+							<th class="bdlnth">월세</th>
+							<th class="bdlnth">전세</th>
+							<th class="bdlnth">관리비</th>
+							<th class="bdlnth">주차비</th>
+							<th class="bdlnth">단기임대</th>
+						</tr>
+					</thead>
+					<!-- 본문 영역 -->
+					<tbody class="bdlntdy">
+						<tr class="bdlnbtr">
+							<td class="bdlntd">-</td>
+							<td class="bdlntd">9500만원</td>
+							<td class="bdlntd">7만원</td>
+							<td class="bdlntd">10만원</td>
+							<td class="bdlntd">불가능</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</div>
-	<!--상세 옵션들 아이콘으로 보여줌 끝-->
-	<!-- 지도 시작 -->
-	<div id="location" class="jFMhNO kBQneM">
-		<h1 class="fIqmuM">위치</h1>
-		<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
+		<!--가격정보 끝 -->
+		<div id="pictogram" class="jFMhNO kBQneM">
+			<!--상세 옵션들 아이콘으로 보여줌 시작-->
+			<h1 class="GYLAC">옵션</h1>
 
-		<!-- 맵 api 시작-->
+			<div class="dDctva">
+				<div class="gqtsIc">
+					<div class="dNeTFF"></div>
+					<p>에어컨</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="bisIQz"></div>
+					<p>세탁기</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="ecqNej"></div>
+					<p>옷장</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="gdTorF"></div>
+					<p>TV</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="fuJjGK"></div>
+					<p>신발장</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="gdMhEY"></div>
+					<p>냉장고</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="dQLnLP"></div>
+					<p>가스레인지</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="krFgu"></div>
+					<p>인덕션</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="cnLAIn"></div>
+					<p>전자레인지</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="fkeEgq"></div>
+					<p>전자도어락</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="iAeGhw"></div>
+					<p>비데</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="mCsgX"></div>
+					<p>침대</p>
+				</div>
+				<div class="gqtsIc">
+					<div class="gaOEWf"></div>
+					<p>책상</p>
+				</div>
+			</div>
+		</div>
+		<!--상세 옵션들 아이콘으로 보여줌 끝-->
+		<!-- 지도 시작 -->
+		<div id="location" class="jFMhNO kBQneM">
+			<h1 class="fIqmuM">위치</h1>
+			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
 
-		<div id="map"></div>
+			<!-- 맵 api 시작-->
 
-		<!-- 맵 api 끝-->
-		<!--위치 30미터 반경만 표시-->
-	</div>
-	<!-- 지도 끝 -->
-	<!--매물 이미지 끝-->
+			<div id="map"></div>
+
+			<!-- 맵 api 끝-->
+			<!--위치 30미터 반경만 표시-->
+		</div>
+		<!-- 지도 끝 -->
+		<!--매물 이미지 끝-->
 	</div>
 	<!-- 하단 영역 -->
 	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
@@ -340,27 +387,30 @@
 								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/><br/>*문의에티켓을 지켜주세요.");
 							});
 			/*허위매물신고 클릭*/
-			$(".notce").click(
-					function() {
-						// 옵션 지정하여 메시지 창 표시
-		                swal({
-		                    title: '<font color="red">허위매물신고</font>', // 제목
-		                    html: '실제로 허위매물이 맞습니까?<br/><font color="red">*거짓신고 시 사이트이용이 제한됩니다.</font>', // 내용
-		                    type: 'error',              // 종류
-		                    showCloseButton: true,      // 닫기 버튼 표시 여부
-		                    confirmButtonText: '신고',  // 확인버튼 표시 문구
-		                    confirmButtonColor: '#a00', // 확인버튼 색상
-		                    showCancelButton: true,     // 취소버튼 표시 여부
-		                    cancelButtonText: '취소',   // 취소버튼 표시 문구
-		                    cancelButtonColor: '#f60'   // 취소버튼 색상
-		                }).then(function(result) {        // 버튼이 눌러졌을 경우의 콜백 연결
-		                    if (result.value) {           // 신고 버튼이 눌러진 경우
-		                        swal('신고', '신고가 완료되었습니다.', 'success');
-		                    } else if (result.dismiss === 'cancel') {   // 취소버튼이 눌러진 경우
-		                        swal('취소', '신고가 취소되었습니다.', 'error');
-		                    };
-		                });
-		            });
+			$(".notce")
+					.click(
+							function() {
+								// 옵션 지정하여 메시지 창 표시
+								swal(
+										{
+											title : '<font color="red">허위매물신고</font>', // 제목
+											html : '실제로 허위매물이 맞습니까?<br/><font color="red">*거짓신고 시 사이트이용이 제한됩니다.</font>', // 내용
+											type : 'error', // 종류
+											showCloseButton : true, // 닫기 버튼 표시 여부
+											confirmButtonText : '신고', // 확인버튼 표시 문구
+											confirmButtonColor : '#a00', // 확인버튼 색상
+											showCancelButton : true, // 취소버튼 표시 여부
+											cancelButtonText : '취소', // 취소버튼 표시 문구
+											cancelButtonColor : '#f60' // 취소버튼 색상
+										}).then(function(result) { // 버튼이 눌러졌을 경우의 콜백 연결
+									if (result.value) { // 신고 버튼이 눌러진 경우
+										swal('신고', '신고가 완료되었습니다.', 'success');
+									} else if (result.dismiss === 'cancel') { // 취소버튼이 눌러진 경우
+										swal('취소', '신고가 취소되었습니다.', 'error');
+									}
+									;
+								});
+							});
 			/*확인매물 바의 물음표 클릭*/
 			$(".mola")
 					.click(
@@ -460,39 +510,52 @@
 			});
 		});
 	</script>
-	
+
 	<!-- 파란색 헤더의 url 복사 -->
 	<script>
-		$(".ulcp").click(function(){
-			$("#link-area").attr("type","text");
+		$(".ulcp").click(function() {
+			$("#link-area").attr("type", "text");
 			$("#link-area").select();
 			var success = document.execCommand("copy");
-			$("#link-area").attr("type","hidden");
+			$("#link-area").attr("type", "hidden");
 			if (success) {
 				swal("링크가 복사되었습니다.");
 			}
+		});
+	</script>
+
+	<!-- 하얀색 헤더의 url 복사 -->
+	<script>
+		$(".linkimg").click(function() {
+			$("#link-area").attr("type", "text");
+			$("#link-area").select();
+			var success = document.execCommand("copy");
+			$("#link-area").attr("type", "hidden");
+			if (success) {
+				swal("링크가 복사되었습니다.");
+			}
+		});
+	</script>
+
+	<script>
+		$(function() {
+			/** 브라우저에 대한 스크롤 감지 이벤트 정의 */
+			$(window).scroll(
+					function() {
+						// 스크롤이 맨 끝에 도달했음을 감지하는 조건문
+						if ( $(window).scrollTop() > 700) {
+							console.log("끝에 도착함");
+							$("#fxed").css("display", "block");
+							$("#simsim").css("display", "none");
+						}else {
+							$("#fxed").css("display", "none");
+							$("#simsim").css("display", "block" , "min-height", "100px");
+						}
+					}); // end scroll
 		});
 	</script>
 	
-	<!-- 하얀색 헤더의 url 복사 -->
-	<script>
-		$(".linkimg").click(function(){
-			$("#link-area").attr("type","text");
-			$("#link-area").select();
-			var success = document.execCommand("copy");
-			$("#link-area").attr("type","hidden");
-			if (success) {
-				swal("링크가 복사되었습니다.");
-			}
-		});
-	</script>
-		
-	<script>
-	console.log($(window).scrollTop());
-	</script>
-
-	<!-- <script>
-		$(window).scroll(function() {
+	<!-- /* $(window).scroll(function() {
 			//스크롤 이벤트 발생 시 
 			var contentHeight = $(window).height();
 			//content의 높이 변수 선언 
@@ -500,50 +563,14 @@
 			//현재 scroll 위치 변수 선언 
 			if (scrollValue > contentHeight) {
 				//현재 scroll 위치가 content의 높이보다 높을 경우
-				$("#bluebar").css("display", "block");
+				$("#fxed").css("display", "block");
 				//이벤트 stop 
 			} else {
-				$("#bluebar").css("display", "none");
+				$("#fxed").css("display", "none");
 				//button이 스크롤따라 움직임 
 			}
-		});
-	</script> -->
+		}); */ -->
 
-	<!-- <script>
-		// Hide Header on on scroll down 
-		var didScroll;
-		var lastScrollTop = 0;
-		var delta = 0;
-		var navbarHeight = $("#smhead").outerHeight();
-		$(window).scroll(function(event) {
-			didScroll = true;
-		});
-		setInterval(function() {
-			if (didScroll) {
-				hasScrolled();
-				didScroll = false;
-			}
-		}, 250);
-		function hasScrolled() {
-			var st = $(this).scrollTop();
-			// Make sure they scroll more than delta 
-			if (Math.abs(lastScrollTop - st) <= delta)
-				return;
-			// If they scrolled down and are past the navbar, add class .nav-up. 
-			// This is necessary so you never see what is "behind" the navbar. 
-			if (st > lastScrollTop && st > navbarHeight) {
-				// Scroll Down 
-				$("#bluebar").css("display", "block");
-			} else {
-				// Scroll Up 
-				if (st + $(window).height() < $(document).height()) {
-					$("#bluebar").css("display", "none");
-				}
-			}
-			lastScrollTop = st;
-		}
-	</script> -->
-	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
 	<script type="text/javascript">
