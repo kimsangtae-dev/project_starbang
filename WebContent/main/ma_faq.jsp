@@ -16,8 +16,8 @@
 			<div id="content">
 				<h1 class="h1">문의하기</h1>
 				<div class="nav">
-					<div class="now"><a href="ma_faq.jsp">자주 묻는 질문</a></div>
-					<div><a href="ma_notice.jsp">공지사항</a></div>
+					<div><a class="afaq" href="ma_faq.jsp">자주 묻는 질문</a></div>
+					<div><a class="anotice" href="ma_notice.jsp">공지사항</a></div>
 				</div>
 
 				<div class="title">
@@ -159,7 +159,7 @@
 	
     
     <!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     		$(function() {

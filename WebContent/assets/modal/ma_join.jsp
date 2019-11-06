@@ -6,19 +6,29 @@
 <head>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_join.css" />
+
 <!-- sweetalert --> 
 <link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
 
-<script src="../assets/js/jquery-1.10.2.min.js"></script>
+<script src="../assets/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 
-	$(document).on('hidden.bs.modal', function (event) {
-		if ($('.modal:visible').length) {
-			$('body').addClass('modal-open');
-		}
-	});
+//	$(document).on('hidden.bs.modal', function (event) {
+//		if ($('.modal:visible').length) {
+//			$('body').addClass('modal-open');
+//		}
+//	});
+
+	
 	
 	$(function() {
+		//모달 부모 스크롤 없애기
+//		$("#myModal").on("show", function() {
+//			$("body").addClass("modal-open");
+//		}).on("hidden", function() {
+//			$("body").removeClass("modal-open")
+//		});
+		
 		 //인증번호
 		$("#insnumber").click(function () {
 			swal("인증번호가 발송되었습니다");
@@ -29,9 +39,7 @@
 		
 		$("#reinsnumber").click(function () {
 			swal("인증번호가 확인되었습니다");
-		});
-		
-		
+		});		
 	});
 
 </script>
@@ -55,7 +63,7 @@
 	<!-- Modal -->
 	<!-- <div class="modal fade" id="myModal" class="siz">
 		<div class="modal-dialog siz modaltop"> -->
-			<div class="modal-content wholething sw">
+			<div class="modal-content wholething sw" id="myModal">
 				<div class="modal-header">
 					<h4 class="modal-title">회원가입</h4>
 					<!-- 닫기버튼 -->

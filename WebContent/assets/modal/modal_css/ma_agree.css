@@ -1,27 +1,106 @@
 @charset "utf-8";
 
+/** hheader */
+.modaltop {
+	width: 600px;
+	background-color: white;
+	z-index: 1001;
+	position: relative;
+	 	transition: width 300ms ease-in-out 0s;
+	 	margin-top: 8%;
+	border-radius: 0px;
+	height: 90px;
+	border: 0;
+}
+
 /** 맨 위 상단의 약관동의  */
 .modal-title1 {
 	color: rgb(34, 34, 34);
 	font-size: 22px;
-	padding-left: 13px;
-	padding-top: 5px;
+	padding: 25px;
 }
+
+/** 모델창 위치 */
+.modaltop {
+	margin: 0 auto;
+}
+
+/** Modal .modal-content의 div */
+ .agreelove {
+	 	width: 600px;
+	 	background-color: white;
+	 	position: relative;
+	 	z-index: 1001;
+	 	margin: 50px auto;
+	 	transition: width 300ms ease-in-out 0s;
+	border-radius: 0px;
+	height : 783px;
+	border: 0;
+	/**margin-bottom: 100px; */
+    }
+
+/** 닫기버튼 */
+    .btnclose {
+ 	   	width: 30px;
+ 	   	height: 30px;
+ 	   	background-color: transparent ;
+ 	   	position: absolute;
+ 	   	top: 25px;
+ 	   	right: 30px;
+ 	   	border-width: 0px;
+ 	   	border-style: initial;
+ 	   	border-color: initial;
+ 	   	border-image: initial;
+    }
+   
+    .btnclose > svg {
+ 	   position: absolute;
+ 	   top: 0px;
+ 	   left: 0px;
+    }
+   
+    svg[Attributes Style] {
+ 	   width: 30;
+ 	   height: 30;
+    }
+   
+    g[Attributes Style] {
+ 	   fill: none;
+ 	   fill-rule: evenodd;
+ 	   transform: translate(1, 1);
+    }
+   
+    .btnclose > svg .Circle {
+ 	   fill: rgb(255, 255, 255);
+ 	   stroke: rgb(151, 151, 151);
+ 	   opacity: 0.3;
+    }
+   
+    circle[Attributes Style] {
+	    cx: 15;
+	    cy: 15;
+	    r: 15;
+    }
+   
+	.btnclose > svg .Close {
+	 stroke: rgb(35, 45, 74);
+	}
+	
+	.btnclose > svg .Close {
+	 stroke: rgb(35, 45, 74);
+	}
+	
+	.btnclose > svg:hover .Circle {
+	 opacity: 0.6;
+	}
+
 
 .radius {
     border-radius: 50%;
     border: 1px solid black;
 }
 
-/** 박스 보더 제거 s */
-.whole {
-	border-radius: 0px;
-	height : 783px;
-	border: 0;
-	margin-bottom: 100px;
-}
-
-/** 동의박스 제어 s */
+/** 동의박스 제어  */
 .agpbox {
 	padding-bottom: 20px;
 }
@@ -91,12 +170,6 @@ li.li3, li.li5 {
 	overflow-y: scroll;
 }
 
-.siz {
-	width: 600px;
-	height: 783px;
-	margin: 5% auto 0;
-}
-
 /** 닫는 버튼 동그라미로 */
 .radius {
 	border-radius: 50%;
@@ -119,13 +192,6 @@ li.li3, li.li5 {
 
 #downp {
 	width: 400px;
-}
-
-.agpbox .p {
-	display: inline-black;
-	width: 300px;
-	margin-top: 10px;
-	font-size: 15px;
 }
 
 #ftcl {
@@ -187,91 +253,71 @@ li.li3, li.li5 {
 	outline: none;
 }
 
-/** 모델창 위치 */
-.modaltop {
-	margin: 60px auto;
-}
-
-/** 회원가입 높이 */
-.hheader {
-	height: 90px;
-	margin-top: 12px;
-}
-
 /** 부모스크롤 없애기 */
-.agreebody {
+/* .agreebody {
 overflow:hidden; 
 height: 100%;
 width: 100%;
-}	
+}	 */
 
-/** 버튼 */
-.chimg {
-	height: 30px;
-	right: 30px;
-	display: inline-block;
-}
 
 .chimg2 {
 	box-sizing: border-box;
 	color: -internal-root-color;
 }
 
-g[Attributes Style] {
-    fill: none;
-    fill-rule: evenodd;
-}
-user agent stylesheet
-:not(svg) {
-    transform-origin: 0px 0px;
+/** 텍스트와 버튼 크기 박스 */
+.stary {
+	display: inline-block;
 }
 
-label {
-    cursor: default;
-}
-
-.ebouDA + svg .Circle__fill {
-    fill: rgb(255, 255, 255);
-}
-
-circle[Attributes Style] {
-    cx: 15.5;
-    cy: 15.5;
-    r: 15.5;
-}
-
-:not(svg) {
-    transform-origin: 0px 0px;
-}
-
-label {
-    cursor: default;
-}
-
-.ebouDA + svg .Circle__border {
-    stroke: rgb(221, 221, 221);
-}
-
-circle[Attributes Style] {
-    cx: 15.5;
-    cy: 15.5;
-    r: 14.9;
-    stroke-width: 1.2;
-}
-
-.ebouDA + svg .Circle__check {
-    stroke: rgb(204, 204, 204);
-}
-
-path[Attributes Style] {
-    stroke-width: 2.4;
-    d: path("M 7.154 15.369 l 6.027 6.027 L 23.846 10.73");
+.stary .p {
+	display: inline-black;
+	width: 300px;
+	margin-top: 10px;
+	font-size: 15px;
 }
 
 /** 버튼 이미지 */
+/** 버튼 */
+.actionbutton {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	background-color: white;
+	margin-left: 505px;
+	border: 0px;
+}
 
+.actionbutton:focus {
+	outline: none;
+} 
 
+.buttonimg:focus {
+	outline: none;
+} 
 
+.buttonimg {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	margin-right: 10px; 
+}
+
+.actionbuttonfinal {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	background-color: white;
+	border: 0px;
+}
+
+.buttonimgfinal {
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	margin-right: 10px; 
+}
 
 
 

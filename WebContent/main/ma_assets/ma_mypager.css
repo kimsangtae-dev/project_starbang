@@ -229,26 +229,11 @@
 				border: 0;
 			}
 			
-/** 탈퇴버튼 */
-.bot:active {
-	border: 0px !important;
-}
-
-.bot:disabled {
-	border: 0px !important;
-}
-
-.bot:after {
-	border: 0px !important;
-}
-
-.bot:checked {
-	border: 0px !important;
-}
-
+/** 탈퇴버튼 클릭시 파란색 줄 */
 .bot:focus {
-	border: 0px !important;
-}			
+	outline: none;
+} 
+		
 			
 /** 탈퇴 크기 */
 .modalwit {

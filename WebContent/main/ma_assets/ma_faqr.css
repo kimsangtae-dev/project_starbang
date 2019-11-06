@@ -28,10 +28,6 @@
 				text-align: center;
 			}
 
-			.nav {
-				border-bottom: 1px solid #d5d5d5; 
-			}
-
 			.nav div {
 				display: inline-block;
 				width: 593px;
@@ -40,7 +36,7 @@
 			.nav div a {
 				display: inline-block;
 				width: 600px;
-				height: 57px;
+				height: 58px;
 				font-size: 15px;
 				padding-top: 20px;
 				/** 밑줄 제거 */
@@ -51,6 +47,15 @@
 			hr {
 				margin-top: 0px; 
 				height: 65px;
+			}
+			
+			/** 밑줄 */
+		.nav .afaq {
+			border-bottom: 2px solid black;
+		}
+		
+		.nav .anotice {
+				border-bottom: 1px solid #d5d5d5; 
 			}
 
 			/** 자주묻는 질문, 공지사항 끝 **/
@@ -157,7 +162,4 @@
 
 		/** 자주묻는 질문 리스트 끝 */
 
-		/** 밑줄 */
-		.nav .now {
-			border-bottom: 2px solid black;
-		}
+		

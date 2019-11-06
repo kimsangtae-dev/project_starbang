@@ -1,65 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
-<!DOCTYPE html>
-<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_agree.css" />
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_agree.css" />
-
-<script src="../assets/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript">
-//$('#agreehtml, .#agreebody').css({'overflow': 'hidden', 'height': '100%'}); 
-//	$('#agree').on('scroll touchmove mousewheel', function(event) { 
-//		event.preventDefault();
-//		event.stopPropagation();
-//		return false; 
-//	});
-
-
-//$(document).on('hidden.bs.modal', function (event) {
-//	if ($('.modal:visible').length) {
-//		$('body').addClass('modal-open');
-//	}
-//});
-
+	<script src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+	$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
+	$('#element').on('scroll touchmove mousewheel', function(event) { 
+		event.preventDefault();
+		event.stopPropagation();
+		return false; 
+	});
 	
-//$(function() {
-//    $("#toggle").click(function(e) {
-//        $(this).toggleClass('off on');
-//    });
-//});
+	$('html, body').css({'overflow': 'auto', 'height': '100%'}); 
+	$('#element').off('scroll touchmove mousewheel'); 
+		
+		// 버튼
+		function byId(e){return document.getElementById(e);}
+	
+		// 버튼1
+		window.addEventListener('load', mInit1, false);
 
-</script>
+		function mInit1() {
+		    var tgt = byId('check1');
+		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
+		}
 
+
+		function action1() {
+		    var tgt = byId('check1');
+		    var tmp = tgt.src;
+		    tgt.src = tgt.secondSource;
+		    tgt.secondSource = tmp;
+		};
+		
+		// 버튼2
+		window.addEventListener('load', mInit2, false);
+
+		function mInit2() {
+		    var tgt = byId('check2');
+		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
+		}
+
+		function action2() {
+		    var tgt = byId('check2');
+		    var tmp = tgt.src;
+		    tgt.src = tgt.secondSource;
+		    tgt.secondSource = tmp;
+		};
+		
+		// 버튼3
+		window.addEventListener('load', mInit3, false);
+
+		function mInit3() {
+		    var tgt = byId('check3');
+		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
+		}
+
+		function action3() {
+		    var tgt = byId('check3');
+		    var tmp = tgt.src;
+		    tgt.src = tgt.secondSource;
+		    tgt.secondSource = tmp;
+		};
+		
+		// 버튼4
+		window.addEventListener('load', mInit4, false);
+
+		function mInit4() {
+		    var tgt = byId('check4');
+		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
+		}
+
+		function action4() {
+		    var tgt = byId('check4');
+		    var tmp = tgt.src;
+		    tgt.src = tgt.secondSource;
+		    tgt.secondSource = tmp;
+		};
+
+
+	</script>
 </head>
 
-<body>
-	<div class="siz">
-		<div id="agree" class="modal-content whole">
-			<div class="modal-header hheader">
-				<h1 class="modal-title modal-title1">약관동의</h1>
-					<!-- 닫기버튼 -->
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	        </div>
+	<div class="siz" id="element">
+		<div class="modal-content agreelove">
+			<div class="modaltop">
+			<h1 class="modal-title modal-title1">약관동의</h1>
+			<!-- 닫기버튼 -->
+			<button class="btnclose"  data-dismiss="modal">
+				<svg width="30" height="30" viewBox="0 0 32 32">
+	               	<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+	               		<circle class="Circle" cx="15" cy="15" r="15"></circle>
+	               		<g class="Close" stroke-linecap="round" stroke-width="2">
+	               			<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+						</g>
+					</g>
+				</svg>
+			</button>
+			</div>
 			<div class="modal-body modal-body1">
 				<div id="updown">
 					<div class="agpbox">
-						<p class="p">
-							다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
-						</p>
-						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
+						<div class="stary">
+							<p class="p">
+								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
+							</p>
+							<button onClick="action1()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check1" class="buttonimg"></button>
+						</div>
+						<!-- <img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
 <!-- <button id="toggle" class="toggle-button on" data-value="off">OFF</button> -->
 						<div class="lReCa">
 							<div class="whc">
@@ -585,10 +635,16 @@
 
 					<!--  -->
 					<div class="agpbox">
-						<p class="p">
+					<!-- <p class="p">
 							개인정보 처리방침 <span id="ftcl">(필수)</span>
 						</p>
-						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
+						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
+						<div class="stary">
+							<p class="p">
+								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
+							</p>
+							<button onClick="action2()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check2" class="buttonimg"></button>
+						</div>
 						<div class="lReCa">
 							<div class="whc">
 								<b>개인 사용자 가입</b> <br /> <br />
@@ -608,10 +664,16 @@
 					</div>
 					<!--  -->
 					<div class="agpbox pad">
-						<p class="p">
+						<div class="stary">
+							<p class="p">
+								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
+							</p>
+							<button onClick="action3()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check3" class="buttonimg"></button>
+						</div>
+						<!-- <p class="p">
 							마케팅 정보 수신에 대한 동의 <span id="ftcl">(선택)</span>
 						</p>
-						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" />
+						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
 						<div class="lReCa">
 							<div class="whc">
 								<p class="whcbox">
@@ -666,15 +728,13 @@
 			</div>
 			<div id="lnMlai">
 				<p class="all">모두 동의합니다</p>
-				<img id="check2" src="../main/ma_assets/ma_img/greycheck.png" />
+<button onClick="action4()" class="actionbuttonfinal"><img src="../main/ma_assets/ma_img/greycheck.png" id="check4" class="buttonimgfinal"></button>
 			</div>
 			<div class="modal-fet">
 				<a href="<%=request.getContextPath()%>/assets/modal/ma_join.jsp" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
 			</div>
 		</div>
 	</div>
-</body>
-</html>
 
 
 
@@ -686,25 +746,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
