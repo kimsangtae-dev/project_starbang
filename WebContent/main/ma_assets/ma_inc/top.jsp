@@ -1,15 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<style>
-		
+<style>
+
 /*---------------------------------
 |	header * css
 ----------------------------------*/
 
 /* 브라우저 최소 넓이 지정 */
-.header { min-width: 1366px; }
+.header {
+	min-width: 1366px;
+}
 
 /* 메뉴바 크기, 여백, 테두리 */
 #header .navbar {
@@ -21,7 +24,7 @@
 }
 
 /* 로고 이미지 크기, 위치 설정 */
-#header .navbar img { 
+#header .navbar img {
 	height: 45px;
 	margin: 8px 0 12px 0;
 }
@@ -64,7 +67,7 @@
 #con {
 	height: 800px;
 }
-	</style>
+</style>
 </head>
 
 <!---------------------------------
@@ -80,13 +83,16 @@
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="ma_search.jsp">방찾기</a> 
-				<a href="ma_rtrm.jsp" class="padding-l">관심목록</a> 
-				<a href="ma_faq.jsp" class="padding-l">문의하기</a>
+				<a href="ma_search.jsp">방찾기</a> <a href="ma_rtrm.jsp"
+					class="padding-l">관심목록</a> <a href="ma_faq.jsp" class="padding-l">문의하기</a>
 				<a href="ma_pprm.jsp" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
-				<a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
+				<%-- <a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a> --%>
+				<%-- <c:url value="${contextPath}/assets/modal/ma_login.jsp"
+					class="padding-l" data-toggle="modal" data-target="#loginModal">
+				</c:url> --%>
+				<a href="${pageContext.request.contextPath}/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>
@@ -95,35 +101,27 @@
 <!-- 로그인용 모달 로더 -->
 <div class="modal fade" id="loginModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 비밀번호 찾기용 모달 로더 -->
 <div class="modal fade" id="passwdModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 동의하기용 모달 로더 -->
 <div class="modal fade" id="agreeModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 회원가입용 모달 로더 -->
 <div class="modal fade" id="joinModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
