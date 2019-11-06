@@ -371,10 +371,10 @@ p {
 }
 #smallexplan > div.explan-off {
    height: 130px;
-   /* -webkit-transition: all 0.5s;
+  /*  -webkit-transition: all 0.5s;
    transition: height 400ms ease 0.5s;
    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s; */
+    -o-transition: all 0.5s; */ 
 }
 /*------------------------------------------------*/
 .smexp {
@@ -400,7 +400,16 @@ p {
 
 /*--- 움직이는 스크롤 헤더 시작 ---*/
 
-#bluebar {
+/**블루바 새롭게 만듦*/
+#bbblue {
+	min-width:2600px;
+	height:90px;
+	background:rgb(20, 118, 252);
+	position: relative;
+    right: 650px;
+}
+
+/* #bluebar {
 	margin: auto;
 	width: 100%;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 7px 0px, rgba(0, 0, 0, 0.08) 0px
@@ -409,18 +418,30 @@ p {
 	position: fixed;
 	z-index: 3;
 	transition: top 0.2s ease-in-out;
-}
+	display : none;
+} */
 
 .blicose {
 	margin : 1px;
 }
 
-/***/
-#bbblue {
-	min-width:2600px;
-	height:90px;
-	background:blue;
+/**-----------------
+	블루바 고정작업 시작
+---------------------
+*/
+#fxed {
+	margin : auto;
+	position: fixed;
+	bottom: 500px;
+	z-index: 3;
+	display:none;
+	visibility : visible;
+	-webkit-transition:all 0.2s ease-in;
 }
+/**-----------------
+	블루바 고정작업 끝
+---------------------
+*/
 
 /*파란색 헤더 하트 토글*/
 .recent-div8 {
@@ -499,6 +520,7 @@ p {
 	opacity: 0.7;
 }
 
+/**문의하기 버튼 모양잡기*/
 .inbl {
 	height: 44px;
 	color: rgb(0, 108, 255);
@@ -513,6 +535,11 @@ p {
 	border-color: initial;
 	border-image: initial;
 	border-radius: 44px;
+}
+
+/**버튼 클릭하면 생기는 하늘색 테두리 지움*/
+.textht:focus {
+	outline:none;
 }
 
 .quest {
@@ -530,14 +557,14 @@ p {
 
 /*--- 움직이는 스크롤 헤더 끝 ---*/
 .xOEdU {
-	width: 1180px;
+	width: 1200px;
 	height: 58px;
 	background-color: rgb(255, 255, 255);
 	position: relative;
 	z-index: 2;
 	display: table;
 	table-layout: fixed;
-	margin: 0px auto;
+	border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 .eYDrrB {
