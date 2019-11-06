@@ -423,12 +423,10 @@
 				var guPositions = data;
 				var gumark;
 				for (var i = 0; i < guPositions.length; i++) {
-					gumark = '<div class="gu-marker" id="gu-marker' + i + '">'
-							+ guPositions[i].guName
-							+ '<span id="lat" style="display:none;">'
-							+ guPositions[i].lat + '</span>'
-							+ '<span id="lng" style="display:none;">'
-							+ guPositions[i].lng + '</span>' + '</div>';
+					gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
+					gumark += '<div class="gu-count">' + 500 + '</div>';
+					gumark += '<div class="gu-name">' + guPositions[i].guName + '</div>';
+					gumark += '</div>';
 					var customOverlay = new kakao.maps.CustomOverlay({
 						position : new kakao.maps.LatLng(guPositions[i].lat,
 								guPositions[i].lng),
