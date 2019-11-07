@@ -14,7 +14,7 @@
 
 /* 사진등록의 사진아이콘 */
 .glyphicon-picture {
-    font-size: 50px;
+    font-size: 70px;
     padding-bottom: 45px;
 }
 
@@ -682,6 +682,7 @@ select {
     margin-left: 15px;
 }
 
+
 /* 금액단위창 */
 .add3 {
     float: left;
@@ -869,11 +870,10 @@ select {
 
 /* 사진등록 방법 안내박스 */
 .photo_info {
-    width: 100%;
-    padding: 20px 30px;
-    margin: 15px 0px;
-    border: 1px solid rgb(224, 224, 224);
-    background-color: rgb(244, 244, 244);
+width: 100%;
+padding: 20px 20px;
+margin: 15px 0px;
+border: 1px solid rgb(224, 224, 224);
 }
 
 .photo_info > p {
@@ -891,24 +891,24 @@ select {
     padding: 9px;
 }
 
-.photo_pic1 {
-    width: 100%;
-    height: 100%;
-}
-
 .photo_pic2 {
-    padding-top: 100px;
+    padding-top: 70px;
+    padding-bottom: 50px;
     text-align: center;
+    background-color: rgb(244, 244, 244);
+    border: 1px solid rgb(224, 224, 224);
 }
 
+/* 사진등록 조건문 */
 .photo_pic2 > p {
     font-size: 15px;
     line-height: 22px;
 }
 
-/* 사진등록 조건문 */
-.pic_tell {
-    padding-bottom: 20px;
+
+.photo_pic2 > .red_font {
+	color: red;
+	padding-bottom: 20px;
 }
 
 .photo_pick::after {
@@ -927,7 +927,7 @@ select {
 .filebox label { 
     display: inline-block; 
     font-size: 14px;
-    padding: 20px 30px; 
+    padding: 15px 30px; 
     margin: 5px;
     color: rgb(255, 255, 255); 
     vertical-align: middle; 

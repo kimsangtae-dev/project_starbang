@@ -51,8 +51,8 @@
                                     <label class="Square_box"><input type="radio" name="room_type">
                                         <p>쓰리룸</p>
                                     </label>
-                                    <label class="Square_box"><input type="radio" name="room_type">
-                                        <p>오피스텔(도시형)</p>
+                                    <label class="Square_box"><input type="radio" class="ab" name="room_type">
+                                        <p>오피스텔</p>
                                     </label>
                                 </td>
                             </tr>
@@ -67,6 +67,9 @@
                                     </label>
                                     <label class="Square_box"><input type="radio" name="building_type">
                                         <p>빌라/연립/다세대</p>
+                                    </label>
+                                    <label class="Square_box"><input type="radio" class="ab1" name="building_type">
+                                        <p>오피스텔</p>
                                     </label>
                                 </td>
                             </tr>
@@ -271,11 +274,11 @@
                     <tr>
                         <th rowspan="2">관리비</th>
                         <td class="add_info" colspan="3">
-							<input id="btnn" class="add2 input_box" type="text" name="maintenance_cost" disabled="" value="">
+							<input type="text" id="main_pr_v1" name="main_pr_v1" disabled="" class="add2 input_box">
                             <p class="add3">만원</p>
                             <div class="main">
-                            <label class="add_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value="" checked="" onclick="btnn_on();">
-                            <span class="CheckBox"></span>
+                            <label class="add_check_box" size="22"><input type="checkbox" id="main_input" name="main_input" value="main_input" class="PcMeW" checked="">
+                            <span id="main_input" class="CheckBox"></span>
                             <span class="add_text">관리비 없음</span>
                             </label>
                             </div>
@@ -288,31 +291,31 @@
                                 <p>(다중선택가능)</p>
                             </div>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>인터넷</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>유선TV</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>청소비</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>수도세</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>도시가스</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>전기세</p>
                             </label>
                             <label class="ma_box  ma_m">
-                                <input type="checkbox" name="maintenance_items" onclick="btnn_on();">
+                                <input type="checkbox" input type="checkbox" id="user_input" name="user_input" value="user_input" >
                                 <p>기타</p>
                             </label>
                         </td>
@@ -475,29 +478,29 @@
         <div class="photo_frame" name="photo">
             <h1>사진 등록</h1>
             <div class="photo_box">
-                <div class="photo_btn">
+               <!--<div class="photo_btn">
                     <button class="photo_btn1" disabled>일반사진</button>
-                </div>
+                </div> -->
                 <div class="photo_info">
                     <p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
                     <p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-                    <div class="photo_pic1"></div>
+                    <p>- 사진은 최소 3장 이상 등록해야하며, 최대 15장 까지 업로드 가능합니다.</p>
+                </div>
+
                     <div class="photo_pic2">
                         <span class="glyphicon glyphicon-picture"></span>
                         <p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
-                        <!-- <p class="red_font">다방 로고를 제외한 불필요한 정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p> -->
-                    </div>
+                        <p class="red_font">로고를 제외한 불필요한 정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p>
                     <div class="filebox">
                         <label for="ex_file">사진등록</label>
-                        <input type="file" id="ex_file" accept=".jpg,.jpeg,.png"></div>
-                </div>
-                <p class="warning_text">
+                        <input type="file" id="ex_file" accept=".jpg,.jpeg,.png"></div></div>
+                <div class="warning_text">
                     <span class="glyphicon glyphicon-exclamation-sign"></span>
                     <span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span>
                     <a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
-                </p>
+                </div>
             </div>
-        </div>
+           </div>
         <!-- lowbox -->
         <div class="low_box">
             <label class="low_text low_check_box" size="22">
@@ -612,7 +615,7 @@ $(function() {
 <!-- 공급면적 평수 계산기 -->
 <script>
 function calculator(chk){
-	  if(chk==1){ 
+	  if(chk>0){ 
 	      document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
 	  }
 	  else { 
@@ -624,7 +627,7 @@ function calculator(chk){
 <!-- 전용면적 평수 계산기 -->
 <script>
 function ator(chk){
-	  if(chk==1){ 
+	  if(chk>0){ 
 	      document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
 	  }
 	  else { 
@@ -633,20 +636,6 @@ function ator(chk){
 	}
 </script>
 <!-- 평수 계산기 끝-->
-<script>
-var btnn;
- //버튼활성화
- function btnn_on() {
-  btnn = document.getElementById('btnn');
-  btnn.disabled = false;
- }
- 
- //버튼비활성화
- function btnn_off() {
-  btnn = document.getElementById('btnn');
-  btnn.disabled = 'true';
- }
-</script>
 <script>
 var btnn1;
  //버튼활성화
@@ -661,5 +650,44 @@ var btnn1;
   btnn1.disabled = 'true';
  }
 </script>
+ <script>
+ // 오피스텔 선택시 자동선택
+      $( document ).ready( function() {
+        $( '.ab' ).click( function() {
+          $( '.ab1' ).prop( 'checked', this.checked );
+        });
+      });
+    </script>
+    
+<script>
+// 관리비 
+    $("input#main_input").click(function() {
+    	   if ($("#main_input:checked").val() == "main_input") // 비활성화
+    	   {
+    	    $("input#main_pr_v1").attr("disabled", true); 
+    	   }
+    	   else // 활성화
+    	   {
+    	    $("input#main_pr_v1").removeAttr("disabled");
+    	   }   
+    	  });
+</script>
+
+<script>
+    // 관리비 옵션
+    $("input#user_input").click(function() {
+    	   if ($("#user_input:checked").val() == "user_input") // 비활성화
+    	   {
+       	    $("input#main_pr_v1").removeAttr("disabled");
+    	    $("input#main_input").removeAttr("checked");
+    	   }
+    	   else // 활성화
+    	   {
+       	    $("input#main_pr_v1").attr("disabled", true); 
+    	    $("input#main_input").attr("checked", true); 
+    	   }   
+    	  });
+</script>
+
 </body>
 </html>
