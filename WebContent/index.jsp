@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="WEB-INF/views/assets/inc/meta.jsp"%>
 
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="./main/ma_assets/ma_main.css">
@@ -20,7 +20,7 @@
 <!----------------------------------------
 -	header 								     -
 ----------------------------------------->
-<%@ include file="./main/ma_assets/ma_inc/top.jsp"%>
+<%@ include file="WEB-INF/views/main/ma_assets/ma_inc/top.jsp"%>
 
 
 	<!---------------------------------------\
@@ -466,7 +466,7 @@
 <!----------------------------------------
 -	footer 							     -
 ----------------------------------------->
-<%@ include file="./main/ma_assets/ma_inc/bottom.jsp"%>
+<%@ include file="WEB-INF/views/main/ma_assets/ma_inc/bottom.jsp"%>
 
 
 <script src="./assets/js/jquery-1.10.2.min.js"></script>
