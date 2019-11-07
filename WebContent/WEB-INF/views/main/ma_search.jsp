@@ -525,12 +525,24 @@
 			from_max : price1_value.indexOf(90000),
 			skin : "round",
 			onChange: function (data) {
-				if(data.from_value == 0 && data.to_value == "무제한") {
+				function fix(val) {
+					if (val < 10000) {
+						var won = val + "만 원";
+					} else if (val%10000 == 0){
+						var won = val/10000 + "억 원";
+					} else {
+						var mil = Math.floor(val/10000);
+						var won = mil + "억 " + (val - mil*10000) + "만 원"; 
+					}
+					return won;
+				} // end fix()
+				
+				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
 					$("#filter1-value").html("무제한");
 				} else if (data.to_value == "무제한") {
-					$("#filter1-value").html(data.from_value + "만 원 ~" + data.to_value);
+					$("#filter1-value").html(fix(data.from_value) + " ~ " + data.to_value);
 				} else {
-					$("#filter1-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+					$("#filter1-value").html(fix(data.from_value) + " ~ " + fix(data.to_value));
 				}
 	        },
 	        hide_from_to : true,
@@ -582,12 +594,24 @@
 			from_max : price3_value.indexOf(150000),
 			skin : "round",
 			onChange: function (data) {
-				if(data.from_value == 0 && data.to_value == "무제한") {
+				function fix(val) {
+					if (val < 10000) {
+						var won = val + "만 원";
+					} else if (val%10000 == 0){
+						var won = val/10000 + "억 원";
+					} else {
+						var mil = Math.floor(val/10000);
+						var won = mil + "억 " + (val - mil*10000) + "만 원"; 
+					}
+					return won;
+				} // end fix()
+				
+				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
 					$("#filter3-value").html("무제한");
 				} else if (data.to_value == "무제한") {
-					$("#filter3-value").html(data.from_value + "만 원 ~" + data.to_value);
+					$("#filter3-value").html(fix(data.from_value) + " ~ " + data.to_value);
 				} else {
-					$("#filter3-value").html(data.from_value + "만 원 ~" + data.to_value + "만 원");
+					$("#filter3-value").html(fix(data.from_value) + " ~ " + fix(data.to_value));
 				}
 	        },
 		    hide_from_to : true,
@@ -632,14 +656,14 @@
 			from : 0,
 			skin : "round",
 			onChange: function (data) {
-				var from = data.from;
-				var to = data.to;
-				if(from == 0 && to == 115) {
+				var from_p = data.from/3.3;
+				var to_p = data.to/3.3;
+				if(data.from == 0 && data.to == 115) {
 					$("#filter5-value").html("무제한");
-				} else if (to == 115) {
-					$("#filter5-value").html(from + "㎡(" + Math.floor(from/3.3) + "평) ~ 무제한");
+				} else if (data.to == 115) {
+					$("#filter5-value").html(data.from + "㎡(" + Math.floor(from_p) + "평) ~ 무제한");
 				} else {
-					$("#filter5-value").html(from + "㎡(" + Math.floor(from/3.3) + "평) ~ " + to + "㎡(" + Math.floor(to/3.3) + "평)");
+					$("#filter5-value").html(data.from + "㎡(" + Math.floor(from_p) + "평) ~ " + data.to + "㎡(" + Math.floor(to_p) + "평)");
 				}
 	        },
 		    hide_from_to : true,
