@@ -192,6 +192,7 @@
 				border: 1px solid blue !important;
 				background-color: white !important;
 				color: blue !important;
+				outline: none;
 			}
 			
 			.focs:before {
@@ -205,6 +206,12 @@
 				text-decoration: none;
 				
 			}
+			
+			
+/** 탈퇴버튼 클릭시 파란색 줄 */
+.bot:focus {
+	outline: none;
+} 
 			
 			/** 프로필 사진 올리기 */
 			.filebox label { 
@@ -229,10 +236,6 @@
 				border: 0;
 			}
 			
-/** 탈퇴버튼 클릭시 파란색 줄 */
-.bot:focus {
-	outline: none;
-} 
 		
 			
 /** 탈퇴 크기 */
