@@ -14,7 +14,7 @@
 
 /* 사진등록의 사진아이콘 */
 .glyphicon-picture {
-    font-size: 70px;
+    font-size: 50px;
     padding-bottom: 45px;
 }
 
@@ -369,7 +369,6 @@ form.loc_div {
 .ch_box_text {
     position: relative;
     top: 3px;
-    left: 6px;
 }
 
 /* 체크박스 float해체 */
@@ -480,7 +479,6 @@ form.loc_div {
 
 /* 단기가능 체크박스 글씨 */
 .deal_text {
-    margin-left: 7px;
     position: relative;
     top: 2px;
 }
@@ -652,7 +650,6 @@ select {
 }
 
 .add_text {
-    margin-left: 7px;
     position: relative;
     top: 2px;
 }
@@ -870,10 +867,11 @@ select {
 
 /* 사진등록 방법 안내박스 */
 .photo_info {
-width: 100%;
-padding: 20px 20px;
-margin: 15px 0px;
-border: 1px solid rgb(224, 224, 224);
+    width: 100%;
+    padding: 20px 30px;
+    margin: 15px 0px;
+    border: 1px solid rgb(224, 224, 224);
+    background-color: rgb(244, 244, 244);
 }
 
 .photo_info > p {
@@ -891,24 +889,24 @@ border: 1px solid rgb(224, 224, 224);
     padding: 9px;
 }
 
-.photo_pic2 {
-    padding-top: 70px;
-    padding-bottom: 50px;
-    text-align: center;
-    background-color: rgb(244, 244, 244);
-    border: 1px solid rgb(224, 224, 224);
+.photo_pic1 {
+    width: 100%;
+    height: 100%;
 }
 
-/* 사진등록 조건문 */
+.photo_pic2 {
+    padding-top: 100px;
+    text-align: center;
+}
+
 .photo_pic2 > p {
     font-size: 15px;
     line-height: 22px;
 }
 
-
-.photo_pic2 > .red_font {
-	color: red;
-	padding-bottom: 20px;
+/* 사진등록 조건문 */
+.pic_tell {
+    padding-bottom: 20px;
 }
 
 .photo_pick::after {
@@ -927,7 +925,7 @@ border: 1px solid rgb(224, 224, 224);
 .filebox label { 
     display: inline-block; 
     font-size: 14px;
-    padding: 15px 30px; 
+    padding: 20px 30px; 
     margin: 5px;
     color: rgb(255, 255, 255); 
     vertical-align: middle; 
@@ -1052,5 +1050,89 @@ border: 1px solid rgb(224, 224, 224);
     font-size: 15px;
     background-color: rgb(26, 90, 232);
     border-width: 0px;
+}
+
+/* 월세, 전세, 매매 박스  */
+
+.iFmBhb {
+    padding: 12px 20px;
+    position: relative;
+}
+
+.d_div {
+    height: 46px;
+    padding-left: 60px;
+    position: relative;
+}
+
+.d_div + div {
+	margin-top: 10px;
+}
+
+.bbtn {
+    float: left;
+    width: 50px;
+    height: 26px;
+    line-height: 26px;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    text-align: center;
+    border-radius: 3px;
+    background-color: rgb(97, 182, 229);
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+}
+
+.d_input_box1 {
+    float: left;
+    width: 140px;
+}
+
+.d_input_box2 {
+    height: 46px;
+    padding: 0px 15px;
+    color: rgb(68, 68, 68);
+	font-size: 15px;
+	border: 1px solid rgb(208, 210, 214);
+	border-radius: 0px;
+	background-color: rgb(255, 255, 255);
+    outline: currentcolor none medium;
+    box-sizing: border-box;
+}
+
+.midle_box {
+    float: left;
+    width: 20px;
+    height: 46px;
+    color: 
+    rgb(34, 34, 34);
+    font-size: 16px;
+    text-align: center;
+    line-height: 46px;
+}
+
+.dp_text {
+    float: left;
+    height: 46px;
+    margin-left: 8px;
+    color: 
+    rgb(34, 34, 34);
+    font-size: 15px;
+    line-height: 46px;
+}
+
+.dp_text > span {
+    margin-left: 10px;
+    color: 
+    rgb(136, 136, 136);
+    font-size: 14px;
+}
+
+.d_div::after {
+    display: block;
+    content: "";
+    clear: both;
 }
 

@@ -52,7 +52,7 @@
                                         <p>쓰리룸</p>
                                     </label>
                                     <label class="Square_box"><input type="radio" class="ab" name="room_type">
-                                        <p>오피스텔</p>
+                                        <p>오피스텔(도시형)</p>
                                     </label>
                                 </td>
                             </tr>
@@ -132,8 +132,38 @@
                     <h1>거래 정보</h1>
                     <table>
                         <tbody>
-                            <tr>
-                                <th>거래 종류</th>
+                        
+                           <tr class="hide_box">
+                           <th rowspan="2">거래 종류</th>
+                            <td class="iFmBhb">
+								<div class="d_div">
+									<p class="bbtn">월세</p>
+									<input class="d_input_box1 d_input_box2" type="text" name="보증금">
+									<p class="midle_box">/</p>
+									<input class="d_input_box1 d_input_box2" type="text" name="월세">
+									<p class="dp_text">만원
+									<span>(예 월세 1000만원/50만원)</span>
+								</p>
+								</div>
+								<div class="d_div">
+									<p class="bbtn">전세</p>
+									<input class="d_input_box1 d_input_box2" type="text" name="전세">
+									<p class="dp_text">
+									만원
+									<span>(예 전세 2000만원)</span>
+									</p>
+								</div>
+								<div class="d_div">
+									<p class="bbtn">매매</p>
+									<input class="d_input_box1 d_input_box2" type="text" name="전세">
+									<p class="dp_text">
+									만원
+									<span>(예 매매 10000만원)</span>
+									</p>
+								</div>
+							</td>
+                            </tr>
+                        	<tr>
                                 <td class="deal_box_pd">
                                     <button class="deal_btn">월세</button>
                                     <button class="deal_btn">전세</button>
@@ -278,7 +308,7 @@
                             <p class="add3">만원</p>
                             <div class="main">
                             <label class="add_check_box" size="22"><input type="checkbox" id="main_input" name="main_input" value="main_input" class="PcMeW" checked="">
-                            <span id="main_input" class="CheckBox"></span>
+                            <span class="CheckBox"></span>
                             <span class="add_text">관리비 없음</span>
                             </label>
                             </div>
@@ -478,29 +508,29 @@
         <div class="photo_frame" name="photo">
             <h1>사진 등록</h1>
             <div class="photo_box">
-               <!--<div class="photo_btn">
+                <div class="photo_btn">
                     <button class="photo_btn1" disabled>일반사진</button>
-                </div> -->
+                </div>
                 <div class="photo_info">
                     <p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
                     <p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-                    <p>- 사진은 최소 3장 이상 등록해야하며, 최대 15장 까지 업로드 가능합니다.</p>
-                </div>
-
+                    <div class="photo_pic1"></div>
                     <div class="photo_pic2">
                         <span class="glyphicon glyphicon-picture"></span>
                         <p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
-                        <p class="red_font">로고를 제외한 불필요한 정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p>
+                        <!-- <p class="red_font">다방 로고를 제외한 불필요한 정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p> -->
+                    </div>
                     <div class="filebox">
                         <label for="ex_file">사진등록</label>
-                        <input type="file" id="ex_file" accept=".jpg,.jpeg,.png"></div></div>
-                <div class="warning_text">
+                        <input type="file" id="ex_file" accept=".jpg,.jpeg,.png"></div>
+                </div>
+                <p class="warning_text">
                     <span class="glyphicon glyphicon-exclamation-sign"></span>
                     <span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span>
                     <a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
-                </div>
+                </p>
             </div>
-           </div>
+        </div>
         <!-- lowbox -->
         <div class="low_box">
             <label class="low_text low_check_box" size="22">

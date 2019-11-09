@@ -1,17 +1,13 @@
 @charset "utf-8";
 
-/** a태그 속성 정의 */
-a {
-	text-decoration: none;
-	color: black;
-}
+/* 기본 여백 제거 */
+* { padding: 0; margin: 0; }
 
-a:hover {
-	text-decoration: none;
-}
+
+/** a태그 속성 정의 */
+a {	text-decoration: none; }
 
 /** content의 가로폭 정의 */
-
 #content { min-width: 1200px; }
 
 #content > div {
@@ -39,11 +35,30 @@ a:hover {
 /** hidden text 정의 */
 .tab-panel {
 	width: auto;
-	border-top: 2px solid black;
+	border-top: 1px solid black;
 }
 
 /** 표 속성 정의 */
-
 td {
 	text-align: center;
 }
+
+/* 제목 영역의 배경색상과 태두리 */
+.collapse-title { background: #eeeeee; border: 1px solid #d5d5d5; }
+
+/* 제목영역의 링크에 대한 크기, 글자모양 */
+.collapse-title a {
+  display: block; width: auto;
+  color: #222;
+  font-size: 14px; 
+  text-decoration: none
+}
+
+.content {
+   font-size: 12px;
+   border: 1px solid #d5d5d5;
+   display: none;
+}
+
+/* 마지막 내용 박스의 테두리 보정 */
+.content:last-child { border-bottom: 1px solid #d5d5d5;	}
