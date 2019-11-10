@@ -232,11 +232,11 @@ input, button, textarea {
 
 /* 위치정보 안내문1 */
 .loc_p_t {
-	padding-bottom: 15px;
+    padding-bottom: 15px;
 } 
 
 .loc_check_box {
-	display: block;
+    display: block;
     height: 22px;
     padding-left: 23px;
     position: relative;
@@ -259,7 +259,7 @@ input, button, textarea {
 /************************* 주소 검색 부분, 상세주소 검색 부분 *************************/
 /* 주소검색폼 */
 input.address1 {
-	padding: 10px;
+    padding: 10px;
     width: 425px;
     height: 46px;
     border: 1px solid rgb(208, 210, 214);
@@ -486,7 +486,7 @@ form.loc_div {
 /* 거래종류 안내문 */
 /* 느낌표 아이콘 */
 .deal_text1 > span.glyphicon {
-	font-size: 18px;
+    font-size: 18px;
     position: relative;
     top: 4px;
 }
@@ -570,11 +570,11 @@ form.loc_div {
 }
 
 #datepicker {
-	border-style: none;
-	width: 120px;
-	position: relative;
-	left: 10px;
-	top: 15px;
+    border-style: none;
+    width: 120px;
+    position: relative;
+    left: 10px;
+    top: 15px;
 }
 
 /* 기본정보 층수, 난방종류 input */
@@ -589,9 +589,9 @@ form.loc_div {
  }
   
 select {
-	-moz-appearance:none; /* Firefox */  
-	-webkit-appearance:none; /* Safari and Chrome */  
-	 appearance:none;
+    -moz-appearance:none; /* Firefox */  
+    -webkit-appearance:none; /* Safari and Chrome */  
+     appearance:none;
 }
  select::-ms-expand { display:none; } 
 
@@ -699,11 +699,11 @@ select {
 /* 관리비항목 선택창 */
 
 .main {
-	float: left;
+    float: left;
     position: relative;
     left: 20px;
     top: 10px;
-	
+    
 }
 .add_m {
     float: left;
@@ -945,7 +945,7 @@ select {
 
 /* 허위 매물 경고문 */
 .warning_text {
-	margin-top: 23px;
+    margin-top: 23px;
     margin-bottom: 4px;
     line-height: 20px;
     user-select: none;
@@ -953,7 +953,7 @@ select {
 }
 
 .warning_text > a {
-	margin-left: 5px;
+    margin-left: 5px;
 }
 
 .warning_text::after {
@@ -964,10 +964,10 @@ select {
 
 /* 허위매물 앞 느낌표 */
 .warning_text > span.glyphicon {
-	color: rgb(136, 136, 136);
-	font-size: 18px;
-	position: relative;
-	top: 3px;
+    color: rgb(136, 136, 136);
+    font-size: 18px;
+    position: relative;
+    top: 3px;
 }
 
 /******************************** low_box ******************************/
@@ -1057,16 +1057,14 @@ select {
 .iFmBhb {
     padding: 12px 20px;
     position: relative;
+    display: none;
 }
 
-.d_div {
+.d_div, .d_div1, .d_div2  {
     height: 46px;
     padding-left: 60px;
     position: relative;
-}
-
-.d_div + div {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .bbtn {
@@ -1094,10 +1092,10 @@ select {
     height: 46px;
     padding: 0px 15px;
     color: rgb(68, 68, 68);
-	font-size: 15px;
-	border: 1px solid rgb(208, 210, 214);
-	border-radius: 0px;
-	background-color: rgb(255, 255, 255);
+    font-size: 15px;
+    border: 1px solid rgb(208, 210, 214);
+    border-radius: 0px;
+    background-color: rgb(255, 255, 255);
     outline: currentcolor none medium;
     box-sizing: border-box;
 }

@@ -19,7 +19,7 @@
 .header-nav {
     background-color: rgb(81, 136, 244);
 }
-</style>
+</style> 
 <div id="root">
     <div class="box">
         <!-- header 시작 -->
@@ -132,42 +132,45 @@
                     <h1>거래 정보</h1>
                     <table>
                         <tbody>
-                        
                            <tr class="hide_box">
                            <th rowspan="2">거래 종류</th>
                             <td class="iFmBhb">
-								<div class="d_div">
-									<p class="bbtn">월세</p>
-									<input class="d_input_box1 d_input_box2" type="text" name="보증금">
-									<p class="midle_box">/</p>
-									<input class="d_input_box1 d_input_box2" type="text" name="월세">
-									<p class="dp_text">만원
-									<span>(예 월세 1000만원/50만원)</span>
-								</p>
-								</div>
-								<div class="d_div">
-									<p class="bbtn">전세</p>
-									<input class="d_input_box1 d_input_box2" type="text" name="전세">
-									<p class="dp_text">
-									만원
-									<span>(예 전세 2000만원)</span>
-									</p>
-								</div>
-								<div class="d_div">
-									<p class="bbtn">매매</p>
-									<input class="d_input_box1 d_input_box2" type="text" name="전세">
-									<p class="dp_text">
-									만원
-									<span>(예 매매 10000만원)</span>
-									</p>
-								</div>
-							</td>
+                                <div class="d_div">
+                                    <p class="bbtn">월세</p>
+                                    <input class="d_input_box1 d_input_box2" type="text" name="보증금">
+                                    <p class="midle_box">/</p>
+                                    <input class="d_input_box1 d_input_box2" type="text" name="월세">
+                                    <p class="dp_text">만원
+                                    <span>(예 월세 1000만원/50만원)</span>
+                                    <button type='button' class='addd'>+</button>
+                                    <button type='button' class='remove'>-</button>
+                                </p>
+                                </div>
+                                <div class="d_div1">
+                                    <p class="bbtn">전세</p>
+                                    <input class="d_input_box1 d_input_box2" type="text" name="전세">
+                                    <p class="dp_text">만원
+                                    <span>(예 전세 2000만원)</span>
+                                    <button type='button' class='addd1'>+</button>
+                                    <button type='button' class='remove'>-</button>
+                                    </p>
+                                </div>
+                                <div class="d_div2">
+                                    <p class="bbtn">매매</p>
+                                    <input class="d_input_box1 d_input_box2" type="text" name="전세">
+                                    <p class="dp_text">만원
+                                    <span>(예 매매 10000만원)</span>
+                                    <button type='button' class='addd2'>+</button>
+                                    <button type='button' class='remove'>-</button>
+                                    </p>
+                                </div>
+                            </td>
                             </tr>
-                        	<tr>
+                            <tr>
                                 <td class="deal_box_pd">
-                                    <button class="deal_btn">월세</button>
-                                    <button class="deal_btn">전세</button>
-                                 	<button class="deal_btn">매매</button>
+                                    <button type='button' class="deal_btn">월세</button>
+                                    <button type='button' class="deal_btn">전세</button>
+                                    <button type='button' class="deal_btn">매매</button>
                                     <div class="deal_shot">
                                         <label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
                                             <span class="deal_text">단기가능</span>
@@ -304,7 +307,7 @@
                     <tr>
                         <th rowspan="2">관리비</th>
                         <td class="add_info" colspan="3">
-							<input type="text" id="main_pr_v1" name="main_pr_v1" disabled="" class="add2 input_box">
+                            <input type="text" id="main_pr_v1" name="main_pr_v1" disabled="" class="add2 input_box">
                             <p class="add3">만원</p>
                             <div class="main">
                             <label class="add_check_box" size="22"><input type="checkbox" id="main_input" name="main_input" value="main_input" class="PcMeW" checked="">
@@ -559,64 +562,64 @@
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
         <script>
-		    var mapContainer = document.getElementById('box'), // 지도를 표시할 div
-		        mapOption = {
-		            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-		            level: 5 // 지도의 확대 레벨
-		        };
-		
-		    //지도를 미리 생성
-		    var map = new daum.maps.Map(mapContainer, mapOption);
-		    //주소-좌표 변환 객체를 생성
-		    var geocoder = new daum.maps.services.Geocoder();
-		    //마커를 미리 생성
-		    var marker = new daum.maps.Marker({
-		        position: new daum.maps.LatLng(37.537187, 127.005476),
-		        map: map
-		    });
-		
-		
-		    function sample5_execDaumPostcode() {
-		        new daum.Postcode({
-		            oncomplete: function(data) {
-		                var addr = data.address; // 최종 주소 변수
-		
-		                // 주소 정보를 해당 필드에 넣는다.
-		                <!--document.getElementById("sample5_address").value = addr;-->
-		                document.getElementById("point_address").value = addr;
-		                // 주소로 상세 정보를 검색
-		                geocoder.addressSearch(data.address, function(results, status) {
-		                    // 정상적으로 검색이 완료됐으면
-		                    if (status === daum.maps.services.Status.OK) {
-		
-		                        var result = results[0]; //첫번째 결과의 값을 활용
-		
-		                        // 해당 주소에 대한 좌표를 받아서
-		                        var coords = new daum.maps.LatLng(result.y, result.x);
-		                        // 기존에 있던 박스를 숨긴다.
-		                        $("#pon_box").css("display", "none")
-		                        // 지도를 보여준다.
-		                        mapContainer.style.display = "block";
-		                        map.relayout();
-		                        // 지도 중심을 변경한다.
-		                        map.setCenter(coords);
-	                        // 마커를 결과값으로 받은 위치로 옮긴다.
-	                        marker.setPosition(coords)
-	                    }
-	                });
-	            }
-	        }).open();
-	    }
+            var mapContainer = document.getElementById('box'), // 지도를 표시할 div
+                mapOption = {
+                    center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+                    level: 5 // 지도의 확대 레벨
+                };
+        
+            //지도를 미리 생성
+            var map = new daum.maps.Map(mapContainer, mapOption);
+            //주소-좌표 변환 객체를 생성
+            var geocoder = new daum.maps.services.Geocoder();
+            //마커를 미리 생성
+            var marker = new daum.maps.Marker({
+                position: new daum.maps.LatLng(37.537187, 127.005476),
+                map: map
+            });
+        
+        
+            function sample5_execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        var addr = data.address; // 최종 주소 변수
+        
+                        // 주소 정보를 해당 필드에 넣는다.
+                        <!--document.getElementById("sample5_address").value = addr;-->
+                        document.getElementById("point_address").value = addr;
+                        // 주소로 상세 정보를 검색
+                        geocoder.addressSearch(data.address, function(results, status) {
+                            // 정상적으로 검색이 완료됐으면
+                            if (status === daum.maps.services.Status.OK) {
+        
+                                var result = results[0]; //첫번째 결과의 값을 활용
+        
+                                // 해당 주소에 대한 좌표를 받아서
+                                var coords = new daum.maps.LatLng(result.y, result.x);
+                                // 기존에 있던 박스를 숨긴다.
+                                $("#pon_box").css("display", "none")
+                                // 지도를 보여준다.
+                                mapContainer.style.display = "block";
+                                map.relayout();
+                                // 지도 중심을 변경한다.
+                                map.setCenter(coords);
+                            // 마커를 결과값으로 받은 위치로 옮긴다.
+                            marker.setPosition(coords)
+                        }
+                    });
+                }
+            }).open();
+        }
 </script>
 <!-- 카카오 지도 끝 -->
 
 <!-- datepicker 시작 -->
-	<script src="../assets/plugin/datepicker/datepicker.min.js"></script>
+    <script src="../assets/plugin/datepicker/datepicker.min.js"></script>
     <script src="../assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
     <script>
         $(function() {
             $("#datepicker").datepicker({
-            	showOn: "both",
+                showOn: "both",
                 autoHide: true,         // 날짜 선택 후 자동 숨김 (true/false)
                 format: 'yyyy-mm-dd',   // 날짜 형식
                 language: 'ko-KR',      // 언어
@@ -624,9 +627,9 @@
                 trigger:'#cal'     // 클릭시 달력을 표시할 요소의 id
             });
         });
-	</script>	
-<!-- datepicker 끝 -->	
-<!-- 동정보 위치이동 시작 -->	
+    </script>   
+<!-- datepicker 끝 -->   
+<!-- 동정보 위치이동 시작 -->    
 <script>
 /* 동정보 체크박스 -> 동 삭제 */
 $(function() {
@@ -640,30 +643,30 @@ $(function() {
    });
 });
 </script>
-<!-- 동정보 위치이동 끝 -->	
+<!-- 동정보 위치이동 끝 --> 
 
 <!-- 공급면적 평수 계산기 -->
 <script>
 function calculator(chk){
-	  if(chk>0){ 
-	      document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
-	  }
-	  else { 
-	      document.getElementById('pyeong1').value = parseFloat((document.getElementById('pyeong2').value) / 3.3058).toFixed(2);
-	  }
-	}
+      if(chk>0){ 
+          document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
+      }
+      else { 
+          document.getElementById('pyeong1').value = parseFloat((document.getElementById('pyeong2').value) / 3.3058).toFixed(2);
+      }
+    }
 </script>
 <!-- 평수 계산기 -->
 <!-- 전용면적 평수 계산기 -->
 <script>
 function ator(chk){
-	  if(chk>0){ 
-	      document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
-	  }
-	  else { 
-	      document.getElementById('ator1').value = parseFloat((document.getElementById('ator2').value) / 3.3058).toFixed(2);
-	  }
-	}
+      if(chk>0){ 
+          document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
+      }
+      else { 
+          document.getElementById('ator1').value = parseFloat((document.getElementById('ator2').value) / 3.3058).toFixed(2);
+      }
+    }
 </script>
 <!-- 평수 계산기 끝-->
 <script>
@@ -692,32 +695,77 @@ var btnn1;
 <script>
 // 관리비 
     $("input#main_input").click(function() {
-    	   if ($("#main_input:checked").val() == "main_input") // 비활성화
-    	   {
-    	    $("input#main_pr_v1").attr("disabled", true); 
-    	   }
-    	   else // 활성화
-    	   {
-    	    $("input#main_pr_v1").removeAttr("disabled");
-    	   }   
-    	  });
+           if ($("#main_input:checked").val() == "main_input") // 비활성화
+           {
+            $("input#main_pr_v1").attr("disabled", true); 
+           }
+           else // 활성화
+           {
+            $("input#main_pr_v1").removeAttr("disabled");
+           }   
+          });
 </script>
 
 <script>
     // 관리비 옵션
     $("input#user_input").click(function() {
-    	   if ($("#user_input:checked").val() == "user_input") // 비활성화
-    	   {
-       	    $("input#main_pr_v1").removeAttr("disabled");
-    	    $("input#main_input").removeAttr("checked");
-    	   }
-    	   else // 활성화
-    	   {
-       	    $("input#main_pr_v1").attr("disabled", true); 
-    	    $("input#main_input").attr("checked", true); 
-    	   }   
-    	  });
+           if ($("#user_input:checked").val() == "user_input") // 비활성화
+           {
+            $("input#main_pr_v1").removeAttr("disabled");
+            $("input#main_input").removeAttr("checked");
+           }
+           else // 활성화
+           {
+            $("input#main_pr_v1").attr("disabled", true); 
+            $("input#main_input").attr("checked", true); 
+           }   
+          });
 </script>
+<script type="text/javascript">
+        $(function() {
+            // `on`함수는 앞으로 추가될 요소와
+            // 처음부터 존재하고 있는 요소 모두에게 이벤트를 적용한다.
+            $(document).on("click", ".addd", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾는다.
+                var item = $(this).parents('.d_div');
+                // 찾은 요소를 복제한다.
+                var clone = item.clone();
+                // 복제된 요소를 item 다음에 삽입한다.
+                clone.insertAfter(item);
+            });
+
+            $(document).on("click", ".addd1", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾는다.
+                var item = $(this).parents('.d_div1');
+                // 찾은 요소를 복제한다.
+                var clone = item.clone();
+                // 복제된 요소를 item 다음에 삽입한다.
+                clone.insertAfter(item);
+            });
+
+            $(document).on("click", ".addd2", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾는다.
+                var item = $(this).parents('.d_div2');
+                // 찾은 요소를 복제한다.
+                var clone = item.clone();
+                // 복제된 요소를 item 다음에 삽입한다.
+                clone.insertAfter(item);
+            });
+
+            $(document).on("click", ".remove", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
+                $(this).parents('.d_div').remove();
+            });
+            $(document).on("click", ".remove", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
+                $(this).parents('.d_div1').remove();
+            });
+            $(document).on("click", ".remove", function() {
+                // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
+                $(this).parents('.d_div2').remove();
+            });
+        });
+    </script>
 
 </body>
 </html>
