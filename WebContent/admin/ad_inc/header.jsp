@@ -90,21 +90,22 @@ body {
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
-		<a href="../main/ma_main.jsp"><img src="../assets/ico/logo_white.png"></a>
+		<a href="${pageContext.request.contextPath}/index.jsp">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png">
+		</a>
 		<div class="menu-left small-font">
-			<a href="../main/ma_main.jsp">회원 사이트</a>
+			<a href="${pageContext.request.contextPath}/index.jsp">회원 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="ad_userli.jsp" class="padding-l">회원관리</a> <a
-					href="ad_rmli.jsp" class="padding-l">방관리</a>
+				<a href="${pageContext.request.contextPath}/admin/ad_userli.jsp" class="padding-l">회원관리</a> <a
+					href="${pageContext.request.contextPath}/admin/ad_rmli.jsp" class="padding-l">방관리</a>
 				<div class="dropdown">
-					<a href="ad_faq.jsp" data-toggle="dropdown" class="padding-l">문의관리</a>
-					<ul class="dropdown-menu" role="menu"
-						aria-labelledby="dropdownMenu1">
-						<li><a id="sidefont" href="ad_faq.jsp">자주묻는질문</a></li>
-						<li><a id="sidefont" href="ad_notice.jsp">공지사항</a></li>
+					<a href="${pageContext.request.contextPath}/admin/ad_faq.jsp" data-toggle="dropdown" class="padding-l">문의관리</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/ad_faq.jsp">자주묻는질문</a></li>
+						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/ad_notice.jsp">공지사항</a></li>
 					</ul>
 				</div>
 			</div>

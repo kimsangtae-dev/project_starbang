@@ -76,22 +76,23 @@
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
-		<a href="ma_main.jsp"><img src="../assets/ico/logo_blue.png"></a>
+		<a href="${pageContext.request.contextPath}/index.jsp">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png">
+		</a>
 		<div class="menu-left small-font">
-			<a href="../host/ho_main.jsp">방주인 사이트</a>
+			<a href="${pageContext.request.contextPath}/host/ho_main.jsp">방주인 사이트</a>
+			<span> | </span>
+			<a href="${pageContext.request.contextPath}/admin/ad_main.jsp">관리자 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="ma_search.jsp">방찾기</a> <a href="ma_rtrm.jsp"
-					class="padding-l">관심목록</a> <a href="ma_faq.jsp" class="padding-l">문의하기</a>
-				<a href="ma_pprm.jsp" class="padding-l">인기매물</a>
+				<a href="${pageContext.request.contextPath}/main/ma_search.jsp">방찾기</a> 
+				<a href="${pageContext.request.contextPath}/main/ma_rtrm.jsp" class="padding-l">관심목록</a> 
+				<a href="${pageContext.request.contextPath}/main/ma_faq.jsp" class="padding-l">문의하기</a>
+				<a href="${pageContext.request.contextPath}/main/ma_pprm.jsp" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
-				<%-- <a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a> --%>
-				<%-- <c:url value="${contextPath}/assets/modal/ma_login.jsp"
-					class="padding-l" data-toggle="modal" data-target="#loginModal">
-				</c:url> --%>
 				<a href="${pageContext.request.contextPath}/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
 		</div>

@@ -165,32 +165,30 @@ a:focus {
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="../main/ma_main.jsp" class="header-div1-a"><img
-			src="../assets/ico/logo_white.png"></a>
+		<a href="${pageContext.request.contextPath}/index.jsp" class="header-div1-a">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
 		<div class="header-div2">
-			<!-- <a href="../main/ma_main.html" class="header-div1-a"><img src="../assets/ico/logo_white.png"></a>
-                        <div class="header-div2"><a href="../main/ma_main.jsp">회원사이트</a></div> -->
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="ho_rm_add.jsp">공실 등록하기</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/ho_rm_add.jsp">공실 등록하기</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="ho_rmli.jsp">공실관리</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/ho_rmli.jsp">공실관리</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a href="<%=request.getContextPath()%>/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal"
+						<a href="${pageContext.request.contextPath}/assets/modal/ma_login.jsp" class="padding-l" data-toggle="modal"
 							data-target="#loginModal">로그인</a>
 					</p>
 				</li>
 			</ul>
 
 			
-			<!-- 드롭박스 -->
+			<!-- 드롭박스 로그인 전환기능 구현 예정 -->
 			<!-- <ul class="header-dropbox">
 				<li>김기홍 님<svg width="8" height="5" viewBox="0 0 8 5">
                                 <path fill="#fff" fill-rule="evenodd"
@@ -206,6 +204,8 @@ a:focus {
 					<button class="header-dropbox-li3">로그아웃</button>
 				</li>
 			</ul> -->
+			
+			
 		</div>
 	</div>
 </nav>
