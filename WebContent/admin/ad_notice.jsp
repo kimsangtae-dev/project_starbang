@@ -32,8 +32,8 @@
 							</span>
 						</div>
 						<div class="adm-btn pull-right">
-							<input type="button" name="" class="btn btn-default" value="글쓰기">
-							<input type="button" name="" class="btn btn-default" value="글수정">
+							<input type="button" name="" class="btn btn-default" value="글쓰기" onclick="location.href='ad_write.jsp'">
+							<input type="button" name="" class="btn btn-default" value="글수정" onclick="location.href='ad_edit.jsp'">
 							<input type="button" name="" class="btn btn-primary" value="글삭제">
 						</div>
 					</div>

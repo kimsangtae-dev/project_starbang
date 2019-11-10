@@ -422,7 +422,8 @@ form.loc_div {
     height: 22px;
     position: relative;
     cursor: pointer;
-    left: 100px;
+    left: 15px;
+    top: 7px;
 }
 
 .deal_check_box > .CheckBox {
@@ -436,7 +437,7 @@ form.loc_div {
 }
 
 /* 거래정보 종류 선택 */
-.deal_btn {
+.deal_btn, .deal_btn1, .deal_btn2 {
     float: left;
     width: 100px;
     height: 40px;
@@ -454,7 +455,11 @@ form.loc_div {
 }
 
 /* 거래정보 위치 속성 */
-.deal_btn + button {
+.deal_btn, .deal_btn1, .deal_btn2 + button {
+    margin-left: 10px;
+}
+
+button.deal_btn2 {
     margin-left: 10px;
 }
 
@@ -496,6 +501,8 @@ form.loc_div {
     height: 20px;
     line-height: 46px;
     user-select: none;
+    position: relative;
+    bottom: 30px;
 }
 
 .deal_text1 > span {
@@ -1133,4 +1140,40 @@ select {
     content: "";
     clear: both;
 }
+
+
+
+button {
+    -webkit-appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}
+
+.remove {
+	position: absolute;
+	top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+
+
 

@@ -135,15 +135,14 @@
                            <tr class="hide_box">
                            <th rowspan="2">거래 종류</th>
                             <td class="iFmBhb">
-                                <div class="d_div">
+                                <!-- <div class="d_div">
                                     <p class="bbtn">월세</p>
                                     <input class="d_input_box1 d_input_box2" type="text" name="보증금">
                                     <p class="midle_box">/</p>
                                     <input class="d_input_box1 d_input_box2" type="text" name="월세">
                                     <p class="dp_text">만원
                                     <span>(예 월세 1000만원/50만원)</span>
-                                    <button type='button' class='addd'>+</button>
-                                    <button type='button' class='remove'>-</button>
+                                    <button type='button' class='remove'></button>
                                 </p>
                                 </div>
                                 <div class="d_div1">
@@ -151,8 +150,7 @@
                                     <input class="d_input_box1 d_input_box2" type="text" name="전세">
                                     <p class="dp_text">만원
                                     <span>(예 전세 2000만원)</span>
-                                    <button type='button' class='addd1'>+</button>
-                                    <button type='button' class='remove'>-</button>
+                                    <button type='button' class='remove'>x</button>
                                     </p>
                                 </div>
                                 <div class="d_div2">
@@ -160,22 +158,19 @@
                                     <input class="d_input_box1 d_input_box2" type="text" name="전세">
                                     <p class="dp_text">만원
                                     <span>(예 매매 10000만원)</span>
-                                    <button type='button' class='addd2'>+</button>
-                                    <button type='button' class='remove'>-</button>
+                                    <button type='button' class='remove'>x</button>
                                     </p>
-                                </div>
+                                </div> -->
                             </td>
                             </tr>
                             <tr>
                                 <td class="deal_box_pd">
-                                    <button type='button' class="deal_btn">월세</button>
-                                    <button type='button' class="deal_btn">전세</button>
-                                    <button type='button' class="deal_btn">매매</button>
-                                    <div class="deal_shot">
+                                    <button type='button' class='deal_btn'>월세</button>
+                                    <button type='button' class='deal_btn1'>전세</button>
+                                    <button type='button' class='deal_btn2'>매매</button>
                                         <label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
                                             <span class="deal_text">단기가능</span>
                                         </label>
-                                    </div>
                                     <p class="deal_text1">
                                         <span class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span>처음에 선택한 거래 종류가 우선노출됩니다.</span>
@@ -725,31 +720,19 @@ var btnn1;
         $(function() {
             // `on`함수는 앞으로 추가될 요소와
             // 처음부터 존재하고 있는 요소 모두에게 이벤트를 적용한다.
-            $(document).on("click", ".addd", function() {
-                // 클릭된 버튼 상위요소인 `.item`찾는다.
-                var item = $(this).parents('.d_div');
-                // 찾은 요소를 복제한다.
-                var clone = item.clone();
-                // 복제된 요소를 item 다음에 삽입한다.
-                clone.insertAfter(item);
+            $(document).on("click", ".deal_btn", function() {
+                var ad = '<div class="d_div"><p class="bbtn">월세</p><input class="d_input_box1 d_input_box2" type="text" name="보증금"><p class="midle_box">/</p><input class="d_input_box1 d_input_box2" type="text" name="월세"><p class="dp_text">만원<span>(예 월세 1000만원/50만원)</span><button type="button" class="remove">-</button></p></div>';
+            $(".iFmBhb").append(ad);
             });
 
-            $(document).on("click", ".addd1", function() {
-                // 클릭된 버튼 상위요소인 `.item`찾는다.
-                var item = $(this).parents('.d_div1');
-                // 찾은 요소를 복제한다.
-                var clone = item.clone();
-                // 복제된 요소를 item 다음에 삽입한다.
-                clone.insertAfter(item);
+            $(document).on("click", ".deal_btn1", function() {
+                var bc = '<div class="d_div1"><p class="bbtn">전세</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 전세 2000만원)</span><button type="button" class="remove">-</button></p></div>';
+            $(".iFmBhb").append(bc);
             });
 
-            $(document).on("click", ".addd2", function() {
-                // 클릭된 버튼 상위요소인 `.item`찾는다.
-                var item = $(this).parents('.d_div2');
-                // 찾은 요소를 복제한다.
-                var clone = item.clone();
-                // 복제된 요소를 item 다음에 삽입한다.
-                clone.insertAfter(item);
+            $(document).on("click", ".deal_btn2", function() {
+                var cd = '<div class="d_div2"><p class="bbtn">매매</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 매매 10000만원)</span><button type="button" class="remove">-</button></p></div>';
+            $(".iFmBhb").append(cd);
             });
 
             $(document).on("click", ".remove", function() {
