@@ -423,7 +423,7 @@ form.loc_div {
     position: relative;
     cursor: pointer;
     left: 15px;
-    top: 7px;
+    top: 9px;
 }
 
 .deal_check_box > .CheckBox {
@@ -464,6 +464,18 @@ button.deal_btn2 {
 }
 
 /* 단기가능 체크박스 */
+.short {
+	width: 680px;
+	height:30px;
+	float: right;
+}
+
+.short > lebel {
+	position: relative;
+}
+
+
+
 .deal_shot {
     position: absolute;
     top: 50%;
@@ -502,7 +514,7 @@ button.deal_btn2 {
     line-height: 46px;
     user-select: none;
     position: relative;
-    bottom: 30px;
+    bottom: 25px;
 }
 
 .deal_text1 > span {
@@ -1046,6 +1058,7 @@ select {
     font-size: 15px;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(204, 204, 204);
+    cursor: pointer;
 }
 
 .low_btn2 {
@@ -1057,6 +1070,7 @@ select {
     font-size: 15px;
     background-color: rgb(26, 90, 232);
     border-width: 0px;
+    cursor: pointer;
 }
 
 /* 월세, 전세, 매매 박스  */
@@ -1175,5 +1189,14 @@ button {
     transform: translateY(-50%);
 }
 
+.short {
+	width: 680px;
+	height:30px;
+	float: right;
+}
+
+.short > lebel {
+	position: relative;
+}
 
 

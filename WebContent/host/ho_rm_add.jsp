@@ -168,6 +168,7 @@
                                     <button type='button' class='deal_btn'>월세</button>
                                     <button type='button' class='deal_btn1'>전세</button>
                                     <button type='button' class='deal_btn2'>매매</button>
+                                    <div class="short">
                                         <label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_lease" value=""><span class="CheckBox"></span>
                                             <span class="deal_text">단기가능</span>
                                         </label>
@@ -175,6 +176,7 @@
                                         <span class="glyphicon glyphicon-exclamation-sign"></span>
                                         <span>처음에 선택한 거래 종류가 우선노출됩니다.</span>
                                     </p>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -536,8 +538,8 @@
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
             </label>
-            <button class="low_btn1">취소</button>
-            <button class="low_btn2">매물등록</button>
+            <button type="button" class="low_btn1">취소</button>
+            <button type="button" class="low_btn2">매물등록</button>
         </div>
 </div><!-- content끝 -->
 
@@ -643,11 +645,11 @@ $(function() {
 <!-- 공급면적 평수 계산기 -->
 <script>
 function calculator(chk){
-      if(chk>0){ 
+      if(chk==1){  
           document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
       }
       else { 
-          document.getElementById('pyeong1').value = parseFloat((document.getElementById('pyeong2').value) / 3.3058).toFixed(2);
+          document.getElementById('pyeong1').value = parseInt((document.getElementById('pyeong2').value) / 3.3058);
       }
     }
 </script>
@@ -655,11 +657,11 @@ function calculator(chk){
 <!-- 전용면적 평수 계산기 -->
 <script>
 function ator(chk){
-      if(chk>0){ 
+      if(chk==1){ 
           document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
       }
       else { 
-          document.getElementById('ator1').value = parseFloat((document.getElementById('ator2').value) / 3.3058).toFixed(2);
+          document.getElementById('ator1').value = parseInt((document.getElementById('ator2').value) / 3.3058);
       }
     }
 </script>
