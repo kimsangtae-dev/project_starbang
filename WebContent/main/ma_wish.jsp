@@ -91,7 +91,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
@@ -150,7 +150,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
@@ -180,7 +180,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
@@ -210,7 +210,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
@@ -240,7 +240,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
@@ -270,7 +270,7 @@
 				<!-- 전체클릭 가능하도록 만드는 a태그 -->
 				<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a" href="ma_rmdt.jsp">
 					<div class="gallery-d2-pic"></div>
-					<div class="gallery-d2-conform">
+					<div class="gallery-d2-confirm">
 						<div class="gallery-d3-confirm" type="confirm">
 							<span>확인매물</span>
 							<font>19.10.11</font>
