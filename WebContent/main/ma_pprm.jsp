@@ -39,7 +39,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="hit-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -70,7 +70,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="hit-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -101,7 +101,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="hit-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -132,7 +132,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="상세페이지로이동">
+                  <a target="_blank" rel="" class="hit-a" href="ma_rmdt.jsp">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
