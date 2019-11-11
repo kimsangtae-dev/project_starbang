@@ -400,6 +400,8 @@
 					gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
 					gumark += '<div class="gu-count">' + 500 + '</div>';
 					gumark += '<div class="gu-name">' + guPositions[i].guName + '</div>';
+					gumark += '<span id="lat" style="display:none;">' + guPositions[i].lat + '</span>';	// 해당 구의 위도 저장
+					gumark += '<span id="lng" style="display:none;">' + guPositions[i].lng + '</span>';	// 해당 구의 경도 저장
 					gumark += '</div>';
 					var customOverlay = new kakao.maps.CustomOverlay({
 						position : new kakao.maps.LatLng(guPositions[i].lat,
@@ -408,13 +410,27 @@
 						content : gumark,
 						zIndex : 3
 					});
-					customOverlay.setMap(map);
+					//customOverlay.setMap(map);
+					// 지도 레벨에 따라 마커 생성/제거 
+					var changeGuMarker = function(){
+					    var level = map.getLevel();
+
+					    if (8 <= level) {
+					    	customOverlay.setMap(map);
+					    } else if (1 <= level && level <= 7) {
+					    	customOverlay.setMap(null);
+					    }
+					};
+					
+					kakao.maps.event.addListener(map, 'zoom_changed', changeGuMarker);
+					changeGuMarker();
+					
 					var a = guPositions[i].lat;
 					$("#gu-marker" + i).click(function() {
 						var poslat = $(this).children("#lat").html();
 						var poslng = $(this).children("#lng").html();
 						map.setCenter(new kakao.maps.LatLng(poslat, poslng));
-						map.setLevel(map.getLevel() - 1, {animate: true});
+						map.setLevel(map.getLevel() - 2, {animate: true});
 					});
 				}
 			});
