@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-body > div { height: 100%; overflow: hidden; }
+body > div { height: 100%; overflow-y: hidden; }
 
 /* 화면 크기에 따른 갤러리와 지도 크기 조정 */
 @media (max-width: 1699px) {

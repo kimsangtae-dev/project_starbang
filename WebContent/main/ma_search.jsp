@@ -202,29 +202,6 @@
 						<!-- 갤러리 내용 영역 -->
 						<div class="gallery-content clearfix">
 							<ul id="gallery-list">
-								<li>
-									<div class="recent-div5">
-										<div class="recent-div6">
-											<div class="recent-div7">
-												<div class="recent-div8 off" data-value="on"></div>
-											</div>
-											<a target="_blank" rel="" class="recent-a" href="상세페이지로이동">
-												<div class="recent-a-div"></div>
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span class="confirm-date">19.11.01</span>
-													</div>
-												</div>
-												<p class="recent-a-p1">투룸</p>
-												<p class="recent-a-p2">
-													<span>월세 100/10</span>
-												</p>
-												<p class="recent-a-p34">2층, 35m², 관리비 6만</p>
-												<p class="recent-a-p34">💖작은방넓어요+식탁놓을공간있어요💖신축 풀옵투룸 첫입주💖</p>
-											</a>
-										</div>
-									</div>
-								</li>
 							</ul>
 						</div>
 						<!-- 갤러리 내용 영역 -->
@@ -287,12 +264,6 @@
 				contentSize();
 			});
 		});
-
-		$(function() {
-			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('on off');
-			});
-		});
 	</script>
 <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
 	<script src="../assets/plugin/handlebars-v4.0.11.js"></script>
@@ -341,7 +312,10 @@
 				/* 조건에 맞는 방 개수 */
 				var n = $(".recent-div5").length;
 				$(".room-count").html(n);
-				//alert(req.gallery[0].confirm);
+				
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+				});
 			});
 		}
 		// 페이지가 열림과 동시에 호출
