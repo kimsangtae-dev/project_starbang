@@ -302,7 +302,6 @@
 	</script>
 	<script type="text/javascript">
 		/* gallery.json을 가져와 화면에 출력 */
-		/*** 좋아요 toggle이 안됨! 해결하기 ***/
 		function get_gallery() {
 			$.get('ma_assets/gallery.json', function(req) {
 				var template = Handlebars.compile($("#gallery-data").html());
@@ -330,7 +329,7 @@
 		$(function() {
 			var container = document.getElementById('map');
 			var options = {
-				center : new kakao.maps.LatLng(37.5642135, 127.0243207), // 지도의 중심 좌표
+				center : new kakao.maps.LatLng(37.5642135, 126.9743207), // 지도의 중심 좌표
 				level : 9,
 				maxLevel : 9
 			// 지도 확대 레벨
@@ -380,7 +379,7 @@
 				    if (1 <= level && level <= 7) {
 				    	clusterer.addMarkers(markers);
 				    } else if (8 <= level && level <= 10) {
-				    	clusterer.removeMarkers( markers );
+				    	clusterer.removeMarkers(markers);
 				    }
 				};
 
@@ -390,6 +389,11 @@
 				kakao.maps.event.addListener( clusterer, 'clusterclick', function( cluster ) {
 				    console.log( cluster.getMarkers() );
 				});
+				
+				kakao.maps.event.addListener( clusterer, 'clusterover', function( cluster ) {
+				    console.log( cluster.getBounds() );
+				});
+			
 			}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
@@ -410,29 +414,24 @@
 						content : gumark,
 						zIndex : 3
 					});
-					//customOverlay.setMap(map);
-					// 지도 레벨에 따라 마커 생성/제거 
-					var changeGuMarker = function(){
-					    var level = map.getLevel();
-
-					    if (8 <= level) {
-					    	customOverlay.setMap(map);
-					    } else if (1 <= level && level <= 7) {
-					    	customOverlay.setMap(null);
-					    }
-					};
+					customOverlay.setMap(map);
 					
-					kakao.maps.event.addListener(map, 'zoom_changed', changeGuMarker);
-					changeGuMarker();
-					
-					var a = guPositions[i].lat;
+					// 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
 					$("#gu-marker" + i).click(function() {
 						var poslat = $(this).children("#lat").html();
 						var poslng = $(this).children("#lng").html();
 						map.setCenter(new kakao.maps.LatLng(poslat, poslng));
 						map.setLevel(map.getLevel() - 2, {animate: true});
 					});
-				}
+					
+				} // end for
+				
+				$("#map > div > div > div > div").hover(function() {
+					$(this).css("z-index", "100");}, 
+				function() {
+					$(this).css("z-index", "0");
+				}); // end hover()
+			
 			});
 
 			// 검색값 가져와서 지도 위치 변경하기
@@ -490,8 +489,6 @@
 	<!-- 필터 -->
 	<script type="text/javascript">
 		/* 필터 -드롭다운 - 자동 toggle 해제 */
-		/* $(document).off(".data-api");
-		$(".dropdown-toggle").dropdown(); */
 		$('.dropdown-menu').click(function(e) {
 			e.stopPropagation();
 		})
