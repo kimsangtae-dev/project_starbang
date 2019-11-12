@@ -17,31 +17,6 @@
 	<!-- 상단 헤더 -->
 	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
 
-	<!-- <div id="bluebar">
-		별방 방찾기 상세페이지 헤더 시작
-		<div id="lol">
-			스크롤 발생 시 움직이는 파란색바 시작
-			<h1 class="textht pull-left texthth1">월세 200/30</h1>
-			<div class="recent-div8 on" data-value="off"></div>
-			<span class="cntlk">0</span>
-			<button class="icngbl ulcp">
-				<img src="./ma_assets/ma_img/whlink.png">
-			</button>
-			<button class="icngbl">
-				<img class="siren notce" src="./ma_assets/ma_img/whsiren.png">
-			</button>
-			<div id="plrt">
-				<span class="texthtlvc">방주인</span> <span class="textht skyblue lvc">
-					조수민님</span>
-				<button type="submit" class="textht inbl">
-					<span class="quest grml">문의하기</span>
-				</button>
-			</div>
-		</div>
-		스크롤 발생 시 움직이는 파란색바 끝
-	</div>
-	별방 방찾기 헤더 끝 -->
-
 	<!-- 중앙 영역 -->
 	<div id="content">
 		<!-- 전체 면적 설정 -->
@@ -155,9 +130,9 @@
 				<li></li>
 			</ul>
 		</div>
-		<!--방등록시 상세 옵션값들 끝-->
+		<!--방등록시 상세 옵션값들 끝 (원본)-->
 		<div id="bigview">
-			<!--매물 이미지 시작-->
+			<!-- 매물 이미지 시작  -->
 			<ul class="bigviewul">
 				<li class="bigviewigli"><a href="#"><img
 						src="../main/ma_assets/ma_img/roph01.jfif" /></a></li>
@@ -171,6 +146,7 @@
 						src="../main/ma_assets/ma_img/roph04.jfif" /></a></li>
 			</ul>
 		</div>
+
 		<div id="explanall">
 			<!--사용자 매물 설명 시작-->
 			<div id="bigexplan">
@@ -360,8 +336,10 @@
 			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
 
 			<!-- 맵 api 시작-->
-
-			<div id="map"></div>
+			
+			<div class="map-container">
+				<div id="map"></div>
+			</div>
 
 			<!-- 맵 api 끝-->
 			<!--위치 30미터 반경만 표시-->
@@ -376,6 +354,38 @@
 	<script src="../assets/js/jquery-3.2.1.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/plugin/sweetalert/sweetalert2.min.js"></script>
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
+	<script type="text/javascript">
+		/* kakao map API */
+		$(function() {
+			var container = document.getElementById('map');
+			var options = {
+				center : new kakao.maps.LatLng(37.5642135, 127.0243207), // 지도의 중심 좌표
+				level : 2
+			// 지도 확대 레벨
+			};
+
+			var map = new kakao.maps.Map(container, options);
+
+			var circle = new kakao.maps.Circle({
+				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다 
+				radius : 30, // 미터 단위의 원의 반지름입니다 
+				strokeWeight : 2, // 선의 두께입니다 
+				strokeColor : '#1564f9', // 선의 색깔입니다
+				strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+				strokeStyle : 'solid', // 선의 스타일 입니다
+				fillColor : '#1564f9', // 채우기 색깔입니다
+				fillOpacity : 0.3
+			// 채우기 불투명도 입니다   
+			});
+
+			// 지도에 원을 표시합니다 
+			circle.setMap(map);
+		})
+	</script>
+
 
 	<script>
 		$(function() {
@@ -543,64 +553,19 @@
 			$(window).scroll(
 					function() {
 						// 스크롤이 맨 끝에 도달했음을 감지하는 조건문
-						if ( $(window).scrollTop() > 700) {
-							console.log("끝에 도착함");
+						if ($(window).scrollTop() > 1078) {
 							$("#fxed").css("display", "block");
 							$("#simsim").css("display", "none");
-						}else {
+						} else {
 							$("#fxed").css("display", "none");
-							$("#simsim").css("display", "block" , "min-height", "100px");
+							$("#simsim").css("display", "block", "min-height",
+									"100px");
 						}
 					}); // end scroll
 		});
 	</script>
-	
-	<!-- /* $(window).scroll(function() {
-			//스크롤 이벤트 발생 시 
-			var contentHeight = $(window).height();
-			//content의 높이 변수 선언 
-			var scrollValue = $(window).scrollTop();
-			//현재 scroll 위치 변수 선언 
-			if (scrollValue > contentHeight) {
-				//현재 scroll 위치가 content의 높이보다 높을 경우
-				$("#fxed").css("display", "block");
-				//이벤트 stop 
-			} else {
-				$("#fxed").css("display", "none");
-				//button이 스크롤따라 움직임 
-			}
-		}); */ -->
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
-	<script type="text/javascript">
-		/* kakao map API */
-		$(function() {
-			var container = document.getElementById('map');
 
-			var options = {
-				center : new kakao.maps.LatLng(37.5025398, 127.0243207),
-				level : 2
-			};
-
-			var map = new kakao.maps.Map(container, options);
-
-			var circle = new kakao.maps.Circle({
-				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다 
-				radius : 30, // 미터 단위의 원의 반지름입니다 
-				strokeWeight : 2, // 선의 두께입니다 
-				strokeColor : '#1564f9', // 선의 색깔입니다
-				strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-				strokeStyle : 'solid', // 선의 스타일 입니다
-				fillColor : '#1564f9', // 채우기 색깔입니다
-				fillOpacity : 0.3
-			// 채우기 불투명도 입니다   
-			});
-
-			// 지도에 원을 표시합니다 
-			circle.setMap(map);
-		})
-	</script>
 
 </body>
 </html>

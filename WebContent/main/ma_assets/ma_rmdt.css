@@ -41,8 +41,9 @@ a {
 	width: 22px;
 	height: 22px;
 	position: relative;
-	bottom:-0.5px;
+	bottom: -0.5px;
 }
+
 .recent-div9.off {
 	background: url(ma_img/blacklv.svg) center center/cover;
 	display: inline-block;
@@ -56,8 +57,8 @@ a {
 /*좋아요 갯수 카운트 글씨 수정*/
 #lkct {
 	font-size: 16.5px;
-	position : relative;
-	bottom : 5px;
+	position: relative;
+	bottom: 5px;
 }
 
 /**상단의 매물종류(원룸) 위치 조정*/
@@ -72,27 +73,27 @@ a {
 .dotsize {
 	width: 5px;
 	height: 5px;
-	margin : 2px;
+	margin: 2px;
 	position: relative;
-	bottom : 5px;
+	bottom: 5px;
 }
 
 .linkimg {
-	padding:0px;
-	border-style:none;
-	background-color:white;
-	margin : 5px;
-	position:relative;
-	bottom : 4.5px;
+	padding: 0px;
+	border-style: none;
+	background-color: white;
+	margin: 5px;
+	position: relative;
+	bottom: 4.5px;
 }
 
 .notce {
-	padding:0px;
-	border-style:none;
-	background-color:white;
-	margin : 5px;
-	position:relative;
-	bottom : 4.5px;
+	padding: 0px;
+	border-style: none;
+	background-color: white;
+	margin: 5px;
+	position: relative;
+	bottom: 4.5px;
 }
 
 .linksize {
@@ -100,7 +101,7 @@ a {
 	height: 23px;
 }
 
-.siren{
+.siren {
 	width: 22px;
 	height: 22px;
 }
@@ -143,7 +144,7 @@ a {
 
 /**빌보드 차트 data1 안보이기*/
 .bb-legend-item {
-	display : none;
+	display: none;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active,
@@ -171,13 +172,14 @@ a {
 .mailsize {
 	width: 20px;
 	height: 20px;
-	position:relative;
+	position: relative;
 	right: 4.1px;
-	bottom : 1.3px;
+	bottom: 1.3px;
 }
+
 .que {
 	font-size: 14px;
-	color:black;
+	color: black;
 }
 /** 문의하기 버튼 */
 li .grml {
@@ -191,6 +193,7 @@ li .grml {
 	position: relative;
 	bottom: 10px;
 }
+
 .eTgAil {
 	width: 100%;
 	height: 36px;
@@ -303,6 +306,7 @@ p {
 	color: white;
 }
 
+/** 이미지 4개  & 이미지 모달*/
 .bigviewul {
 	width: 100%;
 	height: 480px;
@@ -332,10 +336,11 @@ p {
 	display: inline-block;
 }
 
+/** 이미지 부분 끝 */
 #explanall {
 	width: 1200px;
-	min-height: 260px; /*추가*/ 
-	padding-bottom : 130px; /*추가*/
+	min-height: 260px; /*추가*/
+	padding-bottom: 130px; /*추가*/
 	height: 210px;
 	margin: auto;
 	padding-bottom: 130px;
@@ -343,38 +348,40 @@ p {
 
 #bigexplan {
 	width: 600px;
-	min-height: 260px; /*추가*/ 
-	padding-bottom : 130px; /*추가*/
+	min-height: 260px; /*추가*/
+	padding-bottom: 130px; /*추가*/
 	float: left;
 }
 
 #smallexplan {
 	width: 600px;
-	min-height: 260px; /*추가*/ 
-	padding-bottom : 130px; /*추가*/
+	min-height: 260px; /*추가*/
+	padding-bottom: 130px; /*추가*/
 	float: left;
 }
 /*------------------------------------------------*/
-#smallexplan > div {
-   overflow: hidden;
-   /* -webkit-transition: all 0.5s;
+#smallexplan>div {
+	overflow: hidden;
+	/* -webkit-transition: all 0.5s;
    -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
    transition: height 400ms ease 0.5s !important; */
 }
-#smallexplan > div.explan-on {
-   height: auto;
-   /* -webkit-transition: all 0.5s;
+
+#smallexplan>div.explan-on {
+	height: auto;
+	/* -webkit-transition: all 0.5s;
    transition: height 400ms ease 0.5s;
    -moz-transition: all 0.5s;
     -o-transition: all 0.5s; */
 }
-#smallexplan > div.explan-off {
-   height: 130px;
-  /*  -webkit-transition: all 0.5s;
+
+#smallexplan>div.explan-off {
+	height: 130px;
+	/*  -webkit-transition: all 0.5s;
    transition: height 400ms ease 0.5s;
    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s; */ 
+    -o-transition: all 0.5s; */
 }
 /*------------------------------------------------*/
 .smexp {
@@ -386,8 +393,8 @@ p {
 }
 
 .jQYbpN {
-	position : relative;
-	top : 30px;
+	position: relative;
+	top: 30px;
 	color: rgb(20, 118, 252);
 	font-size: 15px;
 	border-style: none;
@@ -395,34 +402,22 @@ p {
 }
 
 .icngbl:focus {
-	outline:none;
+	outline: none;
 }
 
 /*--- 움직이는 스크롤 헤더 시작 ---*/
 
 /**블루바 새롭게 만듦*/
 #bbblue {
-	min-width:2600px;
-	height:90px;
-	background:rgb(20, 118, 252);
+	min-width: 2600px;
+	height: 90px;
+	background: rgb(20, 118, 252);
 	position: relative;
-    right: 650px;
+	right: 650px;
 }
 
-/* #bluebar {
-	margin: auto;
-	width: 100%;
-	box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 7px 0px, rgba(0, 0, 0, 0.08) 0px
-		2px 2px 0px;
-	background-color: rgb(20, 118, 252);
-	position: fixed;
-	z-index: 3;
-	transition: top 0.2s ease-in-out;
-	display : none;
-} */
-
 .blicose {
-	margin : 1px;
+	margin: 1px;
 }
 
 /**-----------------
@@ -430,13 +425,15 @@ p {
 ---------------------
 */
 #fxed {
-	margin : auto;
+	margin: auto;
 	position: fixed;
-	bottom: 500px;
+	top: 0px;
 	z-index: 3;
-	display:none;
-	visibility : visible;
-	-webkit-transition:all 0.2s ease-in;
+	display: none;
+	visibility: visible;
+	-webkit-transition: all 0.2s ease-in;
+}
+
 }
 /**-----------------
 	블루바 고정작업 끝
@@ -445,9 +442,9 @@ p {
 
 /*파란색 헤더 하트 토글*/
 .recent-div8 {
-	margin-left:20px;
-	position:relative;
-	top:30px;
+	margin-left: 20px;
+	position: relative;
+	top: 30px;
 	width: 30px;
 	height: 30px;
 }
@@ -455,15 +452,25 @@ p {
 .recent-div8.off {
 	background: url(ma_img/like-on.svg) center center/cover;
 	display: inline-block;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: 27px;
+	left: 10px;
 }
 
 .recent-div8.on {
+	width: 30px;
+	height: 30px;
 	background: url(ma_img/like.svg) center center/cover;
 	display: inline-block;
+	position: relative;
+	top: 27px;
+	left: 10px;
 }
 
 .cntlk {
-	color : white;
+	color: white;
 	margin: 10px;
 	position: relative;
 	top: 20px;
@@ -471,7 +478,7 @@ p {
 
 #lol {
 	width: 1200px;
-	margin : auto;
+	margin: auto;
 }
 
 .lvc {
@@ -491,22 +498,22 @@ p {
 	text-align: center;
 }
 
-.icngbl{
-	background-color:rgb(20, 118, 252);
-	border-style:none;
+.icngbl {
+	background-color: rgb(20, 118, 252);
+	border-style: none;
 }
 
 .texthtlvc {
 	color: white;
 }
 
-.icngbl > img {
-	background-color:rgb(20, 118, 252);
-	margin : 4px;
+.icngbl>img {
+	background-color: rgb(20, 118, 252);
+	margin: 4px;
 	width: 26.5px;
 	height: 26.5px;
-	position:relative;
-	top : 18px;
+	position: relative;
+	top: 18px;
 }
 
 .linksize1 {
@@ -539,7 +546,7 @@ p {
 
 /**버튼 클릭하면 생기는 하늘색 테두리 지움*/
 .textht:focus {
-	outline:none;
+	outline: none;
 }
 
 .quest {
@@ -665,7 +672,7 @@ p {
 	height: 50px;
 	text-align: center;
 	border-right: 1px solid rgb(238, 238, 238);
-} 
+}
 /*중앙에만 보더*/
 .bdlnth:last-child {
 	border-style: none;
@@ -807,4 +814,37 @@ p {
 	margin: 0px auto;
 	background: url(../../assets/ico/dtoption/desk.svg) no-repeat;
 }
-/* option 이미지들 �
+/** 지도 */
+.fIqmuM {
+	color: rgb(34, 34, 34);
+	font-size: 28px;
+	font-weight: 400;
+	text-align: center;
+	line-height: 41px;
+	position: relative;
+	z-index: 0;
+}
+
+.hwnvlX {
+	color: rgb(102, 102, 102);
+	font-size: 15px;
+	line-height: 22px;
+	text-align: center;
+	margin: 3px 0px 27px;
+}
+
+.map-container {
+    /* position: absolute;
+    top: 0px;
+    right: 0px; */
+    /* bottom: 0px; */
+    margin:auto;
+    z-index: 2;
+    overflow: hidden;
+    width:800px;
+    height:400px;
+}
+#map {
+    width: 100%;
+    height: 100%;
+}
