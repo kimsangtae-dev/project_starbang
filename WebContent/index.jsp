@@ -61,7 +61,7 @@
             <div class="slide-div3 slider regular" style="right: 0px;">
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                  <div class="slide-a-div1">
                    <div class="slide-a-div1-up1"></div>
                    <div class="slide-a-div1-down">
@@ -73,7 +73,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up2"></div>
                     <div class="slide-a-div1-down">
@@ -85,7 +85,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up3"></div>
                     <div class="slide-a-div1-down">
@@ -97,7 +97,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up4"></div>
                     <div class="slide-a-div1-down">
@@ -109,7 +109,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up5"></div>
                     <div class="slide-a-div1-down">
@@ -121,7 +121,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up6"></div>
                     <div class="slide-a-div1-down">
@@ -135,7 +135,7 @@
               </div>
               
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up7"></div>
                     <div class="slide-a-div1-down">
@@ -148,7 +148,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up8"></div>
                     <div class="slide-a-div1-down">
@@ -160,7 +160,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/ma_search.jsp">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up9"></div>
                     <div class="slide-a-div1-down">
