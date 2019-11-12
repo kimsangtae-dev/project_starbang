@@ -32,7 +32,7 @@
                 </div>
                 <ul class="sell_info_box">
                     <li>등록한 매물은 30일 동안 노출됩니다.</li>
-                    <li>일반 회원은 1개의 매물만 내놓을 수 있고, 직거래로 표시됩니다.</li>
+                    <li>좋아요를 많이 받은 방은 인기매물에 등록됩니다.</li>
                 </ul>
                 <div class="tableframe" name="roomType">
                 <!-- 매물종류 -->
@@ -132,9 +132,9 @@
                     <h1>거래 정보</h1>
                     <table>
                         <tbody>
-                           <tr class="hide_box">
+                           <tr class="hide_box removing">
                            <th rowspan="2">거래 종류</th>
-                            <td class="iFmBhb">
+                            <td class="deal77">
                                 <!-- <div class="d_div">
                                     <p class="bbtn">월세</p>
                                     <input class="d_input_box1 d_input_box2" type="text" name="보증금">
@@ -143,6 +143,7 @@
                                     <p class="dp_text">만원
                                     <span>(예 월세 1000만원/50만원)</span>
                                     <button type='button' class='remove'></button>
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </p>
                                 </div>
                                 <div class="d_div1">
@@ -511,18 +512,21 @@
                 <div class="photo_btn">
                     <button class="photo_btn1" disabled>일반사진</button>
                 </div>
-                <div class="photo_info">
+                <div class="pic_info">
                     <p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
                     <p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-                    <div class="photo_pic1"></div>
+                    </div>
+                    <div class="photo_info">
+                    <!-- <div class="photo_pic1"></div> -->
                     <div class="photo_pic2">
                         <span class="glyphicon glyphicon-picture"></span>
                         <p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
                         <!-- <p class="red_font">다방 로고를 제외한 불필요한 정보(워터마크, 상호, 전화번호 등)가 있는 매물은 비공개 처리 됩니다.</p> -->
                     </div>
                     <div class="filebox">
+                    <form method="post" action="..." enctype="multipart/form-data">
                         <label for="ex_file">사진등록</label>
-                        <input type="file" id="ex_file" accept=".jpg,.jpeg,.png"></div>
+                         <input type="file" id="ex_file" accept=".jpg,.jpeg,.png" maxlength="15"/></form></div>
                 </div>
                 <p class="warning_text">
                     <span class="glyphicon glyphicon-exclamation-sign"></span>
@@ -718,39 +722,44 @@ var btnn1;
            }   
           });
 </script>
-<script type="text/javascript">
+<!-- 월세, 전세, 매매 버튼 활성화 -->
+<script>
         $(function() {
-            // `on`함수는 앞으로 추가될 요소와
-            // 처음부터 존재하고 있는 요소 모두에게 이벤트를 적용한다.
+            // 월세 버튼
             $(document).on("click", ".deal_btn", function() {
-                var ad = '<div class="d_div"><p class="bbtn">월세</p><input class="d_input_box1 d_input_box2" type="text" name="보증금"><p class="midle_box">/</p><input class="d_input_box1 d_input_box2" type="text" name="월세"><p class="dp_text">만원<span>(예 월세 1000만원/50만원)</span><button type="button" class="remove">-</button></p></div>';
-            $(".iFmBhb").append(ad);
+                var ad = '<div class="d_div"><p class="bbtn">월세</p><input class="d_input_box1 d_input_box2" type="text" name="보증금"><p class="midle_box">/</p><input class="d_input_box1 d_input_box2" type="text" name="월세"><p class="dp_text">만원<span>(예 월세 1000만원/50만원)</span><span class="glyphicon glyphicon-remove pp"></span></p></div>';
+            $(".deal77").append(ad);
             });
-
+            // 전세 버튼
             $(document).on("click", ".deal_btn1", function() {
-                var bc = '<div class="d_div1"><p class="bbtn">전세</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 전세 2000만원)</span><button type="button" class="remove">-</button></p></div>';
-            $(".iFmBhb").append(bc);
-            });
-
+                var bc = '<div class="d_div1"><p class="bbtn">전세</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 전세 2000만원)</span><span class="glyphicon glyphicon-remove pp1"></span></p></div>';
+                $(".deal77").append(bc);
+                $(".deal_btn1").attr("disabled", true);
+             });
+            // 매매 버튼
             $(document).on("click", ".deal_btn2", function() {
-                var cd = '<div class="d_div2"><p class="bbtn">매매</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 매매 10000만원)</span><button type="button" class="remove">-</button></p></div>';
-            $(".iFmBhb").append(cd);
+                var cd = '<div class="d_div2"><p class="bbtn">매매</p><input class="d_input_box1 d_input_box2" type="text" name="전세"><p class="dp_text">만원<span>(예 매매 10000만원)</span><span class="glyphicon glyphicon-remove pp2"></span></p></div>';
+                $(".deal77").append(cd);
+                $(".deal_btn2").attr("disabled", true);
             });
-
-            $(document).on("click", ".remove", function() {
+            // 월세 버튼
+            $(document).on("click", ".pp", function() {
                 // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
                 $(this).parents('.d_div').remove();
             });
-            $(document).on("click", ".remove", function() {
+            // 전세 버튼            
+            $(document).on("click", ".pp1", function() {
                 // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
                 $(this).parents('.d_div1').remove();
+                $(".deal_btn1").removeAttr("disabled");
             });
-            $(document).on("click", ".remove", function() {
+            // 매매 버튼            
+            $(document).on("click", ".pp2", function() {
                 // 클릭된 버튼 상위요소인 `.item`찾아서 제거한다.
                 $(this).parents('.d_div2').remove();
+                $(".deal_btn2").removeAttr("disabled");
             });
         });
     </script>
-
 </body>
 </html>

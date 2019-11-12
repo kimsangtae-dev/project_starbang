@@ -14,8 +14,9 @@
 
 /* 사진등록의 사진아이콘 */
 .glyphicon-picture {
-    font-size: 50px;
-    padding-bottom: 45px;
+    font-size: 70px;
+    padding-bottom: 20px;
+    color: #777;
 }
 
 /* 위치정보의 아이콘 */
@@ -168,7 +169,6 @@ input, button, textarea {
 .sell_info_box {
     width: 100%;
     margin: 30px 0 30px 0;
-    
     padding: 21px 35px;
     border-radius: 4px;
     border: 1px solid rgb(226, 226, 226);
@@ -238,7 +238,7 @@ input, button, textarea {
 .loc_check_box {
     display: block;
     height: 22px;
-    padding-left: 23px;
+    padding-left: 10px;
     position: relative;
     cursor: pointer;
 }
@@ -247,7 +247,6 @@ input, button, textarea {
     float: left;
     width: 22px;
     height: 22px;
-    
     position: absolute;
     top: 0px;
     left: 0px;
@@ -281,7 +280,6 @@ input.address2 {
     display: blockl;
     width: 529px;
     height: 100px;
-    
     vertical-align: middle;
     padding: 20px 15px;
     border: 1px solid rgb(208, 210, 214);
@@ -325,7 +323,6 @@ form.loc_div {
     width: 100%;
 }
 
-
 /* 위치정보 동, 호 글씨 삽입 */
 .dong::after {
     content: "동";
@@ -342,7 +339,6 @@ form.loc_div {
     font-size: 14px;
     text-align: center;
     line-height: 44px;
-    box-sizing: border-box;
     position: absolute;
     border: 1px solid rgb(208, 210, 214);
     border-left: none;
@@ -368,6 +364,7 @@ form.loc_div {
 /* 체크박스 글씨위치 조정 */
 .ch_box_text {
     position: relative;
+    left: 13px;
     top: 3px;
 }
 
@@ -410,9 +407,7 @@ form.loc_div {
     clear: both;
 }
 
-.loc_fin {
-    padding: 20px;
-}
+.loc_fin { padding: 20px; }
 
 
 /************************************* 거래정보 *********************************/
@@ -420,6 +415,7 @@ form.loc_div {
 .deal_check_box {
     display: block;
     height: 22px;
+    width: 150px;
     position: relative;
     cursor: pointer;
     left: 15px;
@@ -448,6 +444,18 @@ form.loc_div {
     border-radius: 3px;
 }
 
+.deal_btn1:disabled {
+    color: rgb(170, 170, 170);
+    background-color: rgb(235, 235, 235);
+    border-color: rgb(204, 204, 204);
+}
+
+.deal_btn2:disabled {
+    color: rgb(170, 170, 170);
+    background-color: rgb(235, 235, 235);
+    border-color: rgb(204, 204, 204);
+}
+
 /* 거래정보 행박스 */
 .deal_box_pd {
     position: relative;
@@ -463,20 +471,20 @@ button.deal_btn2 {
     margin-left: 10px;
 }
 
+.removing {
+    height: 0 !important;
+}
+
 /* 단기가능 체크박스 */
 .short {
-	width: 680px;
-	height:30px;
-	float: right;
+    width: 680px;
+    height:30px;
+    float: right;
 }
 
-.short > lebel {
-	position: relative;
-}
+.short > lebel { position: relative; }
 
-
-
-.deal_shot {
+/* .deal_shot {
     position: absolute;
     top: 50%;
     left: 245px;
@@ -492,15 +500,16 @@ button.deal_btn2 {
     display: block;
     content: "";
     clear: both;
-}
+} */
 
 /* 단기가능 체크박스 글씨 */
 .deal_text {
     position: relative;
-    top: 2px;
+    top: 3px;
+    /* right: 10px; */
 }
 
-/* 거래종류 안내문 */
+/***** 거래종류 안내문 *****/
 /* 느낌표 아이콘 */
 .deal_text1 > span.glyphicon {
     font-size: 18px;
@@ -547,7 +556,6 @@ button.deal_btn2 {
 }
 
 /* 입주 가능일 탭 속성 */
-
 .in_date > input[type="radio"]:checked + p {
     color: rgb(255, 255, 255);
     background-color: rgb(26, 90, 232);
@@ -612,9 +620,8 @@ select {
     -webkit-appearance:none; /* Safari and Chrome */  
      appearance:none;
 }
- select::-ms-expand { display:none; } 
 
-
+select::-ms-expand { display:none; } 
 
 /* 입주가능일 버튼 마진 */
 .in_date + button {
@@ -673,7 +680,6 @@ select {
     top: 2px;
 }
 
-
 /** 체크박스 숨김 */
 .Square_box > input[type="radio"] {
     width: 1px;
@@ -698,7 +704,6 @@ select {
     margin-left: 15px;
 }
 
-
 /* 금액단위창 */
 .add3 {
     float: left;
@@ -706,6 +711,11 @@ select {
     color: rgb(34, 34, 34);
     font-size: 15px;
     line-height: 46px;
+}
+
+.add_info {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .add_info::after {
@@ -722,7 +732,6 @@ select {
     position: relative;
     left: 20px;
     top: 10px;
-    
 }
 .add_m {
     float: left;
@@ -736,13 +745,9 @@ select {
     line-height: 22px;
 }
 
-.add_m > p + p {
-    font-size: 14px;
-}
+.add_m > p + p { font-size: 14px; }
 
-.ma_box {
-    margin: 5px 10px 5px 0px;
-}
+.ma_box { margin: 5px 10px 5px 0px; }
 
 /* 관리비 항목 플룻 */
 .ma_m {
@@ -786,9 +791,7 @@ select {
 }
 
 /* 복층 선택박스 */
-.structure + label {
-    margin-left: 10px;
-}
+.structure + label { margin-left: 10px; }
 
 .structure > p {
     min-width: 82px;
@@ -811,7 +814,6 @@ select {
     top: 0px;
     left: 0px;
 }
-
 
 /*********************************** 상세설명 **********************************/
 
@@ -837,6 +839,7 @@ select {
     width: 100%;
     height: 230px;
     border: 1px solid rgb(208, 210, 214);
+    padding: 15px;
 }
 
 
@@ -847,7 +850,6 @@ select {
     width: 100%;
     margin-bottom: 50px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 5px 0px;
-    
     border-radius: 4px;
     border: 1px solid rgb(226, 226, 226);
     overflow: hidden;
@@ -891,6 +893,7 @@ select {
     margin: 15px 0px;
     border: 1px solid rgb(224, 224, 224);
     background-color: rgb(244, 244, 244);
+    min-height: 400px;
 }
 
 .photo_info > p {
@@ -923,10 +926,22 @@ select {
     line-height: 22px;
 }
 
-/* 사진등록 조건문 */
-.pic_tell {
-    padding-bottom: 20px;
+.pic_info {
+    width: 100%;
+    padding: 20px 30px;
+    margin: 15px 0px;
+    border: 1px solid rgb(224, 224, 224);
 }
+
+.pic_info > p {
+    height: 26px;
+    color: rgb(102, 102, 102);
+    font-size: 15px;
+    line-height: 26px;
+}
+
+/* 사진등록 조건문 */
+.pic_tell { padding-bottom: 40px; }
 
 .photo_pick::after {
     display: block;
@@ -944,7 +959,7 @@ select {
 .filebox label { 
     display: inline-block; 
     font-size: 14px;
-    padding: 20px 30px; 
+    padding: 15px 25px; 
     margin: 5px;
     color: rgb(255, 255, 255); 
     vertical-align: middle; 
@@ -954,12 +969,12 @@ select {
 } 
 
 .filebox input {
- position: absolute; 
- width: 1px; 
- height: 1px; 
- padding: 0; 
- margin: -1px; 
- overflow: hidden; 
+     position: absolute; 
+     width: 1px; 
+     height: 1px; 
+     padding: 0; 
+     margin: -1px; 
+     overflow: hidden; 
 } 
 
 /* 허위 매물 경고문 */
@@ -1078,14 +1093,23 @@ select {
 .iFmBhb {
     padding: 12px 20px;
     position: relative;
+}
+
+.deal77 {
+    position: relative;
     display: none;
 }
 
 .d_div, .d_div1, .d_div2  {
     height: 46px;
-    padding-left: 60px;
     position: relative;
     margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0px 70px;
+}
+
+.d_div:last-child {
+    padding-bottom: 10px;
 }
 
 .bbtn {
@@ -1099,9 +1123,9 @@ select {
     border-radius: 3px;
     background-color: rgb(97, 182, 229);
     position: absolute;
-    top: 50%;
+    top: 11px;
     left: 0px;
-    transform: translateY(-50%);
+    /* transform: translateY(-50%); */
 }
 
 .d_input_box1 {
@@ -1125,8 +1149,7 @@ select {
     float: left;
     width: 20px;
     height: 46px;
-    color: 
-    rgb(34, 34, 34);
+    color: rgb(34, 34, 34);
     font-size: 16px;
     text-align: center;
     line-height: 46px;
@@ -1136,8 +1159,7 @@ select {
     float: left;
     height: 46px;
     margin-left: 8px;
-    color: 
-    rgb(34, 34, 34);
+    color: rgb(34, 34, 34);
     font-size: 15px;
     line-height: 46px;
 }
@@ -1155,9 +1177,7 @@ select {
     clear: both;
 }
 
-
-
-button {
+/* button {
     -webkit-appearance: button;
     -webkit-writing-mode: horizontal-tb !important;
     text-rendering: auto;
@@ -1180,23 +1200,30 @@ button {
     border-style: outset;
     border-color: buttonface;
     border-image: initial;
+} */
+
+.pp, .pp1, .pp2 {
+    position: absolute;
+    top: 17px;
+    right: 25px;
 }
 
-.remove {
-	position: absolute;
-	top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
+/* .short {
+    width: 680px;
+    height:30px;
+    float: right;
 }
 
-.short {
-	width: 680px;
-	height:30px;
-	float: right;
+.short > lebel { position: relative; }
+ */
+/* test */
+
+.removing {
+    height: 0 !important;
 }
 
-.short > lebel {
-	position: relative;
-}
+
+
+
 
 
