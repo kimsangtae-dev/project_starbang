@@ -263,8 +263,8 @@
     					                        <div class="last-contact-div">
     					                            <div>
     					                                <div>
-    					                                    <p>금강공인중개사사무소</p>
-    					                                    <p>선미진</p>
+    					                                	<p>조수민</p>
+    					                                    <p>breath@naver.com</p>
     					                                </div>
     					                            </div>
     					                            <button>문의하기</button>
@@ -274,8 +274,8 @@
     					                        <div class="last-contact-div">
     					                            <div>
     					                                <div>
-    					                                    <p>라임공인중개사사무소</p>
-    					                                    <p>이병근</p>
+    					                                    <p>김상태</p>
+    					                                    <p>status@gmail.com</p>
     					                                </div>
     					                            </div>
     					                            <button>문의하기</button>
@@ -285,8 +285,8 @@
     					                        <div class="last-contact-div">
     					                            <div>
     					                                <div>
-    					                                    <p>(주)래미안복덕방부동산중개법인</p>
-    					                                    <p>김정식</p>
+    					                                    <p>김수진</p>
+    					                                    <p>sujinzzang@daum.net</p>
     					                                </div>
     					                            </div>
     					                            <button>문의하기</button>
