@@ -81,7 +81,7 @@
 		</a>
 		<div class="menu-left small-font">
 			<a href="${pageContext.request.contextPath}/host/ho_main.jsp">방주인 사이트</a>
-			<span> | </span>
+			<span>&nbsp | &nbsp </span>
 			<a href="${pageContext.request.contextPath}/admin/ad_main.jsp">관리자 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
