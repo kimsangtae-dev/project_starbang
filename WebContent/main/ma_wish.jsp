@@ -365,7 +365,7 @@
 		        <div class="mg-1d"> <!-- Euntq -->
 		            <div class="mg-2d"> <!-- OUJOU -->
 		                <div class="mg-heart-d"> <!-- gYMri -->
-		                    <div class="mg-heart-2d"></div> <!-- hjVNgq -->
+		                    <div class="mg-heart-2d off" data-value="on"></div> <!-- hjVNgq -->
 		                </div>
 		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
 		                    <div class="mg-a-pic1"></div> <!-- kLfyDR -->
@@ -382,7 +382,7 @@
 		        <div class="mg-1d">
 		            <div class="mg-2d">
 		                <div class="mg-heart-d">
-		                    <div class="mg-heart-2d"></div>
+		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
 		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp">
 		                    <div class="mg-a-pic1 mg-a-pic2"></div> <!-- jBvkCW -->
@@ -398,7 +398,7 @@
 		        <div class="mg-1d">
 		            <div class="mg-2d">
 		                <div class="mg-heart-d">
-		                    <div class="mg-heart-2d"></div>
+		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
 		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
 		                    <div class="mg-a-pic1 mg-a-pic3"></div> <!-- eunTmP -->
@@ -526,6 +526,13 @@
             //$("#myModal").modal('hide');
         });
     });
+	
+	/* 하트 toggle */
+	$(function() {
+		$(".mg-heart-2d").click(function(e) {
+			$(this).toggleClass('on off');
+		});
+	})
 </script>
 </body>
 </html>

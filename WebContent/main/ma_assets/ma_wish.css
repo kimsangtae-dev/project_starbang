@@ -845,6 +845,14 @@ html body #root {
     background: url(ma_img/like.svg) center center / cover;
 }
 
+.mg-heart-2d.off {
+	background: url(ma_img/like.svg) center center/cover;
+}
+
+.mg-heart-2d.on {
+	background: url(ma_img/like-on.svg) center center/cover;
+}
+
 /* modal - <gallery> - 각 갤러리 2div - a태그 */
 .mg-a {
 	display: block;
