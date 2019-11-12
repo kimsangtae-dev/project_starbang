@@ -173,7 +173,7 @@ p.subtitle {
 	margin: 300px 650px 300px 650px;
 }
 
-.modalbody {
+.modaljoinbody {
 	width: 100px;
 	height: 200px;
 }
@@ -199,4 +199,17 @@ p.subtitle {
 	position : relative;
 }
 
+/** 닫기버튼 */
+.modal-header .btnclose {
+ 	   	width: 30px;
+ 	   	height: 30px;
+ 	   	background-color: transparent ;
+ 	   	position: absolute;
+ 	   	top: 16px;
+ 	   	right: 30px;
+ 	   	border-width: 0px;
+ 	   	border-style: initial;
+ 	   	border-color: initial;
+ 	   	border-image: initial;
+    }
 

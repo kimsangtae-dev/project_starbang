@@ -149,7 +149,7 @@
 	                	</svg>
  	               </button>
  	            </div>
-				<div class="modal-body modalbody">
+				<div class="modal-body modaljoinbody">
 					<h4 class="modal-title">인증번호 발송했습니다</h4>
 				</div>
 			</div>
@@ -171,7 +171,7 @@
 	                	</svg>
  	               </button>
  	            </div>
-				<div class="modal-body modalbody">					
+				<div class="modal-body modaljoinbody">					
 					<h4 class="modal-title">인증번호 확인되었습니다</h4>
 				</div>
 			</div>
@@ -192,7 +192,7 @@
 	                	</svg>
  	               </button>
  	            </div>
-				<div class="modal-body modalbody">					
+				<div class="modal-body modaljoinbody">					
 					<h4 class="modal-title">인증번호가 틀렸습니다</h4>
 				</div>
 			</div>
@@ -213,7 +213,7 @@
 	                	</svg>
  	               </button>
  	            </div>
-				<div class="modal-body modalbody">					
+				<div class="modal-body modaljoinbody">					
 					<h4 class="modal-title">환영합니다 회원가입에 성공하셨습니다</h4>
 				</div>
 			</div>

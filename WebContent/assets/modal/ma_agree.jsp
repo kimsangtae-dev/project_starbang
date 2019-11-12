@@ -15,73 +15,41 @@
 	
 	$('html, body').css({'overflow': 'auto', 'height': '100%'}); 
 	$('#element').off('scroll touchmove mousewheel'); 
-		
-		// 버튼
-		function byId(e){return document.getElementById(e);}
-	
-		// 버튼1
-		window.addEventListener('load', mInit1, false);
-
-		function mInit1() {
-		    var tgt = byId('check1');
-		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
-		}
-
-
-		function action1() {
-		    var tgt = byId('check1');
-		    var tmp = tgt.src;
-		    tgt.src = tgt.secondSource;
-		    tgt.secondSource = tmp;
-		};
-		
-		// 버튼2
-		window.addEventListener('load', mInit2, false);
-
-		function mInit2() {
-		    var tgt = byId('check2');
-		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
-		}
-
-		function action2() {
-		    var tgt = byId('check2');
-		    var tmp = tgt.src;
-		    tgt.src = tgt.secondSource;
-		    tgt.secondSource = tmp;
-		};
-		
-		// 버튼3
-		window.addEventListener('load', mInit3, false);
-
-		function mInit3() {
-		    var tgt = byId('check3');
-		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
-		}
-
-		function action3() {
-		    var tgt = byId('check3');
-		    var tmp = tgt.src;
-		    tgt.src = tgt.secondSource;
-		    tgt.secondSource = tmp;
-		};
-		
-		// 버튼4
-		window.addEventListener('load', mInit4, false);
-
-		function mInit4() {
-		    var tgt = byId('check4');
-		    tgt.secondSource = '../main/ma_assets/ma_img/bluecheck.png';
-		}
-
-		function action4() {
-		    var tgt = byId('check4');
-		    var tmp = tgt.src;
-		    tgt.src = tgt.secondSource;
-		    tgt.secondSource = tmp;
-		};
-
-
 	</script>
+
+	<script type="text/javascript">
+		// 언니가 알려준 버튼
+		$(function() {
+			$(".recent-div8").click(function(e) {
+				$(this).toggleClass('on off');
+			});
+		});
+	</script>
+		
+		<script type="text/javascript">
+		$(function() {
+			$(".recent-div82").click(function(e) {
+				$(this).toggleClass('on off');
+			});
+		});
+		</script>
+		
+		<script type="text/javascript">
+		$(function() {
+			$(".recent-div83").click(function(e) {
+				$(this).toggleClass('on off');
+			});
+		});
+		</script>
+		
+		<script type="text/javascript">
+		$(function() {
+			$(".recent-div84").click(function(e) {
+				$(this).toggleClass('on off');
+			});
+		});
+	</script>
+
 </head>
 
 	<div class="siz" id="element">
@@ -107,7 +75,9 @@
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<button onClick="action1()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check1" class="buttonimg"></button>
+							<div class="recent-div7">
+								<div class="recent-div8 off" data-value="on"></div>
+							</div>
 						</div>
 						<!-- <img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
 <!-- <button id="toggle" class="toggle-button on" data-value="off">OFF</button> -->
@@ -635,16 +605,27 @@
 
 					<!--  -->
 					<div class="agpbox">
+					<div class="stary">
+							<p class="p">
+								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
+							</p>
+							<div class="recent-div7">
+								<div class="recent-div82 off" data-value="on"></div>
+							</div>
+						</div>
 					<!-- <p class="p">
 							개인정보 처리방침 <span id="ftcl">(필수)</span>
 						</p>
 						<img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
-						<div class="stary">
+					<!-- 	<div class="stary">
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<button onClick="action2()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check2" class="buttonimg"></button>
+							<div class="recent-div7">
+								<div class="recent-div8 off" data-value="on"></div>
+							</div>
 						</div>
+						-->
 						<div class="lReCa">
 							<div class="whc">
 								<b>개인 사용자 가입</b> <br /> <br />
@@ -668,7 +649,9 @@
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<button onClick="action3()" class="actionbutton"><img src="../main/ma_assets/ma_img/greycheck.png" id="check3" class="buttonimg"></button>
+							<div class="recent-div7">
+								<div class="recent-div83 off" data-value="on"></div>
+							</div>
 						</div>
 						<!-- <p class="p">
 							마케팅 정보 수신에 대한 동의 <span id="ftcl">(선택)</span>
@@ -728,7 +711,9 @@
 			</div>
 			<div id="lnMlai">
 				<p class="all">모두 동의합니다</p>
-<button onClick="action4()" class="actionbuttonfinal"><img src="../main/ma_assets/ma_img/greycheck.png" id="check4" class="buttonimgfinal"></button>
+				<div class="recent-div7">
+					<div class="recent-div84 off" data-value="on"></div>
+				</div>
 			</div>
 			<div class="modal-fet">
 				<a href="<%=request.getContextPath()%>/assets/modal/ma_join.jsp" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
