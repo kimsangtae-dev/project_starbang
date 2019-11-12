@@ -49,6 +49,10 @@
 	color: #777;
 }
 
+.small-font {
+	color: #eee;
+}
+
 /* 메뉴에 마우스오버 시 색 변경 설정 */
 #header a:hover {
 	color: rgb(21, 100, 249);
