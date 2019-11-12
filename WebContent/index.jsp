@@ -198,6 +198,101 @@
 
 
     <!---------------------------------------\
+    /    최근본방/찜한 방                        /
+    ----------------------------------------->
+    <div class="recent">
+      <div class="recent-div0">
+        <div class="recent-div1"><a href="${pageContext.request.contextPath}/main/ma_rtrm.jsp">김기홍님의 최근 본 방</a></div>
+        <div class="recent-div2"><a href="${pageContext.request.contextPath}/main/ma_wish.jsp">찜한 방</a></div>
+        <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
+        <!-- 갤러리 전체 박스 -->
+        <div class="recent-div4"> 
+          
+          <!-- 각각 갤러리 시작 -->
+          <!-- 1번째 갤러리 시작 -->
+          <div class="recent-div5">
+            <div class="recent-div6">
+              <!-- 좋아요 버튼 -->
+              <div class="recent-div7">
+                <div class="recent-div8 off" data-value="on"></div>
+              </div>
+              <!-- 좋아요 끝 -->
+              <!-- 전체 링크화 -->
+              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <!-- 이미지 -->
+                <div class="recent-a-div"></div>
+                <!-- 확인매물 div -->
+                <div class="recent-a-confirm">
+                  <div class="recent-a-confirm-div" type="">
+                    <span class="bold">확인매물</span>
+                    <span>19.09.25</span>
+                  </div>
+                </div>
+                <!-- 확인매물 끝 -->
+                <p class="recent-a-p1">투룸</p>
+                <p class="recent-a-p2">
+                  <span>전세 1억4000</span>
+                </p>
+                <p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
+                <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
+              </a>
+            </div>
+          </div>
+          <!-- 1번째 갤러리 끝 -->
+
+          <!-- 2번째 갤러리 -->
+          <div class="recent-div5 margin">
+            <div class="recent-div6">
+              <!-- 좋아요 버튼 -->
+              <div class="recent-div7">
+                <div class="recent-div8 off" data-value="on"></div>
+              </div>
+              <!-- 좋아요 끝 -->
+              <!-- 전체 링크화 -->
+              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
+                <!-- 이미지 -->
+                <div class="recent-a-div recent-a-div2"></div>
+                <!-- 확인매물 div -->
+                <div class="recent-a-confirm">
+                  <div class="recent-a-confirm-div" type="">
+                    <span class="bold">확인매물</span>
+                    <span>19.09.22</span>
+                  </div>
+                </div>
+                <!-- 확인매물 끝 -->
+                <p class="recent-a-p1">원룸</p>
+                <p class="recent-a-p2">
+                  <span>월세 1000/45</span>
+                </p>
+                <p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
+                <p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
+              </a>
+            </div>
+          </div>
+          <!-- 두번째 갤러리 끝 -->
+
+          <!-- 3번째 갤러리 시작 -->
+          <div class="recent-div5-vacant margin">
+            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+          </div>
+          <!-- 4번째 갤러리 끝 -->
+
+          <!-- 4번째 갤러리 시작 -->
+          <div class="recent-div5-vacant margin">
+            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+          </div>
+          <!-- 4번째 갤러리 끝 -->
+          
+        </div>
+        <!--  갤러리 전체박스 끝 -->
+        
+      </div>
+      <!-- div0 끝 -->
+        
+    </div>
+    <!-- 최근본방 / 찜한방 끝  -->
+    
+    <!---------------------------------------\
     /    인기있는 방 시작                        /
     ----------------------------------------->
     <div class="pop-entire">
@@ -350,102 +445,6 @@
         
     </div>
     <!-- 인기 있는 방 끝  -->
-
-
-    <!---------------------------------------\
-    /    최근본방/찜한 방                        /
-    ----------------------------------------->
-    <div class="recent">
-      <div class="recent-div0">
-        <div class="recent-div1"><a href="${pageContext.request.contextPath}/main/ma_rtrm.jsp">김기홍님의 최근 본 방</a></div>
-        <div class="recent-div2"><a href="${pageContext.request.contextPath}/main/ma_wish.jsp">찜한 방</a></div>
-        <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
-        <!-- 갤러리 전체 박스 -->
-        <div class="recent-div4"> 
-          
-          <!-- 각각 갤러리 시작 -->
-          <!-- 1번째 갤러리 시작 -->
-          <div class="recent-div5">
-            <div class="recent-div6">
-              <!-- 좋아요 버튼 -->
-              <div class="recent-div7">
-                <div class="recent-div8 off" data-value="on"></div>
-              </div>
-              <!-- 좋아요 끝 -->
-              <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
-                <!-- 이미지 -->
-                <div class="recent-a-div"></div>
-                <!-- 확인매물 div -->
-                <div class="recent-a-confirm">
-                  <div class="recent-a-confirm-div" type="">
-                    <span class="bold">확인매물</span>
-                    <span>19.09.25</span>
-                  </div>
-                </div>
-                <!-- 확인매물 끝 -->
-                <p class="recent-a-p1">투룸</p>
-                <p class="recent-a-p2">
-                  <span>전세 1억4000</span>
-                </p>
-                <p class="recent-a-p34">5층, 33.05m², 관리비 3만</p>
-                <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-              </a>
-            </div>
-          </div>
-          <!-- 1번째 갤러리 끝 -->
-
-          <!-- 2번째 갤러리 -->
-          <div class="recent-div5 margin">
-            <div class="recent-div6">
-              <!-- 좋아요 버튼 -->
-              <div class="recent-div7">
-                <div class="recent-div8 off" data-value="on"></div>
-              </div>
-              <!-- 좋아요 끝 -->
-              <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/ma_rmdt.jsp">
-                <!-- 이미지 -->
-                <div class="recent-a-div recent-a-div2"></div>
-                <!-- 확인매물 div -->
-                <div class="recent-a-confirm">
-                  <div class="recent-a-confirm-div" type="">
-                    <span class="bold">확인매물</span>
-                    <span>19.09.22</span>
-                  </div>
-                </div>
-                <!-- 확인매물 끝 -->
-                <p class="recent-a-p1">원룸</p>
-                <p class="recent-a-p2">
-                  <span>월세 1000/45</span>
-                </p>
-                <p class="recent-a-p34">4층, 33.05m², 관리비 5만</p>
-                <p class="recent-a-p34">신대방역 역세권 넓고 깔끔한 원룸</p>
-              </a>
-            </div>
-          </div>
-          <!-- 두번째 갤러리 끝 -->
-
-          <!-- 3번째 갤러리 시작 -->
-          <div class="recent-div5-vacant margin">
-            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-          </div>
-          <!-- 4번째 갤러리 끝 -->
-
-          <!-- 4번째 갤러리 시작 -->
-          <div class="recent-div5-vacant margin">
-            <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-          </div>
-          <!-- 4번째 갤러리 끝 -->
-          
-        </div>
-        <!--  갤러리 전체박스 끝 -->
-        
-      </div>
-      <!-- div0 끝 -->
-        
-    </div>
-    <!-- 최근본방 / 찜한방 끝  -->
     
     
     <button class="btn-searchrm" style="bottom: 30px;">
