@@ -65,7 +65,7 @@
 							월세,전세,매매 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
-							<h1>방종류</h1>
+							<h1>매물종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
 								<li><label> <input type="checkbox" name="sale-type"
@@ -94,7 +94,7 @@
 							<div class="filter-slide">
 								<h1>
 									보증금/전세가
-									<p id="filter1-value">무제한</p>
+									<p class="inf" id="filter1-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price1" name="">
 								<ul>
@@ -106,7 +106,7 @@
 							<div class="filter-slide mar-top">
 								<h1>
 									월세
-									<p id="filter2-value">무제한</p>
+									<p class="inf" id="filter2-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price2" name="">
 								<ul>
@@ -118,7 +118,7 @@
 							<div class="filter-slide mar-top">
 								<h1>
 									매매가
-									<p id="filter3-value">무제한</p>
+									<p class="inf" id="filter3-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price3" name="">
 								<ul>
@@ -143,7 +143,7 @@
 							<div class="filter-slide">
 								<h1>
 									관리비
-									<p id="filter4-value">무제한</p>
+									<p class="inf" id="filter4-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-price4" name="">
 								<ul>
@@ -168,7 +168,7 @@
 							<div class="filter-slide">
 								<h1>
 									방크기
-									<p id="filter5-value">무제한</p>
+									<p class="inf" id="filter5-value">무제한</p>
 								</h1>
 								<input type="text" id="slide-size" name="">
 								<ul>
@@ -495,6 +495,19 @@
 		$('.dropdown-menu').click(function(e) {
 			e.stopPropagation();
 		})
+		
+		// 금액별로 단위 표시(만/억)를 위한 메서드
+		function fix(val) {
+			if (val < 10000) {
+				var won = val + "만 원";
+			} else if (val%10000 == 0){
+				var won = val/10000 + "억 원";
+			} else {
+				var mil = Math.floor(val/10000);
+				var won = mil + "억 " + (val - mil*10000) + "만 원"; 
+			}
+			return won;
+		} // end fix()
 
 		/* 필터 - Range plugin(ion.rangeSlider) */
 		// 보증금/전세가
@@ -515,18 +528,6 @@
 			from_max : price1_value.indexOf(90000),
 			skin : "round",
 			onChange: function (data) {
-				function fix(val) {
-					if (val < 10000) {
-						var won = val + "만 원";
-					} else if (val%10000 == 0){
-						var won = val/10000 + "억 원";
-					} else {
-						var mil = Math.floor(val/10000);
-						var won = mil + "억 " + (val - mil*10000) + "만 원"; 
-					}
-					return won;
-				} // end fix()
-				
 				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
 					$("#filter1-value").html("무제한");
 				} else if (data.to_value == "무제한") {
@@ -584,18 +585,6 @@
 			from_max : price3_value.indexOf(150000),
 			skin : "round",
 			onChange: function (data) {
-				function fix(val) {
-					if (val < 10000) {
-						var won = val + "만 원";
-					} else if (val%10000 == 0){
-						var won = val/10000 + "억 원";
-					} else {
-						var mil = Math.floor(val/10000);
-						var won = mil + "억 " + (val - mil*10000) + "만 원"; 
-					}
-					return won;
-				} // end fix()
-				
 				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
 					$("#filter3-value").html("무제한");
 				} else if (data.to_value == "무제한") {
@@ -687,18 +676,23 @@
 				slide1_value.reset();
 				slide2_value.reset();
 				slide3_value.reset();
+				$("#filter1-value").html("무제한");
+				$("#filter2-value").html("무제한");
+				$("#filter3-value").html("무제한");
 			})
 
 			// 관리비 조건삭제
 			$("#filter-reset2").click(function(e) {
 				e.preventDefault();
 				slide4_value.reset();
+				$("#filter4-value").html("무제한");
 			})
 
 			// 방크기 조건삭제
 			$("#filter-reset3").click(function(e) {
 				e.preventDefault();
 				slide5_value.reset();
+				$("#filter5-value").html("무제한");
 			})
 
 			// 전체 필터 초기화
@@ -710,6 +704,7 @@
 				slide3_value.reset();
 				slide4_value.reset();
 				slide5_value.reset();
+				$(".inf").html("무제한");
 			});
 		})
 	</script>
