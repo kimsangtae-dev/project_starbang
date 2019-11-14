@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="ma_assets/ma_search.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/search.css">
 
-<link rel="stylesheet" href="../assets/plugin/ion.rangeSlider.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
 
 </head>
 
@@ -17,7 +17,7 @@
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
 		<!-- 상단 헤더 -->
-		<%@ include file="./ma_assets/ma_inc/top.jsp"%>
+		<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<div id="search" class="clearfix">
@@ -244,11 +244,11 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
-	<script src="../assets/plugin/ion.rangeSlider.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
 	<script type="text/javascript">
 		/* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
 		function contentSize() {
@@ -266,7 +266,7 @@
 		});
 	</script>
 <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
-	<script src="../assets/plugin/handlebars-v4.0.11.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
 	<script id="gallery-data" type="text/x-handlebars-template">
 		{{#each gallery}}
 		<li>
@@ -303,7 +303,7 @@
 	<script type="text/javascript">
 		/* gallery.json을 가져와 화면에 출력 */
 		function get_gallery() {
-			$.get('ma_assets/gallery.json', function(req) {
+			$.get('${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/gallery.json', function(req) {
 				var template = Handlebars.compile($("#gallery-data").html());
 				var html = template(req);
 				$("#gallery-list").append(html);
@@ -359,7 +359,7 @@
 			});
 
 			// 데이터 가져오기
-			$.get("ma_assets/address.json", function(data) {
+			$.get("${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/address.json", function(data) {
 				var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
@@ -397,7 +397,7 @@
 			}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
-			$.getJSON("ma_assets/guPosition.json", function(data) {
+			$.getJSON("${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/guPosition.json", function(data) {
 				var guPositions = data;
 				var gumark;
 				for (var i = 0; i < guPositions.length; i++) {
