@@ -9,20 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class HostController {
 	
 	/********************************************************************
-<<<<<<< HEAD
 	 *  						방주인 메인페이지
-=======
-	 *  							메인
->>>>>>> a01bd25dd591251707bc0184525283de753e7209
 	 *******************************************************************/
 	@RequestMapping(value = "/jsp/host/main.do", method = RequestMethod.GET)
 	public ModelAndView main() {
 		
 		return new ModelAndView("jsp/host/main");
 	}
-<<<<<<< HEAD
-=======
-	
 	
 	/********************************************************************
 	 *  							공실 등록하기
@@ -41,5 +34,4 @@ public class HostController {
 		
 		return new ModelAndView("jsp/host/rmli");
 	}
->>>>>>> a01bd25dd591251707bc0184525283de753e7209
 }
