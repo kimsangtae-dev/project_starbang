@@ -5,10 +5,10 @@
 <html lang="ko">
 <head>
 
-<c:import url = "help.jsp" var = "helpMessage">
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="ma_assets/ma_wish.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/wish.css">
 
 </head>
 <body>
@@ -16,8 +16,7 @@
 <!----------------------------------------
 -	header 							     -
 ----------------------------------------->
-<%@ include file="./ma_assets/ma_inc/top.jsp"%>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
 
 <!----------------------------------------
 -	content 							 -
@@ -28,7 +27,7 @@
 	
 	<!-- content-navigation -->
 	<div class="content2-d">
-		<a class="content2-d-a" href="ma_rtrm.jsp" aria-current="">최근 본 방</a>
+		<a class="content2-d-a" href="${pageContext.request.contextPath}/jsp/main/rtrm.do" aria-current="">최근 본 방</a>
 		<a class="content2-d-a active" href="#">찜한 방</a>
 	</div>
 
@@ -60,7 +59,7 @@
 				</div> <!-- 거래완료시 덮는박스 끝 --> <!-- 원래 매물 -->
 				<div class="gallery-d1" height="321">
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -89,7 +88,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -120,7 +119,7 @@
 				</div> <!-- 완료된 매물 덮개 끝 --> <!-- 원래 매물 -->
 				<div class="gallery-d1" height="321">
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<p class="gallery-p1 gallery-p-common">투룸</p>
 						<p class="gallery-p2 gallery-p-common">
@@ -145,7 +144,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -174,7 +173,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -204,7 +203,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -234,7 +233,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -264,7 +263,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="ma_rmdt.jsp">
+						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -381,8 +380,7 @@
 					<div class="compare-btn-box" width="238">
 						<button class="compare-btn-cancel" width="80">취소</button>
 						<button class="compare-btn-compare">
-							<a class="dis-block"
-								href="<%=request.getContextPath()%>/assets/modal/ma_wish_comp.jsp"
+							<a class="dis-block" href="${pageContext.request.contextPath}/jsp/main/modal/compare.do"
 								data-toggle="modal" data-target="#compareModal">비교하기</a>
 						</button>
 					</div>
@@ -396,7 +394,7 @@
 <!----------------------------------------
 -	footer 							     -
 ----------------------------------------->
-<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
+<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
 
 <!-- 비교하기용 모달 로더 -->
 <div class="modal fade" id="compareModal">
@@ -410,11 +408,11 @@
 <!-- 비슷한 방 추천 모달 로더 -->
 <div class="modal fade" id="similarModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content modal-recomand" width="940"> <!-- bTxOpP -->
+		<div class="modal-content modal-recomand" width="940">
 		    
-		    <header class="modal-head"> <!--isCBcC  -->
+		    <header class="modal-head">
 		        <h1>비슷한 조건의 다른 방</h1>
-		        <button class="modal-head-btn" data-dismiss="modal"> <!-- kXLdvu -->
+		        <button class="modal-head-btn" data-dismiss="modal">
 		            <svg width="30" height="30" viewBox="0 0 32 32">
 		                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
 		                    <circle class="Circle" cx="15" cy="15" r="15"></circle>
@@ -425,20 +423,20 @@
 		            </svg>
 		        </button>
 		    </header>
-		    <div class="mg-whole-d"> <!-- jAnJGq -->
-		        <div class="mg-1d"> <!-- Euntq -->
-		            <div class="mg-2d"> <!-- OUJOU -->
-		                <div class="mg-heart-d"> <!-- gYMri -->
-		                    <div class="mg-heart-2d off" data-value="on"></div> <!-- hjVNgq -->
+		    <div class="mg-whole-d">
+		        <div class="mg-1d">
+		            <div class="mg-2d">
+		                <div class="mg-heart-d">
+		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
-		                    <div class="mg-a-pic1"></div> <!-- kLfyDR -->
-		                    <p class="mg-roomtype">쓰리룸</p> <!-- kCTBqT jBkVAv -->
-		                    <p class="mg-price"> <!-- glovZ,jBkVAv -->
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+		                    <div class="mg-a-pic1"></div>
+		                    <p class="mg-roomtype">쓰리룸</p>
+		                    <p class="mg-price">
 		                        <span>월세 1000/80</span>
 		                    </p>
 		                    <p class="mg-p34"> 11층, 38.64m², 관리비 7만</p> <!-- jBkVAv -->
-		                    <p class="mg-p34">⭐️까치산역 초역세권 옵션 투룸 귀한 월세⭐️ // 빠른입주가능. 대리석바닥. 막힘없는 11층 고층 뷰!</p> <!-- jBkVAv -->
+		                    <p class="mg-p34">⭐️까치산역 초역세권 옵션 투룸 귀한 월세⭐️ // 빠른입주가능. 대리석바닥. 막힘없는 11층 고층 뷰!</p>
 		                </a>
 		            </div>
 		        </div>
@@ -448,7 +446,7 @@
 		                <div class="mg-heart-d">
 		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp">
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
 		                    <div class="mg-a-pic1 mg-a-pic2"></div> <!-- jBvkCW -->
 		                    <p class="mg-roomtype">쓰리룸</p>
 		                    <p class="mg-price">
@@ -464,7 +462,7 @@
 		                <div class="mg-heart-d">
 		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="ma_rmdt.jsp"> <!-- kpKjGs -->
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do"> <!-- kpKjGs -->
 		                    <div class="mg-a-pic1 mg-a-pic3"></div> <!-- eunTmP -->
 		                    <p class="mg-roomtype">투룸</p>
 		                    <p class="mg-price">
@@ -482,8 +480,8 @@
 </div>
 
 
-<script src="../assets/js/jquery-1.10.2.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 <script>
 	$(function(){
 		/* 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
@@ -540,6 +538,7 @@
 				control = 250 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
 				$(".compare-d1").css("bottom", 0);
 			}
+			console.log($(window).scrollTop());
 			
 			/* 스크롤 올릴 때, 더 올라가는 버그 수정 */
 			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
