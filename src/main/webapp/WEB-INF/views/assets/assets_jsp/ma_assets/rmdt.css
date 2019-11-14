@@ -45,12 +45,12 @@ a {
 }
 
 .recent-div9.off {
-	background: url(ma_img/blacklv.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/blacklv.svg) center center/cover;
 	display: inline-block;
 }
 
 .recent-div9.on {
-	background: url(ma_img/blacklv-on.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/blacklv-on.svg) center center/cover;
 	display: inline-block;
 }
 
@@ -450,7 +450,7 @@ p {
 }
 
 .recent-div8.off {
-	background: url(ma_img/like-on.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/like-on.svg) center center/cover;
 	display: inline-block;
 	width: 30px;
 	height: 30px;
@@ -462,7 +462,7 @@ p {
 .recent-div8.on {
 	width: 30px;
 	height: 30px;
-	background: url(ma_img/like.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/like.svg) center center/cover;
 	display: inline-block;
 	position: relative;
 	top: 27px;
@@ -713,7 +713,7 @@ p {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/aircondition.svg) center
+	background: url(../../assets_etc/ico/dtoption/aircondition.svg) center
 		center/cover no-repeat;
 }
 
@@ -729,7 +729,7 @@ p {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/laundry.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/laundry.svg) no-repeat;
 }
 
 .dDctva::after {
@@ -742,77 +742,77 @@ p {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/closet.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/closet.svg) no-repeat;
 }
 
 .gdTorF {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/telv.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/telv.svg) no-repeat;
 }
 
 .fuJjGK {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/shoes.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/shoes.svg) no-repeat;
 }
 
 .gdMhEY {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/refrigerator.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/refrigerator.svg) no-repeat;
 }
 
 .dQLnLP {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/gas.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/gas.svg) no-repeat;
 }
 
 .krFgu {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/induction.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/induction.svg) no-repeat;
 }
 
 .cnLAIn {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/microoven.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/microoven.svg) no-repeat;
 }
 
 .fkeEgq {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/doorlock.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/doorlock.svg) no-repeat;
 }
 
 .iAeGhw {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/bidet.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/bidet.svg) no-repeat;
 }
 
 .mCsgX {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/bed.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/bed.svg) no-repeat;
 }
 
 .gaOEWf {
 	width: 40px;
 	height: 40px;
 	margin: 0px auto;
-	background: url(../../assets/ico/dtoption/desk.svg) no-repeat;
+	background: url(../../assets_etc/ico/dtoption/desk.svg) no-repeat;
 }
 /** 지도 */
 .fIqmuM {
