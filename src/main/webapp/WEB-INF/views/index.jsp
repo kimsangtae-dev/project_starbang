@@ -11,7 +11,7 @@
 <%@ include file="assets/inc/meta_inc/meta.jsp"%>
 
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/main.css">
 
 <!--  slider css -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css">
