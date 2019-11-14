@@ -4,19 +4,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../assets/inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="../assets/plugin/billboard.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="../main/ma_assets/ma_rmdt.css" />
-<link rel="stylesheet" type="text/css"
-	href="../assets/plugin/sweetalert/sweetalert2.css" />
+<jsp:include page="../../assets/inc/meta_inc/meta.jsp" />
+<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/billboard.min.css" />
+<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/rmdt.css" />
+<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 </head>
 
 <body>
 	<!-- 상단 헤더 -->
-	<%@ include file="./ma_assets/ma_inc/top.jsp"%>
-
+	<jsp:include page="../../assets/inc/ma_inc/top.jsp" />
+	
 	<!-- 중앙 영역 -->
 	<div id="content">
 		<!-- 전체 면적 설정 -->
@@ -38,7 +35,7 @@
 					<!--방주인 이메일보기-->
 					<p class="honame">방주인 조수민님</p>
 					<button type="button" class="btn btn-primary grml">
-						<img src="./ma_assets/ma_img/mail.png" class="mailsize"> <span
+						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/mail.png" class="mailsize"> <span
 							class="que">문의하기</span>
 					</button>
 				</li>
@@ -50,21 +47,21 @@
 			<div class="recent-div9 off" data-value="on"></div>
 			<span id="lkct">1</span>
 			<!-- 도트 -->
-			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
+			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 링크 -->
 			<button class="linkimg">
-				<img src="./ma_assets/ma_img/link.png" class="linksize">
+				<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/link.png" class="linksize">
 			</button>
 			<!-- url 복사 -->
 			<input type="hidden" id="link-area" class="link-area"
 				value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
 			<!-- 도트 -->
-			<img src="./ma_assets/ma_img/blackdot.png" class="dotsize">
+			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 사이렌 -->
 			<button class="notce">
-				<img class="siren" src="./ma_assets/ma_img/siren.png"
-					onmouseover='this.src="./ma_assets/ma_img/redsiren.png"'
-					onmouseout='this.src="./ma_assets/ma_img/siren.png"'> <span
+				<img class="siren" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"
+					onmouseover='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/redsiren.png"'
+					onmouseout='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"'> <span
 					class="greyfontnm1">허위매물신고</span>
 			</button>
 		</div>
@@ -78,7 +75,7 @@
 				<p class="cETKtB">
 					<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
 					<button class="mola">
-						<img src="ma_assets/ma_img/confirmq.png">
+						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/confirmq.png">
 					</button>
 				</p>
 			</div>
@@ -135,15 +132,15 @@
 			<!-- 매물 이미지 시작  -->
 			<ul class="bigviewul">
 				<li class="bigviewigli"><a href="#"><img
-						src="../main/ma_assets/ma_img/roph01.jfif" /></a></li>
+						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph01.jfif" /></a></li>
 				<li class="bigviewiglism"><a href="#"><img
-						src="../main/ma_assets/ma_img/roph02.jfif" /></a></li>
+						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph02.jfif" /></a></li>
 				<li class="bigviewiglism"><a href="#"><img
-						src="../main/ma_assets/ma_img/roph03.jfif" /></a></li>
+						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph03.jfif" /></a></li>
 				<li class="bigviewiglism"><a href="#"><img
-						src="../main/ma_assets/ma_img/roph04.jfif" /></a></li>
+						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph04.jfif" /></a></li>
 				<li class="bigviewiglism"><a href="#"><img
-						src="../main/ma_assets/ma_img/roph04.jfif" /></a></li>
+						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph04.jfif" /></a></li>
 			</ul>
 		</div>
 
@@ -186,10 +183,10 @@
 					<div class="recent-div8 on" data-value="off"></div>
 					<span class="cntlk">0</span>
 					<button class="icngbl ulcp">
-						<img src="./ma_assets/ma_img/whlink.png">
+						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
 					<button class="icngbl">
-						<img class="siren notce" src="./ma_assets/ma_img/whsiren.png">
+						<img class="siren notce" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whsiren.png">
 					</button>
 					<div id="plrt">
 						<span class="texthtlvc">방주인</span> <span
@@ -348,12 +345,12 @@
 		<!--매물 이미지 끝-->
 	</div>
 	<!-- 하단 영역 -->
-	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
+	<jsp:include page="../../assets/inc/ma_inc/bottom.jsp" />
 
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/plugin/sweetalert/sweetalert2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.min.js"></script>
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
@@ -434,7 +431,7 @@
 	</script>
 
 	<script src="https://d3js.org/d3.v5.min.js"></script>
-	<script src="../assets/plugin/billboard.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/billboard.min.js"></script>
 	<script type="text/javascript">
 		var chart = bb.generate({
 			data : {
@@ -564,8 +561,5 @@
 					}); // end scroll
 		});
 	</script>
-
-
-
 </body>
 </html>
