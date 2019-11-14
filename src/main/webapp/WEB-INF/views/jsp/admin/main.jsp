@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
 <title>별방 관리자 메인 페이지</title>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- CSS적용 -->
 <link rel="stylesheet" type="text/css" href="ad_assets/ad_main.css">
 <style type="text/css">

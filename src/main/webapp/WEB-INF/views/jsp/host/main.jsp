@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 <title>별방 방주인 메인 페이지</title>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="ho_assets/ho_main.css" />
 <style type="text/css">
@@ -17,7 +17,7 @@
 	<div id="root">
 		<!-- 상단 헤더 -->
 		<div id="header">
-			<%@ include file="ho_assets/ho_inc/ho_header.jsp"%>
+			<%@ include file="../../assets/inc/ho_inc/ho_header.jsp"%>
 		</div>
 		<!-- 중앙 영역 -->
 		<div id="body">
@@ -33,7 +33,7 @@
 	</div>
 	<!-- 하단 영역 -->
 	<div id="footer">
-		<%@ include file="ho_assets/ho_inc/ho_footer.jsp"%>
+		<%@ include file="../../assets/inc/ho_inc/ho_footer.jsp"%>
 	</div>
 	<!-- Javascript -->
 	<script src="../assets/js/jquery-1.10.2.min.js"></script>
