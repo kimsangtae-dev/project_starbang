@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 
-    <link rel="stylesheet" type="text/css" href="../assets/header_white.css">
-    <link rel="stylesheet" type="text/css" href="../assets/footer_black.css">
-    <link rel="stylesheet" type="text/css" href="ma_assets/ma_rtrm.css">
+<!-- css 참조 -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/rtrm.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 	<div class="root">
 	
 		<!-- 상단 헤더 -->
-		<%@ include file="./ma_assets/ma_inc/top.jsp"%>
+		<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
 	
 	<!-- 중앙 영역 -->
       <div id="content">
@@ -164,11 +164,11 @@
   </div> <!-- root 끝 -->
 
 	<!-- 하단 영역 -->
-	<%@ include file="./ma_assets/ma_inc/bottom.jsp"%>
+	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
 	
 <!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	/* 좋아요 클릭 -> 하트 색 변경 */
 	$(function() {
