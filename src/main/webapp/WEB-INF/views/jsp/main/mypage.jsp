@@ -9,7 +9,9 @@
 <head>
 <%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 
-<link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_mypager.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_mypager.css">
+
 <script src="../assets/js/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
 
@@ -25,7 +27,7 @@
 				</div>
 				<div class="div2">
 					<div id="imgupload" class="imgupload">
-						<img src="ma_assets/ma_img/mypa.png" >
+						<img src="${pageContext.request.contextPath}/assets/img/ma_img/mypa.png" >
 					</div>
 					<br/>
 					<div class="filebox">
@@ -71,9 +73,9 @@
 	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
     
     <!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 	<!-- 모달창 -->
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script type="text/javascript">

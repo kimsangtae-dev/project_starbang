@@ -7,7 +7,8 @@
 <html lang="ko">
 <head>
 <%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css" href="../main/ma_assets/ma_faqr.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_faqr.css">
 
 </head>
 <body>
@@ -18,8 +19,8 @@
 			<div id="content">
 				<h1 class="h1">문의하기</h1>
 				<div class="nav">
-					<div><a class="afaq" href="ma_faq.jsp">자주 묻는 질문</a></div>
-					<div><a class="anotice" href="ma_notice.jsp">공지사항</a></div>
+					<div><a class="afaq" href="${pageContext.request.contextPath}/jsp/main/faq.do">자주 묻는 질문</a></div>
+					<div><a class="anotice" href="${pageContext.request.contextPath}/jsp/main/notice.do">공지사항</a></div>
 				</div>
 
 				<div class="title">
@@ -31,7 +32,7 @@
 					<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content1"><img src="ma_assets/ma_img/Q.PNG"><p>별방은 어떤 서비스인가요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content1"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>별방은 어떤 서비스인가요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content1" class="content">
     						<pre class="precolor"><span class="contentspan">A.</span>다방은 어떤 서비스인가요?
@@ -64,7 +65,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content2"><img src="ma_assets/ma_img/Q.PNG"><p>회원가입을 하면 어떤 점이 좋나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content2"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>회원가입을 하면 어떤 점이 좋나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content">
     						<pre class="precolor"><span class="contentspan">A.</span>다방앱에 회원가입 후 로그인을 하시면
@@ -89,7 +90,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content3"><img src="ma_assets/ma_img/Q.PNG"><p>회원탈퇴는 어떻게 하나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content3"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>회원탈퇴는 어떻게 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content3" class="content"><pre class="precolor"><span class="contentspan">A.</span>다방 서비스 회원탈퇴를 원하실 경우
 
@@ -103,7 +104,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content4"><img src="ma_assets/ma_img/Q.PNG"><p>직거래는 어떻게 방을 내놓나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content4"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>직거래는 어떻게 방을 내놓나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content4" class="content"><pre class="precolor"><span class="contentspan">A.</span>개인회원의 경우 직거래 매물 1건에 대해 무료 광고가 가능합니다.
 
@@ -117,7 +118,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content5"><img src="ma_assets/ma_img/Q.PNG"><p>별방에 등록된 방은 믿을 수 있나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content5"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>별방에 등록된 방은 믿을 수 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content5" class="content"><pre class="precolor"><span class="contentspan">A.</span>별방은 사용자 분들에게 믿을 수 있는 정보를 제공하는 것을 최우선으로 합니다.
 
@@ -131,7 +132,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content6"><img src="ma_assets/ma_img/Q.PNG"><p>허위매물은 어떻게 관리 하나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content6"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>허위매물은 어떻게 관리 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content6" class="content"><pre class="precolor"><span class="contentspan">A.</span>허위매물 전담팀이 수시로 매물을 살펴보고 허위매물을 필터링하고 있습니다.
 
@@ -147,7 +148,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title collapse-title3 text'><a class="a" href="#content7"><img src="ma_assets/ma_img/Q.PNG"><p>매물개수 제한이 있나요?</p></a></h2>
+    					<h2 class=' collapse-title collapse-title3 text'><a class="a" href="#content7"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>매물개수 제한이 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content7" class="content"><pre class="precolor"><span class="contentspan">A.</span>직거래 매물의 경우 1개 계정 당 1개 매물 업로드를 기준으로 합니다. 무분별한 매물 업로드를 통한 허위 정보의 발생을 막기 위해 허위매물 전담팀
    이 계속해서 직접 매물 정보를 확인하게 됩니다.</pre>
@@ -161,8 +162,8 @@
 	
     
     <!-- Javascript -->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     		$(function() {
         	    /** 게시글의 제목을 클릭한 경우 호출되는 이벤트 정의 */
