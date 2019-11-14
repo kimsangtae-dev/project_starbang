@@ -124,6 +124,6 @@
 		<li><a target="_blank" rel="noopener noreferrer" class=""
 			href="/term/10">개인정보처리방침</a></li>
 		<li><a target="_blank" rel="noopener noreferrer" class=""
-			href="<%=request.getContextPath()%>/admin/ad_login.jsp">관리자페이지</a></li>
+			href="<%=request.getContextPath()%>/jsp/admin/login.do">관리자페이지</a></li>
 	</ul>
 </div>

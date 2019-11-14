@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,7 +9,7 @@
 <title>별방 관리자 로그인</title>
 <%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- CSS적용 -->
-<link rel="stylesheet" type="text/css" href="ad_assets/ad_login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/ad_login.css">
 <style>
 </style>
 <script type="text/javascript">
@@ -34,14 +35,14 @@
 	<div id="admin">
 		<div class="header">
 			<div class="title">
-				<img src="../assets/ico/logo_blue.png"></img>
+				<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_blue.png"></img>
 				<p>관리자 사이트</p>
 			</div>
 		</div>
 		<div id="content">
 			<div class="loginf form-group">
 				<form name="login_form" onsubmit="return check()" method="post"
-					action="ad_main.jsp" enctype="text/plain">
+					action="main.do" enctype="text/plain">
 					<label for="admin_id"> <input type="text" name="admin_id"
 						placeholder="아이디" msg="writer" />
 					</label> <br /> <label for="admin_password"> <input
@@ -54,7 +55,9 @@
 	</div>
 
 	<!-- Javascript -->
-	<script src="../assets/js/jquery-1.10.2.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script> --%>
+	<script src="<c:url value="/assets/assets_etc/js/jquery-3.2.1.min.js" />"></script>
+	<script src="<c:url value="/assets/assets_etc/js/bootstrap.min.js" />"></script>
 </body>
 </html>

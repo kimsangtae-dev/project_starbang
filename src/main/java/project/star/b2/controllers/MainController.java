@@ -89,7 +89,7 @@ public class MainController {
 		
 		return new ModelAndView("jsp/main/wish");
 	}
-	
-	
+
+
 	
 }

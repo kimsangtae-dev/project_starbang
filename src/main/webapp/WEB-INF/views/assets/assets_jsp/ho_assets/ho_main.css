@@ -5,7 +5,7 @@
 
 #root {
     background-color: rgb(67, 131, 255);
-    background: url("ho_img/cp_architecture.jpg") center center / cover no-repeat;
+    background: url("../../img/ho_img/cp_architecture.jpg") center center / cover no-repeat;
     background-size: cover;
     width: auto;
 }	
