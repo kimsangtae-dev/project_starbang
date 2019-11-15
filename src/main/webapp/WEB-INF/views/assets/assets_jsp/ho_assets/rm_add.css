@@ -33,6 +33,7 @@
 /***** 페이지 전체 input박스 속성 *****/
 .input_box {
     height: 46px;
+    line-height: 46px;
     color: rgb(68, 68, 68);
     font-size: 15px;
     box-sizing: border-box;
@@ -96,9 +97,9 @@
     font-size: 14px;
     font-weight: 400;
     position: absolute;
-    top: 50%;
     right: 18px;
-    transform: translateY(-50%);
+    /* top: 50%;
+    transform: translateY(-50%); */
 }
 
 .tableframe > table tr + tr { border-top: 1px solid rgb(238, 238, 238); }
@@ -157,7 +158,7 @@ input, button, textarea { outline: none; }
 
 /************************************ 하위박스 ************************************/
 .sell_info_box {
-    width: 100%;
+    /* width: 100%; */
     margin: 30px 0 30px 0;
     padding: 21px 35px;
     border-radius: 4px;
@@ -179,8 +180,7 @@ input, button, textarea { outline: none; }
 /* 매물의 방종류 버튼 */
 .Square_box {
     float: left;    
-    user-select: none;
-    position: relative;
+    /* position: relative; */
 }
 
 /* 매물의 방종류 버튼 안 글씨 */
@@ -371,9 +371,7 @@ form.loc_div {
     width: 440px;
     height: 330px;
     position: relative;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(221, 221, 221);
+    border: 1px solid rgb(221, 221, 221);
 }
 
 .map_box1 {
@@ -474,24 +472,6 @@ button.deal_btn2 {
 
 .short > lebel { position: relative; }
 
-/* .deal_shot {
-    position: absolute;
-    top: 50%;
-    left: 245px;
-    transform: translateY(-50%);
-    user-select: none;
-}
-
-.deal_shot > label {
-    float: left;
-}
-
-.deal_shot::after {
-    display: block;
-    content: "";
-    clear: both;
-} */
-
 /* 단기가능 체크박스 글씨 */
 .deal_text {
     position: relative;
@@ -511,7 +491,6 @@ button.deal_btn2 {
     float: right;
     height: 20px;
     line-height: 46px;
-    user-select: none;
     position: relative;
     bottom: 25px;
 }
@@ -519,9 +498,10 @@ button.deal_btn2 {
 .deal_text1 > span {
     color: rgb(136, 136, 136);
     font-size: 14px;
-    position: relative;
+    /* position: relative;
     top: 0px;
-    bottom: 1px;
+    bottom: 1px; */
+    line-height: 30px;
 }
 
 .deal_box_pd::after {
@@ -529,7 +509,6 @@ button.deal_btn2 {
     content: "";
     clear: both;
 }
-
 
 /************************************* 기본정보 *********************************/
 
@@ -557,7 +536,7 @@ button.deal_btn2 {
     height: 46px;
     color: rgb(102, 102, 102);
     font-size: 14px;
-    line-height: 44px;
+    line-height: 46px;
     text-align: center;
     padding: 0px 15px;
     border-radius: 3px;
@@ -575,7 +554,6 @@ button.deal_btn2 {
 
 .in_date {
     float: left;
-    user-select: none;
     position: relative;
     margin-right: 10px;
 }
@@ -599,7 +577,7 @@ button.deal_btn2 {
     height: 46px;
     color: rgb(68, 68, 68);
     font-size: 15px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     padding: 0px 15px;
     border: 1px solid rgb(208, 210, 214);
     background: url(../../img/ho_img/arrow.png) right 15px center / 10px no-repeat rgb(255, 255, 255);
@@ -640,6 +618,7 @@ select::-ms-expand { display:none; }
     width: 30px;
     color: rgb(34, 34, 34);
     font-size: 15px;
+    height: 46px;
     line-height: 46px;
     text-align: center;
 }
@@ -676,8 +655,8 @@ select::-ms-expand { display:none; }
     height: 1px;
     opacity: 0;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    /* top: 0px;
+    left: 0px; */
 }
 
 /** 버튼 클릭시 색 바뀜 */
@@ -742,7 +721,6 @@ select::-ms-expand { display:none; }
 /* 관리비 항목 플룻 */
 .ma_m {
     float: left;
-    user-select: none;
     position: relative;
 }
 
@@ -972,7 +950,6 @@ select::-ms-expand { display:none; }
     margin-top: 23px;
     margin-bottom: 4px;
     line-height: 20px;
-    user-select: none;
     position: relative;
 }
 

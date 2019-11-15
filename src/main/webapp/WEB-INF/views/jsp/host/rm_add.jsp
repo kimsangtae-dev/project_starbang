@@ -74,7 +74,7 @@
                         </tr>
                     </tbody>
                 </table>
-                </div>
+                </div> <!-- sell_room_box 끝 -->
                 <!-- 위치정보 -->
                 <div class="tableframe" name="location">
                     <h1>위치 정보<span>*등기부등본 상의 주소를 입력해 주세요.</span></h1>
@@ -503,8 +503,8 @@
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
             </label>
-            <button type="button" class="low_btn1">취소</button>
-            <button type="button" class="low_btn2">매물등록</button>
+            <button type="button" class="low_btn1" onclick="location.href='${pageContext.request.contextPath}/jsp/host/rmli.do'">취소</button>
+            <button type="button" class="low_btn2" onclick="location.href='${pageContext.request.contextPath}/jsp/host/rmli.do'">매물등록</button>
         </div>
 </div><!-- content끝 -->
 
