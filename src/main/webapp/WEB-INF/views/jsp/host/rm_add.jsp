@@ -22,7 +22,7 @@
 <div id="root">
     <div class="box">
     <!-- header 시작 -->
-        <%@ include file="../../assets/inc/ho_inc/ho_header.jsp"%>
+        <%@ include file="../../assets/inc/ho_inc/header.jsp"%>
     <!-- header 끝 -->
     <!-- content 시작 -->
     <div id="content">
@@ -511,14 +511,14 @@
 <!-- footer 시작 -->
     <!-- 하단 영역 -->
     <div id="footer">
-        <%@ include file="../../assets/inc/ho_inc/ho_footer.jsp"%>
+        <%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
     </div><!-- footer 끝 -->
 </div> <!-- box 끝 -->
 </div> <!-- root 끝 -->
           
            
 <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 <!-- 카카오 지도 시작-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
