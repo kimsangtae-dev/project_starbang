@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/pprm.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/pprm.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
 		<!-- 상단 헤더 -->
-		<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
+		<%@ include file="../assets/inc/ma_top.jsp"%>
 	
 	<!-- 중앙 영역 -->
       <div id="content">
@@ -39,7 +39,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -70,7 +70,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -101,7 +101,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -132,7 +132,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="hit-a-div"></div>
                     <!-- 확인매물 div -->
@@ -158,11 +158,11 @@
   </div> <!-- content 끝 -->
 
 	<!-- 하단 영역 -->
-	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
+	<%@ include file="../assets/inc/ma_bottom.jsp"%>
 	
 <!-- Javascript -->
-  <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-  <script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	/* 좋아요 클릭 -> 하트 색 변경 */
 	$(function() {

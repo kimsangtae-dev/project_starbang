@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../../assets/inc/meta_inc/meta.jsp" />
+<jsp:include page="../assets/inc/meta.jsp" />
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/billboard.min.css" />
-<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/rmdt.css" />
+<link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/css/ma_css/rmdt.css" />
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 </head>
 
 <body>
 	<!-- 상단 헤더 -->
-	<jsp:include page="../../assets/inc/ma_inc/top.jsp" />
+	<jsp:include page="../assets/inc/ma_top.jsp" />
 	
 	<!-- 중앙 영역 -->
 	<div id="content">
