@@ -1,12 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/userli.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/ad_css/userli.css" />
 
 </head>
 
@@ -14,7 +16,7 @@
 	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
-		<%@ include file="../../assets/inc/ad_inc/header.jsp"%>
+		<%@ include file="../assets/inc/ad_header.jsp"%>
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<div>
@@ -83,8 +85,10 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/* 체크박스 전체선택 */

@@ -6,7 +6,7 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/rmli.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/rmli.css" />
 
 </head>
 
