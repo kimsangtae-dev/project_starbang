@@ -3,10 +3,10 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/rmli.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rmli.css" />
 <head>
 
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 
 <title>공실관리</title>
  
@@ -25,7 +25,7 @@
 <div id="root">
     <div class="box">
         <!-- 헤더 -->
-        <%@ include file="../../assets/inc/ho_inc/header.jsp"%>
+        <%@ include file="../assets/inc/ho_header.jsp"%>
 
         <!-- content -->
         <!-- 공실관리 -->
@@ -229,7 +229,7 @@
     <!-- / content -->
     
     <!-- footer -->
-    <%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
+    <%@ include file="../assets/inc/ho_footer.jsp"%>
     
     </div>
     <!--/ .box -->
@@ -265,8 +265,8 @@
 </div>
 
 <!-- Javascript -->
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".header-dropbox").hover(function() {

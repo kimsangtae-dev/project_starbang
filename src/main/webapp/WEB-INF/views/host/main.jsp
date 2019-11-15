@@ -4,9 +4,9 @@
 <html lang="ko">
 <head>
 <title>별방 방주인 메인 페이지</title>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/main.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/main.css" />
 <style type="text/css">
 </style>
 </head>
@@ -17,28 +17,28 @@
 	<div id="root">
 		<!-- 상단 헤더 -->
 		<div id="header">
-			<%@ include file="../../assets/inc/ho_inc/header.jsp"%>
+			<%@ include file="../assets/inc/ho_header.jsp"%>
 		</div>
 		<!-- 중앙 영역 -->
 		<div id="body">
 			<div class="bgimg">
 				<h1 class="title">
-					공실 광고<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png">에서 무제한 무료
+					공실 광고<img src="${pageContext.request.contextPath}/assets/css/ico/logo_white.png">에서 무제한 무료
 				</h1>
 				<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
 				<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
-				<a class="link-sc" href="${pageContext.request.contextPath}/jsp/host/rm_add.do">방주인 시작하기</a>
+				<a class="link-sc" href="${pageContext.request.contextPath}/host/rm_add.do">방주인 시작하기</a>
 
 			</div>
 		</div>
 	</div>
 	<!-- 하단 영역 -->
 	<div id="footer">
-		<%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
+		<%@ include file="../assets/inc/ho_footer.jsp"%>
 	</div>
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 /* 		$(function() {
 			$(".header-dropbox").hover(function() {

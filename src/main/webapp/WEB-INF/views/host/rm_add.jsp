@@ -5,11 +5,11 @@
 <html lang="ko">
 
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 <title>방주인 방등록</title>
  
 <!-- header, footer, ho_rmli css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/rm_add.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rm_add.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/datepicker/datepicker.min.css"/>
 
 <style>
@@ -22,7 +22,7 @@
 <div id="root">
     <div class="box">
     <!-- header 시작 -->
-        <%@ include file="../../assets/inc/ho_inc/header.jsp"%>
+        <%@ include file="../assets/inc/ho_header.jsp"%>
     <!-- header 끝 -->
     <!-- content 시작 -->
     <div id="content">
@@ -503,23 +503,23 @@
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
             </label>
-            <button type="button" class="low_btn1" onclick="location.href='${pageContext.request.contextPath}/jsp/host/rmli.do'">취소</button>
-            <button type="button" class="low_btn2" onclick="location.href='${pageContext.request.contextPath}/jsp/host/rmli.do'">매물등록</button>
+            <button type="button" class="low_btn1" onclick="location.href='${pageContext.request.contextPath}/host/rmli.do'">취소</button>
+            <button type="button" class="low_btn2" onclick="location.href='${pageContext.request.contextPath}/host/rmli.do'">매물등록</button>
         </div>
 </div><!-- content끝 -->
 
 <!-- footer 시작 -->
     <!-- 하단 영역 -->
     <div id="footer">
-        <%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
+        <%@ include file="../assets/inc/ho_footer.jsp"%>
     </div><!-- footer 끝 -->
 </div> <!-- box 끝 -->
 </div> <!-- root 끝 -->
           
            
 <!-- Javascript -->
-    <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <!-- 카카오 지도 시작-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
