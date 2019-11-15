@@ -150,7 +150,7 @@ html body #root {
 	width: 36px;
     height: 36px;
     margin: 15px auto 0px;
-    background: url(assets/img/ma_img/plusbtn.svg) center center / cover no-repeat;
+    background: url(../../img/ma_img/plusbtn.svg) center center / cover no-repeat;
 }
 
 
@@ -215,7 +215,7 @@ html body #root {
     top: 0px;
     right: 0px;
     left: 0px;
-    background: url(assets/img/ma_img/wish/comp1.jpeg) center center / cover no-repeat;
+    background: url(../../img/ma_img/wish/comp1.jpeg) center center / cover no-repeat;
 }
 
 .gallery-d2-pic:after {
@@ -307,7 +307,7 @@ html body #root {
 	width: 32px;
     height: 30px;
     margin: 0px auto;
-    background: url(assets/img/ma_img/fullheart.svg) center center / cover;
+    background: url(../../img/ma_img/fullheart.svg) center center / cover;
 }
 
 
@@ -843,15 +843,15 @@ html body #root {
 	width: 32px;
     height: 30px;
     margin: 0px auto;
-    background: url(assets/img/ma_img/like.svg) center center / cover;
+    background: url(../../img/ma_img/like.svg) center center / cover;
 }
 
 .mg-heart-2d.off {
-	background: url(assets/img/ma_img/like.svg) center center/cover;
+	background: url(../../img/ma_img/like.svg) center center/cover;
 }
 
 .mg-heart-2d.on {
-	background: url(assets/img/ma_img/like-on.svg) center center/cover;
+	background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 
 /* modal - <gallery> - 각 갤러리 2div - a태그 */
@@ -879,9 +879,9 @@ html body #root {
     left: 0px;    
 }
 
-.mg-a-pic1::before {background: url(assets/img/ma_img/wish/comp1.jpeg) center center / cover no-repeat;}
-.mg-a-pic2::before {background: url(assets/img/ma_img/wish/comp2.jpeg) center center / cover no-repeat;}
-.mg-a-pic3::before {background: url(assets/img/ma_img/wish/comp3.jpeg) center center / cover no-repeat;}
+.mg-a-pic1::before {background: url(../../img/ma_img/wish/comp1.jpeg) center center / cover no-repeat;}
+.mg-a-pic2::before {background: url(../../img/ma_img/wish/comp2.jpeg) center center / cover no-repeat;}
+.mg-a-pic3::before {background: url(../../img/ma_img/wish/comp3.jpeg) center center / cover no-repeat;}
 
 .mg-a-pic::after {
     content: "";

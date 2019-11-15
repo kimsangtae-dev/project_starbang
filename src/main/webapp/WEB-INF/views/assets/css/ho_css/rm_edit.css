@@ -580,7 +580,7 @@ button.deal_btn2 {
     /* box-sizing: border-box; */
     padding: 0px 15px;
     border: 1px solid rgb(208, 210, 214);
-    background: url(asset/img/ho_img/arrow.png) right 15px center / 10px no-repeat rgb(255, 255, 255);
+    background: url(../../img/ho_img/arrow.png) right 15px center / 10px no-repeat rgb(255, 255, 255);
  }
   
 select {
