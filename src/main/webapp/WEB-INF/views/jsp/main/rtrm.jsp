@@ -26,7 +26,7 @@
             <h1 class="interest">관심목록</h1>
         <div class="tab-menu">
           <a class="st-bang active" href="#">최근 본 방</a>
-          <a class="st-bang" href="ma_wish.jsp">찜한 방</a>
+          <a class="st-bang" href="${pageContext.request.contextPath}/jsp/main/wish.do">찜한 방</a>
         </div>
         <div class="tab-text">
         <div class="re-div1"><p>총 <span>12개</span>의 최근 본 방이 있습니다</p></div>
@@ -44,7 +44,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -75,7 +75,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -106,7 +106,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -137,7 +137,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -167,8 +167,8 @@
 	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
 	
 <!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	/* 좋아요 클릭 -> 하트 색 변경 */
 	$(function() {
