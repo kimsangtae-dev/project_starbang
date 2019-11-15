@@ -11,27 +11,27 @@ public class HostController {
 	/********************************************************************
 	 *  						방주인 메인페이지
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/host/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/host/main.do", method = RequestMethod.GET)
 	public ModelAndView main() {
 		
-		return new ModelAndView("jsp/host/main");
+		return new ModelAndView("host/main");
 	}
 	
 	/********************************************************************
 	 *  							공실 등록하기
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/host/rm_add.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/host/rm_add.do", method = RequestMethod.GET)
 	public ModelAndView rm_add() {
 		
-		return new ModelAndView("jsp/host/rm_add");
+		return new ModelAndView("host/rm_add");
 	}
 	
 	/********************************************************************
 	 *  							공실관리
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/host/rmli.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/host/rmli.do", method = RequestMethod.GET)
 	public ModelAndView rmli() {
 		
-		return new ModelAndView("jsp/host/rmli");
+		return new ModelAndView("host/rmli");
 	}
 }

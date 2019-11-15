@@ -11,45 +11,45 @@ public class ModalController {
 	/********************************************************************
 	 *  							동의하기
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/modal/agree.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/agree.do", method = RequestMethod.GET)
 	public ModelAndView agree() {
 		
-		return new ModelAndView("jsp/modal/agree");
+		return new ModelAndView("modal/agree");
 	}
 	
 	/********************************************************************
 	 *  							회원가입
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/modal/join.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/join.do", method = RequestMethod.GET)
 	public ModelAndView join() {
 		
-		return new ModelAndView("jsp/modal/join");
+		return new ModelAndView("modal/join");
 	}
 	
 	/********************************************************************
 	 *  							로그인
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/modal/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/login.do", method = RequestMethod.GET)
 	public ModelAndView login() {
 		
-		return new ModelAndView("jsp/modal/login");
+		return new ModelAndView("modal/login");
 	}
 	
 	/********************************************************************
 	 *  							비밀번호 찾기
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/modal/pwd.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/pwd.do", method = RequestMethod.GET)
 	public ModelAndView pwd() {
 		
-		return new ModelAndView("jsp/modal/pwd");
+		return new ModelAndView("modal/pwd");
 	}
 	
 	/********************************************************************
 	 *  							찜한방 - 비교하기
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/modal/compare.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/compare.do", method = RequestMethod.GET)
 	public ModelAndView compare() {
 		
-		return new ModelAndView("jsp/modal/compare");
+		return new ModelAndView("modal/compare");
 	}
 }

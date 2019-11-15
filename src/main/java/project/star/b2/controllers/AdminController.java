@@ -11,72 +11,72 @@ public class AdminController {
 	/********************************************************************
 	 *  						글쓰기 수정
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/edit.do", method = RequestMethod.GET)
 	public ModelAndView edit() {
 		
-		return new ModelAndView("jsp/admin/edit");
+		return new ModelAndView("admin/edit");
 	}
 	
 	/********************************************************************
 	 *  					   관리자 자주묻는질문
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/faq.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/faq.do", method = RequestMethod.GET)
 	public ModelAndView faq() {
 		
-		return new ModelAndView("jsp/admin/faq");
+		return new ModelAndView("admin/faq");
 	}
 	
 	/********************************************************************
 	 *  						관리자 로그인
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/login.do", method = RequestMethod.GET)
 	public ModelAndView login() {
 		
-		return new ModelAndView("jsp/admin/login");
+		return new ModelAndView("admin/login");
 	}
 	
 	/********************************************************************
 	 *  						관리자 메인
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/main.do", method = RequestMethod.GET)
 	public ModelAndView main() {
 		
-		return new ModelAndView("jsp/admin/main");
+		return new ModelAndView("admin/main");
 	}
 	
 	/********************************************************************
 	 *  						관리자 공지사항
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/notice.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/notice.do", method = RequestMethod.GET)
 	public ModelAndView notice() {
 		
-		return new ModelAndView("jsp/admin/notice");
+		return new ModelAndView("admin/notice");
 	}
 	
 	/********************************************************************
 	 *  							방 관리
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/rmli.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/rmli.do", method = RequestMethod.GET)
 	public ModelAndView rmli() {
 		
-		return new ModelAndView("jsp/admin/rmli");
+		return new ModelAndView("admin/rmli");
 	}
 	
 	/********************************************************************
 	 *  							회원 관리
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/userli.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)
 	public ModelAndView userli() {
 		
-		return new ModelAndView("jsp/admin/userli");
+		return new ModelAndView("admin/userli");
 	}
 	
 	/********************************************************************
 	 *  							글쓰기
 	 *******************************************************************/
-	@RequestMapping(value = "/jsp/admin/write.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/write.do", method = RequestMethod.GET)
 	public ModelAndView write() {
 		
-		return new ModelAndView("jsp/admin/write");
+		return new ModelAndView("admin/write");
 	}	
 }
