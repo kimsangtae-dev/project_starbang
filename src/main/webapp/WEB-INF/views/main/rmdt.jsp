@@ -345,11 +345,11 @@
 		<!--매물 이미지 끝-->
 	</div>
 	<!-- 하단 영역 -->
-	<jsp:include page="../../assets/inc/ma_inc/bottom.jsp" />
+	<jsp:include page="../assets/inc/ma_bottom.jsp" />
 
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.min.js"></script>
 
 	<script type="text/javascript"

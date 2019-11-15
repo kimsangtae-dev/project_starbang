@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/rtrm.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/rtrm.css">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 	<div class="root">
 	
 		<!-- 상단 헤더 -->
-		<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
+		<%@ include file="../assets/inc/ma_top.jsp"%>
 	
 	<!-- 중앙 영역 -->
       <div id="content">
@@ -26,7 +26,7 @@
             <h1 class="interest">관심목록</h1>
         <div class="tab-menu">
           <a class="st-bang active" href="#">최근 본 방</a>
-          <a class="st-bang" href="${pageContext.request.contextPath}/jsp/main/wish.do">찜한 방</a>
+          <a class="st-bang" href="${pageContext.request.contextPath}/main/wish.do">찜한 방</a>
         </div>
         <div class="tab-text">
         <div class="re-div1"><p>총 <span>12개</span>의 최근 본 방이 있습니다</p></div>
@@ -44,7 +44,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -75,7 +75,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -106,7 +106,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
@@ -137,7 +137,7 @@
                   </div>
                   <!-- 좋아요 끝 -->
                   <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+                  <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                     <!-- 이미지 -->
                     <div class="recent-a-div"></div>
                     <!-- 확인매물 div -->
