@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/search.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/search.css">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
 
@@ -17,7 +17,7 @@
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
 		<!-- 상단 헤더 -->
-		<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
+		<%@ include file="../assets/inc/ma_top.jsp"%>
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<div id="search" class="clearfix">
@@ -244,8 +244,8 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
 	<script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
@@ -303,7 +303,7 @@
 	<script type="text/javascript">
 		/* gallery.json을 가져와 화면에 출력 */
 		function get_gallery() {
-			$.get('${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/gallery.json', function(req) {
+			$.get('${pageContext.request.contextPath}/assets/css/ma_css/gallery.json', function(req) {
 				var template = Handlebars.compile($("#gallery-data").html());
 				var html = template(req);
 				$("#gallery-list").append(html);
@@ -359,7 +359,7 @@
 			});
 
 			// 데이터 가져오기
-			$.get("${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/address.json", function(data) {
+			$.get("${pageContext.request.contextPath}/assets/css/ma_css/address.json", function(data) {
 				var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
@@ -396,7 +396,7 @@
 			}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
-			$.getJSON("${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/guPosition.json", function(data) {
+			$.getJSON("${pageContext.request.contextPath}/assets/css/ma_css/guPosition.json", function(data) {
 				var guPositions = data;
 				var gumark;
 				for (var i = 0; i < guPositions.length; i++) {
