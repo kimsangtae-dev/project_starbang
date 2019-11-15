@@ -162,7 +162,7 @@
 	
     
     <!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     		$(function() {

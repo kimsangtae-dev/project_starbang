@@ -12,8 +12,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_mypager.css">
 
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css"></script>
 
 </head>
 <body>
@@ -38,7 +39,7 @@
 				<br/>
 				<div id="textcontent">
 					<h3 class="h31">본인 성명</h3>
-					<input type="text" name="myname" value="홍길동" class="input" >
+					<input type="text" id="myname" name="myname" value="홍길동" class="input" >
 					<h3 class="h32">이메일주소</h3>
 
 					<input type="text" name="email" id="email" disabled value="dlekdse@gmail.com" class="emailmypage">
@@ -73,7 +74,7 @@
 	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
     
     <!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 	<!-- 모달창 -->
@@ -147,46 +148,49 @@
 //</div>
 		$('#modal').modal("hide"); //닫기 
 		
+		var myname = document.getElementById('myname'); 
+		var mynamevalue = $('#myname').val();
+		
 		/** 확인버튼 */
 		$("#submit").click(function() {
-			swal({
-				title: "회원정보 수정을 하시겠습니까?",	
-				text: "수정된 정보는 다시 되돌릴 수 없습니다",
-				type: "warning",
-				confirmButtonText: "Yes",
-				showCancelButton: true,
-				cancelButtonText: "No",
-			}).then(function(result) {
-				if(result.value) {
-					swal("수정성공", "성공적으로 수정하셨습니다", "success");
-				}else if(result.dismiss === "cancel") {
-					swal("수정취소", "수정 취소하셨습니다", "error");
-				}
-			});
+			
+			if(!mynamevalue.equals($('#myname').val())) {
+				swal("이름이 변경되었습니다")
+			}
+			
+			
 		});
 	});
-	
-	// 회원탈퇴에 모달창에 들어 있는 버튼
-	function byId(e){return document.getElementById(e);}
 
-	window.addEventListener('load', mInit, false);
-
-	function mInit()
-	{
-	    var tgt = byId('modelcheck');
-	    tgt.secondSource = 'ma_assets/ma_img/eede.png';
-	}
-
-	function byId(e){return document.getElementById(e);}
-
-	function action() 
-	{
-	    var tgt = byId('modelcheck');
-	    var tmp = tgt.src;
-	    tgt.src = tgt.secondSource;
-	    tgt.secondSource = tmp;
-	};
 		</script>
+		
+	<script type="text/javascript">
+		// 회원탈퇴에 모달창에 들어 있는 버튼
+		function byId(e){return document.getElementById(e);}
+	
+		window.addEventListener('load', mInit, false);
+
+		function mInit()
+		{
+		    var tgt = byId('modelcheck');
+		    tgt.secondSource = 'ma_assets/ma_img/eede.png';
+		}
+
+		function byId(e){return document.getElementById(e);}
+
+		function action() 
+		{
+		    var tgt = byId('modelcheck');	
+		    var tmp = tgt.src;
+		    tgt.src = tgt.secondSource;
+		    tgt.secondSource = tmp;
+		};
+	</script>	
+		
+	<script type="text/javascript">
+		$("#modalsubmit").click(function() {
+			swal("탈퇴되었습니다");
+	</script>
 		
 </body>
 
