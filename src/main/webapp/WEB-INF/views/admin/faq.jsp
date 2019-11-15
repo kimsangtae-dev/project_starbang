@@ -4,11 +4,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../../assets/inc/meta_inc/meta.jsp" />
+<jsp:include page="../assets/inc/meta.jsp" />
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/ad_faq.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/ad_faq.css" />
 
 </head>
 
@@ -18,7 +17,7 @@
 	<div>
 		<!-- 상단 헤더 -->
 		<div id="header">
-		<jsp:include page="../../assets/inc/ad_inc/header.jsp" />
+		<jsp:include page="../assets/inc/ad_header.jsp" />
 			</div>
 		</div>
 		<!-- 중앙 영역 -->
