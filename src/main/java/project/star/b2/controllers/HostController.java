@@ -27,6 +27,15 @@ public class HostController {
 	}
 	
 	/********************************************************************
+	 *  							공실 수정하기
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rm_edit.do", method = RequestMethod.GET)
+	public ModelAndView rm_edit() {
+		
+		return new ModelAndView("jsp/host/rm_edit");
+	}
+	
+	/********************************************************************
 	 *  							공실관리
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rmli.do", method = RequestMethod.GET)

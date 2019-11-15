@@ -328,8 +328,8 @@ body > div { height: 100%; overflow-y: hidden; }
     /* background: url(../../img/ma_img/like.svg) center center / cover; */
 }
 
-.recent-div8.off{ background: url(../../../assets/img/ma_img/like.svg) center center / cover; }
-.recent-div8.on{ background: url(../../../assets/img/ma_img/like-on.svg) center center / cover; }
+.recent-div8.off{ background: url(assets/img/ma_img/like.svg) center center / cover; }
+.recent-div8.on{ background: url(assets/img/ma_img/like-on.svg) center center / cover; }
 
 /* <a> 태그 */
 .recent-a{
@@ -360,7 +360,7 @@ body > div { height: 100%; overflow-y: hidden; }
     top: 0px;
     right: 0px;
     left: 0px;
-    background: url(../../../assets/img/ma_img/1.jpeg) center center / cover no-repeat;
+    background: url(assets/img/ma_img/1.jpeg) center center / cover no-repeat;
 }
 
 .recent-a-div:after {

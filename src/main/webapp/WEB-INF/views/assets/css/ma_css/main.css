@@ -162,12 +162,12 @@
 	height: 100px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
-	background: url(../../img/ma_img/main/slide1.png) center center/cover
+	background: url(assets/img/ma_img/main/slide1.png) center center/cover
 		no-repeat;
 }
 
 .slide-a-div1-up2 {
-	background: url(../../img/ma_img/main/slide2.png) center center/cover
+	background: url(assets/img/ma_img/main/slide2.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -176,7 +176,7 @@
 }
 
 .slide-a-div1-up3 {
-	background: url(../../img/ma_img/main/slide3.png) center center/cover
+	background: url(assets/img/ma_img/main/slide3.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -185,7 +185,7 @@
 }
 
 .slide-a-div1-up4 {
-	background: url(../../img/ma_img/main/slide4.png) center center/cover
+	background: url(assets/img/ma_img/main/slide4.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -194,7 +194,7 @@
 }
 
 .slide-a-div1-up5 {
-	background: url(../../img/ma_img/main/slide5.png) center center/cover
+	background: url(assets/img/ma_img/main/slide5.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -203,7 +203,7 @@
 }
 
 .slide-a-div1-up6 {
-	background: url(../../img/ma_img/main/slide6.png) center center/cover
+	background: url(assets/img/ma_img/main/slide6.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -212,7 +212,7 @@
 }
 
 .slide-a-div1-up7 {
-	background: url(../../img/ma_img/main/slide7.png) center center/cover
+	background: url(assets/img/ma_img/main/slide7.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -221,7 +221,7 @@
 }
 
 .slide-a-div1-up8 {
-	background: url(../../img/ma_img/main/slide8.png) center center/cover
+	background: url(assets/img/ma_img/main/slide8.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -230,7 +230,7 @@
 }
 
 .slide-a-div1-up9 {
-	background: url(../../img/ma_img/main/slide9.png) center center/cover
+	background: url(assets/img/ma_img/main/slide9.png) center center/cover
 		no-repeat;
 	width: 100%;
 	height: 100px;
@@ -401,15 +401,15 @@
 	width: 32px;
 	height: 30px;
 	margin: 0px auto;
-	/* background: url(../../img/ma_img/like.svg) center center / cover; */
+	/* background: url(assets/img/ma_img/like.svg) center center / cover; */
 }
 
 .recent-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
+	background: url(assets/img/ma_img/like.svg) center center/cover;
 }
 
 .recent-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
+	background: url(assets/img/ma_img/like-on.svg) center center/cover;
 }
 
 /* <a> 태그 */
@@ -460,22 +460,22 @@
 }
 
 .pic1:before {
-	background: url(../../img/ma_img/main/3.jpeg) center center/cover
+	background: url(assets/img/ma_img/main/3.jpeg) center center/cover
 		no-repeat;
 }
 
 .pic2:before {
-	background: url(../../img/ma_img/main/4.jpeg) center center/cover
+	background: url(assets/img/ma_img/main/4.jpeg) center center/cover
 		no-repeat;
 }
 
 .pic3:before {
-	background: url(../../img/ma_img/main/5.jpeg) center center/cover
+	background: url(assets/img/ma_img/main/5.jpeg) center center/cover
 		no-repeat;
 }
 
 .pic4:before {
-	background: url(../../img/ma_img/main/6.jpeg) center center/cover
+	background: url(assets/img/ma_img/main/6.jpeg) center center/cover
 		no-repeat;
 }
 
@@ -654,15 +654,15 @@
 	width: 32px;
 	height: 30px;
 	margin: 0px auto;
-	/* background: url(../../img/ma_img/like.svg) center center / cover; */
+	/* background: url(assets/img/ma_img/like.svg) center center / cover; */
 }
 
 .recent-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
+	background: url(assets/img/ma_img/like.svg) center center/cover;
 }
 
 .recent-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
+	background: url(assets/img/ma_img/like-on.svg) center center/cover;
 }
 
 /* <a> 태그 */
@@ -699,7 +699,7 @@
 	top: 0px;
 	right: 0px;
 	left: 0px;
-	background: url(../../img/ma_img/1.jpeg) center center/cover no-repeat;
+	background: url(assets/img/ma_img/1.jpeg) center center/cover no-repeat;
 }
 
 .recent-a-div:after {
@@ -720,7 +720,7 @@
 	top: 0px;
 	right: 0px;
 	left: 0px;
-	background: url(../../img/ma_img/2.jpeg) center center/cover no-repeat;
+	background: url(assets/img/ma_img/2.jpeg) center center/cover no-repeat;
 }
 
 .recent-a-div2:after {

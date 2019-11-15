@@ -99,11 +99,11 @@
             }  
             
             .hit-div8.off { 
-            background: url(../../img/ma_img/like.svg) center center / cover; 
+            background: url(assets/img/ma_img/like.svg) center center / cover; 
             }
             
 			.hit-div8.on { 
-			background: url(../../img/ma_img/like-on.svg) center center / cover; 
+			background: url(assets/img/ma_img/like-on.svg) center center / cover; 
 			}
 
                 /* <a> 태그 */
@@ -136,7 +136,7 @@
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(../../img/ma_img/1234.jpg) center center / cover no-repeat;
+                background: url(assets/img/ma_img/1234.jpg) center center / cover no-repeat;
             }
 
             .hit-a-div:after {
@@ -157,7 +157,7 @@
                 top: 0px;
                 right: 0px;
                 left: 0px;
-                background: url(../../img/ma_img/2.jpeg) center center / cover no-repeat;
+                background: url(assets/img/ma_img/2.jpeg) center center / cover no-repeat;
             }
 
             .hit-a-div2:after {
