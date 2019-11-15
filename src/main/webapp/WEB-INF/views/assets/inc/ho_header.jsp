@@ -165,23 +165,23 @@ a:focus {
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="${pageContext.request.contextPath}/jsp/host/main.do" class="header-div1-a">
-			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png"></a>
+		<a href="${pageContext.request.contextPath}/host/main.do" class="header-div1-a">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
 		<div class="header-div2">
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rm_add.do">공실 등록하기</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/rm_add.do">공실 등록하기</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmli.do">공실관리</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/rmli.do">공실관리</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a href="${pageContext.request.contextPath}/jsp/modal/login.do" class="padding-l" data-toggle="modal"
+						<a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal"
 							data-target="#loginModal">로그인</a>
 					</p>
 				</li>

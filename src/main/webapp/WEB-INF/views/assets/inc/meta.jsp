@@ -6,17 +6,17 @@
 <title>Main</title>
 
 <!-- 모바일 웹 페이지 설정 -->
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_bb.png" />
-<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_bb.png" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
 
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/bootstrap.min.css" />
 
 <!-- reset.css -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
 
 <!-- 나눔고딕 웹 폰트 적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/nanumfont.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/nanumfont.css" />
 
 <!-- 반응형 웹을 지원하지 않을 경우 -->
 <!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->

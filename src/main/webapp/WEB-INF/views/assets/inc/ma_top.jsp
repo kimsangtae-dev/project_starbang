@@ -81,23 +81,23 @@
 <div id="header">
 	<div class="navbar" role="navigation">
 		<a href="${pageContext.request.contextPath}/index.do">
-			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_blue.png">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png">
 		</a>
 		<div class="menu-left small-font">
-			<a href="${pageContext.request.contextPath}/jsp/host/main.do">방주인 사이트</a>
+			<a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
 			<span>&nbsp | &nbsp </span>
-			<a href="${pageContext.request.contextPath}/jsp/admin/main.do">관리자 사이트</a>
+			<a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="${pageContext.request.contextPath}/jsp/main/search.do">방찾기</a> 
-				<a href="${pageContext.request.contextPath}/jsp/main/rtrm.do" class="padding-l">관심목록</a> 
-				<a href="${pageContext.request.contextPath}/jsp/main/faq.do" class="padding-l">문의하기</a>
-				<a href="${pageContext.request.contextPath}/jsp/main/pprm.do" class="padding-l">인기매물</a>
+				<a href="${pageContext.request.contextPath}/main/search.do">방찾기</a> 
+				<a href="${pageContext.request.contextPath}/main/rtrm.do" class="padding-l">관심목록</a> 
+				<a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
+				<a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>
 			</div>
 			<div class="small-font">
-				<a href="${pageContext.request.contextPath}/jsp/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
+				<a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
 			</div>
 		</div>
 	</div>

@@ -91,7 +91,7 @@ body {
 <div id="header">
 	<div class="navbar" role="navigation">
 		<a href="${pageContext.request.contextPath}">
-			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png">
+			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png">
 		</a>
 		<div class="menu-left small-font">
 			<a href="${pageContext.request.contextPath}">회원 사이트</a>
@@ -99,13 +99,13 @@ body {
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">
 			<div>
-				<a href="${pageContext.request.contextPath}/jsp/admin/userli.do" class="padding-l">회원관리</a> <a
-					href="${pageContext.request.contextPath}/jsp/admin/rmli.do" class="padding-l">방관리</a>
+				<a href="${pageContext.request.contextPath}/admin/userli.do" class="padding-l">회원관리</a> <a
+					href="${pageContext.request.contextPath}/admin/rmli.do" class="padding-l">방관리</a>
 				<div class="dropdown">
-					<a href="${pageContext.request.contextPath}/jsp/admin/faq.do" data-toggle="dropdown" class="padding-l">문의관리</a>
+					<a href="${pageContext.request.contextPath}/admin/faq.do" data-toggle="dropdown" class="padding-l">문의관리</a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li><a id="sidefont" href="${pageContext.request.contextPath}/jsp/admin/faq.do">자주묻는질문</a></li>
-						<li><a id="sidefont" href="${pageContext.request.contextPath}/jsp/admin/notice.do">공지사항</a></li>
+						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/faq.do">자주묻는질문</a></li>
+						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/notice.do">공지사항</a></li>
 					</ul>
 				</div>
 			</div>
