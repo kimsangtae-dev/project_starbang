@@ -27,11 +27,8 @@
 				</h1>
 				<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
 				<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
-<<<<<<< HEAD
 				<a class="link-sc" href="${pageContext.request.contextPath}/jsp/host/rm_add.do">방주인 시작하기</a>
-=======
-				<a class="link-sc" href="rm_add.do">방주인 시작하기</a>
->>>>>>> b2562550a70f489484caee7c3fc86ae9ec85aa4b
+
 			</div>
 		</div>
 	</div>
