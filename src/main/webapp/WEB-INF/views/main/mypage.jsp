@@ -9,7 +9,7 @@
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/ma_mypager.css">
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
