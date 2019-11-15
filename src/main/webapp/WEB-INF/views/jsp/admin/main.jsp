@@ -29,18 +29,18 @@
 		<div id="content">
 			<div class="box1">
 				<!--부트스트랩 버튼 요소 적용-->
-				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/jsp/admin/ad_rmli.do" role="button">방관리</a>
-				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/jsp/admin/ad_userli.do" role="button">회원관리</a>
+				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/jsp/admin/rmli.do" role="button">방관리</a>
+				<a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/jsp/admin/userli.do" role="button">회원관리</a>
 				<!-- 부트스트랩 드롭다운 요소 적용을 위한 선언-->
 				<div class="dropdown">
-					<a id="dLabel" data-target="#" href="ad_edit.jsp"
+					<a id="dLabel" data-target="#" href="edit.do"
 						data-toggle="dropdown" aria-haspopup="true" role="button"
 						aria-expanded="false"><span>문의관리 <span class="caret"></span>
 					</span></a>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 						<li><a href="${pageContext.request.contextPath}/jsp/admin/faq.do">자주묻는질문</a></li>
 						<li class="divider"></li>
-						<li><a href="${pageContext.request.contextPath}/jsp/admin/ad_notice.do">공지사항</a></li>
+						<li><a href="${pageContext.request.contextPath}/jsp/admin/notice.do">공지사항</a></li>
 						<!--<li><a href="#">리스트3</a></li>-->
 					</ul>
 				</div>
