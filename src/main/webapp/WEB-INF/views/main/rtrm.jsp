@@ -164,11 +164,11 @@
   </div> <!-- root 끝 -->
 
 	<!-- 하단 영역 -->
-	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
+	<%@ include file="../assets/inc/ma_bottom.jsp"%>
 	
 <!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	/* 좋아요 클릭 -> 하트 색 변경 */
 	$(function() {
