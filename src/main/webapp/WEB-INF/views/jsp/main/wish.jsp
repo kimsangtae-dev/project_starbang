@@ -9,6 +9,7 @@
 
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/wish.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/modal_assets/compare.css">
 
 </head>
 <body>
@@ -59,7 +60,7 @@
 				</div> <!-- 거래완료시 덮는박스 끝 --> <!-- 원래 매물 -->
 				<div class="gallery-d1" height="321">
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -88,7 +89,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -119,7 +120,7 @@
 				</div> <!-- 완료된 매물 덮개 끝 --> <!-- 원래 매물 -->
 				<div class="gallery-d1" height="321">
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<p class="gallery-p1 gallery-p-common">투룸</p>
 						<p class="gallery-p2 gallery-p-common">
@@ -144,7 +145,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -173,7 +174,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -203,7 +204,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -233,7 +234,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -263,7 +264,7 @@
 
 					<!-- 전체클릭 가능하도록 만드는 a태그 -->
 					<a target="_blank" rel="noopener noreferrer" class="gallery-d1-a"
-						href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+						href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						<div class="gallery-d2-pic"></div>
 						<div class="gallery-d2-confirm">
 							<div class="gallery-d3-confirm" type="confirm">
@@ -380,7 +381,7 @@
 					<div class="compare-btn-box" width="238">
 						<button class="compare-btn-cancel" width="80">취소</button>
 						<button class="compare-btn-compare">
-							<a class="dis-block" href="${pageContext.request.contextPath}/jsp/main/modal/compare.do"
+							<a class="dis-block" href="${pageContext.request.contextPath}/jsp/modal/compare.do"
 								data-toggle="modal" data-target="#compareModal">비교하기</a>
 						</button>
 					</div>
@@ -429,7 +430,7 @@
 		                <div class="mg-heart-d">
 		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 		                    <div class="mg-a-pic1"></div>
 		                    <p class="mg-roomtype">쓰리룸</p>
 		                    <p class="mg-price">
@@ -446,7 +447,7 @@
 		                <div class="mg-heart-d">
 		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do">
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 		                    <div class="mg-a-pic1 mg-a-pic2"></div> <!-- jBvkCW -->
 		                    <p class="mg-roomtype">쓰리룸</p>
 		                    <p class="mg-price">
@@ -462,7 +463,7 @@
 		                <div class="mg-heart-d">
 		                    <div class="mg-heart-2d off" data-value="on"></div>
 		                </div>
-		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/ma_rmdt.do"> <!-- kpKjGs -->
+		                <a target="_blank" rel="noopener noreferrer" class="mg-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do"> <!-- kpKjGs -->
 		                    <div class="mg-a-pic1 mg-a-pic3"></div> <!-- eunTmP -->
 		                    <p class="mg-roomtype">투룸</p>
 		                    <p class="mg-price">
