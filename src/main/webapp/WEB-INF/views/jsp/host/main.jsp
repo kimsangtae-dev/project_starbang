@@ -17,7 +17,7 @@
 	<div id="root">
 		<!-- 상단 헤더 -->
 		<div id="header">
-			<%@ include file="../../assets/inc/ho_inc/ho_header.jsp"%>
+			<%@ include file="../../assets/inc/ho_inc/header.jsp"%>
 		</div>
 		<!-- 중앙 영역 -->
 		<div id="body">
@@ -33,7 +33,7 @@
 	</div>
 	<!-- 하단 영역 -->
 	<div id="footer">
-		<%@ include file="../../assets/inc/ho_inc/ho_footer.jsp"%>
+		<%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
 	</div>
 	<!-- Javascript -->
 	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
