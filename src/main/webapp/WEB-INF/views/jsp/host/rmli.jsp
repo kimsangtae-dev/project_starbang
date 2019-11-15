@@ -3,28 +3,29 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/rmli.css" />
 <head>
 
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+
 <title>공실관리</title>
  
 <!-- header, footer, ho_rmli css 참조 -->
-<link rel="stylesheet" type="text/css" href="ho_assets/ho_rmli.css" />
+<link rel="stylesheet" type="text/css" href="" />
 
-</head>
-
-<body>
 <style>
 /* 헤더 */
 .header-nav {
     background-color: rgb(81, 136, 244);
 }
 </style>
+</head>
+
+<body>
 <div id="root">
     <div class="box">
         <!-- 헤더 -->
-        <%@ include file="ho_assets/ho_inc/ho_header.jsp" %> 
+        <%@ include file="../../assets/inc/ho_inc/header.jsp"%>
 
         <!-- content -->
         <!-- 공실관리 -->
@@ -51,11 +52,11 @@
                     <li name="option" value="2" class="isroom-dropdown-li2">비공개</li>
                 </ul> -->
                 <select class="isroom-dropdown-closed">
-							<option class="isroom-dropdown-li2">전체</option>
-							<option class="isroom-dropdown-li2">공개</option>
-							<option class="isroom-dropdown-li2">비공개</option>
-							
-						</select>
+                            <option class="isroom-dropdown-li2">전체</option>
+                            <option class="isroom-dropdown-li2">공개</option>
+                            <option class="isroom-dropdown-li2">비공개</option>
+                            
+                        </select>
                 
             </div>
 
@@ -98,7 +99,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -121,7 +122,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -144,7 +145,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -167,7 +168,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -190,7 +191,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -213,7 +214,7 @@
                             </td>
                             <td class="text-center">
                                 <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                	<button class="btn btn-default">공실상태전환</button>
+                                    <button class="btn btn-default">공실상태전환</button>
                                 </a>
                             </td>
                         </tr>
@@ -226,9 +227,9 @@
         <!-- / .table container -->
     </div>
     <!-- / content -->
-	
-	<!-- footer -->
-    <%@ include file="ho_assets/ho_inc/ho_footer.jsp" %> 
+    
+    <!-- footer -->
+    <%@ include file="../../assets/inc/ho_inc/footer.jsp"%>
     
     </div>
     <!--/ .box -->
@@ -238,36 +239,34 @@
 
 <!-- 로그인용 모달 로더 -->
 <div class="modal fade" id="chmodeModal">
-	<div class="modal-dialog">
-		<div class="modal-content modal-whole-chmode">
-			<p class="chmode-title">공실 상태를 변경합니다.</p>
-			<div class="chmode-div clearfix">
-				<a>
-					<span>공개</span>
-					<p>게시글을 공개상태로 전환합니다.</p>
-				</a>
-			</div>
-			<div class="chmode-div clearfix">
-				<a>
-					<span>비공개</span>
-					<p>게시글을 비공개 상태로 전환합니다.</p>
-				</a>
-			</div>
-			<div class="chmode-div clearfix">
-				<a>
-					<span>거래완료</span>
-					<p>거래를 완료했습니다.</p>
-				</a>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content modal-whole-chmode">
+            <p class="chmode-title">공실 상태를 변경합니다.</p>
+            <div class="chmode-div clearfix">
+                <a>
+                    <span>공개</span>
+                    <p>게시글을 공개상태로 전환합니다.</p>
+                </a>
+            </div>
+            <div class="chmode-div clearfix">
+                <a>
+                    <span>비공개</span>
+                    <p>게시글을 비공개 상태로 전환합니다.</p>
+                </a>
+            </div>
+            <div class="chmode-div clearfix">
+                <a>
+                    <span>거래완료</span>
+                    <p>거래를 완료했습니다.</p>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-
-
 <!-- Javascript -->
-<script src="../assets/js/jquery-1.10.2.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".header-dropbox").hover(function() {
