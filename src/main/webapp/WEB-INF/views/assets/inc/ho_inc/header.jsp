@@ -171,7 +171,7 @@ a:focus {
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmadd.do">공실 등록하기</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rm_add.do">공실 등록하기</a>
 					</p>
 				</li>
 				<li>
