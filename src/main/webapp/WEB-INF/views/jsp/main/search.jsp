@@ -244,7 +244,7 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
@@ -278,7 +278,7 @@
 					</div>
 					{{!-- 좋아요 끝 --}}
 					{{!-- 전체 링크화 --}}
-					<a target="_blank" rel="" class="recent-a" href="ma_rmdt.jsp">
+					<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
 						{{!-- 이미지 --}}
 						<div class="recent-a-div"></div>
 						{{!-- 확인매물 div --}}
@@ -363,8 +363,7 @@
 				var markers = $(data.positions).map(
 					function(i, position) {
 						return new kakao.maps.Marker({
-							position : new kakao.maps.LatLng(position.lat,
-									position.lng)
+							position : new kakao.maps.LatLng(position.lat, position.lng)
 						});
 					});
 				clusterer.setMinClusterSize(1);
@@ -525,7 +524,7 @@
 			from_max : price1_value.indexOf(90000),
 			skin : "round",
 			onChange: function (data) {
-				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
+				if(data.from_value == 0 && data.to_value == "무제한") {
 					$("#filter1-value").html("무제한");
 				} else if (data.to_value == "무제한") {
 					$("#filter1-value").html(fix(data.from_value) + " ~ " + data.to_value);
@@ -582,7 +581,7 @@
 			from_max : price3_value.indexOf(150000),
 			skin : "round",
 			onChange: function (data) {
-				if(fix(data.from_value) == 0 && data.to_value == "무제한") {
+				if(data.from_value == 0 && data.to_value == "무제한") {
 					$("#filter3-value").html("무제한");
 				} else if (data.to_value == "무제한") {
 					$("#filter3-value").html(fix(data.from_value) + " ~ " + data.to_value);
