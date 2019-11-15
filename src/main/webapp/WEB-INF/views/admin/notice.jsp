@@ -3,11 +3,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/notice.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/notice.css" />
 
 </head>
 
@@ -15,7 +14,7 @@
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div class="root">
 		<!-- 상단 영역 -->
-		<%@ include file="../../assets/inc/ad_inc/header.jsp"%>
+		<%@ include file="../assets/inc/ad_header.jsp"%>
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<div>
@@ -32,8 +31,8 @@
 							</span>
 						</div>
 						<div class="adm-btn pull-right">
-							<input type="button" name="" class="btn btn-default" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/jsp/admin/write.do'">
-							<input type="button" name="" class="btn btn-default" value="글수정" onclick="location.href='${pageContext.request.contextPath}/jsp/admin/edit.do'">
+							<input type="button" name="" class="btn btn-default" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/admin/write.do'">
+							<input type="button" name="" class="btn btn-default" value="글수정" onclick="location.href='${pageContext.request.contextPath}/admin/edit.do'">
 							<input type="button" name="" class="btn btn-primary" value="글삭제">
 						</div>
 					</div>
@@ -96,8 +95,8 @@
 		<div id="footer"></div>
 	</div> <!-- root 끝 -->
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-  	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
        $(function() {
             /** 게시글의 제목을 클릭한 경우 호출되는 이벤트 정의 */
