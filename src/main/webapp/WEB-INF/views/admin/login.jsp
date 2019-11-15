@@ -7,9 +7,9 @@
 <html lang="ko">
 <head>
 <title>별방 관리자 로그인</title>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
 <!-- CSS적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/login.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/login.css">
 <style>
 </style>
 <script type="text/javascript">
@@ -35,7 +35,7 @@
 	<div id="admin">
 		<div class="header">
 			<div class="title">
-				<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_blue.png"></img>
+				<img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png"></img>
 				<p>관리자 사이트</p>
 			</div>
 		</div>
@@ -55,9 +55,7 @@
 	</div>
 
 	<!-- Javascript -->
-	<%-- <script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-3.2.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script> --%>
-	<script src="<c:url value="/assets/assets_etc/js/jquery-3.2.1.min.js" />"></script>
-	<script src="<c:url value="/assets/assets_etc/js/bootstrap.min.js" />"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 </body>
 </html>
