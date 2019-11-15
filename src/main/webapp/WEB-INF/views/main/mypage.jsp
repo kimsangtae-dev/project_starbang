@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_mypager.css">
 
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css"></script>
 
 </head>

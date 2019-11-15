@@ -6,21 +6,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_etc/css/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/ma_faqr.css">
+<%@ include file="../assets/inc/meta.jsp"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/ma_faqr.css">
 
 </head>
 <body>
 	<!-- 상단 영역 -->
-	<%@ include file="../../assets/inc/ma_inc/top.jsp"%>
+	<%@ include file="../assets/inc/ma_top.jsp"%>
     
     <!-- 중앙 영역 -->
 			<div id="content">
 				<h1 class="h1">문의하기</h1>
 				<div class="nav">
-					<div><a class="afaq" href="${pageContext.request.contextPath}/jsp/main/faq.do">자주 묻는 질문</a></div>
-					<div><a class="anotice" href="${pageContext.request.contextPath}/jsp/main/notice.do">공지사항</a></div>
+					<div><a class="afaq" href="${pageContext.request.contextPath}/main/faq.do">자주 묻는 질문</a></div>
+					<div><a class="anotice" href="${pageContext.request.contextPath}/main/notice.do">공지사항</a></div>
 				</div>
 
 				<div class="title">
@@ -158,12 +158,12 @@
 			</div>
 	
 	<!-- 하단 영역 -->
-	<%@ include file="../../assets/inc/ma_inc/bottom.jsp"%>
+	<%@ include file="../assets/inc/ma_bottom.jsp"%>
 	
     
     <!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     		$(function() {
         	    /** 게시글의 제목을 클릭한 경우 호출되는 이벤트 정의 */

@@ -8,10 +8,10 @@
 <html lang="ko">
 <head>
 
-<%@ include file="assets/inc/meta_inc/meta.jsp"%>
+<%@ include file="assets/inc/meta.jsp"%>
 
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ma_assets/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/main.css">
 
 <!--  slider css -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css">
@@ -23,7 +23,7 @@
 <!----------------------------------------
 -	header 								     -
 ----------------------------------------->
-<%@ include file="assets/inc/ma_inc/top.jsp"%>
+<%@ include file="assets/inc/ma_top.jsp"%>
 
 
 	<!---------------------------------------\
@@ -65,7 +65,7 @@
             <div class="slide-div3 slider regular" style="right: 0px;">
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                  <div class="slide-a-div1">
                    <div class="slide-a-div1-up1"></div>
                    <div class="slide-a-div1-down">
@@ -77,7 +77,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up2"></div>
                     <div class="slide-a-div1-down">
@@ -89,7 +89,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up3"></div>
                     <div class="slide-a-div1-down">
@@ -101,7 +101,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up4"></div>
                     <div class="slide-a-div1-down">
@@ -113,7 +113,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up5"></div>
                     <div class="slide-a-div1-down">
@@ -125,7 +125,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up6"></div>
                     <div class="slide-a-div1-down">
@@ -139,7 +139,7 @@
               </div>
               
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up7"></div>
                     <div class="slide-a-div1-down">
@@ -152,7 +152,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up8"></div>
                     <div class="slide-a-div1-down">
@@ -164,7 +164,7 @@
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/jsp/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up9"></div>
                     <div class="slide-a-div1-down">
@@ -206,8 +206,8 @@
     ----------------------------------------->
     <div class="recent">
       <div class="recent-div0">
-        <div class="recent-div1"><a href="${pageContext.request.contextPath}/jsp/main/rtrm.do">김기홍님의 최근 본 방</a></div>
-        <div class="recent-div2"><a href="${pageContext.request.contextPath}/jsp/main/wish.do">찜한 방</a></div>
+        <div class="recent-div1"><a href="${pageContext.request.contextPath}/main/rtrm.do">김기홍님의 최근 본 방</a></div>
+        <div class="recent-div2"><a href="${pageContext.request.contextPath}/main/wish.do">찜한 방</a></div>
         <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
         <!-- 갤러리 전체 박스 -->
         <div class="recent-div4"> 
@@ -222,7 +222,7 @@
               </div>
               <!-- 좋아요 끝 -->
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="recent-a-div"></div>
                 <!-- 확인매물 div -->
@@ -253,7 +253,7 @@
               </div>
               <!-- 좋아요 끝 -->
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="recent-a-div recent-a-div2"></div>
                 <!-- 확인매물 div -->
@@ -319,7 +319,7 @@
               <!-- 좋아요 끝 -->
 
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="gallery-pic pic1"></div>
                 <!-- 확인매물 div -->
@@ -352,7 +352,7 @@
               <!-- 좋아요 끝 -->
 
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="gallery-pic pic2"></div>
                 <!-- 확인매물 div -->
@@ -385,7 +385,7 @@
               <!-- 좋아요 끝 -->
 
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="gallery-pic pic3"></div>
                 <!-- 확인매물 div -->
@@ -418,7 +418,7 @@
               <!-- 좋아요 끝 -->
 
               <!-- 전체 링크화 -->
-              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
+              <a target="_blank" rel="" class="gallery-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                 <!-- 이미지 -->
                 <div class="gallery-pic pic4"></div>
                 <!-- 확인매물 div -->
@@ -468,11 +468,11 @@
 <!----------------------------------------
 -	footer 							     -
 ----------------------------------------->
-<%@ include file="assets/inc/ma_inc/bottom.jsp"%>
+<%@ include file="assets/inc/ma_bottom.jsp"%>
 
 
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugin/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
