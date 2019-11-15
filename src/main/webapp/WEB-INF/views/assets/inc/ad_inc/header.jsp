@@ -90,11 +90,11 @@ body {
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
-		<a href="${pageContext.request.contextPath}/index.do">
+		<a href="${pageContext.request.contextPath}">
 			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png">
 		</a>
 		<div class="menu-left small-font">
-			<a href="${pageContext.request.contextPath}/index.do">회원 사이트</a>
+			<a href="${pageContext.request.contextPath}">회원 사이트</a>
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">

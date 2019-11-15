@@ -9,7 +9,7 @@
 <title>별방 관리자 메인 페이지</title>
 <%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- CSS적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/ad_main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ad_assets/main.css">
 <style type="text/css">
 </style>
 </head>

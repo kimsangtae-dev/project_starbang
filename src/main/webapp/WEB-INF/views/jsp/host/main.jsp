@@ -6,7 +6,7 @@
 <title>별방 방주인 메인 페이지</title>
 <%@ include file="../../assets/inc/meta_inc/meta.jsp"%>
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/ho_main.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/assets_jsp/ho_assets/main.css" />
 <style type="text/css">
 </style>
 </head>
@@ -27,7 +27,7 @@
 				</h1>
 				<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
 				<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
-				<a class="link-sc" href="ho_rm_add.jsp">방주인 시작하기</a>
+				<a class="link-sc" href="rmadd.do">방주인 시작하기</a>
 			</div>
 		</div>
 	</div>

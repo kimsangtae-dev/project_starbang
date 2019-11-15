@@ -165,18 +165,18 @@ a:focus {
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="${pageContext.request.contextPath}/index.jsp" class="header-div1-a">
+		<a href="${pageContext.request.contextPath}" class="header-div1-a">
 			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png"></a>
 		<div class="header-div2">
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/ho_rm_add.jsp">공실 등록하기</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmadd.jsp">공실 등록하기</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/ho_rmli.jsp">공실관리</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmli.jsp">공실관리</a>
 					</p>
 				</li>
 				<li>
