@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/ad_css/userli.css" />
 
-</head>
+</head>  
 
 <body>
 	<!-- 브라우저에 보여질 부분 -->
