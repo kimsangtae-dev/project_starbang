@@ -2,9 +2,14 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_agree.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/assets_jsp/modal_assets/agree.css">
 
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
+	<!-- sweetalert --> 
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<%--
 	<script type="text/javascript">
 	$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
 	$('#element').on('scroll touchmove mousewheel', function(event) { 
@@ -16,6 +21,7 @@
 	$('html, body').css({'overflow': 'auto', 'height': '100%'}); 
 	$('#element').off('scroll touchmove mousewheel'); 
 	</script>
+	--%>
 
 	<script type="text/javascript">
 		// 언니가 알려준 버튼
@@ -716,7 +722,7 @@
 				</div>
 			</div>
 			<div class="modal-fet">
-				<a href="<%=request.getContextPath()%>/assets/modal/ma_join.jsp" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
+				<a href="<%=request.getContextPath()%>/jsp/modal/join.do" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
 			</div>
 		</div>
 	</div>

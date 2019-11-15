@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/modal/modal_css/ma_join.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/assets_jsp/modal_assets/join.css">
 
 <!-- sweetalert --> 
-<link rel="stylesheet" href="../assets/plugin/sweetalert/sweetalert2.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 //	$(document).on('hidden.bs.modal', function (event) {
@@ -128,7 +128,7 @@
 					</div>
 				</div>
 				<div>
-					<button id="buttonjoin" class="buttonup btn btn-colordown buttontlzl" ata-toggle="modal" data-target="#buttonjoinalalert">이메일 회원가입</button>
+					<button id="buttonjoin" class="buttonup btn btn-colordown buttontlzl" ata-toggle="modal" data-target="#loginForward">이메일 회원가입</button>
 				</div>
 			</div>
 			
@@ -215,6 +215,15 @@
  	            </div>
 				<div class="modal-body modaljoinbody">					
 					<h4 class="modal-title">환영합니다 회원가입에 성공하셨습니다</h4>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 회원가입 후 다시 login.jsp로 돌아감 -->
+		<div class="modal" id="loginForward">
+			<div class="modal-content">
+				<div class="modal-body modalbody " id="loginForwardbody">					
+					<button type="submit" id="loginForwardButton" class="btn btn-default" data-dismiss="modal" >확인</button>
 				</div>
 			</div>
 		</div>
