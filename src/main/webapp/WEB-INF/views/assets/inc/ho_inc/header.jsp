@@ -171,17 +171,17 @@ a:focus {
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmadd.jsp">공실 등록하기</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmadd.do">공실 등록하기</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmli.jsp">공실관리</a>
+						<a onfocus="blur()" href="${pageContext.request.contextPath}/jsp/host/rmli.do">공실관리</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a href="${pageContext.request.contextPath}/jsp/modal/ma_login.jsp" class="padding-l" data-toggle="modal"
+						<a href="${pageContext.request.contextPath}/jsp/modal/login.do" class="padding-l" data-toggle="modal"
 							data-target="#loginModal">로그인</a>
 					</p>
 				</li>
