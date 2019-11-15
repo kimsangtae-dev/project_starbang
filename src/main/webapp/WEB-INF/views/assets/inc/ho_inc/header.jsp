@@ -165,7 +165,7 @@ a:focus {
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="${pageContext.request.contextPath}" class="header-div1-a">
+		<a href="${pageContext.request.contextPath}/jsp/host/main.do" class="header-div1-a">
 			<img src="${pageContext.request.contextPath}/assets/assets_etc/ico/logo_white.png"></a>
 		<div class="header-div2">
 			<ul class="header-div2-ul">
