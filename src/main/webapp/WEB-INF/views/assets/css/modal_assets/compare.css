@@ -128,7 +128,7 @@ tr {
 	position: relative;
 	margin: 0px auto;
 	border-radius: 3px;
-	background: url(../../img/ma_img/wish/comp1.jpeg) center center/cover no-repeat
+	background: url(../../img/ma_img/comp1.jpeg) center center/cover no-repeat
 		rgb(239, 240, 241);
 }
 
@@ -138,7 +138,7 @@ tr {
 	position: relative;
 	margin: 0px auto;
 	border-radius: 3px;
-	background: url(../../img/ma_img/wish/comp2.jpeg) center center/cover no-repeat
+	background: url(../../img/ma_img/comp2.jpeg) center center/cover no-repeat
 		rgb(239, 240, 241);
 }
 
@@ -148,7 +148,7 @@ tr {
 	position: relative;
 	margin: 0px auto;
 	border-radius: 3px;
-	background: url(../../img/ma_img/wish/comp3.jpeg) center center/cover no-repeat
+	background: url(../../img/ma_img/comp3.jpeg) center center/cover no-repeat
 		rgb(239, 240, 241);
 }
 /* 이미지 위 여백 */
