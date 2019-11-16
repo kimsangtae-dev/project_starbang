@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/assets_jsp/modal_assets/pwd.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/pwd.css">
 </head>
 
 <!-- .modal-content 여기가 나오는부분 -->

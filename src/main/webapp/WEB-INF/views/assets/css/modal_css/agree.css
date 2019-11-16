@@ -316,19 +316,19 @@ width: 100%;
 }
 
 /** 언뉘님 */
-.recent-div8.off{ background: url(../modal_css/modal_img/greycheck.png) center center / cover; width: 36px;
+.recent-div8.off{ background: url(../../img/ma_img/greycheck.png) center center / cover; width: 36px;
     height: 32px; }
-.recent-div8.on{ background: url(../modal_css/modal_img/e.png) center center / cover; width: 36px;
+.recent-div8.on{ background: url(../../img/ma_img/bluecheck.png) center center / cover; width: 36px;
     height: 32px;}
 
-.recent-div82.off{ background: url(../modal_css/modal_img/greycheck.png) center center / cover; }
-.recent-div82.on{ background: url(../modal_css/modal_img/e.png) center center / cover; }
+.recent-div82.off{ background: url(../../img/ma_img/greycheck.png) center center / cover; }
+.recent-div82.on{ background: url(../../img/ma_img/bluecheck.png) center center / cover; }
 
-.recent-div83.off{ background: url(../modal_css/modal_img/greycheck.png) center center / cover; }
-.recent-div83.on{ background: url(../modal_css/modal_img/e.png) center center / cover; }
+.recent-div83.off{ background: url(../../img/ma_img/greycheck.png) center center / cover; }
+.recent-div83.on{ background: url(../../img/ma_img/bluecheck.png) center center / cover; }
 
-.recent-div84.off{ background: url(../modal_css/modal_img/greycheck.png) center center / cover; }
-.recent-div84.on{ background: url(../modal_css/modal_img/e.png) center center / cover; }
+.recent-div84.off{ background: url(../../img/ma_img/greycheck.png) center center / cover; }
+.recent-div84.on{ background: url(../../img/ma_img/bluecheck.png) center center / cover; }
 
 .recent-div8 {
     width: 36px;
