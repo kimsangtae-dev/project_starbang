@@ -4,13 +4,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/assets_jsp/modal_assets/join.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/join.css">
 
-<!-- sweetalert --> 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+    <!-- sweetalert --> 
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	
 <script type="text/javascript">
 
 //	$(document).on('hidden.bs.modal', function (event) {
@@ -48,7 +49,7 @@
 		});  -->
 
 <!-- sweetalert --> 
-<script src="../assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 
 </head>
 
