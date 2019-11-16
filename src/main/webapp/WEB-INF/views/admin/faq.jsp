@@ -7,7 +7,7 @@
 <jsp:include page="../assets/inc/meta.jsp" />
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/ad_faq.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/faq.css" />
 
 </head>
 
@@ -93,7 +93,15 @@
 						<!--hidden test-->
 						<tr id="col-page-2" class="content">
 							<td class="tab-panel">
-							<td><h3>탭페이지1</h3></td>
+							<td></td>
+							<td>안녕하십니까, 별방의 관리자 조수민이라고 합니다.<br> 먼저 저희 사이틀 방문해 주시고
+								이용해 주셔서 감사드립니다.<br> 저희 사이트는 부동산 중개 사이트로 원하시는 매물을 살 수도 있고,
+								그것을 찜 할 수도 있습니다.<br> 또한 회원님께서도 매물이 있으면 저희 사이트를 통해서 판매가
+								가능합니다.
+							</td>
+							<td></td>
+							<td></td>
+							<td></td>
 							</td>
 						</tr>
 						<!--hidden test-->
