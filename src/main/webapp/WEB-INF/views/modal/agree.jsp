@@ -2,13 +2,13 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/assets_jsp/modal_assets/agree.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/agree.css">
 
 	<!-- sweetalert --> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/assets_etc/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<%--
 	<script type="text/javascript">
 	$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
@@ -722,7 +722,7 @@
 				</div>
 			</div>
 			<div class="modal-fet">
-				<a href="<%=request.getContextPath()%>/jsp/modal/join.do" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
+				<a href="<%=request.getContextPath()%>/modal/join.do" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
 			</div>
 		</div>
 	</div>
