@@ -40,12 +40,9 @@ a:focus {
 
 /* 헤더 - 왼쪽 홈 링크 */
 .header-div1-a {
-	width: 52.44px;
-	height: 25px;
 	position: absolute;
 	top: 5px;
 	left: 40px;
-	background: url(/static/media/bi.44a34c4c.svg) center center/cover
 		no-repeat;
 }
 
