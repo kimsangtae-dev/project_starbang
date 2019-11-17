@@ -80,7 +80,7 @@
 <!-- 상단 헤더 -->
 <div id="header">
 	<div class="navbar" role="navigation">
-		<a href="${pageContext.request.contextPath}/index.do">
+		<a href="${pageContext.request.contextPath}">
 			<img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png">
 		</a>
 		<div class="menu-left small-font">
