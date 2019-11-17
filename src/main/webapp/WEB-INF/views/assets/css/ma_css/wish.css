@@ -147,8 +147,8 @@ html body #root {
 }
 
 .complete-plusbtn {
-	width: 36px;
-    height: 36px;
+	width: 37px;
+    height: 37px;
     margin: 15px auto 0px;
     background: url(../../img/ma_img/plusbtn.svg) center center / cover no-repeat;
 }
