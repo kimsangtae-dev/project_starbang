@@ -60,7 +60,7 @@
                 
             </div>
 
-        <div class="container">
+        <div class="contain">
             <div class="table-responsive">
                 <table class="table table-hover margin-bottom">
                     <colgroup>
@@ -224,7 +224,7 @@
             </div>
             <!--/ .table-responsive -->
         </div>
-        <!-- / .table container -->
+        <!-- / .table contain -->
     </div>
     <!-- / content -->
     

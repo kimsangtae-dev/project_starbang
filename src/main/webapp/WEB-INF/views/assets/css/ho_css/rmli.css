@@ -150,9 +150,10 @@ body, #root {
 ------------------------------------------- */
     
     /* 테이블 담는 박스 */
-    .container {
+    .contain {
         margin-top: 30px;
         width: 1080px;
+        min-height: 650px;
         padding: 0;
     }
     
