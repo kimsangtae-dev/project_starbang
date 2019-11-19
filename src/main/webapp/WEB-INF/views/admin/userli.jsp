@@ -22,26 +22,28 @@
 			<div>
 				<div class="adm-header">
 					<h1>회원관리</h1>
-					<div class="adm">
-						<div class="input-group">
-							<span class="input-group-addon"> <span
-								class="glyphicon glyphicon-search"></span>
-							</span> <input type="text" class="form-control" /> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="submit">검색</button>
-							</span>
+					<form method="post" action="***********">
+						<div class="adm">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-search"></span>
+								</span>
+								<input type="search" class="form-control" />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit">검색</button>
+								</span>
+							</div>
+							<div class="adm-btn pull-right">
+								<input type="submit" class="btn btn-default" value="방 삭제">
+								<input type="submit" class="btn btn-primary" value="회원탈퇴">
+							</div>
 						</div>
-						<div class="adm-btn pull-right">
-							<input type="button" name="" class="btn btn-default" value="방 삭제">
-							<input type="button" name="" class="btn btn-primary" value="회원탈퇴">
-						</div>
-					</div>
+					</form>
 				</div>
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th class="text-center"><input type="checkbox"
-								id="all_check"></th>
+							<th class="text-center"><input type="checkbox" id="all_check"></th>
 							<th class="text-center">회원번호</th>
 							<th class="text-center">이름</th>
 							<th class="text-center">이메일</th>
@@ -51,8 +53,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="text-center"><input type="checkbox"
-								class="userlist"></td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center">12345</td>
 							<td class="text-center">박지원</td>
 							<td class="text-center">bbb@abcd.com</td>
@@ -60,8 +61,7 @@
 							<td class="text-center">1개</td>
 						</tr>
 						<tr>
-							<td class="text-center"><input type="checkbox"
-								class="userlist"></td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center"></td>
 							<td class="text-center"></td>
 							<td class="text-center"></td>
@@ -69,8 +69,7 @@
 							<td class="text-center"></td>
 						</tr>
 						<tr>
-							<td class="text-center"><input type="checkbox"
-								class="userlist"></td>
+							<td class="text-center"><input type="checkbox" class="userlist"></td>
 							<td class="text-center"></td>
 							<td class="text-center"></td>
 							<td class="text-center"></td>

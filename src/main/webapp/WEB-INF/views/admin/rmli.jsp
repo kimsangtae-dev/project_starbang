@@ -20,32 +20,36 @@
 			<div>
 				<div class="adm-header">
 					<h1>방관리</h1>
+					<!-- 상단 검색/라디오/버튼 -->
+					<form method="post" action="************">
 					<div class="adm">
+						<!-- 검색 -->
 						<div class="input-group">
-							<span class="input-group-addon"> <span
-								class="glyphicon glyphicon-search"></span>
-							</span> <input type="text" class="form-control" /> <span
-								class="input-group-btn">
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span>
+							</span>
+							<input type="search" class="form-control" />
+							<span class="input-group-btn">
 								<button class="btn btn-default" type="submit">검색</button>
 							</span>
 						</div>
 						<br>
+						<!-- 라디오/버튼 -->
 						<div class="box">
 							<div class="adm-radio">
-								<label><input type='radio' name='' value="html">
-									확인매물</label> <label><input type='radio' name='' value="html">
-									허위매물</label>
+								<label><input type="radio" name="confirmfake" id="confirm" value="확인매물">확인매물</label>
+								<label><input type="radio" name="confirmfake" id="fake" value="허위매물">허위매물</label>
 							</div>
 							<div class="adm-btn">
-								<input type="button" name="" class="btn btn-default"
-									value="확인매물"> <input type="button" name=""
-									class="btn btn-default" value="방 숨기기"> <input
-									type="button" name="" class="btn btn-default" value="방 삭제">
-								<input type="button" name="" class="btn btn-primary"
-									value="회원탈퇴">
+								<input type="submit" class="btn btn-default" value="확인매물">
+								<input type="submit" class="btn btn-default" value="방 숨기기">
+								<input type="submit" class="btn btn-default" value="방 삭제">
+								<input type="submit" class="btn btn-primary" value="회원탈퇴">
 							</div>
 						</div>
 					</div>
+					</form>
+					<!-- 상단 검색/라디오/버튼 끝 -->
 				</div>
 				<table class="table table-striped">
 					<thead>
