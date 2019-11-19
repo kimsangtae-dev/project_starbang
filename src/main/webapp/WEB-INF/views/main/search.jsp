@@ -23,8 +23,7 @@
 			<div id="search" class="clearfix">
 				<div class="searchtab">
 					<form id="search-form">
-						<input type="text" placeholder="검색바" name="search" /><i
-							class="glyphicon glyphicon-search"></i>
+						<input type="text" placeholder="검색바" name="search" /> <i class="glyphicon glyphicon-search"></i>
 						<button type="submit"></button>
 					</form>
 				</div>
@@ -32,8 +31,7 @@
 				<div class="filters clearfix">
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle btn-rt"
-							data-toggle="dropdown">
+						<button type="button" class="btn dropdown-toggle btn-rt" data-toggle="dropdown">
 							원룸,투·쓰리룸,오피스텔 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
@@ -41,17 +39,20 @@
 								<h1>방종류</h1>
 								<p>중복 선택이 가능합니다.</p>
 								<ul>
-									<li><label> <input type="checkbox"
-											name="room-type" value="oneroom" checked /> <span
-											class="checkBox"></span> <span class="checkText">원룸</span>
+									<li><label>
+										<input type="checkbox" name="room-type" value="oneroom" checked />
+										<span class="checkBox"></span>
+										<span class="checkText">원룸</span>
 									</label></li>
-									<li><label> <input type="checkbox"
-											name="room-type" value="tworoom" checked /> <span
-											class="checkBox"></span> <span class="checkText">투·쓰리룸</span>
+									<li><label>
+										<input type="checkbox" name="room-type" value="tworoom" checked />
+										<span class="checkBox"></span>
+										<span class="checkText">투·쓰리룸</span>
 									</label></li>
-									<li><label> <input type="checkbox"
-											name="room-type" value="officetel" checked /> <span
-											class="checkBox"></span> <span class="checkText">오피스텔</span>
+									<li><label>
+										<input type="checkbox" name="room-type" value="officetel" checked />
+										<span class="checkBox"></span>
+										<span class="checkText">오피스텔</span>
 									</label></li>
 								</ul>
 							</form>
@@ -60,25 +61,27 @@
 					<!-- 개별 필터 끝 -->
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle btn-st"
-							data-toggle="dropdown">
+						<button type="button" class="btn dropdown-toggle btn-st" data-toggle="dropdown">
 							월세,전세,매매 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
 							<h1>매물종류</h1>
 							<p>중복 선택이 가능합니다.</p>
 							<ul>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="monthly" checked /> <span class="checkBox"></span> <span
-										class="checkText">월세</span>
+								<li><label>
+									<input type="checkbox" name="sale-type" value="monthly" checked />
+									<span class="checkBox"></span>
+									<span class="checkText">월세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="charter" checked /> <span class="checkBox"></span> <span
-										class="checkText">전세</span>
+								<li><label>
+									<input type="checkbox" name="sale-type" value="charter" checked />
+									<span class="checkBox"></span>
+									<span class="checkText">전세</span>
 								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="buying" checked /> <span class="checkBox"></span> <span
-										class="checkText">매매</span>
+								<li><label>
+									<input type="checkbox" name="sale-type" value="buying" checked />
+									<span class="checkBox"></span>
+									<span class="checkText">매매</span>
 								</label></li>
 							</ul>
 						</div>
@@ -86,8 +89,7 @@
 					<!-- 개별 필터 끝 -->
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
 							가격대 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width2" role="menu">
@@ -135,8 +137,7 @@
 					<!-- 개별 필터 끝 -->
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
 							관리비 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width2" role="menu">
@@ -160,8 +161,7 @@
 					<!-- 개별 필터 끝 -->
 					<!-- 개별 필터 -->
 					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
+						<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
 							방크기 <span class="caret"></span>
 						</button>
 						<div class="dropdown-menu pull-right width2" role="menu">
