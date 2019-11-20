@@ -328,6 +328,15 @@
                         <input type="text" id="btnn1" class="add2 input_box" name="parking_cost" disabled="" value="">
                         <p class="add3">만원</p>
                     </td>
+                    <th>반려동물</th>
+                    <td class="add_info">
+                        <label class="add1 Square_box"><input type="radio" name="pet" checked="">
+                            <p>가능</p>
+                        </label>
+                        <label class="add1 Square_box"><input type="radio" name="pet">
+                            <p>불가능</p>
+                        </label>
+                    </td>
                 </tr>
                 <tr>
                     <th>엘리베이터</th>
@@ -357,17 +366,6 @@
                         </label>
                         <label class="add1 Square_box"><input type="radio" name="built_in">
                             <p>있음</p>
-                        </label>
-                    </td>
-                    <th>구조</th>
-                    <td class="add_info">
-                        <label class="structure ma_m">
-                            <input type="checkbox" name="duplex">
-                            <p>복층</p>
-                        </label>
-                        <label class="structure ma_m">
-                            <input type="checkbox" name="division">
-                            <p>1.5룸/주방분리형</p>
                         </label>
                     </td>
                 </tr>
