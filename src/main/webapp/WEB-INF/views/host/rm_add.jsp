@@ -41,10 +41,10 @@
                         <tr>
                             <th>종류 선택</th>
                             <td class="bang_choice">
-                                <label class="Square_box"><input type="radio" name="room_type" checked="">
+                                <label class="Square_box"><input type="radio" name="room_type" >
                                     <p>원룸</p>
                                 </label>
-                                <label class="Square_box"><input type="radio" name="room_type">
+                                <label class="Square_box"><input type="radio" name="room_type" checked />
                                     <p>투룸</p>
                                 </label>
                                 <label class="Square_box"><input type="radio" name="room_type">

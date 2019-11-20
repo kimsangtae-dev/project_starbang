@@ -43,7 +43,21 @@ a:focus {
 	position: absolute;
 	top: 5px;
 	left: 40px;
-		no-repeat;
+	no-repeat;
+}
+/* 헤더 - 왼쪽 홈 임시링크 */
+.header-div1-b {
+	position: absolute;
+	top: 30px;
+	left: 130px;
+	text-decoration: none;
+	color: white;
+	no-repeat;
+}
+/* 홈 페이지 이동 */
+a:hover {
+	text-decoration: none;
+	color: white;
 }
 
 .header-div1-a>img {
@@ -162,29 +176,35 @@ a:focus {
 </style>
 <nav class="header-nav">
 	<div class="header-div1">
-		<a href="${pageContext.request.contextPath}/host/main.do" class="header-div1-a">
-			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
+		<a href="${pageContext.request.contextPath}/host/main.do"
+			class="header-div1-a"> <img
+			src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
+		<a href="${pageContext.request.contextPath}" class="header-div1-b">다방사이트
+			></a>
 		<div class="header-div2">
 			<ul class="header-div2-ul">
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/rm_add.do">공실 등록하기</a>
+						<a onfocus="blur()"
+							href="${pageContext.request.contextPath}/host/rm_add.do">공실
+							등록하기</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a onfocus="blur()" href="${pageContext.request.contextPath}/host/rmli.do">공실관리</a>
+						<a onfocus="blur()"
+							href="${pageContext.request.contextPath}/host/rmli.do">공실관리</a>
 					</p>
 				</li>
 				<li>
 					<p class="header-div2-p">
-						<a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal"
-							data-target="#loginModal">로그인</a>
+						<a href="${pageContext.request.contextPath}/modal/login.do"
+							class="padding-l" data-toggle="modal" data-target="#loginModal">로그인</a>
 					</p>
 				</li>
 			</ul>
 
-			
+
 			<!-- 드롭박스 로그인 전환기능 구현 예정 -->
 			<!-- <ul class="header-dropbox">
 				<li>김기홍 님<svg width="8" height="5" viewBox="0 0 8 5">
@@ -201,8 +221,8 @@ a:focus {
 					<button class="header-dropbox-li3">로그아웃</button>
 				</li>
 			</ul> -->
-			
-			
+
+
 		</div>
 	</div>
 </nav>
@@ -212,35 +232,27 @@ a:focus {
 <!-- 로그인용 모달 로더 -->
 <div class="modal fade" id="loginModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 비밀번호 찾기용 모달 로더 -->
 <div class="modal fade" id="passwdModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 동의하기용 모달 로더 -->
 <div class="modal fade" id="agreeModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>
 
 <!-- 회원가입용 모달 로더 -->
 <div class="modal fade" id="joinModal">
 	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			
-		</div>
+		<div class="modal-content"></div>
 	</div>
 </div>

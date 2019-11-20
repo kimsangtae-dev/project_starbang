@@ -66,7 +66,7 @@
 
               <div>
                 <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
-                 <div class="slide-a-div1">
+                 <div class="slide-a-div1" />
                    <div class="slide-a-div1-up1"></div>
                    <div class="slide-a-div1-down">
                       <p>월세 + 관리비</p>
