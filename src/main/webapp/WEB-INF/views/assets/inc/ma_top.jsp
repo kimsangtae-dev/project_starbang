@@ -4,16 +4,13 @@
 
 <head>
 <style>
-
 /*---------------------------------
 |	header * css
 ----------------------------------*/
-
 /* 브라우저 최소 넓이 지정 */
 .header {
 	min-width: 1366px;
 }
-
 /* 메뉴바 크기, 여백, 테두리 */
 #header .navbar {
 	height: 70px;
@@ -22,19 +19,16 @@
 	border-bottom: 1px solid #eee;
 	margin: 0;
 }
-
 /* 로고 이미지 크기, 위치 설정 */
 #header .navbar img {
 	height: 45px;
 	margin: 8px 0 12px 0;
 }
-
 /* 방주인사이트 여백 설정 */
 #header .menu-left {
 	display: inline-block;
 	margin-left: 20px;
 }
-
 /* 메뉴 세로 가운데 정렬 */
 #header a {
 	display: inline-block;
@@ -42,32 +36,26 @@
 	font-size: 15px;
 	color: #222;
 }
-
 /* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
 #header .small-font a {
 	font-size: 13px;
 	color: #777;
 }
-
 .small-font {
 	color: #eee;
 }
-
 /* 메뉴에 마우스오버 시 색 변경 설정 */
 #header a:hover {
 	color: rgb(21, 100, 249);
 }
-
 /* 각 메뉴들 간 여백 설정 */
 .padding-l {
 	margin-left: 35px;
 }
-
 /* 메뉴 우측 정렬 */
 #header .pull-right div {
 	display: inline-block;
 }
-
 #con {
 	height: 800px;
 }
@@ -87,6 +75,14 @@
 			<a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
 			<span>&nbsp | &nbsp </span>
 			<a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
+			<span>&nbsp | &nbsp </span>
+			<a href="${pageContext.request.contextPath}/user/list.do"> user db</a>
+			<span>&nbsp | &nbsp </span>
+			<a href="${pageContext.request.contextPath}/room/list.do"> room db</a>
+			<span>&nbsp | &nbsp </span>
+			<a href="${pageContext.request.contextPath}/info/list.do"> info db</a>
+			<span>&nbsp | &nbsp </span>
+			<a href="${pageContext.request.contextPath}/upload/upload.do"> file upload db</a>	
 		</div>
 		<!-- 메뉴 항목 -->
 		<div class="pull-right">

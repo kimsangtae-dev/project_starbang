@@ -1,58 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<%@ include file="../assets/inc/meta.jsp"%>
-
-<!-- css 참조 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/ad_css/userli.css" />
-
-</head>  
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 <body>
-	<!-- 브라우저에 보여질 부분 -->
-	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
-		<%@ include file="../assets/inc/ad_header.jsp"%>
-		</div>
-		<!-- 중앙 영역 -->
-		<div class="container">
-		<div id="content">
-			<div>
-				<h1>회원관리</h1>
-				<br/>
-				<a href="${pageContext.request.contextPath}/user/add.do">[유저추가]</a>
+	<h1>정보관리</h1>
+	<a href="${pageContext.request.contextPath}/info/add.do">[정보추가]</a>
 	
 	<!-- 검색폼 -->
-	<div class="search_form">
-	<form method="get" action="${pageContext.request.contextPath}/admin/userli.do">
+	<form method="get" action="${pageContext.request.contextPath}/info/list.do">
 		<label for="keyword">검색어: </label>
 		<input type="search" name="keyword" id="keyword" placeholder="유저명 or 위치 검색" value="${keyword}" />
 		<button type="submit">검색</button>	
 	</form>
-	</div>
 	
 	<hr />
 	
 	<!-- 조회 결과 목록 -->
-	<table class="table table-striped" border="1">
+	<table border="1">
 		<thead>
 			<tr>
-                <th width="100" class="text-center">회원번호</th>
-                <th class="text-center">이름</th>
-                <th class="text-center">이메일</th>
-                <th class="text-center">비밀번호</th>
-				<th class="text-center">전화번호</th>
-				<th class="text-center">등록날짜</th>
-				<th class="text-center">수정날짜</th>
-				<th class="text-center">프로필경로</th>
+				<th width="100" align="center">관리비항목</th>
+				<th width="100" align="center">주차여부</th>
+				<th width="100" align="center">애완동물</th>
+				<th width="100" align="center">엘리베이터</th>
+				<th width="100" align="center">베란다/발코니</th>
+				<th width="100" align="center">빌트인</th>
+				<th width="100" align="center">옵션항목</th>
+				<th width="100" align="center">전세자금대출</th>
+				<th width="100" align="center">공급면적</th>
+				<th width="100" align="center">건물층수</th>
+				<th width="100" align="center">난방종류</th>
+				<th width="100" align="center">입주일자</th>
+				<th width="100" align="center">건물종류</th>
+				<th width="100" align="center">상세설명</th>
+				<th width="100" align="center">방 번호</th>
 			</tr>
+			
+
 		</thead>
 		<tbody>
 			<c:choose>
@@ -67,13 +57,23 @@
 					<%-- 조회 결과에 따른 반복 처리 --%>
 					<c:forEach var="item" items="${output}" varStatus="status">
 						<%-- 출력을 위해 준비한 유저이름과 위치 --%>
-						<c:set var="name" value="${item.name}" />
-						<c:set var="email" value="${item.email}" />
-						<c:set var="passwd" value="${item.passwd}" />
-						<c:set var="tel" value="${item.tel}" />
-						<c:set var="regdate" value="${item.regdate}" />
-						<c:set var="editdate" value="${item.editdate}" />
-						<c:set var="profile_img" value="${item.profile_img}" />
+						<c:set var="feeitem" value="${item.feeitem}" />
+						<c:set var="parking" value="${item.parking}" />
+						<c:set var="pet" value="${item.pet}" />
+						<c:set var="elevator" value="${item.elevator}" />
+						<c:set var="veranda" value="${item.veranda}" />
+						<c:set var="builtin" value="${item.builtin}" />
+						<c:set var="optionitem" value="${item.optionitem}" />
+						<c:set var="loan" value="${item.loan}" />
+						<c:set var="supplyarea" value="${item.supplyarea}" />
+						<c:set var="maxfloor" value="${item.maxfloor}" />
+						<c:set var="heater" value="${item.heater}" />
+						<c:set var="commingday" value="${item.commingday}" />
+						<c:set var="buildtype" value="${item.buildtype}" />
+						<c:set var="content" value="${item.content}" />
+						<c:set var="room_no" value="${item.room_no}" />
+
+
 
 						<%--검색어가 있다면? --%>
 						<c:if test="${keyword != ''}">
@@ -87,26 +87,32 @@
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="/user/view.do" var="viewUrl">
-							<c:param name="userno" value="${item.userno}" />
+						<c:url value="/info/view.do" var="viewUrl">
+							<c:param name="room_no" value="${item.room_no}" />
 						</c:url>
 
 						<tr>
-							<td align="center">${item.userno}</td>
-							<td align="center"><a href="${viewUrl}">${name}</a></td>
-							<td align="center">${email}</td>
-							<td align="center">${passwd}</td>
-							<td align="center">${tel}</td>
-							<td align="center">${regdate}</td>
-							<td align="center">${editdate}</td>
-							<td align="center">${profile_img}</td>
+							<td align="center">${item.feeitem}</td>
+							<td align="center"><a href="${viewUrl}">${parking}</a></td>
+							<td align="center">${pet}</td>
+							<td align="center">${elevator}</td>
+							<td align="center">${veranda}</td>
+							<td align="center">${builtin}</td>
+							<td align="center">${optionitem}</td>
+							<td align="center">${loan}</td>
+							<td align="center">${supplyarea}</td>
+							<td align="center">${maxfloor}</td>
+							<td align="center">${heater}</td>
+							<td align="center">${commingday}</td>
+							<td align="center">${buildtype}</td>
+							<td align="center">${content}</td>
+							<td align="center">${room_no}</td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
 		</tbody>
 	</table>
-	</div>
 	
 	
 	<!-- 페이지 번호 구현 -->
@@ -115,7 +121,7 @@
 		<%-- 이전 그룹으로 이동 가능하다면? --%>
 		<c:when test="${pageData.prevPage > 0}">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/admin/userli.do" var="prevPageUrl">
+			<c:url value="/room/list.do" var="prevPageUrl">
 				<c:param name="page" value="${pageData.prevPage}" />
 				<c:param name="keyword" value="${keyword}" />
 			</c:url>
@@ -129,7 +135,7 @@
 	<%--페이지 번호 (시작 페이지 부터 끝 페이지까지 반복 --%>
 	<c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 		<%-- 이동할 URL 생성 --%>
-		<c:url value="/admin/userli.do" var="pageUrl">
+		<c:url value="/room/list.do" var="pageUrl">
 			<c:param name="page" value="${i}" />
 			<c:param name="keyword" value="${keyword}" />
 		</c:url>
@@ -153,7 +159,7 @@
 		<%-- 다음 그룹으로 이동 가능하다면? --%>
 		<c:when test="${pageData.nextPage > 0}">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/admin/userli.do" var="nextPageUrl">
+			<c:url value="/room/list.do" var="nextPageUrl">
 				<c:param name="page" value="${pageData.nextPage}" />
 				<c:param name="keyword" value="${keyword}" />
 			</c:url>
@@ -163,22 +169,5 @@
 		 	[다음]
 		</c:otherwise>
 	</c:choose>
-		</div>
-		<!-- 하단 영역 -->
-		<div id="footer"></div>
-	</div>
-	<!-- Javascript -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			/* 체크박스 전체선택 */
-			$("#all_check").change(function() {
-				$(".userlist").prop('checked', $(this).prop('checked'));
-			});
-		});
-	</script>
 </body>
 </html>
