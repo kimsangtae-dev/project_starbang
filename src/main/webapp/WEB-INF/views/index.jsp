@@ -16,21 +16,21 @@
 <!--  slider css -->
 
 <%--쓰지 않을 css --%>
-<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css"> --%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css">
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
 
 
 </head>
 <body>
 
 <!----------------------------------------
-- header                     -
+-	header 								     -
 ----------------------------------------->
 <%@ include file="assets/inc/ma_top.jsp"%>
 
 
-  <!---------------------------------------\
+	<!---------------------------------------\
     /    content                             /
     ----------------------------------------->
     <!-- 중앙 영역 시작 -->
@@ -456,13 +456,13 @@
     
     
     <button class="btn-searchrm" style="bottom: 30px;">
-      <svg width="20" height="20" viewBox="0 0 20 20">
-        <g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2">
-          <circle cx="8.5" cy="8.5" r="6.5"></circle>
-          <path d="M13 13l5 5"></path>
-        </g>
-      </svg>
-      <span>방 찾기</span>
+    	<svg width="20" height="20" viewBox="0 0 20 20">
+    		<g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2">
+    			<circle cx="8.5" cy="8.5" r="6.5"></circle>
+    			<path d="M13 13l5 5"></path>
+    		</g>
+    	</svg>
+    	<span>방 찾기</span>
     </button>
     
     
@@ -470,55 +470,55 @@
 <!-- content 끝 -->
 
 <!----------------------------------------
-- footer                   -
+-	footer 							     -
 ----------------------------------------->
 <%@ include file="assets/inc/ma_bottom.jsp"%>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<%-- <script src="${pageContext.request.contextPath}/assets/plugin/slick/slick.js" type="text/javascript" charset="utf-8"></script> --%>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
+
 
 <script>
-  /* 슬라이더 세팅 */
+	/* 슬라이더 세팅 */
 
-    $(".regular").slick({
-      dots: true,
-          infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 5
-      });
+		$(".regular").slick({
+			dots: true,
+	      	infinite: true,
+		    slidesToShow: 6,
+	    	slidesToScroll: 5
+	    });
 
-  /* 좋아요 클릭 -> 하트 색 변경 */
-  $(function() {
-    $(".recent-div8").click(function(e) {
-      $(this).toggleClass('on off');
-    });
-  })
-  
-  /* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
-  $(function() {
-    $(window).scroll(function() {
-      
-      if( $(window).scrollTop() > 370) {
-          $(".btn-searchrm").fadeIn(1).css("display","block").css("bottom", "30px");
-        } else {
-          $(".btn-searchrm").fadeOut(1);
-        }
-      
-      if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
-        var control = 0;
-        control = 280 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
-        $(".btn-searchrm").css("bottom", control+"px");
-      }
-    });
-    
-    $(".btn-searchrm").click(function(){
-      $("#searching-for").focus();
-    });
-  });
-  
+	/* 좋아요 클릭 -> 하트 색 변경 */
+	$(function() {
+		$(".recent-div8").click(function(e) {
+			$(this).toggleClass('on off');
+		});
+	})
+	
+	/* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
+	$(function() {
+		$(window).scroll(function() {
+			
+			if( $(window).scrollTop() > 370) {
+					$(".btn-searchrm").fadeIn(1).css("display","block").css("bottom", "30px");
+				} else {
+					$(".btn-searchrm").fadeOut(1);
+				}
+			
+			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
+				var control = 0;
+				control = 280 - ($(document).height() - $(window).scrollTop() - $(window).height()) ;
+				$(".btn-searchrm").css("bottom", control+"px");
+			}
+		});
+		
+		$(".btn-searchrm").click(function(){
+			$("#searching-for").focus();
+		});
+	});
+	
 </script>
 
 </body>
