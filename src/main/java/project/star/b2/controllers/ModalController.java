@@ -1,12 +1,37 @@
 package project.star.b2.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import project.star.b2.helper.RegexHelper;
+import project.star.b2.helper.WebHelper;
+import project.star.b2.model.User;
+import project.star.b2.service.UserService;
+
 @Controller
 public class ModalController {
+	/** WebHelper 주입 */
+    @Autowired  WebHelper webHelper;
+    
+    /** RegexHelper 주입 */
+    // --> import study.spring.springhelper.helper.RegexHelper;
+    @Autowired  RegexHelper regexHelper;
+    
+    /** Service 패턴 구현체 주입 */
+    @Autowired	UserService userService;
+    
+    /** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
+	// --> import org.springframework.beans.factory.annotation.Value;
+	@Value("#{servletContext.contextPath}")
+	String contextPath;
 	
 	/********************************************************************
 	 *  							동의하기

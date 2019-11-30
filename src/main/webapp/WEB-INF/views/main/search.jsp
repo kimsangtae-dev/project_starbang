@@ -1,16 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <%@ include file="../assets/inc/meta.jsp"%>
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/search.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/ma_css/search.css">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
 
 </head>
 
@@ -24,9 +27,11 @@
 		<div id="content">
 			<div id="search" class="clearfix">
 				<div class="searchtab">
-					<form id="search-form">
-						<input type="text" placeholder="검색바" name="search" /> <i class="glyphicon glyphicon-search"></i>
-						<button type="submit"></button>
+					<form id="search-form" method="get"
+						action="${pageContext.request.contextPath}/main/search.do">
+						<input type="search" placeholder="검색바" name="search" id="keyword"
+							value="${keyword}" /> <i class="glyphicon glyphicon-search"></i>
+						<button type="submit">검색</button>
 					</form>
 				</div>
 				<!-- 전체 필터 -->
@@ -196,7 +201,7 @@
 				<div class="gallery">
 					<!-- 갤러리 상단 영역 -->
 					<div class="gallery-header">
-						<span>조건에 맞는 방 </span> <span class="room-count">0000</span><span>개</span>
+						<span>조건에 맞는 방 </span> <span class="room-count">${totalCount}</span><span>개</span>
 					</div>
 					<!-- 갤러리 상단 영역 끝 -->
 					<!-- 갤러리 내용 + 하단 영역 -->
@@ -224,16 +229,25 @@
 											<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
 												<!-- 이미지 -->
 												<div class="recent-a-div"></div>
-												<!-- 확인매물 div -->
+												<c:if test="${item.confirmdate != null}">
+												<%-- 확인매물 div --%>
 												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div" type="">
+													<div class="recent-a-confirm-div">
 														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
 													</div>
 												</div>
 												<%-- 확인매물 끝 --%>
+												</c:if>
 												<p class="recent-a-p1">${item.roomtype}</p>
 												<p class="recent-a-p2">
-													<span>전세 1억4000</span>
+												<c:choose>
+													<c:when test="${item.dealingtype == '월세'}">
+													<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+													</c:when>
+													<c:otherwise>
+													<span>${item.dealingtype}&nbsp;</span><span id="prc">${item.price}</span>
+													</c:otherwise>
+												</c:choose>
 												</p>
 												<p class="recent-a-p34">${item.floor}층, ${item.area}m², 관리비 ${item.fee}만</p>
 												<p class="recent-a-p34">${item.title}</p>
@@ -250,23 +264,75 @@
 						<!-- 갤러리 내용 영역 -->
 						<!-- 갤러리 하단 영역 -->
 						<div class="gallery-footer">
+							<%-- gallery-index --%>
 							<div class="gallery-index">
-								<button class="prev-btn">
-									<span>&lt;</span>
-								</button>
-								<ul class="index-list">
-									<li><a class="index-indiv index-active">1</a></li>
-									<li><a class="index-indiv">2</a></li>
-									<li><a class="index-indiv">3</a></li>
-									<li><a class="index-indiv">4</a></li>
-									<li><a class="index-indiv">5</a></li>
-									<li><a class="index-indiv">6</a></li>
-									<li><a class="index-indiv">7</a></li>
-								</ul>
-								<button class="next-btn">
-									<span>&gt;</span>
-								</button>
+							<!-- 페이지 번호 구현 -->
+							<%-- 이전 그룹에 대한 링크 --%>
+						    <c:choose>
+						        <%-- 이전 그룹으로 이동 가능하다면? --%>
+						        <c:when test="${pageData.prevPage > 0}">
+						            <%-- 이동할 URL 생성 --%>
+						            <c:url value="/main/search.do" var="prevPageUrl">
+						                <c:param name="page" value="${pageData.prevPage}" />
+						            </c:url>
+						            <a href="${prevPageUrl}">
+						            	<button class="prev-btn">
+											<span>&lt;</span>
+										</button>
+									</a>
+						        </c:when>
+						        <c:otherwise>
+						            <button class="prev-btn">
+										<span>&lt;</span>
+									</button>
+						        </c:otherwise>
+						    </c:choose>
+						    
+						    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+						    <ul class="index-list">
+						    <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
+						        <%-- 이동할 URL 생성 --%>
+						        <c:url value="/main/search.do" var="pageUrl">
+						            <c:param name="page" value="${i}" />
+						        </c:url>
+						        
+						        <%-- 페이지 번호 출력 --%>
+						        <c:choose>
+						            <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						            <c:when test="${pageData.nowPage == i}">
+						            	<li><a class="index-indiv index-active">${i}</a></li>
+						            </c:when>
+						            <%-- 나머지 페이지의 경우 링크 적용함 --%>
+						            <c:otherwise>
+						            	<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+						            </c:otherwise>
+						        </c:choose>
+						    </c:forEach>
+						    </ul>
+						    
+						    <%-- 다음 그룹에 대한 링크 --%>
+						    <c:choose>
+						        <%-- 다음 그룹으로 이동 가능하다면? --%>
+						        <c:when test="${pageData.nextPage > 0}">
+						            <%-- 이동할 URL 생성 --%>
+						            <c:url value="/main/search.do" var="nextPageUrl">
+						                <c:param name="page" value="${pageData.nextPage}" />
+						                <c:param name="keyword" value="${keyword}" />
+						            </c:url>
+						            <a href="${nextPageUrl}">
+						            	<button class="next-btn">
+											<span>&gt;</span>
+										</button>
+									</a>
+						        </c:when>
+						        <c:otherwise>
+						            <button class="next-btn">
+										<span>&gt;</span>
+									</button>
+						        </c:otherwise>
+						    </c:choose>
 							</div>
+							<%-- gallery-index --%>
 						</div>
 						<!-- 갤러리 하단 영역 끝 -->
 					</div>
@@ -307,13 +373,25 @@
 			});
 			
 			/* 조건에 맞는 방 개수 */
-			var n = $(".recent-div5").length;
-			$(".room-count").html(n);
+			/* var n = $(".recent-div5").length;
+			$(".room-count").html(n); */
 
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
 			});
 		});
+ 		
+/*		// 금액별로 단위 표시(만/억)를 위한 메서드
+		var price = ${item.price};
+			if (price < 10000) {
+				price = price;
+			} else if (price % 10000 == 0) {
+				price = price / 10000 + "억";
+			} else {
+				var mil = Math.floor(price / 10000);
+				price = mil + "억 " + price;
+			}
+		$("#prc").html(price); */
 	</script>
 	<%-- <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
 	<script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
@@ -409,149 +487,112 @@
 			});
 
 			// 데이터 가져오기
-			$
-					.get(
-							"${pageContext.request.contextPath}/assets/css/ma_css/address.json",
-							function(data) {
-								var markers = $(data.positions)
-										.map(
-												function(i, position) {
-													return new kakao.maps.Marker(
-															{
-																position : new kakao.maps.LatLng(
-																		position.lat,
-																		position.lng)
-															});
-												});
-								clusterer.setMinClusterSize(1);
+			$.get("${pageContext.request.contextPath}/assets/css/ma_css/address.json",
+				function(data) {
+					var markers = $(data.positions).map(function(i, position) {
+						return new kakao.maps.Marker({
+							position : new kakao.maps.LatLng(position.lat, osition.lng)
+						});
+					});
+					
+					clusterer.setMinClusterSize(1);
 
-								// 클러스터러에 마커 추가
-								//clusterer.addMarkers(markers);
+					// 클러스터러에 마커 추가
+					//clusterer.addMarkers(markers);
 
-								// 지도 레벨에 따라 마커 생성/제거 
-								var changeMarker = function() {
-									var level = map.getLevel();
+					// 지도 레벨에 따라 마커 생성/제거 
+					var changeMarker = function() {
+						var level = map.getLevel();
 
-									if (1 <= level && level <= 7) {
-										clusterer.addMarkers(markers);
-									} else if (8 <= level && level <= 10) {
-										clusterer.removeMarkers(markers);
-									}
-								};
+						if (1 <= level && level <= 7) {
+							clusterer.addMarkers(markers);
+						} else if (8 <= level && level <= 10) {
+							clusterer.removeMarkers(markers);
+						}
+					};
 
-								kakao.maps.event.addListener(map,
-										'zoom_changed', changeMarker);
-								changeMarker();
+					kakao.maps.event.addListener(map, 'zoom_changed', changeMarker);
+					changeMarker();
 
-								kakao.maps.event.addListener(clusterer,
-										'clusterclick', function(cluster) {
-											console.log(cluster.getMarkers());
-										});
+					kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+						console.log(cluster.getMarkers());
+					});
 
-								kakao.maps.event.addListener(clusterer,
-										'clusterover', function(cluster) {
-											console.log(cluster.getBounds());
-										});
+					kakao.maps.event.addListener(clusterer, 'clusterover', function(cluster) {
+						console.log(cluster.getBounds());
+					});
 
-							}); // end $.get(address.json)
+				}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
-			$
-					.getJSON(
-							"${pageContext.request.contextPath}/assets/css/ma_css/guPosition.json",
-							function(data) {
-								var guPositions = data;
-								var gumark;
-								for (var i = 0; i < guPositions.length; i++) {
-									gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
-									gumark += '<div class="gu-count">' + 500
-											+ '</div>';
-									gumark += '<div class="gu-name">'
-											+ guPositions[i].guName + '</div>';
-									gumark += '<span id="lat" style="display:none;">'
-											+ guPositions[i].lat + '</span>'; // 해당 구의 위도 저장
-									gumark += '<span id="lng" style="display:none;">'
-											+ guPositions[i].lng + '</span>'; // 해당 구의 경도 저장
-									gumark += '</div>';
-									var customOverlay = new kakao.maps.CustomOverlay(
-											{
-												position : new kakao.maps.LatLng(
-														guPositions[i].lat,
-														guPositions[i].lng),
-												clickable : false,
-												content : gumark,
-												zIndex : 3
-											});
-									customOverlay.setMap(map);
-
-									// 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
-									$("#gu-marker" + i)
-											.click(
-													function() {
-														var poslat = $(this)
-																.children(
-																		"#lat")
-																.html();
-														var poslng = $(this)
-																.children(
-																		"#lng")
-																.html();
-														map
-																.setCenter(new kakao.maps.LatLng(
-																		poslat,
-																		poslng));
-														map
-																.setLevel(
-																		map
-																				.getLevel() - 2,
-																		{
-																			animate : true
-																		});
-													});
-
-								} // end for
-
-								$("#map > div > div > div > div").hover(
-										function() {
-											$(this).css("z-index", "100");
-										}, function() {
-											$(this).css("z-index", "0");
-										}); // end hover()
-
+			$.getJSON("${pageContext.request.contextPath}/assets/css/ma_css/guPosition.json",
+					function(data) {
+						var guPositions = data;
+						var gumark;
+						for (var i = 0; i < guPositions.length; i++) {
+							gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
+							gumark += '<div class="gu-count">' + 500 + '</div>';
+							gumark += '<div class="gu-name">' + guPositions[i].guName + '</div>';
+							gumark += '<span id="lat" style="display:none;">' + guPositions[i].lat + '</span>'; // 해당 구의 위도 저장
+							gumark += '<span id="lng" style="display:none;">' + guPositions[i].lng + '</span>'; // 해당 구의 경도 저장
+							gumark += '</div>';
+							var customOverlay = new kakao.maps.CustomOverlay({
+									position : new kakao.maps.LatLng(guPositions[i].lat, guPositions[i].lng),
+									clickable : false,
+									content : gumark,
+									zIndex : 3
 							});
+							
+							customOverlay.setMap(map);
+
+							// 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
+							$("#gu-marker" + i).click(function() {
+								var poslat = $(this).children("#lat").html();
+								var poslng = $(this).children("#lng").html();
+								map.setCenter(new kakao.maps.LatLng(poslat,poslng));
+								map.setLevel(map.getLevel() - 2,{animate : true});
+							});
+									
+						} // end for
+
+						$("#map > div > div > div > div").hover(
+							function() {$(this).css("z-index", "100");}, 
+							function() {$(this).css("z-index", "0");}
+						); // end hover()
+
+					});
 
 			// 검색값 가져와서 지도 위치 변경하기
 			$("#search-form").submit(
-					function(e) {
-						e.preventDefault();
+				function(e) {
+					e.preventDefault();
+		
+					// 장소 검색 객체 생성
+					var ps = new kakao.maps.services.Places();
+					// input값 가져오기
+					var value = $('input[name=search]').val();
 
-						// 장소 검색 객체 생성
-						var ps = new kakao.maps.services.Places();
-						// input값 가져오기
-						var value = $('input[name=search]').val();
+					// 키워드로 장소 검색
+					ps.keywordSearch(value, placesSearchCB);
 
-						// 키워드로 장소 검색
-						ps.keywordSearch(value, placesSearchCB);
+					// 키워드 검색 완료 시 호출되는 콜백함수
+					function placesSearchCB(data, status, pagination) {
+						if (status === kakao.maps.services.Status.OK) {
 
-						// 키워드 검색 완료 시 호출되는 콜백함수
-						function placesSearchCB(data, status, pagination) {
-							if (status === kakao.maps.services.Status.OK) {
+							// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+							// LatLngBounds 객체에 좌표 추가
+							var bounds = new kakao.maps.LatLngBounds();
 
-								// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-								// LatLngBounds 객체에 좌표 추가
-								var bounds = new kakao.maps.LatLngBounds();
-
-								for (var i = 0; i < data.length; i++) {
-									/* displayMarker(data[i]); */
-									bounds.extend(new kakao.maps.LatLng(
-											data[i].y, data[i].x));
-								}
-
-								// 검색된 장소 위치를 기준으로 지도 범위 재설정
-								map.setBounds(bounds);
+							for (var i = 0; i < data.length; i++) {
+								/* displayMarker(data[i]); */
+								bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
 							}
+
+							// 검색된 장소 위치를 기준으로 지도 범위 재설정
+							map.setBounds(bounds);
 						}
-					})
+					}; // end placesSearchCB()
+				}); // end submit()
 
 			// 지도 확대 메서드
 			function zoomIn() {
