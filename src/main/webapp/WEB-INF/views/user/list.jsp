@@ -15,7 +15,7 @@
 	<!-- 검색폼 -->
 	<form method="get" action="${pageContext.request.contextPath}/user/list.do">
 		<label for="keyword">검색어: </label>
-		<input type="search" name="keyword" id="keyword" placeholder="유저명 or 위치 검색" value="${keyword}" />
+		<input type="search" name="keyword" id="keyword" placeholder="유저명 or 이메일 검색" value="${keyword}" />
 		<button type="submit">검색</button>	
 	</form>
 	
