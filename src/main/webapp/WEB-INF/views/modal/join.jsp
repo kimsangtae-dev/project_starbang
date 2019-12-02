@@ -8,6 +8,7 @@
 
     <!-- sweetalert --> 
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -48,8 +49,7 @@
 			swal("회원가입이 완료되었습니다");
 		});  -->
 
-<!-- sweetalert --> 
-<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+
 
 </head>
 
@@ -135,101 +135,4 @@
             </form>
          </div>
 			
-			<!-- 인증번호 Modal -->
-			<!-- <div class="modal fade" id="myModal" class="siz">
-		<div class="modal-dialog siz modaltop"> -->
-		<div class="modal fade" id="requested">
-			<div class="modal-content">
-				<div class="modal-header">
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	            </div>
-				<div class="modal-body modaljoinbody">
-					<h4 class="modal-title">인증번호 발송했습니다</h4>
-				</div>
-			</div>
-		</div>
 			
-			
-		<!-- 인증번호 확인 ok Modal -->
-		<div class="modal fade" id="requestednumber">
-			<div class="modal-content requested">
-				<div class="modal-header">
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	            </div>
-				<div class="modal-body modaljoinbody">					
-					<h4 class="modal-title">인증번호 확인되었습니다</h4>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 인증번호 확인 not Modal -->
-		<div class="modal fade" id="requestednumbernot">
-			<div class="modal-content">
-				<div class="modal-header">
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	            </div>
-				<div class="modal-body modaljoinbody">					
-					<h4 class="modal-title">인증번호가 틀렸습니다</h4>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 회원가입 완료 -->
-		<div class="modal fade" id="buttonjoinalalert">
-			<div class="modal-content">
-				<div class="modal-header">
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	            </div>
-				<div class="modal-body modaljoinbody">					
-					<h4 class="modal-title">환영합니다 회원가입에 성공하셨습니다</h4>
-				</div>
-			</div>
-		</div>
-		
-		<!-- 회원가입 후 다시 login.jsp로 돌아감 -->
-		<div class="modal" id="loginForward">
-			<div class="modal-content">
-				<div class="modal-body modalbody " id="loginForwardbody">					
-					<button type="submit" id="loginForwardButton" class="btn btn-default" data-dismiss="modal" >확인</button>
-				</div>
-			</div>
-		</div>
-		
-		
-		
