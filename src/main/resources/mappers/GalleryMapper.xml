@@ -28,13 +28,17 @@
 		SELECT 
 		r.roomno, roomtype, title, floor, area, fee, DATE_FORMAT(confirmdate, '%Y.%m.%d') AS confirmdate, dealingtype, deposit, price
 		FROM room AS r 
-		INNER JOIN price AS p 
-		ON r.roomno=p.roomno 
-		GROUP BY roomno 
-		ORDER BY roomno DESC 
-		<if test="listCount > 0">
-			LIMIT #{offset}, #{listCount}
-		</if>
+		INNER JOIN price AS p
+		ON r.roomno=p.roomno
+        <where>
+            <if test="roomno != null and roomno != ''">
+                r.roomno = #{roomno}
+            </if>
+            
+            <if test="roomtype != null and roomtype != ''">
+                OR roomtype = #{roomtype}
+            </if>
+        </where>
     </select>
     
     <!--

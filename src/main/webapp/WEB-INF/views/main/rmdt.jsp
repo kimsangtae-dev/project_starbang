@@ -11,6 +11,9 @@
 </head>
 
 <body>
+<!--<script language="JavaScript">
+javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보는 자바스크립트
+</script>-->
 	<!-- 상단 헤더 -->
 	<jsp:include page="../assets/inc/ma_top.jsp" />
 	

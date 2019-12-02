@@ -47,17 +47,17 @@
 								<p>중복 선택이 가능합니다.</p>
 								<ul>
 									<li><label>
-										<input type="checkbox" name="room-type" value="oneroom" checked />
+										<input type="checkbox" name="room-type" value="oneroom" checked />원룸
 										<span class="checkBox"></span>
 										<span class="checkText">원룸</span>
 									</label></li>
 									<li><label>
-										<input type="checkbox" name="room-type" value="tworoom" checked />
+										<input type="checkbox" name="room-type" value="tworoom" checked />투,쓰리움
 										<span class="checkBox"></span>
 										<span class="checkText">투·쓰리룸</span>
 									</label></li>
 									<li><label>
-										<input type="checkbox" name="room-type" value="officetel" checked />
+										<input type="checkbox" name="room-type" value="officetel" checked />오피스텔
 										<span class="checkBox"></span>
 										<span class="checkText">오피스텔</span>
 									</label></li>
@@ -855,6 +855,9 @@
 				$(".inf").html("무제한");
 			});
 		})
+		if ($("#search-from").length){
+			alert('myDiv exists');
+		}
 	</script>
 </body>
 </html>
