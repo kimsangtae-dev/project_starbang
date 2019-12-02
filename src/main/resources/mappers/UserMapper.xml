@@ -18,6 +18,13 @@
         <result property="profile_img" column="profile_img" />
     </resultMap>
 
+    <!-- 로그인 조회를 위한 기능 정의 -->
+    <select id="selectlogin"
+        parameterType="project.star.b2.model.User"
+        resultMap="userMap">
+        SELECT userno, name, email, passwd, tel, regdate, editdate, profile_img FROM user WHERE email=#{email};
+    </select>
+
     <!-- 단일행 조회를 위한 기능 정의 -->
     <select id="selectItem"
         parameterType="project.star.b2.model.User"

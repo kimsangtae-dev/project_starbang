@@ -183,7 +183,118 @@ public class AdminController {
 		
 		String viewPath = "admin/userli";
 		return new ModelAndView(viewPath);
-			}
+	}
+
+	// 회원관리 삭제페이지
+    @RequestMapping(value = "/admin/delete_ok.do", method = RequestMethod.GET)
+    public ModelAndView delete_ok(Model model) {
+        /** 1) 필요한 변수값 생성 */
+        // 삭제할 대상에 대한 PK값
+        int userno = webHelper.getInt("userno");
+
+        // 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
+        if (userno == 0) {
+            return webHelper.redirect(null, "회원번호가 없습니다.");
+        }
+
+        /** 2) 데이터 삭제하기 */
+        // 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+        User input = new User();
+        input.setUserno(userno);
+
+        try {
+            // 데이터 삭제
+        	userService.deleteUser(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) 페이지 이동 */
+        // 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
+        return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다.");
+
+    }
+    
+    /** 수정 폼 페이지 */
+    @RequestMapping(value = "/admin/edit2.do", method = RequestMethod.GET)
+    public ModelAndView edit(Model model) {
+        /** 1) 필요한 변수값 생성 */
+        // 조회할 대상에 대한 PK값
+        int userno = webHelper.getInt("userno");
+        
+        // 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+        if (userno == 0) {
+            return webHelper.redirect(null, "회원번호가 없습니다.");
+        }
+        
+        
+        /** 2) 데이터 조회하기 */
+        // 데이터 조회에 필요한 조건값을 Beans에 저장하기
+        User input = new User();
+        input.setUserno(userno);
+        
+        // 조회결과를 저장할 객체 선언
+        User output = null;
+        
+        try {
+            output = userService.getUserItem(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+        
+        /** 3) View 처리 */
+        model.addAttribute("output", output);
+        return new ModelAndView("user/edit");
+    }
+    
+    /** 수정 폼에 대한 action 페이지 */
+	@RequestMapping(value = "/admin/edit_ok.do", method = RequestMethod.POST)
+	public ModelAndView edit_ok(Model model) {
+		
+		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+		int userno = webHelper.getInt("userno");
+		String name = webHelper.getString("name");
+		String email = webHelper.getString("email");
+		String passwd = webHelper.getString("passwd");
+		String tel = webHelper.getString("tel");
+		String regdate = webHelper.getString("regdate");
+		String editdate = webHelper.getString("editdate");
+		String profile_img = webHelper.getString("profile_img");
+		
+		
+        
+        if (userno == 0) {
+            return webHelper.redirect(null, "회원번호가 없습니다.");
+        }
+
+        if (name == null) {
+            return webHelper.redirect(null, "회원이름을 입력하세요.");
+        }
+
+        /** 2) 데이터 수정하기 */
+        // 수정할 값들을 Beans에 담는다.
+		User input = new User();
+		input.setUserno(userno);
+		input.setName(name);
+		input.setEmail(email);
+		input.setPasswd(passwd);
+		input.setTel(tel);
+		input.setRegdate(regdate);
+		input.setEditdate(editdate);
+		input.setProfile_img(profile_img);
+
+        try {
+            // 데이터 수정
+            userService.editUser(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) 결과를 확인하기 위한 페이지 이동 */
+        // 수정한 대상을 상세페이지에 알려주기 위해서 PK값을 전달해야 한다. 
+        String redirectUrl = contextPath + "/user/view.do?userno=" + input.getUserno();
+        return webHelper.redirect(redirectUrl, "수정되었습니다.");
+    }
 	
 	/********************************************************************
 	 *  							글쓰기

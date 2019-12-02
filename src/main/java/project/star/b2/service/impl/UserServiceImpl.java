@@ -171,4 +171,30 @@ public class UserServiceImpl implements UserService {
 
         return result;
     }
+
+        /**
+     * 유저 email 조회하기
+     * @param User 조회할 email 를 담고 있는 Beans
+     * @throws Exception
+     */
+    @Override
+    public User getUserLogin(User input) throws Exception {
+        User result = null;
+
+        try {
+            result = sqlSession.selectOne("UserMapper.selectlogin", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("회원정보가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("로그인에 실패했습니다.");
+        }
+
+        return result;
+    }
 }
