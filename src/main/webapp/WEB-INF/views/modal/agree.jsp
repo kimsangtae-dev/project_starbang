@@ -9,7 +9,7 @@
 
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<%--
+	
 	<script type="text/javascript">
 	$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
 	$('#element').on('scroll touchmove mousewheel', function(event) { 
@@ -21,40 +21,41 @@
 	$('html, body').css({'overflow': 'auto', 'height': '100%'}); 
 	$('#element').off('scroll touchmove mousewheel'); 
 	</script>
-	--%>
-
+	
 	<script type="text/javascript">
-		// 언니가 알려준 버튼
-		$(function() {
-			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('on off');
-			});
-		});
+        $(function() {
+            /* `#all_check`의 선택 상태가 변경되었을 때의 이벤트 */
+            $("#all_check").change(function() {
+                // 모든 `.hobby`의 선택 상태를 `#all_check`와 동일하게 맞춘다.
+                $(".agreecheck").prop('checked', $(this).prop('checked'));
+            });
+        });
 	</script>
-		
-		<script type="text/javascript">
-		$(function() {
-			$(".recent-div82").click(function(e) {
-				$(this).toggleClass('on off');
-			});
-		});
-		</script>
-		
-		<script type="text/javascript">
-		$(function() {
-			$(".recent-div83").click(function(e) {
-				$(this).toggleClass('on off');
-			});
-		});
-		</script>
-		
-		<script type="text/javascript">
-		$(function() {
-			$(".recent-div84").click(function(e) {
-				$(this).toggleClass('on off');
-			});
-		});
+	
+	<script type="text/javascript">
+        $(function() {
+        	$("#agreejoin").click(function() {
+	        	var agreejoin = document.getElementById('agreejoin');
+    	        if ($('input:checkbox[id="room-type1"]').is(":checked") ==  false) {
+    	        	alert("필수 항목을 체크해 주세요");
+    	        	e.preventDefault();
+            	}else if ($('input:checkbox[id="room-type2"]').is(":checked") ==  false) {
+    	        	alert("필수 항목을 체크해 주세요");
+    	        	e.preventDefault();
+            	}else if ($('input:checkbox[id="room-type3"]').is(":checked") ==  false) {
+    	        	alert("필수 항목을 체크해 주세요");
+    	        	e.preventDefault();
+            	}else {
+            		agreejoin.setAttribute('href','<%=request.getContextPath()%>/modal/join.do');
+            		agreejoin.setAttribute('data-dismiss','modal');
+            		agreejoin.setAttribute('data-toggle','modal');
+            		agreejoin.setAttribute('data-target','#joinModal');
+            		$("#element").hide();
+            	}
+            });
+        });
 	</script>
+	
 
 </head>
 
@@ -81,9 +82,10 @@
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<div class="recent-div7">
-								<div class="recent-div8 off" data-value="on"></div>
-							</div>
+							<label class="nocklabel"> 
+								<input type="checkbox" name="room-type" id="room-type1" value="oneroom" class="agreecheck" /> 
+    			          	 	<span class="checkbox noinput1"></span>
+							</label>
 						</div>
 						<!-- <img id="check1" src="../main/ma_assets/ma_img/greycheck.png" /> -->
 <!-- <button id="toggle" class="toggle-button on" data-value="off">OFF</button> -->
@@ -615,9 +617,10 @@
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<div class="recent-div7">
-								<div class="recent-div82 off" data-value="on"></div>
-							</div>
+							<label class="nocklabel"> 
+								<input type="checkbox" name="room-type" value="oneroom" class="agreecheck" id="room-type2" /> 
+    			          	 	<span class="checkbox noinput1"></span>
+							</label>
 						</div>
 					<!-- <p class="p">
 							개인정보 처리방침 <span id="ftcl">(필수)</span>
@@ -655,9 +658,10 @@
 							<p class="p">
 								다방 서비스 약관 동의 <span id="ftcl">(필수)</span>
 							</p>
-							<div class="recent-div7">
-								<div class="recent-div83 off" data-value="on"></div>
-							</div>
+							<label class="nocklabel"> 
+								<input type="checkbox" name="room-type" value="oneroom" class="agreecheck" id="room-type3" /> 
+    			          	 	<span class="checkbox noinput1"></span>
+							</label>
 						</div>
 						<!-- <p class="p">
 							마케팅 정보 수신에 대한 동의 <span id="ftcl">(선택)</span>
@@ -717,12 +721,13 @@
 			</div>
 			<div id="lnMlai">
 				<p class="all">모두 동의합니다</p>
-				<div class="recent-div7">
-					<div class="recent-div84 off" data-value="on"></div>
-				</div>
+				<label class="nocklabel nocklabelall"> 
+					<input type="checkbox" name="room-type" value="oneroom" id="all_check" /> 
+    			    <span class="checkbox noinput1"></span>
+				</label>
 			</div>
 			<div class="modal-fet">
-				<a href="<%=request.getContextPath()%>/modal/join.do" data-dismiss="modal" data-toggle="modal" data-target="#joinModal" class="click-to-join btn-colordown">확인</a>
+				<a href="#" id="agreejoin" class="click-to-join btn-colordown">확인</a>
 			</div>
 		</div>
 	</div>
