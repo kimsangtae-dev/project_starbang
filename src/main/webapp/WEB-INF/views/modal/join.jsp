@@ -79,60 +79,74 @@
 	                	</svg>
  	               </button>
  	            </div>
-				<form method="post" action="${pageContext.request.contextPath}/modal/join_ok.do">
-            <div class="modal-body padding">
-               <div class="information clearfix">
-                  <p class="subtitle">이름</p>
-                  <input class="input1" type="text" name="name" class="full-wid input1" />
-               </div>
-               <div class="information information2 clearfix">
-                  <p class="subtitle">이메일</p>
-                  <input type="text" name="email" class="email input1" />
-                  <p class="wid">@</p>
-                  <select class="select-email select1" name="email1">
-                     <option>선택해주세요</option>
-                     <option>naver.com</option>
-                     <option>gmail.com</option>
-                  </select>
-                  <button class="btn btn-color inclick buttonre" id="insnumber" value="인증번호 요청">인증번호 요청</button>
-                  <!-- data-toggle="modal" data-target="#requested" -->
-               </div>
-               <div class="information information2 numberdiv clearfix">
-                  <p class="subtitle"></p>
-                  <input type="text" name="pingaree" class="number input1" />
-                  <button class="btn btn-color inclick buttonre" id="reinsnumber" value="인증번호 확인" >인증번호 확인</button>
-                  <!-- ata-toggle="modal" data-target="#requestednumber" -->
-               </div>
-               <div class="information information2 clearfix">
-                  <p class="subtitle">비밀번호</p>
-                  <input type="password" name="passwd" class="full-wid input1" placeholder="비밀번호" />
-               </div>
-               <div class="information information2 clearfix">
-                  <p class="subtitle">비밀번호확인</p>
-                  <input type="password" class="full-wid input1" placeholder="비밀번호확인" />
-               </div>
-               <div class="information information2 clearfix">
-                  <p class="subtitle">휴대폰 번호</p>
-                  <select class="select-tel pin select1" name="tel">
-                     <option>010</option>
-                     <option>011</option>
-                     <option>016</option>
-                     <option>017</option>
-                     <option>018</option>
-                     <option>019</option>
-                  </select>
-                  <p class="wid">-</p>
-                  <input type="number" name="tel1" class="pin input1"/><p class="wid">-</p>
-                  <input type="number" name="tel2" class="pin input1"/>
-               </div>
-               <div class="Information3">
-                  <p class="p">*만 14세 이상 회원 가입 가능합니다. 해당 내용은 <a href="#">이용약관 및 정책</a>에서도 확인이 가능합니다</p>
-               </div>
-               </div>
-            <div>
-               <button type="submit" id="buttonjoin" class="buttonup btn btn-colordown buttontlzl" ata-toggle="modal" data-target="#loginForward">이메일 회원가입</button>
-            </div>
-            </form>
+				<form method="post"
+		action="${pageContext.request.contextPath}/modal/join_ok.do"
+		id="join_form">
+		<div class="modal-body padding">
+			<div class="information clearfix">
+				<p class="subtitle">이름</p>
+				<input class="input1" type="text" name="userId" id="user_id"
+					class="full-wid input1" />
+			</div>
+			<!-- <form method="get" action="${pageContext.request.contentType}/modal/joinemailsend.do"> -->
+				<div class="information information2 clearfix">
+					<label class="subtitle" for="email">이메일</label> <input type="text"
+						name="email" id="email" class="email input1" />
+					<p class="wid">@</p>
+					<select class="select-email select1" name="email1" id="email1">
+						<option>선택해주세요</option>
+						<option>naver.com</option>
+						<option>gmail.com</option>
+					</select>
+					<a id="atab"><button type="button" class="btn btn-color inclick buttonre"
+						id="insnumber" value="인증번호 요청">인증번호 요청</button></a>
+					<!-- data-toggle="modal" data-target="#requested" -->
+				</div>
+			<div class="information information2 numberdiv clearfix">
+				<p class="subtitle"></p>
+				<input type="text" name="pingaree" class="number input1" />
+				<button type="button" class="btn btn-color inclick buttonre"
+					id="reinsnumber" value="인증번호 확인">인증번호 확인</button>
+				<!-- ata-toggle="modal" data-target="#requestednumber" -->
+			</div>
+			<div class="information information2 clearfix">
+				<p class="subtitle">비밀번호</p>
+				<input type="password" name="password" class="full-wid input1"
+					placeholder="비밀번호" id="user_pw" />
+			</div>
+			<div class="information information2 clearfix">
+				<p class="subtitle">비밀번호확인</p>
+				<input type="password" name="repasswd" class="full-wid input1"
+					placeholder="비밀번호확인" id="user_pw_re" />
+			</div>
+			<div class="information information2 clearfix">
+				<p class="subtitle">휴대폰 번호</p>
+				<select class="select-tel pin select1">
+					<option>010</option>
+					<option>011</option>
+					<option>016</option>
+					<option>017</option>
+					<option>018</option>
+					<option>019</option>
+				</select>
+				<p class="wid">-</p>
+				<input type="number" name="tel1" class="pin input1 telnum" />
+				<p class="wid">-</p>
+				<input type="number" name="tel2" class="pin input1 telnum" />
+			</div>
+			<div class="Information3">
+				<p class="p">
+					*만 14세 이상 회원 가입 가능합니다. 해당 내용은 <a href="#">이용약관 및 정책</a>에서도 확인이
+					가능합니다
+				</p>
+			</div>
+		</div>
+		<div class="footer-body">
+			<button type="submit" id="buttonjoin"
+				class="buttonup btn btn-colordown buttontlzl">이메일 회원가입</button>
+			<!-- ata-toggle="modal" data-target="#loginForward" -->
+		</div>
+	</form>
          </div>
 			
 			
