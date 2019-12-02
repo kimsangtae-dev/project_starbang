@@ -51,6 +51,7 @@
 										<span class="checkBox"></span>
 										<span class="checkText">원룸</span>
 									</label></li>
+									
 									<li><label>
 										<input type="checkbox" name="room-type" value="tworoom" checked />투,쓰리움
 										<span class="checkBox"></span>
