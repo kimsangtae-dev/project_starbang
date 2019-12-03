@@ -151,7 +151,6 @@ public class MainController {
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-//		Room input = new Room();
 		Gallery input = new Gallery();
 
 		List<Gallery> output = null;
