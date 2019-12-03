@@ -114,7 +114,7 @@ public class ModalController {
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/" + input.getUserno();
+		String redirectUrl = contextPath + "/";
 
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}

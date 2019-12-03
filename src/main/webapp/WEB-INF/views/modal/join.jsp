@@ -43,6 +43,14 @@
 			swal("인증번호가 확인되었습니다");
 		});		
 	});
+	
+	// 입력숫자수 제한
+    function numberMaxLength(e){
+        if(e.value.length > e.maxLength){
+            e.value = e.value.slice(0, e.maxLength);
+        }
+    }
+
 
 </script>
 		<!-- $("#buttonjoin").click(function () {
@@ -121,7 +129,7 @@
 			</div>
 			<div class="information information2 clearfix">
 				<p class="subtitle">휴대폰 번호</p>
-				<select class="select-tel pin select1">
+				<select class="select-tel pin select1" name="tel">
 					<option>010</option>
 					<option>011</option>
 					<option>016</option>
@@ -130,9 +138,9 @@
 					<option>019</option>
 				</select>
 				<p class="wid">-</p>
-				<input type="number" name="tel1" class="pin input1 telnum" />
+				<input type="number" name="tel1" class="pin input1 telnum" maxlength="4" oninput="numberMaxLength(this);"/>
 				<p class="wid">-</p>
-				<input type="number" name="tel2" class="pin input1 telnum" />
+				<input type="number" name="tel2" class="pin input1 telnum" maxlength="4" oninput="numberMaxLength(this);"/>
 			</div>
 			<div class="Information3">
 				<p class="p">
@@ -148,5 +156,5 @@
 		</div>
 	</form>
          </div>
-			
+		
 			
