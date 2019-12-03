@@ -85,7 +85,7 @@
 		<div class="modal-body padding">
 			<div class="information clearfix">
 				<p class="subtitle">이름</p>
-				<input class="input1" type="text" name="userId" id="user_id"
+				<input class="input1" type="text" name="name" id="user_id"
 					class="full-wid input1" />
 			</div>
 			<!-- <form method="get" action="${pageContext.request.contentType}/modal/joinemailsend.do"> -->
@@ -111,7 +111,7 @@
 			</div>
 			<div class="information information2 clearfix">
 				<p class="subtitle">비밀번호</p>
-				<input type="password" name="password" class="full-wid input1"
+				<input type="password" name="passwd" class="full-wid input1"
 					placeholder="비밀번호" id="user_pw" />
 			</div>
 			<div class="information information2 clearfix">
