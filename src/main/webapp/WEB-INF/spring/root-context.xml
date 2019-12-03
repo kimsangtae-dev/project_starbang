@@ -4,17 +4,17 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+
 	<!-- Helper 구동에 필요한 환경설정 값 -->
 	<util:properties id="config">
 		<!-- 기본 인코딩 타입 -->
 		<prop key="encType">UTF-8</prop>
 		<!-- 업로드 디렉토리 -->
-		<prop key="uploadDir">/upload</prop>
+		<prop key="uploadDir">D:/JO/project/b-12.02_11.38/src/main/webapp/WEB-INF/views/assets/img/upload</prop>
 		<!-- 최대 업로드 가능 용량 -->
-		<prop key="uploadMaxFileSize">1000000</prop>
+		<prop key="uploadMaxFileSize">5000000</prop>
 		<!-- 기본 도메인(쿠키설정용) -->
 		<prop key="domain">localhost</prop>
 		<!-- 메일발송 서버 주소 -->
@@ -26,7 +26,7 @@
 		<!-- 메일발송 서버 비밀번호 -->
 		<prop key="smtpPassword">sgikpykvxnpxtthk</prop>
 	</util:properties>
-	
+
 	<!-- DB연동에 필요한 환경설정 값 -->
 	<util:properties id="dbConfig">
 		 <!-- 데이터베이스 호스트 이름 -->
@@ -44,7 +44,7 @@
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로  -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
 	</util:properties>
-	
+
 	<!-- WebHelper 주입 설정 -->
 	<bean id="webHelper" class="project.star.b2.helper.WebHelper">
 		<property name="encType" value="#{config['encType']}" />
@@ -56,18 +56,18 @@
 		</property>
 		<property name="domain" value="#{config['domain']}" />
 	</bean>
-	
+
 	<!-- DownloadHelper 주입 설정 -->
     <bean id="downloadHelper" class="project.star.b2.helper.DownloadHelper">
         <property name="uploadDir" value="#{config['uploadDir']}" />
     </bean>
-    
+
     <!-- RetrofitHelper 주입 설정 -->
     <bean id="retrofitHelper" class="project.star.b2.helper.RetrofitHelper" />
-	
+
 	<!-- RegexHelper 주입 설정 -->
 	<bean id="regexHelper" class="project.star.b2.helper.RegexHelper" />
-	
+
 	<!-- 메일 발송에 필요한 정보를 저장하는 객체 정의 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="#{config['smtpHost']}" />
@@ -86,7 +86,7 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<!-- ====== DATABASE 연동 설정 -->
 	<!-- JDBC 객체 생성 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -96,7 +96,7 @@
 		<property name="username" value="#{dbConfig['dbUsername']}" />
 		<property name="password" value="#{dbConfig['dbPassword']}" />
 	</bean>
-	
+
 	<!-- SQLSessionFactory 객체 생성 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- JDBC 객체를 dataSource에 대한 setter 메서드를 통해 주입 -->
@@ -104,11 +104,11 @@
 		<!-- MyBatis Mapper 파일들에 대한 경로 패턴 주입 --><!-- #{} 내용을 /mappers/**/*Mapper.xml로 바꿀 수 있다. -->
 		<property name="mapperLocations" value="classpath:/mappers/*.xml" />
 	</bean>
-	
+
 	<!-- SQLSession 객체 생성. 이 객체가 Service 패턴에 주입된다. -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<!-- 생성자를 통해 SQLSessionFactory 객체 주입 -->
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-	
+
 </beans>
