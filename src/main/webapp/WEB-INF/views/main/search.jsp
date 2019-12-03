@@ -47,18 +47,17 @@
 								<p>중복 선택이 가능합니다.</p>
 								<ul>
 									<li><label>
-										<input type="checkbox" name="room-type" value="oneroom" checked />원룸
+										<input type="checkbox" name="room-type" value="oneroom" checked />
 										<span class="checkBox"></span>
 										<span class="checkText">원룸</span>
 									</label></li>
-									
 									<li><label>
-										<input type="checkbox" name="room-type" value="tworoom" checked />투,쓰리움
+										<input type="checkbox" name="room-type" value="tworoom" checked />
 										<span class="checkBox"></span>
 										<span class="checkText">투·쓰리룸</span>
 									</label></li>
 									<li><label>
-										<input type="checkbox" name="room-type" value="officetel" checked />오피스텔
+										<input type="checkbox" name="room-type" value="officetel" checked />
 										<span class="checkBox"></span>
 										<span class="checkText">오피스텔</span>
 									</label></li>
@@ -242,11 +241,19 @@
 												<p class="recent-a-p1">${item.roomtype}</p>
 												<p class="recent-a-p2">
 												<c:choose>
+													<%-- 월세인 경우 --%>
 													<c:when test="${item.dealingtype == '월세'}">
-													<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+													<span>${item.dealingtype}&nbsp;<!-- 
+												 --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber>
+													<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" /><!-- 
+												 -->${patternprice1}/${item.price}</span>
 													</c:when>
+													<%-- 전세 혹은 매매인 경우 --%>
 													<c:otherwise>
-													<span>${item.dealingtype}&nbsp;</span><span id="prc">${item.price}</span>
+													<span>${item.dealingtype}&nbsp;<!-- 
+												 --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+													<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" /><!-- 
+												 -->${patternprice2}</span>
 													</c:otherwise>
 												</c:choose>
 												</p>
@@ -373,26 +380,10 @@
 				contentSize();
 			});
 			
-			/* 조건에 맞는 방 개수 */
-			/* var n = $(".recent-div5").length;
-			$(".room-count").html(n); */
-
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
 			});
 		});
- 		
-/*		// 금액별로 단위 표시(만/억)를 위한 메서드
-		var price = ${item.price};
-			if (price < 10000) {
-				price = price;
-			} else if (price % 10000 == 0) {
-				price = price / 10000 + "억";
-			} else {
-				var mil = Math.floor(price / 10000);
-				price = mil + "억 " + price;
-			}
-		$("#prc").html(price); */
 	</script>
 	<%-- <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
 	<script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
@@ -488,11 +479,11 @@
 			});
 
 			// 데이터 가져오기
-			$.get("${pageContext.request.contextPath}/assets/css/ma_css/address.json",
+			$.get("${pageContext.request.contextPath}/assets/roomposition",
 				function(data) {
 					var markers = $(data.positions).map(function(i, position) {
 						return new kakao.maps.Marker({
-							position : new kakao.maps.LatLng(position.lat, osition.lng)
+							position : new kakao.maps.LatLng(position.latitude, position.longitude)
 						});
 					});
 					
@@ -516,7 +507,10 @@
 					changeMarker();
 
 					kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
-						console.log(cluster.getMarkers());
+						var markers = cluster.getMarkers();
+						for(var idx=0; idx<markers.length; idx++){
+						    console.log(markers[idx].getPosition());
+						}
 					});
 
 					kakao.maps.event.addListener(clusterer, 'clusterover', function(cluster) {
@@ -526,19 +520,19 @@
 				}); // end $.get(address.json)
 
 			// 서울시 구 별로 마커 생성하기
-			$.getJSON("${pageContext.request.contextPath}/assets/css/ma_css/guPosition.json",
+			$.getJSON("${pageContext.request.contextPath}/assets/guposition",
 					function(data) {
-						var guPositions = data;
+						var guPosition = data.guPositions;
 						var gumark;
-						for (var i = 0; i < guPositions.length; i++) {
+						for (var i = 0; i < guPosition.length; i++) {
 							gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
-							gumark += '<div class="gu-count">' + 500 + '</div>';
-							gumark += '<div class="gu-name">' + guPositions[i].guName + '</div>';
-							gumark += '<span id="lat" style="display:none;">' + guPositions[i].lat + '</span>'; // 해당 구의 위도 저장
-							gumark += '<span id="lng" style="display:none;">' + guPositions[i].lng + '</span>'; // 해당 구의 경도 저장
+							gumark += '<div class="gu-count">' + guPosition[i].guCount + '</div>';
+							gumark += '<div class="gu-name">' + guPosition[i].guName + '</div>';
+							gumark += '<span id="lat" style="display:none;">' + guPosition[i].guLat + '</span>'; // 해당 구의 위도 저장
+							gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
 							gumark += '</div>';
 							var customOverlay = new kakao.maps.CustomOverlay({
-									position : new kakao.maps.LatLng(guPositions[i].lat, guPositions[i].lng),
+									position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
 									clickable : false,
 									content : gumark,
 									zIndex : 3
@@ -658,12 +652,10 @@
 							$("#filter1-value").html("무제한");
 						} else if (data.to_value == "무제한") {
 							$("#filter1-value").html(
-									fix(data.from_value) + " ~ "
-											+ data.to_value);
+									fix(data.from_value) + " ~ " + data.to_value);
 						} else {
 							$("#filter1-value").html(
-									fix(data.from_value) + " ~ "
-											+ fix(data.to_value));
+									fix(data.from_value) + " ~ " + fix(data.to_value));
 						}
 					},
 					hide_from_to : true,
@@ -695,8 +687,7 @@
 									data.from_value + "만 원 ~" + data.to_value);
 						} else {
 							$("#filter2-value").html(
-									data.from_value + "만 원 ~" + data.to_value
-											+ "만 원");
+									data.from_value + "만 원 ~" + data.to_value + "만 원");
 						}
 					},
 					hide_from_to : true,
@@ -724,12 +715,10 @@
 							$("#filter3-value").html("무제한");
 						} else if (data.to_value == "무제한") {
 							$("#filter3-value").html(
-									fix(data.from_value) + " ~ "
-											+ data.to_value);
+									fix(data.from_value) + " ~ " + data.to_value);
 						} else {
 							$("#filter3-value").html(
-									fix(data.from_value) + " ~ "
-											+ fix(data.to_value));
+									fix(data.from_value) + " ~ " + fix(data.to_value));
 						}
 					},
 					hide_from_to : true,
@@ -760,8 +749,7 @@
 									data.from_value + "만 원 ~" + data.to_value);
 						} else {
 							$("#filter4-value").html(
-									data.from_value + "만 원 ~" + data.to_value
-											+ "만 원");
+									data.from_value + "만 원 ~" + data.to_value + "만 원");
 						}
 					},
 					hide_from_to : true,
@@ -785,13 +773,10 @@
 							$("#filter5-value").html("무제한");
 						} else if (data.to == 115) {
 							$("#filter5-value").html(
-									data.from + "㎡(" + Math.floor(from_p)
-											+ "평) ~ 무제한");
+									data.from + "㎡(" + Math.floor(from_p) + "평) ~ 무제한");
 						} else {
 							$("#filter5-value").html(
-									data.from + "㎡(" + Math.floor(from_p)
-											+ "평) ~ " + data.to + "㎡("
-											+ Math.floor(to_p) + "평)");
+									data.from + "㎡(" + Math.floor(from_p) + "평) ~ " + data.to + "㎡(" + Math.floor(to_p) + "평)");
 						}
 					},
 					hide_from_to : true,
@@ -855,10 +840,12 @@
 				slide5_value.reset();
 				$(".inf").html("무제한");
 			});
+			
+			
+			var checkboxValues = $("input[name='sale-type']:checked");
+			var ccc = checkboxValues.map(function() {return this.value;}).get().join(",");
+
 		})
-		if ($("#search-from").length){
-			alert('myDiv exists');
-		}
 	</script>
 </body>
 </html>
