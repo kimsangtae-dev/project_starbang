@@ -83,10 +83,11 @@ public class HostController {
 	@RequestMapping(value = "/host/rm_add_ok.do", method = RequestMethod.POST)
 	public ModelAndView rm_add_ok(Model model) {
 
-		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
-
+		/**
+		 *  1) 사용자가 입력한 파라미터 수신 및 유효성 검사 
+		 */
 		
-		/** (1) info 정보 받아오기 */
+		/** room ** parameter 받아오기 */
 		//room 정보 받아오기
 		String roomtype = webHelper.getString("roomtype");
 		String title = webHelper.getString("title");
@@ -103,32 +104,37 @@ public class HostController {
 		// String region_3depth_name = webHelper.getString("region_3depth_name");
 		int userno = 1;
 
-		/** (2) info 정보 받아오기 */
+		/** info ** parameter 받아오기 */
 		// 관리비항목 계산해서 넣기
-		String[] feeitem = webHelper.getStringArray("feeitem");
-		int bin_fee = 0;
+		String[] feeitem = webHelper.getStringArray("feeitem", null);
 		int sum_fee = 0;
-		for(String item : feeitem) {
-			bin_fee = Integer.parseInt(item);
-			sum_fee += bin_fee;
+		
+		if (feeitem != null) {
+			for (String item : feeitem) {
+				int bin_fee = Integer.parseInt(item);
+					sum_fee += bin_fee;
+			}
 		}
-
-		String parking = webHelper.getString("parking");
+	
+		int parking = webHelper.getInt("parking"); 
 		String pet = webHelper.getString("pet");
 		String elevator = webHelper.getString("elevator");
 		String veranda = webHelper.getString("veranda");
 		String builtin = webHelper.getString("builtin");
 		
 		/** 옵션 계산해서 db 넣기 */
-		String[] optionitem = webHelper.getStringArray("optionitem");
-		//String optionitem_array = optionitem.split(",");
-		int bin_option = 0;
-		int sum_option = 0;
-		for(String item : optionitem) {
-			bin_option = Integer.parseInt(item);
-			sum_option += bin_option;
-		}
+		String[] optionitem = webHelper.getStringArray("optionitem", null);
 		
+		int sum_option = 0;
+		
+		if (optionitem != null) {
+
+			for (String item : optionitem) {
+				int bin_option = Integer.parseInt(item);
+					sum_option += bin_option;
+			}
+
+		}
 		String loan = webHelper.getString("loan");
 		int supplyarea = webHelper.getInt("supplyarea");
 		int maxfloor = webHelper.getInt("maxfloor");
@@ -144,16 +150,16 @@ public class HostController {
 		String[] price = webHelper.getStringArray("price");
 		String short_room = webHelper.getString("short_room");
 		
-		// 이름은 필수 항목이므로 입력여부를 검사
-		// 위치는 미필수(null허용)이므로 입력 여부를 검사하지 않는다.
-		if (title == null) {
-			return webHelper.redirect(null, "설명을 입력하세요.");
-		}
+		
+		/**
+		 *  2) 유효성 검사 
+		 */
+
+		if (title == null) { return webHelper.redirect(null, "설명을 입력하세요."); } // title 검사
 
 		/** 2) 데이터 저장하기 */
 		
 		RoomInfo input = new RoomInfo();
-		
 		
 		/** (1) room 정보 받아오기 */
 		input.setRoomtype(roomtype);
@@ -174,6 +180,12 @@ public class HostController {
 		
 		/** (2) info정보 받아오기 */
 		input.setFeeitem(sum_fee);
+		
+		// parking 값이 있다면? 넣어주기
+		if(parking == 1) {
+			parking = webHelper.getInt("parking_val");
+		}
+		
 		input.setParking(parking);
 		input.setPet(pet);
 		input.setElevator(elevator);
@@ -192,7 +204,6 @@ public class HostController {
 		/** 1) API 연동 객체 생성 */
 		// Retrofit 객체 생성
 		Retrofit retrofit = retrofitHelper.getRetrofit(ApiKakaoSearchService.BASE_URL);
-
 		// Service 객체를 생성한다. 구현체는 Retrofit이 자동으로 생성해 준다.
 		ApiKakaoSearchService apiKakaoSearchService = retrofit.create(ApiKakaoSearchService.class);
 
@@ -233,24 +244,29 @@ public class HostController {
 			int deposit_temp = 0;
 			int price_temp = 0;
 			
-			for(int i = 0; i< deposit.length; i++) {
-				
-				deposit_temp = 0;
-				
-				price_temp = Integer.parseInt(price[i]);
-				
-				if (deposit[i] != null || deposit[i] != "") {
-					deposit_temp = Integer.parseInt(deposit[i]);
-				}
-				
-				input_p.setDeposit(deposit_temp);
-				input_p.setDealingtype(dealingtype[i]);
-				input_p.setPrice(price_temp);
-				input_p.setShort_room(short_room);
-				input_p.setRoomno(1);
-				
-				priceService.addPrice(input_p);
-			}
+				for (int i = 0; i < deposit.length; i++) {
+
+					deposit_temp = 0;
+
+					price_temp = Integer.parseInt(price[i]);
+
+					if (deposit[i] != null || deposit[i] != "") {
+						deposit_temp = Integer.parseInt(deposit[i]);
+					}
+
+					input_p.setDeposit(deposit_temp);
+					input_p.setDealingtype(dealingtype[i]);
+					input_p.setPrice(price_temp);
+					input_p.setShort_room(short_room);
+					input_p.setRoomno(1);
+
+					try {
+						priceService.addPrice(input_p);
+					} catch (Exception e) {
+						return webHelper.redirect(null, e.getLocalizedMessage());
+					} // end try
+
+				} // end for
 
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
