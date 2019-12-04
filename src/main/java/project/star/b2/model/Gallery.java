@@ -43,4 +43,22 @@ public class Gallery {
 	public static void setListCount(int listCount) {
 		Gallery.listCount = listCount;
 	}
+
+	private static int fromRoom;
+	private static int toRoom;
+
+	private static int sizeFrom;
+	private static int sizeTo;
+
+	public static int getFromRoom() { return fromRoom; }
+	public static void setFromRoom(int fromRoom) { Gallery.fromRoom = fromRoom; }
+	
+	public static int getToRoom() { return toRoom; }
+	public static void setToRoom(int toRoom) { Gallery.toRoom = toRoom; }
+	
+	public static int getSizeFrom() { return sizeFrom; }
+	public static void setSizeFrom(int sizeFrom) { Gallery.sizeFrom = sizeFrom; }
+	
+	public static int getSizeTo() { return sizeTo; }
+	public static void setSizeTo(int sizeTo) { Gallery.sizeTo = sizeTo; }
 }
