@@ -75,7 +75,7 @@
     
     <!-- 인기매물용 다중행 조회를 위한 기능 정의 -->
     <select id="selectfameList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-    SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, count(heartno)
+    SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, deposit, count(heartno)
     FROM room r INNER JOIN heart h ON r.roomno = h.roomno INNER JOIN price p ON  r.roomno = p.roomno
     GROUP BY roomno ORDER BY count(heartno) DESC
     <if test="listCount > 0">

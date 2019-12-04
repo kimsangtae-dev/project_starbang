@@ -324,7 +324,7 @@
 
 /* 두번째 전체박스 */
 .pop-entire-d2 {
-	width: 1180px;
+	width: 1200px;
 	height: 520px;
 	margin: 60px auto 0px;
 }
@@ -356,6 +356,7 @@
 	font-weight: 300;
 	text-align: center;
 	vertical-align: center;
+	margin-bottom:15px;
 }
 
 /*  */
