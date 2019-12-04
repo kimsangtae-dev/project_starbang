@@ -212,7 +212,11 @@
 								<c:choose>
 								<%-- 조회 결과가 없는 경우 --%>
 								<c:when test="${output == null || fn:length(output) == 0}">
-									<p>조회 결과가 없습니다.</p>
+									<div class="noresultbox">
+										<p class="noresulticon"><i class="glyphicon glyphicon-home noresulticon"></i></p>
+										<p class="noresult">조건에 맞는 방이 없습니다.</p>
+										<p class="noresult">맞춤필터를 해제해보세요.</p>
+									</div>
 								</c:when>
 								<%-- 갤러리 시작 --%>
 								<c:otherwise>
@@ -271,6 +275,7 @@
 						</div>
 						<!-- 갤러리 내용 영역 -->
 						<!-- 갤러리 하단 영역 -->
+						<c:if test="${output != null && fn:length(output) != 0}">
 						<div class="gallery-footer">
 							<%-- gallery-index --%>
 							<div class="gallery-index">
@@ -282,6 +287,7 @@
 						            <%-- 이동할 URL 생성 --%>
 						            <c:url value="/main/search.do" var="prevPageUrl">
 						                <c:param name="page" value="${pageData.prevPage}" />
+						                <c:param name="roomtype" value="${roomtype}" />
 						            </c:url>
 						            <a href="${prevPageUrl}">
 						            	<button class="prev-btn">
@@ -302,6 +308,7 @@
 						        <%-- 이동할 URL 생성 --%>
 						        <c:url value="/main/search.do" var="pageUrl">
 						            <c:param name="page" value="${i}" />
+						            <c:param name="roomtype" value="${roomtype}" />
 						        </c:url>
 						        
 						        <%-- 페이지 번호 출력 --%>
@@ -325,7 +332,7 @@
 						            <%-- 이동할 URL 생성 --%>
 						            <c:url value="/main/search.do" var="nextPageUrl">
 						                <c:param name="page" value="${pageData.nextPage}" />
-						                <c:param name="keyword" value="${keyword}" />
+						                <c:param name="roomtype" value="${roomtype}" />
 						            </c:url>
 						            <a href="${nextPageUrl}">
 						            	<button class="next-btn">
@@ -342,6 +349,7 @@
 							</div>
 							<%-- gallery-index --%>
 						</div>
+						</c:if>
 						<!-- 갤러리 하단 영역 끝 -->
 					</div>
 					<!-- 갤러리 내용 + 하단 영역 끝 -->
@@ -373,6 +381,9 @@
 			var mHeight = wHeight - 136;
 			$(".gallery-container").css("height", gHeight);
 			$(".map-container").css("height", mHeight);
+			
+			// 조회 결과가 없는 경우를 위한 크기 조정
+			$(".noresultbox").css("height", gHeight-60);
 		}
 		$(function() {
 			contentSize();
@@ -380,68 +391,12 @@
 				contentSize();
 			});
 			
+			/** 좋아요 */
 			$(".recent-div8").click(function(e) {
 				$(this).toggleClass('on off');
 			});
 		});
 	</script>
-	<%-- <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
-	<script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
-	<script id="gallery-data" type="text/x-handlebars-template">
-		{{#each gallery}}
-		<li>
-			<div class="recent-div5">
-				<div class="recent-div6">
-					{{!-- 좋아요 버튼 --}}
-					<div class="recent-div7">
-						<div class="recent-div8 off" data-value="on"></div>
-					</div>
-					{{!-- 좋아요 끝 --}}
-					{{!-- 전체 링크화 --}}
-					<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/jsp/main/rmdt.do">
-						{{!-- 이미지 --}}
-						<div class="recent-a-div"></div>
-						{{!-- 확인매물 div --}}
-						<div class="recent-a-confirm">
-							<div class="recent-a-confirm-div">
-								<span class="bold">확인매물</span> <span class="confirm-date">{{confirm}}</span>
-							</div>
-						</div>
-						{{!-- 확인매물 끝 --}}
-						<p class="recent-a-p1">{{roomtype}}</p>
-						<p class="recent-a-p2">
-							<span>{{saletype}} {{price}}</span>
-						</p>
-						<p class="recent-a-p34">{{floor}}층, {{size}}m², 관리비 {{adexpense}}만</p>
-						<p class="recent-a-p34">{{comment}}</p>
-					</a>
-				</div>
-			</div>
-		</li>
-		{{/each}}
-	</script>
-	<script type="text/javascript">
-		/* gallery.json을 가져와 화면에 출력 */
-		function get_gallery() {
-			$.get('${pageContext.request.contextPath}/assets/css/ma_css/gallery.json', function(req) {
-				var template = Handlebars.compile($("#gallery-data").html());
-				var html = template(req);
-				$("#gallery-list").append(html);
-
-				/* 조건에 맞는 방 개수 */
-				var n = $(".recent-div5").length;
-				$(".room-count").html(n);
-				
-				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
-				});
-			});
-		}
-		// 페이지가 열림과 동시에 호출
-		$(function() {
-			get_gallery();
-		});
-	</script> --%>
 
 	<!-- 지도 api -->
 	<script type="text/javascript">
@@ -752,10 +707,22 @@
 									data.from_value + "만 원 ~" + data.to_value + "만 원");
 						}
 					},
+					onFinish: function(data) {
+						var low = data.from_value;
+						var high = data.to_value;
+						
+						$.get("search.do", {"feeFrom": low, "feeTo": high}, function(e) {
+						//alert(low +", " + high);
+						
+						});
+						
+						/* var feehref = '${pageContext.request.contextPath}/main/search.do?feeFrom='+low + '&feeTo='+high;
+						location.replace(feehref); */
+						
+					},
 					hide_from_to : true,
 					hide_min_max : true
 				});
-		var slide4_value = $("#slide-price4").data("ionRangeSlider");
 
 		// 방크기
 		$("#slide-size").ionRangeSlider(
@@ -778,6 +745,19 @@
 							$("#filter5-value").html(
 									data.from + "㎡(" + Math.floor(from_p) + "평) ~ " + data.to + "㎡(" + Math.floor(to_p) + "평)");
 						}
+					},
+					onFinish: function(data) {
+						var low = data.from;
+						var high = data.to;
+						
+						$.get("search.do", {"sizeFrom": low, "sizeTo": high}, function(e) {
+						alert(low +", " + high);
+						
+						});
+						
+						/* var feehref = '${pageContext.request.contextPath}/main/search.do?feeFrom=&feeTo=&sizeFrom='+low + '&sizeTo='+high;
+						location.replace(feehref); */
+						
 					},
 					hide_from_to : true,
 					hide_min_max : true

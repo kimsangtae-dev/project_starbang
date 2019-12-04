@@ -170,11 +170,11 @@ body > div { height: 100%; overflow-y: hidden; }
 
 /* '무제한' 위치, 색 조정 */
 #search .filter .filter-slide p {
-	float: right;
-	color: rgb(0, 108, 255);
-	font-size: 15px;
-	font-weight: 300;
-	line-height: 30px;
+    float: right;
+    color: rgb(0, 108, 255);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 30px;
 }
 
 #search .filter .filter-slide ul:after {
@@ -249,6 +249,7 @@ body > div { height: 100%; overflow-y: hidden; }
  /*---------------------------------
 /   갤러리
 ----------------------------------------*/
+
 #contentbox .gallery {
     float: left;
     height: 100%;
@@ -282,6 +283,25 @@ body > div { height: 100%; overflow-y: hidden; }
 }
 
 /*----- 갤러리 내용부분 -----*/
+
+/* 결과가 없을 경우 */
+#contentbox .noresultbox {
+    padding-top: 25%;
+}
+#contentbox .noresult {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #888;
+    line-height: 120%;
+}
+#contentbox .noresulticon {
+    font-size: 50px;
+    text-align: center;
+    color: #aaa;
+}
+
+/* 결과가 있는 경우 */
 #contentbox .gallery .gallery-content ul {
     display: block;
     padding-top: 20px;
@@ -484,7 +504,7 @@ body > div { height: 100%; overflow-y: hidden; }
 }
 
 #contentbox .gallery-index {
-     width: 420px;
+     width: fit-content;
      height: 32px;
      margin: auto;
 }
