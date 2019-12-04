@@ -3,14 +3,15 @@
 /************ 공통 ************/
 	        
 	        #content {
-	            width: 1200px;
-	            height: 800px;
+	            width: 100%;
+	            height: auto;
 	            margin: auto;
+	            overflow:hidden;
 	        }
 	
 	        .hit_bang {
 	            margin: 70px auto 150px;
-	            height: 450px;
+	            height: auto;
 	        }
 	
 	        .hit_title {
@@ -29,7 +30,9 @@
 	        /* 관심목록 하위 탭 (인기매물) */
 	
 			.tab-text {
-	            padding: 90px 0 10px 0;
+	            padding: 20px 0 20px 20px;
+	            margin:auto;
+	            width:1240px;
 	        }
 	        
 	        .re-div1 span {
@@ -40,7 +43,6 @@
 	        /* 최근본방, 찜한방 하위박스(float과 해제) */
 	
 	        .re-div1 {
-	            float: left;
 	            font-size: 15px;
 	        }
 	
@@ -52,8 +54,8 @@
 	        
 
             .hit-div4 {
-                width: 1240px;
-                margin-top: 20px;
+                width: 1200px;
+                margin: auto;
                 position: relative;
                 right: 0px;
             }
@@ -63,11 +65,12 @@
             /*박스전체*/
             .hit-div5{
                 float: left;
-                width: 285px;
+                width: 290px;
                 height: 321px;
                 background-color: rgb(255, 255, 255);
                 position: relative;
                 border-radius: 5px;
+                margin-right:10px;
             }
 
             /* 두번째부터 마진추가 */

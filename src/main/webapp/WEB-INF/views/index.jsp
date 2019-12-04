@@ -309,6 +309,64 @@
         <div class="pop-title2">많은 사람들이 찾아본 이곳, 궁금하지 않으세요?</div>
         
         <!-- 갤러리 전체 박스 -->
+				<div class="hit-div4">
+					<ul id="gallery-list">
+						<c:choose>
+							<%-- 조회 결과가 없는 경우 --%>
+							<c:when test="${output == null || fn:length(output) == 0}">
+								<p>조회 결과가 없습니다.</p>
+							</c:when>
+							<%-- 갤러리 시작 --%>
+							<c:otherwise>
+								<c:forEach var="item" items="${output}" varStatus="status">
+									<li>
+										<div class="hit-div5">
+											<div class="hit-div6">
+												<%-- 좋아요 버튼 --%>
+												<div class="hit-div7">
+													<div class="hit-div8 off" data-value="on"></div>
+												</div>
+												<%-- 좋아요 끝 --%>
+												<%-- 전체 링크화 --%>
+												<a target="_blank" rel="" class="hit-a"
+													href="${pageContext.request.contextPath}/main/rmdt.do">
+													<!-- 이미지 -->
+													<div class="hit-a-div"></div> <c:if
+														test="${item.confirmdate != null}">
+														<%-- 확인매물 div --%>
+														<div class="hit-a-confirm">
+															<div class="hit-a-confirm-div">
+																<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+															</div>
+														</div>
+														<%-- 확인매물 끝 --%>
+													</c:if>
+													<p class="hit-a-p1">${item.roomtype}</p>
+													<p class="hit-a-p2">
+														<c:choose>
+															<c:when test="${item.dealingtype == '월세'}">
+																<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+															</c:when>
+															<c:otherwise>
+																<span>${item.dealingtype}&nbsp;</span>
+																<span id="prc">${item.price}</span>
+															</c:otherwise>
+														</c:choose>
+													</p>
+													<p class="hit-a-p34">${item.floor}층,${item.area}m²,
+														관리비 ${item.fee}만</p>
+													<p class="hit-a-p34">${item.title}</p>
+												</a>
+											</div>
+										</div>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+							<%-- 각 갤러리 끝 --%>
+						</c:choose>
+					</ul>
+        
+        <%-- <!-- 갤러리 전체 박스 -->
         <div class="pop-gallery-d"> 
           <!-- 각각 갤러리 시작 -->
           <!-- 1번째 갤러리 시작 -->
@@ -445,7 +503,7 @@
 
           
         </div>
-        <!--  갤러리 전체박스 끝 -->
+        <!--  갤러리 전체박스 끝 --> --%>
         
       </div>
       <!-- div0 끝 -->

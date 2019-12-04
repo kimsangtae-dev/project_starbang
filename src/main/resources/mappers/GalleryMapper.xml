@@ -77,7 +77,10 @@
     <select id="selectfameList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
     SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, count(heartno)
     FROM room r INNER JOIN heart h ON r.roomno = h.roomno INNER JOIN price p ON  r.roomno = p.roomno
-    GROUP BY roomno ORDER BY count(heartno) DESC;
+    GROUP BY roomno ORDER BY count(heartno) DESC
+    <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
     </select>
 
 </mapper>

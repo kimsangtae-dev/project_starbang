@@ -70,7 +70,7 @@
 						<c:set var="longitude" value="${item.longitude}" />
 						<c:set var="region_2depth_name" value="${item.region_2depth_name}" />
 						<c:set var="region_3depth_name" value="${item.region_3depth_name}" />
-						<c:set var="user_no" value="${item.user_no}" />
+						<c:set var="user_no" value="${item.userno}" />
 
 
 						<%--검색어가 있다면? --%>

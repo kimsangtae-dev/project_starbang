@@ -44,7 +44,41 @@ public class MainController {
 	 * 메인
 	 *******************************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main() {
+	public ModelAndView main(Model model) {
+		/** 1)필요한 변수값 생성 */
+		String keyword = webHelper.getString("keyword", ""); // 검색어
+		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 4; // 한 페이지당 표시할 목록 수
+		int pageCount = 1; // 한 그룹당 표시할 페이지 번호 수
+
+		/** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Popular input = new Popular();
+
+		List<Popular> output = null; // 조회결과가 저장될 객체
+		PageData pageData = null;
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = galleryService.getGalleryCount(input);
+			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Popular.setOffset(pageData.getOffset());
+			Popular.setListCount(pageData.getListCount());
+			// 데이터 조회하기
+			output = galleryService.getPopularGalleryList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3)View 처리 */
+		model.addAttribute("output", output);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("pageData", pageData);
+		model.addAttribute("totalCount", totalCount);
 
 		return new ModelAndView("index");
 	}
@@ -85,8 +119,8 @@ public class MainController {
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 15; // 한 페이지당 표시할 목록 수
-		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		int listCount = 50; // 한 페이지당 표시할 목록 수
+		int pageCount = 1; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -146,7 +180,7 @@ public class MainController {
 		String keyword = webHelper.getString("keyword", "");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 24; // 한 페이지당 표시할 목록 수
+		int listCount = 50; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
@@ -199,8 +233,8 @@ public class MainController {
 		String keyword2 = webHelper.getString("roomtype");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 24; // 한 페이지당 표시할 목록 수
-		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		int listCount = 10; // 한 페이지당 표시할 목록 수
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
