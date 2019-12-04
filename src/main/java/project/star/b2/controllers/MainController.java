@@ -180,17 +180,32 @@ public class MainController {
 		String keyword = webHelper.getString("keyword", "");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 50; // 한 페이지당 표시할 목록 수
+		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		
+		String room = webHelper.getString("roomtype");
+		
+		int feeFrom = webHelper.getInt("feeFrom");
+		int feeTo = webHelper.getInt("feeTo");
+		
+		int sizeFrom = webHelper.getInt("sizeFrom");
+		int sizeTo = webHelper.getInt("sizeTo");
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
+		input.setRoomtype(room);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
 
 		try {
+			Gallery.setFromRoom(feeFrom);
+			Gallery.setToRoom(feeTo);
+			
+			Gallery.setSizeFrom(sizeFrom);
+			Gallery.setSizeTo(sizeTo);
+			
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
@@ -210,6 +225,9 @@ public class MainController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("roomtype", room);
+		
+//		String param = "?roomtype=" + room + "&feeFrom=" + feeFrom + "&feeTo=" + feeTo;
 
 		return new ModelAndView("main/search");
 	}
