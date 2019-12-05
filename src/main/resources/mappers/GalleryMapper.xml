@@ -31,28 +31,22 @@
         INNER JOIN price AS p
         ON r.roomno=p.roomno
         <where>
-            <if test="fromRoom != null and toRoom != 0">
-                fee between #{fromRoom} and #{toRoom}
-            </if>
-            <if test="fromRoom != 0 and toRoom == 0">
-                OR fee >= #{fromRoom}
+            <if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999 or buyingFrom != 0 or buyingTo != 999999">
+                (p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세"
+                OR ((p.price BETWEEN #{depositFrom} and #{depositTo} AND p.dealingtype="전세") OR (p.deposit BETWEEN #{depositFrom} and #{depositTo}))
+                OR p.price between #{buyingFrom} and #{buyingTo} AND p.dealingtype="매매")
             </if>
             
-            <if test="sizeFrom != null and sizeTo != 0">
-                AND area between #{sizeFrom} and #{sizeTo}
+            <if test="feeFrom != 0 or feeTo != 999999">
+                AND r.fee between #{feeFrom} and #{feeTo}
+            </if>
+            
+            <if test="sizeFrom != 0 or sizeTo != 999999">
+                AND r.area between #{sizeFrom} and #{sizeTo}
             </if>
             
             <if test="roomtype != null and roomtype != ''">
-                AND roomtype LIKE concat('%', #{roomtype}, '%')
-            </if>
-            <if test="roomno != null and roomno != ''">
-            	AND r.roomno=#{roomno}
-            </if>
-            <if test="price != null and price != ''">
-            	AND #{price}>=p.price
-            </if>
-            <if test="deposit != null and deposit != ''">
-            	#{deposit}>=deposit
+                AND r.roomtype LIKE concat('%', #{roomtype}, '%')
             </if>
         </where>
         
@@ -74,19 +68,22 @@
             resultType="int">
         SELECT COUNT(*) FROM room
         <where>
-            <if test="fromRoom != null and toRoom != 0">
-                fee between #{fromRoom} and #{toRoom}
-            </if>
-            <if test="fromRoom != 0 and toRoom == 0">
-                OR fee >= #{fromRoom}
+            <if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999 or buyingFrom != 0 or buyingTo != 999999">
+                (p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세"
+                OR ((p.price BETWEEN #{depositFrom} and #{depositTo} AND p.dealingtype="전세") OR (p.deposit BETWEEN #{depositFrom} and #{depositTo}))
+                OR p.price between #{buyingFrom} and #{buyingTo} AND p.dealingtype="매매")
             </if>
             
-            <if test="sizeFrom != null and sizeTo != 0">
-                AND area between #{sizeFrom} and #{sizeTo}
+            <if test="feeFrom != 0 or feeTo != 999999">
+                AND r.fee between #{feeFrom} and #{feeTo}
+            </if>
+            
+            <if test="sizeFrom != 0 or sizeTo != 999999">
+                AND r.area between #{sizeFrom} and #{sizeTo}
             </if>
             
             <if test="roomtype != null and roomtype != ''">
-                AND roomtype LIKE concat('%', #{roomtype}, '%')
+                AND r.roomtype LIKE concat('%', #{roomtype}, '%')
             </if>
         </where>
     </select>
