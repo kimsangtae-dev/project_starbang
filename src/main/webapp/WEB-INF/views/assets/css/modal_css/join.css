@@ -57,15 +57,6 @@ p.subtitle {
 	line-height: 45px;
 }
 
-/* 이메일 꺠진 부분 수정 */
-label.subtitle {
-	display: block;
-    width: 100px;
-    height: 45px;
-    float: left;
-    line-height: 45px;
-}
-
 .input1 {
 	height: 46px;
 	display: block;
@@ -74,14 +65,16 @@ label.subtitle {
     width: 449px;
 }
 
+
+/* 드롭다운 화살표 교체
+	바꾸어야 하는지 다시 확인 
 .select1 {
 	display: block;
 	float: left;
 	height: 46px;
 	padding: 0 15px;
 }
-
-/* 드롭다운 화살표 교체 */
+ */
 .select1 {
 	display: block;
 	float: left;
@@ -89,16 +82,6 @@ label.subtitle {
 	padding: 0 15px;
 	background: url(../../img/ho_img/arrow.png) right 15px center / 10px no-repeat rgb(255, 255, 255);
 }
-
-/* 드롭다운 기본 화살표 숨기기 */
-select {
-    -moz-appearance:none; /* Firefox */  
-    -webkit-appearance:none; /* Safari and Chrome */  
-     appearance:none;
-}
-
-select::-ms-expand { display:none; } 
-
 
 /* 이름, 비밀번호, 비밀번호 확인 */
 .full-wid { width: 450px; }
@@ -188,10 +171,15 @@ select::-ms-expand { display:none; }
 }
 
 /* 이용약관 */
-.Information3 .p {
+.p {
 	margin-top: 20px;
 	width: 100%;
 	font-size: 13px;
+}
+
+/** 이메일과 이메일 인증을 묶는 div 높이*/
+.information3 {
+	height: 108px;	
 }
 
 /** 인증번호 새로운 팝업창 */
@@ -241,3 +229,31 @@ select::-ms-expand { display:none; }
  	   	border-image: initial;
     }
 
+/* 드롭다운 화살표 교체 */
+.select1 {
+   display: block;
+   float: left;
+   height: 46px;
+   padding: 0 15px;
+   background: url(../../img/ho_img/arrow.png) right 15px center / 10px no-repeat rgb(255, 255, 255);
+}
+
+/* 드롭다운 기본 화살표 숨기기 */
+select {
+    -moz-appearance:none; /* Firefox */  
+    -webkit-appearance:none; /* Safari and Chrome */  
+     appearance:none;
+}
+
+select::-ms-expand { display:none; } 
+
+/* number 증감소 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:-webkit-autofill {
+   -webkit-box-shadow: 0 0 0 1000px white inset;
+}
