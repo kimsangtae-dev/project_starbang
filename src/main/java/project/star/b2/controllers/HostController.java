@@ -108,7 +108,7 @@ public class HostController {
 		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1), confirmdate(1), address API(5) */
 		String roomtype = webHelper.getString("roomtype");			
 		String title = webHelper.getString("title");				
-		String floor = webHelper.getString("floor");
+		int floor = webHelper.getInt("floor");
 		int area = webHelper.getInt("area");
 		int fee = webHelper.getInt("fee");
 		String dong = webHelper.getString("dong");
@@ -148,10 +148,10 @@ public class HostController {
 		} // 끝
 
 		int parking = webHelper.getInt("parking"); 
-		String pet = webHelper.getString("pet");
-		String elevator = webHelper.getString("elevator");
-		String veranda = webHelper.getString("veranda");
-		String builtin = webHelper.getString("builtin");
+		int pet = webHelper.getInt("pet");
+		int elevator = webHelper.getInt("elevator");
+		int veranda = webHelper.getInt("veranda");
+		int builtin = webHelper.getInt("builtin");
 		
 		/** 옵션항목 2진법 계산해서 DB 넣기 */
 		String[] optionitem = webHelper.getStringArray("optionitem", null);
@@ -163,10 +163,10 @@ public class HostController {
 			}
 		} // 끝
 		
-		String loan = webHelper.getString("loan");
+		int loan = webHelper.getInt("loan");
 		int supplyarea = webHelper.getInt("supplyarea");
 		int maxfloor = webHelper.getInt("maxfloor");
-		String heater = webHelper.getString("heater");
+		int heater = webHelper.getInt("heater");
 		String commingday = webHelper.getString("commingday");
 		String buildtype = webHelper.getString("buildtype");
 		String content = webHelper.getString("content");
@@ -193,7 +193,7 @@ public class HostController {
 		
 		/** (1) Room DB 유효성검사 */
 		if (title == null) 		{ return webHelper.redirect(null, "매물에대한 제목을 입력해주세요."); } 	// title 검사
-		if (floor == null)		{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
+		if (floor == 0)		{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
 		if (area == 0) 			{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// area 검사
 		
 		//if (fee == null) { return webHelper.redirect(null, "설명을 입력하세요."); } 					// fee 검사
