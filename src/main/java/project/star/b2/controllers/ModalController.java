@@ -83,13 +83,13 @@ public class ModalController {
 
 		// 학과 이 름름은 필수 항목이므로 입력여부를 검사
 		// 위치는 미필수(null허용)이므로 입력 여부를 검사하지 않는다.
-		if (name == null) {
-			return webHelper.redirect(null, "회원이름을 입력하세요.");
-		}
-
-		if (!regexHelper.isKor(name)) {
-			return webHelper.redirect(null, "회원이름은 한글만 가능합니다.");
-		}
+//		if (name == null) {
+//			return webHelper.redirect(null, "회원이름을 입력하세요.");
+//		}
+//
+//		if (!regexHelper.isKor(name)) {
+//			return webHelper.redirect(null, "회원이름은 한글만 가능합니다.");
+//		}
 
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.

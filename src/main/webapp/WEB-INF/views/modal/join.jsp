@@ -61,7 +61,7 @@
 				<input type="text" name="email" id="email" class="email input1" />
 				<p class="wid">@</p>
 				<select class="select-email select1" name="email1" id="email1">
-					<option value="선택해주세요">선택해주세요</option>
+					<option value="">선택해주세요</option>
 					<option value="naver.com">naver.com</option>
 					<option value="gmail.com">gmail.com</option>
 				</select>
@@ -87,7 +87,7 @@
 			</div>
 			<div class="information information2 clearfix">
 				<p class="subtitle">휴대폰 번호</p>
-				<select class="select-tel pin select1">
+				<select class="select-tel pin select1" name="tel">
 					<option>010</option>
 					<option>011</option>
 					<option>016</option>
@@ -202,7 +202,6 @@ $(function () {
         if (!regex.min_length('#user_id', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
         
         /** 이메일 검사 */
-        alert(user);
         if (!regex.value('#email', '이메일를 입력하세요.')) { return false; }
         if (!regex.value('#email1', '이메일도메인을 선택하세요.')) { return false; }
         
