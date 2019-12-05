@@ -154,19 +154,82 @@ public class MainController {
 	}
 
 	/********************************************************************
-	 * 상세페이지
+	 * 상세페이지 (rmdt 파라미터 읽기)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdt.do", method = RequestMethod.GET)
-	public ModelAndView rmdt() {
+	public String rmdt() {
 
-		return new ModelAndView("main/rmdt");
+		return "main/rmdt";
+	}
+
+	/********************************************************************
+	 * 상세페이지 (rmdt 쿠키 단일 저장)
+	 *******************************************************************/
+	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
+
+	public String rmdtsave(HttpServletResponse response,
+			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
+
+		if (!roomno.equals("")) {
+			try {
+				roomno = URLEncoder.encode(roomno, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+
+		Cookie cookie = new Cookie("roomno", roomno); // 저장할 쿠키 생성
+		cookie.setPath("/"); // 쿠키의 유효 경로
+		cookie.setDomain("localhost"); // 쿠키의 유효 도메인
+
+		if (roomno.equals("")) { // 쿠키 시간을 설정하지 않으면 브라우저가 동작하는 동안 유효
+			cookie.setMaxAge(0); // 쿠키 설정시간이 0이면 즉시 삭제
+		} else {
+			cookie.setMaxAge(60); // 값이 있다면 60초 동안 쿠키 저장
+		}
+
+		response.addCookie(cookie);
+
+		/** 2) Spring방식의 페이지 이동. */
+		// Servlet의 response.sendRedirect(url)과 동일
+		// --> "/"부터 시작할 경우 ContextPath는 자동으로 앞에 추가된다.
+		return "redirect:/main/rmdt.do?roomno=" + cookie;
 	}
 
 	/********************************************************************
 	 * 최근 본 방
 	 *******************************************************************/
+	/** 쿠키 저장을 위한 작성 페이지 */
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public ModelAndView rtrm() {
+	public ModelAndView rtrm(Model model, @CookieValue(value = "my_cookie", defaultValue = "") String myCookie) {
+		try {
+			myCookie = URLDecoder.decode(myCookie, "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		/** 1) 필요한 변수값 생성 */
+		int totalCount = 0; // 전체 게시글 수
+
+		/** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Gallery input = new Gallery();
+
+		List<Gallery> output = null;
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = galleryService.getGalleryCount(input);
+			// 데이터 조회하기
+			output = galleryService.getGalleryList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3)View 처리 */
+		model.addAttribute("output", output);
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("my_cookie", myCookie);
 
 		return new ModelAndView("main/rtrm");
 	}
@@ -182,12 +245,12 @@ public class MainController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
-		
+
 		String room = webHelper.getString("roomtype");
-		
+
 		int feeFrom = webHelper.getInt("feeFrom");
 		int feeTo = webHelper.getInt("feeTo");
-		
+
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo");
 
@@ -202,10 +265,10 @@ public class MainController {
 		try {
 			Gallery.setFromRoom(feeFrom);
 			Gallery.setToRoom(feeTo);
-			
+
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
-			
+
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
@@ -226,7 +289,7 @@ public class MainController {
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("roomtype", room);
-		
+
 //		String param = "?roomtype=" + room + "&feeFrom=" + feeFrom + "&feeTo=" + feeTo;
 
 		return new ModelAndView("main/search");
