@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Gallery;
@@ -154,6 +155,8 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
+		
+		
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);

@@ -331,7 +331,7 @@
 												<a target="_blank" rel="" class="hit-a"
 													href="${pageContext.request.contextPath}/main/rmdt.do">
 													<!-- 이미지 -->
-													<div class="hit-a-div"></div> <c:if
+													<div class="hit-a-div"><img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> <c:if
 														test="${item.confirmdate != null}">
 														<%-- 확인매물 div --%>
 														<div class="hit-a-confirm">
@@ -573,6 +573,12 @@
 		
 		$(".btn-searchrm").click(function(){
 			$("#searching-for").focus();
+		});
+	});
+	/* 좋아요 클릭 -> 하트 색 변경 */
+	$(function() {
+		$(".hit-div8").click(function(e) {
+			$(this).toggleClass('on off');
 		});
 	});
 	

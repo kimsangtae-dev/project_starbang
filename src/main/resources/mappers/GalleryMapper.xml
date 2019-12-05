@@ -104,10 +104,21 @@
     </select>
     
     <!-- 인기매물용 다중행 조회를 위한 기능 정의 -->
-    <select id="selectfameList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-    SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, deposit, count(heartno)
-    FROM room r INNER JOIN heart h ON r.roomno = h.roomno INNER JOIN price p ON  r.roomno = p.roomno
-    GROUP BY roomno ORDER BY count(heartno) DESC
+    	<select id="selectfameList"
+		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
+    <!-- SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, 
+			deposit, count(heartno), filename FROM room r INNER JOIN heart h ON r.roomno 
+			= h.roomno INNER JOIN price p ON r.roomno = p.roomno INNER JOIN image i ON 
+			r.roomno = i.roomno GROUP BY roomno ORDER BY count(heartno) DESC -->
+		<!-- SELECT h.roomno, count(h.roomno), r.roomtype, r.title, r.floor, r.area, r.fee,
+		p.price, p.dealingtype, p.deposit, i.filename FROM heart h
+		INNER JOIN room r ON
+		h.roomno=r.roomno
+		INNER JOIN image i ON h.roomno=i.roomno
+		INNER JOIN price
+		p ON h.roomno=p.roomno
+		Group by h.roomno order by count(h.roomno) DESC -->
+		select h.roomno, count(h.roomno),r.title, r.roomtype from heart h INNER JOIN room r ON h.roomno=r.roomno WHERE r.roomno IN (SELECT p.roomno FROM price p) group by h.roomno order by count(h.roomno) DESC
     <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
         </if>

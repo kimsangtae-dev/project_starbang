@@ -12,7 +12,7 @@
 		<!-- 기본 인코딩 타입 -->
 		<prop key="encType">UTF-8</prop>
 		<!-- 업로드 디렉토리 -->
-		<prop key="uploadDir">D:/JO/project/b-12.02_11.38/src/main/webapp/WEB-INF/views/assets/img/upload</prop>
+		<prop key="uploadDir">C:/Users/LEE/Desktop/gitproject/b2/src/main/webapp/WEB-INF/views/assets/img/upload</prop>
 		<!-- 최대 업로드 가능 용량 -->
 		<prop key="uploadMaxFileSize">5000000</prop>
 		<!-- 기본 도메인(쿠키설정용) -->

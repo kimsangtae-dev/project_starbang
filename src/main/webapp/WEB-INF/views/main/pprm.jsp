@@ -59,7 +59,9 @@
 												<a target="_blank" rel="" class="hit-a"
 													href="${pageContext.request.contextPath}/main/rmdt.do">
 													<!-- 이미지 -->
-													<div class="hit-a-div"></div> <c:if
+													<div class="hit-a-div">
+														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> 
+													<c:if
 														test="${item.confirmdate != null}">
 														<%-- 확인매물 div --%>
 														<div class="hit-a-confirm">

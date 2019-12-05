@@ -25,7 +25,10 @@ public class Gallery {
 	private String region_2depth_name;	// kakao api 를 위한 구 정보 저장
 	private double latitude;	// 위도
 	private double longitude;	// 경도
-    
+	
+	/** image */
+	private String filepath;
+	private String filename;
     
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치
