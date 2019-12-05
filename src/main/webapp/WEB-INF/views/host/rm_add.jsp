@@ -61,7 +61,7 @@
                         <tr>
                             <th>건물 유형</th>
                             <td class="bang_choice">
-                                <label class="Square_box"><input type="radio" name="buildtype" value="단독주택" checked >
+                                <label class="Square_box"><input id="buildtype" type="radio" name="buildtype" value="단독주택">
                                     <p>단독주택</p>
                                 </label>
                                 <label class="Square_box"><input type="radio" name="buildtype" value="다가구주택">
@@ -96,13 +96,10 @@
                                         <input type="button" class="address2" onclick="sample5_execDaumPostcode()" value="주소 검색">
                                     
                                     <div class="loc_de">
-                                    	<!-- {value} 값 지우기 -->
-                                        <input type="text" style="border:none" name="address" id="point_address" placeholder="" readonly value="서울 강남구 강남대로 238">
+                                        <input type="text" style="border:none" name="address" id="point_address" placeholder="" readonly >
                                     </div>
                                     <div class="dongho_div">
-                                    	<!-- {value} 값 지우기 -->
                                         <div class="dong"><input type="text" class="dongho input_box" id="dong" name="dong" placeholder="예)101동"></div>
-                                        <!-- {value} 값 지우기 -->
                                         <div class="ho"><input type="text" class="dongho input_box" id="ho" name="ho" placeholder="예)201호"></div>
                                     </div>
                                     <div class="loc_check">
@@ -136,7 +133,7 @@
                         </tr>
                         <tr>
                             <td class="deal_box_pd">
-                                <button type='button' class='deal_btn'>월세</button>
+                                <button type='button' id="monthly" class='deal_btn'>월세</button>
                                 <button type='button' class='deal_btn1'>전세</button>
                                 <button type='button' class='deal_btn2'>매매</button>
                                 <div class="short">
@@ -165,11 +162,9 @@
                         </th>
                             <td class="base_line">
                                 <p class="base_title">공급 면적</p>
-                                <!-- {value} 값 지우기 -->
-                                <input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);" value="30">
+                                <input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);" >
                                 <p class="base_kiho">평</p>
-                                <!-- {value} 값 지우기 -->
-                                <input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);" value="99.17">
+                                <input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);" >
                                 <p class="base_kiho">㎡</p>
                             </td>
                             <th rowspan="2">건물 층수</th>
@@ -181,8 +176,7 @@
                                     <option value="2">2층</option>
                                     <option value="3">3층</option>
                                     <option value="4">4층</option>
-                                    <!-- {value} 값 지우기 -->
-                                    <option value="5" selected>5층</option>
+                                    <option value="5">5층</option>
                                     <option value="6">6층</option>
                                     <option value="7">7층</option>
                                     <option value="8">8층</option>
@@ -204,11 +198,9 @@
                         <tr>
                             <td class="base_line">
                                 <p class="base_title">전용 면적</p>
-                                <!-- {value} 값 지우기 -->
-                                <input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);" value="30">
+                                <input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);">
                                 <p class=" base_kiho">평</p>
-                                <!-- {value} 값 지우기 -->
-                                <input type="text" id="ator2" class="base_pd input_box" onkeyup="ator(2);" value="99.17">
+                                <input type="text" id="ator2" class="base_pd input_box" onkeyup="ator(2);">
                                 <p class="base_kiho">㎡</p>
                             </td>
                             <td class="base_line">
@@ -221,8 +213,7 @@
                                     <option value="2">2층</option>
                                     <option value="3">3층</option>
                                     <option value="4">4층</option>
-                                    <!-- {value} 값 지우기 -->
-                                    <option value="5" selected>5층</option>
+                                    <option value="5">5층</option>
                                     <option value="6">6층</option>
                                     <option value="7">7층</option>
                                     <option value="8">8층</option>
@@ -247,8 +238,7 @@
                                 <select id="heater" class="heating hRFrgm" name="heater">
                                     <option value="">난방 종류 선택</option>
                                     <option value="1">중앙 난방</option>
-                                    <!-- {value} 값 지우기 -->
-                                    <option value="2" selected>개별 난방</option>
+                                    <option value="2">개별 난방</option>
                                     <option value="3">지역 난방</option>
                                 </select>
                             </td>
@@ -257,7 +247,7 @@
                             <th>입주 가능일</th>
                             <td class="base_line" colspan="3">
     	                        <label class="in_date">
-	    	                        <input type="radio" name="commingday" value="즉시입주" >
+	    	                        <input type="radio" id="commingday" name="commingday" value="즉시입주" >
             	                	<p>즉시 입주</p>
                 	            </label>
                     	        <label class="in_date">
@@ -302,31 +292,31 @@
                             <p>(다중선택가능)</p>
                         </div>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="64">
+                            <input type="checkbox" id="user_input" class="user_input" name="feeitem" value="64">
                             <p>인터넷</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="32">
+                            <input type="checkbox" class="user_input" name="feeitem" value="32">
                             <p>유선TV</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="16">
+                            <input type="checkbox" class="user_input" name="feeitem" value="16">
                             <p>청소비</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="8">
+                            <input type="checkbox" class="user_input" name="feeitem" value="8">
                             <p>수도세</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="4">
+                            <input type="checkbox" class="user_input" name="feeitem" value="4">
                             <p>도시가스</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="2">
+                            <input type="checkbox" class="user_input" name="feeitem" value="2">
                             <p>전기세</p>
                         </label>
                         <label class="ma_box ma_m">
-                            <input type="checkbox" id="user_input" name="feeitem" value="1" >
+                            <input type="checkbox" class="user_input" name="feeitem" value="1" >
                             <p>기타</p>
                         </label>
                     </td>
@@ -465,12 +455,13 @@
             <tbody>
                 <tr>
                     <th>제목</th>
-                    <td class="detail_box"><input type="text" class="detail_box1 input_box" name="title" placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다." value="좋은 방 입니다."></td>
+                    <td class="detail_box">
+                    <input type="text" id="title" class="detail_box1 input_box" name="title" placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다."></td>
                 </tr>
                 <tr>
                     <th>상세 설명</th>
                     <td class="detail_box">
-                        <textarea class="detail_des" style="resize: none;" name="content" value="좋은 방 입니다. (2)" placeholder="
+                        <textarea class="detail_des" style="resize: none;" id="content_input" name="content" placeholder="
 
  ※상세설명 작성 주의사항
                                 
@@ -515,7 +506,7 @@
         <!-- lowbox -->
         <div class="low_box">
             <label class="low_text low_check_box" size="22">
-                <input type="checkbox" class="PcMeW" name="isAgree" value="">
+                <input type="checkbox" class="PcMeW" id="isAgree" name="isAgree" value="">
                 <span class="CheckBox"></span>
                 <span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
             </label>
@@ -538,7 +529,7 @@
 <!-- Javascript -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/validation.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
 <!-- 카카오 지도 시작-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
@@ -707,7 +698,7 @@ $(function() {
     });
 
     // 관리비 옵션 feeitem
-    $("input#user_input").click(function() {
+    $(".user_input").click(function() {
         if ( $("#user_input:checked").val()) // 비활성화
         {
             $("input#main_pr_v1").removeAttr("disabled");
@@ -786,92 +777,79 @@ $(function() {
     });
     </script>
     
+    
     <script>
+    /**
+     * 유효성 검사 validation
+     */
     	$(function() {
     		$("#add_room").submit(function(e) {
                 e.preventDefault();
-
-            /** 주소 검사 */
-            if (!regex.value('#point_address', '주소를 입력해주세요.')) { return false; } 		// 주소 address
             
-            /** 동 검사 */
-            var check = $("#is_noinfo_dong:checked");
-            if ( check.length == 0 ){
-            	if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 		// 동 dong
-			}
-            if (!regex.value('#ho', '호 주소를 입력해주세요.')) { return false; }	 		 		// 호 ho           
+            /** 매물종류 검사 (1) */
+            if (!regex.check("input[name='buildtype']:checked", '건물유형을 선택해주세요.')) {	$("input[name='buildtype'").focus(); return false; } // 건물유형 buildtype  		
             
-           
+            /** 
+             * 주소 검사 (3) 
+             */
+            if (!regex.value('#point_address', '주소를 입력해주세요.')) { $("#point_address").focus(); return false; } 								// 주소 address
+           	if ( $("#is_noinfo_dong:checked").length == 0 ){ if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 }				// 동 dong
+           	if ( !regex.value('#ho', '호 주소를 입력해주세요.') ) { $("#ho").focus(); return false; }	 		 										// 호 ho
+            
+            /** 
+             * 거래정보 검사 (3) - 매물종류, 보증금, 가격 
+             */
             var dealingtype = $(".dealingtype");
-            var index_dealingtype = dealingtype.length;
-            
-            console.log(".dealingtype 밸류 :" + $(".dealingtype").val());
-            console.log("index_dealingtype :" + index_dealingtype);
-            console.log("dealingtype 변수:" + dealingtype.eq(0).val());            
-            console.log("dealingtype 변수:" + dealingtype.eq(1).val()); 
-            console.log("dealingtype 변수:" + dealingtype.eq(2).val()); 
-            
-            console.log("--------------------");
-            
             var deposit = $(".deposit");
-            var index_deposit = deposit.length;
-            console.log(".deposit 밸류 :" + $(".deposit").val());
-            console.log("index_deposit :" + index_deposit);
-            console.log("deposit 변수:" + deposit.eq(0).val());            
-            console.log("deposit 변수:" + deposit.eq(1).val()); 
-            console.log("deposit 변수:" + deposit.eq(2).val()); 
-            
-            console.log("--------------------");
-            
             var price = $(".price");
-            var index_price = price.length;
-            console.log(".price 밸류 :" + $(".price").val());
-            console.log("index_price :" + index_price);
-            console.log("price 변수:" + price.eq(0).val());            
-            console.log("price 변수:" + price.eq(1).val()); 
-            console.log("price 변수:" + price.eq(2).val()); 
             
-            
-            for (var i = 0 ; i < index_dealingtype ; i ++) {
-            	if( !dealingtype.eq(i).val()) {
-            		alert("거래종류를 선택해주세요.1");
-          			console.log("1");
-          			return false;
-            	}
-            	if( !deposit.eq(i).val()) {
-            		alert("보증금 액수를 입력해주세요.");
-            		console.log("2");
-            		return false;
-            	}
-            	if( !price.eq(i).val()) {
-            		alert("금액을 입력해주세요.");
-            		console.log("3");
-            		return false;
-            	}
+            if( dealingtype.val() ) {
+            	for (var i = 0 ; i < dealingtype.length ; i ++) {
+                	if( !dealingtype.eq(i).val()) { alert("거래종류를 선택해주세요."); return false; }
+                	if( !deposit.eq(i).val()) { alert( dealingtype.eq(i).val()+"의 보증금 액수를 입력해주세요." ); deposit.eq(i).focus(); return false; }
+                	if( !price.eq(i).val()) { alert(dealingtype.eq(i).val()+"의 금액을 입력해주세요."); price.eq(i).focus(); return false; }
+                }
+            } else {
+            	alert("거래종류를 선택해주세요.");
+            	$("#monthly").focus();
+            	return false;
             }
             
-
-            /** 기본정보 검사 = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일   */
-            if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { return false; }	 		// 공급면적 supplyarea
-            if (!regex.value('#pyeong2', '전용면적을 입력해주세요.')) { return false; }	 		// 전용면적 area
-            if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { return false; }	 		// 전체층수 
-            if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { return false; }	 	 		// 해당층수 
-            if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { return false; }	 		// 난방종류
-            //if (!regex.value('#commingday', '입주 가능일을 입력해주세요.')) { return false; }	// 입주가능일
+            /** 
+             * 기본정보 검사 (6) = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일 
+             */
+            if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { $("#pyeong1").focus(); return false; }	 			// 공급면적 supplyarea
+            if (!regex.value('#ator1', '전용면적을 입력해주세요.')) { $("#pyeong2").focus(); return false; }	 			// 전용면적 area
             
-            /** 관리비항목 검사 */
+            /** 공급면적 < 전용면적일때, 에러창 띄우기 */
+            if ( $("#pyeong1").val() < $("#ator1").val() ) {
+            	alert("전용면적은 공급면적보다 클 수 없습니다."); $("#ator1").focus(); return false;
+            }
+            
+            if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수 
+            if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
+            
+            /** 층수 < 건물층수 설정 */
+            if($("#floor").val() > $("#maxfloor").val()) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+            
+            if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
+            if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
+            		$("#commingday").focus(); return false; 
+            	}
+            
+            /** 관리비 검사 */
             var check = $("#main_input:checked");
             if ( check.length == 0 ){
-            	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { return false; }	 	// 동 
+            	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { $("#main_pr_v1").focus(); return false; }	// 관리비 금액 
             }
-            
-            //관리비 항목 feeitem
-            
+
             /** 주차여부 검사 */
             var check = $("#parkingok:checked");
-            if ( check.length > 0 ){
-            	if (!regex.value('parking', '주차비 금액을 입력해주세요.')) { return false; }	 	// 동 
-            }
+            if ( check.length > 0 ){ if (!regex.value('#parking', '주차비 금액을 입력해주세요.')) { $("#parking").focus(); return false; }	} 	// 주차비 
+           
+            if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
+            if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
+            if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }	 				// 난방종류
             
             // 처리 완료
          	$(this).unbind().submit();
