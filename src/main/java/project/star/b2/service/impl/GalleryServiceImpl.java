@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import project.star.b2.model.Gallery;
+import project.star.b2.model.Heart;
 import project.star.b2.model.Popular;
 import project.star.b2.service.GalleryService;
 
@@ -180,5 +181,5 @@ public class GalleryServiceImpl implements GalleryService {
         
         return result;
     }
-    
+
 }

@@ -22,9 +22,11 @@ import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Gallery;
+import project.star.b2.model.Heart;
 import project.star.b2.model.Popular;
 import project.star.b2.model.Room;
 import project.star.b2.service.GalleryService;
+import project.star.b2.service.HeartService;
 import project.star.b2.service.RoomService;
 
 @Controller
@@ -43,7 +45,9 @@ public class MainController {
 	GalleryService galleryService;
 	@Autowired
 	GalleryService gallerypopularService;
-
+	@Autowired
+	HeartService heartService;
+	
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	// --> import org.springframework.beans.factory.annotation.Value;
 	@Value("#{servletContext.contextPath}")
@@ -310,7 +314,45 @@ public class MainController {
 	 * 찜한방
 	 *******************************************************************/
 	@RequestMapping(value = "/main/wish.do", method = RequestMethod.GET)
-	public ModelAndView wish() {
+	public ModelAndView wish(Model model) {
+		/** 1) 필요한 변수값 생성 */
+		int keyword = webHelper.getInt("roomno");// 검색어
+		String keyword2 = webHelper.getString("roomtype");// 검색어
+		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 10; // 한 페이지당 표시할 목록 수
+		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Heart input = new Heart();
+		Gallery input2 = new Gallery();
+		input.setRoomno(keyword);
+		input.setRoomtype(keyword2);
+
+		List<Heart> output = null;
+		PageData pageData = null;
+
+		try {
+			// 전체 게시글 수 조회
+			totalCount = galleryService.getGalleryCount(input2);
+			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Room.setOffset(pageData.getOffset());
+			Room.setListCount(pageData.getListCount());
+
+			output = heartService.getHeartGalleryList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** View 처리 */
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		model.addAttribute("totalCount", totalCount);
 
 		return new ModelAndView("main/wish");
 	}

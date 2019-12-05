@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -45,9 +48,65 @@
 		</p>
 
 		<!-- 메인 갤러리 시작 -->
-		<ul class="gallery-ul">
-
-			<!-- li 하나당 한개의 매물 - 외부박스 -->
+<!-- 		<ul class="gallery-ul"> -->
+			<ul id="gallery-list">
+						<c:choose>
+							<%-- 조회 결과가 없는 경우 --%>
+							<c:when test="${output == null || fn:length(output) == 0}">
+								<p>조회 결과가 없습니다.</p>
+							</c:when>
+							<%-- 갤러리 시작 --%>
+							<c:otherwise>
+								<c:forEach var="item" items="${output}" varStatus="status">
+									<li>
+										<div class="hit-div5">
+											<div class="hit-div6">
+												<%-- 좋아요 버튼 --%>
+												<div class="hit-div7">
+													<div class="hit-div8 off" data-value="on"></div>
+												</div>
+												<%-- 좋아요 끝 --%>
+												<%-- 전체 링크화 --%>
+												<a target="_blank" rel="" class="hit-a"
+													href="${pageContext.request.contextPath}/main/rmdt.do">
+													<!-- 이미지 -->
+													<div class="hit-a-div">
+														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> 
+													<c:if
+														test="${item.confirmdate != null}">
+														<%-- 확인매물 div --%>
+														<div class="hit-a-confirm">
+															<div class="hit-a-confirm-div">
+																<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+															</div>
+														</div>
+														<%-- 확인매물 끝 --%>
+													</c:if>
+													<p class="hit-a-p1">${item.roomtype}</p>
+													<p class="hit-a-p2">
+														<c:choose>
+															<c:when test="${item.dealingtype == '월세'}">
+																<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+															</c:when>
+															<c:otherwise>
+																<span>${item.dealingtype}&nbsp;</span>
+																<span id="prc">${item.price}</span>
+															</c:otherwise>
+														</c:choose>
+													</p>
+													<p class="hit-a-p34">${item.floor}층,${item.area}m²,
+														관리비 ${item.fee}만</p>
+													<p class="hit-a-p34">${item.title}</p>
+												</a>
+											</div>
+										</div>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+							<%-- 각 갤러리 끝 --%>
+						</c:choose>
+					</ul>
+			<%-- <!-- li 하나당 한개의 매물 - 외부박스 -->
 			<li class="gallery-li">
 				<!-- 내부박스 거래 완료되었을 때 덮는 박스( 완료된 방은 하트가 없다.) -->
 				<div class="complete-whcover">
@@ -282,7 +341,7 @@
 				</div>
 			</li>
 		</ul>
-		<!-- ul 끝 -->
+		<!-- ul 끝 --> --%>
 
 
 		<!-- 갤러리 쪽번호 시작 -->

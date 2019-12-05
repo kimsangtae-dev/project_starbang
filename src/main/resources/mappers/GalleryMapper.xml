@@ -123,5 +123,12 @@
             LIMIT #{offset}, #{listCount}
     </if>
     </select>
-
+    
+     <!-- 찜목록을 보여주기 위한 기능 정의 -->
+     <select id="selectHeartList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
+     SELECT u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno from user u INNER JOIN heart h ON u.userno=h.userno INNER JOIN room r ON r.userno=u.userno INNER JOIN (SELECT * FROM price p)a ON r.roomno=a.roomno INNER JOIN (SELECT * FROM image i)b ON r.roomno=b.roomno WHERE u.userno=24
+     <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+    </if>
+	</select>
 </mapper>
