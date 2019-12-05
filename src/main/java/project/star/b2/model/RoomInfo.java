@@ -9,8 +9,8 @@ public class RoomInfo {
 	    private int roomno;
 	    private String roomtype;
 	    private String title;
-	    private String floor;
-	    private int area;
+	    private int floor;
+	    private float area;
 	    private int fee;
 	    private String confirmdate;
 	    private String address;
@@ -31,12 +31,13 @@ public class RoomInfo {
 		private int builtin;
 		private int optionitem;
 		private int loan;
-		private int supplyarea;
+		private float supplyarea;
 		private int maxfloor;
 		private int heater;
 		private String commingday;
 		private String buildtype;
 		private String content;
+		private int roomno_info;
 	    
 	    
 	    /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
