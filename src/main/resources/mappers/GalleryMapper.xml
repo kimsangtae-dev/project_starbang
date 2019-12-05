@@ -26,7 +26,7 @@
         parameterType="project.star.b2.model.Gallery"
         resultMap="galleryMap">
         SELECT 
-        r.roomno, roomtype, title, floor, area, fee, DATE_FORMAT(confirmdate, '%Y.%m.%d') AS confirmdate, dealingtype, deposit, price 
+        r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate, '%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price 
         FROM room AS r 
         INNER JOIN price AS p
         ON r.roomno=p.roomno
@@ -45,10 +45,19 @@
             <if test="roomtype != null and roomtype != ''">
                 AND roomtype LIKE concat('%', #{roomtype}, '%')
             </if>
+            <if test="roomno != null and roomno != ''">
+            	AND r.roomno=#{roomno}
+            </if>
+            <if test="price != null and price != ''">
+            	AND #{price}>=p.price
+            </if>
+            <if test="deposit != null and deposit != ''">
+            	#{deposit}>=deposit
+            </if>
         </where>
         
         GROUP BY r.roomno
-        ORDER BY roomno ASC
+        ORDER BY r.roomno ASC
         
         <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}

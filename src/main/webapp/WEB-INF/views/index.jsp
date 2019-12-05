@@ -69,12 +69,12 @@
             <div class="slide-div3 slider regular" style="right: 0px;">
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/search2.do?roomno=200">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search2.do?roomno=50">
                  <div class="slide-a-div1">
                    <div class="slide-a-div1-up1"></div>
                    <div class="slide-a-div1-down">
-                      <p>월세 + 관리비</p>
-                      <p>월 50 이하 원룸</p>
+                      <p>부담없는 월세</p>
+                      <p>50이하 원룸</p>
                    </div>
                  </div>
                 </a>
@@ -85,20 +85,20 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up2"></div>
                     <div class="slide-a-div1-down">
-                      <p>보증금</p>
-                      <p>500 이하 원룸</p>
+                      <p>믿음직한 보증금</p>
+                      <p>500이하 원룸</p>
                     </div>
                   </div>
                 </a>
               </div>
 
               <div>
-                <a class="slide-a" href="${pageContext.request.contextPath}/main/search.do">
+                <a class="slide-a" href="${pageContext.request.contextPath}/main/search2.do?deposit=500">
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up3"></div>
                     <div class="slide-a-div1-down">
-                      <p>반려동물</p>
-                      <p>가능한 원룸</p>
+                      <p>살기좋은</p>
+                      <p>송파구 원룸</p>
                     </div>
                   </div>
                 </a>
@@ -109,8 +109,8 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up4"></div>
                     <div class="slide-a-div1-down">
-                      <p>낭만적인</p>
-                      <p>옥탑방 원룸</p>
+                      <p>2억이하</p>
+                      <p>전세 투쓰리룸</p>
                     </div>
                   </div>
                 </a>
@@ -121,8 +121,8 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up5"></div>
                     <div class="slide-a-div1-down">
-                      <p>2억 이하</p>
-                      <p>전세 투쓰리룸</p>
+                      <p>서민갑부를 위한</p>
+                      <p>3억 이하 전세</p>
                     </div>
                   </div>
                 </a>
@@ -133,10 +133,10 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up6"></div>
                     <div class="slide-a-div1-down">
-                      <p>전세자금대출
+                      <p>보증금1억이하
                       </p>
                       <p>
-                      가능한 투쓰리룸</p>
+                      오피스텔</p>
                     </div>
                   </div>
                 </a>
@@ -147,9 +147,9 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up7"></div>
                     <div class="slide-a-div1-down">
-                      <p>보증금
+                      <p>신혼부부를 위한 
                       </p>
-                      <p>1천 이하 오피스텔</p>
+                      <p>2억이하 매매</p>
                     </div>
                   </div>
                 </a>
@@ -160,8 +160,8 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up8"></div>
                     <div class="slide-a-div1-down">
-                      <p>단기임대</p>
-                      <p>가능한 오피스텔</p>
+                      <p>놀기 좋은 접근성 좋은</p>
+                      <p>강남구 원룸</p>
                     </div>
                   </div>
                 </a>
@@ -172,8 +172,8 @@
                   <div class="slide-a-div1">
                     <div class="slide-a-div1-up9"></div>
                     <div class="slide-a-div1-down">
-                      <p>3억 이하</p>
-                      <p>전세 아파트</p>
+                      <p>부담없는 월세 </p>
+                      <p>50이하 원룸</p>
                     </div>
                   </div>
                 </a>

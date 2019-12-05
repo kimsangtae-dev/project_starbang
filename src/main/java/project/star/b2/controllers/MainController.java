@@ -365,6 +365,8 @@ public class MainController {
 		/** 1) 필요한 변수값 생성 */
 		int keyword = webHelper.getInt("roomno");// 검색어
 		String keyword2 = webHelper.getString("roomtype");// 검색어
+		int keyword3 = webHelper.getInt("price");// 검색어
+		int keyword4 = webHelper.getInt("deposit");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
@@ -375,6 +377,8 @@ public class MainController {
 		Gallery input = new Gallery();
 		input.setRoomno(keyword);
 		input.setRoomtype(keyword2);
+		input.setPrice(keyword3);
+		input.setDeposit(keyword4);
 
 		List<Gallery> output = null;
 		PageData pageData = null;

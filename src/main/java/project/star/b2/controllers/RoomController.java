@@ -95,7 +95,7 @@ public class RoomController {
 	public ModelAndView view(Model model) { 
 		/** 1) 필요한 변수값 생성 */
 		// 조회할 대상에 대한 PK값
-		int roomno = webHelper.getInt("no");
+		int roomno = webHelper.getInt("roomno");
 		
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (roomno == 0) {
