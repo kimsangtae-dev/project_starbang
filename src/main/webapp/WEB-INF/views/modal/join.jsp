@@ -1,93 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
-<head>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/join.css">
 
-    <!-- sweetalert --> 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
-	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/css/modal_css/join.css">
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/assets/css/etc/reset.css">
 
-	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	
-<script type="text/javascript">
+<!-- sweetalert -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+<script
+	src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 
-//	$(document).on('hidden.bs.modal', function (event) {
-//		if ($('.modal:visible').length) {
-//			$('body').addClass('modal-open');
-//		}
-//	});
-
-	
-	
-	$(function() {
-		//모달 부모 스크롤 없애기
-//		$("#myModal").on("show", function() {
-//			$("body").addClass("modal-open");
-//		}).on("hidden", function() {
-//			$("body").removeClass("modal-open")
-//		});
-		
-		 //인증번호
-		$("#insnumber").click(function () {
-			swal("인증번호가 발송되었습니다");
-			var insnumber = document.getElementById('insnumber'); 
-			$reemail = $('#insnumber').attr('value', "인증번호 요청");
-			//$reemail = $('#insnumber').attr('z-index', "10000px");
-		});
-		
-		$("#reinsnumber").click(function () {
-			swal("인증번호가 확인되었습니다");
-		});		
-	});
-	
-	// 입력숫자수 제한
-    function numberMaxLength(e){
-        if(e.value.length > e.maxLength){
-            e.value = e.value.slice(0, e.maxLength);
-        }
-    }
+<script
+	src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
 
-</script>
-		<!-- $("#buttonjoin").click(function () {
-			swal("회원가입이 완료되었습니다");
-		});  -->
-
-
-
-</head>
-
-	 <!-- 화면 영역 -->
+<!-- 화면 영역 -->
 <!-- 	<div class="container">
 		<h1 class="page-header">Bootstrap Modal Open</h1>
 		링크로 모달 열기
 		<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">open modal</a>
 	</div> -->
-	<!-- 화면 영역 끝 -->
+<!-- 화면 영역 끝 -->
 
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="myModal" class="siz">
+<!-- Modal -->
+<!-- <div class="modal fade" id="myModal" class="siz">
 		<div class="modal-dialog siz modaltop"> -->
-			<div class="modal-content wholething sw" id="myModal">
-				<div class="modal-header">
-					<h4 class="modal-title">회원가입</h4>
-					<!-- 닫기버튼 -->
-	                <button class="btnclose"  data-dismiss="modal">
-	                	<svg width="30" height="30" viewBox="0 0 32 32">
-	                		<g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-	                			<circle class="Circle" cx="15" cy="15" r="15"></circle>
-	                			<g class="Close" stroke-linecap="round" stroke-width="2">
-	                				<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-	                			</g>
-	                		</g>
-	                	</svg>
- 	               </button>
- 	            </div>
-				<form method="post"
+<div class="modal-content wholething sw" id="myModal">
+	<div class="modal-header">
+		<h4 class="modal-title">회원가입</h4>
+		<!-- 닫기버튼 -->
+		<button class="btnclose" data-dismiss="modal">
+			<svg width="30" height="30" viewBox="0 0 32 32"> <g fill="none"
+				fill-rule="evenodd" transform="translate(1 1)"> <circle
+				class="Circle" cx="15" cy="15" r="15"></circle> <g class="Close"
+				stroke-linecap="round" stroke-width="2"> <path
+				d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path> </g>
+			</g> </svg>
+		</button>
+	</div>
+	<form method="post"
 		action="${pageContext.request.contextPath}/modal/join_ok.do"
 		id="join_form">
 		<div class="modal-body padding">
@@ -96,24 +56,22 @@
 				<input class="input1" type="text" name="name" id="user_id"
 					class="full-wid input1" />
 			</div>
-			<!-- <form method="get" action="${pageContext.request.contentType}/modal/joinemailsend.do"> -->
-				<div class="information information2 clearfix">
-					<label class="subtitle" for="email">이메일</label> <input type="text"
-						name="email" id="email" class="email input1" />
-					<p class="wid">@</p>
-					<select class="select-email select1" name="email1" id="email1">
-						<option>선택해주세요</option>
-						<option>naver.com</option>
-						<option>gmail.com</option>
-					</select>
-					<a id="atab"><button type="button" class="btn btn-color inclick buttonre"
-						id="insnumber" value="인증번호 요청">인증번호 요청</button></a>
-					<!-- data-toggle="modal" data-target="#requested" -->
-				</div>
+			<div class="information information2 numberdiv clearfix">
+				<p class="subtitle">이메일</p>
+				<input type="text" name="email" id="email" class="email input1" />
+				<p class="wid">@</p>
+				<select class="select-email select1" name="email1" id="email1">
+					<option value="선택해주세요">선택해주세요</option>
+					<option value="naver.com">naver.com</option>
+					<option value="gmail.com">gmail.com</option>
+				</select>
+				<button type="button" class="btn btn-color inclick buttonre" id="insnumber" value="인증번호 요청">인증번호 요청</button>
+				<!-- data-toggle="modal" data-target="#requested" -->
+			</div>
 			<div class="information information2 numberdiv clearfix">
 				<p class="subtitle"></p>
-				<input type="text" name="pingaree" class="number input1" />
-				<button type="button" class="btn btn-color inclick buttonre"
+				<input type="text" name="pingaree" id="reemailinput" class="number input1" />
+				<button type="button" class="btn btn-color inclick buttonre butrwh"
 					id="reinsnumber" value="인증번호 확인">인증번호 확인</button>
 				<!-- ata-toggle="modal" data-target="#requestednumber" -->
 			</div>
@@ -129,7 +87,7 @@
 			</div>
 			<div class="information information2 clearfix">
 				<p class="subtitle">휴대폰 번호</p>
-				<select class="select-tel pin select1" name="tel">
+				<select class="select-tel pin select1">
 					<option>010</option>
 					<option>011</option>
 					<option>016</option>
@@ -138,9 +96,9 @@
 					<option>019</option>
 				</select>
 				<p class="wid">-</p>
-				<input type="number" name="tel1" class="pin input1 telnum" maxlength="4" oninput="numberMaxLength(this);"/>
+				<input type="number" name="tel1" id="tel1" class="pin input1 telnum" />
 				<p class="wid">-</p>
-				<input type="number" name="tel2" class="pin input1 telnum" maxlength="4" oninput="numberMaxLength(this);"/>
+				<input type="number" name="tel2" id="tel2" class="pin input1 telnum"/>
 			</div>
 			<div class="Information3">
 				<p class="p">
@@ -155,6 +113,122 @@
 			<!-- ata-toggle="modal" data-target="#loginForward" -->
 		</div>
 	</form>
-         </div>
-		
+</div>
+
+<!-- regex --> 
+<script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
+
+<!-- 전화번호 4자리 이후 자르기 -->
+<script>
+$(function() {
+function substring(target) {
+            $(target).keyup(function() {
+                var value = $(this).val();              // 입력값을 가져온다.
+                if (value.length >= 4) {                // 글자수가 4자 이상이 되면?
+                    var input = value.substring(0, 4);  // 4자만 남겨놓고 자른다.
+                    $(this).val(input);                 // 잘라낸 값을 다시 설정한다.
+                    $(target).focus();               // 포커스 이동
+                } // end if
+            }); // end keyup event
+       };
+       
+       substring($('#tel1'));
+       substring($('#tel2'));
+       
+});
+</script>
+
+<script type="text/javascript">
+$(function () {
+	function random() {
+    	var num = Math.floor(Math.random() * 10);
+    	return num;
+    }
+	
+	var auth = "";
+	
+	for (var i = 0; i < 6; i++) {
+		auth += random();
+	}
+	
+	$("#reinsnumber").click(function () {
+		var user = $('#reemailinput').val();
+		if (auth == user) {
+			alert("인증번호가 확인되었습니다");
+		}else {
+			alert("인증번호를 다시 확인해 주세요");
 			
+		}
+	});
+
+ //인증번호
+	$("#insnumber").click(function () {
+		var emailnu = $('#insnumber').val() 
+		var email1 = document.getElementById("email1");
+		if ($("#email").val().trim() == "" || $("#email1 option:selected").text() == "선택해주세요") {
+        	alert("메일을 입력해 주세요");
+        	e.preventDefault();
+		}else {
+			var email = $("#email").val();
+			var email1 = document.getElementById("email1");
+			var email2 = $("#email1 option:selected").text();
+			var allemail = email + "@" + email2; 
+			alert(allemail + "으로 메일이 발송되었습니다");
+				$.ajax({
+		    	    url:"modal/joinema.do",
+		    	    type:'POST',
+		    	    data: {"allemail": allemail,
+		    	    		"auth" : auth},
+		    	    success:function(data){
+		    	        <%--alert(allemail + "으로 메일이 발송되었습니다"); --%>
+		    	    },
+		    	    error:function(jqXHR, textStatus, errorThrown){
+		    	        alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		    	        self.close();
+			        }	
+			    });
+		}
+	});
+ 
+    var user = $('#reemailinput').val();
+	/** 가입폼의 submit 이벤트 */
+    $("#join_form").submit(function() {
+        // 기본동작 수행 방식
+         /* e.preventDefault(); */
+        
+        /** 이름 검사 */
+        if (!regex.value('#user_id', '이름을 입력하세요.')) { return false; }
+        if (!regex.kor('#user_id', '이름은 한글만 입력 가능합니다.')) { return false; }
+        if (!regex.min_length('#user_id', 2, '이름은 최소 2자 이상 입력 가능합니다.')) { return false; }
+        
+        /** 이메일 검사 */
+        alert(user);
+        if (!regex.value('#email', '이메일를 입력하세요.')) { return false; }
+        if (!regex.value('#email1', '이메일도메인을 선택하세요.')) { return false; }
+        
+        var user = $('#reemailinput').val();
+        if (user != auth) {
+			alert("인증번호를 다시 입력해주세요");
+			return false;
+		}
+        
+        if (!regex.value('#reemailinput', '인증번호를 입력하세요.')) { return false; }
+        /**if (regex.value('#reemailinput', '인증번호를 입력하세요.') == auth) { return false; } */
+        
+        /** 비밀번호 검사 */
+        if (!regex.value('#user_pw', '비밀번호를 입력하세요.')) { return false; }
+        if (!regex.min_length('#user_pw', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) { return false; }
+        if (!regex.compare_to('#user_pw', '#user_pw_re', '비밀번호 확인이 잘못되었습니다.')) { return false; }
+        
+        /** 휴대폰 검사 */
+        if (!regex.value('#tel1', '번호를 입력하세요.')) { return false; }
+        if (!regex.value('#tel2', '번호를 입력하세요.')) { return false; }
+        if (!regex.max_length('#tel1', 4, '번호는 4자 입력하세요.')) { return false; }
+        
+        
+        $(this).submit();
+
+    });
+
+});
+</script>
