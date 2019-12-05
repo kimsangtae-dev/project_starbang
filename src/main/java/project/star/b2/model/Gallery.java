@@ -25,39 +25,64 @@ public class Gallery {
 	private String region_2depth_name;	// kakao api 를 위한 구 정보 저장
 	private double latitude;	// 위도
 	private double longitude;	// 경도
-	
-	/** image */
-	private String filepath;
-	private String filename;
+    
     
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치
     private static int listCount;   // LIMIT 절에서 사용할 검색할 데이터 수
     
-	public static int getOffset() {
-		return offset;
-	}
-	public static void setOffset(int offset) {
-		Gallery.offset = offset;
-	}
-	public static int getListCount() {
-		return listCount;
-	}
-	public static void setListCount(int listCount) {
-		Gallery.listCount = listCount;
-	}
-
-	private static int fromRoom;
-	private static int toRoom;
-
+	public static int getOffset() { return offset; }
+	public static void setOffset(int offset) { Gallery.offset = offset; }
+	
+	public static int getListCount() { return listCount; }
+	public static void setListCount(int listCount) { Gallery.listCount = listCount; }
+	
+	
+	/** 필터링을 위한 추가 변수 */
+	// 보증금/전세
+	private static int depositFrom;
+	private static int depositTo;
+	// 월세
+	private static int monthFrom;
+	private static int monthTo;
+	// 매매
+	private static int buyingFrom;
+	private static int buyingTo;
+	// 관리비
+	private static int feeFrom;
+	private static int feeTo;
+	// 방크기
 	private static int sizeFrom;
 	private static int sizeTo;
-
-	public static int getFromRoom() { return fromRoom; }
-	public static void setFromRoom(int fromRoom) { Gallery.fromRoom = fromRoom; }
 	
-	public static int getToRoom() { return toRoom; }
-	public static void setToRoom(int toRoom) { Gallery.toRoom = toRoom; }
+	
+	public static int getDepositFrom() { return depositFrom; }
+	public static void setDepositFrom(int depositFrom) { Gallery.depositFrom = depositFrom; }
+	
+	public static int getDepositTo() { return depositTo; }
+	public static void setDepositTo(int depositTo) { Gallery.depositTo = depositTo; }
+	
+	
+	public static int getMonthFrom() { return monthFrom; }
+	public static void setMonthFrom(int monthFrom) { Gallery.monthFrom = monthFrom; }
+	
+	public static int getMonthTo() { return monthTo; }
+	public static void setMonthTo(int monthTo) { Gallery.monthTo = monthTo; }
+	
+	
+	public static int getBuyingFrom() { return buyingFrom; }
+	public static void setBuyingFrom(int buyingFrom) { Gallery.buyingFrom = buyingFrom; }
+	
+	public static int getBuyingTo() { return buyingTo; }
+	public static void setBuyingTo(int buyingTo) { Gallery.buyingTo = buyingTo; }
+
+	
+	public static int getFeeFrom() { return feeFrom; }
+	public static void setFeeFrom(int fromRoom) { Gallery.feeFrom = fromRoom; }
+	
+	public static int getFeeTo() { return feeTo; }
+	public static void setFeeTo(int toRoom) { Gallery.feeTo = toRoom; }
+	
 	
 	public static int getSizeFrom() { return sizeFrom; }
 	public static void setSizeFrom(int sizeFrom) { Gallery.sizeFrom = sizeFrom; }
