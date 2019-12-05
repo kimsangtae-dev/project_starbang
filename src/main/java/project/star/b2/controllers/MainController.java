@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
 import project.star.b2.model.Popular;
@@ -259,15 +260,49 @@ public class MainController {
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
-		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
-
+		int pageCount = 7;	// 한 그룹당 표시할 페이지 번호 수
+		
+		
+		/********필터********/
+		/** 방 종류(roomtype) */
 		String room = webHelper.getString("roomtype");
-
+		/** 매물 종류(dealingtype) */
+		/** 보증금/전세가(deposit/price) */
+		int depositFrom = webHelper.getInt("depositFrom");
+		int depositTo = webHelper.getInt("depositTo", 999999);
+		/** 월세(price) */
+		int monthFrom = webHelper.getInt("monthFrom");
+		int monthTo = webHelper.getInt("monthTo", 999999);
+		/** 매매 (price)*/
+		int buyingFrom = webHelper.getInt("buyingFrom");
+		int buyingTo = webHelper.getInt("buyingTo");
+		/** 관리비(fee) */
 		int feeFrom = webHelper.getInt("feeFrom");
-		int feeTo = webHelper.getInt("feeTo");
-
+		int feeTo = webHelper.getInt("feeTo", 999999);
+		/** 방 크기(area) */
 		int sizeFrom = webHelper.getInt("sizeFrom");
-		int sizeTo = webHelper.getInt("sizeTo");
+		int sizeTo = webHelper.getInt("sizeTo", 999999);
+		
+		
+		Filter filter = new Filter();
+		// 보증금/전세
+		filter.setDepositFrom(depositFrom);
+		filter.setDepositTo(depositTo);
+		// 월세
+		filter.setMonthFrom(monthFrom);
+		filter.setMonthTo(monthTo);
+		// 매매
+		filter.setBuyingFrom(buyingFrom);
+		filter.setBuyingTo(buyingTo);
+		// 관리비
+		filter.setFeeFrom(feeFrom);
+		filter.setFeeTo(feeTo);
+		// 방크기
+		filter.setSizeFrom(sizeFrom);
+		filter.setSizeTo(sizeTo);
+		if (sizeTo == 99999) {
+			filter.setSizeTo(115);
+		}
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -278,8 +313,17 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
-			Gallery.setFromRoom(feeFrom);
-			Gallery.setToRoom(feeTo);
+			Gallery.setDepositFrom(depositFrom);
+			Gallery.setDepositTo(depositTo);
+			
+			Gallery.setMonthFrom(monthFrom);
+			Gallery.setMonthTo(monthTo);
+			
+			Gallery.setBuyingFrom(buyingFrom);
+			Gallery.setBuyingTo(buyingTo);
+			
+			Gallery.setFeeFrom(feeFrom);
+			Gallery.setFeeTo(feeTo);
 
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
@@ -303,10 +347,8 @@ public class MainController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
-		model.addAttribute("roomtype", room);
-
-//		String param = "?roomtype=" + room + "&feeFrom=" + feeFrom + "&feeTo=" + feeTo;
-
+		model.addAttribute("param", filter);
+		
 		return new ModelAndView("main/search");
 	}
 
