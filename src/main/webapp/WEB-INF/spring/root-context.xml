@@ -86,6 +86,11 @@
 			</props>
 		</property>
 	</bean>
+	
+	<!-- MailHelper 주입 설정 -->
+	<bean id="mailHelper" class="project.star.b2.helper.MailHelper" >
+		<constructor-arg ref="mailSender"  />
+	</bean>
 
 	<!-- ====== DATABASE 연동 설정 -->
 	<!-- JDBC 객체 생성 -->
