@@ -118,10 +118,10 @@
 		INNER JOIN price
 		p ON h.roomno=p.roomno
 		Group by h.roomno order by count(h.roomno) DESC -->
-		select h.roomno, count(h.roomno),r.title, r.roomtype from heart h INNER JOIN room r ON h.roomno=r.roomno WHERE r.roomno IN (SELECT p.roomno FROM price p) group by h.roomno order by count(h.roomno) DESC
+		SELECT h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename FROM heart h INNER JOIN room r ON h.roomno=r.roomno INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno group by roomno order by count(h.roomno) DESC
     <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
-        </if>
+    </if>
     </select>
 
 </mapper>
