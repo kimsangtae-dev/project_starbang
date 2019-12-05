@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,7 +19,34 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 </script>-->
 	<!-- 상단 헤더 -->
 	<jsp:include page="../assets/inc/ma_top.jsp" />
-	
+
+	<%-- ------ JSTL을 통해 쿠키에 직접 접근하기  ------ --%>
+	<%-- <c:choose>
+		<c:when test="${cookie.roomno == null}">
+			<h2>저장된 쿠키 없음</h2>
+		</c:when>
+		<c:otherwise>
+			<h2>저장된 쿠키 = ${cookie.roomno.value}</h2>
+		</c:otherwise>
+	</c:choose> --%>
+
+	<%-- -------- 쿠키에 저장된 정보 읽어오기 / 쿠키 가져오기 ----------- --%>
+	<%
+		String roomno = "";
+
+
+		Cookie[] cookies = request.getCookies(); //요청정보로부터 쿠키를 가져온다.
+
+		out.println("현재 설정된 쿠키의 개수:" + cookies.length); //쿠키가 저장된 배열의 길이를 가져온다.
+
+		if (cookies != null && cookies.length >=1) {	// 쿠키가 Null 이 아닐때,
+			for (Cookie c : cookies) {
+				roomno = c.getName();
+				out.print(roomno);
+				}
+			}
+	%>
+
 	<!-- 중앙 영역 -->
 	<div id="content">
 		<!-- 전체 면적 설정 -->
@@ -173,7 +203,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			</div>
 			<!--매물 설명 작은 폰트-->
 		</div>
-		<!-- 
+		<!--
 		---------------------
 		파란색 바 스크롤 위치 고정작업
 		---------------------
@@ -211,7 +241,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				</div>
 			</div>
 		</div>
-		<!-- 
+		<!--
 		----------------------
 		파란색 바 스크롤 위치 고정작업
 		----------------------
@@ -336,7 +366,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
 
 			<!-- 맵 api 시작-->
-			
+
 			<div class="map-container">
 				<div id="map"></div>
 			</div>
@@ -370,18 +400,18 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			var map = new kakao.maps.Map(container, options);
 
 			var circle = new kakao.maps.Circle({
-				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다 
-				radius : 30, // 미터 단위의 원의 반지름입니다 
-				strokeWeight : 2, // 선의 두께입니다 
+				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다
+				radius : 30, // 미터 단위의 원의 반지름입니다
+				strokeWeight : 2, // 선의 두께입니다
 				strokeColor : '#1564f9', // 선의 색깔입니다
 				strokeOpacity : 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
 				strokeStyle : 'solid', // 선의 스타일 입니다
 				fillColor : '#1564f9', // 채우기 색깔입니다
 				fillOpacity : 0.3
-			// 채우기 불투명도 입니다   
+			// 채우기 불투명도 입니다
 			});
 
-			// 지도에 원을 표시합니다 
+			// 지도에 원을 표시합니다
 			circle.setMap(map);
 		})
 	</script>
