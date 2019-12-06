@@ -26,6 +26,29 @@
 		<!-- 상단 헤더 -->
 		<%@ include file="../assets/inc/ma_top.jsp"%>
 
+		<%-- -------------------쿠키 섹션 시작 ------------------ --%>
+
+		<%-- ------ JSTL을 통해 쿠키에 직접 접근하기  ------ --%>
+		<%-- <c:choose>
+			<c:when test="${cookie.roomno == null}">
+				<h2>저장된 쿠키 없음</h2>
+			</c:when>
+			<c:otherwise>
+				<h2>저장된 쿠키 = ${cookie.roomno.value}</h2>
+			</c:otherwise>
+		</c:choose> --%>
+
+		<%-- ------ 컨트롤러에서 Model 객체를 통해 넘어온 값 출력하기 ------ --%>
+		<c:choose>
+			<c:when test="${newRoomNo == ''}">
+				<h2>저장된 쿠키 없음</h2>
+			</c:when>
+			<c:otherwise>
+				<h2>저장된 쿠키 = ${newRoomNo}</h2>
+			</c:otherwise>
+		</c:choose>
+		<%-- -------------------쿠키 섹션 끝 ------------------ --%>
+		
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<!-- 최근본방/찜한 방 -->
@@ -37,24 +60,15 @@
 				</div>
 				<div class="tab-text">
 					<div class="re-div1">
-						<p>총 ${totalCount}개의 최근 본 방이 있습니다</p>
+						<p>
+							총 <span class="room-count">0000</span><span>개</span>의 최근 본 방이
+							있습니다
+						</p>
 					</div>
 					<div class="re-div2">
 						<p>최근에 본 방은 최대 50개까지 저장됩니다</p>
 					</div>
 				</div>
-				<%-- -------------------쿠키 섹션 시작 ------------------ --%>
-				<%-- ------ 컨트롤러에서 Model 객체를 통해 넘어온 값 출력하기 ------ --%>
-				<c:choose>
-					<c:when test="${newRoomNo == ''}">
-						<h2>저장된 쿠키 없음</h2>
-					</c:when>
-					<c:otherwise>
-						<h2>저장된 쿠키 = ${newRoomNo}</h2>
-					</c:otherwise>
-				</c:choose>
-				<%-- -------------------쿠키 섹션 끝 ------------------ --%>
-
 				<div class="gallery-container">
 					<!-- 갤러리 내용 영역 -->
 					<div class="gallery-content clearfix">
@@ -121,6 +135,7 @@
 			<!-- content 끝 -->
 		</div>
 		<!-- root 끝 -->
+	</div>
 
 		<!-- 하단 영역 -->
 		<%@ include file="../assets/inc/ma_bottom.jsp"%>
@@ -136,6 +151,14 @@
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
 				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			/* 조건에 맞는 방 개수 */
+			$(function() {
+				var n = $(".recent-div5").length;
+				$(".room-count").html(n);
 			});
 		</script>
 </body>

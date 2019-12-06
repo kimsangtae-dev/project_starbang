@@ -201,7 +201,7 @@ public class MainController {
 		if (roomno.equals("")) { // 쿠키 시간을 설정하지 않으면 브라우저가 동작하는 동안 유효
 			cookie.setMaxAge(0); // 쿠키 설정시간이 0이면 즉시 삭제
 		} else {
-			cookie.setMaxAge(60); // 값이 있다면 60초 동안 쿠키 저장
+			cookie.setMaxAge(1800); // 값이 있다면 60초 동안 쿠키 저장
 		}
 
 		response.addCookie(cookie);
@@ -229,7 +229,7 @@ public class MainController {
 
 		try {
 			// 쿠키로 저장된 방번호로 조회
-			output = galleryService.getGalleryList(input);
+			output = galleryService.getCookieList(input);			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

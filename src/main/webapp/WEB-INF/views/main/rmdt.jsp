@@ -21,31 +21,14 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<jsp:include page="../assets/inc/ma_top.jsp" />
 
 	<%-- ------ JSTL을 통해 쿠키에 직접 접근하기  ------ --%>
-	<%-- <c:choose>
+	<c:choose>
 		<c:when test="${cookie.roomno == null}">
 			<h2>저장된 쿠키 없음</h2>
 		</c:when>
 		<c:otherwise>
 			<h2>저장된 쿠키 = ${cookie.roomno.value}</h2>
 		</c:otherwise>
-	</c:choose> --%>
-
-	<%-- -------- 쿠키에 저장된 정보 읽어오기 / 쿠키 가져오기 ----------- --%>
-	<%
-		String roomno = "";
-
-
-		Cookie[] cookies = request.getCookies(); //요청정보로부터 쿠키를 가져온다.
-
-		out.println("현재 설정된 쿠키의 개수:" + cookies.length); //쿠키가 저장된 배열의 길이를 가져온다.
-
-		if (cookies != null && cookies.length >=1) {	// 쿠키가 Null 이 아닐때,
-			for (Cookie c : cookies) {
-				roomno = c.getName();
-				out.print(roomno);
-				}
-			}
-	%>
+	</c:choose>	
 
 	<!-- 중앙 영역 -->
 	<div id="content">

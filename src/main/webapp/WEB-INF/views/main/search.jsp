@@ -230,55 +230,52 @@
 															<div class="recent-div8 off" data-value="on"></div>
 														</div>
 														<%-- 좋아요 끝 --%>
-
+														<%-- 전체 링크화 --%>
 														<%-- -------------------쿠키 굽기---------------------- --%>
-														
+
 														<%-- 파라미터 GET으로 보내기 작업 --%>
 														<a target="_blank" rel="" class="recent-a"
-															href="${pageContext.request.contextPath}/main/rmdtsave.do?roomno=${item.roomno}"></a>
-															
+															href="${pageContext.request.contextPath}/main/rmdtsave.do?roomno=${item.roomno}">
+
 														<%-- -------------------쿠키 굽기---------------------- --%>
 
-															<%-- 전체 링크화 --%> <a target="_blank" rel=""
-															class="recent-a"
-															href="${pageContext.request.contextPath}/main/rmdt.do">
-																<!-- 이미지 -->
-																<div class="recent-a-div"></div> <c:if
-																	test="${item.confirmdate != null}">
-																	<%-- 확인매물 div --%>
-																	<div class="recent-a-confirm">
-																		<div class="recent-a-confirm-div">
-																			<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
-																		</div>
-																	</div>
-																	<%-- 확인매물 끝 --%>
-																</c:if>
-																<p class="recent-a-p1">${item.roomtype}</p>
-																<p class="recent-a-p2">
-																	<c:choose>
-																		<%-- 월세인 경우 --%>
-																		<c:when test="${item.dealingtype == '월세'}">
-																			<span>${item.dealingtype}&nbsp;<!--
+														<!-- 이미지 -->
+														<div class="recent-a-div"></div>
+														<c:if test="${item.confirmdate != null}">
+															<%-- 확인매물 div --%>
+															<div class="recent-a-confirm">
+																<div class="recent-a-confirm-div">
+																	<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+																</div>
+															</div>
+															<%-- 확인매물 끝 --%>
+														</c:if>
+														<p class="recent-a-p1">${item.roomtype}</p>
+														<p class="recent-a-p2">
+															<c:choose>
+																<%-- 월세인 경우 --%>
+																<c:when test="${item.dealingtype == '월세'}">
+																	<span>${item.dealingtype}&nbsp;<!--
 														--> <fmt:formatNumber value="${item.deposit}"
-																					pattern="#,####" var="eok1"></fmt:formatNumber> <c:set
-																					var="patternprice1"
-																					value="${fn:replace(eok1, ',', '억')}" /> <!--
+																			pattern="#,####" var="eok1"></fmt:formatNumber> <c:set
+																			var="patternprice1"
+																			value="${fn:replace(eok1, ',', '억')}" /> <!--
 														-->${patternprice1}/${item.price}</span>
-																		</c:when>
-																		<%-- 전세 혹은 매매인 경우 --%>
-																		<c:otherwise>
-																			<span>${item.dealingtype}&nbsp;<!--
+																</c:when>
+																<%-- 전세 혹은 매매인 경우 --%>
+																<c:otherwise>
+																	<span>${item.dealingtype}&nbsp;<!--
 														--> <fmt:formatNumber value="${item.price}"
-																					pattern="#,####" var="eok2"></fmt:formatNumber> <c:set
-																					var="patternprice2"
-																					value="${fn:replace(eok2, ',', '억')}" /> <!--
+																			pattern="#,####" var="eok2"></fmt:formatNumber> <c:set
+																			var="patternprice2"
+																			value="${fn:replace(eok2, ',', '억')}" /> <!--
 														-->${patternprice2}</span>
-																		</c:otherwise>
-																	</c:choose>
-																</p>
-																<p class="recent-a-p34">${item.floor}층,
-																	${item.area}m², 관리비 ${item.fee}만</p>
-																<p class="recent-a-p34">${item.title}</p>
+																</c:otherwise>
+															</c:choose>
+														</p>
+														<p class="recent-a-p34">${item.floor}층,
+															${item.area}m², 관리비 ${item.fee}만</p>
+														<p class="recent-a-p34">${item.title}</p>
 														</a>
 													</div>
 												</div>

@@ -139,4 +139,21 @@
             LIMIT #{offset}, #{listCount}
     </if>
 	</select>
+	
+	<!-- 쿠키용 다중행 조회를 위한 기능 정의 -->
+    <select id="cookieList"
+        parameterType="project.star.b2.model.Gallery"
+        resultMap="galleryMap">
+        SELECT 
+        r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate, '%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price 
+        FROM room AS r 
+        INNER JOIN price AS p
+        ON r.roomno=p.roomno
+        <where>
+            <if test="roomno != null and roomno != ''">
+                r.roomno = #{roomno}
+            </if>
+        </where>
+    </select>
+	
 </mapper>
