@@ -215,28 +215,20 @@ public class MainController {
 	/********************************************************************
 	 * 최근 본 방
 	 *******************************************************************/
-	/** 쿠키 저장을 위한 작성 페이지 */
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public ModelAndView rtrm(Model model, @CookieValue(value = "my_cookie", defaultValue = "") String myCookie) {
-		try {
-			myCookie = URLDecoder.decode(myCookie, "utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-
-		/** 1) 필요한 변수값 생성 */
-		int totalCount = 0; // 전체 게시글 수
-
+	public ModelAndView rtrm(Model model, @CookieValue(value = "roomno", defaultValue = "") String roomno) {
+		
+		int newRoomNo = Integer.parseInt(roomno);
+		
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
-
+		input.setRoomno(newRoomNo);
+		
 		List<Gallery> output = null;
 
 		try {
-			// 전체 게시글 수 조회
-			totalCount = galleryService.getGalleryCount(input);
-			// 데이터 조회하기
+			// 쿠키로 저장된 방번호로 조회
 			output = galleryService.getGalleryList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -244,8 +236,7 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
-		model.addAttribute("totalCount", totalCount);
-		model.addAttribute("my_cookie", myCookie);
+		model.addAttribute("newRoomNo", newRoomNo);
 
 		return new ModelAndView("main/rtrm");
 	}
