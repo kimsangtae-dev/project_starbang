@@ -140,8 +140,12 @@ public class AdminController {
 	/********************************************************************
 	 *  							회원 관리
 	 *******************************************************************/
+	
+	
+	/****** 목록 페이지  ******/
 	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)
 	public ModelAndView userli(Model model) {
+		
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); //검색어
 		int nowPage = webHelper.getInt("page",1); //페이지 번호(기본값 1)
@@ -185,8 +189,9 @@ public class AdminController {
 		String viewPath = "admin/userli";
 		return new ModelAndView(viewPath);
 	}
-
-	// 회원관리 삭제페이지
+	
+	
+	/****** 회원 삭제 페이지 ******/
     @RequestMapping(value = "/admin/delete_ok.do", method = RequestMethod.GET)
     public ModelAndView delete_ok(Model model) {
         /** 1) 필요한 변수값 생성 */
@@ -213,10 +218,10 @@ public class AdminController {
         /** 3) 페이지 이동 */
         // 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
         return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다.");
-
     }
     
-    /** 수정 폼 페이지 */
+    
+    /****** 회원 수정 폼 페이지 ******/
     @RequestMapping(value = "/admin/edit2.do", method = RequestMethod.GET)
     public ModelAndView edit(Model model) {
         /** 1) 필요한 변수값 생성 */
@@ -227,7 +232,6 @@ public class AdminController {
         if (userno == 0) {
             return webHelper.redirect(null, "회원번호가 없습니다.");
         }
-        
         
         /** 2) 데이터 조회하기 */
         // 데이터 조회에 필요한 조건값을 Beans에 저장하기
@@ -248,7 +252,8 @@ public class AdminController {
         return new ModelAndView("user/edit");
     }
     
-    /** 수정 폼에 대한 action 페이지 */
+    
+    /****** 회원 수정 폼에 대한 action 페이지 ******/
 	@RequestMapping(value = "/admin/edit_ok.do", method = RequestMethod.POST)
 	public ModelAndView edit_ok(Model model) {
 		
@@ -261,8 +266,6 @@ public class AdminController {
 		String regdate = webHelper.getString("regdate");
 		String editdate = webHelper.getString("editdate");
 		String profile_img = webHelper.getString("profile_img");
-		
-		
         
         if (userno == 0) {
             return webHelper.redirect(null, "회원번호가 없습니다.");
@@ -296,6 +299,7 @@ public class AdminController {
         String redirectUrl = contextPath + "/user/view.do?userno=" + input.getUserno();
         return webHelper.redirect(redirectUrl, "수정되었습니다.");
     }
+	
 	
 	/********************************************************************
 	 *  							글쓰기

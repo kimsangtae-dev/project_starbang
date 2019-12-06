@@ -67,7 +67,6 @@ public class UploadController {
 			item.setRegDate(item.getRegDate());
 			item.setEditDate(item.getEditDate());
 			item.setRoomno(item.getRoomno());
-			
 			log.debug(item.toString());
 
 			// DB에 저장하기

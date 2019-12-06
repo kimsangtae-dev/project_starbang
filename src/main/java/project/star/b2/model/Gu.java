@@ -1,7 +1,5 @@
 package project.star.b2.model;
 
-import lombok.Data;
-
 public class Gu {
 	private String guName;
 	private double guLat;

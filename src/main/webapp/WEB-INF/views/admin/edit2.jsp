@@ -13,7 +13,7 @@
 	
 	<form method="post" action="${pageContext.request.contextPath}/user/edit_ok.do">
 	<%-- action 페이지에서 사용할 WHERE 조건값을 hidden필드로 숨겨서 전송한다. --%>
-		<input type="hidden" name="no" value="${output.userno}" />
+		<input type="hidden" name="userno" value="${output.userno}" />
 		
 		<div>
 			<label for="name">회원이름: </label>
@@ -29,7 +29,7 @@
 		</div>
 		<div>
 			<label for="tel">전화번호: </label>
-			<input type="text" name="tel" id="tel" value="${output.name}" />
+			<input type="text" name="tel" id="tel" value="${output.tel}" />
 		</div>
 		<div>
 			<label for="regdate">등록날짜: </label>

@@ -763,6 +763,12 @@ $(function() {
         	document.getElementById('reflex1').value = parseFloat(document.getElementById('.price').value).toFixed(1);
         } */
     </script>
+    
+    <script>
+
+    
+   	</script>
+    
 
 
 	<script>

@@ -172,7 +172,7 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
-        /**
+    /**
      * 유저 email 조회하기
      * @param User 조회할 email 를 담고 있는 Beans
      * @throws Exception
