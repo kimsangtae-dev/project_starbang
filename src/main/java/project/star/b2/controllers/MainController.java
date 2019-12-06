@@ -274,6 +274,8 @@ public class MainController {
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
 		
+		String dealingtype = webHelper.getString("dealingtype");
+		String region_2depth_name = webHelper.getString("region_2depth_name");
 		
 		Filter filter = new Filter();
 		// 보증금/전세
@@ -299,6 +301,8 @@ public class MainController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
 		input.setRoomtype(room);
+		input.setDealingtype(dealingtype);
+		input.setRegion_2depth_name(region_2depth_name);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
@@ -439,4 +443,17 @@ public class MainController {
 
 		return new ModelAndView("main/search");
 	}
-}
+	/********************************************************************
+	 * 테스트
+	 *******************************************************************/
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/test_check", method = RequestMethod.POST)
+	public List<String> post(Model model,
+			@RequestParam(value="valueArrTest[]") List<String> valueArr){
+		//파라미터값을 View에게 전달한다.
+		model.addAttribute("valueArr", valueArr);
+		
+		return (List<String>) new ModelAndView("main/search");
+	}
+		
+	}
