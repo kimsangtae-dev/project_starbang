@@ -103,7 +103,7 @@ public class AdminController {
 	Room input = new Room();
 	input.setRoomtype(keyword);
 	input.setTitle(keyword);
-	input.setFloor(keyword);
+
 	input.setArea(keyword2);
 	input.setFee(keyword2);
 	input.setConfirmdate(keyword);
