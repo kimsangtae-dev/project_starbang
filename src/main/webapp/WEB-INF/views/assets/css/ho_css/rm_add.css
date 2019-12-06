@@ -183,6 +183,10 @@ input, button, textarea { outline: none; }
     /* position: relative; */
 }
 
+.Square_box > p:hover {
+	background-color: rgb(245, 245, 245);
+    border-color: rgb(245, 245, 245);
+}
 /* 매물의 방종류 버튼 안 글씨 */
 .Square_box > p {
     min-width: 82px;
@@ -263,15 +267,17 @@ input.address2 {
     background-color: rgb(35, 45, 74);
     border-radius: 3px;
     margin-left: 4px;
+    padding : 0;
 }
 
 /* 상세주소 검색창 */
 .loc_de {
-    display: blockl;
+    display: block;
     width: 529px;
     height: 100px;
     vertical-align: middle;
     padding: 20px 15px;
+    margin: 9px 0;
     border: 1px solid rgb(208, 210, 214);
 }
 
@@ -296,7 +302,6 @@ form.loc_div {
 /************************* 동, 호 박스 *************************/
 /* 동호 박스 마진 */
 .dongho_div {
-    margin-top: 15px;
     margin-bottom: 10px;
 }
 
@@ -738,6 +743,11 @@ select::-ms-expand { display:none; }
     height: 36px;
     line-height: 34px;
     padding: 0px 15px;
+}
+
+.ma_box > p:hover {
+	background-color: rgb(245, 245, 245);
+    border-color: rgb(245, 245, 245);
 }
 
 /* 관리비 항목 선택시 */
