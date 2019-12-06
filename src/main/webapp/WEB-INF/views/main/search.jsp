@@ -18,7 +18,6 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body>
-<<<<<<< HEAD
 	<!-- 브라우저에 보여질 부분 -->
 	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div>
@@ -1806,6 +1805,5 @@ pageEncoding="UTF-8"%>
 
         })
     </script>
->>>>>>> c82a1b250e2e45f07610d22fe5c131a5a6dd250d
 </body>
 </html>
