@@ -532,7 +532,7 @@
 <%@ include file="assets/inc/ma_bottom.jsp"%>
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
 

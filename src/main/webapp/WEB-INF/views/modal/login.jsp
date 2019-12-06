@@ -26,7 +26,7 @@
                 	    <form method="get" action="${pageContext.request.contextPath}/modal/login_ok.do">
                 	    	<!-- 아이디 / 패스워드 -->
                 	        <input autocomplete="off" class="idpass" type="text" placeholder="아이디" name="email" value="" />
-                	        <input autocomplete="off" class="idpass" type="password" placeholder="비밀번호" name="password" value="" />
+                	        <input autocomplete="off" class="idpass" type="password" placeholder="비밀번호" name="passwd" value="" />
                 	        <div class="checkbox-d">
                 	        	<!-- 아이디저장 - 체크박스 -->
                 	            <label class="checkbox-l clearfix" size="22">

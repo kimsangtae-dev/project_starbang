@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <head>
 <style>
@@ -149,7 +150,7 @@ a.atag1 {
 				<a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
 				<a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>
 			</div>
-			<<%-- 로그인 시 바뀌는 로그인창 --%>
+		<%-- 로그인 시 바뀌는 로그인창 --%>
     	<c:choose>
         	<c:when test="${loginInfo == null}">
 	            <div class="small-font">
