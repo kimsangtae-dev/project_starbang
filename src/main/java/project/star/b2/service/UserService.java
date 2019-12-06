@@ -8,13 +8,7 @@ import project.star.b2.model.User;
 
 /** 학과 데이터 관리 기능을 제공하기 위한 Service 계층. */
 public interface UserService {
-    /**
-     * 유저 로그인 데이터 조회
-     * @param User 조회할 email 를 담고 있는 Beans
-     * @return 조회된 email이 저장된 Beans
-     * @throws Exception
-     */
-     public User getUserLogin(User input) throws Exception;
+    
     /**
      * 학과 데이터 상세 조회
      * @param User 조회할 학과의 일련번호를 담고 있는 Beans
@@ -58,5 +52,11 @@ public interface UserService {
      */
     public int deleteUser(User input) throws Exception;
 
-    
+    /**
+     * 유저 로그인 데이터 조회
+     * @param User 조회할 email 를 담고 있는 Beans
+     * @return 조회된 email이 저장된 Beans
+     * @throws Exception
+     */
+     public User getUserLogin(User input) throws Exception;
 }
