@@ -97,7 +97,18 @@
             <if test="roomtype != null and roomtype != ''">
                 AND r.roomtype LIKE concat('%', #{roomtype}, '%')
             </if>
+            <if test="dealingtype != null and dealingtype != ''">
+                AND p.dealingtype LIKE concat('%', #{dealingtype}, '%')
+            </if>
+            <if test="region_2depth_name != null and region_2depth_name != ''">
+            	AND region_2depth_name LIKE concat('%', #{region_2depth_name}, '%')
+            </if>
         </where>
+         	ORDER BY r.roomno ASC
+        
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
     </select>
     
     <select id="selectCountGu"
