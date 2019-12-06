@@ -429,14 +429,16 @@
 									<th>상세 설명</th>
 									<td class="detail_box"><textarea class="detail_des"
 											style="resize: none;" id="content_input" name="content"
-											placeholder="
-
- ※상세설명 작성 주의사항
+											placeholder="※상세설명 작성 주의사항
+                                
                                 
 - 방 정보와 관련없는 홍보성 정보는 입력하실 수 없습니다. (홈페이지 주소, 블로그, SNS, 메신저ID, 전화번호, 이메일 등)
+
 - 중개수수료를 언급한 내용은 입력할 수 없습니다. (중개수수료 무료, 꽁짜, 반값 등)
 
+
 * 주의사항 위반시 허위매물로 간주되어 매물 삭제 및 이용의 제한이 있을 수 있습니다.
+
 * 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다."></textarea>
 									</td>
 								</tr>

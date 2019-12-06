@@ -817,6 +817,7 @@ select::-ms-expand { display:none; }
     width: 100%;
     height: 230px;
     border: 1px solid rgb(208, 210, 214);
+    font-size: 15px;
     padding: 15px;
 }
 
