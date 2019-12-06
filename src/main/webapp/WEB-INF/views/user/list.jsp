@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>유저관리</h1>
-	<a href="${pageContext.request.contextPath}/user/add.do">[유저추가]</a>
+	<!-- <a href="${pageContext.request.contextPath}/user/add.do">[유저추가]</a> -->
 	
 	<!-- 검색폼 -->
 	<form method="get" action="${pageContext.request.contextPath}/user/list.do">
@@ -61,10 +61,8 @@
 							<%-- 검색어에 <mark> 태그를 적용하여 형광펜 효과 준비 --%>
 							<c:set var="mark" value="<mark>${keyword}</mark>" />
 							<%-- 출력을 위해 준비한 유저이름과 위치에서 검색어와 일치하는 단어를 형광펜 효과로 변경 --%>
-							<c:set var="name" value="${fn:replace(dname, keyword, mark)}" />
-							<c:set var="email" value="${fn:replace(loc, keyword, mark)}" />
-							<c:set var="passwd" value="${fn:replace(loc, keyword, mark)}" />
-							<c:set var="tel" value="${fn:replace(loc, keyword, mark)}" />
+							<c:set var="name" value="${fn:replace(name, keyword, mark)}" />
+							<c:set var="email" value="${fn:replace(email, keyword, mark)}" />
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
