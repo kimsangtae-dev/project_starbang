@@ -42,8 +42,10 @@
         resultMap="roomMap">
         SELECT 
         roomno, roomtype, title, floor, area, fee, confirmdate, address, dong, ho, 
-        latitude, longitude, region_2depth_name, region_3depth_name, userno
-        FROM room
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name
+        FROM room r
+        INNER JOIN user u
+        ON r.userno=u.userno
         
         <where>
             <if test="roomtype != null and roomtype != ''">

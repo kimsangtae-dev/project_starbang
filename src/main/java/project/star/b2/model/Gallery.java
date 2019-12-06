@@ -21,6 +21,7 @@ public class Gallery {
 	
 	/** file */
 	private int fileno;			// 첨부파일 일련번호
+	private String filename; // 첨부파일 이름
 	
 	private String region_2depth_name;	// kakao api 를 위한 구 정보 저장
 	private double latitude;	// 위도

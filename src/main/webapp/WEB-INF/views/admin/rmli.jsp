@@ -87,6 +87,7 @@
 								<c:set var="floor" value="${item.floor}" />
 								<c:set var="area" value="${item.area}" />
 								<c:set var="fee" value="${item.fee}" />
+								<c:set var="userno" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
 								<c:set var="address" value="${item.address}" />
 
@@ -99,6 +100,7 @@
 									<td align="center">${floor}</td>
 									<td align="center">${area}</td>
 									<td align="center">${fee}</td>
+									<td align="center"><a href="${viewUrl}">${item.name}</td>
 									<td align="center">${confirmdate}</td>
 									<td align="center">${address}</td>
 								</tr>
