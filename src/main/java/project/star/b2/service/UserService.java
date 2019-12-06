@@ -2,7 +2,6 @@ package project.star.b2.service;
 
 import java.util.List;
 
-import project.star.b2.model.Room;
 import project.star.b2.model.User;
 
 
