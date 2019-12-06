@@ -193,20 +193,16 @@ public class HostController {
 		
 		/** (1) Room DB 유효성검사 */
 		if (title == null) 		{ return webHelper.redirect(null, "매물에대한 제목을 입력해주세요."); } 	// title 검사
-		if (floor == 0)		{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
+		if (floor == 0)			{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
 		if (area == 0) 			{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// area 검사
-		
-		//if (fee == null) { return webHelper.redirect(null, "설명을 입력하세요."); } 					// fee 검사
-		
+		//if (fee == null) 		{ return webHelper.redirect(null, "설명을 입력하세요."); } 				// fee 검사
 		if (dong == null) 		{ return webHelper.redirect(null, "동을 입력해주세요."); } 				// dong 검사
 		if (ho == null)			{ return webHelper.redirect(null, "호를 입력해주세요."); } 				// ho 검사
 		
 		/** (2) Info DB 유효성검사 */
-		
 		//if (feeitem == null) { return webHelper.redirect(null, "feeitem을 입력하세요.");} 			// feeitem 검사
 		//if (parking == 0) { return webHelper.redirect(null, "설명을 입력하세요."); } 					// parking 검사
 		//if (optionitem == null) { return webHelper.redirect(null, "설명을 입력하세요."); } 			// optionitem 검사
-		
 		if (supplyarea == 0) 	{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// supplyarea 검사
 		if (maxfloor == 0) 		{ return webHelper.redirect(null, "전체층 수를 선택해주세요."); }			// maxfloor 검사
 		if (commingday == null) { return webHelper.redirect(null, "입주일을 선택해주세요."); } 			// commingday 검사
