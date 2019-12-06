@@ -22,20 +22,15 @@ import project.star.b2.service.UserService;
 @Controller
 public class ModalController {
 	/** WebHelper 주입 */
-	@Autowired
-	WebHelper webHelper;
+	@Autowired WebHelper webHelper;
 
 	/** RegexHelper 주입 */
-	// --> import study.spring.springhelper.helper.RegexHelper;
-	@Autowired
-	RegexHelper regexHelper;
+	@Autowired RegexHelper regexHelper;
 
 	/** Service 패턴 구현체 주입 */
-	@Autowired
-	UserService userService;
+	@Autowired UserService userService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
-	// --> import org.springframework.beans.factory.annotation.Value;
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
@@ -178,6 +173,17 @@ public class ModalController {
         
       	return new ModelAndView("index");
 		
+	}
+	
+	@RequestMapping(value = "/modal/login_out.do", method = RequestMethod.GET)
+	public ModelAndView login_out(Model model, HttpServletRequest request) {
+		/* request 객체를 사용해서 세션 객체 만들기 */
+		HttpSession session = request.getSession();
+		/* String login = (String) session.getAttribute("loginInfo"); */
+		
+		session.removeAttribute("loginInfo");
+	
+		return new ModelAndView("index");
 	}
 
 	/********************************************************************

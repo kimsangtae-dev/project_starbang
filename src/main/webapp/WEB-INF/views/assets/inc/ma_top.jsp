@@ -59,6 +59,63 @@
 #con {
 	height: 800px;
 }
+
+/* 로그인 시 변경  ***/
+
+/* 로그인 창 전체 크기 */
+.small-font1 {
+    float: right;
+    min-width: 97px;
+    height: 70px;
+    margin-left: 57px;
+}
+
+/* 이름 상자 */
+a.atag > button {
+    height: 30px;
+    cursor: pointer;
+    background-color: white;
+    border-width: 0px;
+    color: rgb(34, 34, 34);
+    outline: none;
+}
+
+/* 드랍다운 상자 구분 선 */
+.dropdown-menu .divider {
+    width: 100%;
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;  
+}
+
+/* 드랍다운 상자 */
+ul.small {
+	width: 240px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    right: 50px;
+    top: 80px;
+    z-index: 1;
+    border: 1px solid rgb(212, 212, 212);
+    border-radius: 4px;	
+}
+
+.small > li > .atag1 {
+	width: 100%;
+    height: 40px;
+    line-height: 30px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0px 20px;
+}
+
+a.atag1 {
+    text-align: left;
+}
+
 </style>
 </head>
 
@@ -92,9 +149,27 @@
 				<a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
 				<a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>
 			</div>
-			<div class="small-font">
-				<a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
-			</div>
+			<<%-- 로그인 시 바뀌는 로그인창 --%>
+    	<c:choose>
+        	<c:when test="${loginInfo == null}">
+	            <div class="small-font">
+					<a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>				
+				</div>
+        	</c:when>
+        <c:otherwise>
+        <div class="dropdown small-font1">
+        	<img src="${loginInfo.profile_img}" />
+		<a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag"
+			aria-expanded="false" data-target="#loginModal"><button><span>${loginInfo.name} 님<span class="caret"></span>
+					</span></button></a>
+		<ul class="dropdown-menu small" role="menu" aria-labelledby="dLabel">
+			<li><a href="${pageContext.request.contextPath}/admin/faq.do" class="atag1"><span>자주묻는질문</span></a></li>
+			<li class="divider"></li>
+			<li><a href="${pageContext.request.contextPath}/modal/login_out.do" class="atag1">로그아웃</a></li>
+		</ul>
+		</div>
+        </c:otherwise>
+    	</c:choose> 
 		</div>
 	</div>
 </div>
