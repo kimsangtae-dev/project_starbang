@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -209,26 +210,24 @@ public class MainController {
 		/** 2) Spring방식의 페이지 이동. */
 		// Servlet의 response.sendRedirect(url)과 동일
 		// --> "/"부터 시작할 경우 ContextPath는 자동으로 앞에 추가된다.
-		return "redirect:/main/rmdt.do?roomno=" + cookie;
+		return "redirect:/main/rmdt.do?roomno=" + roomno;
 	}
 
 	/********************************************************************
 	 * 최근 본 방
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public ModelAndView rtrm(Model model, @CookieValue(value = "roomno", defaultValue = "") String roomno) {
-		
-		int newRoomNo = Integer.parseInt(roomno);
+	public ModelAndView rtrm(Model model, @CookieValue(value = "cookiesName1", defaultValue = "") Integer roomno) {
 		
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
-		input.setRoomno(newRoomNo);
+		input.setRoomno(roomno);
 		
 		List<Gallery> output = null;
 
 		try {
-			// 쿠키로 저장된 방번호로 조회
+			 //쿠키로 저장된 방번호로 조회
 			output = galleryService.getCookieList(input);			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -236,7 +235,7 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
-		model.addAttribute("newRoomNo", newRoomNo);
+		//model.addAttribute("newRoomNo", newRoomNo);
 
 		return new ModelAndView("main/rtrm");
 	}
