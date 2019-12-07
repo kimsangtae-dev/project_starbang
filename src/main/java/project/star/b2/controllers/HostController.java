@@ -87,7 +87,7 @@ public class HostController {
 		
 		/***
 		 *  Room DB TABLE (15 Columns)
-		 *     Column name (param)		description				info
+		 *     Column name(param)		description				info
 		 *  1.  roomno  				방번호  					(Auto Increment)
 		 *  2.  roomtype - o			매물종류
 		 *  3.  title - o				매물에 대한 제목
@@ -105,7 +105,7 @@ public class HostController {
 		 *  15. userno 					세션에서 가져올 회원번호	 	(Session에서 값 주입)
 		 */
 		
-		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1), confirmdate(1), address API(5) */
+		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1)- PRI, confirmdate(1), address API(5) */
 		String roomtype = webHelper.getString("roomtype");			
 		String title = webHelper.getString("title");				
 		int floor = webHelper.getInt("floor");
@@ -136,7 +136,7 @@ public class HostController {
 		 *  15. roomno					방 번호				참조키 - room DB 입력시 생성될 PRI값 주입
 		 */
 		
-		/** info ** parameter 수신 (14 / 15) - except(1) roomno(mul) */
+		/** info ** parameter 수신 (14 / 15) - except(1) roomno - mul */
 		/** 관리비 항목 2진법 계산해서 DB 넣기 */
 		String[] feeitem = webHelper.getStringArray("feeitem", null); 		// 관리비항목 계산해서 넣기
 		int sum_fee = 0;
@@ -302,18 +302,21 @@ public class HostController {
 		try {
 			
 			Price input_p = new Price();
-				
+			
 			int deposit_temp = 0;
 			int price_temp = 0;
 			
 			for (int i = 0; i < deposit.length; i++) {
-				deposit_temp = 0;
 				price_temp = Integer.parseInt(price[i]);
-
+				
 				if (deposit[i] != null || deposit[i] != "") {
 					deposit_temp = Integer.parseInt(deposit[i]);
 				}
-
+				
+				if (price[i] != null || price[i] != "") {
+					price_temp = Integer.parseInt(price[i]);
+				}
+				
 				input_p.setDeposit(deposit_temp);
 				input_p.setDealingtype(dealingtype[i]);
 				input_p.setPrice(price_temp);
