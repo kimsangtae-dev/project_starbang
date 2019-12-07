@@ -130,7 +130,7 @@ public class ModalController {
 	/********************************************************************
 	 *  						로그인 action폼
 	 *******************************************************************/
-	@RequestMapping(value = "/modal/login_ok.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request) {
 		
 
@@ -170,9 +170,10 @@ public class ModalController {
 		} else {	
 			return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
 		} 
-        
-      	return new ModelAndView("index");
+		/* return new ModelAndView("viewPath"); */
 		
+		String redirectUrl = contextPath + "/";
+		return webHelper.redirect(redirectUrl, "로그인되었습니다.");
 	}
 	
 	@RequestMapping(value = "/modal/login_out.do", method = RequestMethod.GET)
@@ -183,7 +184,9 @@ public class ModalController {
 		
 		session.removeAttribute("loginInfo");
 	
-		return new ModelAndView("index");
+		/* return new ModelAndView("index"); */
+		String redirectUrl = contextPath + "/";
+		return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
 	}
 
 	/********************************************************************

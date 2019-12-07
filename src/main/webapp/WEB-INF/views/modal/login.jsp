@@ -23,7 +23,7 @@
                 	<h3 class="login-h3"><b>로그인</b></h3>
                 	<!-- 로그인윗부분 -->
                 	<div class="login" id="">
-                	    <form method="get" action="${pageContext.request.contextPath}/modal/login_ok.do">
+                	    <form method="post" action="${pageContext.request.contextPath}/modal/login_ok.do">
                 	    	<!-- 아이디 / 패스워드 -->
                 	        <input autocomplete="off" class="idpass" type="text" placeholder="아이디" name="email" value="" />
                 	        <input autocomplete="off" class="idpass" type="password" placeholder="비밀번호" name="passwd" value="" />
