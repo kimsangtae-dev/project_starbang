@@ -2,6 +2,9 @@ package project.star.b2.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,14 +17,12 @@ import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Address;
-import project.star.b2.model.RoomInfo;
 import project.star.b2.model.Address.Documents;
+import project.star.b2.model.Info;
 import project.star.b2.model.Price;
+import project.star.b2.model.Room;
 import project.star.b2.service.ApiKakaoSearchService;
-import project.star.b2.service.InfoService;
-import project.star.b2.service.PriceService;
-import project.star.b2.service.RoomInfoService;
-import project.star.b2.service.RoomService;
+import project.star.b2.service.RIPService;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -42,18 +43,8 @@ public class HostController {
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
-	RoomInfoService roomInfoService;
+	RIPService ripService;
 
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	RoomService roomService;
-
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	InfoService infoService;
-	
-	@Autowired
-	PriceService priceService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -81,7 +72,7 @@ public class HostController {
 	 * 공실 등록하기_ok
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rm_add_ok.do", method = RequestMethod.POST)
-	public ModelAndView rm_add_ok(Model model) {
+	public ModelAndView rm_add_ok(Model model, HttpServletRequest request) {
 
 		/** * * 1) 사용자가 입력한 파라미터 수신 * * */
 		
@@ -113,7 +104,13 @@ public class HostController {
 		int fee = webHelper.getInt("fee");
 		String dong = webHelper.getString("dong");
 		String ho = webHelper.getString("ho");
+		
 		int userno = 1;	// * 세션이 없기 때문에 임시로 1번 넣기*
+		HttpSession session = request.getSession();
+        String mySession = (String) session.getAttribute("loginInfo");
+        if (mySession == null) {
+            mySession = "";
+        }
 		
 		
 		/***
@@ -194,7 +191,7 @@ public class HostController {
 		/** (1) Room DB 유효성검사 */
 		if (title == null) 		{ return webHelper.redirect(null, "매물에대한 제목을 입력해주세요."); } 	// title 검사
 		if (floor == 0)			{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
-		if (area == 0) 			{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// area 검사
+		//if (area == 0) 			{ return webHelper.redirect(null, "면적을 입력해주세요."); } 			// area 검사
 		//if (fee == null) 		{ return webHelper.redirect(null, "설명을 입력하세요."); } 				// fee 검사
 		if (dong == null) 		{ return webHelper.redirect(null, "동을 입력해주세요."); } 				// dong 검사
 		if (ho == null)			{ return webHelper.redirect(null, "호를 입력해주세요."); } 				// ho 검사
@@ -203,7 +200,7 @@ public class HostController {
 		//if (feeitem == null) { return webHelper.redirect(null, "feeitem을 입력하세요.");} 			// feeitem 검사
 		//if (parking == 0) { return webHelper.redirect(null, "설명을 입력하세요."); } 					// parking 검사
 		//if (optionitem == null) { return webHelper.redirect(null, "설명을 입력하세요."); } 			// optionitem 검사
-		if (supplyarea == 0) 	{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// supplyarea 검사
+		//if (supplyarea == 0) 	{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// supplyarea 검사
 		if (maxfloor == 0) 		{ return webHelper.redirect(null, "전체층 수를 선택해주세요."); }			// maxfloor 검사
 		if (commingday == null) { return webHelper.redirect(null, "입주일을 선택해주세요."); } 			// commingday 검사
 		if (content == null)	{ return webHelper.redirect(null, "상세설명을 입력해주세요."); } 			// content 검사
@@ -216,17 +213,19 @@ public class HostController {
 
 
 		/** * * 3) 데이터 저장하기 * * */
-		RoomInfo input = new RoomInfo();
+		Room input_R = new Room();
+		Info input_I = new Info();
+		
 		
 		/** (1) room 정보 받아오기 */
-		input.setRoomtype(roomtype);
-		input.setTitle(title);
-		input.setFloor(floor);
-		input.setArea(area);
-		input.setFee(fee);
-		input.setDong(dong);
-		input.setHo(ho);
-		input.setUserno(userno);
+		input_R.setRoomtype(roomtype);
+		input_R.setTitle(title);
+		input_R.setFloor(floor);
+		input_R.setArea(area);
+		input_R.setFee(fee);
+		input_R.setDong(dong);
+		input_R.setHo(ho);
+		input_R.setUserno(userno);
 		
 		/*** 
 		 * KakaoSearch API 통해 주소정보 5가지 - (위도, 경도, 2depth, 3depth, road_address) 수신 및 쓰기
@@ -252,11 +251,11 @@ public class HostController {
 			List<Documents> list = kakaoAddress.getDocuments();
 
 			for (Documents item : list) {
-				input.setAddress(item.getRoad_address().getAddress_name());
-				input.setRegion_2depth_name(item.getRoad_address().region_2depth_name);
-				input.setRegion_3depth_name(item.getRoad_address().region_3depth_name);
-				input.setLongitude(Double.parseDouble(item.getRoad_address().x));
-				input.setLatitude(Double.parseDouble(item.getRoad_address().y));
+				input_R.setAddress(item.getRoad_address().getAddress_name());
+				input_R.setRegion_2depth_name(item.getRoad_address().region_2depth_name);
+				input_R.setRegion_3depth_name(item.getRoad_address().region_3depth_name);
+				input_R.setLongitude(Double.parseDouble(item.getRoad_address().x));
+				input_R.setLatitude(Double.parseDouble(item.getRoad_address().y));
 			}
 		}
 		/***
@@ -265,38 +264,46 @@ public class HostController {
 		
 		
 		/** (2) info정보 받아오기 */
-		input.setFeeitem(sum_fee);
+		input_I.setFeeitem(sum_fee);
 		
 		// 주차가능 체크박스에 체크되어 있다면? 금액정보를 가져와 인풋
 		if(parking == 1) {
 			parking = webHelper.getInt("parking_val");
 		}
 		
-		input.setParking(parking);
-		input.setPet(pet);
-		input.setElevator(elevator);
-		input.setVeranda(veranda);
-		input.setBuiltin(builtin);
-		input.setOptionitem(sum_option);
-		input.setLoan(loan);
-		input.setSupplyarea(supplyarea);
-		input.setMaxfloor(maxfloor);
-		input.setHeater(heater);
-		input.setCommingday(commingday);
-		input.setBuildtype(buildtype);
-		input.setContent(content);
+		input_I.setParking(parking);
+		input_I.setPet(pet);
+		input_I.setElevator(elevator);
+		input_I.setVeranda(veranda);
+		input_I.setBuiltin(builtin);
+		input_I.setOptionitem(sum_option);
+		input_I.setLoan(loan);
+		input_I.setSupplyarea(supplyarea);
+		input_I.setMaxfloor(maxfloor);
+		input_I.setHeater(heater);
+		input_I.setCommingday(commingday);
+		input_I.setBuildtype(buildtype);
+		input_I.setContent(content);
+		
 		
 		
 		/** * * 4) DB 저장하기 * * */
-			
-			
+
+		
 		/** 1. room DB, info DB 데이터 저장 */
 		try {
-			roomInfoService.addRoomInfo(input);
-
+			ripService.addRoom(input_R);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		try {
+			input_I.setRoomno(input_R.getRoomno());
+			ripService.addInfo(input_I);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
 		
 		/** 2. price DB 데이터 저장 */
 		try {
@@ -321,9 +328,9 @@ public class HostController {
 				input_p.setDealingtype(dealingtype[i]);
 				input_p.setPrice(price_temp);
 				input_p.setShort_room(short_room);
-				input_p.setRoomno(1);
+				input_p.setRoomno(input_R.getRoomno());
 
-				priceService.addPrice(input_p);
+				ripService.addPrice(input_p);
 			}
 				
 		} catch (Exception e) {
@@ -333,8 +340,48 @@ public class HostController {
 		
 		
 		/** * * 5) 결과를 확인하기 위한 페이지 이동 * * */
-		String redirectUrl = contextPath + "/roominfo/view.do?roomno=" + input.getRoomno();
+		String redirectUrl = contextPath + "/host/roominfo/view.do?roomno=" + input_R.getRoomno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+	}
+	
+	/********************************************************************
+	 * 상세 페이지 보기
+	 *******************************************************************/
+	@RequestMapping(value = "/host/roominfo/view.do", method = RequestMethod.GET)
+	public ModelAndView view(Model model) { 
+		/** 1) 필요한 변수값 생성 */
+		// 조회할 대상에 대한 PK값
+		int roomno = webHelper.getInt("roomno");
+		
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (roomno == 0) {
+			return webHelper.redirect(null, "방번호가 없습니다.");
+		}
+		
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		Room input1 = new Room();
+		Info input2 = new Info();
+		input1.setRoomno(roomno);
+		input2.setRoomno(roomno);
+		
+		// 조회결과를 저장할 객체 선언
+		Room output1 = null;
+		Info output2 = null;
+		
+		try {
+			//데이터 조회
+			output1 = ripService.getRoomItem(input1);
+			output2 = ripService.getInfoItem(input2);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("output1", output1);
+		model.addAttribute("output2", output2);
+		
+		return new ModelAndView("host/roominfo/view"); 
 	}
 
 	/********************************************************************
