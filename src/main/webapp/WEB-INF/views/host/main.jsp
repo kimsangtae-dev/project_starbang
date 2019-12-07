@@ -23,7 +23,7 @@
 		<div id="body">
 			<div class="bgimg">
 				<h1 class="title">
-					공실 광고<img src="${pageContext.request.contextPath}/assets/css/ico/logo_white.png">에서 무제한 무료
+					공실 광고<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png">에서 무제한 무료
 				</h1>
 				<p class="desc">방주인에 제한없이 공실 등록하고 무료로 광고하세요.</p>
 				<p class="desc">별방에 광고를 원하시면 지금 당장 방주인을 시작하세요</p>
