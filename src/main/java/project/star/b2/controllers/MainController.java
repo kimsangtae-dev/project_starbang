@@ -179,7 +179,7 @@ public class MainController {
 	}
 
 	/********************************************************************
-	 * 상세페이지 (rmdt 쿠키 단일 저장)
+	 * 상세페이지 (rmdt 쿠키 다중 저장)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
 
@@ -193,8 +193,8 @@ public class MainController {
 				e.printStackTrace();
 			}
 		}
-
-		Cookie cookie = new Cookie("roomno", roomno); // 저장할 쿠키 생성
+		
+		Cookie cookie = new Cookie("cookiesName"+roomno, roomno); // 저장할 쿠키 생성
 		cookie.setPath("/"); // 쿠키의 유효 경로
 		cookie.setDomain("localhost"); // 쿠키의 유효 도메인
 
