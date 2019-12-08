@@ -90,6 +90,11 @@ a.atag > button {
     background-color: #e5e5e5;  
 }
 
+#header .navbar .small-font1.img {
+	height: 25px;
+	width: 25px;
+}
+
 /* 드랍다운 상자 */
 ul.small {
 	width: 240px;
@@ -159,7 +164,14 @@ a.atag1 {
         	</c:when>
         <c:otherwise>
         <div class="dropdown small-font1">
-        	<img src="${loginInfo.profile_img}" />
+        	<c:choose>
+    <c:when test="${loginInfo.profile_img == null}">
+	<img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg" />
+</c:when>
+<c:otherwise>
+	<img src="${loginInfo.profile_img}" />
+</c:otherwise>
+</c:choose> 
 		<a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag"
 			aria-expanded="false" data-target="#loginModal"><button><span>${loginInfo.name} 님<span class="caret"></span>
 					</span></button></a>
