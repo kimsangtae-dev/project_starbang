@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
 import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
@@ -31,6 +32,7 @@ import project.star.b2.service.GalleryService;
 import project.star.b2.service.HeartService;
 import project.star.b2.service.RoomService;
 
+@Slf4j
 @Controller
 public class MainController {
 	/** WebHelper 주입 */
@@ -49,7 +51,7 @@ public class MainController {
 	GalleryService gallerypopularService;
 	@Autowired
 	HeartService heartService;
-	
+
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	// --> import org.springframework.beans.factory.annotation.Value;
 	@Value("#{servletContext.contextPath}")
@@ -161,8 +163,7 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
-		
-		
+
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
@@ -183,7 +184,6 @@ public class MainController {
 	 * 상세페이지 (rmdt 쿠키 다중 저장)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
-
 	public String rmdtsave(HttpServletResponse response,
 			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
 
@@ -194,22 +194,30 @@ public class MainController {
 				e.printStackTrace();
 			}
 		}
-		
-		Cookie cookie = new Cookie("cookiesName"+roomno, roomno); // 저장할 쿠키 생성
-		cookie.setPath("/"); // 쿠키의 유효 경로
-		cookie.setDomain("localhost"); // 쿠키의 유효 도메인
 
-		if (roomno.equals("")) { // 쿠키 시간을 설정하지 않으면 브라우저가 동작하는 동안 유효
-			cookie.setMaxAge(0); // 쿠키 설정시간이 0이면 즉시 삭제
-		} else {
-			cookie.setMaxAge(1800); // 값이 있다면 60초 동안 쿠키 저장
+		for (int i = 0; i < 50; i++) {
+			String result = webHelper.getCookie("cookiesName" + i, "0");
+
+			if (result.equals("0")) {
+
+				Cookie cookie = new Cookie("cookiesName" + i, roomno); // 저장할 쿠키 생성
+				cookie.setPath("/"); // 쿠키의 유효 경로
+				cookie.setDomain("localhost"); // 쿠키의 유효 도메인
+
+				if (roomno.equals("")) { // 쿠키 시간을 설정하지 않으면 브라우저가 동작하는 동안 유효
+					cookie.setMaxAge(0); // 쿠키 설정시간이 0이면 즉시 삭제
+				} else {
+					cookie.setMaxAge(1800); // 값이 있다면 60초 동안 쿠키 저장
+				}
+
+				response.addCookie(cookie);
+
+				/** 2) Spring방식의 페이지 이동. */
+				// Servlet의 response.sendRedirect(url)과 동일
+				// --> "/"부터 시작할 경우 ContextPath는 자동으로 앞에 추가된다.
+				return "redirect:/main/rmdt.do?roomno=" + roomno;
+			}
 		}
-
-		response.addCookie(cookie);
-
-		/** 2) Spring방식의 페이지 이동. */
-		// Servlet의 response.sendRedirect(url)과 동일
-		// --> "/"부터 시작할 경우 ContextPath는 자동으로 앞에 추가된다.
 		return "redirect:/main/rmdt.do?roomno=" + roomno;
 	}
 
@@ -217,26 +225,48 @@ public class MainController {
 	 * 최근 본 방
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public ModelAndView rtrm(Model model, @CookieValue(value = "cookiesName1", defaultValue = "") Integer roomno) {
-		
-		/** 2)데이터 조회하기 */
-		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-		Gallery input = new Gallery();
-		input.setRoomno(roomno);
-		
-		List<Gallery> output = null;
+	public ModelAndView rtrm(Model model, HttpServletRequest request) {
 
-		try {
-			 //쿠키로 저장된 방번호로 조회
-			output = galleryService.getCookieList(input);			
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
+		Cookie[] cookies = request.getCookies();
+		String result = "";
+		int [] ar = new int[50];
 
-		/** 3)View 처리 */
-		model.addAttribute("output", output);
-		//model.addAttribute("newRoomNo", newRoomNo);
+		// 쿠키가 있는 만큼 반복문을 돌려서 조회한다.
+		for (int i = 0; i < cookies.length; i++) {
+			// i번째 쿠키의 이름을 취득한다.
+			String cookieName = cookies[i].getName();
 
+			if (cookieName.equals("cookiesName" + i)) {
+				// 쿠키값을 취득한다.
+				String value = cookies[i].getValue();
+				// 저장된 값의 문자열 길이가 0보다 크다면?
+				if (value.length() > 0) {
+					// 인코딩된 값이므로 디코딩 처리하여 원래값으로 복원한다.
+					try {
+						result = URLDecoder.decode(value, "utf-8");
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+				}
+				int newRoomNo = Integer.parseInt(result);
+				ar[i] = newRoomNo;
+				log.debug("쿠키배열:" + ar[i]);
+				
+				/** 2)데이터 조회하기 */
+				// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+				Gallery input = new Gallery();
+				input.setRoomno(ar[i]);
+
+				List<Gallery> output = null;
+
+				try {
+					// 쿠키로 저장된 방번호로 조회
+					output = galleryService.getCookieList(input);
+				} catch (Exception e) {
+					return webHelper.redirect(null, e.getLocalizedMessage());
+				}
+			}
+		} // end for
 		return new ModelAndView("main/rtrm");
 	}
 
@@ -250,10 +280,9 @@ public class MainController {
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
-		int pageCount = 7;	// 한 그룹당 표시할 페이지 번호 수
-		
-		
-		/********필터********/
+		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+
+		/******** 필터 ********/
 		/** 방 종류(roomtype) */
 		String room = webHelper.getString("roomtype");
 		/** 매물 종류(dealingtype) */
@@ -263,7 +292,7 @@ public class MainController {
 		/** 월세(price) */
 		int monthFrom = webHelper.getInt("monthFrom");
 		int monthTo = webHelper.getInt("monthTo", 999999);
-		/** 매매 (price)*/
+		/** 매매 (price) */
 		int buyingFrom = webHelper.getInt("buyingFrom");
 		int buyingTo = webHelper.getInt("buyingTo");
 		/** 관리비(fee) */
@@ -272,10 +301,10 @@ public class MainController {
 		/** 방 크기(area) */
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
-		
+
 		String dealingtype = webHelper.getString("dealingtype");
 		String region_2depth_name = webHelper.getString("region_2depth_name");
-		
+
 		Filter filter = new Filter();
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
@@ -309,13 +338,13 @@ public class MainController {
 		try {
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
-			
+
 			Gallery.setMonthFrom(monthFrom);
 			Gallery.setMonthTo(monthTo);
-			
+
 			Gallery.setBuyingFrom(buyingFrom);
 			Gallery.setBuyingTo(buyingTo);
-			
+
 			Gallery.setFeeFrom(feeFrom);
 			Gallery.setFeeTo(feeTo);
 
@@ -342,7 +371,7 @@ public class MainController {
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("param", filter);
-		
+
 		return new ModelAndView("main/search");
 	}
 
@@ -442,17 +471,17 @@ public class MainController {
 
 		return new ModelAndView("main/search");
 	}
+
 	/********************************************************************
 	 * 테스트
 	 *******************************************************************/
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/test_check", method = RequestMethod.POST)
-	public List<String> post(Model model,
-			@RequestParam(value="valueArrTest[]") List<String> valueArr){
-		//파라미터값을 View에게 전달한다.
+	public List<String> post(Model model, @RequestParam(value = "valueArrTest[]") List<String> valueArr) {
+		// 파라미터값을 View에게 전달한다.
 		model.addAttribute("valueArr", valueArr);
-		
+
 		return (List<String>) new ModelAndView("main/search");
 	}
-		
-	}
+
+}

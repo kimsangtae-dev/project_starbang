@@ -605,7 +605,7 @@ public class WebHelper {
 				}
 
 				/** 3-2) 동일한 이름의 파일이 존재하는지 검사한다. */
-				// 파일의 원본 이름에서 확장자만 추출
+				// 파일의 원본 이름에서 확장자만 추출.jpg
 				String ext = originName.substring(originName.lastIndexOf("."));
 				 
 				String fileName = null; // 웹 서버에 저장될 파일이름
