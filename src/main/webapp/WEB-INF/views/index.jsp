@@ -210,8 +210,8 @@
     ----------------------------------------->
     <div class="recent">
       <div class="recent-div0">
-        <div class="recent-div1"><a href="${pageContext.request.contextPath}/main/rtrm.do">김기홍님의 최근 본 방</a></div>
-        <div class="recent-div2"><a href="${pageContext.request.contextPath}/main/wish.do">찜한 방</a></div>
+        <div class="recent-div1"><a href="${pageContext.request.contextPath}/main/rtrm.do">${loginInfo.name}님의 최근 본 방</a></div>
+        <div class="recent-div2"><a href="${pageContext.request.contextPath}/main/wish.do">${loginInfo.name}님의 찜한 방</a></div>
         <div class="recent-div3"><span>최근에 본 방과 찜한방을 볼 수 있어요</span></div>
         <!-- 갤러리 전체 박스 -->
         <div class="recent-div4"> 

@@ -176,7 +176,7 @@ a.atag1 {
 			aria-expanded="false" data-target="#loginModal"><button><span>${loginInfo.name} 님<span class="caret"></span>
 					</span></button></a>
 		<ul class="dropdown-menu small" role="menu" aria-labelledby="dLabel">
-			<li><a href="${pageContext.request.contextPath}/admin/faq.do" class="atag1"><span>자주묻는질문</span></a></li>
+			<li><a href="${pageContext.request.contextPath}/main/mypage.do" class="atag1"><span>정보수정</span></a></li>
 			<li class="divider"></li>
 			<li><a href="${pageContext.request.contextPath}/modal/login_out.do" class="atag1">로그아웃</a></li>
 		</ul>
