@@ -150,19 +150,9 @@
 		SELECT h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename 
 		FROM heart h 
 		INNER JOIN room r ON h.roomno=r.roomno 
-<<<<<<< Updated upstream
-		INNER JOIN (
-		SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
-		INNER JOIN (
-		SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
-		group by roomno 
-		order by count(h.roomno) 
-		DESC
-=======
 		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
 		INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
 		group by roomno order by count(h.roomno) DESC
->>>>>>> Stashed changes
     <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
     </if>
@@ -171,20 +161,12 @@
      <!-- 찜목록을 보여주기 위한 기능 정의 -->
      <select id="selectHeartList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
      SELECT u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno 
-<<<<<<< Updated upstream
-     from user u INNER JOIN heart h ON u.userno=h.userno 
-     INNER JOIN room r ON r.userno=u.userno 
-     INNER JOIN (SELECT * FROM price p)a ON r.roomno=a.roomno 
-     INNER JOIN (SELECT * FROM image i)b ON r.roomno=b.roomno 
-     WHERE u.userno=24
-=======
      from user u 
      INNER JOIN heart h ON u.userno=h.userno 
-     INNER JOIN room r ON r.userno=u.userno 
-     INNER JOIN (SELECT * FROM price p)a ON r.roomno=a.roomno 
-     INNER JOIN (SELECT * FROM image i)b ON r.roomno=b.roomno 
+     INNER JOIN room r ON r.roomno=h.roomno 
+     INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
+     INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
      WHERE u.userno=#{userno}
->>>>>>> Stashed changes
      <if test="listCount > 0">
             LIMIT #{offset}, #{listCount}
     </if>

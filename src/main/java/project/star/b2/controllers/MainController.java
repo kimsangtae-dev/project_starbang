@@ -353,10 +353,11 @@ public class MainController {
 	 *******************************************************************/
 	@RequestMapping(value = "/main/wish.do", method = RequestMethod.GET)
 	public ModelAndView wish(Model model, HttpServletRequest request) {
-		HttpSession session =request.getSession(true);
-		/* session.setAttribute("userno", session.getAttribute("userInfo()")); */
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+
 		/** 1) 필요한 변수값 생성 */
-		int login =  (int) session.getAttribute("loginInfo.userno");
+        int userno = loginInfo.getUserno();
 		int keyword = webHelper.getInt("roomno");// 검색어
 		String keyword2 = webHelper.getString("roomtype");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -368,7 +369,7 @@ public class MainController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Heart input = new Heart();
 		Gallery input2 = new Gallery();
-		input.setUserno(login);
+		input.setUserno(userno);
 		input.setRoomno(keyword);
 		input.setRoomtype(keyword2);
 
