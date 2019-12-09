@@ -22,7 +22,7 @@ import project.star.b2.model.Info;
 import project.star.b2.model.Price;
 import project.star.b2.model.Room;
 import project.star.b2.service.ApiKakaoSearchService;
-import project.star.b2.service.RIPService;
+//import project.star.b2.service.RIPService;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -43,7 +43,7 @@ public class HostController {
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired
-	RIPService ripService;
+	//RIPService ripService;
 
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
@@ -291,18 +291,14 @@ public class HostController {
 
 		
 		/** 1. room DB, info DB 데이터 저장 */
-		try {
-			ripService.addRoom(input_R);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		try {
-			input_I.setRoomno(input_R.getRoomno());
-			ripService.addInfo(input_I);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
+		/*
+		 * try { ripService.addRoom(input_R); } catch (Exception e) { return
+		 * webHelper.redirect(null, e.getLocalizedMessage()); }
+		 * 
+		 * try { input_I.setRoomno(input_R.getRoomno()); ripService.addInfo(input_I); }
+		 * catch (Exception e) { return webHelper.redirect(null,
+		 * e.getLocalizedMessage()); }
+		 */
 		
 		
 		/** 2. price DB 데이터 저장 */
@@ -330,7 +326,7 @@ public class HostController {
 				input_p.setShort_room(short_room);
 				input_p.setRoomno(input_R.getRoomno());
 
-				ripService.addPrice(input_p);
+				//ripService.addPrice(input_p);
 			}
 				
 		} catch (Exception e) {
@@ -371,8 +367,8 @@ public class HostController {
 		
 		try {
 			//데이터 조회
-			output1 = ripService.getRoomItem(input1);
-			output2 = ripService.getInfoItem(input2);
+			//output1 = ripService.getRoomItem(input1);
+			//output2 = ripService.getInfoItem(input2);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
