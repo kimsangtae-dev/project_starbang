@@ -27,7 +27,7 @@
 	<div id="root">
 		<div class="box">
 			<!-- header 시작 -->
-			<%@ include file="../assets/inc/ho_header.jsp"%>
+			<%@ include file="../assets/inc/ho_header2.jsp"%>
 			<!-- header 끝 -->
 			<!-- content 시작 -->
 
