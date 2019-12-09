@@ -48,9 +48,5 @@
 	<p>14. 건물타입(content): ${output2.content}</p>	
 	<p>15. 방번호2(roomno): ${output2.roomno}</p>
 	<hr />	
-	<a href="${pageContext.request.contextPath}/roominfo/list.do">[슈퍼 목록보기]</a>
-	<a href="${pageContext.request.contextPath}/roominfo/add.do">[슈퍼 방 추가]</a>
-	<a href="${pageContext.request.contextPath}/roominfo/edit.do?roomno=${output1.roomno}">[슈퍼 방 수정]</a>
-	<a href="${pageContext.request.contextPath}/roominfo/delete_ok.do?roomno=${output1.roomno}">[슈퍼 방 삭제]</a>
 </body>
 </html>

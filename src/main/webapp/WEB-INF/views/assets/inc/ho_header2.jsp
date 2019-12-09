@@ -17,9 +17,9 @@
 	height: 70px;
 	padding: 0 30px;
 	border: 0;
-	/* border-bottom: 1px solid #eee; */
+	border-bottom: 1px solid #eee;
 	margin: 0;
-	background-color: transparent;
+	background-color: rgb(81, 136, 244);
 }
 /* 로고 이미지 크기, 위치 설정 */
 #header > .navbar > a > img {
@@ -85,7 +85,7 @@
  a.atag > button {
     height: 30px;
     cursor: pointer;
-    background-color: transparent;
+    background-color: rgb(81, 136, 244);
     border-width: 0px;
     color: white;
     outline: none;
@@ -130,26 +130,7 @@ ul.small {
     text-align: left;
 }
 
-.navbar > .pull-right {
-    width: 520px;
-    padding-top: 0px;
-}
-
-#header a:hover {
-    
-    color: #666666;
-}
-
-
-
-/* a.atag1 {
-    text-align: left;
-} */
-
-
-
-/* #header::after { content: ''; dispaly: table; clear: both } */
-
+#header a:hover { color: #666666; }
 
 </style>
 </head>

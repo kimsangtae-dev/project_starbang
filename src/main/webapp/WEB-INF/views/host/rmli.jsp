@@ -25,7 +25,7 @@
 <div id="root">
     <div class="box">
         <!-- 헤더 -->
-        <%@ include file="../assets/inc/ho_header.jsp"%>
+        <%@ include file="../assets/inc/ho_header2.jsp"%>
 
         <!-- content -->
         <!-- 공실관리 -->

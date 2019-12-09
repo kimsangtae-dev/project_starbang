@@ -67,7 +67,7 @@
         useGeneratedKeys="true"
         keyProperty="userno">
         INSERT INTO user (name, email, passwd, tel, regdate, editdate, profile_img) 
-        VALUES (#{name}, #{email}, #{passwd}, #{tel}, #{regdate}, #{editdate}, #{profile_img});
+        VALUES (#{name}, #{email}, #{passwd}, #{tel}, now(), now(), #{profile_img});
     </insert>
 
     <!-- 데이터 삭제를 위한 기능 정의 -->
@@ -79,7 +79,7 @@
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
         parameterType="project.star.b2.model.User">
-        UPDATE user SET name=#{name}, email=#{email}, passwd=#{passwd}, tel=#{tel}, profile_img=#{profile_img}
+        UPDATE user SET name=#{name}, email=#{email}, passwd=#{passwd}, tel=#{tel}, editdate=now(), profile_img=#{profile_img}
         WHERE userno=#{userno};
     </update>
     

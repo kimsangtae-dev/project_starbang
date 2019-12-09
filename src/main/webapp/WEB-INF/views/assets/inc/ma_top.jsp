@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
 <head>
 <style>
 /*---------------------------------
@@ -21,99 +22,108 @@
 	margin: 0;
 }
 /* 로고 이미지 크기, 위치 설정 */
-#header .navbar img {
-	height: 45px;
-	margin: 8px 0 12px 0;
+#header > .navbar > a > img {
+	width: 50px;
+	height: 50px;
+	margin: 8px 0 12px 50px;
 }
+
 /* 방주인사이트 여백 설정 */
 #header .menu-left {
 	display: inline-block;
 	margin-left: 20px;
 }
-/* 메뉴 세로 가운데 정렬 */
-#header a {
-	display: inline-block;
-	line-height: 70px;
-	font-size: 15px;
-	color: #222;
-}
+
 /* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
-#header .small-font a {
-	font-size: 13px;
+.small-font > a {
+	display: inline-block;
+	font-size: 14px;
+	color: #777;
+	/* font-weight: 700; */
+}
+
+
+.pull-right > div > a  {
+	line-height: 70px;
+	height: 70px;
+	display: inline-block;
+	font-size: 14px;
 	color: #777;
 }
-.small-font {
-	color: #eee;
-}
+
 /* 메뉴에 마우스오버 시 색 변경 설정 */
 #header a:hover {
 	color: rgb(21, 100, 249);
 }
 /* 각 메뉴들 간 여백 설정 */
 .padding-l {
-	margin-left: 35px;
+	margin-left: 40px;
 }
 /* 메뉴 우측 정렬 */
-#header .pull-right div {
-	display: inline-block;
-}
-#con {
-	height: 800px;
+#header .pull-right div { display: inline-block; }
+
+
+/******* 로그인 시 변경  ***/
+
+/* 로그인 프로필 이미지 크기 */
+.pull-right .small-font1 img {
+    width: 35px;
+    height: 35px;
 }
 
-/* 로그인 시 변경  ***/
-
-/* 로그인 창 전체 크기 */
+/* 회원가입 , 로그인 창 전체*/
 .small-font1 {
-    float: right;
-    min-width: 97px;
+    min-width: 70px;
     height: 70px;
     margin-left: 57px;
+    cursor: pointer;
 }
 
 /* 이름 상자 */
-a.atag > button {
+ a.atag > button {
     height: 30px;
     cursor: pointer;
     background-color: white;
     border-width: 0px;
     color: rgb(34, 34, 34);
     outline: none;
-}
+} 
 
 /* 드랍다운 상자 구분 선 */
-.dropdown-menu .divider {
+.small .divider {
     width: 100%;
     height: 1px;
-    margin: 9px 0;
+    /* margin: 9px 0; */
     overflow: hidden;
     background-color: #e5e5e5;  
 }
 
+/* 프로필 이미지 크기 */
+#header .navbar .small-font1.img { height: 25px; width: 25px;}
+
+
 /* 드랍다운 상자 */
 ul.small {
-	width: 240px;
+	width: 150px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
     background-color: rgb(255, 255, 255);
     position: absolute;
     right: 50px;
+    /* margin-right: 150px; */
     top: 80px;
-    z-index: 1;
+    z-index: 11;
     border: 1px solid rgb(212, 212, 212);
     border-radius: 4px;	
 }
 
 .small > li > .atag1 {
 	width: 100%;
-    height: 40px;
-    line-height: 30px;
+    height: 50px;
+    line-height: 50px;
     color: rgb(102, 102, 102);
     font-size: 14px;
     cursor: pointer;
-    padding: 0px 20px;
-}
-
-a.atag1 {
+    /* padding: 0px 20px; */
     text-align: left;
 }
 
@@ -159,12 +169,19 @@ a.atag1 {
         	</c:when>
         <c:otherwise>
         <div class="dropdown small-font1">
-        	<img src="${loginInfo.profile_img}" />
+        	<c:choose>
+    <c:when test="${loginInfo.profile_img == null}">
+	<img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg" />
+</c:when>
+<c:otherwise>
+	<img src="${loginInfo.profile_img}" />
+</c:otherwise>
+</c:choose> 
 		<a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag"
 			aria-expanded="false" data-target="#loginModal"><button><span>${loginInfo.name} 님<span class="caret"></span>
 					</span></button></a>
 		<ul class="dropdown-menu small" role="menu" aria-labelledby="dLabel">
-			<li><a href="${pageContext.request.contextPath}/admin/faq.do" class="atag1"><span>자주묻는질문</span></a></li>
+			<li><a href="${pageContext.request.contextPath}/main/mypage.do" class="atag1"><span>마이페이지</span></a></li>
 			<li class="divider"></li>
 			<li><a href="${pageContext.request.contextPath}/modal/login_out.do" class="atag1">로그아웃</a></li>
 		</ul>

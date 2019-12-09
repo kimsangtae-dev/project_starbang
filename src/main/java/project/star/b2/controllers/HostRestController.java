@@ -1,34 +1,35 @@
 package project.star.b2.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Address;
-import project.star.b2.model.Address.Documents;
 import project.star.b2.model.Info;
 import project.star.b2.model.Price;
 import project.star.b2.model.Room;
+import project.star.b2.model.User;
+import project.star.b2.model.Address.Documents;
 import project.star.b2.service.ApiKakaoSearchService;
 import project.star.b2.service.RIPService;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
-@Controller
-public class HostController {
-
+@RestController
+public class HostRestController {
+	
 	/** WebHelper 주입 */
 	@Autowired
 	WebHelper webHelper;
@@ -45,34 +46,16 @@ public class HostController {
 	@Autowired
 	RIPService ripService;
 
-
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
-
-	/********************************************************************
-	 * 방주인 메인페이지
-	 *******************************************************************/
-	@RequestMapping(value = "/host/main.do", method = RequestMethod.GET)
-	public ModelAndView main() {
-
-		return new ModelAndView("host/main");
-	}
-
-	/********************************************************************
-	 * 공실 등록하기
-	 *******************************************************************/
-	@RequestMapping(value = "/host/rm_add.do", method = RequestMethod.GET)
-	public ModelAndView rm_add() {
-
-		return new ModelAndView("host/rm_add");
-	}
-
+	
+	
 	/********************************************************************
 	 * 공실 등록하기_ok
 	 *******************************************************************/
-	@RequestMapping(value = "/host/rm_add_ok.do", method = RequestMethod.POST)
-	public ModelAndView rm_add_ok(Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/host", method = RequestMethod.POST)
+	public Map<String, Object> put(HttpServletRequest request) {
 
 		/** * * 1) 사용자가 입력한 파라미터 수신 * * */
 		
@@ -104,13 +87,10 @@ public class HostController {
 		int fee = webHelper.getInt("fee");
 		String dong = webHelper.getString("dong");
 		String ho = webHelper.getString("ho");
-		
-		int userno = 1;	// * 세션이 없기 때문에 임시로 1번 넣기*
+
 		HttpSession session = request.getSession();
-        String mySession = (String) session.getAttribute("loginInfo");
-        if (mySession == null) {
-            mySession = "";
-        }
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = loginInfo.getUserno();
 		
 		
 		/***
@@ -189,26 +169,28 @@ public class HostController {
 		/** * * 2) 유효성 검사 * * */
 		
 		/** (1) Room DB 유효성검사 */
-		if (title == null) 		{ return webHelper.redirect(null, "매물에대한 제목을 입력해주세요."); } 	// title 검사
-		if (floor == 0)			{ return webHelper.redirect(null, "해당층을 입력해주세요."); }			// floor 검사
+		if (floor == 0)        		{ return webHelper.getJsonWarning("교수번호가 없습니다."); }
+		if (title == null)     	  { return webHelper.getJsonWarning("교수 이름을 입력하세요."); }
+		//if (title == null) 		{ return webHelper.redirect(null, "매물에대한 제목을 입력해주세요."); } // title 검사
+		//if (floor == 0)			{ return webHelper.redirect(null, "해당층을 입력해주세요."); }		// floor 검사
 		//if (area == 0) 			{ return webHelper.redirect(null, "면적을 입력해주세요."); } 			// area 검사
-		//if (fee == null) 		{ return webHelper.redirect(null, "설명을 입력하세요."); } 				// fee 검사
-		if (dong == null) 		{ return webHelper.redirect(null, "동을 입력해주세요."); } 				// dong 검사
-		if (ho == null)			{ return webHelper.redirect(null, "호를 입력해주세요."); } 				// ho 검사
+		//if (fee == null) 			{ return webHelper.redirect(null, "설명을 입력하세요."); } 			// fee 검사
+		//if (dong == null) 		{ return webHelper.redirect(null, "동을 입력해주세요."); } 			// dong 검사
+		//if (ho == null)			{ return webHelper.redirect(null, "호를 입력해주세요."); } 			// ho 검사
 		
 		/** (2) Info DB 유효성검사 */
 		//if (feeitem == null) { return webHelper.redirect(null, "feeitem을 입력하세요.");} 			// feeitem 검사
 		//if (parking == 0) { return webHelper.redirect(null, "설명을 입력하세요."); } 					// parking 검사
 		//if (optionitem == null) { return webHelper.redirect(null, "설명을 입력하세요."); } 			// optionitem 검사
 		//if (supplyarea == 0) 	{ return webHelper.redirect(null, "공급면적을 입력해주세요."); } 			// supplyarea 검사
-		if (maxfloor == 0) 		{ return webHelper.redirect(null, "전체층 수를 선택해주세요."); }			// maxfloor 검사
-		if (commingday == null) { return webHelper.redirect(null, "입주일을 선택해주세요."); } 			// commingday 검사
-		if (content == null)	{ return webHelper.redirect(null, "상세설명을 입력해주세요."); } 			// content 검사
+		//if (maxfloor == 0) 		{ return webHelper.redirect(null, "전체층 수를 선택해주세요."); }		// maxfloor 검사
+		//if (commingday == null) { return webHelper.redirect(null, "입주일을 선택해주세요."); } 			// commingday 검사
+		//if (content == null)	{ return webHelper.redirect(null, "상세설명을 입력해주세요."); } 			// content 검사
 		
 		/** (3) Price DB 유효성검사 */
-		if (dealingtype == null){ return webHelper.redirect(null, "매물종류를 선택해주세요."); } 			// 매물종류 검사
-		if (deposit == null) 	{ return webHelper.redirect(null, "보증금을 입력해주세요."); }			// 보증금 검사
-		if (price == null) 		{ return webHelper.redirect(null, "가격을 입력해주세요."); } 				// 가격 검사
+		//if (dealingtype == null){ return webHelper.redirect(null, "매물종류를 선택해주세요."); } 		// 매물종류 검사
+		//if (deposit == null) 	{ return webHelper.redirect(null, "보증금을 입력해주세요."); }			// 보증금 검사
+		//if (price == null) 		{ return webHelper.redirect(null, "가격을 입력해주세요."); } 			// 가격 검사
 		
 
 
@@ -291,17 +273,22 @@ public class HostController {
 
 		
 		/** 1. room DB, info DB 데이터 저장 */
+		
+		Room output = null; 
 		try {
 			ripService.addRoom(input_R);
+			output = ripService.getRoomItem(input_R);
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			return webHelper.getJsonError(e.getLocalizedMessage());
+			//return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		try {
 			input_I.setRoomno(input_R.getRoomno());
 			ripService.addInfo(input_I);
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			return webHelper.getJsonError(e.getLocalizedMessage());
+			//return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
 		
@@ -334,71 +321,17 @@ public class HostController {
 			}
 				
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			return webHelper.getJsonError(e.getLocalizedMessage());
+			//return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
+		/** 결과를 확인하기 위한 JSON 출력 */
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("item", output);
+        
+        return webHelper.getJsonData(map);
 		
-		
-		/** * * 5) 결과를 확인하기 위한 페이지 이동 * * */
-		String redirectUrl = contextPath + "/host/roominfo/view.do?roomno=" + input_R.getRoomno();
-		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 	
-	/********************************************************************
-	 * 상세 페이지 보기
-	 *******************************************************************/
-	@RequestMapping(value = "/host/roominfo/view.do", method = RequestMethod.GET)
-	public ModelAndView view(Model model) { 
-		/** 1) 필요한 변수값 생성 */
-		// 조회할 대상에 대한 PK값
-		int roomno = webHelper.getInt("roomno");
-		
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
-		if (roomno == 0) {
-			return webHelper.redirect(null, "방번호가 없습니다.");
-		}
-		
-		/** 2) 데이터 조회하기 */
-		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Room input1 = new Room();
-		Info input2 = new Info();
-		input1.setRoomno(roomno);
-		input2.setRoomno(roomno);
-		
-		// 조회결과를 저장할 객체 선언
-		Room output1 = null;
-		Info output2 = null;
-		
-		try {
-			//데이터 조회
-			output1 = ripService.getRoomItem(input1);
-			output2 = ripService.getInfoItem(input2);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 3) View 처리 */
-		model.addAttribute("output1", output1);
-		model.addAttribute("output2", output2);
-		
-		return new ModelAndView("host/roominfo/view"); 
-	}
 
-	/********************************************************************
-	 * 공실 수정하기
-	 *******************************************************************/
-	@RequestMapping(value = "/host/rm_edit.do", method = RequestMethod.GET)
-	public ModelAndView rm_edit() {
-
-		return new ModelAndView("jsp/host/rm_edit");
-	}
-
-	/********************************************************************
-	 * 공실관리
-	 *******************************************************************/
-	@RequestMapping(value = "/host/rmli.do", method = RequestMethod.GET)
-	public ModelAndView rmli() {
-
-		return new ModelAndView("host/rmli");
-	}
 }
