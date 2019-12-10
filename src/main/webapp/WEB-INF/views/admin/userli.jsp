@@ -10,8 +10,7 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/ad_css/userli.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/userli.css" />
 
 </head>  
 
@@ -27,7 +26,7 @@
 			<div>
 				<h1>회원관리</h1>
 				<br/>
-				<!-- <a href="${pageContext.request.contextPath}/admin/edit2.do">[회원수정]</a> -->
+				<%-- <a href="${pageContext.request.contextPath}/admin/userlist/add.do">[회원추가]</a> --%>
 	
 	<!-- 검색폼 -->
 	<div class="search_form">
@@ -87,7 +86,7 @@
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="/user/view.do" var="viewUrl">
+						<c:url value="admin/userlist/view.do" var="viewUrl">
 							<c:param name="userno" value="${item.userno}" />
 						</c:url>
 
@@ -168,10 +167,8 @@
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-	<script
-		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			/* 체크박스 전체선택 */
