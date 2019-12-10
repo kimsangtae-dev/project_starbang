@@ -47,9 +47,9 @@
             font-weight: 700;
         }
         /* 메뉴에 마우스오버 시 색 변경 설정 */
-        #header a:hover {
+        /* #header a:hover {
             color: rgb(21, 100, 249);
-        }
+        } */
         /* 각 메뉴들 간 여백 설정 */
         .padding-l {
             margin-left: 40px;

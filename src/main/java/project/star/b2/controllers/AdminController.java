@@ -190,9 +190,76 @@ public class AdminController {
 		return new ModelAndView(viewPath);
 	}
 	
+	/** 
+	 * 작성 폼 페이지 
+	 */
+	@RequestMapping(value = "/admin/userlist/add.do", method = RequestMethod.POST)
+	public ModelAndView add(Model model) { 
+		
+		return new ModelAndView("admin/userlist/add.do"); 
+	}
+	
+	
+	
+	
+	
+	/** 
+	 * 작성 폼에 대한 action 페이지 
+	 */
+	@RequestMapping(value = "/admin/userlist/add_ok.do", method = RequestMethod.POST)
+	public ModelAndView add_ok(Model model) { 
+		
+		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+		String name = webHelper.getString("name");
+		String email = webHelper.getString("email");
+		String passwd = webHelper.getString("passwd");
+		String tel = webHelper.getString("tel");
+		String regdate = webHelper.getString("regdate");
+		String editdate = webHelper.getString("editdate");
+		String profile_img = webHelper.getString("profile_img");
+		
+		// 학과 이름은 필수 항목이므로 입력여부를 검사
+		// 위치는 미필수(null허용)이므로 입력 여부를 검사하지 않는다.
+		if (name == null) {
+			return webHelper.redirect(null, "회원이름을 입력하세요.");
+		}
+		
+		if (!regexHelper.isKor(name)) {
+			return webHelper.redirect(null, "회원이름은 한글만 가능합니다.");
+		}
+		
+		
+		/** 2) 데이터 저장하기 */
+		// 저장할 값들을 Beans에 담는다.
+		User input = new User();
+		input.setName(name);
+		input.setEmail(email);
+		input.setPasswd(passwd);
+		input.setTel(tel);
+		input.setRegdate(regdate);
+		input.setEditdate(editdate);
+		input.setProfile_img(profile_img);
+		
+		
+		try {
+			
+			// 데이터 저장
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			userService.addUser(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) 결과를 확인하기 위한 페이지 이동 */
+		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
+		String redirectUrl = contextPath + "/admin/userlist/view.do?no="+ input.getUserno();
+		
+		return webHelper.redirect(redirectUrl, "저장되었습니다."); 
+	}
 	
 	/****** 회원 삭제 페이지 ******/
-    @RequestMapping(value = "/admin/delete_ok.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/userlist/delete_ok.do", method = RequestMethod.GET)
     public ModelAndView delete_ok(Model model) {
         /** 1) 필요한 변수값 생성 */
         // 삭제할 대상에 대한 PK값
@@ -222,7 +289,7 @@ public class AdminController {
     
     
     /****** 회원 수정 폼 페이지 ******/
-    @RequestMapping(value = "/admin/edit2.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/userlist/edit.do", method = RequestMethod.GET)
     public ModelAndView edit(Model model) {
         /** 1) 필요한 변수값 생성 */
         // 조회할 대상에 대한 PK값
@@ -249,12 +316,12 @@ public class AdminController {
         
         /** 3) View 처리 */
         model.addAttribute("output", output);
-        return new ModelAndView("admin/edit2");
+        return new ModelAndView("admin/userlist/edit");
     }
     
     
     /****** 회원 수정 폼에 대한 action 페이지 ******/
-	@RequestMapping(value = "/admin/edit_ok.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/userlist/edit_ok.do", method = RequestMethod.POST)
 	public ModelAndView edit_ok(Model model) {
 		
 		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
@@ -296,7 +363,7 @@ public class AdminController {
 
         /** 3) 결과를 확인하기 위한 페이지 이동 */
         // 수정한 대상을 상세페이지에 알려주기 위해서 PK값을 전달해야 한다. 
-        String redirectUrl = contextPath + "/user/view.do?userno=" + input.getUserno();
+        String redirectUrl = contextPath + "/admin/userlist/view.do?userno=" + input.getUserno();
         return webHelper.redirect(redirectUrl, "수정되었습니다.");
     }
 	

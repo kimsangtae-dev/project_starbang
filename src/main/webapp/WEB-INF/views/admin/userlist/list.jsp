@@ -9,11 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>유저관리</h1>
-	<!-- <a href="${pageContext.request.contextPath}/user/add.do">[유저추가]</a> -->
+	<h1>회원관리</h1>
+	<a href="${pageContext.request.contextPath}/admin/userlsit/add.do">[유저추가]</a>
 	
 	<!-- 검색폼 -->
-	<form method="get" action="${pageContext.request.contextPath}/user/list.do">
+	<form method="get" action="${pageContext.request.contextPath}/admin/userlist/list.do">
 		<label for="keyword">검색어: </label>
 		<input type="search" name="keyword" id="keyword" placeholder="유저명 or 이메일 검색" value="${keyword}" />
 		<button type="submit">검색</button>	
@@ -66,7 +66,7 @@
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="/user/view.do" var="viewUrl">
+						<c:url value="/admin/userlist/view.do" var="viewUrl">
 							<c:param name="userno" value="${item.userno}" />
 						</c:url>
 
@@ -93,7 +93,7 @@
 		<%-- 이전 그룹으로 이동 가능하다면? --%>
 		<c:when test="${pageData.prevPage > 0}">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/user/list.do" var="prevPageUrl">
+			<c:url value="/admin/userlist/list.do" var="prevPageUrl">
 				<c:param name="page" value="${pageData.prevPage}" />
 				<c:param name="keyword" value="${keyword}" />
 			</c:url>
@@ -107,7 +107,7 @@
 	<%--페이지 번호 (시작 페이지 부터 끝 페이지까지 반복 --%>
 	<c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 		<%-- 이동할 URL 생성 --%>
-		<c:url value="/user/list.do" var="pageUrl">
+		<c:url value="/admin/userlist/list.do" var="pageUrl">
 			<c:param name="page" value="${i}" />
 			<c:param name="keyword" value="${keyword}" />
 		</c:url>
@@ -131,7 +131,7 @@
 		<%-- 다음 그룹으로 이동 가능하다면? --%>
 		<c:when test="${pageData.nextPage > 0}">
 			<%-- 이동할 URL 생성 --%>
-			<c:url value="/user/list.do" var="nextPageUrl">
+			<c:url value="/admin/userlist/list.do" var="nextPageUrl">
 				<c:param name="page" value="${pageData.nextPage}" />
 				<c:param name="keyword" value="${keyword}" />
 			</c:url>
