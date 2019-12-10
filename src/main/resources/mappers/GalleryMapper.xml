@@ -139,48 +139,11 @@
 	<!-- 인기매물용 다중행 조회를 위한 기능 정의 -->
 	<select id="selectfameList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-		<!-- SELECT r.roomno, roomtype, title, floor, area, fee, price, dealingtype, 
-			deposit, count(heartno), filename FROM room r INNER JOIN heart h ON r.roomno 
-			= h.roomno INNER JOIN price p ON r.roomno = p.roomno INNER JOIN image i ON 
-			r.roomno = i.roomno GROUP BY roomno ORDER BY count(heartno) DESC -->
-
-		<!-- SELECT h.roomno, count(h.roomno), r.roomtype, r.title, r.floor, r.area, 
-			r.fee, p.price, p.dealingtype, p.deposit, i.filename FROM heart h INNER JOIN 
-			room r ON h.roomno=r.roomno INNER JOIN image i ON h.roomno=i.roomno INNER 
-			JOIN price p ON h.roomno=p.roomno Group by h.roomno order by count(h.roomno) 
-			DESC -->
-		SELECT
-		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename
-		FROM heart h
-		INNER JOIN room r ON h.roomno=r.roomno
-		INNER JOIN (
-		SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno
-		INNER JOIN (
-		SELECT * FROM image i group by i.roomno)B ON
-		r.roomno=b.roomno
-		group by roomno
-		order by count(h.roomno)
-		DESC
+		SELECT h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename
+		FROM heart h INNER JOIN room r ON h.roomno=r.roomno INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno group by roomno order by count(h.roomno) DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
-		<!-- SELECT h.roomno, count(h.roomno), r.roomtype, r.title, r.floor, r.area, r.fee,
-		p.price, p.dealingtype, p.deposit, i.filename FROM heart h
-		INNER JOIN room r ON
-		h.roomno=r.roomno
-		INNER JOIN image i ON h.roomno=i.roomno
-		INNER JOIN price
-		p ON h.roomno=p.roomno
-		Group by h.roomno order by count(h.roomno) DESC -->
-		SELECT h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename 
-		FROM heart h 
-		INNER JOIN room r ON h.roomno=r.roomno 
-		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
-		INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
-		group by roomno order by count(h.roomno) DESC
-    <if test="listCount > 0">
-            LIMIT #{offset}, #{listCount}
-    </if>
     </select>
     
      <!-- 찜목록을 보여주기 위한 기능 정의 -->
@@ -191,22 +154,7 @@
      INNER JOIN room r ON r.roomno=h.roomno 
      INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
      INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
-     WHERE u.userno=#{userno}
-     <if test="listCount > 0">
-            LIMIT #{offset}, #{listCount}
-    </if>
-	</select>
-
-	<!-- 찜목록을 보여주기 위한 기능 정의 -->
-	<select id="selectHeartList"
-		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-		SELECT u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price,
-		a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno
-		from user u INNER JOIN heart h ON u.userno=h.userno
-		INNER JOIN room r ON r.userno=u.userno
-		INNER JOIN (SELECT * FROM price p)a ON r.roomno=a.roomno
-		INNER JOIN (SELECT * FROM image i)b ON r.roomno=b.roomno
-		WHERE u.userno=24
+     WHERE u.u.serno=#{userno}
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>

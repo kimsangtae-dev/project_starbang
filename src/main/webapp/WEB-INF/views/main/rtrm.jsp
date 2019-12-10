@@ -41,10 +41,12 @@
 		<%-- ------ 컨트롤러에서 Model 객체를 통해 넘어온 값 출력하기 ------ --%>
 		<c:choose>
 			<c:when test="${newRoomNo == ''}">
-				<h2>저장된 쿠키 없음</h2>
+				<h2>쿠키명: ${name}
+					쿠키값:${value}</h2>
 			</c:when>
 			<c:otherwise>
-				<h2>저장된 쿠키 = ${newRoomNo}</h2>
+				<h2>저장된 쿠키 = 쿠키명: ${name}
+					쿠키값:${value}</h2>
 			</c:otherwise>
 		</c:choose>
 	

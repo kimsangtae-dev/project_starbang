@@ -31,11 +31,11 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	</c:choose>	 --%>
 	
 	<c:choose>
-		<c:when test="${cookie.roomno == null}">
-			<h2>저장된 쿠키 없음</h2>
+		<c:when test="${cookie.roomno == 1}">
+			<h2>쿠키값:${cookie.cookiesname.value}</h2>
 		</c:when>
 		<c:otherwise>
-			<h2>저장된 쿠키 = ${cookie.roomno.value}</h2>
+			<h2>저장된 쿠키 = 쿠키명: ${cookie.cookiesname.value}</h2>
 		</c:otherwise>
 	</c:choose>
 
