@@ -190,6 +190,43 @@ public class AdminController {
 		return new ModelAndView(viewPath);
 	}
 	
+	/********************************************************************
+	 * 상세 페이지 보기
+	 *******************************************************************/
+	@RequestMapping(value = "/admin/userlist/view.do", method = RequestMethod.GET)
+	public ModelAndView view(Model model) { 
+		/** 1) 필요한 변수값 생성 */
+		// 조회할 대상에 대한 PK값
+		int userno = webHelper.getInt("userno");
+		
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (userno == 0) {
+			return webHelper.redirect(null, "회원번호가 없습니다.");
+		}
+		
+		/** 2) 데이터 조회하기 */
+		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
+		User input = new User();
+		input.setUserno(userno);
+
+		
+		// 조회결과를 저장할 객체 선언
+		User output = null;
+		
+		try {
+			//데이터 조회
+			output = userService.getUserItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3) View 처리 */
+		model.addAttribute("output", output);
+		
+		return new ModelAndView("admin/userlist/view"); 
+	}
+	
+	
 	/** 
 	 * 작성 폼 페이지 
 	 */
@@ -198,11 +235,7 @@ public class AdminController {
 		
 		return new ModelAndView("admin/userlist/add.do"); 
 	}
-	
-	
-	
-	
-	
+
 	/** 
 	 * 작성 폼에 대한 action 페이지 
 	 */
@@ -253,7 +286,7 @@ public class AdminController {
 		
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/admin/userlist/view.do?no="+ input.getUserno();
+		String redirectUrl = contextPath + "/admin/userlist/view.do?userno="+ input.getUserno();
 		
 		return webHelper.redirect(redirectUrl, "저장되었습니다."); 
 	}
