@@ -165,9 +165,10 @@
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
 		SELECT
 		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate,
-		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price
+		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
+		r.region_2depth_name
 		FROM room AS r
-		INNER JOIN price AS p
+		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
 		ON r.roomno=p.roomno
 		WHERE r.roomno IN
 		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
