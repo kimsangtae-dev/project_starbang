@@ -2,53 +2,32 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="ko">
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/assets/css/modal_css/join.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/assets/css/etc/reset.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/join.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/etc/reset.css">
 
 <!-- sweetalert -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
-<script
-	src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
 
-<script
-	src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<!-- script -->
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
-
-<!-- 화면 영역 -->
-<!-- 	<div class="container">
-		<h1 class="page-header">Bootstrap Modal Open</h1>
-		링크로 모달 열기
-		<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">open modal</a>
-	</div> -->
-<!-- 화면 영역 끝 -->
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="myModal" class="siz">
-		<div class="modal-dialog siz modaltop"> -->
 <div class="modal-content wholething sw" id="myModal">
 	<div class="modal-header">
 		<h4 class="modal-title">회원가입</h4>
 		<!-- 닫기버튼 -->
 		<button class="btnclose" data-dismiss="modal">
-			<svg width="30" height="30" viewBox="0 0 32 32"> <g fill="none"
-				fill-rule="evenodd" transform="translate(1 1)"> <circle
-				class="Circle" cx="15" cy="15" r="15"></circle> <g class="Close"
-				stroke-linecap="round" stroke-width="2"> <path
-				d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path> </g>
-			</g> </svg>
+			<svg width="30" height="30" viewBox="0 0 32 32"> 
+				<g fill="none" fill-rule="evenodd" transform="translate(1 1)"> 
+					<circle class="Circle" cx="15" cy="15" r="15"></circle> 
+				<g class="Close" stroke-linecap="round" stroke-width="2"> 
+					<path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path></g></g>
+			</svg>
 		</button>
 	</div>
-	<form method="post"
-		action="${pageContext.request.contextPath}/modal/join_ok.do"
+	<form method="post" action="${pageContext.request.contextPath}/modal/join_ok.do" 
 		id="join_form">
 		<div class="modal-body padding">
 			<div class="information clearfix">
@@ -73,7 +52,6 @@
 				<input type="text" name="pingaree" id="reemailinput" class="number input1" />
 				<button type="button" class="btn btn-color inclick buttonre butrwh"
 					id="reinsnumber" value="인증번호 확인">인증번호 확인</button>
-				<!-- ata-toggle="modal" data-target="#requestednumber" -->
 			</div>
 			<div class="information information2 clearfix">
 				<p class="subtitle">비밀번호</p>
@@ -110,7 +88,6 @@
 		<div class="footer-body">
 			<button type="submit" id="buttonjoin"
 				class="buttonup btn btn-colordown buttontlzl">이메일 회원가입</button>
-			<!-- ata-toggle="modal" data-target="#loginForward" -->
 		</div>
 	</form>
 </div>
@@ -118,7 +95,7 @@
 <!-- regex --> 
 <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
 
-<!-- 전화번호 4자리 이후 자르기 -->
+<!-- 전화번호 4자리 남기기 로직 -->
 <script>
 $(function() {
 function substring(target) {
@@ -138,63 +115,15 @@ function substring(target) {
 });
 </script>
 
+<!-- 회원가입 유효성검사 로직 -->
 <script type="text/javascript">
 $(function () {
-	function random() {
-    	var num = Math.floor(Math.random() * 10);
-    	return num;
-    }
-	
-	var auth = "";
-	
-	for (var i = 0; i < 6; i++) {
-		auth += random();
-	}
-	
-	$("#reinsnumber").click(function () {
-		var user = $('#reemailinput').val();
-		if (auth == user) {
-			alert("인증번호가 확인되었습니다");
-		}else {
-			alert("인증번호를 다시 확인해 주세요");
-			
-		}
-	});
 
- //인증번호
-	$("#insnumber").click(function () {
-		var emailnu = $('#insnumber').val() 
-		var email1 = document.getElementById("email1");
-		if ($("#email").val().trim() == "" || $("#email1 option:selected").text() == "선택해주세요") {
-        	alert("메일을 입력해 주세요");
-        	e.preventDefault();
-		}else {
-			var email = $("#email").val();
-			var email1 = document.getElementById("email1");
-			var email2 = $("#email1 option:selected").text();
-			var allemail = email + "@" + email2; 
-			alert(allemail + "으로 메일이 발송되었습니다");
-				$.ajax({
-		    	    url:"modal/joinema.do",
-		    	    type:'POST',
-		    	    data: {"allemail": allemail,
-		    	    		"auth" : auth},
-		    	    success:function(data){
-		    	        <%--alert(allemail + "으로 메일이 발송되었습니다"); --%>
-		    	    },
-		    	    error:function(jqXHR, textStatus, errorThrown){
-		    	        alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
-		    	        self.close();
-			        }	
-			    });
-		}
-	});
- 
     var user = $('#reemailinput').val();
 	/** 가입폼의 submit 이벤트 */
     $("#join_form").submit(function() {
         // 기본동작 수행 방식
-         /* e.preventDefault(); */
+        e.preventDefault();
         
         /** 이름 검사 */
         if (!regex.value('#user_id', '이름을 입력하세요.')) { return false; }
@@ -223,11 +152,65 @@ $(function () {
         if (!regex.value('#tel1', '번호를 입력하세요.')) { return false; }
         if (!regex.value('#tel2', '번호를 입력하세요.')) { return false; }
         if (!regex.max_length('#tel1', 4, '번호는 4자 입력하세요.')) { return false; }
-        
-        
+
         $(this).submit();
 
     });
 
+});
+</script>
+
+<!-- 인증번호 확인처리 로직 -->
+<script>
+
+//인증번호
+function random() {
+    	var num = Math.floor(Math.random() * 10);
+    	return num;
+    }
+	
+	var auth = "";
+	
+	for (var i = 0; i < 6; i++) {
+		auth += random();
+	}
+	
+	$("#reinsnumber").click(function () {
+		var user = $('#reemailinput').val();
+		if (auth == user) {
+			alert("인증번호가 확인되었습니다");
+		}else {
+			alert("인증번호를 다시 확인해 주세요");
+			
+		}
+	});
+
+$("#insnumber").click(function () {
+	var emailnu = $('#insnumber').val() 
+	var email1 = document.getElementById("email1");
+	
+	if ($("#email").val().trim() == "" || $("#email1 option:selected").text() == "선택해주세요") {
+    	alert("메일을 입력해 주세요");
+    	e.preventDefault();
+	}else {
+		var email = $("#email").val();
+		var email1 = document.getElementById("email1");
+		var email2 = $("#email1 option:selected").text();
+		var allemail = email + "@" + email2; 
+		
+			$.ajax({
+	    	    url:"modal/joinema.do",
+	    	    type:'POST',
+	    	    data: {"allemail": allemail,
+	    	    		"auth" : auth},
+	    	    success:function(data){
+	    	    	alert(allemail + "으로 메일이 발송되었습니다");
+	    	    },
+	    	    error:function(jqXHR, textStatus, errorThrown){
+	    	        alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+	    	        self.close();
+		        }	
+	    });
+	}
 });
 </script>
