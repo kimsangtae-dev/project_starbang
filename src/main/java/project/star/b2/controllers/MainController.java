@@ -185,92 +185,83 @@ public class MainController {
 
 	/********************************************************************
 	 * 상세페이지 (rmdt 쿠키 다중 저장)
+	 * @throws UnsupportedEncodingException
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
-	public String rmdtsave(HttpServletResponse response,
-			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
+	public void rmdtsave(HttpServletResponse response,HttpServletRequest request,
+	@RequestParam(value = "roomno", defaultValue = "") String roomno) throws UnsupportedEncodingException {
 
-		if (!roomno.equals("")) {
-			try {
-				roomno = URLEncoder.encode(roomno, "utf-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
-		}
+		List<String> list = getValueList(roomno, request);
+		String sumValue = "";
+		int equalsValueCnt = 0;
 
-		for (int i = 0; i < 50; i++) {
-			String result = webHelper.getCookie("cookiesName" + i, "0");
-
-			if (result.equals("0")) {
-
-				Cookie cookie = new Cookie("cookiesName" + i, roomno); // 저장할 쿠키 생성
-				cookie.setPath("/"); // 쿠키의 유효 경로
-				cookie.setDomain("localhost"); // 쿠키의 유효 도메인
-
-				if (roomno.equals("")) { // 쿠키 시간을 설정하지 않으면 브라우저가 동작하는 동안 유효
-					cookie.setMaxAge(0); // 쿠키 설정시간이 0이면 즉시 삭제
-				} else {
-					cookie.setMaxAge(1800); // 값이 있다면 60초 동안 쿠키 저장
+		if (list != null) {
+			for (int i = 0; i < list.size(); i++) {
+				sumValue += list.get(i) + ",";
+				if (list.get(i).equals(roomno)) {
+					equalsValueCnt++;
 				}
-
-				response.addCookie(cookie);
-
-				/** 2) Spring방식의 페이지 이동. */
-				// Servlet의 response.sendRedirect(url)과 동일
-				// --> "/"부터 시작할 경우 ContextPath는 자동으로 앞에 추가된다.
-				return "redirect:/main/rmdt.do?roomno=" + roomno;
 			}
+			if (equalsValueCnt != 0) { // 같은 값을 넣으려고 할 때의 처리
+				if (sumValue.substring(sumValue.length() - 1).equals(",")) {
+					sumValue = sumValue.substring(0, sumValue.length() - 1);
+				}
+			} else {
+				sumValue += roomno;
+			}
+		} else {
+			sumValue = roomno;
 		}
-		return "redirect:/main/rmdt.do?roomno=" + roomno;
+
+		if (!sumValue.equals("")) {
+			Cookie cookie = new Cookie("cookiesName", URLEncoder.encode(sumValue, "utf-8"));
+			cookie.setMaxAge(60 * 60 * 24 * 1);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+		}
 	}
 
 	/********************************************************************
 	 * 최근 본 방
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public ModelAndView rtrm(Model model, HttpServletRequest request) {
+	public List<String> getValueList(String roomno, HttpServletRequest request) {
 
 		Cookie[] cookies = request.getCookies();
-		String result = "";
-		int [] ar = new int[50];
+		String[] cookieValues = null;
+		String value = "";
+		List<String> list = null;
 
-		// 쿠키가 있는 만큼 반복문을 돌려서 조회한다.
-		for (int i = 0; i < cookies.length; i++) {
-			// i번째 쿠키의 이름을 취득한다.
-			String cookieName = cookies[i].getName();
-
-			if (cookieName.equals("cookiesName" + i)) {
-				// 쿠키값을 취득한다.
-				String value = cookies[i].getValue();
-				// 저장된 값의 문자열 길이가 0보다 크다면?
-				if (value.length() > 0) {
-					// 인코딩된 값이므로 디코딩 처리하여 원래값으로 복원한다.
+		// 특정 key의 쿠키값을 ","로 구분하여 String 배열에 담아준다.
+		// ex) 쿠키의 key/value ---> key = "clickItems", value = "211, 223, 303"(상품 번호)
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().equals("cookiesName" + i)) {
+					value = cookies[i].getValue();
 					try {
-						result = URLDecoder.decode(value, "utf-8");
+						cookieValues = (URLDecoder.decode(value, "utf-8")).split(",");
 					} catch (UnsupportedEncodingException e) {
 						e.printStackTrace();
 					}
-				}
-				int newRoomNo = Integer.parseInt(result);
-				ar[i] = newRoomNo;
-				log.debug("쿠키배열:" + ar[i]);
-				
-				/** 2)데이터 조회하기 */
-				// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-				Gallery input = new Gallery();
-				input.setRoomno(ar[i]);
-
-				List<Gallery> output = null;
-
-				try {
-					// 쿠키로 저장된 방번호로 조회
-					output = galleryService.getCookieList(input);
-				} catch (Exception e) {
-					return webHelper.redirect(null, e.getLocalizedMessage());
+					break;
 				}
 			}
-		} // end for
-		return new ModelAndView("main/rtrm");
+		}
+
+		// String 배열에 담겼던 값들을 List로 다시 담는다.
+		if (cookieValues != null) {
+			list = new ArrayList<String>(Arrays.asList(cookieValues));
+
+			if (list.size() > 50) { // 값이 50개를 초과하면, 최근 것 50개만 담는다.
+				int start = list.size() - 50;
+				List<String> copyList = new ArrayList<String>();
+				for (int i = start; i < list.size(); i++) {
+					copyList.add(list.get(i));
+				}
+				list = copyList;
+			}
+		}
+		return list;
 	}
 
 	/********************************************************************
