@@ -15,8 +15,8 @@
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/assets/css/ma_css/rtrm.css">
+ <link rel="stylesheet" type="text/css"
+    href="${pageContext.request.contextPath}/assets/css/ma_css/rtrm.css">
 </head>
 
 <body>
@@ -25,33 +25,6 @@
 
 		<!-- 상단 헤더 -->
 		<%@ include file="../assets/inc/ma_top.jsp"%>
-
-		<%-- -------------------쿠키 섹션 시작 ------------------ --%>
-
-		<%-- ------ JSTL을 통해 쿠키에 직접 접근하기  ------ --%>
-		<%-- <c:choose>
-			<c:when test="${cookie.roomno == null}">
-				<h2>저장된 쿠키 없음</h2>
-			</c:when>
-			<c:otherwise>
-				<h2>저장된 쿠키 = ${cookie.roomno.value}</h2>
-			</c:otherwise>
-		</c:choose> --%>
-
-		<%-- ------ 컨트롤러에서 Model 객체를 통해 넘어온 값 출력하기 ------ --%>
-		<c:choose>
-			<c:when test="${newRoomNo == ''}">
-				<h2>쿠키명: ${name}
-					쿠키값:${value}</h2>
-			</c:when>
-			<c:otherwise>
-				<h2>저장된 쿠키 = 쿠키명: ${name}
-					쿠키값:${value}</h2>
-			</c:otherwise>
-		</c:choose>
-	
-		<%-- -------------------쿠키 섹션 끝 ------------------ --%>
-		
 		<!-- 중앙 영역 -->
 		<div id="content">
 			<!-- 최근본방/찜한 방 -->
@@ -69,7 +42,7 @@
 						</p>
 					</div>
 					<div class="re-div2">
-						<p>최근에 본 방은 최대 50개까지 저장됩니다</p>
+						<p>최근 본 방은 최대 50개까지 저장됩니다</p>
 					</div>
 				</div>
 				<div class="gallery-container">
@@ -79,7 +52,13 @@
 							<c:choose>
 								<%-- 조회 결과가 없는 경우 --%>
 								<c:when test="${output == null || fn:length(output) == 0}">
-									<p>조회 결과가 없습니다.</p>
+									<div class="noresultbox">
+										<p class="noresulticon">
+											<i class="glyphicon glyphicon-home noresulticon"></i>
+										</p>
+										<p class="noresult">최근 본 방이 없습니다.</p>
+										<p class="noresult">별방에서 살고 싶은 방을 찾아보세요.</p>
+									</div>
 								</c:when>
 								<%-- 갤러리 시작 --%>
 								<c:otherwise>
@@ -140,29 +119,29 @@
 		<!-- root 끝 -->
 	</div>
 
-		<!-- 하단 영역 -->
-		<%@ include file="../assets/inc/ma_bottom.jsp"%>
+	<!-- 하단 영역 -->
+	<%@ include file="../assets/inc/ma_bottom.jsp"%>
 
-		<!-- Javascript -->
-		<script
-			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-		<script
-			src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
-			/* 좋아요 클릭 -> 하트 색 변경 */
-			$(function() {
-				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
-				});
+	<!-- Javascript -->
+	<script
+		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		/* 좋아요 클릭 -> 하트 색 변경 */
+		$(function() {
+			$(".recent-div8").click(function(e) {
+				$(this).toggleClass('on off');
 			});
-		</script>
+		});
+	</script>
 
-		<script type="text/javascript">
-			/* 조건에 맞는 방 개수 */
-			$(function() {
-				var n = $(".recent-div5").length;
-				$(".room-count").html(n);
-			});
-		</script>
+	<script type="text/javascript">
+		/* 조건에 맞는 방 개수 */
+		$(function() {
+			var n = $(".recent-div5").length;
+			$(".room-count").html(n);
+		});
+	</script>
 </body>
 </html>
