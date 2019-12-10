@@ -209,7 +209,7 @@ public class MainController {
 	}
 
 	/********************************************************************
-	 * 최근 본 방
+	 * 최근 본 방 (쿠키불러와서 view로 보여줌)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
 	public ModelAndView rtrm(Model model, HttpServletRequest request) {
@@ -223,17 +223,16 @@ public class MainController {
 		}
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-		Gallery input = new Gallery();
-
 		List<Gallery> output = null;
 
 		try {
 			// 쿠키로 저장된 방번호로 조회
 			output = galleryService.getCookieList(list);
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			return new ModelAndView("main/rtrm");
 		}
 
+		/** view 화면으로 보여주기 */
 		model.addAttribute("output", output);
 
 		return new ModelAndView("main/rtrm");
