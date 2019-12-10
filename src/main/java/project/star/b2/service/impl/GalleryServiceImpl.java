@@ -56,17 +56,17 @@ public class GalleryServiceImpl implements GalleryService {
     @Override
     public int getGalleryCount(Gallery input) throws Exception {
         int result = 0;
-        
+
         try {
             result = sqlSession.selectOne("GalleryMapper.selectCountAll", input);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
         }
-        
+
         return result;
     }
-    
+
     /**
      * 구 별 매물 데이터 목록 조회
      * @return 조회 결과에 대한 컬렉션
@@ -75,7 +75,7 @@ public class GalleryServiceImpl implements GalleryService {
     @Override
     public List<Gallery> getGalleryGuList(Gallery input) throws Exception {
         List<Gallery> result = null;
-        
+
         try {
             result = sqlSession.selectList("GalleryMapper.selectGu", null);
 
@@ -89,7 +89,7 @@ public class GalleryServiceImpl implements GalleryService {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
         }
-        
+
         return result;
     }
 
@@ -101,7 +101,7 @@ public class GalleryServiceImpl implements GalleryService {
     @Override
     public int getGalleryGuCount(String input) throws Exception {
         int result = 0;
-        
+
         try {
             result = sqlSession.selectOne("GalleryMapper.selectCountGu", input);
 
@@ -117,10 +117,10 @@ public class GalleryServiceImpl implements GalleryService {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
         }
-        
+
         return result;
     }
-    
+
     /**
      * 매물 데이터 목록 조회 - 위도, 경도
      * @return 조회 결과에 대한 컬렉션
@@ -171,24 +171,24 @@ public class GalleryServiceImpl implements GalleryService {
     @Override
     public int getGalleryCount(Popular input) throws Exception {
         int result = 0;
-        
+
         try {
             result = sqlSession.selectOne("GalleryMapper.selectCountAll", null);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
         }
-        
+
         return result;
     }
-    
+
     /**
      * 쿠키 데이터 목록 조회
      * @return 조회 결과에 대한 컬렉션
      * @throws Exception
      */
     @Override
-    public List<Gallery> getCookieList(Gallery input) throws Exception {
+    public List<Gallery> getCookieList(List<String> input) throws Exception {
         List<Gallery> result = null;
 
         try {
