@@ -185,83 +185,56 @@ public class MainController {
 
 	/********************************************************************
 	 * 상세페이지 (rmdt 쿠키 다중 저장)
-	 * @throws UnsupportedEncodingException
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
-	public void rmdtsave(HttpServletResponse response,HttpServletRequest request,
-	@RequestParam(value = "roomno", defaultValue = "") String roomno) throws UnsupportedEncodingException {
+	public String rmdtsave(HttpServletResponse response, HttpServletRequest request,
+			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
 
-		List<String> list = getValueList(roomno, request);
-		String sumValue = "";
-		int equalsValueCnt = 0;
-
-		if (list != null) {
-			for (int i = 0; i < list.size(); i++) {
-				sumValue += list.get(i) + ",";
-				if (list.get(i).equals(roomno)) {
-					equalsValueCnt++;
-				}
+		if (!roomno.equals("")) {
+			try {
+				roomno = URLEncoder.encode(roomno, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
 			}
-			if (equalsValueCnt != 0) { // 같은 값을 넣으려고 할 때의 처리
-				if (sumValue.substring(sumValue.length() - 1).equals(",")) {
-					sumValue = sumValue.substring(0, sumValue.length() - 1);
-				}
-			} else {
-				sumValue += roomno;
-			}
-		} else {
-			sumValue = roomno;
 		}
 
-		if (!sumValue.equals("")) {
-			Cookie cookie = new Cookie("cookiesName", URLEncoder.encode(sumValue, "utf-8"));
-			cookie.setMaxAge(60 * 60 * 24 * 1);
-			cookie.setPath("/");
-			response.addCookie(cookie);
+		try {
+			CookieUtils.setYummy("cookieName", roomno, 1, request, response);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 		}
+		return "redirect:/main/rmdt.do?roomno=" + roomno;
 	}
 
 	/********************************************************************
 	 * 최근 본 방
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
-	public List<String> getValueList(String roomno, HttpServletRequest request) {
+	public ModelAndView rtrm(Model model, HttpServletRequest request) {
 
-		Cookie[] cookies = request.getCookies();
-		String[] cookieValues = null;
-		String value = "";
-		List<String> list = null;
+		 List<String> list = null;
 
-		// 특정 key의 쿠키값을 ","로 구분하여 String 배열에 담아준다.
-		// ex) 쿠키의 key/value ---> key = "clickItems", value = "211, 223, 303"(상품 번호)
-		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				if (cookies[i].getName().equals("cookiesName" + i)) {
-					value = cookies[i].getValue();
-					try {
-						cookieValues = (URLDecoder.decode(value, "utf-8")).split(",");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-					break;
-				}
-			}
+		try {
+			list=CookieUtils.getValueList("cookieName", request);
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+		/** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Gallery input = new Gallery();
+
+		List<Gallery> output = null;
+
+		try {
+			// 쿠키로 저장된 방번호로 조회
+			output = galleryService.getCookieList(list);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
-		// String 배열에 담겼던 값들을 List로 다시 담는다.
-		if (cookieValues != null) {
-			list = new ArrayList<String>(Arrays.asList(cookieValues));
+		model.addAttribute("output", output);
 
-			if (list.size() > 50) { // 값이 50개를 초과하면, 최근 것 50개만 담는다.
-				int start = list.size() - 50;
-				List<String> copyList = new ArrayList<String>();
-				for (int i = start; i < list.size(); i++) {
-					copyList.add(list.get(i));
-				}
-				list = copyList;
-			}
-		}
-		return list;
+		return new ModelAndView("main/rtrm");
 	}
 
 	/********************************************************************
