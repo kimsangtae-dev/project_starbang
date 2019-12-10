@@ -10,10 +10,6 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rm_add.css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/datepicker/datepicker.min.css"/>
         <style>
-            /* 헤더 nav css */
-            .header-nav {
-                background-color: rgb(81, 136, 244);
-            }
         </style>
     </head>
     <body>

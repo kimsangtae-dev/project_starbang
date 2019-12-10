@@ -11,10 +11,7 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/ma_mypager.css">
-
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css">
 
 </head>
 <body>
@@ -127,25 +124,8 @@
       $("#reemailinumber").click(function() {
          swal("인증되었습니다");
       });
-      
-//      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="margin:15px; padding:15px;"></button>
-//
-//<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-//  <div class="modal-dialog" role="document">
-//    <div class="modal-content">
-//      <div class="modal-header">
-//        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-//        <h4 class="modal-title" id="myModalLabel">Modal 제목</h4>
-//      </div>
-//      <div class="modal-body">
-//        Modal 내용
-//      </div>
-//      <div class="modal-footer">
-//        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-//      </div>
-//    </div>
-//  </div>
-//</div>
+
+
       $('#modal').modal("hide"); //닫기 
       
       var myname = document.getElementById('myname'); 
@@ -162,9 +142,9 @@
       });
    });
 
-      </script>
+</script>
       
-   <script type="text/javascript">
+<!--    <script type="text/javascript">
       // 회원탈퇴에 모달창에 들어 있는 버튼
       function byId(e){return document.getElementById(e);}
    
@@ -185,7 +165,7 @@
           tgt.src = tgt.secondSource;
           tgt.secondSource = tmp;
       };
-   </script>   
+   </script>  -->  
       
    <script type="text/javascript">
       $("#modalsubmit").click(function() {

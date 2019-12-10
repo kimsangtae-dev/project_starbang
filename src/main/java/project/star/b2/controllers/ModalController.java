@@ -79,16 +79,6 @@ public class ModalController {
 		String emailtol = email + "@" + email1;
 		String teltol = tel + "-" + tel1 + "-" + tel2;
 
-		// 학과 이 름름은 필수 항목이므로 입력여부를 검사
-		// 위치는 미필수(null허용)이므로 입력 여부를 검사하지 않는다.
-//		if (name == null) {
-//			return webHelper.redirect(null, "회원이름을 입력하세요.");
-//		}
-//
-//		if (!regexHelper.isKor(name)) {
-//			return webHelper.redirect(null, "회원이름은 한글만 가능합니다.");
-//		}
-
 		/** 2) 데이터 저장하기 */
 		// 저장할 값들을 Beans에 담는다.
 		User input = new User();
@@ -112,8 +102,13 @@ public class ModalController {
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
-		String redirectUrl = contextPath + "/";
-
+		/*
+		 * String redirectUrl = contextPath + "/";
+		 * 
+		 * return webHelper.redirect(redirectUrl, "저장되었습니다.");
+		 */
+		
+		String redirectUrl = contextPath + "/user/view.do?userno=" + input.getUserno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
@@ -170,7 +165,6 @@ public class ModalController {
 		} else {	
 			return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
 		} 
-		/* return new ModelAndView("viewPath"); */
 		
 		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "로그인되었습니다.");
@@ -180,11 +174,10 @@ public class ModalController {
 	public ModelAndView login_out(Model model, HttpServletRequest request) {
 		/* request 객체를 사용해서 세션 객체 만들기 */
 		HttpSession session = request.getSession();
-		/* String login = (String) session.getAttribute("loginInfo"); */
 		
+		/* session 삭제 */
 		session.removeAttribute("loginInfo");
 	
-		/* return new ModelAndView("index"); */
 		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
 	}

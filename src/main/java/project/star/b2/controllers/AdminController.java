@@ -249,7 +249,7 @@ public class AdminController {
         
         /** 3) View 처리 */
         model.addAttribute("output", output);
-        return new ModelAndView("user/edit");
+        return new ModelAndView("admin/edit2");
     }
     
     

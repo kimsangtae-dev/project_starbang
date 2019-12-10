@@ -14,10 +14,6 @@
 <link rel="stylesheet" type="text/css" href="" />
 
 <style>
-/* 헤더 */
-.header-nav {
-    background-color: rgb(81, 136, 244);
-}
 </style>
 </head>
 

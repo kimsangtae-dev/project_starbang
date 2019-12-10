@@ -13,8 +13,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/datepicker/datepicker.min.css"/>
 
 <style>
-/* 헤더 nav css */
-.header-nav { background-color: rgb(81, 136, 244); }
 </style> 
 </head>
 
