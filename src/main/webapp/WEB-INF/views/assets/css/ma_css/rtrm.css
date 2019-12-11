@@ -1,9 +1,9 @@
-.
 @charset "utf-8";
 
 /************ 공통 ************/
-html body #root {
+.root {
     width: 1200px;
+    margin: auto;
 }
 
 #content {
