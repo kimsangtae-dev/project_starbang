@@ -24,6 +24,14 @@
         FROM price 
         WHERE priceno=#{priceno};
     </select>
+    
+    <select id="selectList_by_roomno"
+        parameterType="project.star.b2.model.Price"
+        resultMap="priceMap">
+        SELECT roomno, priceno, deposit, dealingtype, price, short_room 
+        FROM price 
+        WHERE roomno=#{roomno};
+    </select>
 
     <!-- 다중행 조회를 위한 기능 정의 -->
     <select id="selectList"
