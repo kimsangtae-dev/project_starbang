@@ -154,16 +154,18 @@
 		</if>
 	</select>
 
-	<!-- 쿠키용 다중행 조회를 위한 기능 정의 -->
+	<!-- 최근본방(쿠키용) 다중행 조회를 위한 기능 정의 -->
 	<select id="cookieList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
 		SELECT
 		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate,
 		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
-		r.region_2depth_name
+		r.region_2depth_name,i.filename
 		FROM room AS r
 		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
 		ON r.roomno=p.roomno
+		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i
+		ON r.roomno=i.roomno
 		WHERE r.roomno IN
 		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
 			#{list}
