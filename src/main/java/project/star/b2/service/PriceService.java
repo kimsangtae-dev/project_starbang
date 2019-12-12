@@ -9,6 +9,8 @@ public interface PriceService {
 	
 	public Price getPriceItem(Price input) throws Exception;
 	
+	List<Price> getPriceList_by_roomno(Price input) throws Exception;
+	
 	public List<Price> getPriceList(Price input) throws Exception;
 	
 	public int getPriceCount(Price input) throws Exception;
@@ -18,4 +20,6 @@ public interface PriceService {
 	public int editPrice(Price input) throws Exception;
 
 	public int deletePrice(Price input) throws Exception ;
+
+
 }
