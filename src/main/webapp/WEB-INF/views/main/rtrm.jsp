@@ -35,7 +35,8 @@
 						<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
 						<c:when test="${loginInfo == null }">
 							<a href="${pageContext.request.contextPath}/modal/login.do"
-								class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">찜한 방</a>
+								class="st-bang padding-l" data-toggle="modal"
+								data-target="#loginModal">찜한 방</a>
 						</c:when>
 						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
 						<c:otherwise>
@@ -85,8 +86,9 @@
 													<a target="_blank" rel="" class="recent-a"
 														href="${pageContext.request.contextPath}/main/rmdt.do">
 														<!-- 이미지 -->
-														<div class="recent-a-div"></div> <c:if
-															test="${item.confirmdate != null}">
+														<div class="recent-a-div">
+															<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+														</div> <c:if test="${item.confirmdate != null}">
 															<%-- 확인매물 div --%>
 															<div class="recent-a-confirm">
 																<div class="recent-a-confirm-div">
