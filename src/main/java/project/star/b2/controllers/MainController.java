@@ -213,8 +213,12 @@ public class MainController {
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rtrm.do", method = RequestMethod.GET)
 	public ModelAndView rtrm(Model model, HttpServletRequest request) {
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        /*----------------------*/
 
-		 List<String> list = null;
+		List<String> list = null;
 
 		try {
 			list=CookieUtils.getValueList("cookieName", request);
@@ -234,7 +238,7 @@ public class MainController {
 
 		/** view 화면으로 보여주기 */
 		model.addAttribute("output", output);
-
+		model.addAttribute("loginInfo", loginInfo);
 		return new ModelAndView("main/rtrm");
 	}
 
