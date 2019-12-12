@@ -117,6 +117,7 @@ public class AdminController {
 		input.setAddress(keyword);
 		input.setUserno(keyword2);
 		input.setName(keyword);
+		/* input.setHidden(keyword); */
 
 		List<Room> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산할 결과가 저장될 객체

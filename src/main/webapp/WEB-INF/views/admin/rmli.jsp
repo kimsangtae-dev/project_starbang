@@ -62,8 +62,6 @@
 							<th class="text-center">방 종류</th>
 							<th class="text-center">매물 종류</th>
 							<th class="text-center">가격대</th>
-							<th class="text-center">관리비</th>
-							<th class="text-center">방 크기</th>
 							<th class="text-center">방 주인</th>
 							<th class="text-center">확인매물</th>
 							<th class="text-center">허위매물신고건수</th>
@@ -82,27 +80,26 @@
 							<%-- 조회 결과에 따른 반복 처리 --%>
 							<c:forEach var="item" items="${output}" varStatus="status">
 								<%-- 출력을 위해 준비한 유저이름과 위치 --%>
+								<c:set var="roomno" value="${item.roomno}" />
 								<c:set var="roomtype" value="${item.roomtype}" />
-								<c:set var="title" value="${item.title}" />
-								<c:set var="floor" value="${item.floor}" />
-								<c:set var="area" value="${item.area}" />
-								<c:set var="fee" value="${item.fee}" />
+								<c:set var="dealingtype" value="${item.dealingtype}" />
+								<c:set var="price" value="${item.price}" />
 								<c:set var="userno" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
-								<c:set var="address" value="${item.address}" />
+<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
+								<c:set var="hidden" value="${item.hidden}" />
 
 								<tr>
-									<td class="text-center"><input type="checkbox" name="aaaa" value=${item.roomno}
+									<td class="text-center"><input type="checkbox" id="aaaa" value="${item.roomno}"
 										class="roomlist"></td>
 									<td align="center">${item.roomno}</td>
 									<td align="center">${item.roomtype}</td>
-									<td align="center"><a href="${viewUrl}">${title}</a></td>
-									<td align="center">${floor}</td>
-									<td align="center">${area}</td>
-									<td align="center">${fee}</td>
-									<td align="center"><a href="${viewUrl}">${item.name}</td>
-									<td align="center" id="data">${confirmdate}</td>
-									<td align="center">${address}</td>
+									<td align="center">${dealingtype}</a></td>
+									<td align="center">${price}만원</td>
+									<td align="center"><a href="${viewUrl}">${userno}님</td>
+									<td align="center">${confirmdate}</td>
+									<td align="center">${fakecount}</td>
+									<td align="center">${item.hidden}</td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -129,20 +126,24 @@
 
 		$(function() {
 			  $('#confirm-button').on('click', function() {
-				  
+ 				  $('#aaaa:checked').each(function() {
+				        var list = $(this).val(); 
+				   
 				  $.ajax({
 					  //결과 url
 					  url: "${pageContext.request.contextPath}/admin/confirm_ok.do",
-					  data: { user_id : "8" },
+					  data: { user_id : list },
 					  type:"POST",
 					  datatype:'text',
 					  success : function(data) {
-					        alert("success!");
+					        location.reload();
+					        alert("변경되었습니다.")
 					    },
 					  error : function(error,status,request) {
 					        alert("Error!" + error + "request: "+request+" status: "+status);
 					    },			  
 				  });
+				  });//checked
 		})
 	}); //end $.ajax;
 	</script>

@@ -23,6 +23,10 @@
         <result property="region_2depth_name" column="region_2depth_name" />
         <result property="region_3depth_name" column="region_3depth_name" />
         <result property="userno" column="userno" />
+        <result property="hidden" column="hidden" />
+        <result property="dealingtype" column="dealingtype" />
+		<result property="price" column="price" />
+		
     </resultMap>
 
     <!-- 단일행 조회를 위한 기능 정의 -->
@@ -41,11 +45,12 @@
         parameterType="project.star.b2.model.Room"
         resultMap="roomMap">
         SELECT 
-        roomno, roomtype, title, floor, area, fee, confirmdate, address, dong, ho, 
-        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name
+        r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee, confirmdate, address, dong, ho, 
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.hidden, count(f.roomno) AS cnt
         FROM room r
-        INNER JOIN user u
-        ON r.userno=u.userno
+        INNER JOIN user u ON r.userno=u.userno
+        INNER JOIN price p ON r.roomno=p.roomno
+        LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
         
         <where>
             <if test="roomtype != null and roomtype != ''">
@@ -56,7 +61,7 @@
                 OR floor LIKE concat('%', #{floor}, '%')
             </if>
         </where>
-        
+        GROUP BY roomno
         ORDER BY roomno ASC
         
         <if test="listCount > 0">

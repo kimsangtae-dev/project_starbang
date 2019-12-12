@@ -20,9 +20,14 @@ public class Room {
     private String region_2depth_name;
     private String region_3depth_name;
     private int userno;
+    private String hidden;
     
     /**User랑 조인된 값 */
     private String name;
+    
+	/* 가격이랑 조인된 값 */
+    private String price;
+    private String dealingtype;
     
     
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
@@ -44,4 +49,5 @@ public class Room {
     public static void setListCount(int listCount) {
         Room.listCount = listCount;
     }
+
 }
