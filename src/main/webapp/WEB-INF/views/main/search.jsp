@@ -300,18 +300,26 @@ pageEncoding="UTF-8"%>
 											<%-- 이동할 URL 생성 --%>
 											<c:url value="/main/search.do" var="prevPageUrl">
 												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="feeFrom" value="${feeFrom}" />
-												<c:param name="feeTo" value="${feeTo}" />
+												<c:param name="depositFrom" value="${param.depositFrom}" />
+												<c:param name="depositTo" value="${param.depositTo}" />
+												<c:param name="monthFrom" value="${param.monthFrom}" />
+												<c:param name="monthTo" value="${param.monthTo}" />
+												<c:param name="buyingFrom" value="${param.buyingFrom}" />
+												<c:param name="buyingTo" value="${param.buyingTo}" />
+												<c:param name="feeFrom" value="${param.feeFrom}" />
+												<c:param name="feeTo" value="${param.feeTo}" />
+												<c:param name="sizeFrom" value="${param.sizeFrom}" />
+												<c:param name="sizeTo" value="${param.sizeTo}" />
 												<c:param name="page" value="${pageData.prevPage}" />
 											</c:url>
-											<a href="${prevPageUrl}">
+											<a href="${prevPageUrl}" id="temp">
 												<button class="prev-btn">
 													<span>&lt;</span>
 												</button>
 											</a>
 										</c:when>
 										<c:otherwise>
-											<button class="prev-btn">
+											<button class="prev-btn" id="temp">
 												<span>&lt;</span>
 											</button>
 										</c:otherwise>
@@ -324,8 +332,16 @@ pageEncoding="UTF-8"%>
 											<%-- 이동할 URL 생성 --%>
 											<c:url value="/main/search.do" var="pageUrl">
 												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="feeFrom" value="${feeFrom}" />
-												<c:param name="feeTo" value="${feeTo}" />
+												<c:param name="depositFrom" value="${param.depositFrom}" />
+												<c:param name="depositTo" value="${param.depositTo}" />
+												<c:param name="monthFrom" value="${param.monthFrom}" />
+												<c:param name="monthTo" value="${param.monthTo}" />
+												<c:param name="buyingFrom" value="${param.buyingFrom}" />
+												<c:param name="buyingTo" value="${param.buyingTo}" />
+												<c:param name="feeFrom" value="${param.feeFrom}" />
+												<c:param name="feeTo" value="${param.feeTo}" />
+												<c:param name="sizeFrom" value="${param.sizeFrom}" />
+												<c:param name="sizeTo" value="${param.sizeTo}" />
 												<c:param name="page" value="${i}" />
 											</c:url>
 
@@ -350,8 +366,16 @@ pageEncoding="UTF-8"%>
 											<%-- 이동할 URL 생성 --%>
 											<c:url value="/main/search.do" var="nextPageUrl">
 												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="feeFrom" value="${feeFrom}" />
-												<c:param name="feeTo" value="${feeTo}" />
+												<c:param name="depositFrom" value="${param.depositFrom}" />
+												<c:param name="depositTo" value="${param.depositTo}" />
+												<c:param name="monthFrom" value="${param.monthFrom}" />
+												<c:param name="monthTo" value="${param.monthTo}" />
+												<c:param name="buyingFrom" value="${param.buyingFrom}" />
+												<c:param name="buyingTo" value="${param.buyingTo}" />
+												<c:param name="feeFrom" value="${param.feeFrom}" />
+												<c:param name="feeTo" value="${param.feeTo}" />
+												<c:param name="sizeFrom" value="${param.sizeFrom}" />
+												<c:param name="sizeTo" value="${param.sizeTo}" />
 												<c:param name="page" value="${pageData.nextPage}" />
 											</c:url>
 											<a href="${nextPageUrl}">
@@ -389,34 +413,112 @@ pageEncoding="UTF-8"%>
 		<div id="footer"></div>
 	</div>
 	<!-- Javascript -->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
-<script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
-<script type="text/javascript">
-    /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
-    function contentSize() {
-        var wHeight = $(window).height();
-        var gHeight = wHeight - 206;
-        var mHeight = wHeight - 136;
-        $(".gallery-container").css("height", gHeight);
-        $(".map-container").css("height", mHeight);
-
-            // 조회 결과가 없는 경우를 위한 크기 조정
-            $(".noresultbox").css("height", gHeight-60);
-        }
-        $(function() {
-            contentSize();
-            $(window).resize(function(e) {
-                contentSize();
-            });
-
-            /** 좋아요 */
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
+	<script type="text/javascript">
+	    /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
+	    function contentSize() {
+	        var wHeight = $(window).height();
+	        var gHeight = wHeight - 206;
+	        var mHeight = wHeight - 136;
+	        $(".gallery-container").css("height", gHeight);
+	        $(".map-container").css("height", mHeight);
+	
+	        // 조회 결과가 없는 경우를 위한 크기 조정
+	        $(".noresultbox").css("height", gHeight-60);
+	    }
+	    $(function() {
+	        contentSize();
+	        $(window).resize(function(e) {
+	            contentSize();
+	        });
+	
+	        /** 좋아요 */
+	        $(".recent-div8").click(function(e) {
+	            $(this).toggleClass('on off');
+	        });
+	    });
+	</script>
+	
+	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+   <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
+   <script id="gallery-data" type="text/x-handlebars-template">
+      {{#each output}}
+      <li>
+         <div class="recent-div5">
+            <div class="recent-div6">
+               {{!-- 좋아요 버튼 --}}
+               <div class="recent-div7">
+                  <div class="recent-div8 off" data-value="on"></div>
+               </div>
+               {{!-- 좋아요 끝 --}}
+               {{!-- 전체 링크화 --}}
+               <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
+                  {{!-- 이미지 --}}
+                  <div class="recent-a-div"></div>
+                  {{!-- 확인매물 div --}}
+                  <div class="recent-a-confirm">
+                     <div class="recent-a-confirm-div">
+                        <span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
+                     </div>
+                  </div>
+                  {{!-- 확인매물 끝 --}}
+                  <p class="recent-a-p1">{{roomtype}}</p>
+                  <p class="recent-a-p2">
+                     <span>{{dealingtype}} {{price}}</span>
+                  </p>
+                  <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
+                  <p class="recent-a-p34">{{title}}</p>
+               </a>
+            </div>
+         </div>
+      </li>
+      {{/each}}
+   </script>
+   <script type="text/javascript">
+   $(function() {
+	   var deposit_from = ${param.depositFrom};
+	   var deposit_to = ${param.depositTo};
+	   var buying_from = ${param.buyingFrom};
+	   var buying_to = ${param.buyingTo};
+	   var fee_from = ${param.feeFrom};
+	   var fee_to = ${param.feeTo};
+	   var size_from = ${param.sizeFrom};
+	   var size_to = ${param.sizeTo};
+	   var prev_page = ${pageData.prevPage};
+      /* gallery.json을 가져와 화면에 출력 */
+      function get_gallery() {
+         $.get('${pageContext.request.contextPath}/main/search',
+        	{
+        	 "depositFrom": deposit_from,
+        	 "depositTo": deposit_to,
+        	 "buyingFrom": buying_from,
+        	 "buyingTo": buying_to,
+        	 "feeFrom": fee_from,
+        	 "feeTo": fee_to,
+        	 "sizeFrom": size_from,
+        	 "sizeTo": size_to
+        	},
+        	function(req) {
+            var template = Handlebars.compile($("#gallery-data").html());
+            var html = template(req);
+            $("#gallery-list").html(html);
+ 
             $(".recent-div8").click(function(e) {
-                $(this).toggleClass('on off');
+               $(this).toggleClass('on off');
             });
-        });
-    </script>
+		});
+	}
+		// 
+		$(function() {
+			$("#temp").click(function() {
+				get_gallery();
+			})
+		});
+   })
+   </script>
 
     <!-- 지도 api -->
     <script type="text/javascript">
@@ -454,7 +556,7 @@ pageEncoding="UTF-8"%>
             });
 
             /** 매물 데이터 가져오기 */
-            $.get("${pageContext.request.contextPath}/assets/roomposition",
+            $.get('${pageContext.request.contextPath}/assets/roomposition',
                 function(data) {
                     var markers = $(data.positions).map(function(i, position) {
                         return new kakao.maps.Marker({
@@ -478,7 +580,7 @@ pageEncoding="UTF-8"%>
                     kakao.maps.event.addListener(map, 'zoom_changed', changeMarker);
                     changeMarker();
 
-                    kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+                    /* kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
                         var markers = cluster.getMarkers();
                         for(var idx=0; idx<markers.length; idx++){
                             console.log(markers[idx].getPosition());
@@ -491,32 +593,32 @@ pageEncoding="UTF-8"%>
                         var north = northeast.getLng();
                         var south = southwest.getLng();
                         
-                        /* 
-                        $.get("${pageContext.request.contextPath}/main/search.do", 
-                        	{
+                        $.ajax({
+                        	url: "${pageContext.request.contextPath}/main/search",
+                        	method: "get",
+                        	data: {
+                        		"depositFrom": ${param.depositFrom},
+                           	 	"depositTo": ${param.depositTo},
+                           	 	"buyingFrom": ${param.buyingFrom},
+	                           	"buyingTo": ${param.buyingTo},
+	                           	"feeFrom": ${param.feeFrom},
+	                           	"feeTo": ${param.feeTo},
+	                           	"sizeFrom": ${param.sizeFrom},
+	                           	"sizeTo": ${param.sizeTo},
                         		"east": east,
                         		"west": west,
                         		"north": north,
                         		"south": south
-                        	}, function(e) {
-                        		alert(east + ", " + west + ", " + north + ", " + south);
-                        });
-                         */
-                        $.ajax({
-                        	url: "${pageContext.request.contextPath}/main/search.do",
-                        	method: "get",
-                        	data: {
-                        		"east1": east,
-                        		"west1": west,
-                        		"north1": north,
-                        		"south1": south
                         	},
                         	dataType: "html",
                         	success: function(req){
                         		alert(east + ", " + west + ", " + north + ", " + south);
+                        		var template = Handlebars.compile($("#gallery-data").html());
+                                var html = template(req);
+                                $("#gallery-list").html(html);
                         	}
                         });
-                    });
+                    }); */
 
                     kakao.maps.event.addListener(clusterer, 'clusterover', function(cluster) {
                         console.log(cluster.getBounds());

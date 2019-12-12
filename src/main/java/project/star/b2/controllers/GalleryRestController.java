@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Gu;
 import project.star.b2.service.GalleryService;
@@ -59,16 +61,6 @@ public class GalleryRestController {
 	}
 	
 	
-	/**--------구 별 이름,위경도,매물개수에 대한 json을 위한 페이지--------*/
-	/*
-	 * @RequestMapping(value = "/guinfo", method = RequestMethod.GET) public void
-	 * getGu() { String url = contextPath + "/views/assets/guPosition.json"; String
-	 * source = fileHelper.readString(url, "utf-8");
-	 * 
-	 * 
-	 * }
-	 */
-	
 	/**--------지도에 매물을 보여주기 위한 json--------*/
 	@RequestMapping(value = "/assets/roomposition", method = RequestMethod.GET)
 	public Map<String, Object> getPositionlist() {
@@ -85,6 +77,113 @@ public class GalleryRestController {
 		Map<String, Object> data = new HashMap<String, Object>();
 		data.put("positions", output);
 		
+		return webHelper.getJsonData(data);
+	}
+	
+	
+	/********************************************************************
+	 * 방찾기
+	 *******************************************************************/
+	@RequestMapping(value = "/main/search", method = RequestMethod.GET)
+	public Map<String, Object> search() {
+		/** 1) 필요한 변수값 생성 */
+		String keyword = webHelper.getString("keyword", "");// 검색어
+		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
+		int totalCount = 0; // 전체 게시글 수
+		int listCount = 24; // 한 페이지당 표시할 목록 수
+		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+
+		/******** 필터 ********/
+		/** 방 종류(roomtype) */
+		String room = webHelper.getString("roomtype");
+		/** 매물 종류(dealingtype) */
+		/** 보증금/전세가(deposit/price) */
+		int depositFrom = webHelper.getInt("depositFrom");
+		int depositTo = webHelper.getInt("depositTo", 999999);
+		/** 월세(price) */
+		int monthFrom = webHelper.getInt("monthFrom");
+		int monthTo = webHelper.getInt("monthTo", 999999);
+		/** 매매 (price) */
+		int buyingFrom = webHelper.getInt("buyingFrom");
+		int buyingTo = webHelper.getInt("buyingTo");
+		/** 관리비(fee) */
+		int feeFrom = webHelper.getInt("feeFrom");
+		int feeTo = webHelper.getInt("feeTo", 999999);
+		/** 방 크기(area) */
+		int sizeFrom = webHelper.getInt("sizeFrom");
+		int sizeTo = webHelper.getInt("sizeTo", 999999);
+
+		String dealingtype = webHelper.getString("dealingtype");
+		String region_2depth_name = webHelper.getString("region_2depth_name");
+
+		Filter filter = new Filter();
+		// 보증금/전세
+		filter.setDepositFrom(depositFrom);
+		filter.setDepositTo(depositTo);
+		// 월세
+		filter.setMonthFrom(monthFrom);
+		filter.setMonthTo(monthTo);
+		// 매매
+		filter.setBuyingFrom(buyingFrom);
+		filter.setBuyingTo(buyingTo);
+		// 관리비
+		filter.setFeeFrom(feeFrom);
+		filter.setFeeTo(feeTo);
+		// 방크기
+		filter.setSizeFrom(sizeFrom);
+		filter.setSizeTo(sizeTo);
+		if (sizeTo == 99999) {
+			filter.setSizeTo(115);
+		}
+
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Gallery input = new Gallery();
+		input.setRoomtype(room);
+		input.setDealingtype(dealingtype);
+		input.setRegion_2depth_name(region_2depth_name);
+
+		List<Gallery> output = null;
+		PageData pageData = null;
+
+		try {
+			Gallery.setDepositFrom(depositFrom);
+			Gallery.setDepositTo(depositTo);
+
+			Gallery.setMonthFrom(monthFrom);
+			Gallery.setMonthTo(monthTo);
+
+			Gallery.setBuyingFrom(buyingFrom);
+			Gallery.setBuyingTo(buyingTo);
+
+			Gallery.setFeeFrom(feeFrom);
+			Gallery.setFeeTo(feeTo);
+
+			Gallery.setSizeFrom(sizeFrom);
+			Gallery.setSizeTo(sizeTo);
+
+			// 전체 게시글 수 조회
+			totalCount = galleryService.getGalleryCount(input);
+			// 페이지 번호 계산
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Gallery.setOffset(pageData.getOffset());
+			Gallery.setListCount(pageData.getListCount());
+
+			output = galleryService.getGalleryList(input);
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+		}
+
+		/** View 처리 */
+		Map<String, Object> data = new HashMap<String, Object>();
+		data.put("keyword", keyword);
+		data.put("output", output);
+		data.put("pageData", pageData);
+		data.put("totalCount", totalCount);
+		data.put("param", filter);
+
 		return webHelper.getJsonData(data);
 	}
 }

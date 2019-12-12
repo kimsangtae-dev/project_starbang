@@ -266,7 +266,7 @@ public class MainController {
 		int monthTo = webHelper.getInt("monthTo", 999999);
 		/** 매매 (price) */
 		int buyingFrom = webHelper.getInt("buyingFrom");
-		int buyingTo = webHelper.getInt("buyingTo");
+		int buyingTo = webHelper.getInt("buyingTo", 999999);
 		/** 관리비(fee) */
 		int feeFrom = webHelper.getInt("feeFrom");
 		int feeTo = webHelper.getInt("feeTo", 999999);
@@ -292,9 +292,10 @@ public class MainController {
 		filter.setFeeTo(feeTo);
 		// 방크기
 		filter.setSizeFrom(sizeFrom);
-		filter.setSizeTo(sizeTo);
-		if (sizeTo == 99999) {
+		if (sizeTo == 999999) {
 			filter.setSizeTo(115);
+		} else {
+			filter.setSizeTo(sizeTo);			
 		}
 
 		/** 2) 데이터 조회하기 */
