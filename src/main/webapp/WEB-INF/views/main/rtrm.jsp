@@ -13,23 +13,36 @@
 <%@ include file="../assets/inc/meta.jsp"%>
 
 <!-- css 참조 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/rtrm.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/etc/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/assets/css/ma_css/rtrm.css">
 </head>
 
 <body>
-		<!-- 상단 헤더 -->
-		<%@ include file="../assets/inc/ma_top.jsp"%>
-		<!-- 중앙 영역 -->
-		<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
+	<!-- 상단 헤더 -->
+	<%@ include file="../assets/inc/ma_top.jsp"%>
+	<!-- 중앙 영역 -->
+	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
 	<div class="root">
 		<div id="content">
 			<!-- 최근본방/찜한 방 -->
 			<div id="recent" class="recent">
 				<h1 class="interest">관심목록</h1>
 				<div class="tab-menu">
-					<a class="st-bang active" href="#">최근 본 방</a> <a class="st-bang"
-						href="${pageContext.request.contextPath}/main/wish.do">찜한 방</a>
+					<a class="st-bang active" href="#">최근 본 방</a>
+					<c:choose>
+						<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+						<c:when test="${loginInfo == null }">
+							<a href="${pageContext.request.contextPath}/modal/login.do"
+								class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">찜한 방</a>
+						</c:when>
+						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+						<c:otherwise>
+							<a class="st-bang"
+								href="${pageContext.request.contextPath}/main/wish.do">찜한 방</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="tab-text">
 					<div class="re-div1">
@@ -72,8 +85,8 @@
 													<a target="_blank" rel="" class="recent-a"
 														href="${pageContext.request.contextPath}/main/rmdt.do">
 														<!-- 이미지 -->
-														<div class="recent-a-div"></div>
-														<c:if test="${item.confirmdate != null}">
+														<div class="recent-a-div"></div> <c:if
+															test="${item.confirmdate != null}">
 															<%-- 확인매물 div --%>
 															<div class="recent-a-confirm">
 																<div class="recent-a-confirm-div">
@@ -113,8 +126,9 @@
 			</div>
 			<!-- content 끝 -->
 		</div>
-		</div><!-- root 끝 -->
-	
+	</div>
+	<!-- root 끝 -->
+
 
 	<!-- 하단 영역 -->
 	<%@ include file="../assets/inc/ma_bottom.jsp"%>
