@@ -24,15 +24,26 @@ public class UploadServiceImpl implements UploadService {
 	public UploadItem getUploadItem(UploadItem input) throws Exception {
 		return null;
 	}
-
+	
 	@Override
-	public List<UploadItem> getUploadItemList(UploadItem input) throws Exception {
-		return null;
-	}
-
-	@Override
-	public int getUploadItemCount(UploadItem input) throws Exception {
-		return 0;
+	public List<UploadItem> getImageList_by_roomno(UploadItem input) throws Exception {
+		List<UploadItem> result = null;
+		
+		try {
+			result = sqlSession.selectList("UploadMapper.selectList_by_roomno", input);
+			
+			if (result == null) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -79,5 +90,16 @@ public class UploadServiceImpl implements UploadService {
 			throw new Exception("데이터 저장에 실패했습니다.");
 		}
 		return result;
+	}
+	
+	@Override
+	public int getUploadItemCount(UploadItem input) throws Exception {
+		return 0;
+	}
+
+	@Override
+	public List<UploadItem> getUploadItemList(UploadItem input) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
