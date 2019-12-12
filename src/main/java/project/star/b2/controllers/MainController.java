@@ -66,7 +66,11 @@ public class MainController {
 	 * 메인
 	 *******************************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main(Model model) {
+	public ModelAndView main(Model model,HttpServletRequest request) {
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        /*----------------------*/
 		/** 1)필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -101,6 +105,7 @@ public class MainController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("logininfo", loginInfo);
 
 		return new ModelAndView("index");
 	}

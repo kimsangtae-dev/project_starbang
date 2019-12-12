@@ -42,7 +42,7 @@
 									허위매물</label>
 							</div>
 							<div class="adm-btn">
-								<input type="button" name="" class="btn btn-default"
+								<input type="button" name="" class="btn btn-default" id=confirm-button
 									value="확인매물"> <input type="button" name=""
 									class="btn btn-default" value="방 숨기기"> <input
 									type="button" name="" class="btn btn-default" value="방 삭제">
@@ -92,7 +92,7 @@
 								<c:set var="address" value="${item.address}" />
 
 								<tr>
-									<td class="text-center"><input type="checkbox"
+									<td class="text-center"><input type="checkbox" name="aaaa" value=${item.roomno}
 										class="roomlist"></td>
 									<td align="center">${item.roomno}</td>
 									<td align="center">${item.roomtype}</td>
@@ -101,7 +101,7 @@
 									<td align="center">${area}</td>
 									<td align="center">${fee}</td>
 									<td align="center"><a href="${viewUrl}">${item.name}</td>
-									<td align="center">${confirmdate}</td>
+									<td align="center" id="data">${confirmdate}</td>
 									<td align="center">${address}</td>
 								</tr>
 							</c:forEach>
@@ -126,6 +126,25 @@
 				$(".roomlist").prop('checked', $(this).prop('checked'));
 			});
 		});
+
+		$(function() {
+			  $('#confirm-button').on('click', function() {
+				  
+				  $.ajax({
+					  //결과 url
+					  url: "${pageContext.request.contextPath}/admin/confirm_ok.do",
+					  data: { user_id : "8" },
+					  type:"POST",
+					  datatype:'text',
+					  success : function(data) {
+					        alert("success!");
+					    },
+					  error : function(error,status,request) {
+					        alert("Error!" + error + "request: "+request+" status: "+status);
+					    },			  
+				  });
+		})
+	}); //end $.ajax;
 	</script>
 </body>
 </html>

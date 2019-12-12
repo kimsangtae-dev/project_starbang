@@ -50,4 +50,11 @@ public interface RoomService {
      */
     public int deleteRoom(Room input) throws Exception;
     
+    /**
+     * 관리자 확인매물 업데이트
+     * @param Room 삭제할 매물의 일련번호를 담고 있는 Beans
+     * @throws Exception
+     */
+    public int editConfirmRoom(Room input) throws Exception;
+    
 }
