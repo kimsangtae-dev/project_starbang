@@ -1,6 +1,12 @@
 package project.star.b2.controllers;
 
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,14 +15,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.Address;
+import project.star.b2.model.Address.Documents;
 import project.star.b2.model.Info;
+import project.star.b2.model.Price;
 import project.star.b2.model.Room;
+import project.star.b2.model.UploadItem;
+import project.star.b2.model.User;
+import project.star.b2.service.ApiKakaoSearchService;
 import project.star.b2.service.RIPService;
+import project.star.b2.service.UploadService;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
-
+@Slf4j
 @Controller
 public class HostController {
 
@@ -35,6 +51,10 @@ public class HostController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	RIPService ripService;
+	
+	/** Service 패턴 구현체 주입 */
+	@Autowired
+	UploadService uploadService;
 
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
@@ -54,7 +74,7 @@ public class HostController {
 	 * 공실 등록하기
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rm_add.do", method = RequestMethod.GET)
-	public ModelAndView rm_add() {
+	public ModelAndView rm_add(HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		
@@ -146,7 +166,7 @@ public class HostController {
 			// DB에 저장하기
 			try {
 				log.info("upload"+fileList);
-				uploadservice.addUploadItem(item);
+				uploadService.addUploadItem(item);
 			} catch (Exception e) {
 				log.error(e.getLocalizedMessage());
 				e.printStackTrace();
