@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -32,7 +32,7 @@
 					<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content1"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>별방은 어떤 서비스인가요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content1"><p><span class="Qfaq">Q.</span>별방은 어떤 서비스인가요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content1" class="content">
     						<pre class="precolor"><span class="contentspan">A.</span>다방은 어떤 서비스인가요?
@@ -65,7 +65,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content2"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>회원가입을 하면 어떤 점이 좋나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content2"><p><span class="Qfaq">Q.</span>회원가입을 하면 어떤 점이 좋나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content2" class="content">
     						<pre class="precolor"><span class="contentspan">A.</span>다방앱에 회원가입 후 로그인을 하시면
@@ -90,7 +90,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content3"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>회원탈퇴는 어떻게 하나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content3"><p><span class="Qfaq">Q.</span>회원탈퇴는 어떻게 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content3" class="content"><pre class="precolor"><span class="contentspan">A.</span>다방 서비스 회원탈퇴를 원하실 경우
 
@@ -104,7 +104,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content4"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>직거래는 어떻게 방을 내놓나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content4"><p><span class="Qfaq">Q.</span>직거래는 어떻게 방을 내놓나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content4" class="content"><pre class="precolor"><span class="contentspan">A.</span>개인회원의 경우 직거래 매물 1건에 대해 무료 광고가 가능합니다.
 
@@ -118,7 +118,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content5"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>별방에 등록된 방은 믿을 수 있나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content5"><p><span class="Qfaq">Q.</span>별방에 등록된 방은 믿을 수 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content5" class="content"><pre class="precolor"><span class="contentspan">A.</span>별방은 사용자 분들에게 믿을 수 있는 정보를 제공하는 것을 최우선으로 합니다.
 
@@ -132,7 +132,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title text'><a class="a" href="#content6"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>허위매물은 어떻게 관리 하나요?</p></a></h2>
+    					<h2 class=' collapse-title text'><a class="a" href="#content6"><p><span class="Qfaq">Q.</span>허위매물은 어떻게 관리 하나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content6" class="content"><pre class="precolor"><span class="contentspan">A.</span>허위매물 전담팀이 수시로 매물을 살펴보고 허위매물을 필터링하고 있습니다.
 
@@ -148,7 +148,7 @@
 	    			<!-- 게시글 하나 단위 -->
     				<div class='collapse-item' id="itme">
           				<!-- 게시글 제목영역 -->
-    					<h2 class=' collapse-title collapse-title3 text'><a class="a" href="#content7"><img src="${pageContext.request.contextPath}/assets/img/ma_img/Q.PNG"><p>매물개수 제한이 있나요?</p></a></h2>
+    					<h2 class=' collapse-title collapse-title3 text'><a class="a" href="#content7"><p><span class="Qfaq">Q.</span>매물개수 제한이 있나요?</p></a></h2>
             			<!-- 게시글 내용영역 -->
     					<div id="content7" class="content"><pre class="precolor"><span class="contentspan">A.</span>직거래 매물의 경우 1개 계정 당 1개 매물 업로드를 기준으로 합니다. 무분별한 매물 업로드를 통한 허위 정보의 발생을 막기 위해 허위매물 전담팀
    이 계속해서 직접 매물 정보를 확인하게 됩니다.</pre>
