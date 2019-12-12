@@ -15,25 +15,24 @@
 </head>
 
 <body>
-	<div id="root">
-		<div class="box">
-			<!-- header 시작 -->
-			<%@ include file="../assets/inc/ho_header2.jsp"%>
-			<!-- header 끝 -->
-			<!-- content 시작 -->
-
-			<div id="content">
-				<form id="add_room" action="${pageContext.request.contextPath}/host">
-					<div class="sell_room_box">
-						<h1 class="sell_room">공실 등록하기</h1>
-					</div>
-					<ul class="sell_info_box">
-						<li>등록한 매물은 30일 동안 노출됩니다.</li>
-						<li>좋아요를 많이 받은 방은 인기매물에 등록됩니다.</li>
-					</ul>
-					<!-- 매물종류 -->
-
-					<div class="tableframe" name="roomType">
+	<div class="box">
+		<!-- header 시작 -->
+		<%@ include file="../assets/inc/ho_header2.jsp"%>
+		<!-- header 끝 -->
+					
+		<!-- content 시작 -->
+		<form id="add_room" method="post" action="${pageContext.request.contextPath}/host/rm_add_ok.do" enctype="multipart/form-data">
+		<div id="content">
+			<div class="sell_room_box">
+				<h1 class="sell_room">공실 등록하기</h1>
+			</div>
+			<ul class="sell_info_box">
+				<li>등록한 매물은 30일 동안 노출됩니다.</li>
+				<li>좋아요를 많이 받은 방은 인기매물에 등록됩니다.</li>
+			</ul>
+			
+			<!-- 매물종류 -->
+			<div class="tableframe" name="roomType">
 						<h1>매물 종류</h1>
 						<table>
 							<tbody>
@@ -51,15 +50,24 @@
 								</tr>
 								<tr>
 									<th>건물 유형</th>
-									<td class="bang_choice"><label class="Square_box"><input
-											id="buildtype" type="radio" name="buildtype" value="단독주택">
-											<p>단독주택</p> </label> <label class="Square_box"><input
-											type="radio" name="buildtype" value="다가구주택">
-											<p>다가구주택</p> </label> <label class="Square_box"><input
-											type="radio" name="buildtype" value="빌라/연립/다세대">
-											<p>빌라/연립/다세대</p> </label> <label class="Square_box"><input
-											type="radio" class="ab1" name="buildtype" value="오피스텔">
-											<p>오피스텔</p> </label></td>
+									<td class="bang_choice">
+										<label class="Square_box">
+											<input id="buildtype" checked type="radio" name="buildtype" value="단독주택" >
+											<p>단독주택</p> 
+										</label> 
+										<label class="Square_box">
+											<input type="radio" name="buildtype" value="다가구주택">
+											<p>다가구주택</p> 
+										</label> 
+										<label class="Square_box">
+											<input type="radio" name="buildtype" value="빌라/연립/다세대">
+											<p>빌라/연립/다세대</p>
+										</label> 
+										<label class="Square_box">
+											<input type="radio" class="ab1" name="buildtype" value="오피스텔">
+											<p>오피스텔</p> 
+										</label>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -81,30 +89,25 @@
 													건물명, 지번에 대해 통합검색이 가능합니다.</span>
 											</p>
 
-											<input type="text" class="address1" placeholder=" 주소"
-												readonly> <input type="button" class="address2"
-												onclick="sample5_execDaumPostcode()" value="주소 검색">
+											<input type="text" class="address1" placeholder=" 주소" readonly> 
+											<input type="button" class="address2" onclick="sample5_execDaumPostcode()" value="주소 검색">
 
 											<div class="loc_de">
-												<input type="text" style="border: none" name="address"
-													id="point_address" placeholder="" readonly>
+												<input type="text" style="border: none" name="address" id="point_address" placeholder="" value="광주 광산구 2순환로 2474" readonly>
 											</div>
 											<div class="dongho_div">
 												<div class="dong">
-													<input type="text" class="dongho input_box" id="dong"
-														name="dong" placeholder="예)101동">
+													<input type="text" class="dongho input_box" id="dong" name="dong" value="201" placeholder="예)101동">
 												</div>
 												<div class="ho">
-													<input type="text" class="dongho input_box" id="ho"
-														name="ho" placeholder="예)201호">
+													<input type="text" class="dongho input_box" id="ho" name="ho" value="201" placeholder="예)201호">
 												</div>
 											</div>
 											<div class="loc_check">
-												<label class="loc_check_box" size="22"><input
-													type="checkbox" id="is_noinfo_dong" class=" PcMeW"
-													name="is_noinfo_dong" value=""> <span
-													class="CheckBox"></span> <span class="ch_box_text">등본에
-														동정보가 없는 경우 선택해 주세요.</span> </label>
+												<label class="loc_check_box" size="22"><input type="checkbox" id="is_noinfo_dong" class=" PcMeW" name="is_noinfo_dong" value="">
+													<span class="CheckBox"></span>
+													<span class="ch_box_text">등본에 동정보가 없는 경우 선택해 주세요.</span> 
+												</label>
 											</div>
 										</div>
 										<div id="box" class="map_box" style="display: none"></div>
@@ -159,11 +162,10 @@
 										<p>건물 크기</p> <span>(1P = 3.3058㎡)</span>
 									</th>
 									<td class="base_line">
-										<p class="base_title">공급 면적</p> <input type="text"
-										id="pyeong1" class="base_pd input_box" name="supplyarea"
-										onkeyup="calculator(1);">
-										<p class="base_kiho">평</p> <input type="text" id="pyeong2"
-										class="base_pd input_box" onkeyup="calculator(2);">
+										<p class="base_title">공급 면적</p> 
+										<input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);" value="15.0">
+										<p class="base_kiho">평</p> 
+										<input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);" >
 										<p class="base_kiho">㎡</p>
 									</td>
 									<th rowspan="2">건물 층수</th>
@@ -172,7 +174,7 @@
 										id="maxfloor" name="maxfloor">
 											<option value="">건물 층수 선택</option>
 											<option value="1">1층</option>
-											<option value="2">2층</option>
+											<option value="2" selected>2층</option>
 											<option value="3">3층</option>
 											<option value="4">4층</option>
 											<option value="5">5층</option>
@@ -196,8 +198,8 @@
 								</tr>
 								<tr>
 									<td class="base_line">
-										<p class="base_title">전용 면적</p> <input type="text" id="ator1"
-										class="base_pd input_box" name="area" onkeyup="ator(1);">
+										<p class="base_title">전용 면적</p>
+										<input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);" value="14.0">
 										<p class=" base_kiho">평</p> <input type="text" id="ator2"
 										class="base_pd input_box" onkeyup="ator(2);">
 										<p class="base_kiho">㎡</p>
@@ -208,7 +210,7 @@
 											<option value="">해당 층수 선택</option>
 											<option value="-1">반지층</option>
 											<option value="0">옥탑</option>
-											<option value="1">1층</option>
+											<option value="1" selected>1층</option>
 											<option value="2">2층</option>
 											<option value="3">3층</option>
 											<option value="4">4층</option>
@@ -236,25 +238,28 @@
 									<td class="base_line" colspan="3"><select id="heater"
 										class="heating hRFrgm" name="heater">
 											<option value="">난방 종류 선택</option>
-											<option value="1">중앙 난방</option>
+											<option value="1" selected>중앙 난방</option>
 											<option value="2">개별 난방</option>
 											<option value="3">지역 난방</option>
 									</select></td>
 								</tr>
 								<tr>
 									<th>입주 가능일</th>
-									<td class="base_line" colspan="3"><label class="in_date">
-											<input type="radio" id="commingday" name="commingday"
-											value="즉시입주">
+									<td class="base_line" colspan="3">
+										<label class="in_date">
+											<input type="radio" id="commingday" name="commingday" checked value="즉시입주">
 											<p>즉시 입주</p>
-									</label> <label class="in_date"> <input type="radio"
-											name="commingday" value="날짜협의">
+										</label> 
+										<label class="in_date"> 
+										<input type="radio" name="commingday" value="날짜협의">
 											<p>날짜 협의</p>
-									</label> <input type="hidden" id="datepicker" name="commingday">
-										<label class="in_date"> <input type="radio"
-											name="commingday" value="1" id="cal">
+										</label>
+										<input type="hidden" id="datepicker" name="commingday">
+										<label class="in_date">
+											<input type="radio" name="commingday" value="1" id="cal">
 											<p>날짜 선택</p>
-									</label></td>
+										</label>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -411,13 +416,12 @@
 							<tbody>
 								<tr>
 									<th>제목</th>
-									<td class="detail_box"><input type="text" id="title"
-										class="detail_box1 input_box" name="title"
+									<td class="detail_box"><input type="text" id="title" class="detail_box1 input_box" name="title" value="제목"
 										placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다."></td>
 								</tr>
 								<tr>
 									<th>상세 설명</th>
-									<td class="detail_box"><textarea class="detail_des"
+									<td class="detail_box"><textarea class="detail_des" value="하하"
 											style="resize: none;" id="content_input" name="content"
 											placeholder="※상세설명 작성 주의사항
                                 
@@ -435,48 +439,51 @@
 							</tbody>
 						</table>
 					</div>
-					<!-- 사진등록 -->
-					<div class="photo_frame" name="photo">
-						<h1>사진 등록</h1>
-						<div class="photo_box">
-							<div class="photo_btn">
-								<button class="photo_btn1" disabled>일반사진</button>
+					<button id="upper_submit" style="display:none;"></button>
+					
+						<!-- 사진등록 -->
+						<div class="photo_frame" name="photo">
+							<h1>사진 등록</h1>
+							<div class="photo_box">
+								<div class="photo_btn">
+									<button class="photo_btn1" disabled>일반사진</button>
+								</div>
+								<div class="pic_info">
+									<p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
+									<p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
+								</div>
+	                        	<div class="photo_info">
+	                            	<div class="up_list"></div>
+	                            	<div class="photo_pic2">
+	                                	<span class="glyphicon glyphicon-picture"></span>
+	                                	<p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
+	                            	</div>
+	                            	<div class="filebox">
+	                                	<div class="register-d" style="position: relative;">
+	                                   		<button class="register-btn" id="uploadPhoto">사진 등록</button>
+	                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
+	                                        	<input id="addfile" type="file" name="iloveupload" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">
+	                                    	</div>
+	                                	</div>
+	                                	<!-- <input type="file" id="" accept=".jpg,.jpeg,.png" maxlength="15"/> -->
+	                            	</div>
+	                        	</div>
 							</div>
-							<div class="pic_info">
-								<p>- 사진은 가로로 찍은 사진을 권장합니다. (가로 사이즈 최소 800px)</p>
-								<p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
-							</div>
-                        	<div class="photo_info">
-                            	<div class="up_list"></div>
-                            	<div class="photo_pic2">
-                                	<span class="glyphicon glyphicon-picture"></span>
-                                	<p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
-                            	</div>
-                            	<div class="filebox">
-                                	<div class="register-d" style="position: relative;">
-                                   		<button class="register-btn" id="uploadPhoto">사진 등록</button>
-                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
-                                        	<input id="addfile" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png" tabindex="-1">
-                                    	</div>
-                                	</div>
-                                	<!-- <input type="file" id="" accept=".jpg,.jpeg,.png" maxlength="15"/> -->
-                            	</div>
-                        	</div>
+							<p class="warning_text">
+								<span class="glyphicon glyphicon-exclamation-sign"></span> <span>허위
+									매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span> <a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
+							</p>
 						</div>
-						<p class="warning_text">
-							<span class="glyphicon glyphicon-exclamation-sign"></span> <span>허위
-								매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span> <a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
-						</p>
-					</div>
+					
 				</div>
 				<!-- lowbox -->
 				<div class="low_box">
-					<label class="low_text low_check_box" size="22"> <input type="checkbox" class="PcMeW" id="isAgree" name="isAgree" value=""> 
-					<span class="CheckBox"></span> 
-					<span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
-						</label>
-						<button type="button" class="low_btn1"
-							onclick="location.href='${pageContext.request.contextPath}/host/rmli.do'">취소</button>
+					<label class="low_text low_check_box" size="22"> 
+						<input type="checkbox" class="PcMeW" id="isAgree" name="isAgree" value="" checked> 
+						<span class="CheckBox"></span> 
+						<span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
+					</label>
+						<button type="button" class="low_btn1" onclick="location.href='${pageContext.request.contextPath}/host/rmli.do'">취소</button>
 						<button class="low_btn2">매물등록</button>
 					</div>
 				</form>
@@ -492,8 +499,7 @@
 			<!-- footer 끝 -->
 		</div>
 		<!-- box 끝 -->
-	</div>
-	<!-- root 끝 -->
+
 
 
 	<!-- Javascript -->
@@ -501,14 +507,14 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/datepicker/datepicker.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
 	
 	<!-- 카카오 지도 시작-->
-	<script
-		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2af26a361b5d6ffd94b478877c3ee14&libraries=services"></script>
 	<script>
-        var mapContainer = document.getElementById('box'), // 지도를 표시할 div
+	var mapContainer = document.getElementById('box'), // 지도를 표시할 div
             mapOption = {
                 center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
                 level: 5 // 지도의 확대 레벨
@@ -558,14 +564,10 @@
     }).open();
 }
 </script>
-	<!-- 카카오 지도 끝 -->
+<!-- 카카오 지도 끝 -->
 
-	<!-- datepicker 시작 -->
+<!-- datepicker 시작 -->
 
-	<script
-		src="${pageContext.request.contextPath}/assets/plugin/datepicker/datepicker.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/plugin/datepicker/i18n/datepicker.ko-KR.js"></script>
 
 	<script>
         $(function() {
@@ -580,9 +582,6 @@
         });
     </script>
 	<!-- datepicker 끝 -->
-
-
-
 
 	<!-- 동정보 위치이동 시작 -->
 	<script>
@@ -600,8 +599,8 @@ $(function() {
 </script>
 	<!-- 동정보 위치이동 끝 -->
 
-	<!-- 공급면적 평수 계산기 -->
-	<script>
+<!-- 공급면적 평수 계산기 -->
+<script>
     function calculator(chk){
         if(chk==1){  
             document.getElementById('pyeong2').value = parseFloat((document.getElementById('pyeong1').value) * 3.3058).toFixed(2);
@@ -611,11 +610,11 @@ $(function() {
         }
     }
 </script>
-	<!-- 평수 계산기 -->
+<!-- 평수 계산기 -->
 
 
-	<!-- 전용면적 평수 계산기 -->
-	<script>
+<!-- 전용면적 평수 계산기 -->
+<script>
     function ator(chk){
         if(chk==1){ 
             document.getElementById('ator2').value = parseFloat((document.getElementById('ator1').value) * 3.3058).toFixed(2);
@@ -625,69 +624,64 @@ $(function() {
         }
     }
 </script>
-	<!-- 평수 계산기 끝-->
+<!-- 평수 계산기 끝-->
 
-
-	<script>
-
+<script>
 $(function() {
-            /* `#input_enable`의 선택 상태가 변경된 경우 */
-            
-            $("#unparking").click(function() {
-            	var now = $("#parking").prop('disabled');
-                if($("#parking").prop('disabled') == false) {
-                	$("#parking").prop('disabled', !now);
-                     }	
-                });
-                
-                $("#parkingok").click(function() {
-                	var now = $("#parking").prop('disabled');
-                    if($("#parking").prop('disabled') == true) {
-                    	$("#parking").prop('disabled', !now);
-						$("#parking").focus();
-                    }
-                });
-		});
+	/* `#input_enable`의 선택 상태가 변경된 경우 */        
+    $("#unparking").click(function() {
+		var now = $("#parking").prop('disabled');
+        if($("#parking").prop('disabled') == false) {
+        	$("#parking").prop('disabled', !now);
+        }	
+    });
+
+	$("#parkingok").click(function() {
+    	var now = $("#parking").prop('disabled');
+        if($("#parking").prop('disabled') == true) {
+            $("#parking").prop('disabled', !now);
+			$("#parking").focus();
+       	}
+    });
+});
 </script>
 
-	<script>
+<script>
 // 오피스텔 선택시 자동선택
-    $( document ).ready( function() {
+/*     $( document ).ready( function() {
         $( '.ab' ).click( function() {
-        $( '.ab1' ).prop( 'checked', this.checked );
+        	$( '.ab1' ).prop( 'checked', this.checked );
         });
-    });
+    }); */
 </script>
 
-	<script>
-// 관리비 fee
-    $("input#main_input").click(function() {
-        if ($("input#main_input:checked").val()) { 
-        	// 비활성화
-            $("input#main_pr_v1").attr("disabled", true); 
-        } else {
-        	// 활성화
-            $("input#main_pr_v1").removeAttr("disabled");
-            $("#main_pr_v1").focus();
-        	
-        }   
-    });
+<script>
+	// 관리비 fee
+	$("input#main_input").click(function() {
+		if ($("input#main_input:checked").val()) {
+			// 비활성화
+			$("input#main_pr_v1").attr("disabled", true);
+			$(".user_input:checked").attr("checked", false);
+		} else {
+			// 활성화
+			$("input#main_pr_v1").removeAttr("disabled");
+			$("#main_pr_v1").focus();
+		}
+	});
 
-    // 관리비 옵션 feeitem
-    $(".user_input").click(function() {
-        if ( $("#user_input:checked").val()) // 비활성화
-        {
-            $("input#main_pr_v1").removeAttr("disabled");
-            $("input#main_input").removeAttr("checked");
-        }
-        else // 활성화
-        {
-            $("input#main_pr_v1").prop("disabled", true); 
-            $("input#main_input").prop("checked", true); 
-        }   
-    });
-    
-</script>
+	// 관리비 옵션 feeitem
+	$(".user_input").change(function() {
+		// 비활성화
+		if ($(".user_input:checked").val() != 0) {
+			$("#main_pr_v1").removeAttr("disabled");
+			$("#main_input").removeAttr("checked");
+			// 활성화
+		} else {
+			$("#main_pr_v1").prop("disabled", true);
+			$("#main_input").prop("checked", true);
+		}
+	});
+	</script>
 
 
 	<!-- 월세, 전세, 매매 버튼 활성화 -->
@@ -756,105 +750,14 @@ $(function() {
         /* function reflex(){
         	document.getElementById('reflex1').value = parseFloat(document.getElementById('.price').value).toFixed(1);
         } */
-    </script>
-    
-<script>
-
-$(function() {
-	$('.low_btn2').click(function(){
-	
-	/** 매물종류 검사 (1) */
-    if (!regex.check("input[name='buildtype']:checked", '건물유형을 선택해주세요.')) {	$("input[name='buildtype'").focus(); return false; } // 건물유형 buildtype  		
-    
-    /** 
-     * 주소 검사 (3) 
-     */
-    if (!regex.value('#point_address', '주소를 입력해주세요.')) { $("#point_address").focus(); return false; } 								// 주소 address
-   	if ( $("#is_noinfo_dong:checked").length == 0 ){ if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 }				// 동 dong
-   	if ( !regex.value('#ho', '호 주소를 입력해주세요.') ) { $("#ho").focus(); return false; }	 		 										// 호 ho
-    
-    /** 
-     * 거래정보 검사 (3) - 매물종류, 보증금, 가격 
-     */
-    var dealingtype = $(".dealingtype");
-    var deposit = $(".deposit");
-    var price = $(".price");
-    
-    if( dealingtype.val() ) {
-    	for (var i = 0 ; i < dealingtype.length ; i ++) {
-        	if( !dealingtype.eq(i).val()) { alert("거래종류를 선택해주세요."); return false; }
-        	if( !deposit.eq(i).val()) { alert( dealingtype.eq(i).val()+"의 보증금 액수를 입력해주세요." ); deposit.eq(i).focus(); return false; }
-        	if( !price.eq(i).val()) { alert(dealingtype.eq(i).val()+"의 금액을 입력해주세요."); price.eq(i).focus(); return false; }
-        }
-    } else {
-    	alert("거래종류를 선택해주세요.");
-    	$("#monthly").focus();
-    	return false;
-    }
-    
-    /** 
-     * 기본정보 검사 (6) = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일 
-     */
-    if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { $("#pyeong1").focus(); return false; }	 			// 공급면적 supplyarea
-    if (!regex.value('#ator1', '전용면적을 입력해주세요.')) { $("#pyeong2").focus(); return false; }	 			// 전용면적 area
-    
-    /** 공급면적 < 전용면적일때, 에러창 띄우기 */
-    if ( $("#pyeong1").val() < $("#ator1").val() ) {
-    	alert("전용면적은 공급면적보다 클 수 없습니다."); $("#ator1").focus(); return false;
-    }
-    
-    if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수 
-    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
-    
-    /** 층수 < 건물층수 설정 */
-    if($("#floor").val() > $("#maxfloor").val()) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
-    
-    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
-    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
-    		$("#commingday").focus(); return false; 
-    	}
-    
-    /** 관리비 검사 */
-    var check = $("#main_input:checked");
-    if ( check.length == 0 ){
-    	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { $("#main_pr_v1").focus(); return false; }	// 관리비 금액 
-    }
-
-    /** 주차여부 검사 */
-    var check = $("#parkingok:checked");
-    if ( check.length > 0 ){ if (!regex.value('#parking', '주차비 금액을 입력해주세요.')) { $("#parking").focus(); return false; }	} 	// 주차비 
-   
-    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
-    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
-    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
-	
-    // #addForm에 대한 submit이벤트를 가로채서 Ajax요청을 전송한다.
-    $("#add_room").ajaxForm({
-        // 전송 메서드 지정
-        method: "POST",
-        // 서버에서 200 응답을 전달한 경우 실행됨
-    	success: function(json) {
-            console.log(json);
-            
-            // json에 포함된 데이터를 활용하여 상세페이지로 이동한다.
-            if (json.rt == "OK") {
-                window.location = "${pageContext.request.contextPath}/host/roominfo/view.do?roomno=" + json.item.roomno;
-            }
-    	}
-    });
-    
-	});
-});
 </script>
+
+
 <script>
-/* 
-<div class="photo_pic2">
-<span class="glyphicon glyphicon-picture"></span>
-<p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
-</div> */
-    
 
-
+/***
+ *  업로드
+ */
     $(function() {
         $("#addfile").change(function(){
             $(".photo_pic2").remove();
@@ -862,70 +765,74 @@ $(function() {
             $(".register-btn").attr("class", "register-after-btn");
         });
     });
-    
+
 	$(function() {
 		$("#uploadPhoto").click(function(e){	
 			e.preventDefault();
     		$("#addfile").trigger('click');
     	});
-	});
+	}); 
 
+
+	/* 유효성검사 */
+ 	function getCmaFileView() {
+	    //파일정보
+	    var fileObj = document.nhForm.file_upload_field.files[0];
+	    var fileObjValue = document.getElementById('file_upload_field').value;
+	    var size = fileObj['size'];//파일사이즈
+
+	    //이미지 파일 사이즈
+	    if(size >= parseInt(10485760)) {
+	    	alert('10MB만 가능');
+	    	fileObjValue = '';
+	    	return false;
+	    }
+	    return true;
+	}
     
-
-//클릭된 요소를 제외한 나머지에게 selected 클래스 제거 --> 배경이미지 원상복구됨
-//	$(".tab-button-item-link").not(this).removeClass("selected");
-
-// 클릭된 요소에게 selected 클래스 적용 --> 배경이미지 변경됨
-//	$(this).addClass("selected");
-
-
-//이미지 정보들을 담을 배열
-var sel_files = [];
-
-//대기타다가 input에 change가 있을경우 handleImgFileSelect 함수실행
-$(document).ready(function() {
-    $("#addfile").on("change", handleImgFileSelect);
-}); 
-
-function handleImgFileSelect(e) {
-    // 이미지 정보들을 초기화
-    sel_files = [];
-    $(".up_list").empty();
-
-    var files = e.target.files;
-    var filesArr = Array.prototype.slice.call(files);
-    var index = 0;
-
-    // 유효성검사하기
-    filesArr.forEach(function(f) {
-        if(!f.type.match("image.*")) {
-            alert("확장자는 이미지 확장자만 가능합니다.");
-	// return;
-        }
-
-        sel_files.push(f);
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var html = "<a href='javascript:void(0);' onclick='deleteImageAction("+index+")' id='img_id_"+index+"'>"
-            +"<img src=" + e.target.result + " data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
-            
-            var item = '<div class="up-d" onclick="deleteImageAction" (' + index + ') id="img_id_' + index + '" data-id="' + index + '">'
-            +'<p class="up-p">대표이미지</p>'
-            +'<button class="up-close-b"></button>'
-            +'<div class="up-d2"><img src="' + e.target.result + '"></div></div>';
-            
-            
-            $(".up_list").append(item);
-            index++;
-      
-            
-            
-        }
-        reader.readAsDataURL(f);
-    });
-}
-
+	//이미지 정보들을 담을 배열
+	var sel_files = [];
+	
+	//대기타다가 input에 change가 있을경우 handleImgFileSelect 함수실행
+	$(document).ready(function() {
+	    $("#addfile").on("change", handleImgFileSelect);
+	}); 
+	
+	function handleImgFileSelect(e) {
+	    // 이미지 정보들을 초기화
+	    sel_files = [];
+	    $(".up_list").empty();
+	
+	    var files = e.target.files;
+	    var filesArr = Array.prototype.slice.call(files);
+	    var index = 0;
+	
+	    // 유효성검사하기
+	    filesArr.forEach(function(f) {
+	        if(!f.type.match("image.*")) {
+	            alert("확장자는 이미지 확장자만 가능합니다.");
+		// return;
+	        }
+	        sel_files.push(f);
+	
+	        var reader = new FileReader();
+	        reader.onload = function(e) {
+	        	
+	            var html = "<a href='javascript:void(0);' onclick='deleteImageAction('"+index+")' id='img_id_"+index+"'>"
+	            +"<img src=" + e.target.result + " data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
+	           
+	            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
+	            +'<button class="up-close-b"></button>'
+	            +'<div class="up-d2"><img src="' + e.target.result + '"></div></div>';
+	            
+	            //+'<p class="up-p">대표이미지</p>'
+	            
+	            $(".up_list").append(item);
+	            index++;
+	        }
+	        reader.readAsDataURL(f);
+	    });
+	}
 
 // 이미지 지우기
 function deleteImageAction(index) {
@@ -936,10 +843,100 @@ function deleteImageAction(index) {
 
     var img_id = "#img_id_"+index;
     $(img_id).remove(); 
-}
-
+} 
 </script>
 
+<script>
 
+$(function() {
+	$('.low_btn2').click(function(e){
+		e.preventDefault();
+		
+		/** 매물종류 검사 (1) */
+	    if (!regex.check("input[name='buildtype']:checked", '건물유형을 선택해주세요.')) {	$("input[name='buildtype'").focus(); return false; } // 건물유형 buildtype  		
+	    
+	    /** 
+	     * 주소 검사 (3) 
+	     */
+	    if (!regex.value('#point_address', '주소를 입력해주세요.')) { $("#point_address").focus(); return false; } 								// 주소 address
+	   	if ( $("#is_noinfo_dong:checked").length == 0 ){ if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 }				// 동 dong
+	   	if ( !regex.value('#ho', '호 주소를 입력해주세요.') ) { $("#ho").focus(); return false; }	 		 										// 호 ho
+	    
+	    /** 
+	     * 거래정보 검사 (3) - 매물종류, 보증금, 가격 
+	     */
+	    var dealingtype = $(".dealingtype");
+	    var deposit = $(".deposit");
+	    var price = $(".price");
+	    
+	    if( dealingtype.val() ) {
+	    	for (var i = 0 ; i < dealingtype.length ; i ++) {
+	        	if( !dealingtype.eq(i).val()) { alert("거래종류를 선택해주세요."); return false; }
+	        	if( !deposit.eq(i).val()) { alert( dealingtype.eq(i).val()+"의 보증금 액수를 입력해주세요." ); deposit.eq(i).focus(); return false; }
+	        	if( !price.eq(i).val()) { alert(dealingtype.eq(i).val()+"의 금액을 입력해주세요."); price.eq(i).focus(); return false; }
+	        }
+	    } else {
+	    	alert("거래종류를 선택해주세요.");
+	    	$("#monthly").focus();
+	    	return false;
+	    }
+	    
+	    /** 
+	     * 기본정보 검사 (6) = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일 
+	     */
+	    if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { $("#pyeong1").focus(); return false; }	 			// 공급면적 supplyarea
+	    if (!regex.value('#ator1', '전용면적을 입력해주세요.')) { $("#pyeong2").focus(); return false; }	 			// 전용면적 area
+	    
+	    /** 공급면적 < 전용면적일때, 에러창 띄우기 */
+	    if ( $("#pyeong1").val() < $("#ator1").val() ) {
+	    	alert("전용면적은 공급면적보다 클 수 없습니다."); $("#ator1").focus(); return false;
+	    }
+	    
+	    if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수 
+	    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
+	    
+	    /** 층수 < 건물층수 설정 */
+	    if($("#floor").val() > $("#maxfloor").val()) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+	    
+	    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
+	    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
+	    		$("#commingday").focus(); return false; 
+	    	}
+	    
+	    /** 관리비 검사 */
+	    var check = $("#main_input:checked");
+	    if ( check.length == 0 ){
+	    	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { $("#main_pr_v1").focus(); return false; }	// 관리비 금액 
+	    }
+	
+	    /** 주차여부 검사 */
+	    var check = $("#parkingok:checked");
+	    if ( check.length > 0 ){ if (!regex.value('#parking', '주차비 금액을 입력해주세요.')) { $("#parking").focus(); return false; }	} 	// 주차비 
+	   
+	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
+	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
+		
+	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
+	    
+	    
+		/* 중복클릭 방지 */
+	    var doubleSubmitFlag = false;
+	    console.log(doubleSubmitFlag);
+        if(doubleSubmitFlag){
+        	log.console()
+            alert('저장 중입니다.');
+        	console.log("트루로 변환 보냈습니다.");
+        }else {
+            $(this).unbind().submit();
+            doubleSubmitFlag = true;
+            console.log("보내고 트루");
+            console.log(doubleSubmitFlag);
+        }
+
+	});
+});
+
+</script>
 </body>
 </html>
