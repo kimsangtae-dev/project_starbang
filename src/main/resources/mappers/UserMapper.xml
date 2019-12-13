@@ -122,5 +122,12 @@
         resultMap="userMap">
         SELECT userno, name, email, passwd, tel, regdate, editdate, profile_img FROM user WHERE email=#{email};
     </select>
+    	
+	 <!-- 아이디조회를 위한 기능 정의 -->
+    <select id="idCheck"
+        parameterType="project.star.b2.model.User"
+        resultType="int">
+        SELECT count(*) FROM user WHERE email = #{email}
+    </select>
 
 </mapper>

@@ -197,4 +197,14 @@ public class UserServiceImpl implements UserService {
 
         return result;
     }
+    
+    /**
+     * 유저 email 중복체크하기
+     * @throws Exception
+     */
+    @Override
+    public int idCheck(String email) throws Exception {
+    	int result = sqlSession.selectOne("UserMapper.idCheck", email);
+		return result;
+	}
 }

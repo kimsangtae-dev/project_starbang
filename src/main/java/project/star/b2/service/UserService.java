@@ -58,4 +58,9 @@ public interface UserService {
      * @throws Exception
      */
      public User getUserLogin(User input) throws Exception;
+     
+     /**
+      * 유저 이메일 중복 조회
+      */
+     public int idCheck(String email) throws Exception;
 }

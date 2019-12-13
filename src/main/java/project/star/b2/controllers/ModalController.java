@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import project.star.b2.helper.RegexHelper;
@@ -176,7 +177,19 @@ public class ModalController {
 		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
 	}
-
+	
+	/********************************************************************
+	 * 중복확인 * 
+	 *******************************************************************/
+	@RequestMapping(value = "/modal/idCheck.do",method = RequestMethod.GET)
+	@ResponseBody
+	public String idCheck(HttpServletRequest request) throws Exception {
+		
+		String email = request.getParameter("email");
+		int result = userService.idCheck(email);
+		return Integer.toString(result);
+	}
+ 
 	/********************************************************************
 	 * 비밀번호 찾기
 	 *******************************************************************/
