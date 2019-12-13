@@ -30,12 +30,18 @@ import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
+import project.star.b2.model.Info;
 import project.star.b2.model.Popular;
+import project.star.b2.model.Price;
 import project.star.b2.model.Room;
+import project.star.b2.model.UploadItem;
 import project.star.b2.model.User;
 import project.star.b2.service.GalleryService;
 import project.star.b2.service.HeartService;
+import project.star.b2.service.InfoService;
+import project.star.b2.service.PriceService;
 import project.star.b2.service.RoomService;
+import project.star.b2.service.UploadService;
 
 @Slf4j
 @Controller
@@ -50,6 +56,12 @@ public class MainController {
 	// --> import project.star.b2.service.RoomService;
 	@Autowired
 	RoomService roomService;
+	@Autowired
+	InfoService infoService;
+	@Autowired
+	PriceService priceService;
+	@Autowired
+	UploadService uploadService;
 	@Autowired
 	GalleryService galleryService;
 	@Autowired
