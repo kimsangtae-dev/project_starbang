@@ -52,15 +52,12 @@
         INNER JOIN price p ON r.roomno=p.roomno
         LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
         
-        <where>
-            <if test="roomtype != null and roomtype != ''">
-                roomtype LIKE concat('%', #{roomtype}, '%')
-            </if>
-            
-            <if test="floor != null and floor != ''">
-                OR floor LIKE concat('%', #{floor}, '%')
-            </if>
-        </where>
+<!-- 		<choose>
+            <when test="check = 1">
+            	WHERE confirmdate is NOT NULL
+            </when>
+            </choose> -->
+               
         GROUP BY roomno
         ORDER BY roomno ASC
         
@@ -126,5 +123,30 @@
         parameterType="project.star.b2.model.Room">
         UPDATE room SET hidden='Y' WHERE roomno=#{roomno};
     </update>
+    <!-- 확인매물 리스트 조회를 위한 기능 정의 -->
+    <select id="selectCheckList"
+        parameterType="project.star.b2.model.Room"
+        resultMap="roomMap">
+        SELECT 
+        r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee, confirmdate, address, dong, ho, 
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.hidden, count(f.roomno) AS cnt
+        FROM room r
+        INNER JOIN user u ON r.userno=u.userno
+        INNER JOIN price p ON r.roomno=p.roomno
+        LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
+        
+ 		<choose>
+            <when test="check = 1">
+            	WHERE confirmdate is NOT NULL
+            </when>
+        </choose> -->
+               
+        GROUP BY roomno
+        ORDER BY roomno ASC
+        
+        <if test="listCount > 0">
+            LIMIT #{offset}, #{listCount}
+        </if>
+    </select>
 
 </mapper>

@@ -37,9 +37,8 @@
 						<br>
 						<div class="box">
 							<div class="adm-radio">
-								<label><input type='radio' name='' value="html">
-									확인매물</label> <label><input type='radio' name='' value="html">
-									허위매물</label>
+								<label><input type='radio' name='check' value="html" id=checked-item>확인매물</label> 
+									<label><input type='radio' name='check' value="html" id=checked-fake>허위매물</label>
 							</div>
 							<div class="adm-btn">
 								<input type="button" name="" class="btn btn-default" id=confirm-button
@@ -190,6 +189,27 @@ $(function() {
 			    },			  
 		  });
 		  });//checked
+})
+}); //end $.ajax;
+
+$(function() {
+	  $('#checked-item').change(function() {
+	alert("체크 확인");
+	
+	$.ajax({
+		  //결과 url
+		  url: "${pageContext.request.contextPath}/admin/rmli2.do",
+		  type:"POST",
+		  async: false,
+		  data: { check_id : 1 },
+		  success : function(data) {
+		        location.reload();
+		        alert("확인되었습니다.")
+		    },
+		  error : function(error,status,request) {
+		        alert("Error!" + error + "request: "+request+" status: "+status);
+		    },			  
+	  });
 })
 }); //end $.ajax;
 	
