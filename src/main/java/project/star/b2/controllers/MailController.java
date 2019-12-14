@@ -1,5 +1,8 @@
 package project.star.b2.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import project.star.b2.helper.MailHelper;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.User;
+import project.star.b2.service.UserService;
 
 @Slf4j
 @Controller
@@ -120,7 +125,7 @@ public class MailController {
      *******************************************************************/
 
     @RequestMapping(value = "/modal/pwd_ok.do", method = RequestMethod.POST)
-    public ModelAndView pwd_ok(Model model, HttpServletResponse response, HttpServletRequest request) {
+    public ModelAndView pwd_ok(Model model, HttpServletRequest request) {
        /** 사용자의 입력값 받기 */
        String email = webHelper.getString("email");
        HttpSession session = request.getSession();

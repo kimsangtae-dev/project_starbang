@@ -69,6 +69,8 @@ public class MainController {
 	GalleryService gallerypopularService;
 	@Autowired
 	HeartService heartService;
+	@Autowired
+    UserService userService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	// --> import org.springframework.beans.factory.annotation.Value;

@@ -207,4 +207,52 @@ public class UserServiceImpl implements UserService {
     	int result = sqlSession.selectOne("UserMapper.idCheck", email);
 		return result;
 	}
+
+    /**
+     * 비번 변경) DB에 있는 이메일 중복 조회
+     */
+	@Override
+	public User getUserEmail(User input) throws Exception {
+		User result = null;
+
+        try {
+            result = sqlSession.selectOne("UserMapper.selectEmail", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("가입된 이메일이 아닙니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("이메일 검색에 실패했습니다.");
+        }
+
+        return result;
+    }
+
+    /**
+     * 비번 변경) 패스워드 변경 
+     */ 
+	@Override
+	public int getPassword(User input) throws Exception {
+		int result = 0;
+        
+        try {
+             result = sqlSession.update("UserMapper.updatePassword", input);
+
+             if (result == 0) {
+                 throw new NullPointerException("result=0");
+             }
+         } catch (NullPointerException e) {
+             log.error(e.getLocalizedMessage());
+             throw new Exception("수정된 데이터가 없습니다.");
+         } catch (Exception e) {
+             log.error(e.getLocalizedMessage());
+             throw new Exception("데이터 수정에 실패했습니다.");
+         }
+        
+        return result;
+     }
 }
