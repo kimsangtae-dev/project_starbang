@@ -345,7 +345,6 @@ body > div { height: 100%; overflow-y: hidden; }
     width: 32px;
     height: 30px;
     margin: 0px auto;
-    /* background: url(../../img/ma_img/like.svg) center center / cover; */
 }
 
 .recent-div8.off{ background: url(../../img/ma_img/like.svg) center center / cover; }
@@ -372,46 +371,9 @@ body > div { height: 100%; overflow-y: hidden; }
      overflow: hidden;
 }
 
-/* body태그에 이미지가 따로들어가있음 주의 @@*/
-.recent-a-div:before {
-    content: "";
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    background: url(../../img/ma_img/1.jpeg) center center / cover no-repeat;
-}
-
-.recent-a-div:after {
-    content: "";
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-}
-
-/* body태그에 이미지가 따로들어가있음 주의 @@ */
-/* .recent-a-div2:before {
-    content: "";
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    background: url(../../../../../img/ma_img/2.jpeg) center center / cover no-repeat;
-} */
-
-.recent-a-div2:after {
-    content: "";
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
+.recent-a-div img {
+	width: 100%;
+	height: 100%;
 }
 
 /* <a>태그 - <div>확인매물 박스 */

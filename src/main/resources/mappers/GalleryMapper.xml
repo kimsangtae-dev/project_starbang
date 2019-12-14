@@ -27,10 +27,10 @@
 		SELECT
 		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate,
 		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
-		r.region_2depth_name, r.latitude, r.longitude
+		r.region_2depth_name, r.latitude, r.longitude, i.filename
 		FROM room AS r
-		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
-		ON r.roomno=p.roomno
+		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p ON r.roomno=p.roomno
+		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i ON r.roomno=i.roomno
 		<where>
 			<if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999">
 				p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세"
@@ -133,8 +133,14 @@
 	<!-- 인기매물용 다중행 조회를 위한 기능 정의 -->
 	<select id="selectfameList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-		SELECT h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename
-		FROM heart h INNER JOIN room r ON h.roomno=r.roomno INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno group by roomno order by count(h.roomno) DESC
+		SELECT 
+		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename
+		FROM heart h 
+		INNER JOIN room r ON h.roomno=r.roomno 
+		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
+		INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
+		GROUP BY roomno 
+		ORDER BY count(h.roomno) DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
@@ -142,7 +148,8 @@
 
      <!-- 찜목록을 보여주기 위한 기능 정의 -->
      <select id="selectHeartList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-     SELECT u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno
+     SELECT 
+     u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno
      from user u
      INNER JOIN heart h ON u.userno=h.userno
      INNER JOIN room r ON r.roomno=h.roomno
