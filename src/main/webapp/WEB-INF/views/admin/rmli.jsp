@@ -200,8 +200,8 @@ $(function() {
 		  //결과 url
 		  url: "${pageContext.request.contextPath}/admin/rmli2.do",
 		  type:"POST",
-		  async: false,
 		  data: { check_id : 1 },
+		  datatype:'text',
 		  success : function(data) {
 		        location.reload();
 		        alert("확인되었습니다.")
@@ -212,7 +212,28 @@ $(function() {
 	  });
 })
 }); //end $.ajax;
+
+$(function() {
+	  $('#checked-fake').change(function() {
+	alert("체크 확인");
 	
+	$.ajax({
+		  //결과 url
+		  url: "${pageContext.request.contextPath}/admin/rmli2.do",
+		  type:"POST",
+		  async: false,
+		  data: { check_id : 2 },
+		  datatype:'text',
+		  success : function(data) {
+		        location.reload();
+		        alert("확인되었습니다.")
+		    },
+		  error : function(error,status,request) {
+		        alert("Error!" + error + "request: "+request+" status: "+status);
+		    },			  
+	  });
+})
+}); //end $.ajax;
 	</script>
 </body>
 </html>

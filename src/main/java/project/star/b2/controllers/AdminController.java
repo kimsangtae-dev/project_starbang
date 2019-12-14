@@ -163,25 +163,26 @@ public class AdminController {
 		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
 		Room input = new Room();
 		input.setRoomno(roomno);
-		
-		
+
 		try {
 			// 데이터 수
 			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
-			roomService.editConfirmRoom(input);
+			roomService.deleteRoom(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+
 		String viewPath = "admin/rmli";
 		return webHelper.redirect(viewPath, "수정되었습니다");
 	}
+
 	/****** 체크박스 페이지 ******/
 	@RequestMapping(value = "/admin/rmli2.do", method = RequestMethod.POST)
 	public ModelAndView room_check_ok(Model model, HttpServletRequest request) {
-		
+
 		String check1 = request.getParameter("check_id");
 		int check = Integer.valueOf(check1);
-		
+
 		Room input = new Room();
 		List<Room> output = null; // 조회결과가 저장될 객체
 		try {
@@ -192,15 +193,19 @@ public class AdminController {
 		}
 
 		/** 3) 페이지 이동 */
-		// 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
-		return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다.");
+		model.addAttribute("output", output);
+		String viewPath = "admin/rmli";
+		return webHelper.redirect(viewPath, "수정되었습니다");
 	}
-
-
 
 	/********************************************************************
 	 * 회원 관리
 	 *******************************************************************/
+
+	private Object getCheck() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	/****** 목록 페이지 ******/
 	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)

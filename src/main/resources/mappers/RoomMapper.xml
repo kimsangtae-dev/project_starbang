@@ -135,11 +135,14 @@
         INNER JOIN price p ON r.roomno=p.roomno
         LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
         
- 		<choose>
-            <when test="check = 1">
-            	WHERE confirmdate is NOT NULL
-            </when>
-        </choose> -->
+ 		<where>
+            <if test="check=1">
+            	confirmdate is NOT NULL
+            </if>
+            <if test="check = 2">
+            	 r.hidden='Y'
+            </if>
+        </where>
                
         GROUP BY roomno
         ORDER BY roomno ASC
