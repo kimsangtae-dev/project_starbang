@@ -25,20 +25,33 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="summury">
 			<!--상단 내용 시작-->
 			<ul id="box1">
-				<li class="pull-left abc"><span class="greyfont1">매물종류(원룸)</span>
+				<li class="pull-left abc"><span class="greyfont1">${price[0].dealingtype}</span>
 					<h1 class="monthman">
-						월세 3000/55<span class="greyfontwon1">만원</span>
+						<c:choose>
+						    <c:when test="${price[0].dealingtype == '월세'}">
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
+						    </c:when>
+					
+					    	<c:otherwise>
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
+					    		${price[0].dealingtype}&nbsp;${patternprice2}
+					    	</c:otherwise>
+						</c:choose>
+						<span class="greyfontwon1"> 만원</span>
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont1">전용면적</span>
 					<h1 id="chnum">
-						43.33<span>㎡</span>
+						${room.area}<span>㎡</span>
 					</h1>
 					<button type="button" class="chbt">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button></li>
 				<li class="pull-right">
 					<!--방주인 이메일보기-->
-					<p class="honame">방주인 조수민님</p>
+					<p class="honame">방주인 ${user.name}님</p>
 					<button type="button" class="btn btn-primary grml">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/mail.png" class="mailsize"> <span
 							class="que">문의하기</span>
@@ -58,8 +71,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/link.png" class="linksize">
 			</button>
 			<!-- url 복사 -->
-			<input type="hidden" id="link-area" class="link-area"
-				value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
+			<input type="hidden" id="link-area" class="link-area" value="<%=request.getRequestURL()%>?<%=request.getQueryString()%>">
 			<!-- 도트 -->
 			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 사이렌 -->
@@ -75,7 +87,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<!--확인매물 푸른색바 시작-->
 			<div class="eTgAil confirm">
 				<p class="gknGpv onfirm">
-					확인매물<span>19.09.18</span>
+					확인매물<span>
+					<c:set var="confirmdate" value="${fn:replace(room.confirmdate, ' 00:00:00', '')}" />
+					${confirmdate}
+					</span>
 				</p>
 				<p class="cETKtB">
 					<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
@@ -91,41 +106,98 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<ul class="iuNQqL clearfix" id="list">
 				<li class="gWdVQs">
 					<p class=" gPsGgb">해당층/건물층</p>
-					<div class="gbAeEp">5층 / 6층</div>
+					<div class="gbAeEp">${room.floor} / ${info.maxfloor}</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">전용/공급면적</p>
-					<div class="gbAeEp"></div> <span>26.44 / 33.05㎡</span>
+					<div class="gbAeEp"></div><span>${room.area} / ${info.supplyarea}㎡</span>
 					<button type="button" class="bHPFKV">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">난방종류</p>
-					<div class="gbAeEp">개별난방</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.heater == '1'}">
+								중앙난방
+							</c:when>
+							<c:when test="${info.heater == '2'}">
+								개별난방
+							</c:when>
+							<c:when test="${info.heater == '3'}">
+								개별난방
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">빌트인</p>
-					<div class="gbAeEp">아님</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.builtin == '0'}">
+								아님
+							</c:when>
+							<c:when test="${info.builtin == '1'}">
+								빌트인주방
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">엘리베이터</p>
-					<div class="gbAeEp">있음</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.elevator == '0'}">
+								없음
+							</c:when>
+							<c:when test="${info.elevator == '1'}">
+								있음
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">반려동물</p>
-					<div class="gbAeEp">가능</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.pet == '0'}">
+								불가능
+							</c:when>
+							<c:when test="${info.pet == '1'}">
+								가능
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">베란다/발코니</p>
-					<div class="gbAeEp">없음</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.veranda == '0'}">
+								없음
+							</c:when>
+							<c:when test="${info.veranda == '1'}">
+								있음
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">전세자금대출</p>
-					<div class="gbAeEp">가능</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.loan == '0'}">
+								불가능
+							</c:when>
+							<c:when test="${info.loan == '1'}">
+								가능
+							</c:when>
+						</c:choose>
+					</div>
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">입주가능일</p>
-					<div class="gbAeEp">즉시 입주</div>
+					<div class="gbAeEp">${info.commingday}</div>
 				</li>
 				<li></li>
 				<li></li>
@@ -136,39 +208,36 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="bigview">
 			<!-- 매물 이미지 시작  -->
 			<ul class="bigviewul">
-				<li class="bigviewigli"><a href="#"><img
-						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph01.jfif" /></a></li>
-				<li class="bigviewiglism"><a href="#"><img
-						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph02.jfif" /></a></li>
-				<li class="bigviewiglism"><a href="#"><img
-						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph03.jfif" /></a></li>
-				<li class="bigviewiglism"><a href="#"><img
-						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph04.jfif" /></a></li>
-				<li class="bigviewiglism"><a href="#"><img
-						src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/roph04.jfif" /></a></li>
+				<li class="bigviewigli">
+					<a href="#">
+						<img src="${pageContext.request.contextPath}/assets/img/upload/${img[0].fileName}" /></a></li>
+				<c:forEach var="i" begin="1" end="4" step="1">
+					<c:choose>
+						<c:when test="${img[i].fileName != null}">
+							<li class="bigviewiglism">
+								<a href="#">
+									<img src="${pageContext.request.contextPath}/assets/img/upload/${img[i].fileName}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="bigviewiglism">
+								<a href="#">
+									<img src="${pageContext.request.contextPath}/assets/img/upload/nophoto.png" /></a></li>
+						</c:otherwise>
+					</c:choose>	
+				</c:forEach>
 			</ul>
 		</div>
 
 		<div id="explanall">
 			<!--사용자 매물 설명 시작-->
 			<div id="bigexplan">
-				<div class="explan1">중동역 인근. 방욕실베란다3. 단독세대. 주인분이 깔끔하게 관리.</div>
+				<div class="explan1">${room.title}</div>
 			</div>
 			<!--매물 설명 큰 폰트-->
 			<div id="smallexplan">
 				<div class="explan-off" data-value="explan-on">
 					<div>
-						<span class="smexp"> ※해당매물은 직접 현장 답사하여 찍은 100% 실제 사진과
-							모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br /> ※부동산
-							어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
-							정보만(ONLY FACT) 제공하겠습니다<br /> <br /> ※해당매물은 직접 현장 답사하여 찍은 100%
-							실제 사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
-							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
-							정보만(ONLY FACT) 제공하겠습니다<br /> <br /> ※해당매물은 직접 현장 답사하여 찍은 100%
-							실제 사진과 모습입니다※<br /> <br /> ※낚시성 매물로 손님들을 현혹하지 않습니다<br /> <br />
-							※부동산 어플에 허위매물이 절반이상입니다. 말도 안되게 저렴한매물에 속지마세요<br /> <br /> ※진실된
-							정보만(ONLY FACT) 제공하겠습니다<br /> <br />
-						</span>
+						<span class="smexp">${info.content}</span>
 					</div>
 				</div>
 				<button class="jQYbpN more">상세설명 더보기</button>
@@ -184,7 +253,21 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<div id="bbblue">
 				<div id="lol">
 					<!--스크롤 발생 시 움직이는 파란색바 시작-->
-					<h1 class="textht pull-left texthth1">월세 200/30</h1>
+					<h1 class="textht pull-left texthth1">
+						<c:choose>
+						    <c:when test="${price[0].dealingtype == '월세'}">
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
+						    </c:when>
+					
+					    	<c:otherwise>
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
+					    		${price[0].dealingtype}&nbsp;${patternprice2}
+					    	</c:otherwise>
+						</c:choose>
+					</h1>
 					<div class="recent-div8 on" data-value="off"></div>
 					<span class="cntlk">0</span>
 					<button class="icngbl ulcp">
@@ -195,7 +278,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					</button>
 					<div id="plrt">
 						<span class="texthtlvc">방주인</span> <span
-							class="textht skyblue lvc"> 조수민님</span>
+							class="textht skyblue lvc">${user.name}님</span>
 						<button type="submit" class="textht inbl">
 							<span class="quest grml">문의하기</span>
 						</button>
@@ -261,11 +344,57 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<!-- 본문 영역 -->
 					<tbody class="bdlntdy">
 						<tr class="bdlnbtr">
-							<td class="bdlntd">-</td>
-							<td class="bdlntd">9500만원</td>
-							<td class="bdlntd">7만원</td>
-							<td class="bdlntd">10만원</td>
-							<td class="bdlntd">불가능</td>
+							<td class="bdlntd">
+								<c:forEach var="k" items="${price}" varStatus="status">
+									<c:if test="${k.dealingtype == '월세'}">
+								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
+							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+								    	<h6>${patternprice1}/${k.price}만 원</h6>
+								    </c:if>
+								</c:forEach>
+							</td>
+							<td class="bdlntd">
+							<c:forEach var="k" items="${price}" varStatus="status">
+								<c:if test="${k.dealingtype == '전세'}">
+							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/> 
+						    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
+							    	${patternprice1}만 원
+							    </c:if>
+							</c:forEach>
+							</td>
+							<td class="bdlntd">
+								<c:choose>
+									<c:when test="${room.fee =='0'}">
+										관리비 없음
+									</c:when>
+									<c:otherwise>
+									${room.fee}만 원
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td class="bdlntd">
+								<c:choose>
+									<c:when test="${info.parking =='-1'}">
+										불가
+									</c:when>
+									<c:when test="${info.parking =='0'}">
+										가능(무료)
+									</c:when>
+									<c:otherwise>
+									${info.parking}만 원
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td class="bdlntd">
+								<c:choose>
+									<c:when test="${price[0].short_room =='1'}">
+										가능
+									</c:when>
+									<c:otherwise>
+										불가능
+									</c:otherwise>
+								</c:choose>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -275,67 +404,18 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="pictogram" class="jFMhNO kBQneM">
 			<!--상세 옵션들 아이콘으로 보여줌 시작-->
 			<h1 class="GYLAC">옵션</h1>
-
+			
+			<input type="hidden" id="nice" value="${info.optionitem}" />
+			
 			<div class="dDctva">
-				<div class="gqtsIc">
-					<div class="dNeTFF"></div>
-					<p>에어컨</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="bisIQz"></div>
-					<p>세탁기</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="ecqNej"></div>
-					<p>옷장</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gdTorF"></div>
-					<p>TV</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="fuJjGK"></div>
-					<p>신발장</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gdMhEY"></div>
-					<p>냉장고</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="dQLnLP"></div>
-					<p>가스레인지</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="krFgu"></div>
-					<p>인덕션</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="cnLAIn"></div>
-					<p>전자레인지</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="fkeEgq"></div>
-					<p>전자도어락</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="iAeGhw"></div>
-					<p>비데</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="mCsgX"></div>
-					<p>침대</p>
-				</div>
-				<div class="gqtsIc">
-					<div class="gaOEWf"></div>
-					<p>책상</p>
-				</div>
+				
 			</div>
 		</div>
 		<!--상세 옵션들 아이콘으로 보여줌 끝-->
 		<!-- 지도 시작 -->
 		<div id="location" class="jFMhNO kBQneM">
 			<h1 class="fIqmuM">위치</h1>
-			<p class="hwnvlX">서울시 강남구 역삼동 824-9</p>
+			<p class="hwnvlX">${room.address}</p>
 
 			<!-- 맵 api 시작-->
 
@@ -387,7 +467,6 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			circle.setMap(map);
 		})
 	</script>
-
 
 	<script>
 		$(function() {
@@ -566,5 +645,45 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					}); // end scroll
 		});
 	</script>
+	
+	<script>
+	function binary() {
+		
+        /* 뿌려줄 String을 배열에 저장 */
+        var option = [
+        	"<div class='gqtsIc'><div class='dNeTFF'></div><p>에어컨</p></div>",
+        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>", 
+        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>", 
+        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>", 
+        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>", 
+        	"<div class='gqtsIc'><div class='gdMhEY'></div><p>냉장고</p></div>",
+        	"<div class='gqtsIc'><div class='dQLnLP'></div><p>가스레인지</p></div>",
+        	"<div class='gqtsIc'><div class='krFgu'></div><p>인덕션</p></div>",
+        	"<div class='gqtsIc'><div class='cnLAIn'></div><p>전자레인지</p></div>",
+        	"<div class='gqtsIc'><div class='fkeEgq'></div><p>전자도어락</p></div>",
+        	"<div class='gqtsIc'><div class='iAeGhw'></div><p>비데</p></div>",
+        	"<div class='gqtsIc'><div class='mCsgX'></div><p>침대</p></div>",
+        	"<div class='gqtsIc'><div class='gaOEWf'></div><p>책상</p></div>"
+        	];
+
+        /* 받아온 값을 관리비 항목에 넣는다 */
+        var num = $("#nice").val();
+        var num = parseInt(num);
+		console.log(num);
+		
+        for (var i=13; i>=0 ; i--) {
+            if(num >= Math.pow(2, i-1)){
+            	console.log(num);
+            	num = num - Math.pow(2, i-1);
+            	console.log(num);
+                $(".dDctva").append(option[13-i]);
+                console.log(num);
+            } // if문
+        } // for문
+    } // binary함수
+
+    binary();
+	</script>
+	
 </body>
 </html>
