@@ -130,23 +130,12 @@
             <img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png"></a>
             <div class="menu-left small-font">
                 <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
-                <span>&nbsp | &nbsp
-                </span>
+                <span>&nbsp | &nbsp</span>
                 <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
-                <span>&nbsp | &nbsp
-                </span>
+                <span>&nbsp | &nbsp</span>
                 <a href="${pageContext.request.contextPath}/user/list.do">
                     user db</a>
-                <span>&nbsp | &nbsp
-                </span>
-                <a href="${pageContext.request.contextPath}/room/list.do">
-                    room db</a>
-                <span>&nbsp | &nbsp
-                </span>
-                <a href="${pageContext.request.contextPath}/info/list.do">
-                    info db</a>
-                <span>&nbsp | &nbsp
-                </span>
+                <span>&nbsp | &nbsp</span>
                 <a href="${pageContext.request.contextPath}/upload/upload.do">
                     file upload db</a>
             </div>
