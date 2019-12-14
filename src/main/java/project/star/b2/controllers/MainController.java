@@ -537,7 +537,6 @@ public class MainController {
 	    /** pwd에서 입력한 이메일 세션 생성*/
 	    HttpSession session = request.getSession();
 	    String email = (String) session.getAttribute("fullemail");
-	    System.out.println("-------------------------" + email + "------------------------");
 	     
 	    model.addAttribute("fullemail", email);
 	    session.invalidate();
