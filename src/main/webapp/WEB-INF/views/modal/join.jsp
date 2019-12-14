@@ -229,7 +229,7 @@
           </div>
           <div class="information information2 clearfix">
              <p class="subtitle">휴대폰 번호</p>
-             <select class="select-tel pin select1" id="tel">
+             <select class="select-tel pin select1" name="tel" id="tel">
                 <option>010</option>
                 <option>011</option>
                 <option>016</option>

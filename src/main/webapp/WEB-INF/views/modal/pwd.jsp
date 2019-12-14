@@ -27,6 +27,7 @@
 			</div>
 
 			<!-- content -->
+			<form method="post" action="${pageContext.request.contextPath}/modal/pwd_ok.do" id="pwd_form">
 			<div class="content-div">
 				<p class="content-p">가입한 이메일 정보 입력 후 인증 메일 받기를 클릭하세요.</p>
 				<input autocomplete="off" class="content-input" name="email" placeholder="이메일" value="">
