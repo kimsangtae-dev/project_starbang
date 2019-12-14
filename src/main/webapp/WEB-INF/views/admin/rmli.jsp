@@ -43,11 +43,11 @@
 							</div>
 							<div class="adm-btn">
 								<input type="button" name="" class="btn btn-default" id=confirm-button
-									value="확인매물"> <input type="button" name=""
-									class="btn btn-default" value="방 숨기기"> <input
-									type="button" name="" class="btn btn-default" value="방 삭제">
-								<input type="button" name="" class="btn btn-primary"
-									value="회원탈퇴">
+									value="확인매물"> 
+									<input type="button" name="" class="btn btn-default" id=hidden-room value="방 숨기기"> 
+									<input type="button" name="" class="btn btn-default" id=delete-room value="방 삭제">
+<!-- 								<input type="button" name="" class="btn btn-primary"
+									value="회원탈퇴"> -->
 							</div>
 						</div>
 					</div>
@@ -146,6 +146,53 @@
 				  });//checked
 		})
 	}); //end $.ajax;
+	
+	$(function() {
+		  $('#hidden-room').on('click', function() {
+			  $('#aaaa:checked').each(function() {
+			        var hidden = $(this).val(); 
+			   
+			  $.ajax({
+				  //결과 url
+				  url: "${pageContext.request.contextPath}/admin/hidden_ok.do",
+				  data: { hidden_id : hidden },
+				  type:"POST",
+				  datatype:'text',
+				  success : function(data) {
+				        location.reload();
+				        alert("변경되었습니다.")
+				    },
+				  error : function(error,status,request) {
+				        alert("Error!" + error + "request: "+request+" status: "+status);
+				    },			  
+			  });
+			  });//checked
+	})
+}); //end $.ajax;
+
+$(function() {
+	  $('#delete-room').on('click', function() {
+		  $('#aaaa:checked').each(function() {
+		        var delete1 = $(this).val(); 
+		   
+		  $.ajax({
+			  //결과 url
+			  url: "${pageContext.request.contextPath}/admin/delete_ok.do",
+			  data: { delete_id : delete1 },
+			  type:"POST",
+			  datatype:'text',
+			  success : function(data) {
+			        location.reload();
+			        alert("삭제되었습니다.")
+			    },
+			  error : function(error,status,request) {
+			        alert("Error!" + error + "request: "+request+" status: "+status);
+			    },			  
+		  });
+		  });//checked
+})
+}); //end $.ajax;
+	
 	</script>
 </body>
 </html>

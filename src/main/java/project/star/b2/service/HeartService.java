@@ -4,6 +4,7 @@ import java.util.List;
 
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
+import project.star.b2.model.Popular;
 
 public interface HeartService {
     /**
@@ -30,4 +31,5 @@ public interface HeartService {
          */
         public int getGalleryCount(Gallery input) throws Exception;
 }
+
 }

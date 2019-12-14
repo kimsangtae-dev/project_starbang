@@ -120,5 +120,11 @@
         parameterType="project.star.b2.model.Room">
         UPDATE room SET confirmdate=now() WHERE roomno=#{roomno};
     </update>
+    
+    <!-- 관리자 페이지 숨김매물 데이터 갱신을 위한 기능 정의 -->
+    <update id="updateHiddenItem"
+        parameterType="project.star.b2.model.Room">
+        UPDATE room SET hidden='Y' WHERE roomno=#{roomno};
+    </update>
 
 </mapper>

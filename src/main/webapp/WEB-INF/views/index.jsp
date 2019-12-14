@@ -225,8 +225,15 @@
 		<div class="recent">
 			<div class="recent-div0">
 				<div class="recent-div1">
+				<c:choose>
+				<c:when test="${loginInfo == null }">최근 본 방
+				</c:when>
+				<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+				<c:otherwise>
 					<a href="${pageContext.request.contextPath}/main/rtrm.do">${loginInfo.name}님의
 						최근 본 방</a>
+				</c:otherwise>
+				</c:choose>
 				</div>
 				<div class="recent-div2">
 					<c:choose>
@@ -237,7 +244,7 @@
 						</c:when>
 						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
 						<c:otherwise>
-							<a class="st-bang"
+							<a class="st-bang"	
 								href="${pageContext.request.contextPath}/main/wish.do">${loginInfo.name}님의 찜한방</a>
 						</c:otherwise>
 					</c:choose>
@@ -615,16 +622,6 @@
 	$(function() {
 		$(".hit-div8").click(function(e) {
 			$(this).toggleClass('on off');
-		});
-	});
-	$("#span-heart").click(function(e){
-		$(this).css('color','red')
-		
-		$.ajax({
-			url:"/main/wish.do",
-			type:"GET",
-			data:"html"
-			
 		});
 	});
 </script>
