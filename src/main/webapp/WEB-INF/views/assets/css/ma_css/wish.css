@@ -68,10 +68,11 @@ html body #root {
 
 /* 전체박스 */
 .gallery-wholebox {
-	width: 1180px;
+	width: 1200px;
 	min-height: 500px;
 	padding-top: 50px;
 	margin: 0 auto;	
+	overflow: hidden;
 }
 
 /* div (총 n개의 최근본 방이 있습니다.) */

@@ -345,7 +345,7 @@
 
 
 		<!-- 갤러리 쪽번호 시작 -->
-		<div class="page-d1">
+<!-- 		<div class="page-d1">
 			<div class="page-d2">
 				<div class="page-d3">
 					<button class="page-d3-btn1">
@@ -368,7 +368,7 @@
 					</button>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- 갤러리 쪽번호 끝 -->
 
 	<!-----------------------------------
