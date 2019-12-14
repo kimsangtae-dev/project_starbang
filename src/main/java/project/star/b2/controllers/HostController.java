@@ -135,48 +135,38 @@ public class HostController {
 	@RequestMapping(value = "/host/rm_add_ok.do", method = RequestMethod.POST)
 	public ModelAndView put3(HttpServletRequest request) {
 		
+		
 		try {
 			webHelper.upload();
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		/**
-		 * UPLOAD 
-		 */
-		log.info("업로드 전");
-		// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
-		
 		List<UploadItem> fileList = webHelper.getFileList();
-		
-		for (UploadItem item : fileList) {
-			
-			item.setFieldName(item.getFieldName());
-			item.setOriginName(item.getOriginName());
-			item.setFilePath(item.getFilePath());
-			item.setContentType(item.getContentType());
-			item.setFileSize(item.getFileSize());
-			item.setFileName(item.getFileName());
-			item.setRegDate(item.getRegDate());
-			item.setEditDate(item.getEditDate());
-			item.setRoomno(item.getRoomno());
-			
-			log.debug("업로드 될 항목" + item.toString());
-
-			// DB에 저장하기
-			try {
-				log.info("upload"+fileList);
-				uploadService.addUploadItem(item);
-			} catch (Exception e) {
-				log.error(e.getLocalizedMessage());
-				e.printStackTrace();
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-			
-		}	//end for	
-		log.info("업로드 후");
-		
 		Map<String, String> paramMap = webHelper.getParamMap();
+		
+		
+		/** * * 1) 사용자가 입력한 파라미터 수신 * * */
+		
+		/***
+		 *  Room DB TABLE (15 Columns)
+		 *     Column name(param)		description				info
+		 *  1.  roomno  				방번호  					(Auto Increment)
+		 *  2.  roomtype - o			매물종류
+		 *  3.  title - o				매물에 대한 제목
+		 *  4.  floor - o 				매물 해당 층
+		 *  5.  area - o 				전용면적
+		 *  6.  fee - o 				관리비
+		 *  7.  confirmdate  			확인날짜  					(초기 데이터 없음)
+		 *  8.  address					API에서 받아온 주소 		(Kakao API)
+		 *  9.  dong - o				사용자가 입력한 동
+		 *  10. ho - o					사용자가 입력한 호
+		 *  11. latitude  				API에서 받아온 경도-y축  	(Kakao API)
+		 *  12. longitude  				API에서 받아온 위도-x축  	(Kakao API)
+		 *  13. region_2depth_name		지도사용 2depth info   	(Kakao API)
+		 *  14. region_3depth_name  	지도사용 3depth info   	(Kakao API)
+		 *  15. userno 					세션에서 가져올 회원번호	 	(Session에서 값 주입)
+		 */
 		
 		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1)- PRI, confirmdate(1), address API(5) */
 		String roomtype = paramMap.get("roomtype");			
@@ -192,6 +182,25 @@ public class HostController {
         int userno = loginInfo.getUserno();
         
         
+        /***
+		 *  Info DB TABLE (15 Columns)
+		 *  	Column name(params)		Description			info
+		 *  1.  feeitem - o				관리비 항목 			8개 - 2진법 SUM 저장 및 인수분해로 추출
+		 *  2.  parking - o				주차 및 주차비 여부 		불가능 - -1 ; 가능 무료 - 0 ; 가능 가격o - int 
+		 *  3.  pet - o					애완동물 가능 여부
+		 *  4.  elevator - o 			엘리베이터 여부
+		 *  5.  veranda - o 			베란다 여부			
+		 *  6.  builtin - o 			빌트인 여부				
+		 *  7.  optionitem - o			옵션 항목 선택 	 		13개 - 2진법 SUM 저장 및 인수분해로 추출
+		 *  8.  loan - o				대출 가능 여부 	
+		 *  9.  supplyarea - o			공급면적
+		 *  10. maxfloor - o			매물의 전체 층수
+		 *  11. heater - o				난방 종류				
+		 *  12. commingday - o 			입주가능일				
+		 *  13. buildtype - o			건물유형				
+		 *  14. content - o				상세 설명
+		 *  15. roomno					방 번호				참조키 - room DB 입력시 생성될 PRI값 주입
+		 */
         
         /** info ** parameter 수신 (14 / 15) - except(1) roomno - mul */
 		/** 관리비 항목 2진법 계산해서 DB 넣기 */
@@ -246,7 +255,16 @@ public class HostController {
 		String buildtype = paramMap.get("buildtype");
 		String content = paramMap.get("content");
 		
-		
+		/***
+		 *  Price DB TABLE (6 Columns)
+		 *  	Column name(params)		Description			info
+		 *  1.  priceno					가격정보 번호			(Auto Increment)
+		 *  3.  dealingtype - o			매물종류				월세-o, 전세-o, 매매-o
+		 *  2.  deposit - o				보증금				월세-o, 전세-x, 매매-x  
+		 *  4.  price - o 				금액					월세-o, 전세-o, 매매-o
+		 *  5.  short_room - o 			단기가능 여부
+		 *  6.  roomno 					방번호				참조키 - room DB 입력시 생성될 PRI값 주입
+		 */
 		
 		/** price ** parameter 수신 */
 		String dealingtype = paramMap.get("dealingtype");
@@ -344,10 +362,8 @@ public class HostController {
 		 
 		try {
 			ripService.addRoom(input_R);
-			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
-
 		}
 		
 		try {
@@ -358,12 +374,10 @@ public class HostController {
 
 		}
 		
-		
 		/** 2. price DB 데이터 저장 */
 		try {
 			
 			Price input_p = new Price();
-			
 			int deposit_temp = 0;
 			int price_temp = 0;
 			
@@ -389,10 +403,35 @@ public class HostController {
 				
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
-
 		}
 		
-		
+		/**
+		 * UPLOAD 
+		 */
+
+		// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
+		for (UploadItem item : fileList) {
+			
+			item.setFieldName(item.getFieldName());
+			item.setOriginName(item.getOriginName());
+			item.setFilePath(item.getFilePath());
+			item.setContentType(item.getContentType());
+			item.setFileSize(item.getFileSize());
+			item.setFileName(item.getFileName());
+			item.setRegDate(item.getRegDate());
+			item.setEditDate(item.getEditDate());
+			item.setRoomno(item.getRoomno());
+			log.debug("업로드 될 항목" + item.toString());
+
+			// DB에 저장하기
+			try {
+				uploadService.addUploadItem(item);
+			} catch (Exception e) {
+				log.error(e.getLocalizedMessage());
+				e.printStackTrace();
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}	
+		}//end for	
 		
 		String redirectUrl = contextPath + "/host/roominfo/view.do?roomno=" + input_R.getRoomno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
