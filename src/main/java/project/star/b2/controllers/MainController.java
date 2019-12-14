@@ -64,6 +64,8 @@ public class MainController {
 	@Autowired
 	UploadService uploadService;
 	@Autowired
+	UserService	userService;
+	@Autowired
 	GalleryService galleryService;
 	@Autowired
 	GalleryService gallerypopularService;
@@ -219,10 +221,13 @@ public class MainController {
 		UploadItem input_image = new UploadItem();
 		input_image.setRoomno(roomno);
 		
+		User input_user = new User();
+		
 		Room output_room = null;
 		Info output_info = null;
 		List<Price> output_price = null;
 		List<UploadItem> output_image = null;
+		User output_user =null;
 		
 		try {
 			
@@ -238,6 +243,9 @@ public class MainController {
 			output_image = uploadService.getImageList_by_roomno(input_image);
 			log.info("성공 uploadService");
 			
+			input_user.setUserno(output_room.getUserno());
+			output_user = userService.getUserItem(input_user);
+			
 		} catch(Exception e) {
 			
 			log.debug("방 조회에 실패하였습니다.");
@@ -251,6 +259,7 @@ public class MainController {
 		model.addAttribute("info", output_info);
 		model.addAttribute("price", output_price);
 		model.addAttribute("img", output_image);
+		model.addAttribute("user", output_user);
 		
 		
 		return new ModelAndView("main/rmdt");
