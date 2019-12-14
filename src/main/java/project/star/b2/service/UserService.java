@@ -63,4 +63,14 @@ public interface UserService {
       * 유저 이메일 중복 조회
       */
      public int idCheck(String email) throws Exception;
+    
+    /**
+      * 비번 변경) DB에 있는 이메일 중복 조회
+      */
+     public User getUserEmail(User input) throws Exception;
+    
+    /**
+      * 비번 변경) 패스워드 변경 
+      */ 
+     public int getPassword(User input) throws Exception;
 }

@@ -130,4 +130,17 @@
         SELECT count(*) FROM user WHERE email = #{email}
     </select>
 
+    <!-- 비번 변경) 이메일 정보 조회 -->
+    <select id="selectEmail"
+        parameterType="project.star.b2.model.User"
+        resultMap="userMap">
+        SELECT email FROM user WHERE email=#{email};
+    </select>
+    
+    <!-- 비번 변경) 패스워드 변경  -->
+    <update id="updatePassword"
+      parameterType="project.star.b2.model.User">
+      UPDATE user SET passwd=#{passwd} WHERE email=#{email}
+    </update>
+
 </mapper>
