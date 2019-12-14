@@ -42,6 +42,7 @@ import project.star.b2.service.InfoService;
 import project.star.b2.service.PriceService;
 import project.star.b2.service.RoomService;
 import project.star.b2.service.UploadService;
+import project.star.b2.service.UserService;
 
 @Slf4j
 @Controller
@@ -517,6 +518,62 @@ public class MainController {
 
 		return new ModelAndView("main/search");
 	}
+
+	/********************************************************************
+	 * 비밀번호 찾기
+	 *******************************************************************/
+	@RequestMapping(value = "main/repwd.do")
+	public String repwd(Model model, HttpServletRequest request) {
+	    
+	    /** pwd에서 입력한 이메일 세션 생성*/
+	    HttpSession session = request.getSession();
+	    String email = (String) session.getAttribute("fullemail");
+	    System.out.println("-------------------------" + email + "------------------------");
+	     
+	    model.addAttribute("fullemail", email);
+	    session.invalidate();
+	      
+	    return "main/repwd";
+	}
+	   
+	/********************************************************************
+	 * 비밀번호 찾기 ok
+	 *******************************************************************/
+	   
+	/** 수정 폼에 대한 action 페이지 */
+	@RequestMapping(value = "main/repwd_ok.do", method = RequestMethod.POST)
+	public ModelAndView edit(Model model) {
+
+	/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+	String passwd = webHelper.getString("passwd");
+	String email = webHelper.getString("email");
+
+	if (passwd == null) {
+	   return webHelper.redirect(null, "비밀번호를 입력하세요.");
+	}
+
+	/** 2) 데이터 수정하기 */
+	// 수정할 값들을 Beans에 담는다.
+	User input = new User();
+	input.setPasswd(passwd);
+	input.setEmail(email);
+
+	try {
+		try {
+	    	// 일반회원 데이터 수정
+	    	userService.getPassword(input);
+
+	    	/** 3) 결과를 확인하기 위한 페이지 이동 */
+	        return webHelper.redirect("/b2", "수정되었습니다.");
+	    } catch (Exception e) {
+	        e.getLocalizedMessage();
+	            return webHelper.redirect(null, e.getLocalizedMessage());
+	        }
+	} catch (Exception e) {
+	        return webHelper.redirect(null, e.getLocalizedMessage());
+	     	}
+}
+
 
 	/********************************************************************
 	 * 테스트
