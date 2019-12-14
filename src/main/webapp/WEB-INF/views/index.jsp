@@ -256,8 +256,51 @@
 				</div>
 				<!-- 갤러리 전체 박스 -->
 				<div class="recent-div4">
-
-					<!-- 각각 갤러리 시작 -->
+					<c:forEach var="item" items="${output3}" varStatus="status" end="4" >
+										<li>
+											<div class="recent-div5">
+												<div class="recent-div6">
+													<%-- 좋아요 버튼 --%>
+													<div class="recent-div7">
+														<div class="recent-div8 off" data-value="on"></div>
+													</div>
+													<%-- 좋아요 끝 --%>
+													<%-- 전체 링크화 --%>
+													<a target="_blank" rel="" class="recent-a"
+														href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
+														<!-- 이미지 -->
+														<div class="recent-a-div">
+															<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+														</div> <c:if test="${item.confirmdate != null}">
+															<%-- 확인매물 div --%>
+															<div class="recent-a-confirm">
+																<div class="recent-a-confirm-div">
+																	<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+																</div>
+															</div>
+															<%-- 확인매물 끝 --%>
+														</c:if>
+														<p class="recent-a-p1">${item.roomtype}</p>
+														<p class="recent-a-p2">
+															<c:choose>
+																<c:when test="${item.dealingtype == '월세'}">
+																	<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+																</c:when>
+																<c:otherwise>
+																	<span>${item.dealingtype}&nbsp;</span>
+																	<span id="prc">${item.price}</span>
+																</c:otherwise>
+															</c:choose>
+														</p>
+														<p class="recent-a-p34">${item.floor}층,
+															${item.area}m², 관리비 ${item.fee}만</p>
+														<p class="recent-a-p34">${item.title}</p>
+													</a>
+												</div>
+											</div>
+										</li>
+									</c:forEach>
+					<%-- <!-- 각각 갤러리 시작 -->
 					<!-- 1번째 갤러리 시작 -->
 					<div class="recent-div5">
 						<div class="recent-div6">
@@ -327,7 +370,7 @@
 					<!-- 4번째 갤러리 끝 -->
 
 				</div>
-				<!--  갤러리 전체박스 끝 -->
+				<!--  갤러리 전체박스 끝 --> --%>
 
 			</div>
 			<!-- div0 끝 -->
@@ -366,7 +409,7 @@
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
 												<a target="_blank" rel="" class="hit-a"
-													href="${pageContext.request.contextPath}/main/rmdt.do">
+													href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 													<!-- 이미지 -->
 													<div class="hit-a-div">
 														<img

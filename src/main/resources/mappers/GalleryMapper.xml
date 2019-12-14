@@ -175,8 +175,9 @@
 		ON r.roomno=i.roomno
 		WHERE r.roomno IN
 		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
-			#{list}
+			#{list} 
 		</foreach>
+			LIMIT 4
 	</select>
 
 </mapper>

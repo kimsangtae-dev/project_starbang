@@ -97,16 +97,20 @@ public class MainController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Popular input = new Popular();
 		Heart input2 = new Heart();
+		List<String> list = null;
 
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
 		List<Heart> output2 = null;
+		List<Gallery> output3 = null;
 
 		try {
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			//쿠키 불러오기
+			list = CookieUtils.getValueList("cookieName", request);
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Popular.setOffset(pageData.getOffset());
@@ -114,6 +118,7 @@ public class MainController {
 			// 데이터 조회하기
 			output = galleryService.getPopularGalleryList(input); //인기있는 방
 			output2 = heartService.getHeartGalleryList(input2); //찜한방
+			output3 = galleryService.getCookieList(list); //최근본방
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -121,6 +126,7 @@ public class MainController {
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
 		model.addAttribute("output2", output2);
+		model.addAttribute("output3", output3);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
