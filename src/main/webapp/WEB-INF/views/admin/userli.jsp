@@ -86,7 +86,7 @@
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="admin/userlist/view.do" var="viewUrl">
+						<c:url value="/admin/userlist/view.do" var="viewUrl">
 							<c:param name="userno" value="${item.userno}" />
 						</c:url>
 
