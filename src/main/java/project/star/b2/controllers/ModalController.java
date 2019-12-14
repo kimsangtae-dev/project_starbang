@@ -191,7 +191,7 @@ public class ModalController {
 	}
  
 	/********************************************************************
-	 * 비밀번호 찾기
+	 * 비밀번호 찾기 폼
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/pwd.do", method = RequestMethod.GET)
 	public ModelAndView pwd() {
