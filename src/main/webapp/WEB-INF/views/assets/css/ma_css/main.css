@@ -575,6 +575,8 @@
 	display: inline-block;
 	height: 25px;
 	padding: 0px 16px 0 0;
+	font-size: 28px;
+	font-weight: 300;
 }
 
 /* '최근본방' title 글씨 */
@@ -1287,4 +1289,21 @@
     font-weight: 300;
     line-height: 186px;
     text-align: center;
+}
+
+.tabs > li:nth-child(1){
+	font-size: 28px;
+	display: inline-block;
+	padding: 0px 16px 0px 0px;
+	border-right:1px solid rgb(221, 221, 221);
+	font-weight: 300;
+	cursor: pointer;
+}
+.tabs > li:nth-child(2){
+	font-size: 28px;
+	display: inline-block;
+	padding: 0px 16px 0px 16px;
+	font-weight: 300;
+	color: rgb(197, 197, 197);
+	cursor: pointer; /*마우스를 올렸을때 포인터 여부*/
 }

@@ -87,6 +87,7 @@ public class MainController {
         User loginInfo = (User) session.getAttribute("loginInfo");
         /*----------------------*/
 		/** 1)필요한 변수값 생성 */
+        int userno = 1;
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
@@ -98,6 +99,7 @@ public class MainController {
 		Popular input = new Popular();
 		Heart input2 = new Heart();
 		List<String> list = null;
+		input2.setUserno(userno);
 
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
