@@ -68,7 +68,7 @@
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
 												<a target="_blank" rel="" class="hit-a"
-													href="${pageContext.request.contextPath}/main/rmdt.do">
+													href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 													<!-- 이미지 -->
 													<div class="hit-a-div">
 														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> 
