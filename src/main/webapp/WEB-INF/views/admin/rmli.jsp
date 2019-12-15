@@ -37,15 +37,17 @@
 						<br>
 						<div class="box">
 							<div class="adm-radio">
-								<label><input type='radio' name='check' value="html" id=checked-item>확인매물</label> 
-									<label><input type='radio' name='check' value="html" id=checked-fake>허위매물</label>
+								<label><input type='radio' name='check' value="html"
+									id=checked-item>확인매물</label> <label><input type='radio'
+									name='check' value="html" id=checked-fake>허위매물</label>
 							</div>
 							<div class="adm-btn">
-								<input type="button" name="" class="btn btn-default" id=confirm-button
-									value="확인매물"> 
-									<input type="button" name="" class="btn btn-default" id=hidden-room value="방 숨기기"> 
-									<input type="button" name="" class="btn btn-default" id=delete-room value="방 삭제">
-<!-- 								<input type="button" name="" class="btn btn-primary"
+								<input type="button" name="" class="btn btn-default"
+									id=confirm-button value="확인매물"> <input type="button"
+									name="" class="btn btn-default" id=hidden-room value="방 숨기기">
+								<input type="button" name="" class="btn btn-default"
+									id=delete-room value="방 삭제">
+								<!-- 								<input type="button" name="" class="btn btn-primary"
 									value="회원탈퇴"> -->
 							</div>
 						</div>
@@ -85,20 +87,20 @@
 								<c:set var="price" value="${item.price}" />
 								<c:set var="userno" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
-<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
+								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
 								<c:set var="hidden" value="${item.hidden}" />
 
 								<tr>
-									<td class="text-center"><input type="checkbox" id="aaaa" value="${item.roomno}"
-										class="roomlist"></td>
+									<td class="text-center"><input type="checkbox" id="aaaa"
+										value="${item.roomno}" class="roomlist"></td>
 									<td align="center">${item.roomno}</td>
 									<td align="center">${item.roomtype}</td>
 									<td align="center">${dealingtype}</a></td>
 									<td align="center">${price}만원</td>
 									<td align="center"><a href="${viewUrl}">${userno}님</td>
-									<td align="center">${confirmdate}</td>
+									<td align="center" id="confirmdate">${confirmdate}</td>
 									<td align="center">${fakecount}</td>
-									<td align="center">${item.hidden}</td>
+									<td align="center" id="hidden">${item.hidden}</td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -108,7 +110,82 @@
 			</div>
 		</div>
 		<!-- 하단 영역 -->
-		<div id="footer"></div>
+		<div id="footer">
+			<%-- gallery-index --%>
+			<div class="gallery-footer">
+				<div class="gallery-index">
+					<!-- 페이지 번호 구현 -->
+					<%-- 이전 그룹에 대한 링크 --%>
+					<c:choose>
+						<%-- 이전 그룹으로 이동 가능하다면? --%>
+						<c:when test="${pageData.prevPage > 0}">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/admin/rmli.do" var="prevPageUrl">
+								<c:param name="keyword" value="${keyword}" />
+								<c:param name="page" value="${pageData.prevPage}" />
+							</c:url>
+							<a href="${prevPageUrl}" id="temp">
+								<button class="prev-btn">
+									<span>&lt;</span>
+								</button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<button class="prev-btn" id="temp">
+								<span>&lt;</span>
+							</button>
+						</c:otherwise>
+					</c:choose>
+
+					<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+					<ul class="index-list">
+						<c:forEach var="i" begin="${pageData.startPage}"
+							end="${pageData.endPage}" varStatus="status">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/admin/rmli.do" var="pageUrl">
+								<c:param name="keyword" value="${keyword}" />
+								<c:param name="page" value="${i}" />
+							</c:url>
+
+							<%-- 페이지 번호 출력 --%>
+							<c:choose>
+								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+								<c:when test="${pageData.nowPage == i}">
+									<li><a class="index-indiv index-active">${i}</a></li>
+								</c:when>
+								<%-- 나머지 페이지의 경우 링크 적용함 --%>
+								<c:otherwise>
+									<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</ul>
+
+					<%-- 다음 그룹에 대한 링크 --%>
+					<c:choose>
+						<%-- 다음 그룹으로 이동 가능하다면? --%>
+						<c:when test="${pageData.nextPage > 0}">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/admin/rmli.do" var="nextPageUrl">
+								<c:param name="keyword" value="${keyword}" />
+								<c:param name="page" value="${pageData.nextPage}" />
+							</c:url>
+							<a href="${nextPageUrl}">
+								<button class="next-btn">
+									<span>&gt;</span>
+								</button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<button class="next-btn">
+								<span>&gt;</span>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			<%-- gallery-index --%>
+		</div>
 	</div>
 	<!-- Javascript -->
 	<script
@@ -124,116 +201,188 @@
 		});
 
 		$(function() {
-			  $('#confirm-button').on('click', function() {
- 				  $('#aaaa:checked').each(function() {
-				        var list = $(this).val(); 
-				   
-				  $.ajax({
-					  //결과 url
-					  url: "${pageContext.request.contextPath}/admin/confirm_ok.do",
-					  data: { user_id : list },
-					  type:"POST",
-					  datatype:'text',
-					  success : function(data) {
-					        location.reload();
-					        alert("변경되었습니다.")
-					    },
-					  error : function(error,status,request) {
-					        alert("Error!" + error + "request: "+request+" status: "+status);
-					    },			  
-				  });
-				  });//checked
-		})
-	}); //end $.ajax;
-	
-	$(function() {
-		  $('#hidden-room').on('click', function() {
-			  $('#aaaa:checked').each(function() {
-			        var hidden = $(this).val(); 
-			   
-			  $.ajax({
-				  //결과 url
-				  url: "${pageContext.request.contextPath}/admin/hidden_ok.do",
-				  data: { hidden_id : hidden },
-				  type:"POST",
-				  datatype:'text',
-				  success : function(data) {
-				        location.reload();
-				        alert("변경되었습니다.")
-				    },
-				  error : function(error,status,request) {
-				        alert("Error!" + error + "request: "+request+" status: "+status);
-				    },			  
-			  });
-			  });//checked
-	})
-}); //end $.ajax;
+			$('#confirm-button')
+					.on(
+							'click',
+							function() {
+								$('#aaaa:checked')
+										.each(
+												function() {
+													var list = $(this).val();
 
-$(function() {
-	  $('#delete-room').on('click', function() {
-		  $('#aaaa:checked').each(function() {
-		        var delete1 = $(this).val(); 
-		   
-		  $.ajax({
-			  //결과 url
-			  url: "${pageContext.request.contextPath}/admin/delete_ok.do",
-			  data: { delete_id : delete1 },
-			  type:"POST",
-			  datatype:'text',
-			  success : function(data) {
-			        location.reload();
-			        alert("삭제되었습니다.")
-			    },
-			  error : function(error,status,request) {
-			        alert("Error!" + error + "request: "+request+" status: "+status);
-			    },			  
-		  });
-		  });//checked
-})
-}); //end $.ajax;
+													$
+															.ajax({
+																//결과 url
+																url : "${pageContext.request.contextPath}/admin/confirm_ok.do",
+																data : {
+																	user_id : list
+																},
+																type : "POST",
+																success : function(
+																		data) {
+																	location
+																			.reload();
+																	$(
+																			"#confirmdate")
+																			.html(
+																					data);
+																},
+																error : function(
+																		error,
+																		status,
+																		request) {
+																	alert("Error!"
+																			+ error
+																			+ "request: "
+																			+ request
+																			+ " status: "
+																			+ status);
+																},
+															});
+												});//checked
+							})
+		}); //end $.ajax;
 
-$(function() {
-	  $('#checked-item').change(function() {
-	alert("체크 확인");
-	
-	$.ajax({
-		  //결과 url
-		  url: "${pageContext.request.contextPath}/admin/rmli2.do",
-		  type:"POST",
-		  data: { check_id : 1 },
-		  datatype:'text',
-		  success : function(data) {
-		        location.reload();
-		        alert("확인되었습니다.")
-		    },
-		  error : function(error,status,request) {
-		        alert("Error!" + error + "request: "+request+" status: "+status);
-		    },			  
-	  });
-})
-}); //end $.ajax;
+		$(function() {
+			$('#hidden-room')
+					.on(
+							'click',
+							function() {
+								$('#aaaa:checked')
+										.each(
+												function() {
+													var hidden = $(this).val();
 
-$(function() {
-	  $('#checked-fake').change(function() {
-	alert("체크 확인");
-	
-	$.ajax({
-		  //결과 url
-		  url: "${pageContext.request.contextPath}/admin/rmli2.do",
-		  type:"POST",
-		  async: false,
-		  data: { check_id : 2 },
-		  datatype:'text',
-		  success : function(data) {
-		        location.reload();
-		        alert("확인되었습니다.")
-		    },
-		  error : function(error,status,request) {
-		        alert("Error!" + error + "request: "+request+" status: "+status);
-		    },			  
-	  });
-})
-}); //end $.ajax;
+													$
+															.ajax({
+																//결과 url
+																url : "${pageContext.request.contextPath}/admin/hidden_ok.do",
+																data : {
+																	hidden_id : hidden
+																},
+																type : "POST",
+																datatype : 'text',
+																success : function(
+																		data) {
+																	$("#hidden")
+																			.html(
+																					data)
+																},
+																error : function(
+																		error,
+																		status,
+																		request) {
+																	alert("Error!"
+																			+ error
+																			+ "request: "
+																			+ request
+																			+ " status: "
+																			+ status);
+																},
+															});
+												});//checked
+							})
+		}); //end $.ajax;
+
+		$(function() {
+			$('#delete-room')
+					.on(
+							'click',
+							function() {
+								$('#aaaa:checked')
+										.each(
+												function() {
+													var delete1 = $(this).val();
+
+													$
+															.ajax({
+																//결과 url
+																url : "${pageContext.request.contextPath}/admin/delete_ok.do",
+																data : {
+																	delete_id : delete1
+																},
+																type : "POST",
+																datatype : 'text',
+																success : function(
+																		data) {
+																	location
+																			.reload();
+																	alert("삭제되었습니다.")
+																},
+																error : function(
+																		error,
+																		status,
+																		request) {
+																	alert("Error!"
+																			+ error
+																			+ "request: "
+																			+ request
+																			+ " status: "
+																			+ status);
+																},
+															});
+												});//checked
+							})
+		}); //end $.ajax;
+
+		$(function() {
+			$('#checked-item')
+					.change(
+							function() {
+								alert("체크 확인");
+
+								$
+										.ajax({
+											//결과 url
+											url : "${pageContext.request.contextPath}/admin/rmli2.do",
+											type : "POST",
+											data : {
+												check_id : Y
+											},
+											datatype : 'text',
+											success : function(data) {
+												location.reload();
+												alert("확인되었습니다.")
+											},
+											error : function(error, status,
+													request) {
+												alert("Error!" + error
+														+ "request: " + request
+														+ " status: " + status);
+											},
+										});
+							})
+		}); //end $.ajax;
+
+		$(function() {
+			$('#checked-fake')
+					.change(
+							function() {
+								alert("체크 확인");
+
+								$
+										.ajax({
+											//결과 url
+											url : "${pageContext.request.contextPath}/admin/rmli2.do",
+											type : "POST",
+											async : false,
+											data : {
+												check_id : 2
+											},
+											datatype : 'text',
+											success : function(data) {
+												location.reload();
+												alert("확인되었습니다.")
+											},
+											error : function(error, status,
+													request) {
+												alert("Error!" + error
+														+ "request: " + request
+														+ " status: " + status);
+											},
+										});
+							})
+		}); //end $.ajax;
 	</script>
 </body>
 </html>

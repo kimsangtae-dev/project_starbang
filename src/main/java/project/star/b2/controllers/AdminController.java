@@ -181,9 +181,10 @@ public class AdminController {
 	public ModelAndView room_check_ok(Model model, HttpServletRequest request) {
 
 		String check1 = request.getParameter("check_id");
-		int check = Integer.valueOf(check1);
 
 		Room input = new Room();
+		input.setHidden(check1);
+		
 		List<Room> output = null; // 조회결과가 저장될 객체
 		try {
 			// 데이터 조회
@@ -196,6 +197,61 @@ public class AdminController {
 		model.addAttribute("output", output);
 		String viewPath = "admin/rmli";
 		return webHelper.redirect(viewPath, "수정되었습니다");
+	}
+	
+	/**
+	 * 작성 폼에 대한 방확인  action 페이지
+	 */
+	@RequestMapping(value = "/admin/confirm_ok.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView room_edit_ok(Model model, HttpServletRequest request) {
+
+		/** 데이터 받기 */
+		String roomno1 = request.getParameter("user_id");
+		System.out.println(roomno1);
+		int roomno = Integer.valueOf(roomno1);
+
+		/** 2) 데이터 수정하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Room input = new Room();
+		input.setRoomno(roomno);
+
+		try {
+			// 데이터 수
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			roomService.editConfirmRoom(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		String viewPath = "/admin/rmli.do";
+		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
+	}
+
+	/**
+	 * hidden 페이지에 대한 방 action 페이지
+	 */
+	@RequestMapping(value = "/admin/hidden_ok.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView room_hidden_ok(Model model, HttpServletRequest request) {
+
+		/** 데이터 받기 */
+		String hidden = request.getParameter("hidden_id");
+		int roomno = Integer.valueOf(hidden);
+
+		/** 2) 데이터 수정하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Room input = new Room();
+		input.setRoomno(roomno);
+
+		try {
+			// 데이터 수
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			roomService.editHiddenRoom(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		String viewPath = "/admin/rmli.do";
+		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
 	}
 
 	/********************************************************************
@@ -255,60 +311,6 @@ public class AdminController {
 		return new ModelAndView(viewPath);
 	}
 
-	/**
-	 * 작성 폼에 대한 방 action 페이지
-	 */
-	@RequestMapping(value = "/admin/confirm_ok.do", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView room_edit_ok(Model model, HttpServletRequest request) {
-
-		/** 데이터 받기 */
-		String roomno1 = request.getParameter("user_id");
-		System.out.println(roomno1);
-		int roomno = Integer.valueOf(roomno1);
-
-		/** 2) 데이터 수정하기 */
-		// 저장할 값들을 Beans에 담는다.
-		Room input = new Room();
-		input.setRoomno(roomno);
-
-		try {
-			// 데이터 수
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
-			roomService.editConfirmRoom(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		String viewPath = "admin/rmli";
-		return webHelper.redirect(viewPath, "수정되었습니다");
-	}
-
-	/**
-	 * hidden 페이지에 대한 방 action 페이지
-	 */
-	@RequestMapping(value = "/admin/hidden_ok.do", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView room_hidden_ok(Model model, HttpServletRequest request) {
-
-		/** 데이터 받기 */
-		String hidden = request.getParameter("hidden_id");
-		int roomno = Integer.valueOf(hidden);
-
-		/** 2) 데이터 수정하기 */
-		// 저장할 값들을 Beans에 담는다.
-		Room input = new Room();
-		input.setRoomno(roomno);
-
-		try {
-			// 데이터 수
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
-			roomService.editHiddenRoom(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		String viewPath = "admin/rmli";
-		return webHelper.redirect(viewPath, "수정되었습니다");
-	}
 
 	/********************************************************************
 	 * 상세 페이지 보기

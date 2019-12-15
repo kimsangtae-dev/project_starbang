@@ -139,8 +139,8 @@
             <if test="check=1">
             	confirmdate is NOT NULL
             </if>
-            <if test="check = 2">
-            	 r.hidden='Y'
+            <if test="floor != null and floor != ''">
+            	 r.hidden=#{hidden}
             </if>
         </where>
                
