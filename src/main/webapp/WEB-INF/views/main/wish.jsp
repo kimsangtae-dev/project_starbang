@@ -697,7 +697,7 @@
 	
 	/* 하트 toggle */
 	$(function() {
-		$(".mg-heart-2d").click(function(e) {
+		$(".hit-div8").click(function(e) {
 			$(this).toggleClass('on off');
 		});
 	});
