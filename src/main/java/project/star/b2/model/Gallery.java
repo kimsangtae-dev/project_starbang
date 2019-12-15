@@ -56,38 +56,44 @@ public class Gallery {
 	private static int sizeFrom;
 	private static int sizeTo;
 	
-	
 	public static int getDepositFrom() { return depositFrom; }
 	public static void setDepositFrom(int depositFrom) { Gallery.depositFrom = depositFrom; }
-	
 	public static int getDepositTo() { return depositTo; }
 	public static void setDepositTo(int depositTo) { Gallery.depositTo = depositTo; }
 	
-	
 	public static int getMonthFrom() { return monthFrom; }
 	public static void setMonthFrom(int monthFrom) { Gallery.monthFrom = monthFrom; }
-	
 	public static int getMonthTo() { return monthTo; }
 	public static void setMonthTo(int monthTo) { Gallery.monthTo = monthTo; }
 	
-	
 	public static int getBuyingFrom() { return buyingFrom; }
 	public static void setBuyingFrom(int buyingFrom) { Gallery.buyingFrom = buyingFrom; }
-	
 	public static int getBuyingTo() { return buyingTo; }
 	public static void setBuyingTo(int buyingTo) { Gallery.buyingTo = buyingTo; }
 
-	
 	public static int getFeeFrom() { return feeFrom; }
 	public static void setFeeFrom(int fromRoom) { Gallery.feeFrom = fromRoom; }
-	
 	public static int getFeeTo() { return feeTo; }
 	public static void setFeeTo(int toRoom) { Gallery.feeTo = toRoom; }
 	
-	
 	public static int getSizeFrom() { return sizeFrom; }
 	public static void setSizeFrom(int sizeFrom) { Gallery.sizeFrom = sizeFrom; }
-	
 	public static int getSizeTo() { return sizeTo; }
 	public static void setSizeTo(int sizeTo) { Gallery.sizeTo = sizeTo; }
+	
+	
+	/** 지도 필터링을 위한 추가 변수 */
+	private static double west;
+	private static double east;
+	private static double south;
+	private static double north;
+
+	public static double getWest() { return west; }
+	public static void setWest(double west) { Gallery.west = west; }
+	public static double getEast() { return east; }
+	public static void setEast(double east) { Gallery.east = east; }
+	public static double getSouth() { return south; }
+	public static void setSouth(double south) { Gallery.south = south; }
+	public static double getNorth() { return north; }
+	public static void setNorth(double north) { Gallery.north = north; }
 }

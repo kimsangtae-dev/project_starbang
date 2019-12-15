@@ -27,8 +27,7 @@ pageEncoding="UTF-8"%>
 		<div id="content">
 			<div id="search" class="clearfix">
 				<div class="searchtab">
-					<form id="search-form" method="get"
-						action="${pageContext.request.contextPath}/main/search.do">
+					<form id="search-form" method="get" action="${pageContext.request.contextPath}/main/search.do">
 						<input type="search" placeholder="검색바" name="search" id="keyword"
 							value="${keyword}" /> <i class="glyphicon glyphicon-search"></i>
 						<button type="submit">검색</button>
@@ -200,14 +199,13 @@ pageEncoding="UTF-8"%>
 				<div class="gallery">
 					<!-- 갤러리 상단 영역 -->
 					<div class="gallery-header">
-						<span>조건에 맞는 방 </span> <span class="room-count">${totalCount}</span><span>개</span>
+						<span>조건에 맞는 방 </span> <span class="room-count" id="room-count">${totalCount}</span><span>개</span>
 					</div>
 					<!-- 갤러리 상단 영역 끝 -->
 					<!-- 갤러리 내용 + 하단 영역 -->
 					<div class="gallery-container">
 						<!-- 갤러리 내용 영역 -->
 						<div class="gallery-content clearfix">
-							<ul id="gallery-list">
 								<c:choose>
 									<%-- 조회 결과가 없는 경우 --%>
 									<c:when test="${output == null || fn:length(output) == 0}">
@@ -219,8 +217,9 @@ pageEncoding="UTF-8"%>
 											<p class="noresult">맞춤필터를 해제해보세요.</p>
 										</div>
 									</c:when>
-									<%-- 갤러리 시작 --%>
 									<c:otherwise>
+									<ul id="gallery-list">
+									<%-- 갤러리 시작 --%>
 										<c:forEach var="item" items="${output}" varStatus="status">
 											<li>
 												<div class="recent-div5">
@@ -283,10 +282,10 @@ pageEncoding="UTF-8"%>
 												</div>
 											</li>
 										</c:forEach>
+										<%-- 각 갤러리 끝 --%>
+									</ul>
 									</c:otherwise>
-									<%-- 각 갤러리 끝 --%>
 								</c:choose>
-							</ul>
 						</div>
 						<!-- 갤러리 내용 영역 -->
 						<!-- 갤러리 하단 영역 -->
@@ -459,7 +458,9 @@ pageEncoding="UTF-8"%>
                {{!-- 전체 링크화 --}}
                <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
                   {{!-- 이미지 --}}
-                  <div class="recent-a-div"></div>
+                  <div class="recent-a-div">
+					<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+				  </div>
                   {{!-- 확인매물 div --}}
                   <div class="recent-a-confirm">
                      <div class="recent-a-confirm-div">
@@ -481,6 +482,7 @@ pageEncoding="UTF-8"%>
    </script>
    <script type="text/javascript">
    $(function() {
+	   var total_count = ${totalCount};
 	   var deposit_from = ${param.depositFrom};
 	   var deposit_to = ${param.depositTo};
 	   var buying_from = ${param.buyingFrom};
@@ -513,17 +515,52 @@ pageEncoding="UTF-8"%>
             });
 		});
 	}
-		// 
-		$(function() {
-			$("#temp").click(function() {
-				get_gallery();
-			})
-		});
    })
    </script>
 
     <!-- 지도 api -->
     <script type="text/javascript">
+	var deposit_from = ${param.depositFrom};
+	var deposit_to = ${param.depositTo};
+	var buying_from = ${param.buyingFrom};
+	var buying_to = ${param.buyingTo};
+	var fee_from = ${param.feeFrom};
+	var fee_to = ${param.feeTo};
+	var size_from = ${param.sizeFrom};
+	var size_to = ${param.sizeTo};
+		
+	function getMapPosition(west,east,south,north) {
+		$.ajax({
+           	url: "${pageContext.request.contextPath}/main/search",
+           	method: "get",
+           	data: {
+				"depositFrom": deposit_from,
+				"depositTo": deposit_to,
+				"buyingFrom": buying_from,
+				"buyingTo": buying_to,
+				"feeFrom": fee_from,
+				"feeTo": fee_to,
+				"sizeFrom": size_from,
+				"sizeTo": size_to,
+				"east": east,
+				"west": west,
+				"north": north,
+				"south": south
+           	},
+           	success: function(req){
+				//alert(east + ", " + west + ", " + north + ", " + south);
+			    var total_count = ${totalCount};
+				var template = Handlebars.compile($("#gallery-data").html());
+				var html = template(req);
+				$("#gallery-list").html(html);
+				//$("#room-count").html(total_count);
+				
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+		        });
+           	}
+		});
+	}
         /* kakao map API */
         $(function() {
         	/** 지도 생성하기 */
@@ -560,7 +597,7 @@ pageEncoding="UTF-8"%>
             /** 매물 데이터 가져오기 */
             $.get('${pageContext.request.contextPath}/assets/roomposition',
                 function(data) {
-                    var markers = $(data.positions).map(function(i, position) {
+                    var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
                             position : new kakao.maps.LatLng(position.latitude, position.longitude)
                         });
@@ -582,12 +619,12 @@ pageEncoding="UTF-8"%>
                     kakao.maps.event.addListener(map, 'zoom_changed', changeMarker);
                     changeMarker();
 
-                    /* kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
-                        var markers = cluster.getMarkers();
+                    kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
+                        /* var markers = cluster.getMarkers();
                         for(var idx=0; idx<markers.length; idx++){
                             console.log(markers[idx].getPosition());
-                            console.log(data.positions.roomno);
-                        }
+                            console.log(data.output.roomno);
+                        } */
                         var southwest = cluster.getBounds().getSouthWest();
                         var northeast = cluster.getBounds().getNorthEast();
                         var east = northeast.getLat();
@@ -595,35 +632,7 @@ pageEncoding="UTF-8"%>
                         var north = northeast.getLng();
                         var south = southwest.getLng();
                         
-                        $.ajax({
-                        	url: "${pageContext.request.contextPath}/main/search",
-                        	method: "get",
-                        	data: {
-                        		"depositFrom": ${param.depositFrom},
-                           	 	"depositTo": ${param.depositTo},
-                           	 	"buyingFrom": ${param.buyingFrom},
-	                           	"buyingTo": ${param.buyingTo},
-	                           	"feeFrom": ${param.feeFrom},
-	                           	"feeTo": ${param.feeTo},
-	                           	"sizeFrom": ${param.sizeFrom},
-	                           	"sizeTo": ${param.sizeTo},
-                        		"east": east,
-                        		"west": west,
-                        		"north": north,
-                        		"south": south
-                        	},
-                        	dataType: "html",
-                        	success: function(req){
-                        		alert(east + ", " + west + ", " + north + ", " + south);
-                        		var template = Handlebars.compile($("#gallery-data").html());
-                                var html = template(req);
-                                $("#gallery-list").html(html);
-                        	}
-                        });
-                    }); */
-
-                    kakao.maps.event.addListener(clusterer, 'clusterover', function(cluster) {
-                        console.log(cluster.getBounds());
+                        getMapPosition(west,east,south,north);
                     });
 
 			}); // end $.get(address.json)
@@ -709,12 +718,31 @@ pageEncoding="UTF-8"%>
             $(".zoom-out").click(function() { zoomOut(); });
             
             
-            /* var bounds = map.getBounds();
             kakao.maps.event.addListener(map, 'dragend', function() {
-            	alert(bounds.toString());
-            }); */
-
+            	var bounds = map.getBounds();
+            	var southwest = bounds.getSouthWest();
+                var northeast = bounds.getNorthEast();
+                var east = northeast.getLat();
+                var west = southwest.getLat();
+                var north = northeast.getLng();
+                var south = southwest.getLng();
+                
+                getMapPosition(west,east,south,north);
+            });
             
+            
+            kakao.maps.event.addListener(map, 'zoom_changed', function() {
+            	var bounds = map.getBounds();
+            	var southwest = bounds.getSouthWest();
+                var northeast = bounds.getNorthEast();
+                var east = northeast.getLat();
+                var west = southwest.getLat();
+                var north = northeast.getLng();
+                var south = southwest.getLng();
+                
+                getMapPosition(west,east,south,north);
+            });
+
         });
     </script>
 
@@ -1014,12 +1042,6 @@ pageEncoding="UTF-8"%>
             // 가격대 조건삭제
             $("#filter-reset1").click(function(e) {
                 e.preventDefault();
-                /* slide1_value.reset();
-                slide2_value.reset();
-                slide3_value.reset();
-                $("#filter1-value").html("무제한");
-                $("#filter2-value").html("무제한");
-                $("#filter3-value").html("무제한"); */
                 var pricehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(pricehref);
             })
@@ -1036,8 +1058,6 @@ pageEncoding="UTF-8"%>
             // 방크기 조건삭제
             $("#filter-reset3").click(function(e) {
                 e.preventDefault();
-                /* slide5_value.reset();
-                $("#filter5-value").html("무제한"); */
                 var sizehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999';
                 location.replace(sizehref);
             })
@@ -1046,12 +1066,6 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                /* slide1_value.reset();
-                slide2_value.reset();
-                slide3_value.reset();
-                slide4_value.reset();
-                slide5_value.reset();
-                $(".inf").html("무제한"); */
                 var resetUrl = "${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
                 location.replace(resetUrl);
             });

@@ -75,7 +75,7 @@ public class GalleryRestController {
 		
 		/** 3) JSON 출력하기 */
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("positions", output);
+		data.put("output", output);
 		
 		return webHelper.getJsonData(data);
 	}
@@ -115,6 +115,12 @@ public class GalleryRestController {
 
 		String dealingtype = webHelper.getString("dealingtype");
 		String region_2depth_name = webHelper.getString("region_2depth_name");
+		
+		/** 지도 매물위치 필터링 */
+		double west = webHelper.getDouble("west");
+		double east = webHelper.getDouble("east");
+		double south = webHelper.getDouble("south");
+		double north = webHelper.getDouble("north");
 
 		Filter filter = new Filter();
 		// 보증금/전세
@@ -161,6 +167,11 @@ public class GalleryRestController {
 
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
+			
+			Gallery.setWest(west);
+			Gallery.setEast(east);
+			Gallery.setSouth(south);
+			Gallery.setNorth(north);
 
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);
