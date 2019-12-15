@@ -230,7 +230,7 @@
 				</div> -->
 
 				<ul class="tabs" id="tabs">
-					<li class="active" rel="tab1"><c:choose>
+					<li id="tab1"><c:choose>
 							<c:when test="${loginInfo == null }">최근 본 방
 				</c:when>
 							<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
@@ -238,7 +238,7 @@
 								<a class="test1" href="">${loginInfo.name}님의 최근 본 방</a>
 							</c:otherwise>
 						</c:choose></li>
-					<li rel="tab2"><c:choose>
+					<li id="tab2"><c:choose>
 							<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
 							<c:when test="${loginInfo == null }">
 								<a href="${pageContext.request.contextPath}/modal/login.do"
@@ -256,12 +256,8 @@
 				</div>
 
 				<div class="tab_container" id="tab_con">
-				<div class="recent-div5-vacant margin">
-						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-					</div>
 					<div class="recent-div4">
-						<c:forEach var="item" items="${output3}" varStatus="status"
-							end="4">
+						<c:forEach var="item" items="${output3}" varStatus="status" end="4">
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
@@ -308,54 +304,6 @@
 						</c:forEach>
 					</div>
 
-					<div class="recent-div4">
-						<c:forEach var="item" items="${output2}" varStatus="status"
-							end="4">
-							<li>
-								<div class="recent-div5">
-									<div class="recent-div6">
-										<%-- 좋아요 버튼 --%>
-										<div class="recent-div7">
-											<div class="recent-div8 off" data-value="on"></div>
-										</div>
-										<%-- 좋아요 끝 --%>
-										<%-- 전체 링크화 --%>
-										<a target="_blank" rel="" class="recent-a"
-											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
-											<!-- 이미지 -->
-											<div class="recent-a-div">
-												<img
-													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
-											</div> <c:if test="${item.confirmdate != null}">
-												<%-- 확인매물 div --%>
-												<div class="recent-a-confirm">
-													<div class="recent-a-confirm-div">
-														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
-													</div>
-												</div>
-												<%-- 확인매물 끝 --%>
-											</c:if>
-											<p class="recent-a-p1">${item.roomtype}</p>
-											<p class="recent-a-p2">
-												<c:choose>
-													<c:when test="${item.dealingtype == '월세'}">
-														<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-													</c:when>
-													<c:otherwise>
-														<span>${item.dealingtype}&nbsp;</span>
-														<span id="prc">${item.price}</span>
-													</c:otherwise>
-												</c:choose>
-											</p>
-											<p class="recent-a-p34">${item.floor}층,${item.area}m²,관리비
-												${item.fee}만</p>
-											<p class="recent-a-p34">${item.title}</p>
-										</a>
-									</div>
-								</div>
-							</li>
-						</c:forEach>
-					</div>
 				</div>
 				<!-- 갤러리 전체 박스 -->
 				<div class="recent-div4">
@@ -779,12 +727,21 @@
 					});
 				});
 			</script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
-  <script>
-  $( function() {
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+  $(document).ready(function() {
     $( "#tabs" ).tabs();
   } );
+  
   </script>
+  <script>
+  $("#tab1").click(function(){
+	  alert("오 tired tonight!");
+  });
+  $("#tab2").click(function(){
+	  alert("링마벨~");
+  });
+  </script>
+  
 
 </body>
 </html>

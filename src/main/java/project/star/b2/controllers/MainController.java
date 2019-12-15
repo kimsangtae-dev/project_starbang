@@ -442,13 +442,13 @@ public class MainController {
 		String keyword2 = webHelper.getString("roomtype");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 10; // 한 페이지당 표시할 목록 수
+		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Heart input = new Heart();
-		Gallery input2 = new Gallery();
+		/* Gallery input2 = new Gallery(); */
 		input.setUserno(userno);
 		input.setRoomno(keyword);
 		input.setRoomtype(keyword2);
@@ -458,13 +458,13 @@ public class MainController {
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = galleryService.getGalleryCount(input2);
+			totalCount = heartService.getHeartGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-			Room.setOffset(pageData.getOffset());
-			Room.setListCount(pageData.getListCount());
+			Heart.setOffset(pageData.getOffset());
+			Heart.setListCount(pageData.getListCount());
 
 			output = heartService.getHeartGalleryList(input);
 		} catch (Exception e) {
@@ -596,5 +596,23 @@ public class MainController {
 
 		return (List<String>) new ModelAndView("main/search");
 	}
-
+	
+	
+	/********************************************************************
+	 * 테스트2
+	 *******************************************************************/
+	@RequestMapping("/test/jquery/tab")
+	public class AjaxTabTestController
+	{
+		@RequestMapping("ajaxTab")
+		public String moveAjaxTabPage()
+		{
+			return "jqueryTest/ajaxTabTest";
+		}
+		@RequestMapping("tabContent1")
+		public String getAjaxTabContent1()
+		{
+			return "tabContent/ajaxTabContent1";  // AJAX 탭에 로딩되는 뷰페이지.
+		}
+	}
 }

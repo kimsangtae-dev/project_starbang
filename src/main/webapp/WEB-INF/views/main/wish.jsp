@@ -44,7 +44,7 @@
 
 		<!-- 총 카운트 count -->
 		<p class="count-p">
-			총 <span>8개</span>의 찜한 방이 있습니다
+			총 <span class="room-count">0</span><span>개</span>의 찜한 방이 있습니다
 		</p>
 
 		<!-- 메인 갤러리 시작 -->
@@ -106,6 +106,82 @@
 							<%-- 각 갤러리 끝 --%>
 						</c:choose>
 					</ul>
+					
+					<%-- gallery-index --%>
+					<div class ="gallery-footer">
+						<div class="gallery-index">
+									<!-- 페이지 번호 구현 -->
+									<%-- 이전 그룹에 대한 링크 --%>
+									<c:choose>
+										<%-- 이전 그룹으로 이동 가능하다면? --%>
+										<c:when test="${pageData.prevPage > 0}">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/main/wish.do" var="prevPageUrl">
+												<c:param name="keyword" value="${keyword}" />
+												<c:param name="page" value="${pageData.prevPage}" />
+											</c:url>
+											<a href="${prevPageUrl}" id="temp">
+												<button class="prev-btn">
+													<span>&lt;</span>
+												</button>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<button class="prev-btn" id="temp">
+												<span>&lt;</span>
+											</button>
+										</c:otherwise>
+									</c:choose>
+
+									<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+									<ul class="index-list">
+										<c:forEach var="i" begin="${pageData.startPage}"
+											end="${pageData.endPage}" varStatus="status">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/main/wish.do" var="pageUrl">
+												<c:param name="keyword" value="${keyword}" />
+												<c:param name="page" value="${i}" />
+											</c:url>
+
+											<%-- 페이지 번호 출력 --%>
+											<c:choose>
+												<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+												<c:when test="${pageData.nowPage == i}">
+													<li><a class="index-indiv index-active">${i}</a></li>
+												</c:when>
+												<%-- 나머지 페이지의 경우 링크 적용함 --%>
+												<c:otherwise>
+													<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</ul>
+
+									<%-- 다음 그룹에 대한 링크 --%>
+									<c:choose>
+										<%-- 다음 그룹으로 이동 가능하다면? --%>
+										<c:when test="${pageData.nextPage > 0}">
+											<%-- 이동할 URL 생성 --%>
+											<c:url value="/main/wish.do" var="nextPageUrl">
+												<c:param name="keyword" value="${keyword}" />
+												<c:param name="page" value="${pageData.nextPage}" />
+											</c:url>
+											<a href="${nextPageUrl}">
+												<button class="next-btn">
+													<span>&gt;</span>
+												</button>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<button class="next-btn">
+												<span>&gt;</span>
+											</button>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								</div>
+								<%-- gallery-index --%>
+					
 			<%-- <!-- li 하나당 한개의 매물 - 외부박스 -->
 			<li class="gallery-li">
 				<!-- 내부박스 거래 완료되었을 때 덮는 박스( 완료된 방은 하트가 없다.) -->
@@ -626,7 +702,12 @@
 		});
 	});
 </script>
-
-
+	<script type="text/javascript">
+		/* 조건에 맞는 방 개수 */
+		$(function() {
+			var n = $(".hit-div5").length;
+			$(".room-count").html(n);
+		});
+		</script>
 </body>
 </html>
