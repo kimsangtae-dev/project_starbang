@@ -709,5 +709,10 @@
 			$(".room-count").html(n);
 		});
 		</script>
+		<script>
+if ($('.hit-div5').length) {
+    alert('값이 있어요!');
+}
+</script>
 </body>
 </html>

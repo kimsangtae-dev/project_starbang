@@ -162,8 +162,13 @@ public class ModalController {
 			return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
 		} 
 		
-		String redirectUrl = contextPath + "/";
-		return webHelper.redirect(redirectUrl, "로그인되었습니다.");
+		/*
+		 * String redirectUrl = contextPath + "/"; return
+		 * webHelper.redirect(redirectUrl, "로그인되었습니다.");
+		 */
+		request.getHeader("REFERER");
+	      String referer = (String)request.getHeader("REFERER");
+	      return webHelper.redirect(referer, "로그인되었습니다.");
 	}
 	
 	@RequestMapping(value = "/modal/login_out.do", method = RequestMethod.GET)
