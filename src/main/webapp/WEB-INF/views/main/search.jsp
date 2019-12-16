@@ -456,17 +456,19 @@ pageEncoding="UTF-8"%>
                </div>
                {{!-- 좋아요 끝 --}}
                {{!-- 전체 링크화 --}}
-               <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do">
+               <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
                   {{!-- 이미지 --}}
                   <div class="recent-a-div">
 					<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
 				  </div>
                   {{!-- 확인매물 div --}}
+				  {{#if confirmdate}}
                   <div class="recent-a-confirm">
                      <div class="recent-a-confirm-div">
                         <span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
                      </div>
                   </div>
+				  {{/if}}
                   {{!-- 확인매물 끝 --}}
                   <p class="recent-a-p1">{{roomtype}}</p>
                   <p class="recent-a-p2">
