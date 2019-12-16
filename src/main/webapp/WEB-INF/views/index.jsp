@@ -307,8 +307,8 @@
 
 				</div>
 				<!-- 갤러리 전체 박스 -->
-<!-- 				<div class="recent-div4"> -->
-					<%-- 					<c:forEach var="item" items="${output3}" varStatus="status" end="4">
+				<!-- 				<div class="recent-div4"> -->
+				<%-- 					<c:forEach var="item" items="${output3}" varStatus="status" end="4">
 						<li>
 							<div class="recent-div5">
 								<div class="recent-div6">
@@ -353,7 +353,7 @@
 							</div>
 						</li>
 					</c:forEach> --%>
-					<%-- <!-- 각각 갤러리 시작 -->
+				<%-- <!-- 각각 갤러리 시작 -->
 					<!-- 1번째 갤러리 시작 -->
 					<div class="recent-div5">
 						<div class="recent-div6">
@@ -425,83 +425,83 @@
 				</div>
 				<!--  갤러리 전체박스 끝 --> --%>
 
-				</div>
-				<!-- div0 끝 -->
-
 			</div>
-			<!-- 최근본방 / 찜한방 끝  -->
+			<!-- div0 끝 -->
 
-			<!---------------------------------------\
+		</div>
+		<!-- 최근본방 / 찜한방 끝  -->
+
+		<!---------------------------------------\
     /    인기있는 방 시작                        /
     ----------------------------------------->
-			<div class="pop-entire">
-				<div class="pop-entire-d2">
-					<div class="pop-title1">
-						<a href="#">인기 있는 방</a>
-					</div>
-					<div class="pop-title2">많은 사람들이 찾아본 이곳, 궁금하지 않으세요?</div>
+		<div class="pop-entire">
+			<div class="pop-entire-d2">
+				<div class="pop-title1">
+					<a href="#">인기 있는 방</a>
+				</div>
+				<div class="pop-title2">많은 사람들이 찾아본 이곳, 궁금하지 않으세요?</div>
 
-					<!-- 갤러리 전체 박스 -->
-					<div class="hit-div4">
-						<ul id="gallery-list">
-							<c:choose>
-								<%-- 조회 결과가 없는 경우 --%>
-								<c:when test="${output == null || fn:length(output) == 0}">
-									<p>조회 결과가 없습니다.</p>
-								</c:when>
-								<%-- 갤러리 시작 --%>
-								<c:otherwise>
-									<c:forEach var="item" items="${output}" varStatus="status">
-										<li>
-											<div class="hit-div5">
-												<div class="hit-div6">
-													<%-- 좋아요 버튼 --%>
-													<div class="hit-div7">
-														<div class="hit-div8 off" data-value="on"></div>
-													</div>
-													<%-- 좋아요 끝 --%>
-													<%-- 전체 링크화 --%>
-													<a target="_blank" rel="" class="hit-a"
-														href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
-														<!-- 이미지 -->
-														<div class="hit-a-div">
-															<img
-																src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
-														</div> <c:if test="${item.confirmdate != null}">
-															<%-- 확인매물 div --%>
-															<div class="hit-a-confirm">
-																<div class="hit-a-confirm-div">
-																	<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
-																</div>
-															</div>
-															<%-- 확인매물 끝 --%>
-														</c:if>
-														<p class="hit-a-p1">${item.roomtype}</p>
-														<p class="hit-a-p2">
-															<c:choose>
-																<c:when test="${item.dealingtype == '월세'}">
-																	<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-																</c:when>
-																<c:otherwise>
-																	<span>${item.dealingtype}&nbsp;</span>
-																	<span id="prc">${item.price}</span>
-																</c:otherwise>
-															</c:choose>
-														</p>
-														<p class="hit-a-p34">${item.floor}층,${item.area}m²,관리비
-															${item.fee}만</p>
-														<p class="hit-a-p34">${item.title}</p>
-													</a>
+				<!-- 갤러리 전체 박스 -->
+				<div class="hit-div4">
+					<ul id="gallery-list">
+						<c:choose>
+							<%-- 조회 결과가 없는 경우 --%>
+							<c:when test="${output == null || fn:length(output) == 0}">
+								<p>조회 결과가 없습니다.</p>
+							</c:when>
+							<%-- 갤러리 시작 --%>
+							<c:otherwise>
+								<c:forEach var="item" items="${output}" varStatus="status">
+									<li>
+										<div class="hit-div5">
+											<div class="hit-div6">
+												<%-- 좋아요 버튼 --%>
+												<div class="hit-div7">
+													<div class="hit-div8 off" data-value="on"></div>
 												</div>
+												<%-- 좋아요 끝 --%>
+												<%-- 전체 링크화 --%>
+												<a target="_blank" rel="" class="hit-a"
+													href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
+													<!-- 이미지 -->
+													<div class="hit-a-div">
+														<img
+															src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+													</div> <c:if test="${item.confirmdate != null}">
+														<%-- 확인매물 div --%>
+														<div class="hit-a-confirm">
+															<div class="hit-a-confirm-div">
+																<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+															</div>
+														</div>
+														<%-- 확인매물 끝 --%>
+													</c:if>
+													<p class="hit-a-p1">${item.roomtype}</p>
+													<p class="hit-a-p2">
+														<c:choose>
+															<c:when test="${item.dealingtype == '월세'}">
+																<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+															</c:when>
+															<c:otherwise>
+																<span>${item.dealingtype}&nbsp;</span>
+																<span id="prc">${item.price}</span>
+															</c:otherwise>
+														</c:choose>
+													</p>
+													<p class="hit-a-p34">${item.floor}층,${item.area}m²,관리비
+														${item.fee}만</p>
+													<p class="hit-a-p34">${item.title}</p>
+												</a>
 											</div>
-										</li>
-									</c:forEach>
-								</c:otherwise>
-								<%-- 각 갤러리 끝 --%>
-							</c:choose>
-						</ul>
+										</div>
+									</li>
+								</c:forEach>
+							</c:otherwise>
+							<%-- 각 갤러리 끝 --%>
+						</c:choose>
+					</ul>
 
-						<%-- <!-- 갤러리 전체 박스 -->
+					<%-- <!-- 갤러리 전체 박스 -->
         <div class="pop-gallery-d"> 
           <!-- 각각 갤러리 시작 -->
           <!-- 1번째 갤러리 시작 -->
@@ -640,43 +640,43 @@
         </div>
         <!--  갤러리 전체박스 끝 --> --%>
 
-					</div>
-					<!-- div0 끝 -->
-
 				</div>
-				<!-- 인기 있는 방 끝  -->
+				<!-- div0 끝 -->
+
+			</div>
+			<!-- 인기 있는 방 끝  -->
 
 
-				<button class="btn-searchrm" style="bottom: 30px;">
-					<svg width="20" height="20" viewBox="0 0 20 20">
+			<button class="btn-searchrm" style="bottom: 30px;">
+				<svg width="20" height="20" viewBox="0 0 20 20">
     		<g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="2">
     			<circle cx="8.5" cy="8.5" r="6.5"></circle>
     			<path d="M13 13l5 5"></path>
     		</g>
     	</svg>
-					<span>방 찾기</span>
-				</button>
+				<span>방 찾기</span>
+			</button>
 
 
-			</div>
-			<!-- content 끝 -->
+		</div>
+		<!-- content 끝 -->
 
-			<!----------------------------------------
+		<!----------------------------------------
 -	footer 							     -
 ----------------------------------------->
-			<%@ include file="assets/inc/ma_bottom.jsp"%>
+		<%@ include file="assets/inc/ma_bottom.jsp"%>
 
 
-			<script
-				src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-			<script
-				src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-			<script
-				src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"
-				type="text/javascript" charset="utf-8"></script>
+		<script
+			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"
+			type="text/javascript" charset="utf-8"></script>
 
 
-			<script>
+		<script>
 				/* 슬라이더 세팅 */
 
 				$(".regular").slick({
@@ -728,13 +728,13 @@
 					});
 				});
 			</script>
-			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
   $(document).ready(function() {
     $( "#tabs" ).tabs();
   } );
   
   </script>
-			<script>
+		<script>
   $("#tab1").click(function(){
 	  alert("오 tired tonight!");
 	  $.ajax ({
@@ -755,8 +755,8 @@
 	  alert("링마벨~");
   });
   </script>
-			<!-- Handlebar 템플릿 코드 -->
-			<script id="prof-list-tmpl" type="text/x-handlebars-template">
+		<!-- Handlebar 템플릿 코드 -->
+		<script id="prof-list-tmpl" type="text/x-handlebars-template">
 {{#each item}}
 	<li>
 										<div class="hit-div5">
@@ -803,11 +803,27 @@
 									</li>
 {{/each}}
 	</script>
-	
-	<!-- user code -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	   <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
-	<script>
+		<!-- 값이 없을때 -->
+		<script id="no-list-tmpl" type="text/x-handlebars-template">	
+	<div class="recent-div5-vacant margin">
+		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	</div>
+<div class="recent-div5-vacant margin">
+		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	</div>
+<div class="recent-div5-vacant margin">
+		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	</div>
+<div class="recent-div5-vacant margin">
+		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	</div>
+	</script>
+		<!-- user code -->
+		<script
+			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
+		<script>
 	$(function(){
 	$("#tab2").click(function(){
 		alert("안녕");
@@ -821,10 +837,17 @@
 			var source = $("#prof-list-tmpl").html()//템플릿코드
 			var template = Handlebars.compile(source);// 템플릿 컴파일
 			var result = template(json);
-
+			var a = Object.keys({item:[]});
+			console.log(a); //json 데이터 알아보기
+			if(a == "item"){
+				var source2 =$("#no-list-tmpl").html()
+				var template = Handlebars.compile(source2);// 템플릿 컴파일
+				$(".recent-div4").append(template)
+			}
 			$(".recent-div4").append(result);
 		});
 		});
+	
 	$("#tab1").click(function(){
 		alert("테스트중");
 		$(".tabs > li:nth-child(1)").css("color","black");
