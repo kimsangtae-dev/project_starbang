@@ -82,7 +82,6 @@ public class MainController {
         User loginInfo = (User) session.getAttribute("loginInfo");
         /*----------------------*/
 		/** 1)필요한 변수값 생성 */
-        int userno = 1;
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
@@ -92,18 +91,14 @@ public class MainController {
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Popular input = new Popular();
-		Heart input2 = new Heart();
 		List<String> list = null;
-		input2.setUserno(userno);
-
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
-		List<Heart> output2 = null;
 		List<Gallery> output3 = null;
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = roomService.getRoomCount(null);
+			totalCount = galleryService.getGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			//쿠키 불러오기
@@ -114,19 +109,13 @@ public class MainController {
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			output = galleryService.getPopularGalleryList(input); //인기있는 방
-			output2 = heartService.getHeartGalleryList(input2); //찜한방
 			output3 = galleryService.getCookieList(list); //최근본방
-			
-			if (output3 == null) {
-				return new ModelAndView("index");
-			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
-		model.addAttribute("output2", output2);
 		model.addAttribute("output3", output3);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);

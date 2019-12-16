@@ -90,7 +90,7 @@
 								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
 								<c:set var="hidden" value="${item.hidden}" />
 
-								<tr>
+								<tr id="bbbb">
 									<td class="text-center"><input type="checkbox" id="aaaa"
 										value="${item.roomno}" class="roomlist"></td>
 									<td align="center">${item.roomno}</td>
@@ -326,34 +326,6 @@
 							})
 		}); //end $.ajax;
 
-		$(function() {
-			$('#checked-item')
-					.change(
-							function() {
-								alert("체크 확인");
-
-								$
-										.ajax({
-											//결과 url
-											url : "${pageContext.request.contextPath}/admin/rmli2.do",
-											type : "POST",
-											data : {
-												check_id : Y
-											},
-											datatype : 'text',
-											success : function(data) {
-												location.reload();
-												alert("확인되었습니다.")
-											},
-											error : function(error, status,
-													request) {
-												alert("Error!" + error
-														+ "request: " + request
-														+ " status: " + status);
-											},
-										});
-							})
-		}); //end $.ajax;
 
 		$(function() {
 			$('#checked-fake')
@@ -384,6 +356,73 @@
 										});
 							})
 		}); //end $.ajax;
+	</script>
+	
+			<!-- Handlebar 템플릿 코드 -->
+		<script id="prof-list-tmpl3" type="text/x-handlebars-template">
+{{#each item}}
+								<%-- 출력을 위해 준비한 유저이름과 위치 --%>
+								<c:set var="roomno" value="{{roomno}}]" />
+								<c:set var="roomtype" value="{{roomtype}}" />
+								<c:set var="dealingtype" value="{{dealingtype}}" />
+								<c:set var="price" value="{{price}}" />
+								<c:set var="userno" value="{{name}}" />
+								<c:set var="confirmdate" value="{{confirmdate}}" />
+								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
+								<c:set var="hidden" value="{{hidden}}" />
+								<tr>
+									<td class="text-center"><input type="checkbox" id="aaaa"
+										value="{{roomno}}" class="roomlist"></td>
+									<td align="center">{{roomno}}</td>
+									<td align="center">{{roomtype}}</td>
+									<td align="center">{{dealingtype}}</a></td>
+									<td align="center">{{price}}만원</td>
+									<td align="center"><a href="${viewUrl}">{{userno}}님</td>
+									<td align="center" id="confirmdate">{{confirmdate}}</td>
+									<td align="center">{{fakecount}}</td>
+									<td align="center" id="hidden">{{hidden}}</td>
+								</tr>
+{{/each}}
+	</script>
+		<!-- user code -->
+		<script
+			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
+		<script>
+/* 	$(function(){
+	$("#checked-item").click(function(){
+		alert("안녕");
+		
+		
+		$.get("${pageContext.request.contextPath}/professor3",
+				{"userno":2}
+		,function(json){	
+			var source = $("#prof-list-tmpl3").html()//템플릿코드
+			var template = Handlebars.compile(source);// 템플릿 컴파일
+			var result = template(json);
+			
+			$("#bbbb").empty(); 
+			$("#bbbb").append(result); 
+		});
+		});
+	}); */
+	$(function() {
+		$("#checked-item").click(function(){
+			alert("안녕");
+				$.ajax({
+					//결과 url
+					url : "${pageContext.request.contextPath}/admin/rmli2.do",
+					type : "GET",
+					success : function(data) {
+					alert("값이 변경되었나?")
+					alert(data),
+					$(document).load(data)},
+					error : function(error, status,request) {
+					alert("Error!" + error+ "request: " + request+ " status: " + status);},
+									});
+						})
+	}); //end $.ajax;
 	</script>
 </body>
 </html>

@@ -242,7 +242,7 @@
 							<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
 							<c:when test="${loginInfo == null }">
 								<a href="${pageContext.request.contextPath}/modal/login.do"
-									class="st-bang padding-l" data-toggle="modal"
+									data-toggle="modal"
 									data-target="#loginModal">찜한 방</a>
 							</c:when>
 							<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
@@ -734,31 +734,10 @@
   } );
   
   </script>
-		<script>
-  $("#tab1").click(function(){
-	  alert("오 tired tonight!");
-	  $.ajax ({
-		type:"POST",
-		url :"url",
-		data : data,
-		dataType :"json"
-		error : function(error){
-			alert("에러발생");
-		},
-		success : function(data){
-			alert(data + "데이터통신 성공!");
-		});
-		
-	  });
-  });
-  $("#tab2").click(function(){
-	  alert("링마벨~");
-  });
-  </script>
 		<!-- Handlebar 템플릿 코드 -->
 		<script id="prof-list-tmpl" type="text/x-handlebars-template">
 {{#each item}}
-	<li>
+									<li>
 										<div class="hit-div5">
 											<div class="hit-div6">
 												<%-- 좋아요 버튼 --%>
@@ -768,24 +747,26 @@
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
 												<a target="_blank" rel="" class="hit-a"
-													href="{pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
+													href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
 													<!-- 이미지 -->
 													<div class="hit-a-div">
-														<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}"/></div> 
-													<c:if
-														test="{item.confirmdate != null}">
+														<img
+															src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+													</div> <c:if test="${confirmdate != null}">
 														<%-- 확인매물 div --%>
+				  										{{#if confirmdate}}
 														<div class="hit-a-confirm">
 															<div class="hit-a-confirm-div">
 																<span class="bold">확인매물</span> <span>{{confirmdate}}</span>
 															</div>
 														</div>
 														<%-- 확인매물 끝 --%>
+				  									{{/if}}
 													</c:if>
 													<p class="hit-a-p1">{{roomtype}}</p>
 													<p class="hit-a-p2">
 														<c:choose>
-															<c:when test="{dealingtype == '월세'}">
+															<c:when test="${item.dealingtype == '월세'}">
 																<span>{{dealingtype}}&nbsp;{{deposit}}/{{price}}</span>
 															</c:when>
 															<c:otherwise>
@@ -794,8 +775,8 @@
 															</c:otherwise>
 														</c:choose>
 													</p>
-													<p class="hit-a-p34">{{floor}}층,{{area}}m²,
-														관리비 {{fee}}만</p>
+													<p class="hit-a-p34">{{floor}}층,{{area}}m²,관리비
+														{{fee}}만</p>
 													<p class="hit-a-p34">{{title}}</p>
 												</a>
 											</div>
@@ -808,15 +789,6 @@
 	<div class="recent-div5-vacant margin">
 		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
 	</div>
-<div class="recent-div5-vacant margin">
-		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-	</div>
-<div class="recent-div5-vacant margin">
-		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-	</div>
-<div class="recent-div5-vacant margin">
-		<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-	</div>
 	</script>
 		<!-- user code -->
 		<script
@@ -827,9 +799,7 @@
 	$(function(){
 	$("#tab2").click(function(){
 		alert("안녕");
-		$(".tabs > li:nth-child(2)").css("color","black");
-		$(".tabs > li:nth-child(1)").css("color","gray");
-		$(".recent-div4").empty();
+		
 		
 		$.get("${pageContext.request.contextPath}/professor",
 				{"userno":2}
@@ -839,28 +809,33 @@
 			var result = template(json);
 			var a = Object.keys({item:[]});
 			console.log(a); //json 데이터 알아보기
+			$(".tabs > li:nth-child(2)").css("color","black");
+			$(".tabs > li:nth-child(1)").css("color","gray");
+
 			if(a == "item"){
 				var source2 =$("#no-list-tmpl").html()
 				var template = Handlebars.compile(source2);// 템플릿 컴파일
-				$(".recent-div4").append(template)
+				$(".recent-div4").append(template);
 			}
+			
+			$(".recent-div4").empty(); 
 			$(".recent-div4").append(result);
 		});
 		});
 	
 	$("#tab1").click(function(){
 		alert("테스트중");
-		$(".tabs > li:nth-child(1)").css("color","black");
-		$(".tabs > li:nth-child(2)").css("color","gray");
-		$(".recent-div4").empty();
-		
+
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
 		,function(json){	
 			var source = $("#prof-list-tmpl").html()//템플릿코드
 			var template = Handlebars.compile(source);// 템플릿 컴파일
 			var result = template(json);
-
+			
+			$(".tabs > li:nth-child(1)").css("color","black");
+			$(".tabs > li:nth-child(2)").css("color","gray");
+			$(".recent-div4").empty();
 			$(".recent-div4").append(result);
 		});
 		});

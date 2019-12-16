@@ -1307,3 +1307,6 @@
 	color: rgb(197, 197, 197);
 	cursor: pointer; /*마우스를 올렸을때 포인터 여부*/
 }
+.tabs > li:nth-child(2) > a{
+	color: grey; 
+}
