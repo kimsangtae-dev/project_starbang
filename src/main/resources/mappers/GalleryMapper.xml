@@ -169,6 +169,7 @@
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
+		
 	</select>
 	<!-- 찜목록의 데이터 수 조회를 위한 기능 정의 -->
 	<select id="selectHeartCountAll" parameterType="project.star.b2.model.Gallery" resultType="int">
@@ -179,7 +180,7 @@
      INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno
      INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno
      WHERE u.userno=#{userno}
-     		<if test="listCount > 0">
+     	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>

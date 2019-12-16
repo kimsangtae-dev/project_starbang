@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -601,22 +602,5 @@ public class MainController {
 		return (List<String>) new ModelAndView("main/search");
 	}
 	
-	
-	/********************************************************************
-	 * 테스트2
-	 *******************************************************************/
-	@RequestMapping("/test/jquery/tab")
-	public class AjaxTabTestController
-	{
-		@RequestMapping("ajaxTab")
-		public String moveAjaxTabPage()
-		{
-			return "jqueryTest/ajaxTabTest";
-		}
-		@RequestMapping("tabContent1")
-		public String getAjaxTabContent1()
-		{
-			return "tabContent/ajaxTabContent1";  // AJAX 탭에 로딩되는 뷰페이지.
-		}
-	}
+
 }

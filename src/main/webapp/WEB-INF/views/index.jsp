@@ -235,7 +235,7 @@
 				</c:when>
 							<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
 							<c:otherwise>
-								<a class="test1" href="">${loginInfo.name}님의 최근 본 방</a>
+								${loginInfo.name}님의 최근 본 방</a>
 							</c:otherwise>
 						</c:choose></li>
 					<li id="tab2"><c:choose>
@@ -257,7 +257,8 @@
 
 				<div class="tab_container" id="tab_con">
 					<div class="recent-div4">
-						<c:forEach var="item" items="${output3}" varStatus="status" end="4">
+						<c:forEach var="item" items="${output3}" varStatus="status"
+							end="4">
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
@@ -306,7 +307,7 @@
 
 				</div>
 				<!-- 갤러리 전체 박스 -->
-				<div class="recent-div4">
+<!-- 				<div class="recent-div4"> -->
 					<%-- 					<c:forEach var="item" items="${output3}" varStatus="status" end="4">
 						<li>
 							<div class="recent-div5">
@@ -727,21 +728,120 @@
 					});
 				});
 			</script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
   $(document).ready(function() {
     $( "#tabs" ).tabs();
   } );
   
   </script>
-  <script>
+			<script>
   $("#tab1").click(function(){
 	  alert("오 tired tonight!");
+	  $.ajax ({
+		type:"POST",
+		url :"url",
+		data : data,
+		dataType :"json"
+		error : function(error){
+			alert("에러발생");
+		},
+		success : function(data){
+			alert(data + "데이터통신 성공!");
+		});
+		
+	  });
   });
   $("#tab2").click(function(){
 	  alert("링마벨~");
   });
   </script>
-  
+			<!-- Handlebar 템플릿 코드 -->
+			<script id="prof-list-tmpl" type="text/x-handlebars-template">
+{{#each item}}
+	<li>
+										<div class="hit-div5">
+											<div class="hit-div6">
+												<%-- 좋아요 버튼 --%>
+												<div class="hit-div7">
+													<div class="hit-div8 off" data-value="on"></div>
+												</div>
+												<%-- 좋아요 끝 --%>
+												<%-- 전체 링크화 --%>
+												<a target="_blank" rel="" class="hit-a"
+													href="{pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
+													<!-- 이미지 -->
+													<div class="hit-a-div">
+														<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}"/></div> 
+													<c:if
+														test="{item.confirmdate != null}">
+														<%-- 확인매물 div --%>
+														<div class="hit-a-confirm">
+															<div class="hit-a-confirm-div">
+																<span class="bold">확인매물</span> <span>{{confirmdate}}</span>
+															</div>
+														</div>
+														<%-- 확인매물 끝 --%>
+													</c:if>
+													<p class="hit-a-p1">{{roomtype}}</p>
+													<p class="hit-a-p2">
+														<c:choose>
+															<c:when test="{dealingtype == '월세'}">
+																<span>{{dealingtype}}&nbsp;{{deposit}}/{{price}}</span>
+															</c:when>
+															<c:otherwise>
+																<span>{{dealingtype}}&nbsp;</span>
+																<span id="prc">{{price}}</span>
+															</c:otherwise>
+														</c:choose>
+													</p>
+													<p class="hit-a-p34">{{floor}}층,{{area}}m²,
+														관리비 {{fee}}만</p>
+													<p class="hit-a-p34">{{title}}</p>
+												</a>
+											</div>
+										</div>
+									</li>
+{{/each}}
+	</script>
+	
+	<!-- user code -->
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+	   <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
+	<script>
+	$(function(){
+	$("#tab2").click(function(){
+		alert("안녕");
+		$(".tabs > li:nth-child(2)").css("color","black");
+		$(".tabs > li:nth-child(1)").css("color","gray");
+		$(".recent-div4").empty();
+		
+		$.get("${pageContext.request.contextPath}/professor",
+				{"userno":2}
+		,function(json){	
+			var source = $("#prof-list-tmpl").html()//템플릿코드
+			var template = Handlebars.compile(source);// 템플릿 컴파일
+			var result = template(json);
 
+			$(".recent-div4").append(result);
+		});
+		});
+	$("#tab1").click(function(){
+		alert("테스트중");
+		$(".tabs > li:nth-child(1)").css("color","black");
+		$(".tabs > li:nth-child(2)").css("color","gray");
+		$(".recent-div4").empty();
+		
+		$.get("${pageContext.request.contextPath}/professor2",
+				{"userno":1}
+		,function(json){	
+			var source = $("#prof-list-tmpl").html()//템플릿코드
+			var template = Handlebars.compile(source);// 템플릿 컴파일
+			var result = template(json);
+
+			$(".recent-div4").append(result);
+		});
+		});
+	});
+	</script>
 </body>
 </html>
