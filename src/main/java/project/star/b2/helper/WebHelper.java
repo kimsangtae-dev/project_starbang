@@ -570,6 +570,8 @@ public class WebHelper {
 		// 반복문을 수행하면서 분류 작업을 진행해야 한다.
 		// --> import org.apache.commons.fileupload.FileItem
 		List<FileItem> items = upload.parseRequest(request);
+		UploadItem ui = new UploadItem();
+		int roomno = ui.getRoomno();
 
 		/** 3) 업로드 정보 분류하기 */
 		// 업로드 된 컬렉션의 데이터 수 만큼 반복하면서 처리한다.
@@ -598,7 +600,7 @@ public class WebHelper {
 				String originName = f.getName(); // 파일의 원본 이름
 				String contentType = f.getContentType(); // 파일 형식
 				long fileSize = f.getSize(); // 파일 사이즈
-
+				
 				// 파일 사이즈가 없다면 for문의 조건식으로 돌아간다.
 				if (fileSize < 1) {
 					continue;
@@ -660,7 +662,7 @@ public class WebHelper {
 				info.setFileName(fileName);
 				info.setRegDate(regDate);
 				info.setEditDate(editDate);
-				info.setRoomno(1);
+				info.setRoomno(roomno);
 
 				fileList.add(info);
 			} // end if

@@ -102,7 +102,7 @@ public class MainController {
 
 		try {
 			// 전체 게시글 수 조회
-			totalCount = galleryService.getGalleryCount(input);
+			totalCount = roomService.getRoomCount(null);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			//쿠키 불러오기
@@ -115,6 +115,10 @@ public class MainController {
 			output = galleryService.getPopularGalleryList(input); //인기있는 방
 			output2 = heartService.getHeartGalleryList(input2); //찜한방
 			output3 = galleryService.getCookieList(list); //최근본방
+			
+			if (output3 == null) {
+				return new ModelAndView("index");
+			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}

@@ -420,7 +420,7 @@ public class HostController {
 			item.setFileName(item.getFileName());
 			item.setRegDate(item.getRegDate());
 			item.setEditDate(item.getEditDate());
-			item.setRoomno(item.getRoomno());
+			item.setRoomno(input_R.getRoomno());
 			log.debug("업로드 될 항목" + item.toString());
 
 			// DB에 저장하기
