@@ -53,5 +53,7 @@ public interface GalleryService {
     public int getGalleryCount(Popular input) throws Exception;
 
     public List<Gallery> getCookieList(List<String> input) throws Exception;
+    
+    public List<Gallery> getCookieMainList(List<String> input) throws Exception;
 
 }

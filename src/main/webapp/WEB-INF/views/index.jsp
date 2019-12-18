@@ -257,17 +257,17 @@
 
 				<div class="tab_container" id="tab_con">
 					<div class="recent-div4">
-						<c:forEach var="item" items="${output3}" varStatus="status"
+<%-- 						<c:forEach var="item" items="${output3}" varStatus="status"
 							end="4">
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
-										<%-- 좋아요 버튼 --%>
+										좋아요 버튼
 										<div class="recent-div7">
 											<div class="recent-div8 off" data-value="on"></div>
 										</div>
-										<%-- 좋아요 끝 --%>
-										<%-- 전체 링크화 --%>
+										좋아요 끝
+										전체 링크화
 										<a target="_blank" rel="" class="recent-a"
 											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 											<!-- 이미지 -->
@@ -275,13 +275,13 @@
 												<img
 													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
 											</div> <c:if test="${item.confirmdate != null}">
-												<%-- 확인매물 div --%>
+												확인매물 div
 												<div class="recent-a-confirm">
 													<div class="recent-a-confirm-div">
 														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
 													</div>
 												</div>
-												<%-- 확인매물 끝 --%>
+												확인매물 끝
 											</c:if>
 											<p class="recent-a-p1">${item.roomtype}</p>
 											<p class="recent-a-p2">
@@ -302,7 +302,7 @@
 									</div>
 								</div>
 							</li>
-						</c:forEach>
+						</c:forEach> --%>
 					</div>
 
 				</div>
@@ -764,8 +764,12 @@
 				  									{{/if}}
 													<p class="hit-a-p1">{{roomtype}}</p>
 													<p class="hit-a-p2">
-																<span>{{dealingtype}}&nbsp;{{deposit}}/{{price}}</span>
-													</p>
+					{{#isMonth dealingtype}}
+                     <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
+					{{else}}
+					 <span>{{dealingtype}} {{isOver price}}</span>
+					{{/isMonth}}													
+</p>
 													<p class="hit-a-p34">{{floor}}층,{{area}}m²,관리비
 														{{fee}}만</p>
 													<p class="hit-a-p34">{{title}}</p>
@@ -819,7 +823,31 @@
 
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
-		,function(json){	
+		,function(json){
+			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+         		  if (dealingtype == '월세') {
+         		    return options.fn(this);
+         		  } else {
+         		    return options.inverse(this);
+         		  }
+         		});
+         		
+         		Handlebars.registerHelper('isOver', function(price, options) {
+           		if (price >= 10000 && price%10000 != 0) {
+           			return Math.floor(price/10000) +"억" + price%10000;
+           		} else {
+           			return price;
+           		}
+           	});
+         		
+         		Handlebars.registerHelper('isOver2', function(deposit, options) {
+           		if (deposit >= 10000 && deposit%10000 != 0) {
+           			return Math.floor(deposit/10000) +"억" + deposit%10000;
+           		} else {
+           			return deposit;
+           		}
+           	});
+         		
 			var source = $("#prof-list-tmpl").html()//템플릿코드
 			var template = Handlebars.compile(source);// 템플릿 컴파일
 			var result = template(json);

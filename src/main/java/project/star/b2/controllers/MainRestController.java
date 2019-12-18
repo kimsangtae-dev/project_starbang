@@ -110,6 +110,9 @@ public class MainRestController {
 	
 	return webHelper.getJsonData(data);
 }
+	/********************************************************************
+	 * 쿠키로 보는 최근 본방
+	 *******************************************************************/
 	@RequestMapping(value ="/professor2", method = RequestMethod.GET)
 	public Map<String, Object>get_list2(HttpServletRequest request){
 	HttpSession session = request.getSession();
@@ -141,8 +144,8 @@ public class MainRestController {
 
 	try {
 		// 쿠키로 저장된 방번호로 조회
-		output = galleryService.getCookieList(list);
-		Collections.reverse(output);
+		Collections.reverse(list);
+		output = galleryService.getCookieMainList(list);
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
