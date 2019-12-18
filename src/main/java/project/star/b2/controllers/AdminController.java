@@ -178,6 +178,7 @@ public class AdminController {
 
 	/****** 체크박스 페이지 ******/
 	@RequestMapping(value = "/admin/rmli2.do", method = RequestMethod.POST)
+	@ResponseBody
 	public ModelAndView room_check_ok(Model model, HttpServletRequest request) {
 
 		String check1 = request.getParameter("check_id");
@@ -189,17 +190,17 @@ public class AdminController {
 		List<Room> output = null; // 조회결과가 저장될 객체
 		try {
 			// 데이터 조회
-			output = roomService.getRoomCheckList(input);
+			output = roomService.getRoomCheckConfirmList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** 3) 페이지 이동 */
 		model.addAttribute("output", output);
-		String viewPath = "admin/rmli";
-		return webHelper.redirect(viewPath, "수정되었습니다");
+		String viewPath = "/admin/rmli2.do";
+		return webHelper.redirect(contextPath + viewPath, null);
 	}
-	
+
 	/**
 	 * 작성 폼에 대한 방확인  action 페이지
 	 */

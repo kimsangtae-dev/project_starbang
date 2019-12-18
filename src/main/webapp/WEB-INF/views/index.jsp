@@ -818,6 +818,45 @@
 		});
 		});
 	
+	$(document).ready(function(){
+
+		$.get("${pageContext.request.contextPath}/professor2",
+				{"userno":1}
+		,function(json){
+			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+         		  if (dealingtype == '월세') {
+         		    return options.fn(this);
+         		  } else {
+         		    return options.inverse(this);
+         		  }
+         		});
+         		
+         		Handlebars.registerHelper('isOver', function(price, options) {
+           		if (price >= 10000 && price%10000 != 0) {
+           			return Math.floor(price/10000) +"억" + price%10000;
+           		} else {
+           			return price;
+           		}
+           	});
+         		
+         		Handlebars.registerHelper('isOver2', function(deposit, options) {
+           		if (deposit >= 10000 && deposit%10000 != 0) {
+           			return Math.floor(deposit/10000) +"억" + deposit%10000;
+           		} else {
+           			return deposit;
+           		}
+           	});
+         		
+			var source = $("#prof-list-tmpl").html()//템플릿코드
+			var template = Handlebars.compile(source);// 템플릿 컴파일
+			var result = template(json);
+			
+			$(".tabs > li:nth-child(1)").css("color","black");
+			$(".tabs > li:nth-child(2)").css("color","gray");
+			$(".recent-div4").empty();
+			$(".recent-div4").append(result);
+		});
+		});
 	$("#tab1").click(function(){
 		alert("테스트중");
 

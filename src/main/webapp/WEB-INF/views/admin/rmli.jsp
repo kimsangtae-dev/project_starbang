@@ -37,7 +37,7 @@
 						<br>
 						<div class="box">
 							<div class="adm-radio">
-								<label><input type='radio' name='check' value="html"
+								<label><input type="radio" name='check' value="html"
 									id=checked-item>확인매물</label> <label><input type='radio'
 									name='check' value="html" id=checked-fake>허위매물</label>
 							</div>
@@ -54,6 +54,7 @@
 					</div>
 				</div>
 				<!-- 조회 결과 목록 -->
+				<form action="${pageContext.request.contextPath}/admin/rmli" method="get">
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -107,6 +108,7 @@
 					</c:choose>
 					</tbody>
 				</table>
+				</form>
 			</div>
 		</div>
 		<!-- 하단 영역 -->
@@ -328,32 +330,21 @@
 
 
 		$(function() {
-			$('#checked-fake')
-					.change(
-							function() {
+			$('#checked-fake').change(function() {
 								alert("체크 확인");
-
-								$
-										.ajax({
-											//결과 url
-											url : "${pageContext.request.contextPath}/admin/rmli2.do",
-											type : "POST",
-											async : false,
-											data : {
-												check_id : 2
-											},
-											datatype : 'text',
-											success : function(data) {
-												location.reload();
-												alert("확인되었습니다.")
-											},
-											error : function(error, status,
-													request) {
-												alert("Error!" + error
-														+ "request: " + request
-														+ " status: " + status);
-											},
-										});
+								$.ajax({
+								//결과 url
+								url : "${pageContext.request.contextPath}/admin/rmli3.do",
+								type : "POST",
+								data : {
+									fake_id : 1
+									},
+								success : function(data) {
+									$("body").html(data);
+									},
+								error : function(error, status,request) {
+									alert("Error!" + error + "request: " + request+ " status: " + status);},
+								});
 							})
 		}); //end $.ajax;
 	</script>
@@ -408,21 +399,27 @@
 		});
 	}); */
 	$(function() {
-		$("#checked-item").click(function(){
-			alert("안녕");
+		$("#checked-item").change(function(){	
 				$.ajax({
 					//결과 url
 					url : "${pageContext.request.contextPath}/admin/rmli2.do",
-					type : "GET",
+					type : "POST",
+					data : {
+						check_id : 2
+					},
 					success : function(data) {
-					alert("값이 변경되었나?")
-					alert(data),
-					$(document).load(data)},
+					alert(data);
+					$("body").html(data);
+					check();
+					},
 					error : function(error, status,request) {
 					alert("Error!" + error+ "request: " + request+ " status: " + status);},
 									});
 						})
 	}); //end $.ajax;
+	function check(){
+	$("input:radio[id='checked-item']").prop("checked", true);
+	}
 	</script>
 </body>
 </html>
