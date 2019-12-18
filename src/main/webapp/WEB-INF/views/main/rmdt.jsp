@@ -110,7 +110,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">전용/공급면적</p>
-					<div class="gbAeEp"></div><span>${room.area} / ${info.supplyarea}㎡</span>
+					<div class="gbAeEp"></div><span id="toggleArea">${room.area} / ${info.supplyarea}㎡</span>
 					<button type="button" class="bHPFKV">
 						<span class="glyphicon glyphicon-refresh">평</span>
 					</button>
@@ -371,6 +371,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 									${room.fee}만 원
 									</c:otherwise>
 								</c:choose>
+								<br>
+								<span id="apeend_feeitem"></span>
 							</td>
 							<td class="bdlntd">
 								<c:choose>
@@ -433,7 +435,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<jsp:include page="../assets/inc/ma_bottom.jsp" />
 
 	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.min.js"></script>
 
@@ -475,7 +477,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					.click(
 							function() {
 								// 메시지 내용만 적용하여 확인창 표시
-								swal("조수민님의 이메일입니다.<br/><br/>aaa@gmail.com<br/><br/>*문의에티켓을 지켜주세요.");
+								swal("${user.name}님의 이메일입니다.<br/><br/>${user.email}<br/><br/>*문의에티켓을 지켜주세요.");
 							});
 			/*허위매물신고 클릭*/
 			$(".notce")
@@ -583,19 +585,49 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<!-- 평수 바꾸기 -->
 	<script type="text/javascript">
 		$(function() {
-			v1 = 44.33;
+			v1 = ${room.area};
 			result = v1;
 
 			$(".chbt").click(function(e) {
 
 				if (result == v1) {
-					result = Math.floor(v1 / 3.3);
-					$('#chnum').html("<span>" + result + "평</span>");
+					result = v1 / 3.3;
+					$('#chnum').html("<span>" + result.toFixed(1) + "평</span>");
+					$('.chbt>span').html("㎡");
 
 				} else {
 					result = v1;
-					$('#chnum').html("<span>" + result + "㎡</span>");
-					result = v1;
+					$('#chnum').html("<span>" + result.toFixed(1) + "㎡</span>");
+					$('.chbt>span').html("평");
+				}
+			});
+		});
+	</script>
+	
+		<!-- 평수 미터제곱 같이 바꾸기2 -->
+	<script type="text/javascript">
+		$(function() {
+			var v1 = ${room.area};
+			var v2 = ${info.supplyarea}
+			var result = v1;
+			var result1 = 0;
+			var result2 = 0;
+
+			$(".bHPFKV").click(function(e) {
+
+				if (result == v1) {
+					result1 = v1 / 3.3;
+					result2 = v2 / 3.3;
+					result = v1 / 3.3;
+					$('#toggleArea').html("<span>" + result1.toFixed(1) + " / " + result2.toFixed(1) + "평</span>");
+					$('.bHPFKV>span').html("㎡");
+
+				} else {
+					result = v1
+					result1 = v1;
+					result2 = v2;
+					$('#toggleArea').html("<span>" + result1.toFixed(1) + " / " + result2.toFixed(1) + "㎡</span>");
+					$('.bHPFKV>span').html("평");
 
 				}
 			});
@@ -665,24 +697,47 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         	"<div class='gqtsIc'><div class='mCsgX'></div><p>침대</p></div>",
         	"<div class='gqtsIc'><div class='gaOEWf'></div><p>책상</p></div>"
         	];
+        
+       
 
         /* 받아온 값을 관리비 항목에 넣는다 */
         var num = $("#nice").val();
-        var num = parseInt(num);
-		console.log(num);
-		
+        var num = ${info.optionitem};
+
         for (var i=13; i>=0 ; i--) {
             if(num >= Math.pow(2, i-1)){
-            	console.log(num);
             	num = num - Math.pow(2, i-1);
-            	console.log(num);
                 $(".dDctva").append(option[13-i]);
-                console.log(num);
             } // if문
         } // for문
     } // binary함수
-
     binary();
+    
+function binary2() {
+    		
+            /* 뿌려줄 String을 배열에 저장 */
+            var option2 = ["인터넷", "유선TV", "청소비", "수도세", "도시가스", "전기세", "기타"];
+            
+            /* 받아온 값을 관리비 항목에 넣는다 */
+            //var num2 = ${info.feeitem};
+            var num2 = ${info.feeitem};
+			var sum = new Array;
+    		
+            for (var i=7; i>=1 ; i--) {
+                if(num2 >= Math.pow(2, i-1)){
+                	num2 = num2 - Math.pow(2, i-1);
+                	sum += option2[7-i];
+                    
+                    if(num2 == 0 || i == 1){ break; }
+                    sum += ", ";
+                } // if문
+            } // for문
+            sum = "(" + sum + ")";
+            $("#apeend_feeitem").append(sum);
+        } // binary함수
+        binary2();
+   
+   
 	</script>
 	
 </body>
