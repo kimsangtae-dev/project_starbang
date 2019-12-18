@@ -9,11 +9,8 @@ pageEncoding="UTF-8"%>
 <head>
     <%@ include file="../assets/inc/meta.jsp"%>
     <!-- css 참조 -->
-    <link rel="stylesheet" type="text/css"
-    href="${pageContext.request.contextPath}/assets/css/ma_css/search.css">
-
-    <link rel="stylesheet"
-    href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/search.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.css">
 
 </head>
 
@@ -39,7 +36,7 @@ pageEncoding="UTF-8"%>
 					<div class="btn-group filter">
 						<button type="button" class="btn dropdown-toggle btn-rt"
 							data-toggle="dropdown">
-							원룸,투룸 쓰리룸<span class="caret"></span>
+							원룸,투·쓰리룸,오피스텔<span class="caret"></span>
 						</button>
 						<div class="dropdown-menu width1" role="menu">
 							<form id="room-type">
@@ -323,7 +320,7 @@ pageEncoding="UTF-8"%>
 									</c:choose>
 
 									<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-									<ul class="index-list">
+									<ul class="index-list" id="index-list">
 										<c:forEach var="i" begin="${pageData.startPage}"
 											end="${pageData.endPage}" varStatus="status">
 											<%-- 이동할 URL 생성 --%>
@@ -440,6 +437,7 @@ pageEncoding="UTF-8"%>
 	</script>
 	
 	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+	<%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
    <script id="gallery-data" type="text/x-handlebars-template">
       {{#each output}}
@@ -530,6 +528,8 @@ pageEncoding="UTF-8"%>
            		Handlebars.registerHelper('isOver', function(price, options) {
              		if (price >= 10000 && price%10000 != 0) {
              			return Math.floor(price/10000) +"억" + price%10000;
+             		} else if (price >= 10000 && price%10000 == 0) {
+             			return price/10000 + "억";
              		} else {
              			return price;
              		}
@@ -538,6 +538,8 @@ pageEncoding="UTF-8"%>
            		Handlebars.registerHelper('isOver2', function(deposit, options) {
              		if (deposit >= 10000 && deposit%10000 != 0) {
              			return Math.floor(deposit/10000) +"억" + deposit%10000;
+             		} else if (deposit >= 10000 && deposit%10000 == 0) {
+             			return deposit/10000 + "억";
              		} else {
              			return deposit;
              		}
@@ -547,6 +549,17 @@ pageEncoding="UTF-8"%>
 				var html = template(req);
 				$("#gallery-list").html(html);
 				$("#room-count").html(req.totalCount);
+				
+				var index_list = new Array();
+				for (var i=0; i<req.pageData.totalPage; i++) {
+					var indexno = i+1;
+					if (req.pageData.nowPage == indexno) {
+						index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';					
+					} else {
+						index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
+					}
+				}
+				$("#index-list").html(index_list);
 				
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
@@ -727,7 +740,9 @@ pageEncoding="UTF-8"%>
                 
                 getMapPosition(west,east,south,north);
             });
-
+            
+            var center = map.getCenter();
+            
         });
     </script>
 
@@ -1003,24 +1018,7 @@ pageEncoding="UTF-8"%>
             hide_min_max : true
         });
         var slide5_value = $("#slide-size").data("ionRangeSlider");
-
-        // 체크박스 클릭 시 드롭다운 버튼 내용 변경 ***추후 구현
-        /* var getCheck = $("input[type='checkbox']");
-
-        var rt = $("input[name='room-type']").map(function() {return this.value;}).get().join(",");
-        rt = rt.replace("oneroom", "원룸").replace("tworoom", "투·쓰리룸").replace("officetel", "오피스텔");
-        $(".btn-rt").html(rt + " <span class='caret'></span>"); */
-        /* $("#room-type label").click(function() {
-            var rt = $("input[name='room-type']").map(function() {return this.value;}).get().join(",");
-            rt = rt.replace("oneroom", "원룸").replace("tworoom", "투·쓰리룸").replace("officetel", "오피스텔");
-            $(".btn-rt").html(rt + " <span class='caret'></span>");
-        }); */
-        /* $(function(){
-            $("#room-type").on("change", "input:checkbox", function(e){
-                e.preventDefault();
-                $("#room-type").submit();
-            });
-        }); */
+        
 
         // 필터 초기화
         $(function() {
@@ -1054,10 +1052,6 @@ pageEncoding="UTF-8"%>
                 var resetUrl = "${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
                 location.replace(resetUrl);
             });
-
-
-            var checkboxValues = $("input[name='sale-type']:checked");
-            var ccc = checkboxValues.map(function() {return this.value;}).get().join(",");
 
         })
     </script>
