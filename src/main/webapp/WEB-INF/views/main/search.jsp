@@ -257,19 +257,15 @@ pageEncoding="UTF-8"%>
 																	<%-- 월세인 경우 --%>
 																	<c:when test="${item.dealingtype == '월세'}">
 																		<span>${item.dealingtype}&nbsp;<!--
-														--> <fmt:formatNumber value="${item.deposit}"
-																				pattern="#,####" var="eok1"></fmt:formatNumber> <c:set
-																				var="patternprice1"
-																				value="${fn:replace(eok1, ',', '억')}" /> <!--
+														--><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber> 
+														<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" /> <!--
 														-->${patternprice1}/${item.price}</span>
 																	</c:when>
 																	<%-- 전세 혹은 매매인 경우 --%>
 																	<c:otherwise>
 																		<span>${item.dealingtype}&nbsp;<!--
-														--> <fmt:formatNumber value="${item.price}"
-																				pattern="#,####" var="eok2"></fmt:formatNumber> <c:set
-																				var="patternprice2"
-																				value="${fn:replace(eok2, ',', '억')}" /> <!--
+														--><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+														<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" /> <!--
 														-->${patternprice2}</span>
 																	</c:otherwise>
 																</c:choose>
@@ -472,7 +468,11 @@ pageEncoding="UTF-8"%>
                   {{!-- 확인매물 끝 --}}
                   <p class="recent-a-p1">{{roomtype}}</p>
                   <p class="recent-a-p2">
-                     <span>{{dealingtype}} {{price}}</span>
+					{{#isMonth dealingtype}}
+                     <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
+					{{else}}
+					 <span>{{dealingtype}} {{isOver price}}</span>
+					{{/isMonth}}
                   </p>
                   <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
                   <p class="recent-a-p34">{{title}}</p>
@@ -482,55 +482,22 @@ pageEncoding="UTF-8"%>
       </li>
       {{/each}}
    </script>
-   <script type="text/javascript">
-   $(function() {
-	   var total_count = ${totalCount};
-	   var deposit_from = ${param.depositFrom};
-	   var deposit_to = ${param.depositTo};
-	   var buying_from = ${param.buyingFrom};
-	   var buying_to = ${param.buyingTo};
-	   var fee_from = ${param.feeFrom};
-	   var fee_to = ${param.feeTo};
-	   var size_from = ${param.sizeFrom};
-	   var size_to = ${param.sizeTo};
-	   var prev_page = ${pageData.prevPage};
-      /* gallery.json을 가져와 화면에 출력 */
-      function get_gallery() {
-         $.get('${pageContext.request.contextPath}/main/search',
-        	{
-        	 "depositFrom": deposit_from,
-        	 "depositTo": deposit_to,
-        	 "buyingFrom": buying_from,
-        	 "buyingTo": buying_to,
-        	 "feeFrom": fee_from,
-        	 "feeTo": fee_to,
-        	 "sizeFrom": size_from,
-        	 "sizeTo": size_to
-        	},
-        	function(req) {
-            var template = Handlebars.compile($("#gallery-data").html());
-            var html = template(req);
-            $("#gallery-list").html(html);
- 
-            $(".recent-div8").click(function(e) {
-               $(this).toggleClass('on off');
-            });
-		});
-	}
-   })
-   </script>
 
     <!-- 지도 api -->
     <script type="text/javascript">
+    /** ajax전송을 위한 파라미터 가져오기 **/
 	var deposit_from = ${param.depositFrom};
 	var deposit_to = ${param.depositTo};
+	var month_from = ${param.monthFrom};
+	var month_to= ${param.monthTo};
 	var buying_from = ${param.buyingFrom};
 	var buying_to = ${param.buyingTo};
 	var fee_from = ${param.feeFrom};
 	var fee_to = ${param.feeTo};
 	var size_from = ${param.sizeFrom};
 	var size_to = ${param.sizeTo};
-		
+	
+	/** ajax 전송 메서드 **/
 	function getMapPosition(west,east,south,north) {
 		$.ajax({
            	url: "${pageContext.request.contextPath}/main/search",
@@ -538,6 +505,8 @@ pageEncoding="UTF-8"%>
            	data: {
 				"depositFrom": deposit_from,
 				"depositTo": deposit_to,
+				"monthFrom": month_from,
+				"monthTo": month_to,
 				"buyingFrom": buying_from,
 				"buyingTo": buying_to,
 				"feeFrom": fee_from,
@@ -550,12 +519,34 @@ pageEncoding="UTF-8"%>
 				"south": south
            	},
            	success: function(req){
-				//alert(east + ", " + west + ", " + north + ", " + south);
-			    var total_count = ${totalCount};
+           		Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+           		  if (dealingtype == '월세') {
+           		    return options.fn(this);
+           		  } else {
+           		    return options.inverse(this);
+           		  }
+           		});
+           		
+           		Handlebars.registerHelper('isOver', function(price, options) {
+             		if (price >= 10000 && price%10000 != 0) {
+             			return Math.floor(price/10000) +"억" + price%10000;
+             		} else {
+             			return price;
+             		}
+             	});
+           		
+           		Handlebars.registerHelper('isOver2', function(deposit, options) {
+             		if (deposit >= 10000 && deposit%10000 != 0) {
+             			return Math.floor(deposit/10000) +"억" + deposit%10000;
+             		} else {
+             			return deposit;
+             		}
+             	});
+           		
 				var template = Handlebars.compile($("#gallery-data").html());
 				var html = template(req);
 				$("#gallery-list").html(html);
-				//$("#room-count").html(total_count);
+				$("#room-count").html(req.totalCount);
 				
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
@@ -563,6 +554,7 @@ pageEncoding="UTF-8"%>
            	}
 		});
 	}
+	
         /* kakao map API */
         $(function() {
         	/** 지도 생성하기 */
@@ -575,7 +567,7 @@ pageEncoding="UTF-8"%>
 			var map = new kakao.maps.Map(container, options);
 
 			
-            /** 마커 클러스터러 생성하기 */
+            /** 마커 클러스터러 생성하기 **/
             var clusterer = new kakao.maps.MarkerClusterer({
                 map : map,					// 마커들을 클러스터로 관리하고 표시할 지도 객체
                 averageCenter : false,		// 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
@@ -596,8 +588,9 @@ pageEncoding="UTF-8"%>
                 } ]
             });
 
-            /** 매물 데이터 가져오기 */
-            $.get('${pageContext.request.contextPath}/assets/roomposition',
+            
+            /** 매물 데이터 가져오기 **/
+            $.getJSON('${pageContext.request.contextPath}/assets/roomposition',
                 function(data) {
                     var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
@@ -621,12 +614,8 @@ pageEncoding="UTF-8"%>
                     kakao.maps.event.addListener(map, 'zoom_changed', changeMarker);
                     changeMarker();
 
+                    /** 마커를 클릭하면 실행되는 기능 -> 리스트에 보이는 매물 변경 **/
                     kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
-                        /* var markers = cluster.getMarkers();
-                        for(var idx=0; idx<markers.length; idx++){
-                            console.log(markers[idx].getPosition());
-                            console.log(data.output.roomno);
-                        } */
                         var southwest = cluster.getBounds().getSouthWest();
                         var northeast = cluster.getBounds().getNorthEast();
                         var east = northeast.getLat();
@@ -640,7 +629,7 @@ pageEncoding="UTF-8"%>
 			}); // end $.get(address.json)
 
 			
-            /** 서울시 구 별로 마커 생성하기 */
+            /** 서울시 구 별로 마커 생성하기 **/
             $.getJSON("${pageContext.request.contextPath}/assets/guposition",
                 function(data) {
                     var guPosition = data.guPositions;
@@ -678,48 +667,41 @@ pageEncoding="UTF-8"%>
 				});
 
 			
-            /** 검색값 가져와서 지도 위치 변경하기 */
+            /** 검색값 가져와서 지도 위치 변경하기 **/
             $("#search-form").submit(function(e) {
                 e.preventDefault();
 
-                // 장소 검색 객체 생성
-                var ps = new kakao.maps.services.Places();
-                // input값 가져오기
-                var value = $('input[name=search]').val();
+                var ps = new kakao.maps.services.Places();	// 장소 검색 객체 생성
+                var value = $('input[name=search]').val();	// input값 가져오기
 
-                // 키워드로 장소 검색
-                ps.keywordSearch(value, placesSearchCB);
-
+                ps.keywordSearch(value, placesSearchCB);	// 키워드로 장소 검색
                 // 키워드 검색 완료 시 호출되는 콜백함수
                 function placesSearchCB(data, status, pagination) {
                     if (status === kakao.maps.services.Status.OK) {
 
-                        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-                        // LatLngBounds 객체에 좌표 추가
+                        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표 추가
                         var bounds = new kakao.maps.LatLngBounds();
 
                         for (var i = 0; i < data.length; i++) {
-                            /* displayMarker(data[i]); */
                             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                         }
 
-                        // 검색된 장소 위치를 기준으로 지도 범위 재설정
-                        map.setBounds(bounds);
+                        map.setBounds(bounds);	// 검색된 장소 위치를 기준으로 지도 범위 재설정
                     }
                 }; // end placesSearchCB()
             }); // end submit()
 
             
-            // 지도 확대 메서드
-            function zoomIn() { map.setLevel(map.getLevel() - 1); }
-            // 지도 축소 메서드
-            function zoomOut() { map.setLevel(map.getLevel() + 1); }
+            /** 지도 확대/축소 변경 버튼 **/
+            function zoomIn() { map.setLevel(map.getLevel() - 1); }		// 지도 확대 메서드
+            function zoomOut() { map.setLevel(map.getLevel() + 1); }	// 지도 축소 메서드
 
             // 버튼 클릭과 기능 연결
             $(".zoom-in").click(function() { zoomIn(); });
             $(".zoom-out").click(function() { zoomOut(); });
             
             
+            /** 지도 범위 이동이 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'dragend', function() {
             	var bounds = map.getBounds();
             	var southwest = bounds.getSouthWest();
@@ -733,6 +715,7 @@ pageEncoding="UTF-8"%>
             });
             
             
+            /** 지도 확대/축소가 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'zoom_changed', function() {
             	var bounds = map.getBounds();
             	var southwest = bounds.getSouthWest();
