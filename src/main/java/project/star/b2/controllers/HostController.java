@@ -158,7 +158,7 @@ public class HostController {
 		 *  5.  area - o 				전용면적
 		 *  6.  fee - o 				관리비
 		 *  7.  confirmdate  			확인날짜  					(초기 데이터 없음)
-		 *  8.  address					API에서 받아온 주소 		(Kakao API)
+		 *  8.  address					API에서 받아온 주소 		
 		 *  9.  dong - o				사용자가 입력한 동
 		 *  10. ho - o					사용자가 입력한 호
 		 *  11. latitude  				API에서 받아온 경도-y축  	(Kakao API)
@@ -168,7 +168,7 @@ public class HostController {
 		 *  15. userno 					세션에서 가져올 회원번호	 	(Session에서 값 주입)
 		 */
 		
-		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1)- PRI, confirmdate(1), address API(5) */
+		/** room ** parameter 수신 (8 / 15) except(7) - roomno(1)- PRI, confirmdate(1), address API(4) */
 		String roomtype = paramMap.get("roomtype");			
 		String title = paramMap.get("title");				
 		int floor = Integer.parseInt(paramMap.get("floor"));
@@ -176,6 +176,7 @@ public class HostController {
 		int fee = Integer.parseInt(paramMap.get("fee"));
 		String dong = paramMap.get("dong");
 		String ho = paramMap.get("ho");
+		String address = paramMap.get("address");
 
 		HttpSession session = request.getSession();
         User loginInfo = (User) session.getAttribute("loginInfo");
@@ -291,6 +292,7 @@ public class HostController {
 		input_R.setFloor(floor);
 		input_R.setArea(area);
 		input_R.setFee(fee);
+		input_R.setAddress(address);
 		input_R.setDong(dong);
 		input_R.setHo(ho);
 		input_R.setUserno(userno);
@@ -320,7 +322,6 @@ public class HostController {
 			List<Documents> list = kakaoAddress.getDocuments();
 
 			for (Documents item : list) {
-				input_R.setAddress(item.getRoad_address().getAddress_name());
 				input_R.setRegion_2depth_name(item.getRoad_address().region_2depth_name);
 				input_R.setRegion_3depth_name(item.getRoad_address().region_3depth_name);
 				input_R.setLongitude(Double.parseDouble(item.getRoad_address().x));
@@ -433,7 +434,7 @@ public class HostController {
 			}	
 		}//end for	
 		
-		String redirectUrl = contextPath + "/host/roominfo/view.do?roomno=" + input_R.getRoomno();
+		String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input_R.getRoomno();
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 		
 	}
