@@ -20,7 +20,7 @@ public class Room {
     private String region_2depth_name;
     private String region_3depth_name;
     private int userno;
-    private String hidden;
+    private int status;
     
     /**User랑 조인된 값 */
     private String name;

@@ -752,7 +752,7 @@
 													<div class="hit-a-div">
 														<img
 															src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
-													</div> <c:if test="${confirmdate != null}">
+													</div>
 														<%-- 확인매물 div --%>
 				  										{{#if confirmdate}}
 														<div class="hit-a-confirm">
@@ -762,18 +762,9 @@
 														</div>
 														<%-- 확인매물 끝 --%>
 				  									{{/if}}
-													</c:if>
 													<p class="hit-a-p1">{{roomtype}}</p>
 													<p class="hit-a-p2">
-														<c:choose>
-															<c:when test="${item.dealingtype == '월세'}">
 																<span>{{dealingtype}}&nbsp;{{deposit}}/{{price}}</span>
-															</c:when>
-															<c:otherwise>
-																<span>{{dealingtype}}&nbsp;</span>
-																<span id="prc">{{price}}</span>
-															</c:otherwise>
-														</c:choose>
 													</p>
 													<p class="hit-a-p34">{{floor}}층,{{area}}m²,관리비
 														{{fee}}만</p>

@@ -181,9 +181,10 @@ public class AdminController {
 	public ModelAndView room_check_ok(Model model, HttpServletRequest request) {
 
 		String check1 = request.getParameter("check_id");
+		int check = Integer.valueOf(check1);
 
 		Room input = new Room();
-		input.setHidden(check1);
+		input.setStatus(check);
 		
 		List<Room> output = null; // 조회결과가 저장될 객체
 		try {

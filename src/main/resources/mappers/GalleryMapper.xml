@@ -143,13 +143,13 @@
 	<!-- 인기매물용 다중행 조회를 위한 기능 정의 -->
 	<select id="selectfameList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
-		SELECT
-		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename
-		FROM heart h
-		INNER JOIN room r ON h.roomno=r.roomno
-		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno
-		INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno
-		GROUP BY roomno
+		SELECT 
+		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename,DATE_FORMAT(r.confirmdate,'%Y.%m.%d') AS confirmdate
+		FROM heart h 
+		INNER JOIN room r ON h.roomno=r.roomno 
+		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
+		INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
+		GROUP BY roomno 
 		ORDER BY count(h.roomno) DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -159,7 +159,8 @@
      <!-- 찜목록을 보여주기 위한 기능 정의 -->
      <select id="selectHeartList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
      SELECT
-     u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno
+     u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno,DATE_FORMAT(r.confirmdate,
+		'%Y.%m.%d') AS confirmdate
      from user u
      INNER JOIN heart h ON u.userno=h.userno
      INNER JOIN room r ON r.roomno=h.roomno
@@ -189,7 +190,7 @@
 	<select id="cookieList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
 		SELECT
-		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate,
+		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(r.confirmdate,
 		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
 		r.region_2depth_name,i.filename
 		FROM room AS r

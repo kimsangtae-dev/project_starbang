@@ -1,6 +1,7 @@
 package project.star.b2.controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,6 +142,7 @@ public class MainRestController {
 	try {
 		// 쿠키로 저장된 방번호로 조회
 		output = galleryService.getCookieList(list);
+		Collections.reverse(output);
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}

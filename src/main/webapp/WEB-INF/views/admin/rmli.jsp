@@ -88,7 +88,7 @@
 								<c:set var="userno" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
 								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
-								<c:set var="hidden" value="${item.hidden}" />
+								<c:set var="status" value="${item.status}" />
 
 								<tr id="bbbb">
 									<td class="text-center"><input type="checkbox" id="aaaa"
@@ -100,7 +100,7 @@
 									<td align="center"><a href="${viewUrl}">${userno}님</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
 									<td align="center">${fakecount}</td>
-									<td align="center" id="hidden">${item.hidden}</td>
+									<td align="center" id="hidden">${item.status}</td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -369,7 +369,7 @@
 								<c:set var="userno" value="{{name}}" />
 								<c:set var="confirmdate" value="{{confirmdate}}" />
 								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
-								<c:set var="hidden" value="{{hidden}}" />
+								<c:set var="status" value="{{status}}" />
 								<tr>
 									<td class="text-center"><input type="checkbox" id="aaaa"
 										value="{{roomno}}" class="roomlist"></td>
@@ -380,7 +380,7 @@
 									<td align="center"><a href="${viewUrl}">{{userno}}님</td>
 									<td align="center" id="confirmdate">{{confirmdate}}</td>
 									<td align="center">{{fakecount}}</td>
-									<td align="center" id="hidden">{{hidden}}</td>
+									<td align="center" id="hidden">{{status}}</td>
 								</tr>
 {{/each}}
 	</script>

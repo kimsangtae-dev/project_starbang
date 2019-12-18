@@ -23,7 +23,7 @@
         <result property="region_2depth_name" column="region_2depth_name" />
         <result property="region_3depth_name" column="region_3depth_name" />
         <result property="userno" column="userno" />
-        <result property="hidden" column="hidden" />
+        <result property="status" column="status" />
         <result property="dealingtype" column="dealingtype" />
 		<result property="price" column="price" />
 		
@@ -46,7 +46,7 @@
         resultMap="roomMap">
         SELECT 
         r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee, confirmdate, address, dong, ho, 
-        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.hidden, count(f.roomno) AS cnt
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.status, count(f.roomno) AS cnt
         FROM room r
         INNER JOIN user u ON r.userno=u.userno
         INNER JOIN price p ON r.roomno=p.roomno
@@ -121,7 +121,7 @@
     <!-- 관리자 페이지 숨김매물 데이터 갱신을 위한 기능 정의 -->
     <update id="updateHiddenItem"
         parameterType="project.star.b2.model.Room">
-        UPDATE room SET hidden='Y' WHERE roomno=#{roomno};
+        UPDATE room SET status="1" WHERE roomno=#{roomno};
     </update>
     <!-- 확인매물 리스트 조회를 위한 기능 정의 -->
     <select id="selectCheckList"
@@ -129,7 +129,7 @@
         resultMap="roomMap">
         SELECT 
         r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee, confirmdate, address, dong, ho, 
-        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.hidden, count(f.roomno) AS cnt
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.status, count(f.roomno) AS cnt
         FROM room r
         INNER JOIN user u ON r.userno=u.userno
         INNER JOIN price p ON r.roomno=p.roomno
@@ -139,7 +139,7 @@
             	confirmdate is NOT NULL
             </if>
             <if test="floor != null and floor != ''">
-            	 r.hidden=#{hidden}
+            	 r.status=#{status}
             </if>
         </where>
                
@@ -156,7 +156,7 @@
         resultMap="roomMap">
         SELECT 
         r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee, confirmdate, address, dong, ho, 
-        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.hidden, count(f.roomno) AS cnt
+        latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name , r.status, count(f.roomno) AS cnt
         FROM room r
         INNER JOIN user u ON r.userno=u.userno
         INNER JOIN price p ON r.roomno=p.roomno
