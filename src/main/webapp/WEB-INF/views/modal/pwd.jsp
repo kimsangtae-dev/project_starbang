@@ -36,4 +36,4 @@
 		<!-- footer -->
 		<button class="footer-button">인증메일 받기</button>
 	</form>
-</div><!-- /.modal-content -->
+</div><!-- modal-content 끝 -->
