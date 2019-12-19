@@ -116,7 +116,12 @@
 									<td align="center">${name}</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
 									<td align="center">${fakecount}</td>
-									<td align="center" id="hidden">${item.status}</td>
+									<td align="center" id="hidden">
+									<c:choose><c:when test="${status eq '1'}">확인매물</c:when>
+    											<c:when test="${status eq '2'}">허위매물</c:when>
+    											<c:when test="${status eq '3'}">숨김매물</c:when>
+        										<c:when test="${status eq '4'}">거래완료</c:when>
+        										<c:otherwise>공개</c:otherwise></c:choose></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
