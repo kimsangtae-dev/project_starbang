@@ -402,11 +402,11 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
-			/*
-			 * Gallery.setRoomTypePate(roomtypepate);
-			 * 
-			 * Gallery.setDealingTypePate(dealingtypepate);
-			 */
+			
+			 //Gallery.setRoomTypePate(roomtypepate);
+			  
+			// Gallery.setDealingTypePate(dealingtypepate);
+			
 
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
