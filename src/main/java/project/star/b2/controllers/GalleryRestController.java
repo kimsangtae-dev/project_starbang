@@ -97,6 +97,7 @@ public class GalleryRestController {
 		/** 방 종류(roomtype) */
 		String room = webHelper.getString("roomtype");
 		/** 매물 종류(dealingtype) */
+		String dealingtype = webHelper.getString("dealingtype");
 		/** 보증금/전세가(deposit/price) */
 		int depositFrom = webHelper.getInt("depositFrom");
 		int depositTo = webHelper.getInt("depositTo", 999999);
@@ -113,9 +114,22 @@ public class GalleryRestController {
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
 
-		String dealingtype = webHelper.getString("dealingtype");
 		String region_2depth_name = webHelper.getString("region_2depth_name");
 		
+		/** 방 종류(roomtype) list */
+		List<String> roomtypepate = new ArrayList<String>();
+		String[] roomto = room.split("m");
+		for (int i = 0; i < roomto.length ; i++) {
+			roomtypepate.add(roomto[i]);
+		}
+		
+		/** 매물 종류(dealingtype) list */
+		List<String> dealingtypepate = new ArrayList<String>();
+		String[] dealingtypeto = dealingtype.split("m");
+		for (int i = 0; i < dealingtypeto.length ; i++) {
+			dealingtypepate.add(dealingtypeto[i]);
+		}
+			
 		/** 지도 매물위치 필터링 */
 		double west = webHelper.getDouble("west");
 		double east = webHelper.getDouble("east");
@@ -123,6 +137,12 @@ public class GalleryRestController {
 		double north = webHelper.getDouble("north");
 
 		Filter filter = new Filter();
+		// 방종류
+		filter.setRoomtype(roomtypepate);
+				
+		// 월세, 전세, 매매
+		filter.setDealingtype(dealingtypepate);
+				
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -153,6 +173,10 @@ public class GalleryRestController {
 		PageData pageData = null;
 
 		try {
+			Gallery.setRoomTypePate(roomtypepate);
+			
+			Gallery.setDealingTypePate(dealingtypepate);
+			
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 

@@ -431,11 +431,12 @@ public class AdminController {
 	}
 
 	/****** 회원 삭제 페이지 ******/
-	@RequestMapping(value = "/admin/userlist/delete_ok.do", method = RequestMethod.GET)
-	public ModelAndView delete_ok(Model model) {
+	@RequestMapping(value = "/admin/userlist/delete_ok.do", method = RequestMethod.POST)
+	public ModelAndView delete_ok(Model model, HttpServletRequest request) {
 		/** 1) 필요한 변수값 생성 */
 		// 삭제할 대상에 대한 PK값
-		int userno = webHelper.getInt("userno");
+		String delete = request.getParameter("delete_id");
+		int userno = Integer.valueOf(delete);
 
 		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0) {
@@ -456,7 +457,10 @@ public class AdminController {
 
 		/** 3) 페이지 이동 */
 		// 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
-		return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다.");
+		/* return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다."); */
+		
+		String viewPath = "admin/userlist";
+		return webHelper.redirect(viewPath, "수정되었습니다");
 	}
 
 	/****** 회원 수정 폼 페이지 ******/
@@ -533,7 +537,8 @@ public class AdminController {
 
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 수정한 대상을 상세페이지에 알려주기 위해서 PK값을 전달해야 한다.
-		String redirectUrl = contextPath + "/admin/userlist/view.do?userno=" + input.getUserno();
+		//String redirectUrl = contextPath + "/admin/userlist/view.do?userno=" + input.getUserno();
+		String redirectUrl = contextPath + "/admin/userli.do";
 		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 	}
 

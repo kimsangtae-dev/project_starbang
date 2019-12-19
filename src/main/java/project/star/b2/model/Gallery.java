@@ -1,5 +1,7 @@
 package project.star.b2.model;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -40,6 +42,10 @@ public class Gallery {
 	
 	
 	/** 필터링을 위한 추가 변수 */
+	// 매물종류
+	private static List<String> roomtypepate;		// 매물 종류 > 종류 선택 - 원룸 , 투룸 , 쓰리룸 , 오피스텔
+	// 월세, 전세, 매매
+	private static List<String> dealingtypepate;	// 거래정보 > 거래종류 > 전세,월세,매매
 	// 보증금/전세
 	private static int depositFrom;
 	private static int depositTo;
@@ -55,6 +61,12 @@ public class Gallery {
 	// 방크기
 	private static int sizeFrom;
 	private static int sizeTo;
+	
+	public static List<String> getRoomTypePate() { return roomtypepate; }
+	public static void setRoomTypePate(List<String> roomtypepate) { Gallery.roomtypepate = roomtypepate; }
+	
+	public static List<String> getDealingTypePate() { return dealingtypepate; }
+	public static void setDealingTypePate(List<String> dealingtypepate) { Gallery.dealingtypepate = dealingtypepate; }
 	
 	public static int getDepositFrom() { return depositFrom; }
 	public static void setDepositFrom(int depositFrom) { Gallery.depositFrom = depositFrom; }
