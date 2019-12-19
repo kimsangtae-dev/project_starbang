@@ -15,34 +15,46 @@
 </head>  
 
 <body>
-	<!-- 브라우저에 보여질 부분 -->
-	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
-		<%@ include file="../assets/inc/ad_header.jsp"%>
-		</div>
-		<!-- 중앙 영역 -->
-		<div class="container">
-		<div id="content">
-			<div>
-				<h1>회원관리</h1>
-				<br/>
-				<%-- <a href="${pageContext.request.contextPath}/admin/userlist/add.do">[회원추가]</a> --%>
-	
-	<!-- 검색폼 -->
-	<div class="search_form">
-	<form method="get" action="${pageContext.request.contextPath}/admin/userli.do">
-		<label for="keyword">검색어: </label>
-		<input type="search" name="keyword" id="keyword" placeholder="유저명 or 이메일 검색" value="${keyword}" />
-		<button type="submit">검색</button>	
-	</form>
-	</div>
-	
-	<hr />
+	<%@ include file="../assets/inc/ad_header.jsp"%>
+
+<!-- 중앙 영역 -->
+<div id="content">
+	<div class="container">
+		<div class="adm-header">
+			<h1>회원관리</h1>
+				<div class="search_form">
+					<form method="get"
+						action="${pageContext.request.contextPath}/admin/userli.do">
+					<div class="input-group">
+						<span class="input-group-addon"> 
+							<span class="glyphicon glyphicon-search"></span></span> 
+						<input type="search" class="form-control" name="keyword"
+								id="keyword" placeholder="이름 or 이메일 검색" value="${keyword}" /> 
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit">검색</button>
+							</span>
+					</div>
+					</form>
+					</div>
+					<br>
+					<div class="box">
+						<div class="adm-btn">
+							<input type="button" name="" class="btn btn-default" id="edit-user" value="회원수정"> 
+							<input type="button"
+								name="" class="btn btn-default" id="delete-user" value="회원탈퇴">
+						</div>
+					</div>
+			
+			</div>
+
+	<!-- <hr /> -->
 	
 	<!-- 조회 결과 목록 -->
 	<table class="table table-striped" border="1">
 		<thead>
 			<tr>
+				<th class="text-center"><input type="checkbox"
+								id="all_check"></th>
                 <th width="100" class="text-center">회원번호</th>
                 <th class="text-center">이름</th>
                 <th class="text-center">이메일</th>
@@ -50,7 +62,7 @@
 				<th class="text-center">전화번호</th>
 				<th class="text-center">등록날짜</th>
 				<th class="text-center">수정날짜</th>
-				<th class="text-center">프로필경로</th>
+				<!-- <th class="text-center">프로필경로</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -72,7 +84,7 @@
 						<c:set var="tel" value="${item.tel}" />
 						<c:set var="regdate" value="${item.regdate}" />
 						<c:set var="editdate" value="${item.editdate}" />
-						<c:set var="profile_img" value="${item.profile_img}" />
+						<%-- <c:set var="profile_img" value="${item.profile_img}" /> --%>
 
 						<%--검색어가 있다면? --%>
 						<c:if test="${keyword != ''}">
@@ -86,19 +98,22 @@
 						</c:if>
 
 						<%-- 상세페이지로 이동하기 위한 URL --%>
-						<c:url value="/admin/userlist/view.do" var="viewUrl">
+						<%-- <c:url value="/admin/userlist/view.do" var="viewUrl">
 							<c:param name="userno" value="${item.userno}" />
-						</c:url>
+						</c:url> --%>
 
 						<tr>
+							<td class="text-center"><input type="checkbox" id="aaaa"
+										value="${item.userno}" class="userlist"></td>
 							<td align="center">${item.userno}</td>
-							<td align="center"><a href="${viewUrl}">${name}</a></td>
+							<%-- <td align="center"><a href="${viewUrl}">${name}</a></td> --%>
+							<td align="center">${name}</td>
 							<td align="center">${email}</td>
 							<td align="center">${passwd}</td>
 							<td align="center">${tel}</td>
 							<td align="center">${regdate}</td>
 							<td align="center">${editdate}</td>
-							<td align="center">${profile_img}</td>
+							<%-- <td align="center">${profile_img}</td> --%>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -195,6 +210,51 @@
 				$(".userlist").prop('checked', $(this).prop('checked'));
 			});
 		});
+	</script>
+	<script>
+	$(function () {
+	    $('#delete-user').on('click', function () {
+	    	if ($('#aaaa:checked').val() == null) {
+	    		alert("회원을 선택하세요.");
+	    	} 
+	        $('#aaaa:checked').each(function () {
+	            var delete1 = $(this).val();
+	            
+	            $.ajax({
+	                // 결과 url
+	                url: "${pageContext.request.contextPath}/admin/userlist/delete_ok.do",
+	                data: {
+	                    delete_id: delete1
+	                },
+	                type: "POST",
+	                datatype: 'text',
+	                success: function (data) {
+	                   location.reload();
+	                },
+	                error: function (error, status, request) {
+	                    alert("Error!" + error + "request: " + request + " status: " + status);
+	                }
+	            });
+	        }); // checked
+	       if($('#aaaa:checked').val() != null) {
+	        alert("회원이 삭제되었습니다."); 
+	       }
+	    })
+	    
+	}); // end $.ajax;
+	</script>
+
+	<script>
+	    $('#edit-user').on('click', function () { 
+	    	if ($('#aaaa:checked').val() == null) {
+	    		alert("회원을 선택하세요.");
+	    	}
+	    	$('#aaaa:checked').each(function () {
+	            var edit = $('#aaaa:checked').val(); 
+	            location.href="${pageContext.request.contextPath}/admin/userlist/edit.do?userno=" + edit;
+	    });
+
+	});
 	</script>
 </body>
 </html>
