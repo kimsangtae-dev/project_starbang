@@ -257,6 +257,24 @@
 
 				<div class="tab_container" id="tab_con">
 					<div class="recent-div4">
+					<c:choose>
+								<%-- 조회 결과가 없는 경우 --%>
+								<c:when test="${output == null || fn:length(output) == 0}">
+					<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+								</c:when>
+					</c:choose>								
+					
 <%-- 						<c:forEach var="item" items="${output3}" varStatus="status"
 							end="4">
 							<li>
@@ -447,7 +465,18 @@
 						<c:choose>
 							<%-- 조회 결과가 없는 경우 --%>
 							<c:when test="${output == null || fn:length(output) == 0}">
-								<p>조회 결과가 없습니다.</p>
+					<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
+										<div class="recent-div5-vacant margin">
+						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+					</div>
 							</c:when>
 							<%-- 갤러리 시작 --%>
 							<c:otherwise>

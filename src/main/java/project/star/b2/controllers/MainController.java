@@ -61,7 +61,7 @@ public class MainController {
 	@Autowired
 	UploadService uploadService;
 	@Autowired
-	UserService	userService;
+	UserService userService;
 	@Autowired
 	GalleryService galleryService;
 	@Autowired
@@ -78,11 +78,11 @@ public class MainController {
 	 * 메인
 	 *******************************************************************/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main(Model model,HttpServletRequest request) {
+	public ModelAndView main(Model model, HttpServletRequest request) {
 		/*---세션 불러오기 ----*/
 		HttpSession session = request.getSession();
-        User loginInfo = (User) session.getAttribute("loginInfo");
-        /*----------------------*/
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
 		/** 1)필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -103,17 +103,18 @@ public class MainController {
 			totalCount = galleryService.getGalleryCount(input);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			//쿠키 불러오기
+			// 쿠키 불러오기
 			list = CookieUtils.getValueList("cookieName", request);
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Popular.setOffset(pageData.getOffset());
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
-			output = galleryService.getPopularGalleryList(input); //인기있는 방
-			output3 = galleryService.getCookieList(list); //최근본방
+			output = galleryService.getPopularGalleryList(input); // 인기있는 방
+			output3 = galleryService.getCookieList(list); // 최근본방
 		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
+			/* return webHelper.redirect(null, e.getLocalizedMessage()); */
+			return new ModelAndView("index");
 		}
 
 		/** 3)View 처리 */
@@ -202,8 +203,7 @@ public class MainController {
 	 * 상세페이지 (rmdt 파라미터 읽기)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdt.do", method = RequestMethod.GET)
-	public ModelAndView rmdt(Model model,
-			@RequestParam(value = "roomno", defaultValue = "") int roomno) {
+	public ModelAndView rmdt(Model model, @RequestParam(value = "roomno", defaultValue = "") int roomno) {
 
 		Room input_room = new Room();
 		input_room.setRoomno(roomno);
@@ -223,7 +223,7 @@ public class MainController {
 		Info output_info = null;
 		List<Price> output_price = null;
 		List<UploadItem> output_image = null;
-		User output_user =null;
+		User output_user = null;
 
 		try {
 
@@ -242,7 +242,7 @@ public class MainController {
 			input_user.setUserno(output_room.getUserno());
 			output_user = userService.getUserItem(input_user);
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 
 			log.debug("방 조회에 실패하였습니다.");
 			log.error(e.getLocalizedMessage());
@@ -256,7 +256,6 @@ public class MainController {
 		model.addAttribute("price", output_price);
 		model.addAttribute("img", output_image);
 		model.addAttribute("user", output_user);
-
 
 		return new ModelAndView("main/rmdt");
 	}
@@ -291,13 +290,13 @@ public class MainController {
 	public ModelAndView rtrm(Model model, HttpServletRequest request) {
 		/*---세션 불러오기 ----*/
 		HttpSession session = request.getSession();
-        User loginInfo = (User) session.getAttribute("loginInfo");
-        /*----------------------*/
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
 
 		List<String> list = null;
 
 		try {
-			list=CookieUtils.getValueList("cookieName", request);
+			list = CookieUtils.getValueList("cookieName", request);
 		} catch (UnsupportedEncodingException e1) {
 			e1.printStackTrace();
 		}
@@ -353,28 +352,25 @@ public class MainController {
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
 
 		String region_2depth_name = webHelper.getString("region_2depth_name");
-		
+
 		/** 방 종류(roomtype) list */
-		List<String> roomtypepate = new ArrayList<String>();
-		String[] roomto = room.split("m");
-		for (int i = 0; i < roomto.length ; i++) {
-			roomtypepate.add(roomto[i]);
-		}
-		
-		/** 매물 종류(dealingtype) list */
-		List<String> dealingtypepate = new ArrayList<String>();
-		String[] dealingtypeto = dealingtype.split("m");
-		for (int i = 0; i < dealingtypeto.length ; i++) {
-			dealingtypepate.add(dealingtypeto[i]);
-		}
+		/*
+		 * List<String> roomtypepate = new ArrayList<String>(); String[] roomto =
+		 * room.split("m"); for (int i = 0; i < roomto.length ; i++) {
+		 * roomtypepate.add(roomto[i]); }
+		 * 
+		 *//** 매물 종류(dealingtype) list *//*
+											 * List<String> dealingtypepate = new ArrayList<String>(); String[]
+											 * dealingtypeto = dealingtype.split("m"); for (int i = 0; i <
+											 * dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
+											 */
 
 		Filter filter = new Filter();
-		// 방종류
-		filter.setRoomtype(roomtypepate);
-				
-		// 월세, 전세, 매매
-		filter.setDealingtype(dealingtypepate);
-				
+		/*
+		 * // 방종류 filter.setRoomtype(roomtypepate);
+		 * 
+		 * // 월세, 전세, 매매 filter.setDealingtype(dealingtypepate);
+		 */
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -406,10 +402,12 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
-			Gallery.setRoomTypePate(roomtypepate);
-			
-			Gallery.setDealingTypePate(dealingtypepate);
-			
+			/*
+			 * Gallery.setRoomTypePate(roomtypepate);
+			 * 
+			 * Gallery.setDealingTypePate(dealingtypepate);
+			 */
+
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 
@@ -455,10 +453,10 @@ public class MainController {
 	@RequestMapping(value = "/main/wish.do", method = RequestMethod.GET)
 	public ModelAndView wish(Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-        User loginInfo = (User) session.getAttribute("loginInfo");
+		User loginInfo = (User) session.getAttribute("loginInfo");
 
 		/** 1) 필요한 변수값 생성 */
-        int userno = loginInfo.getUserno();
+		int userno = loginInfo.getUserno();
 		int keyword = webHelper.getInt("roomno");// 검색어
 		String keyword2 = webHelper.getString("roomtype");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -557,14 +555,14 @@ public class MainController {
 	@RequestMapping(value = "main/repwd.do")
 	public String repwd(Model model, HttpServletRequest request) {
 
-	    /** pwd에서 입력한 이메일 세션 생성*/
-	    HttpSession session = request.getSession();
-	    String email = (String) session.getAttribute("fullemail");
+		/** pwd에서 입력한 이메일 세션 생성 */
+		HttpSession session = request.getSession();
+		String email = (String) session.getAttribute("fullemail");
 
-	    model.addAttribute("fullemail", email);
-	    session.invalidate();
+		model.addAttribute("fullemail", email);
+		session.invalidate();
 
-	    return "main/repwd";
+		return "main/repwd";
 	}
 
 	/********************************************************************
@@ -575,36 +573,35 @@ public class MainController {
 	@RequestMapping(value = "main/repwd_ok.do", method = RequestMethod.POST)
 	public ModelAndView edit(Model model) {
 
-	/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
-	String passwd = webHelper.getString("passwd");
-	String email = webHelper.getString("email");
+		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+		String passwd = webHelper.getString("passwd");
+		String email = webHelper.getString("email");
 
-	if (passwd == null) {
-	   return webHelper.redirect(null, "비밀번호를 입력하세요.");
-	}
+		if (passwd == null) {
+			return webHelper.redirect(null, "비밀번호를 입력하세요.");
+		}
 
-	/** 2) 데이터 수정하기 */
-	// 수정할 값들을 Beans에 담는다.
-	User input = new User();
-	input.setPasswd(passwd);
-	input.setEmail(email);
+		/** 2) 데이터 수정하기 */
+		// 수정할 값들을 Beans에 담는다.
+		User input = new User();
+		input.setPasswd(passwd);
+		input.setEmail(email);
 
-	try {
 		try {
-	    	// 일반회원 데이터 수정
-	    	userService.getPassword(input);
+			try {
+				// 일반회원 데이터 수정
+				userService.getPassword(input);
 
-	    	/** 3) 결과를 확인하기 위한 페이지 이동 */
-	        return webHelper.redirect("/b2", "수정되었습니다.");
-	    } catch (Exception e) {
-	        e.getLocalizedMessage();
-	            return webHelper.redirect(null, e.getLocalizedMessage());
-	        }
-	} catch (Exception e) {
-	        return webHelper.redirect(null, e.getLocalizedMessage());
-	     	}
-}
-
+				/** 3) 결과를 확인하기 위한 페이지 이동 */
+				return webHelper.redirect("/b2", "수정되었습니다.");
+			} catch (Exception e) {
+				e.getLocalizedMessage();
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+	}
 
 	/********************************************************************
 	 * 테스트
@@ -617,6 +614,5 @@ public class MainController {
 
 		return (List<String>) new ModelAndView("main/search");
 	}
-
 
 }

@@ -32,7 +32,7 @@
 		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p ON r.roomno=p.roomno
 		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i ON r.roomno=i.roomno
 		<where>
-			r.roomtype IN 
+<!-- 			r.roomtype IN 
 			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
@@ -40,7 +40,7 @@
 			AND p.dealingtype IN 
 			<foreach item="dealingtypepate" index="index" collection="dealingtypepate" open="(" separator="," close=")">
 				#{dealingtypepate} 
-			</foreach>
+			</foreach> -->
 		
 			<if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999 or buyingFrom != 0 or buyingTo != 999999">
 				(((p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세") AND (p.deposit BETWEEN #{depositFrom} and #{depositTo}))
@@ -56,12 +56,13 @@
 				AND r.area between #{sizeFrom} and #{sizeTo}
 			</if>
 
-			<!-- <if test="roomtype != null and roomtype != ''">
+			<if test="roomtype != null and roomtype != ''">
 				AND r.roomtype LIKE concat('%', #{roomtype}, '%')
 			</if>
 			<if test="dealingtype != null and dealingtype != ''">
 				AND p.dealingtype LIKE concat('%', #{dealingtype}, '%')
-			</if> -->
+			</if>
+			
 			<if test="region_2depth_name != null and region_2depth_name != ''">
 				AND region_2depth_name LIKE concat('%', #{region_2depth_name}, '%')
 			</if>
@@ -88,7 +89,7 @@
 		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
 		ON r.roomno=p.roomno
 		<where>
-			r.roomtype IN 
+<!-- 			r.roomtype IN 
 			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
@@ -96,7 +97,7 @@
 			AND p.dealingtype IN 
 			<foreach item="dealingtypepate" index="index" collection="dealingtypepate" open="(" separator="," close=")">
 				#{dealingtypepate} 
-			</foreach>
+			</foreach> -->
 		
 			<if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999 or buyingFrom != 0 or buyingTo != 999999">
 				(((p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세") AND (p.deposit BETWEEN #{depositFrom} and #{depositTo}))
