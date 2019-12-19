@@ -354,23 +354,27 @@ public class MainController {
 		String region_2depth_name = webHelper.getString("region_2depth_name");
 
 		/** 방 종류(roomtype) list */
-		/*
-		 * List<String> roomtypepate = new ArrayList<String>(); String[] roomto =
-		 * room.split("m"); for (int i = 0; i < roomto.length ; i++) {
-		 * roomtypepate.add(roomto[i]); }
-		 * 
-		 *//** 매물 종류(dealingtype) list *//*
-											 * List<String> dealingtypepate = new ArrayList<String>(); String[]
-											 * dealingtypeto = dealingtype.split("m"); for (int i = 0; i <
-											 * dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
-											 */
+		 List<String> roomtypepate = new ArrayList<String>(); 
+		 String[] roomto = room.split("m"); 
+		 for (int i = 0; i < roomto.length ; i++) {
+		 roomtypepate.add(roomto[i]); }
+		 
+		/** 매물 종류(dealingtype) list */
+		List<String> dealingtypepate = new ArrayList<String>(); String[]
+		dealingtypeto = dealingtype.split("m"); 
+		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
+		
+		double west = webHelper.getDouble("west");
+		double east = webHelper.getDouble("east");
+		double south = webHelper.getDouble("south");
+		double north = webHelper.getDouble("north");
+		
 
 		Filter filter = new Filter();
-		/*
-		 * // 방종류 filter.setRoomtype(roomtypepate);
-		 * 
-		 * // 월세, 전세, 매매 filter.setDealingtype(dealingtypepate);
-		 */
+		//방종류 
+		filter.setRoomtype(roomtypepate);
+		//월세, 전세, 매매 
+		filter.setDealingtype(dealingtypepate);
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -396,18 +400,24 @@ public class MainController {
 		Gallery input = new Gallery();
 //		input.setRoomtype(room);
 		input.setDealingtype(dealingtype);
-		input.setRegion_2depth_name(region_2depth_name);
+		input.setRegion_2depth_name(keyword);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
 
 		try {
+<<<<<<< HEAD
 			
 			 //Gallery.setRoomTypePate(roomtypepate);
 			  
 			// Gallery.setDealingTypePate(dealingtypepate);
 			
 
+=======
+			Gallery.setRoomTypePate(roomtypepate);
+			Gallery.setDealingTypePate(dealingtypepate);
+			
+>>>>>>> ead49317edaf2369197390d58b916c6986fb263c
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 
@@ -422,6 +432,11 @@ public class MainController {
 
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
+			
+			Gallery.setWest(west);
+			Gallery.setEast(east);
+			Gallery.setSouth(south);
+			Gallery.setNorth(north);
 
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);

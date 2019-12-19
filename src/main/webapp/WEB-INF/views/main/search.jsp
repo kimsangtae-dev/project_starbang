@@ -294,102 +294,32 @@ pageEncoding="UTF-8"%>
                                 <div class="gallery-index">
                                     <!-- 페이지 번호 구현 -->
                                     <%-- 이전 그룹에 대한 링크 --%>
-                                    <c:choose>
-                                        <%-- 이전 그룹으로 이동 가능하다면? --%>
-                                        <c:when test="${pageData.prevPage > 0}">
-                                            <%-- 이동할 URL 생성 --%>
-                                            <c:url value="/main/search.do" var="prevPageUrl">
-                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-                                                <c:param name="depositFrom" value="${param.depositFrom}" />
-                                                <c:param name="depositTo" value="${param.depositTo}" />
-                                                <c:param name="monthFrom" value="${param.monthFrom}" />
-                                                <c:param name="monthTo" value="${param.monthTo}" />
-                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
-                                                <c:param name="buyingTo" value="${param.buyingTo}" />
-                                                <c:param name="feeFrom" value="${param.feeFrom}" />
-                                                <c:param name="feeTo" value="${param.feeTo}" />
-                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
-                                                <c:param name="sizeTo" value="${param.sizeTo}" />
-                                                <c:param name="page" value="${pageData.prevPage}" />
-                                            </c:url>
-                                            <a href="${prevPageUrl}" id="temp">
-                                                <button class="prev-btn">
-                                                    <span>&lt;</span>
-                                                </button>
-                                            </a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button class="prev-btn" id="temp">
-                                                <span>&lt;</span>
-                                            </button>
-                                        </c:otherwise>
-                                    </c:choose>
+									<button class="prev-btn" id="temp">
+										<span>&lt;</span>
+									</button>
 
                                     <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
                                     <ul class="index-list" id="index-list">
-                                        <c:forEach var="i" begin="${pageData.startPage}"
-                                            end="${pageData.endPage}" varStatus="status">
-                                            <%-- 이동할 URL 생성 --%>
-                                            <c:url value="/main/search.do" var="pageUrl">
-                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-                                                <c:param name="depositFrom" value="${param.depositFrom}" />
-                                                <c:param name="depositTo" value="${param.depositTo}" />
-                                                <c:param name="monthFrom" value="${param.monthFrom}" />
-                                                <c:param name="monthTo" value="${param.monthTo}" />
-                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
-                                                <c:param name="buyingTo" value="${param.buyingTo}" />
-                                                <c:param name="feeFrom" value="${param.feeFrom}" />
-                                                <c:param name="feeTo" value="${param.feeTo}" />
-                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
-                                                <c:param name="sizeTo" value="${param.sizeTo}" />
-                                                <c:param name="page" value="${i}" />
-                                            </c:url>
+                                        <c:forEach var="i" begin="${pageData.startPage}" end="${pageData.endPage}" varStatus="status">
 
                                             <%-- 페이지 번호 출력 --%>
                                             <c:choose>
-                                                <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+                                                <%-- 현재 머물고 있는 페이지 번호를 출력 --%>
                                                 <c:when test="${pageData.nowPage == i}">
                                                     <li><a class="index-indiv index-active">${i}</a></li>
                                                 </c:when>
-                                                <%-- 나머지 페이지의 경우 링크 적용함 --%>
+                                                <%-- 나머지 페이지 --%>
                                                 <c:otherwise>
-                                                    <li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+                                                    <li><a class="index-indiv">${i}</a></li>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
                                     </ul>
 
                                     <%-- 다음 그룹에 대한 링크 --%>
-                                    <c:choose>
-                                        <%-- 다음 그룹으로 이동 가능하다면? --%>
-                                        <c:when test="${pageData.nextPage > 0}">
-                                            <%-- 이동할 URL 생성 --%>
-                                            <c:url value="/main/search.do" var="nextPageUrl">
-                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-                                                <c:param name="depositFrom" value="${param.depositFrom}" />
-                                                <c:param name="depositTo" value="${param.depositTo}" />
-                                                <c:param name="monthFrom" value="${param.monthFrom}" />
-                                                <c:param name="monthTo" value="${param.monthTo}" />
-                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
-                                                <c:param name="buyingTo" value="${param.buyingTo}" />
-                                                <c:param name="feeFrom" value="${param.feeFrom}" />
-                                                <c:param name="feeTo" value="${param.feeTo}" />
-                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
-                                                <c:param name="sizeTo" value="${param.sizeTo}" />
-                                                <c:param name="page" value="${pageData.nextPage}" />
-                                            </c:url>
-                                            <a href="${nextPageUrl}">
-                                                <button class="next-btn">
-                                                    <span>&gt;</span>
-                                                </button>
-                                            </a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <button class="next-btn">
-                                                <span>&gt;</span>
-                                            </button>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <button class="next-btn">
+                                    	<span>&gt;</span>
+                                    </button>
                                 </div>
                                 <%-- gallery-index --%>
                             </div>
@@ -487,112 +417,138 @@ pageEncoding="UTF-8"%>
       {{/each}}
    </script>
 
-    <!-- 지도 api -->
+        <!-- 지도 api -->
     <script type="text/javascript">
     /** ajax전송을 위한 파라미터 가져오기 **/
-    var deposit_from = ${param.depositFrom};
-    var deposit_to = ${param.depositTo};
-    var month_from = ${param.monthFrom};
-    var month_to= ${param.monthTo};
-    var buying_from = ${param.buyingFrom};
-    var buying_to = ${param.buyingTo};
-    var fee_from = ${param.feeFrom};
-    var fee_to = ${param.feeTo};
-    var size_from = ${param.sizeFrom};
-    var size_to = ${param.sizeTo};
-    
-    /** ajax 전송 메서드 **/
-    function getMapPosition(west,east,south,north) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/main/search",
-            method: "get",
-            data: {
-                "depositFrom": deposit_from,
-                "depositTo": deposit_to,
-                "monthFrom": month_from,
-                "monthTo": month_to,
-                "buyingFrom": buying_from,
-                "buyingTo": buying_to,
-                "feeFrom": fee_from,
-                "feeTo": fee_to,
-                "sizeFrom": size_from,
-                "sizeTo": size_to,
-                "east": east,
-                "west": west,
-                "north": north,
-                "south": south
-            },
-            success: function(req){
-                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                  if (dealingtype == '월세') {
-                    return options.fn(this);
-                  } else {
-                    return options.inverse(this);
-                  }
-                });
-                
-                Handlebars.registerHelper('isOver', function(price, options) {
-                    if (price >= 10000 && price%10000 != 0) {
-                        return Math.floor(price/10000) +"억" + price%10000;
-                    } else if (price >= 10000 && price%10000 == 0) {
-                        return price/10000 + "억";
-                    } else {
-                        return price;
-                    }
-                });
-                
-                Handlebars.registerHelper('isOver2', function(deposit, options) {
-                    if (deposit >= 10000 && deposit%10000 != 0) {
-                        return Math.floor(deposit/10000) +"억" + deposit%10000;
-                    } else if (deposit >= 10000 && deposit%10000 == 0) {
-                        return deposit/10000 + "억";
-                    } else {
-                        return deposit;
-                    }
-                });
-                
-                var template = Handlebars.compile($("#gallery-data").html());
-                var html = template(req);
-                $("#gallery-list").html(html);
-                $("#room-count").html(req.totalCount);
-                
-                var index_list = new Array();
-                for (var i=0; i<req.pageData.totalPage; i++) {
-                    var indexno = i+1;
-                    if (req.pageData.nowPage == indexno) {
-                        index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';                    
-                    } else {
-                        index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
-                    }
-                }
-                $("#index-list").html(index_list);
-                
-                $(".recent-div8").click(function(e) {
-                    $(this).toggleClass('on off');
-                });
-            }
-        });
-    }
-    
+    var roomtype = "${param.roomtype}";
+    var dealingtype = "${param.dealingtype}";
+	var deposit_from = ${param.depositFrom};
+	var deposit_to = ${param.depositTo};
+	var month_from = ${param.monthFrom};
+	var month_to= ${param.monthTo};
+	var buying_from = ${param.buyingFrom};
+	var buying_to = ${param.buyingTo};
+	var fee_from = ${param.feeFrom};
+	var fee_to = ${param.feeTo};
+	var size_from = ${param.sizeFrom};
+	var size_to = ${param.sizeTo};
+	
+	var west = 0;
+	var east = 0;
+	var south = 0;
+	var north = 0;
+	
+	var startPage;
+	var endPage;
+	var groupCount;
+	var totalPage;
+	var nowPage;
+	var nextPage;
+	var prevPage;
+	
+	/** ajax 전송 메서드 **/
+	function getMapPosition(west,east,south,north, page) {
+		$.ajax({
+           	url: "${pageContext.request.contextPath}/main/search",
+           	method: "get",
+           	data: {
+           		"roomtype": roomtype,
+           		"dealingtype": dealingtype,
+				"depositFrom": deposit_from,
+				"depositTo": deposit_to,
+				"monthFrom": month_from,
+				"monthTo": month_to,
+				"buyingFrom": buying_from,
+				"buyingTo": buying_to,
+				"feeFrom": fee_from,
+				"feeTo": fee_to,
+				"sizeFrom": size_from,
+				"sizeTo": size_to,
+				"east": east,
+				"west": west,
+				"north": north,
+				"south": south,
+				"page": page
+           	},
+           	success: function(req){
+           		Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+           		  if (dealingtype == '월세') {
+           		    return options.fn(this);
+           		  } else {
+           		    return options.inverse(this);
+           		  }
+           		});
+           		
+           		Handlebars.registerHelper('isOver', function(price, options) {
+             		if (price >= 10000 && price%10000 != 0) {
+             			return Math.floor(price/10000) +"억" + price%10000;
+             		} else if (price >= 10000 && price%10000 == 0) {
+             			return price/10000 + "억";
+             		} else {
+             			return price;
+             		}
+             	});
+           		
+           		Handlebars.registerHelper('isOver2', function(deposit, options) {
+             		if (deposit >= 10000 && deposit%10000 != 0) {
+             			return Math.floor(deposit/10000) +"억" + deposit%10000;
+             		} else if (deposit >= 10000 && deposit%10000 == 0) {
+             			return deposit/10000 + "억";
+             		} else {
+             			return deposit;
+             		}
+             	});
+           		
+				var template = Handlebars.compile($("#gallery-data").html());
+				var html = template(req);
+				$("#gallery-list").html(html);
+				$("#room-count").html(req.totalCount);
+				
+				startPage = req.pageData.startPage;
+				endPage = req.pageData.endPage;
+				groupCount = req.pageData.groupCount;
+				totalPage = req.pageData.totalPage;
+				nowPage = req.pageData.nowPage;
+				nextPage = req.pageData.nextPage;
+				prevPage = req.pageData.prevPage;
+				
+				var index_list = new Array();
+				for (var i=startPage; i<=endPage; i++) {
+					var indexno = i;
+					if (nowPage == indexno) {
+						index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';					
+					} else {
+						index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
+					}
+				}
+				$("#index-list").html(index_list);
+				
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+		        });
+           	}
+		});
+	}
+	
         /* kakao map API */
         $(function() {
-            /** 지도 생성하기 */
+        	/** 지도 생성하기 */
             var container = document.getElementById('map');
             var options = {
                 center : new kakao.maps.LatLng(37.5642135, 126.9743207), // 지도의 중심 좌표
                 level : 9,
-                maxLevel : 9    // 지도 확대 레벨
-            };
-            var map = new kakao.maps.Map(container, options);
+                maxLevel : 9	// 지도 확대 레벨
+			};
+			var map = new kakao.maps.Map(container, options);
 
-            
+			
             /** 마커 클러스터러 생성하기 **/
             var clusterer = new kakao.maps.MarkerClusterer({
-                map : map,                  // 마커들을 클러스터로 관리하고 표시할 지도 객체
-                averageCenter : false,      // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-                minLevel : 1,               // 클러스터 할 최소 지도 레벨
-                disableClickZoom : true,    // 클릭 시 확대기능 해제
-                styles : [ {                // calculator에 적용될 스타일
+                map : map,					// 마커들을 클러스터로 관리하고 표시할 지도 객체
+                averageCenter : false,		// 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+                minLevel : 1,				// 클러스터 할 최소 지도 레벨
+                disableClickZoom : true,	// 클릭 시 확대기능 해제
+                styles : [ {				// calculator에 적용될 스타일
                     minWidth : '40px',
                     height : '40px',
                     padding : '5px 11px',
@@ -637,17 +593,17 @@ pageEncoding="UTF-8"%>
                     kakao.maps.event.addListener(clusterer, 'clusterclick', function(cluster) {
                         var southwest = cluster.getBounds().getSouthWest();
                         var northeast = cluster.getBounds().getNorthEast();
-                        var east = northeast.getLat();
-                        var west = southwest.getLat();
-                        var north = northeast.getLng();
-                        var south = southwest.getLng();
+                        east = northeast.getLat();
+                        west = southwest.getLat();
+                        north = northeast.getLng();
+                        south = southwest.getLng();
                         
-                        getMapPosition(west,east,south,north);
+                        getMapPosition(west,east,south,north,1);
                     });
 
-            }); // end $.get(address.json)
+			}); // end $.get(address.json)
 
-            
+			
             /** 서울시 구 별로 마커 생성하기 **/
             $.getJSON("${pageContext.request.contextPath}/assets/guposition",
                 function(data) {
@@ -661,7 +617,7 @@ pageEncoding="UTF-8"%>
                         gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
                         gumark += '</div>';
                         var customOverlay = new kakao.maps.CustomOverlay({
-                            position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
+							position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
                             clickable : false,
                             content : gumark,
                             zIndex : 3
@@ -672,28 +628,28 @@ pageEncoding="UTF-8"%>
                         // 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
                         $("#gu-marker" + i).click(function() {
                             var poslat = $(this).children("#lat").html();
-                            var poslng = $(this).children("#lng").html();
+							var poslng = $(this).children("#lng").html();
                             map.setCenter(new kakao.maps.LatLng(poslat,poslng));
                             map.setLevel(map.getLevel() - 2,{animate : true});
-                        });
+						});
 
-                    } // end for
+					} // end for
 
                     $("#map > div > div > div > div").hover(
                         function() {$(this).css("z-index", "100");},
                         function() {$(this).css("z-index", "0");}
-                    ); // end hover()
-                });
+					); // end hover()
+				});
 
-            
+			
             /** 검색값 가져와서 지도 위치 변경하기 **/
             $("#search-form").submit(function(e) {
                 e.preventDefault();
 
-                var ps = new kakao.maps.services.Places();  // 장소 검색 객체 생성
-                var value = $('input[name=search]').val();  // input값 가져오기
+                var ps = new kakao.maps.services.Places();	// 장소 검색 객체 생성
+                var value = $('input[name=search]').val();	// input값 가져오기
 
-                ps.keywordSearch(value, placesSearchCB);    // 키워드로 장소 검색
+                ps.keywordSearch(value, placesSearchCB);	// 키워드로 장소 검색
                 // 키워드 검색 완료 시 호출되는 콜백함수
                 function placesSearchCB(data, status, pagination) {
                     if (status === kakao.maps.services.Status.OK) {
@@ -705,15 +661,15 @@ pageEncoding="UTF-8"%>
                             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                         }
 
-                        map.setBounds(bounds);  // 검색된 장소 위치를 기준으로 지도 범위 재설정
+                        map.setBounds(bounds);	// 검색된 장소 위치를 기준으로 지도 범위 재설정
                     }
                 }; // end placesSearchCB()
             }); // end submit()
 
             
             /** 지도 확대/축소 변경 버튼 **/
-            function zoomIn() { map.setLevel(map.getLevel() - 1); }     // 지도 확대 메서드
-            function zoomOut() { map.setLevel(map.getLevel() + 1); }    // 지도 축소 메서드
+            function zoomIn() { map.setLevel(map.getLevel() - 1); }		// 지도 확대 메서드
+            function zoomOut() { map.setLevel(map.getLevel() + 1); }	// 지도 축소 메서드
 
             // 버튼 클릭과 기능 연결
             $(".zoom-in").click(function() { zoomIn(); });
@@ -722,32 +678,60 @@ pageEncoding="UTF-8"%>
             
             /** 지도 범위 이동이 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'dragend', function() {
-                var bounds = map.getBounds();
-                var southwest = bounds.getSouthWest();
+            	var bounds = map.getBounds();
+            	var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
-                var east = northeast.getLat();
-                var west = southwest.getLat();
-                var north = northeast.getLng();
-                var south = southwest.getLng();
+                east = northeast.getLat();
+                west = southwest.getLat();
+                north = northeast.getLng();
+                south = southwest.getLng();
                 
-                getMapPosition(west,east,south,north);
+                getMapPosition(west,east,south,north,1);
             });
             
             
             /** 지도 확대/축소가 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'zoom_changed', function() {
-                var bounds = map.getBounds();
-                var southwest = bounds.getSouthWest();
+            	var bounds = map.getBounds();
+            	var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
-                var east = northeast.getLat();
-                var west = southwest.getLat();
-                var north = northeast.getLng();
-                var south = southwest.getLng();
+                east = northeast.getLat();
+                west = southwest.getLat();
+                north = northeast.getLng();
+                south = southwest.getLng();
                 
-                getMapPosition(west,east,south,north);
+                getMapPosition(west,east,south,north,1);
             });
             
             var center = map.getCenter();
+                
+            $(document).on('click', ".index-indiv", function(event){
+				var index_no = $(this).html();
+				getMapPosition(west,east,south,north, index_no);
+			});
+            	
+            $(document).on('click', ".next-btn", function(event){
+            	if (nextPage == undefined) {
+            		nextPage = ${pageData.nextPage};
+            	}
+            	
+            	if (nextPage > 0) {
+					getMapPosition(west,east,south,north, nextPage);
+					return;
+            	} else {
+            		return false;
+            	}
+			});
+            
+            $(document).on('click', ".prev-btn", function(event){
+            	
+            	if (prevPage > 0) {
+					getMapPosition(west,east,south,north, prevPage);
+					return;
+            	} else {
+            		return false;
+            	}
+			});
             
         });
     </script>
@@ -1166,7 +1150,7 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
+                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
                 location.replace(resetUrl);
             });
 
