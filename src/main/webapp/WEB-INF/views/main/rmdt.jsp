@@ -29,13 +29,13 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="monthman">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-					
+
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
@@ -62,8 +62,33 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<!--상단 내용 끝-->
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
-			<div class="recent-div9 off" data-value="on"></div>
-			<span id="lkct">1</span>
+
+			<%-- ---------------하얀색 헤더의 좋아요 시작------------------- --%>
+			<c:choose>
+				<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+				<c:when test="${loginInfo == null }">
+					<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
+					<a href="${pageContext.request.contextPath}/modal/login.do"
+						data-toggle="modal" data-target="#loginModal"> <%-- 검은색 하트 좋아요 시작--%>
+						<img class="recent-div9 off" data-value="off" /><%-- 검은색 하트 좋아요 끝 --%>
+					</a>
+				</c:when>
+				<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+				<c:otherwise>
+					<%-- 좋아요 버튼 --%>
+					<img class="recent-div9 off" data-value="on" />
+					<%-- 좋아요 끝 --%>
+				</c:otherwise>
+			</c:choose>
+
+
+			<%-- 검은색 하트 카운트 시작 --%>
+			<span id="lkct"></span>
+			<%-- 검은색 하트 카운트 끝 --%>
+
+			<%-- ---------------하얀색 헤더의 좋아요 끝------------------- --%>
+
+
 			<!-- 도트 -->
 			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 링크 -->
@@ -223,7 +248,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 								<a href="#">
 									<img src="${pageContext.request.contextPath}/assets/img/upload/nophoto.png" /></a></li>
 						</c:otherwise>
-					</c:choose>	
+					</c:choose>
 				</c:forEach>
 			</ul>
 		</div>
@@ -256,20 +281,44 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="textht pull-left texthth1">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-					
+
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
 						</c:choose>
 					</h1>
-					<div class="recent-div8 on" data-value="off"></div>
+
+					<%-- ------- 파란색 헤더바의 좋아요 시작 (하얀색 테두리 하트) ------- --%>
+					<c:choose>
+						<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+						<c:when test="${loginInfo == null }">
+
+							<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
+							<a href="${pageContext.request.contextPath}/modal/login.do"
+								data-toggle="modal" data-target="#loginModal"> <%-- 검은색 좋아요 시작--%>
+								<div class="recent-div8 off" data-value="off"></div> <%-- 검은색 좋아요 끝 --%>
+							</a>
+						</c:when>
+						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+						<c:otherwise>
+							<%-- 좋아요 버튼 --%>
+							<div class="recent-div8 off" data-value="on"></div>
+							<%-- 좋아요 끝 --%>
+						</c:otherwise>
+					</c:choose>
+
+
+					<%-- 파란색 헤더의 하트 수 카운트 --%>
 					<span class="cntlk">0</span>
+					<%-- ------- 파란색 헤더바의 좋아요 끝 (하얀색 테두리 하트) ------- --%>
+
+
 					<button class="icngbl ulcp">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
@@ -347,7 +396,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 								<c:forEach var="k" items="${price}" varStatus="status">
 									<c:if test="${k.dealingtype == '월세'}">
-								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
+								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/>
 							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 								    	<h6>${patternprice1}/${k.price}만 원</h6>
 								    </c:if>
@@ -356,7 +405,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 							<c:forEach var="k" items="${price}" varStatus="status">
 								<c:if test="${k.dealingtype == '전세'}">
-							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/> 
+							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
 						    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
 							    	${patternprice1}만 원
 							    </c:if>
@@ -406,11 +455,11 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="pictogram" class="jFMhNO kBQneM">
 			<!--상세 옵션들 아이콘으로 보여줌 시작-->
 			<h1 class="GYLAC">옵션</h1>
-			
+
 			<input type="hidden" id="nice" value="${info.optionitem}" />
-			
+
 			<div class="dDctva">
-				
+
 			</div>
 		</div>
 		<!--상세 옵션들 아이콘으로 보여줌 끝-->
@@ -564,23 +613,34 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		});
 	</script>
 
-	<script>
-		/* 좋아요 클릭 -> 하트 색 변경 */
+	<%-- ---------------하얀색 헤더의 좋아요 시작 (검은테두리 하트)------------------- --%>
+	<script type="text/javascript">
+		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div9").click(function(e) {
-				$(this).toggleClass('on off');
+				$(this).toggleClass('off off');
 			})
+			if (${loginInfo != null}) {
+				$(".recent-div9").click(function(e) {
+					$(this).toggleClass('off on');
+			})};// end if
 		});
 	</script>
-
-	<script>
-		/* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
+	<%-- ---------------하얀색 헤더의 좋아요 끝 (검은테두리 하트)------------------- --%>
+	<%-- ---------------파란색 헤더의 좋아요 시작 (하얀색테두리 하트)------------------- --%>
+	<script type="text/javascript">
+		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('on off');
+				$(this).toggleClass('off off');
 			})
+			if (${loginInfo != null}) {
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('off on');
+			})};// end if
 		});
 	</script>
+	<%-- ---------------파란색 헤더의 좋아요 끝 (하얀색테두리 하트)------------------- --%>
 
 	<!-- 평수 바꾸기 -->
 	<script type="text/javascript">
@@ -603,7 +663,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			});
 		});
 	</script>
-	
+
 		<!-- 평수 미터제곱 같이 바꾸기2 -->
 	<script type="text/javascript">
 		$(function() {
@@ -677,17 +737,17 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					}); // end scroll
 		});
 	</script>
-	
+
 	<script>
 	function binary() {
-		
+
         /* 뿌려줄 String을 배열에 저장 */
         var option = [
         	"<div class='gqtsIc'><div class='dNeTFF'></div><p>에어컨</p></div>",
-        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>", 
-        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>", 
-        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>", 
-        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>", 
+        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>",
+        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>",
+        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>",
+        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>",
         	"<div class='gqtsIc'><div class='gdMhEY'></div><p>냉장고</p></div>",
         	"<div class='gqtsIc'><div class='dQLnLP'></div><p>가스레인지</p></div>",
         	"<div class='gqtsIc'><div class='krFgu'></div><p>인덕션</p></div>",
@@ -697,8 +757,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         	"<div class='gqtsIc'><div class='mCsgX'></div><p>침대</p></div>",
         	"<div class='gqtsIc'><div class='gaOEWf'></div><p>책상</p></div>"
         	];
-        
-       
+
+
 
         /* 받아온 값을 관리비 항목에 넣는다 */
         var num = $("#nice").val();
@@ -712,22 +772,22 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         } // for문
     } // binary함수
     binary();
-    
+
 function binary2() {
-    		
+
             /* 뿌려줄 String을 배열에 저장 */
             var option2 = ["인터넷", "유선TV", "청소비", "수도세", "도시가스", "전기세", "기타"];
-            
+
             /* 받아온 값을 관리비 항목에 넣는다 */
             //var num2 = ${info.feeitem};
             var num2 = ${info.feeitem};
 			var sum = new Array;
-    		
+
             for (var i=7; i>=1 ; i--) {
                 if(num2 >= Math.pow(2, i-1)){
                 	num2 = num2 - Math.pow(2, i-1);
                 	sum += option2[7-i];
-                    
+
                     if(num2 == 0 || i == 1){ break; }
                     sum += ", ";
                 } // if문
@@ -736,9 +796,9 @@ function binary2() {
             $("#apeend_feeitem").append(sum);
         } // binary함수
         binary2();
-   
-   
+
+
 	</script>
-	
+
 </body>
 </html>
