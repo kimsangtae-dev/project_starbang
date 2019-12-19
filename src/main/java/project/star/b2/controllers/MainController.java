@@ -406,18 +406,10 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
-<<<<<<< HEAD
-			
-			 //Gallery.setRoomTypePate(roomtypepate);
-			  
-			// Gallery.setDealingTypePate(dealingtypepate);
-			
 
-=======
 			Gallery.setRoomTypePate(roomtypepate);
 			Gallery.setDealingTypePate(dealingtypepate);
 			
->>>>>>> ead49317edaf2369197390d58b916c6986fb263c
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 
