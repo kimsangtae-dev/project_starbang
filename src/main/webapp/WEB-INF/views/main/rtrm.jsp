@@ -77,11 +77,35 @@
 										<li>
 											<div class="recent-div5">
 												<div class="recent-div6">
-													<%-- 좋아요 버튼 --%>
-													<div class="recent-div7">
-														<div class="recent-div8 off" data-value="on"></div>
-													</div>
-													<%-- 좋아요 끝 --%>
+
+
+													<c:choose>
+														<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+														<c:when test="${loginInfo == null }">
+
+															<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
+															<a
+																href="${pageContext.request.contextPath}/modal/login.do"
+																class="st-bang padding-l" data-toggle="modal"
+																data-target="#loginModal">
+																<%-- 좋아요 버튼 --%>
+																<div class="recent-div7">
+																	<div class="recent-div8 off" data-value="off"></div>
+																</div>
+																<%-- 좋아요 끝 --%>
+															</a>
+														</c:when>
+														<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+														<c:otherwise>
+															<%-- 좋아요 버튼 --%>
+															<div class="recent-div7">
+																<div class="recent-div8 off" data-value="on"></div>
+															</div>
+															<%-- 좋아요 끝 --%>
+														</c:otherwise>
+													</c:choose>
+
+
 													<%-- 전체 링크화 --%>
 													<a target="_blank" rel="" class="recent-a"
 														href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
@@ -140,14 +164,21 @@
 		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
+	<%-- ---------------하얀색 헤더의 좋아요 시작------------------- --%>
 	<script type="text/javascript">
-		/* 좋아요 클릭 -> 하트 색 변경 */
+		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('on off');
-			});
+				$(this).toggleClass('off off');
+			})
+			if (${loginInfo != null}) {
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('off on');
+			})};// end if
 		});
 	</script>
+	<%-- ---------------하얀색 헤더의 좋아요 끝------------------- --%>
 
 	<script type="text/javascript">
 		/* 조건에 맞는 방 개수 */
