@@ -43,18 +43,18 @@ pageEncoding="UTF-8"%>
                                 <h1>방종류</h1>
                                 <p>중복 선택이 가능합니다.</p>
                                 <ul>
-                                    <li><label> 
-                                        <input type="checkbox" name="room-type" value="oneroom" checked /> 
+                                    <li><label class="room-typech"> 
+                                        <input type="checkbox" name="room-type" value="oneroom" id="roomtype1" /> 
                                         <span class="checkBox"></span> 
                                         <span class="checkText">원룸</span>
                                     </label></li>
-                                    <li><label> 
-                                        <input type="checkbox" name="room-type" value="tworoom" checked /> 
+                                    <li><label class="room-typech"> 
+                                        <input type="checkbox" name="room-type" value="tworoom" id="roomtype2" /> 
                                         <span class="checkBox"></span> 
                                         <span class="checkText">투·쓰리룸</span>
                                     </label></li>
-                                    <li><label> 
-                                        <input type="checkbox" name="room-type" value="officetel" checked /> 
+                                    <li><label class="room-typech"> 
+                                        <input type="checkbox" name="room-type" value="officetel" id="roomtype3" /> 
                                         <span class="checkBox"></span> 
                                         <span class="checkText">오피스텔</span>
                                     </label></li>
@@ -73,18 +73,18 @@ pageEncoding="UTF-8"%>
                             <h1>매물종류</h1>
                             <p>중복 선택이 가능합니다.</p>
                             <ul>
-                                <li><label> 
-                                    <input type="checkbox" name="sale-type" value="monthly" checked /> 
+                                <li><label class="dealing-typech"> 
+                                    <input type="checkbox" name="sale-type" value="monthly" id="dealingtype1" /> 
                                     <span class="checkBox"></span> 
                                     <span class="checkText">월세</span>
                                 </label></li>
-                                <li><label> 
-                                    <input type="checkbox" name="sale-type" value="charter" checked /> 
+                                <li><label class="dealing-typech"> 
+                                    <input type="checkbox" name="sale-type" value="charter" id="dealingtype2" /> 
                                     <span class="checkBox"></span> 
                                     <span class="checkText">전세</span>
                                 </label></li>
-                                <li><label> 
-                                    <input type="checkbox" name="sale-type" value="buying" checked /> 
+                                <li><label class="dealing-typech"> 
+                                    <input type="checkbox" name="sale-type" value="buying" id="dealingtype3" /> 
                                     <span class="checkBox"></span> 
                                     <span class="checkText">매매</span>
                                 </label></li>
@@ -756,6 +756,120 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript">
         /* 필터 -드롭다운 - 자동 toggle 해제 */
         $('.dropdown-menu').click(function(e) { e.stopPropagation(); })
+        
+        /** 원룸, 투쓰리룸, 오피스텔 체크박스 */
+        var roomtypeto = "${param.roomtype}";
+		//var roomtypepate = new List;
+		var to = [];
+		to = roomtypeto.split("m");
+		/* for (var i = 0; i < to.length ; i++) {
+				roomtypepate.add(to[i]);
+			} */
+        var roomtype1 = document.getElementById('roomtype1');   
+		var roomtype2 = document.getElementById('roomtype2'); 
+		var roomtype3 = document.getElementById('roomtype3'); 
+        for (var room in to) {
+        	if (to[room] == "원룸") {
+        		$roomtype1 = $('#roomtype1').attr('checked', true);
+        		//alert("원룸")
+        	}
+        	if (to[room] == "투룸") {
+        		$roomtype1 = $('#roomtype2').attr('checked', true);
+        		//alert("투룸")
+        	}
+        	if (to[room] == "쓰리룸") {
+        		$roomtype1 = $('#roomtype2').attr('checked', true);
+        		//alert("쓰리룸")
+        	}
+        	if (to[room] == "오피스텔") {
+        		$roomtype1 = $('#roomtype3').attr('checked', true);
+        		//alert("오피스텔")
+        	}
+        }
+        
+        //var rt = "";
+		
+		$('.room-typech').click(function() {
+			var rt = "";
+			
+			if ($("input:checkbox[id='roomtype1']").is(":checked") == true) {
+				rt += "원룸";
+				//$("#roomtype1").prop("checked", true);
+			}
+			if ($("input:checkbox[id='roomtype2']").is(":checked") == true) {
+				rt += "m투룸m쓰리룸";
+				//$("#roomtype2").prop("checked", true);
+			}
+			if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
+				rt += "m오피스텔";
+				//$("#roomtype3").prop("checked", true);
+			}
+			
+			/* var rtzjq = rt.split("r");
+			alert(rtzjq[0]) */
+			if(rt == "") {
+				return false;
+			}
+			
+        	var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+        	location.replace(roomtypehref);
+        	
+		});
+		/** 원룸, 투쓰리룸, 오피스텔 체크박스 끝 */
+		
+		/** 월세, 전세, 매매 체크박스 */
+        var dealingtypeto = "${param.dealingtype}";
+		//var roomtypepate = new List;
+		var to = [];
+		to = dealingtypeto.split("m");
+		/* for (var i = 0; i < to.length ; i++) {
+				roomtypepate.add(to[i]);
+			} */
+        var dealingtype1 = document.getElementById('dealingtype1');   
+		var dealingtype2 = document.getElementById('dealingtype2'); 
+		var dealingtype3 = document.getElementById('dealingtype3'); 
+        for (var dealing in to) {
+        	if (to[dealing] == "월세") {
+        		$dealingtype1 = $('#dealingtype1').attr('checked', true);
+        		//alert("월세")
+        	}
+        	if (to[dealing] == "전세") {
+        		$dealingtype2 = $('#dealingtype2').attr('checked', true);
+        		//alert("전세")
+        	}
+        	if (to[dealing] == "매매") {
+        		$dealingtype3 = $('#dealingtype3').attr('checked', true);
+        		//alert("매매")
+        	}
+        }
+        
+        //var rt = "";
+		
+		$('.dealing-typech').click(function() {
+			var dt = "";
+			
+			if ($("input:checkbox[id='dealingtype1']").is(":checked") == true) {
+				dt += "월세";
+				//$("#dealingtype1").prop("checked", true);
+			}
+			if ($("input:checkbox[id='dealingtype2']").is(":checked") == true) {
+				dt += "m전세";
+				//$("#dealingtype2").prop("checked", true);
+			}
+			if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
+				dt += "m매매";
+				//$("#dealingtype3").prop("checked", true);
+			}
+			
+			if(dt == "") {
+				return false;
+			}
+			
+        	var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+        	location.replace(dealingtypehref);
+        	
+		});
+		/** 월세, 전세, 매매 체크박스 끝 */
 
         // 금액별로 단위 표시(만/억)를 위한 메서드
         function fix(val) {
@@ -815,7 +929,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(href);
             },
             hide_from_to : true,
@@ -861,7 +975,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
                 
-                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(href);
             },
             hide_from_to : true,
@@ -912,7 +1026,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(href);
             },
             hide_from_to : true,
@@ -959,7 +1073,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1014,7 +1128,7 @@ pageEncoding="UTF-8"%>
                     high = 999999;
                 }
 
-                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1028,7 +1142,7 @@ pageEncoding="UTF-8"%>
             // 가격대 조건삭제
             $("#filter-reset1").click(function(e) {
                 e.preventDefault();
-                var pricehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var pricehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(pricehref);
             })
 
@@ -1037,14 +1151,14 @@ pageEncoding="UTF-8"%>
                 e.preventDefault();
                 /* slide4_value.reset();
                 $("#filter4-value").html("무제한"); */
-                var feehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var feehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
                 location.replace(feehref);
             })
 
             // 방크기 조건삭제
             $("#filter-reset3").click(function(e) {
                 e.preventDefault();
-                var sizehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999';
+                var sizehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999';
                 location.replace(sizehref);
             })
 
@@ -1052,7 +1166,7 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                var resetUrl = "${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
+                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
                 location.replace(resetUrl);
             });
 

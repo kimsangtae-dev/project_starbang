@@ -2,6 +2,7 @@ package project.star.b2.controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -334,6 +335,7 @@ public class MainController {
 		/** 방 종류(roomtype) */
 		String room = webHelper.getString("roomtype");
 		/** 매물 종류(dealingtype) */
+		String dealingtype = webHelper.getString("dealingtype");
 		/** 보증금/전세가(deposit/price) */
 		int depositFrom = webHelper.getInt("depositFrom");
 		int depositTo = webHelper.getInt("depositTo", 999999);
@@ -350,10 +352,29 @@ public class MainController {
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
 
-		String dealingtype = webHelper.getString("dealingtype");
 		String region_2depth_name = webHelper.getString("region_2depth_name");
+		
+		/** 방 종류(roomtype) list */
+		List<String> roomtypepate = new ArrayList<String>();
+		String[] roomto = room.split("m");
+		for (int i = 0; i < roomto.length ; i++) {
+			roomtypepate.add(roomto[i]);
+		}
+		
+		/** 매물 종류(dealingtype) list */
+		List<String> dealingtypepate = new ArrayList<String>();
+		String[] dealingtypeto = dealingtype.split("m");
+		for (int i = 0; i < dealingtypeto.length ; i++) {
+			dealingtypepate.add(dealingtypeto[i]);
+		}
 
 		Filter filter = new Filter();
+		// 방종류
+		filter.setRoomtype(roomtypepate);
+				
+		// 월세, 전세, 매매
+		filter.setDealingtype(dealingtypepate);
+				
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -377,7 +398,7 @@ public class MainController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
-		input.setRoomtype(room);
+//		input.setRoomtype(room);
 		input.setDealingtype(dealingtype);
 		input.setRegion_2depth_name(region_2depth_name);
 
@@ -385,6 +406,10 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
+			Gallery.setRoomTypePate(roomtypepate);
+			
+			Gallery.setDealingTypePate(dealingtypepate);
+			
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 

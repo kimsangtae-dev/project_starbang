@@ -1,9 +1,15 @@
 package project.star.b2.model;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class Filter {
+	// 매물종류
+	private List<String> roomtype;
+	// 월세, 전세, 매매
+	private List<String> dealingtype;
 	// 보증금/전세
 	private int depositFrom;
 	private int depositTo;
