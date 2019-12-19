@@ -15,429 +15,435 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body>
-	<!-- 브라우저에 보여질 부분 -->
-	<!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
-	<div>
-		<!-- 상단 헤더 -->
-		<%@ include file="../assets/inc/ma_top.jsp"%>
-		<!-- 중앙 영역 -->
-		<div id="content">
-			<div id="search" class="clearfix">
-				<div class="searchtab">
-					<form id="search-form" method="get" action="${pageContext.request.contextPath}/main/search.do">
-						<input type="search" placeholder="검색바" name="search" id="keyword"
-							value="${keyword}" /> <i class="glyphicon glyphicon-search"></i>
-						<button type="submit">검색</button>
-					</form>
-				</div>
-				<!-- 전체 필터 -->
-				<div class="filters clearfix">
-					<!-- 개별 필터 -->
-					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle btn-rt"
-							data-toggle="dropdown">
-							원룸,투·쓰리룸,오피스텔<span class="caret"></span>
-						</button>
-						<div class="dropdown-menu width1" role="menu">
-							<form id="room-type">
-								<h1>방종류</h1>
-								<p>중복 선택이 가능합니다.</p>
-								<ul>
-									<li><label> <input type="checkbox"
-											name="room-type" value="oneroom" checked /> <span
-											class="checkBox"></span> <span class="checkText">원룸</span>
-									</label></li>
-									<li><label> <input type="checkbox"
-											name="room-type" value="tworoom" checked /> <span
-											class="checkBox"></span> <span class="checkText">투·쓰리룸</span>
-									</label></li>
-									<li><label> <input type="checkbox"
-											name="room-type" value="officetel" checked /> <span
-											class="checkBox"></span> <span class="checkText">오피스텔</span>
-									</label></li>
-								</ul>
-							</form>
-						</div>
-					</div>
-					<!-- 개별 필터 끝 -->
-					<!-- 개별 필터 -->
-					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle btn-st"
-							data-toggle="dropdown">
-							월세,전세,매매 <span class="caret"></span>
-						</button>
-						<div class="dropdown-menu width1" role="menu">
-							<h1>매물종류</h1>
-							<p>중복 선택이 가능합니다.</p>
-							<ul>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="monthly" checked /> <span class="checkBox"></span> <span
-										class="checkText">월세</span>
-								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="charter" checked /> <span class="checkBox"></span> <span
-										class="checkText">전세</span>
-								</label></li>
-								<li><label> <input type="checkbox" name="sale-type"
-										value="buying" checked /> <span class="checkBox"></span> <span
-										class="checkText">매매</span>
-								</label></li>
-							</ul>
-						</div>
-					</div>
-					<!-- 개별 필터 끝 -->
-					<!-- 개별 필터 -->
-					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
-							가격대 <span class="caret"></span>
-						</button>
-						<div class="dropdown-menu width2" role="menu">
-							<div class="filter-slide">
-								<h1>
-									보증금/전세가
-									<p class="inf" id="filter1-value">무제한</p>
-								</h1>
-								<input type="text" id="slide-price1" name="">
-								<ul>
-									<li>0</li>
-									<li>1억 2000만원</li>
-									<li>무제한</li>
-								</ul>
-							</div>
-							<div class="filter-slide mar-top">
-								<h1>
-									월세
-									<p class="inf" id="filter2-value">무제한</p>
-								</h1>
-								<input type="text" id="slide-price2" name="">
-								<ul>
-									<li>0</li>
-									<li>60만원</li>
-									<li>무제한</li>
-								</ul>
-							</div>
-							<div class="filter-slide mar-top">
-								<h1>
-									매매가
-									<p class="inf" id="filter3-value">무제한</p>
-								</h1>
-								<input type="text" id="slide-price3" name="">
-								<ul>
-									<li>0</li>
-									<li>5억원</li>
-									<li>무제한</li>
-								</ul>
-							</div>
-							<button type="button" id="filter-reset1" class="filter-reset">
-								<i class="glyphicon glyphicon-refresh"></i>조건삭제
-							</button>
-						</div>
-					</div>
-					<!-- 개별 필터 끝 -->
-					<!-- 개별 필터 -->
-					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
-							관리비 <span class="caret"></span>
-						</button>
-						<div class="dropdown-menu width2" role="menu">
-							<div class="filter-slide">
-								<h1>
-									관리비
-									<p class="inf" id="filter4-value">무제한</p>
-								</h1>
-								<input type="text" id="slide-price4" name="">
-								<ul>
-									<li>0</li>
-									<li>20만원</li>
-									<li>무제한</li>
-								</ul>
-							</div>
-							<button type="button" id="filter-reset2" class="filter-reset">
-								<i class="glyphicon glyphicon-refresh"></i>조건삭제
-							</button>
-						</div>
-					</div>
-					<!-- 개별 필터 끝 -->
-					<!-- 개별 필터 -->
-					<div class="btn-group filter">
-						<button type="button" class="btn dropdown-toggle"
-							data-toggle="dropdown">
-							방크기 <span class="caret"></span>
-						</button>
-						<div class="dropdown-menu pull-right width2" role="menu">
-							<div class="filter-slide">
-								<h1>
-									방크기
-									<p class="inf" id="filter5-value">무제한</p>
-								</h1>
-								<input type="text" id="slide-size" name="">
-								<ul>
-									<li>0㎡(0평)</li>
-									<li>33㎡(10평)</li>
-									<li>무제한</li>
-								</ul>
-							</div>
-							<button type="button" id="filter-reset3" class="filter-reset">
-								<i class="glyphicon glyphicon-refresh"></i>조건삭제
-							</button>
-						</div>
-					</div>
-					<!-- 개별 필터 끝 -->
-				</div>
-				<!-- 전체 필터 끝 -->
-				<!-- 초기화 버튼 -->
-				<div id="filters-reset" class="filters-reset">
-					<i class="glyphicon glyphicon-refresh"></i>초기화
-				</div>
-			</div>
-			<div id="contentbox" class="clearfix">
-				<div class="gallery">
-					<!-- 갤러리 상단 영역 -->
-					<div class="gallery-header">
-						<span>조건에 맞는 방 </span> <span class="room-count" id="room-count">${totalCount}</span><span>개</span>
-					</div>
-					<!-- 갤러리 상단 영역 끝 -->
-					<!-- 갤러리 내용 + 하단 영역 -->
-					<div class="gallery-container">
-						<!-- 갤러리 내용 영역 -->
-						<div class="gallery-content clearfix">
-								<c:choose>
-									<%-- 조회 결과가 없는 경우 --%>
-									<c:when test="${output == null || fn:length(output) == 0}">
-										<div class="noresultbox">
-											<p class="noresulticon">
-												<i class="glyphicon glyphicon-home noresulticon"></i>
-											</p>
-											<p class="noresult">조건에 맞는 방이 없습니다.</p>
-											<p class="noresult">맞춤필터를 해제해보세요.</p>
-										</div>
-									</c:when>
-									<c:otherwise>
-									<ul id="gallery-list">
-									<%-- 갤러리 시작 --%>
-										<c:forEach var="item" items="${output}" varStatus="status">
-											<li>
-												<div class="recent-div5">
-													<div class="recent-div6">
-														<%-- 좋아요 버튼 --%>
-														<div class="recent-div7">
-															<div class="recent-div8 off" data-value="on"></div>
-														</div>
-														<%-- 좋아요 끝 --%>
-														<%-- 전체 링크화 --%>
-														<%-- -------------------쿠키 굽기---------------------- --%>
+    <!-- 브라우저에 보여질 부분 -->
+    <!-- 페이지의 전체 폭을 결정하기 위한 영역 -->
+    <div>
+        <!-- 상단 헤더 -->
+        <%@ include file="../assets/inc/ma_top.jsp"%>
+        <!-- 중앙 영역 -->
+        <div id="content">
+            <div id="search" class="clearfix">
+                <div class="searchtab">
+                    <form id="search-form" method="get" action="${pageContext.request.contextPath}/main/search.do">
+                        <input type="search" placeholder="검색바" name="search" id="keyword"
+                            value="${keyword}" /> <i class="glyphicon glyphicon-search"></i>
+                        <button type="submit">검색</button>
+                    </form>
+                </div>
+                <!-- 전체 필터 -->
+                <div class="filters clearfix">
+                    <!-- 개별 필터 -->
+                    <div class="btn-group filter">
+                        <button type="button" class="btn dropdown-toggle btn-rt"
+                            data-toggle="dropdown">
+                            원룸,투·쓰리룸,오피스텔<span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu width1" role="menu">
+                            <form id="room-type">
+                                <h1>방종류</h1>
+                                <p>중복 선택이 가능합니다.</p>
+                                <ul>
+                                    <li><label> 
+                                        <input type="checkbox" name="room-type" value="oneroom" checked /> 
+                                        <span class="checkBox"></span> 
+                                        <span class="checkText">원룸</span>
+                                    </label></li>
+                                    <li><label> 
+                                        <input type="checkbox" name="room-type" value="tworoom" checked /> 
+                                        <span class="checkBox"></span> 
+                                        <span class="checkText">투·쓰리룸</span>
+                                    </label></li>
+                                    <li><label> 
+                                        <input type="checkbox" name="room-type" value="officetel" checked /> 
+                                        <span class="checkBox"></span> 
+                                        <span class="checkText">오피스텔</span>
+                                    </label></li>
+                                </ul>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 개별 필터 끝 -->
+                    <!-- 개별 필터 -->
+                    <div class="btn-group filter">
+                        <button type="button" class="btn dropdown-toggle btn-st"
+                            data-toggle="dropdown">
+                            월세,전세,매매 <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu width1" role="menu">
+                            <h1>매물종류</h1>
+                            <p>중복 선택이 가능합니다.</p>
+                            <ul>
+                                <li><label> 
+                                    <input type="checkbox" name="sale-type" value="monthly" checked /> 
+                                    <span class="checkBox"></span> 
+                                    <span class="checkText">월세</span>
+                                </label></li>
+                                <li><label> 
+                                    <input type="checkbox" name="sale-type" value="charter" checked /> 
+                                    <span class="checkBox"></span> 
+                                    <span class="checkText">전세</span>
+                                </label></li>
+                                <li><label> 
+                                    <input type="checkbox" name="sale-type" value="buying" checked /> 
+                                    <span class="checkBox"></span> 
+                                    <span class="checkText">매매</span>
+                                </label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 개별 필터 끝 -->
+                    <!-- 개별 필터 -->
+                    <div class="btn-group filter">
+                        <button type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown">
+                            가격대 <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu width2" role="menu">
+                            <div class="filter-slide">
+                                <h1>
+                                    보증금/전세가
+                                    <p class="inf" id="filter1-value">무제한</p>
+                                </h1>
+                                <input type="text" id="slide-price1" name="">
+                                <ul>
+                                    <li>0</li>
+                                    <li>1억 2000만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <div class="filter-slide mar-top">
+                                <h1>
+                                    월세
+                                    <p class="inf" id="filter2-value">무제한</p>
+                                </h1>
+                                <input type="text" id="slide-price2" name="">
+                                <ul>
+                                    <li>0</li>
+                                    <li>60만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <div class="filter-slide mar-top">
+                                <h1>
+                                    매매가
+                                    <p class="inf" id="filter3-value">무제한</p>
+                                </h1>
+                                <input type="text" id="slide-price3" name="">
+                                <ul>
+                                    <li>0</li>
+                                    <li>5억원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <button type="button" id="filter-reset1" class="filter-reset">
+                                <i class="glyphicon glyphicon-refresh"></i>조건삭제
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 개별 필터 끝 -->
+                    <!-- 개별 필터 -->
+                    <div class="btn-group filter">
+                        <button type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown">
+                            관리비 <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu width2" role="menu">
+                            <div class="filter-slide">
+                                <h1>
+                                    관리비
+                                    <p class="inf" id="filter4-value">무제한</p>
+                                </h1>
+                                <input type="text" id="slide-price4" name="">
+                                <ul>
+                                    <li>0</li>
+                                    <li>20만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <button type="button" id="filter-reset2" class="filter-reset">
+                                <i class="glyphicon glyphicon-refresh"></i>조건삭제
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 개별 필터 끝 -->
+                    <!-- 개별 필터 -->
+                    <div class="btn-group filter">
+                        <button type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown">
+                            방크기 <span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu pull-right width2" role="menu">
+                            <div class="filter-slide">
+                                <h1>
+                                    방크기
+                                    <p class="inf" id="filter5-value">무제한</p>
+                                </h1>
+                                <input type="text" id="slide-size" name="">
+                                <ul>
+                                    <li>0㎡(0평)</li>
+                                    <li>33㎡(10평)</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <button type="button" id="filter-reset3" class="filter-reset">
+                                <i class="glyphicon glyphicon-refresh"></i>조건삭제
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 개별 필터 끝 -->
+                </div>
+                <!-- 전체 필터 끝 -->
+                <!-- 초기화 버튼 -->
+                <div id="filters-reset" class="filters-reset">
+                    <i class="glyphicon glyphicon-refresh"></i>초기화
+                </div>
+            </div>
+            <div id="contentbox" class="clearfix">
+                <div class="gallery">
+                    <!-- 갤러리 상단 영역 -->
+                    <div class="gallery-header">
+                        <span>조건에 맞는 방 </span> <span class="room-count" id="room-count">${totalCount}</span><span>개</span>
+                    </div>
+                    <!-- 갤러리 상단 영역 끝 -->
+                    <!-- 갤러리 내용 + 하단 영역 -->
+                    <div class="gallery-container">
+                        <!-- 갤러리 내용 영역 -->
+                        <div class="gallery-content clearfix">
+                                <c:choose>
+                                    <%-- 조회 결과가 없는 경우 --%>
+                                    <c:when test="${output == null || fn:length(output) == 0}">
+                                        <div class="noresultbox">
+                                            <p class="noresulticon">
+                                                <i class="glyphicon glyphicon-home noresulticon"></i>
+                                            </p>
+                                            <p class="noresult">조건에 맞는 방이 없습니다.</p>
+                                            <p class="noresult">맞춤필터를 해제해보세요.</p>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                    <ul id="gallery-list">
+                                    <%-- 갤러리 시작 --%>
+                                        <c:forEach var="item" items="${output}" varStatus="status">
+                                            <li>
+                                                <div class="recent-div5">
+                                                    <div class="recent-div6">
+                                                        <%-- 좋아요 버튼 --%>
+                                                        <div class="recent-div7">
+                                                            <div class="recent-div8 off" data-value="on"></div>
+                                                        </div>
+                                                        <%-- 좋아요 끝 --%>
+                                                        <%-- 전체 링크화 --%>
+                                                        <%-- -------------------쿠키 굽기---------------------- --%>
 
-														<%-- 파라미터 GET으로 보내기 작업 --%>
-														<a target="_blank" rel="" class="recent-a"
-															href="${pageContext.request.contextPath}/main/rmdtsave.do?roomno=${item.roomno}">
+                                                        <%-- 파라미터 GET으로 보내기 작업 --%>
+                                                        <a target="_blank" rel="" class="recent-a"
+                                                            href="${pageContext.request.contextPath}/main/rmdtsave.do?roomno=${item.roomno}">
 
-															<%-- -------------------쿠키 굽기---------------------- --%>
+                                                            <%-- -------------------쿠키 굽기---------------------- --%>
 
-															<!-- 이미지 -->
-															<div class="recent-a-div">
-																<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
-															</div> 
-															<c:if test="${item.confirmdate != null}">
-																<%-- 확인매물 div --%>
-																<div class="recent-a-confirm">
-																	<div class="recent-a-confirm-div">
-																		<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
-																	</div>
-																</div>
-																<%-- 확인매물 끝 --%>
-															</c:if>
-															<p class="recent-a-p1">${item.roomtype}</p>
-															<p class="recent-a-p2">
-																<c:choose>
-																	<%-- 월세인 경우 --%>
-																	<c:when test="${item.dealingtype == '월세'}">
-																		<span>${item.dealingtype}&nbsp;<!--
-														--><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber> 
-														<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" /> <!--
-														-->${patternprice1}/${item.price}</span>
-																	</c:when>
-																	<%-- 전세 혹은 매매인 경우 --%>
-																	<c:otherwise>
-																		<span>${item.dealingtype}&nbsp;<!--
-														--><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
-														<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" /> <!--
-														-->${patternprice2}</span>
-																	</c:otherwise>
-																</c:choose>
-															</p>
-															<p class="recent-a-p34">${item.floor}층,
-																${item.area}m², 관리비 ${item.fee}만</p>
-															<p class="recent-a-p34">${item.title}</p>
-														</a>
-													</div>
-												</div>
-											</li>
-										</c:forEach>
-										<%-- 각 갤러리 끝 --%>
-									</ul>
-									</c:otherwise>
-								</c:choose>
-						</div>
-						<!-- 갤러리 내용 영역 -->
-						<!-- 갤러리 하단 영역 -->
-						<c:if test="${output != null && fn:length(output) != 0}">
-							<div class="gallery-footer">
-								<%-- gallery-index --%>
-								<div class="gallery-index">
-									<!-- 페이지 번호 구현 -->
-									<%-- 이전 그룹에 대한 링크 --%>
-									<c:choose>
-										<%-- 이전 그룹으로 이동 가능하다면? --%>
-										<c:when test="${pageData.prevPage > 0}">
-											<%-- 이동할 URL 생성 --%>
-											<c:url value="/main/search.do" var="prevPageUrl">
-												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="depositFrom" value="${param.depositFrom}" />
-												<c:param name="depositTo" value="${param.depositTo}" />
-												<c:param name="monthFrom" value="${param.monthFrom}" />
-												<c:param name="monthTo" value="${param.monthTo}" />
-												<c:param name="buyingFrom" value="${param.buyingFrom}" />
-												<c:param name="buyingTo" value="${param.buyingTo}" />
-												<c:param name="feeFrom" value="${param.feeFrom}" />
-												<c:param name="feeTo" value="${param.feeTo}" />
-												<c:param name="sizeFrom" value="${param.sizeFrom}" />
-												<c:param name="sizeTo" value="${param.sizeTo}" />
-												<c:param name="page" value="${pageData.prevPage}" />
-											</c:url>
-											<a href="${prevPageUrl}" id="temp">
-												<button class="prev-btn">
-													<span>&lt;</span>
-												</button>
-											</a>
-										</c:when>
-										<c:otherwise>
-											<button class="prev-btn" id="temp">
-												<span>&lt;</span>
-											</button>
-										</c:otherwise>
-									</c:choose>
+                                                            <!-- 이미지 -->
+                                                            <div class="recent-a-div">
+                                                                <img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+                                                            </div> 
+                                                            <c:if test="${item.confirmdate != null}">
+                                                                <%-- 확인매물 div --%>
+                                                                <div class="recent-a-confirm">
+                                                                    <div class="recent-a-confirm-div">
+                                                                        <span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <%-- 확인매물 끝 --%>
+                                                            </c:if>
+                                                            <p class="recent-a-p1">${item.roomtype}</p>
+                                                            <p class="recent-a-p2">
+                                                                <c:choose>
+                                                                    <%-- 월세인 경우 --%>
+                                                                    <c:when test="${item.dealingtype == '월세'}">
+                                                                        <span>${item.dealingtype}&nbsp;<!--
+                                                        --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber> 
+                                                        <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" /> <!--
+                                                        -->${patternprice1}/${item.price}</span>
+                                                                    </c:when>
+                                                                    <%-- 전세 혹은 매매인 경우 --%>
+                                                                    <c:otherwise>
+                                                                        <span>${item.dealingtype}&nbsp;<!--
+                                                        --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+                                                        <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> <!--
+                                                        -->${patternprice2}</span>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </p>
+                                                            <p class="recent-a-p34">${item.floor}층,
+                                                                ${item.area}m², 관리비 ${item.fee}만</p>
+                                                            <p class="recent-a-p34">${item.title}</p>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </c:forEach>
+                                        <%-- 각 갤러리 끝 --%>
+                                    </ul>
+                                    </c:otherwise>
+                                </c:choose>
+                        </div>
+                        <!-- 갤러리 내용 영역 -->
+                        <!-- 갤러리 하단 영역 -->
+                        <c:if test="${output != null && fn:length(output) != 0}">
+                            <div class="gallery-footer">
+                                <%-- gallery-index --%>
+                                <div class="gallery-index">
+                                    <!-- 페이지 번호 구현 -->
+                                    <%-- 이전 그룹에 대한 링크 --%>
+                                    <c:choose>
+                                        <%-- 이전 그룹으로 이동 가능하다면? --%>
+                                        <c:when test="${pageData.prevPage > 0}">
+                                            <%-- 이동할 URL 생성 --%>
+                                            <c:url value="/main/search.do" var="prevPageUrl">
+                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
+                                                <c:param name="depositFrom" value="${param.depositFrom}" />
+                                                <c:param name="depositTo" value="${param.depositTo}" />
+                                                <c:param name="monthFrom" value="${param.monthFrom}" />
+                                                <c:param name="monthTo" value="${param.monthTo}" />
+                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
+                                                <c:param name="buyingTo" value="${param.buyingTo}" />
+                                                <c:param name="feeFrom" value="${param.feeFrom}" />
+                                                <c:param name="feeTo" value="${param.feeTo}" />
+                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
+                                                <c:param name="sizeTo" value="${param.sizeTo}" />
+                                                <c:param name="page" value="${pageData.prevPage}" />
+                                            </c:url>
+                                            <a href="${prevPageUrl}" id="temp">
+                                                <button class="prev-btn">
+                                                    <span>&lt;</span>
+                                                </button>
+                                            </a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button class="prev-btn" id="temp">
+                                                <span>&lt;</span>
+                                            </button>
+                                        </c:otherwise>
+                                    </c:choose>
 
-									<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-									<ul class="index-list" id="index-list">
-										<c:forEach var="i" begin="${pageData.startPage}"
-											end="${pageData.endPage}" varStatus="status">
-											<%-- 이동할 URL 생성 --%>
-											<c:url value="/main/search.do" var="pageUrl">
-												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="depositFrom" value="${param.depositFrom}" />
-												<c:param name="depositTo" value="${param.depositTo}" />
-												<c:param name="monthFrom" value="${param.monthFrom}" />
-												<c:param name="monthTo" value="${param.monthTo}" />
-												<c:param name="buyingFrom" value="${param.buyingFrom}" />
-												<c:param name="buyingTo" value="${param.buyingTo}" />
-												<c:param name="feeFrom" value="${param.feeFrom}" />
-												<c:param name="feeTo" value="${param.feeTo}" />
-												<c:param name="sizeFrom" value="${param.sizeFrom}" />
-												<c:param name="sizeTo" value="${param.sizeTo}" />
-												<c:param name="page" value="${i}" />
-											</c:url>
+                                    <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+                                    <ul class="index-list" id="index-list">
+                                        <c:forEach var="i" begin="${pageData.startPage}"
+                                            end="${pageData.endPage}" varStatus="status">
+                                            <%-- 이동할 URL 생성 --%>
+                                            <c:url value="/main/search.do" var="pageUrl">
+                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
+                                                <c:param name="depositFrom" value="${param.depositFrom}" />
+                                                <c:param name="depositTo" value="${param.depositTo}" />
+                                                <c:param name="monthFrom" value="${param.monthFrom}" />
+                                                <c:param name="monthTo" value="${param.monthTo}" />
+                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
+                                                <c:param name="buyingTo" value="${param.buyingTo}" />
+                                                <c:param name="feeFrom" value="${param.feeFrom}" />
+                                                <c:param name="feeTo" value="${param.feeTo}" />
+                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
+                                                <c:param name="sizeTo" value="${param.sizeTo}" />
+                                                <c:param name="page" value="${i}" />
+                                            </c:url>
 
-											<%-- 페이지 번호 출력 --%>
-											<c:choose>
-												<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-												<c:when test="${pageData.nowPage == i}">
-													<li><a class="index-indiv index-active">${i}</a></li>
-												</c:when>
-												<%-- 나머지 페이지의 경우 링크 적용함 --%>
-												<c:otherwise>
-													<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>
-									</ul>
+                                            <%-- 페이지 번호 출력 --%>
+                                            <c:choose>
+                                                <%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+                                                <c:when test="${pageData.nowPage == i}">
+                                                    <li><a class="index-indiv index-active">${i}</a></li>
+                                                </c:when>
+                                                <%-- 나머지 페이지의 경우 링크 적용함 --%>
+                                                <c:otherwise>
+                                                    <li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </ul>
 
-									<%-- 다음 그룹에 대한 링크 --%>
-									<c:choose>
-										<%-- 다음 그룹으로 이동 가능하다면? --%>
-										<c:when test="${pageData.nextPage > 0}">
-											<%-- 이동할 URL 생성 --%>
-											<c:url value="/main/search.do" var="nextPageUrl">
-												<%-- <c:param name="roomtype" value="${roomtype}" /> --%>
-												<c:param name="depositFrom" value="${param.depositFrom}" />
-												<c:param name="depositTo" value="${param.depositTo}" />
-												<c:param name="monthFrom" value="${param.monthFrom}" />
-												<c:param name="monthTo" value="${param.monthTo}" />
-												<c:param name="buyingFrom" value="${param.buyingFrom}" />
-												<c:param name="buyingTo" value="${param.buyingTo}" />
-												<c:param name="feeFrom" value="${param.feeFrom}" />
-												<c:param name="feeTo" value="${param.feeTo}" />
-												<c:param name="sizeFrom" value="${param.sizeFrom}" />
-												<c:param name="sizeTo" value="${param.sizeTo}" />
-												<c:param name="page" value="${pageData.nextPage}" />
-											</c:url>
-											<a href="${nextPageUrl}">
-												<button class="next-btn">
-													<span>&gt;</span>
-												</button>
-											</a>
-										</c:when>
-										<c:otherwise>
-											<button class="next-btn">
-												<span>&gt;</span>
-											</button>
-										</c:otherwise>
-									</c:choose>
-								</div>
-								<%-- gallery-index --%>
-							</div>
-						</c:if>
-						<!-- 갤러리 하단 영역 끝 -->
-					</div>
-					<!-- 갤러리 내용 + 하단 영역 끝 -->
-				</div>
-				<!-- 지도 -->
-				<div class="map-container">
-					<div id="map"></div>
-					<div class="zoom">
-						<button class="zoom-in">+</button>
-						<button class="zoom-out">-</button>
-					</div>
-				</div>
-				<!-- 지도 끝 -->
-			</div>
-		</div>
-		<!-- 하단 영역 -->
-		<div id="footer"></div>
-	</div>
-	<!-- Javascript -->
-	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
-	<script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
-	<script type="text/javascript">
-	    /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
-	    function contentSize() {
-	        var wHeight = $(window).height();
-	        var gHeight = wHeight - 206;
-	        var mHeight = wHeight - 136;
-	        $(".gallery-container").css("height", gHeight);
-	        $(".map-container").css("height", mHeight);
-	
-	        // 조회 결과가 없는 경우를 위한 크기 조정
-	        $(".noresultbox").css("height", gHeight-60);
-	    }
-	    $(function() {
-	        contentSize();
-	        $(window).resize(function(e) {
-	            contentSize();
-	        });
-	
-	        /** 좋아요 */
-	        $(".recent-div8").click(function(e) {
-	            $(this).toggleClass('on off');
-	        });
-	    });
-	</script>
-	
-	<!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
-	<%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
+                                    <%-- 다음 그룹에 대한 링크 --%>
+                                    <c:choose>
+                                        <%-- 다음 그룹으로 이동 가능하다면? --%>
+                                        <c:when test="${pageData.nextPage > 0}">
+                                            <%-- 이동할 URL 생성 --%>
+                                            <c:url value="/main/search.do" var="nextPageUrl">
+                                                <%-- <c:param name="roomtype" value="${roomtype}" /> --%>
+                                                <c:param name="depositFrom" value="${param.depositFrom}" />
+                                                <c:param name="depositTo" value="${param.depositTo}" />
+                                                <c:param name="monthFrom" value="${param.monthFrom}" />
+                                                <c:param name="monthTo" value="${param.monthTo}" />
+                                                <c:param name="buyingFrom" value="${param.buyingFrom}" />
+                                                <c:param name="buyingTo" value="${param.buyingTo}" />
+                                                <c:param name="feeFrom" value="${param.feeFrom}" />
+                                                <c:param name="feeTo" value="${param.feeTo}" />
+                                                <c:param name="sizeFrom" value="${param.sizeFrom}" />
+                                                <c:param name="sizeTo" value="${param.sizeTo}" />
+                                                <c:param name="page" value="${pageData.nextPage}" />
+                                            </c:url>
+                                            <a href="${nextPageUrl}">
+                                                <button class="next-btn">
+                                                    <span>&gt;</span>
+                                                </button>
+                                            </a>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button class="next-btn">
+                                                <span>&gt;</span>
+                                            </button>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <%-- gallery-index --%>
+                            </div>
+                        </c:if>
+                        <!-- 갤러리 하단 영역 끝 -->
+                    </div>
+                    <!-- 갤러리 내용 + 하단 영역 끝 -->
+                </div>
+                <!-- 지도 -->
+                <div class="map-container">
+                    <div id="map"></div>
+                    <div class="zoom">
+                        <button class="zoom-in">+</button>
+                        <button class="zoom-out">-</button>
+                    </div>
+                </div>
+                <!-- 지도 끝 -->
+            </div>
+        </div>
+        <!-- 하단 영역 -->
+        <div id="footer"></div>
+    </div>
+    <!-- Javascript -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
+    <script type="text/javascript">
+        /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
+        function contentSize() {
+            var wHeight = $(window).height();
+            var gHeight = wHeight - 206;
+            var mHeight = wHeight - 136;
+            $(".gallery-container").css("height", gHeight);
+            $(".map-container").css("height", mHeight);
+    
+            // 조회 결과가 없는 경우를 위한 크기 조정
+            $(".noresultbox").css("height", gHeight-60);
+        }
+        $(function() {
+            contentSize();
+            $(window).resize(function(e) {
+                contentSize();
+            });
+    
+            /** 좋아요 */
+            $(".recent-div8").click(function(e) {
+                $(this).toggleClass('on off');
+            });
+        });
+    </script>
+    
+    <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
+    <%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
    <script id="gallery-data" type="text/x-handlebars-template">
       {{#each output}}
@@ -453,24 +459,24 @@ pageEncoding="UTF-8"%>
                <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
                   {{!-- 이미지 --}}
                   <div class="recent-a-div">
-					<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
-				  </div>
+                    <img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+                  </div>
                   {{!-- 확인매물 div --}}
-				  {{#if confirmdate}}
+                  {{#if confirmdate}}
                   <div class="recent-a-confirm">
                      <div class="recent-a-confirm-div">
                         <span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
                      </div>
                   </div>
-				  {{/if}}
+                  {{/if}}
                   {{!-- 확인매물 끝 --}}
                   <p class="recent-a-p1">{{roomtype}}</p>
                   <p class="recent-a-p2">
-					{{#isMonth dealingtype}}
+                    {{#isMonth dealingtype}}
                      <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
-					{{else}}
-					 <span>{{dealingtype}} {{isOver price}}</span>
-					{{/isMonth}}
+                    {{else}}
+                     <span>{{dealingtype}} {{isOver price}}</span>
+                    {{/isMonth}}
                   </p>
                   <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
                   <p class="recent-a-p34">{{title}}</p>
@@ -484,109 +490,109 @@ pageEncoding="UTF-8"%>
     <!-- 지도 api -->
     <script type="text/javascript">
     /** ajax전송을 위한 파라미터 가져오기 **/
-	var deposit_from = ${param.depositFrom};
-	var deposit_to = ${param.depositTo};
-	var month_from = ${param.monthFrom};
-	var month_to= ${param.monthTo};
-	var buying_from = ${param.buyingFrom};
-	var buying_to = ${param.buyingTo};
-	var fee_from = ${param.feeFrom};
-	var fee_to = ${param.feeTo};
-	var size_from = ${param.sizeFrom};
-	var size_to = ${param.sizeTo};
-	
-	/** ajax 전송 메서드 **/
-	function getMapPosition(west,east,south,north) {
-		$.ajax({
-           	url: "${pageContext.request.contextPath}/main/search",
-           	method: "get",
-           	data: {
-				"depositFrom": deposit_from,
-				"depositTo": deposit_to,
-				"monthFrom": month_from,
-				"monthTo": month_to,
-				"buyingFrom": buying_from,
-				"buyingTo": buying_to,
-				"feeFrom": fee_from,
-				"feeTo": fee_to,
-				"sizeFrom": size_from,
-				"sizeTo": size_to,
-				"east": east,
-				"west": west,
-				"north": north,
-				"south": south
-           	},
-           	success: function(req){
-           		Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-           		  if (dealingtype == '월세') {
-           		    return options.fn(this);
-           		  } else {
-           		    return options.inverse(this);
-           		  }
-           		});
-           		
-           		Handlebars.registerHelper('isOver', function(price, options) {
-             		if (price >= 10000 && price%10000 != 0) {
-             			return Math.floor(price/10000) +"억" + price%10000;
-             		} else if (price >= 10000 && price%10000 == 0) {
-             			return price/10000 + "억";
-             		} else {
-             			return price;
-             		}
-             	});
-           		
-           		Handlebars.registerHelper('isOver2', function(deposit, options) {
-             		if (deposit >= 10000 && deposit%10000 != 0) {
-             			return Math.floor(deposit/10000) +"억" + deposit%10000;
-             		} else if (deposit >= 10000 && deposit%10000 == 0) {
-             			return deposit/10000 + "억";
-             		} else {
-             			return deposit;
-             		}
-             	});
-           		
-				var template = Handlebars.compile($("#gallery-data").html());
-				var html = template(req);
-				$("#gallery-list").html(html);
-				$("#room-count").html(req.totalCount);
-				
-				var index_list = new Array();
-				for (var i=0; i<req.pageData.totalPage; i++) {
-					var indexno = i+1;
-					if (req.pageData.nowPage == indexno) {
-						index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';					
-					} else {
-						index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
-					}
-				}
-				$("#index-list").html(index_list);
-				
-				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
-		        });
-           	}
-		});
-	}
-	
+    var deposit_from = ${param.depositFrom};
+    var deposit_to = ${param.depositTo};
+    var month_from = ${param.monthFrom};
+    var month_to= ${param.monthTo};
+    var buying_from = ${param.buyingFrom};
+    var buying_to = ${param.buyingTo};
+    var fee_from = ${param.feeFrom};
+    var fee_to = ${param.feeTo};
+    var size_from = ${param.sizeFrom};
+    var size_to = ${param.sizeTo};
+    
+    /** ajax 전송 메서드 **/
+    function getMapPosition(west,east,south,north) {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/main/search",
+            method: "get",
+            data: {
+                "depositFrom": deposit_from,
+                "depositTo": deposit_to,
+                "monthFrom": month_from,
+                "monthTo": month_to,
+                "buyingFrom": buying_from,
+                "buyingTo": buying_to,
+                "feeFrom": fee_from,
+                "feeTo": fee_to,
+                "sizeFrom": size_from,
+                "sizeTo": size_to,
+                "east": east,
+                "west": west,
+                "north": north,
+                "south": south
+            },
+            success: function(req){
+                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                  if (dealingtype == '월세') {
+                    return options.fn(this);
+                  } else {
+                    return options.inverse(this);
+                  }
+                });
+                
+                Handlebars.registerHelper('isOver', function(price, options) {
+                    if (price >= 10000 && price%10000 != 0) {
+                        return Math.floor(price/10000) +"억" + price%10000;
+                    } else if (price >= 10000 && price%10000 == 0) {
+                        return price/10000 + "억";
+                    } else {
+                        return price;
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver2', function(deposit, options) {
+                    if (deposit >= 10000 && deposit%10000 != 0) {
+                        return Math.floor(deposit/10000) +"억" + deposit%10000;
+                    } else if (deposit >= 10000 && deposit%10000 == 0) {
+                        return deposit/10000 + "억";
+                    } else {
+                        return deposit;
+                    }
+                });
+                
+                var template = Handlebars.compile($("#gallery-data").html());
+                var html = template(req);
+                $("#gallery-list").html(html);
+                $("#room-count").html(req.totalCount);
+                
+                var index_list = new Array();
+                for (var i=0; i<req.pageData.totalPage; i++) {
+                    var indexno = i+1;
+                    if (req.pageData.nowPage == indexno) {
+                        index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';                    
+                    } else {
+                        index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
+                    }
+                }
+                $("#index-list").html(index_list);
+                
+                $(".recent-div8").click(function(e) {
+                    $(this).toggleClass('on off');
+                });
+            }
+        });
+    }
+    
         /* kakao map API */
         $(function() {
-        	/** 지도 생성하기 */
+            /** 지도 생성하기 */
             var container = document.getElementById('map');
             var options = {
                 center : new kakao.maps.LatLng(37.5642135, 126.9743207), // 지도의 중심 좌표
                 level : 9,
-                maxLevel : 9	// 지도 확대 레벨
-			};
-			var map = new kakao.maps.Map(container, options);
+                maxLevel : 9    // 지도 확대 레벨
+            };
+            var map = new kakao.maps.Map(container, options);
 
-			
+            
             /** 마커 클러스터러 생성하기 **/
             var clusterer = new kakao.maps.MarkerClusterer({
-                map : map,					// 마커들을 클러스터로 관리하고 표시할 지도 객체
-                averageCenter : false,		// 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-                minLevel : 1,				// 클러스터 할 최소 지도 레벨
-                disableClickZoom : true,	// 클릭 시 확대기능 해제
-                styles : [ {				// calculator에 적용될 스타일
+                map : map,                  // 마커들을 클러스터로 관리하고 표시할 지도 객체
+                averageCenter : false,      // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+                minLevel : 1,               // 클러스터 할 최소 지도 레벨
+                disableClickZoom : true,    // 클릭 시 확대기능 해제
+                styles : [ {                // calculator에 적용될 스타일
                     minWidth : '40px',
                     height : '40px',
                     padding : '5px 11px',
@@ -639,9 +645,9 @@ pageEncoding="UTF-8"%>
                         getMapPosition(west,east,south,north);
                     });
 
-			}); // end $.get(address.json)
+            }); // end $.get(address.json)
 
-			
+            
             /** 서울시 구 별로 마커 생성하기 **/
             $.getJSON("${pageContext.request.contextPath}/assets/guposition",
                 function(data) {
@@ -655,7 +661,7 @@ pageEncoding="UTF-8"%>
                         gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
                         gumark += '</div>';
                         var customOverlay = new kakao.maps.CustomOverlay({
-							position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
+                            position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
                             clickable : false,
                             content : gumark,
                             zIndex : 3
@@ -666,28 +672,28 @@ pageEncoding="UTF-8"%>
                         // 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
                         $("#gu-marker" + i).click(function() {
                             var poslat = $(this).children("#lat").html();
-							var poslng = $(this).children("#lng").html();
+                            var poslng = $(this).children("#lng").html();
                             map.setCenter(new kakao.maps.LatLng(poslat,poslng));
                             map.setLevel(map.getLevel() - 2,{animate : true});
-						});
+                        });
 
-					} // end for
+                    } // end for
 
                     $("#map > div > div > div > div").hover(
                         function() {$(this).css("z-index", "100");},
                         function() {$(this).css("z-index", "0");}
-					); // end hover()
-				});
+                    ); // end hover()
+                });
 
-			
+            
             /** 검색값 가져와서 지도 위치 변경하기 **/
             $("#search-form").submit(function(e) {
                 e.preventDefault();
 
-                var ps = new kakao.maps.services.Places();	// 장소 검색 객체 생성
-                var value = $('input[name=search]').val();	// input값 가져오기
+                var ps = new kakao.maps.services.Places();  // 장소 검색 객체 생성
+                var value = $('input[name=search]').val();  // input값 가져오기
 
-                ps.keywordSearch(value, placesSearchCB);	// 키워드로 장소 검색
+                ps.keywordSearch(value, placesSearchCB);    // 키워드로 장소 검색
                 // 키워드 검색 완료 시 호출되는 콜백함수
                 function placesSearchCB(data, status, pagination) {
                     if (status === kakao.maps.services.Status.OK) {
@@ -699,15 +705,15 @@ pageEncoding="UTF-8"%>
                             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                         }
 
-                        map.setBounds(bounds);	// 검색된 장소 위치를 기준으로 지도 범위 재설정
+                        map.setBounds(bounds);  // 검색된 장소 위치를 기준으로 지도 범위 재설정
                     }
                 }; // end placesSearchCB()
             }); // end submit()
 
             
             /** 지도 확대/축소 변경 버튼 **/
-            function zoomIn() { map.setLevel(map.getLevel() - 1); }		// 지도 확대 메서드
-            function zoomOut() { map.setLevel(map.getLevel() + 1); }	// 지도 축소 메서드
+            function zoomIn() { map.setLevel(map.getLevel() - 1); }     // 지도 확대 메서드
+            function zoomOut() { map.setLevel(map.getLevel() + 1); }    // 지도 축소 메서드
 
             // 버튼 클릭과 기능 연결
             $(".zoom-in").click(function() { zoomIn(); });
@@ -716,8 +722,8 @@ pageEncoding="UTF-8"%>
             
             /** 지도 범위 이동이 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'dragend', function() {
-            	var bounds = map.getBounds();
-            	var southwest = bounds.getSouthWest();
+                var bounds = map.getBounds();
+                var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
                 var east = northeast.getLat();
                 var west = southwest.getLat();
@@ -730,8 +736,8 @@ pageEncoding="UTF-8"%>
             
             /** 지도 확대/축소가 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'zoom_changed', function() {
-            	var bounds = map.getBounds();
-            	var southwest = bounds.getSouthWest();
+                var bounds = map.getBounds();
+                var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
                 var east = northeast.getLat();
                 var west = southwest.getLat();
@@ -800,19 +806,17 @@ pageEncoding="UTF-8"%>
                 if (data.from_value == 0 && data.to_value == 999999) {
                     $("#filter1-value").html("무제한");
                 } else if (data.to_value == 999999) {
-                    $("#filter1-value").html(
-                        fix(data.from_value) + " ~ 무제한");
+                    $("#filter1-value").html(fix(data.from_value) + " ~ 무제한");
                 } else {
-                    $("#filter1-value").html(
-                        fix(data.from_value) + " ~ " + fix(data.to_value));
+                    $("#filter1-value").html(fix(data.from_value) + " ~ " + fix(data.to_value));
                 }
             },
             onFinish: function(data) {
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var feehref = '${pageContext.request.contextPath}/main/search.do?depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
-                location.replace(feehref);
+                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                location.replace(href);
             },
             hide_from_to : true,
             hide_min_max : true
@@ -857,8 +861,8 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
                 
-                var sizehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
-                location.replace(sizehref);
+                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                location.replace(href);
             },
             hide_from_to : true,
             hide_min_max : true
@@ -908,8 +912,8 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var feehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
-                location.replace(feehref);
+                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                location.replace(href);
             },
             hide_from_to : true,
             hide_min_max : true
@@ -955,8 +959,8 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var feehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
-                location.replace(feehref);
+                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                location.replace(href);
             },
             hide_from_to : true,
             hide_min_max : true
@@ -1010,9 +1014,8 @@ pageEncoding="UTF-8"%>
                     high = 999999;
                 }
 
-                var sizehref = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high;
-                location.replace(sizehref);
-
+                var href = '${pageContext.request.contextPath}/main/search.do?depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high;
+                location.replace(href);
             },
             hide_from_to : true,
             hide_min_max : true
