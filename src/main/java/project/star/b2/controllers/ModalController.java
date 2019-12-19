@@ -54,6 +54,7 @@ public class ModalController {
 		return new ModelAndView("modal/join");
 	}
 
+
 	/********************************************************************
 	 * 회원가입 폼에 대한 action
 	 *******************************************************************/
@@ -108,8 +109,9 @@ public class ModalController {
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
+
 	/********************************************************************
-	 *  						로그인
+	 * 로그인
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/login.do", method = RequestMethod.GET)
 	public ModelAndView login(Model model, HttpServletRequest request) {
@@ -117,9 +119,10 @@ public class ModalController {
      
         return new ModelAndView("modal/login");
 	}
+
 	
 	/********************************************************************
-	 *  						로그인 action폼
+	 * 로그인 action폼
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request) {
@@ -162,18 +165,20 @@ public class ModalController {
 			return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
 		} 
 		
-		/*
-		 * String redirectUrl = contextPath + "/"; return
-		 * webHelper.redirect(redirectUrl, "로그인되었습니다.");
-		 */
+		// 로그인 이전 페이지로 보내주는 처리
 		request.getHeader("REFERER");
-	      String referer = (String)request.getHeader("REFERER");
-	      return webHelper.redirect(referer, "로그인되었습니다.");
+	    String referer = (String)request.getHeader("REFERER");
+	    	return webHelper.redirect(referer, "로그인되었습니다.");
 	}
-	
+
+
+	/********************************************************************
+	 * 로그아웃 폼
+	 *******************************************************************/
+
 	@RequestMapping(value = "/modal/login_out.do", method = RequestMethod.GET)
 	public ModelAndView login_out(Model model, HttpServletRequest request) {
-		/* request 객체를 사용해서 세션 객체 만들기 */
+		// request 객체를 사용해서 세션 객체 만들기 
 		HttpSession session = request.getSession();
 		
 		/* session 삭제 */
@@ -182,19 +187,24 @@ public class ModalController {
 		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
 	}
+
 	
 	/********************************************************************
-	 * 중복확인 * 
+	 * 중복확인 
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/idCheck.do",method = RequestMethod.GET)
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) throws Exception {
 		
+		// 사용자 입력 값 가져오기
 		String email = request.getParameter("email");
+
+		// DB에 있는 입력값과 비교하기 
 		int result = userService.idCheck(email);
 		return Integer.toString(result);
 	}
  
+
 	/********************************************************************
 	 * 비밀번호 찾기 폼
 	 *******************************************************************/
@@ -203,6 +213,7 @@ public class ModalController {
 
 		return new ModelAndView("modal/pwd");
 	}
+
 
 	/********************************************************************
 	 * 찜한방 - 비교하기

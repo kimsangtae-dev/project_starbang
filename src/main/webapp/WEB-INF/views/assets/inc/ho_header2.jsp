@@ -122,9 +122,9 @@
             width: 520px;
             padding-top: 0;
         }
-        #header a:hover {
+        /*#header a:hover {
             color: #666666;
-        }
+        }*/
     </style>
 </head>
 <!---------------------------------

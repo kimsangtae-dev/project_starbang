@@ -8,7 +8,7 @@
 |	header * css
 ----------------------------------*/
         /* 브라우저 최소 넓이 지정 */
-        .header {
+        #header {
             min-width: 1366px;
         }
         /* 메뉴바 크기, 여백, 테두리 */
@@ -132,12 +132,6 @@
                 <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
                 <span>&nbsp | &nbsp</span>
                 <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
-                <span>&nbsp | &nbsp</span>
-                <a href="${pageContext.request.contextPath}/user/list.do">
-                    user db</a>
-                <span>&nbsp | &nbsp</span>
-                <a href="${pageContext.request.contextPath}/upload/upload.do">
-                    file upload db</a>
             </div>
             <!-- 메뉴 항목 -->
             <div class="pull-right">

@@ -1,40 +1,40 @@
 @charset "utf-8";
 
 #content {
-	min-width: 1200px;
+    min-width: 1200px;
 }
 
 #content>div {
-	width: 1200px;
-	margin: auto;
+    width: 1200px;
+    margin: auto;
 }
 
 #content .adm-header {
-	height: 80px;
-	margin-bottom: 15px;
+    height: 80px;
+    margin-bottom: 15px;
 }
 
 #content h1 {
-	float: left;
-	font-size: 30px;
+    float: left;
+    font-size: 30px;
 }
 
 #content .adm {
-	float: right;
+    float: right;
 }
 
 #content .adm>div {
-	padding-top: 10px;
+    padding-top: 10px;
 }
 
 #content .input-group {
-	width: 300px;
-	position: relative;
-	/* float: left; */
+    width: 300px;
+    position: relative;
+    /* float: left; */
 }
 
 div.search_form {
-	float: right;
+    float: right;
     position: relative;
     top: 40px;
 }
@@ -47,12 +47,12 @@ div.box {
 }
 /* 페이지네이션 구현*/
 .gallery-index{
-	width: fit-content;
+    width: fit-content;
     height: 32px;
     margin: auto;
 }
 .gallery-footer{
-	padding-top: 40px;
+    padding-top: 40px;
     height: 180px;
     border-top: 1px solid #ddd; 
     width:1180px;
@@ -124,7 +124,3 @@ div.box {
  
 /* 검색바, 버튼들 우측 정렬 */
 .adm-btn { float: right; }
-
-button.btn-default {
-	height: 34px;
-}

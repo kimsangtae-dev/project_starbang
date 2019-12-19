@@ -122,54 +122,53 @@
 	</table>
 	</div>
 	
-	
-			<%-- gallery-index --%>
-			<div class="gallery-footer">
-				<div class="gallery-index">
-					<!-- 페이지 번호 구현 -->
-					<%-- 이전 그룹에 대한 링크 --%>
+	<%-- gallery-index --%>
+	<div class="gallery-footer">
+		<div class="gallery-index">
+			<!-- 페이지 번호 구현 -->
+			<%-- 이전 그룹에 대한 링크 --%>
+			<c:choose>
+				<%-- 이전 그룹으로 이동 가능하다면? --%>
+				<c:when test="${pageData.prevPage > 0}">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/admin/userli.do" var="prevPageUrl">
+						<c:param name="keyword" value="${keyword}" />
+						<c:param name="page" value="${pageData.prevPage}" />
+					</c:url>
+					<a href="${prevPageUrl}" id="temp">
+						<button class="prev-btn">
+							<span>&lt;</span>
+						</button>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<button class="prev-btn" id="temp">
+						<span>&lt;</span>
+					</button>
+				</c:otherwise>
+			</c:choose>
+
+			<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+			<ul class="index-list">
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/admin/userli.do" var="pageUrl">
+						<c:param name="keyword" value="${keyword}" />
+						<c:param name="page" value="${i}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
 					<c:choose>
-						<%-- 이전 그룹으로 이동 가능하다면? --%>
-						<c:when test="${pageData.prevPage > 0}">
-							<%-- 이동할 URL 생성 --%>
-							<c:url value="/admin/userli.do" var="prevPageUrl">
-								<c:param name="keyword" value="${keyword}" />
-								<c:param name="page" value="${pageData.prevPage}" />
-							</c:url>
-							<a href="${prevPageUrl}" id="temp">
-								<button class="prev-btn">
-									<span>&lt;</span>
-								</button>
-							</a>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<li><a class="index-indiv index-active">${i}</a></li>
 						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
 						<c:otherwise>
-							<button class="prev-btn" id="temp">
-								<span>&lt;</span>
-							</button>
+							<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
 						</c:otherwise>
 					</c:choose>
-
-					<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
-					<ul class="index-list">
-						<c:forEach var="i" begin="${pageData.startPage}"
-							end="${pageData.endPage}" varStatus="status">
-							<%-- 이동할 URL 생성 --%>
-							<c:url value="/admin/userli.do" var="pageUrl">
-								<c:param name="keyword" value="${keyword}" />
-								<c:param name="page" value="${i}" />
-							</c:url>
-
-							<%-- 페이지 번호 출력 --%>
-							<c:choose>
-								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
-								<c:when test="${pageData.nowPage == i}">
-									<li><a class="index-indiv index-active">${i}</a></li>
-								</c:when>
-								<%-- 나머지 페이지의 경우 링크 적용함 --%>
-								<c:otherwise>
-									<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
-								</c:otherwise>
-							</c:choose>
 						</c:forEach>
 					</ul>
 
@@ -200,6 +199,7 @@
 		<!-- 하단 영역 -->
 		<div id="footer"></div>
 	</div>
+	
 	<!-- Javascript -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>

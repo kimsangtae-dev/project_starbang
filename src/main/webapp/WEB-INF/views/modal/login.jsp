@@ -52,6 +52,7 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.cookie.js"></script>
+
 <!-- ID저장하기 쿠키 -->
 <script type="text/javascript">
     $(function(){
@@ -82,5 +83,5 @@
     }
 })
 })
-
 </script>
+<!-- ID저장하기 끝 -->

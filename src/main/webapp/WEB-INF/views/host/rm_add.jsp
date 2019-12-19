@@ -254,7 +254,7 @@
 										<input type="radio" name="commingday" value="날짜협의">
 											<p>날짜 협의</p>
 										</label>
-										<input type="hidden" id="datepicker" name="commingday">
+										<input type="text" id="datepicker" name="commingday">
 										<label class="in_date">
 											<input type="radio" name="commingday" value="1" id="cal">
 											<p>날짜 선택</p>

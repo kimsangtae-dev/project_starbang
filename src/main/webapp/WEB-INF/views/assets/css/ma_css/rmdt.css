@@ -627,7 +627,6 @@ p {
 .jFMhNO {
 	padding-top: 100px;
 	padding-bottom: 120px;
-	border-top: 1px solid rgb(221, 221, 221);
 }
 
 .GYLAC {
@@ -847,4 +846,218 @@ p {
 #map {
     width: 100%;
     height: 100%;
+}
+
+
+
+/* 이미지 보기 기능
+-------------------------------------*/
+/* 백그라운드 레이어 검은색깔 */
+.background_layer {
+	display:none;
+    background-color: rgba(0, 0, 0, 0.98);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 30;
+}
+
+/* 이미지 닫기 */
+.img_close {
+    width: 29px;
+    height: 28px;
+    background-color: transparent;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    outline:none;
+}
+
+.fkdkpL {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    max-height: 663px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.xDUcp {
+    width: 100%;
+    height: 93px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.railBtn_left {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 28px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+/* 썸네일 ul */
+.thumnail_rail {
+    width: 860px;
+    height: 93px;
+    position: relative;
+    transition: transform 200ms ease 0s;
+}
+
+/* li */
+.thumnail_rail > li {
+    float: left;
+    width: 140px;
+    height: 93px;
+}
+
+.thumnail_rail > li + li {
+    margin-left: 4px;
+}
+
+.thumnail_rail > li > img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 썸네일 슬라이드 왼쪽버튼 */
+.railBtn_left:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.railBtn_left > svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.railBtn_left > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+/* 썸네일 슬라이드 오른쪽버튼 */
+.railBtn_right {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 28px;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.railBtn_right:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+/* 크게보기 */
+.giantView {
+    width: 100%;
+    padding-top: 57.2917%;
+    position: relative;
+    background-color: white;
+}
+
+.giantView > img {
+	width: 100%;
+} 
+
+/* 크게보기 왼쪽 버튼 */
+.giantBtn_left {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.giantBtn_left:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.giantBtn_left > svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.giantBtn_left > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+/* 크게보기 오른쪽 버튼 */
+.giantBtn_right {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.giantBtn_right:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+/* 특수효과 */
+.fCgViP {
+    width: 100%;
+    height: 100%;
+    background: url(https://d1774jszgerdmk.cloudfront.net/512/116eff37-690d-4315-8f42-73fa082f97f3) center center / cover no-repeat;
+}
+
+.fCgViP::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 4px solid rgb(0, 108, 255);
+}
+
+.sm_thumnail { 
+	width: 100%; 
+	height: 100%; 
+	cursor: pointer;
+	background-size: contain; 
 }

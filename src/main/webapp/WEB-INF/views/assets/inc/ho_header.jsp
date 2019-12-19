@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
     <style>
-        /*---------------------------------
+/*---------------------------------
 |	header * css
 ----------------------------------*/
         /* 브라우저 최소 넓이 지정 */
@@ -122,13 +122,8 @@
             width: 520px;
             padding-top: 0;
         }
-        #header a:hover {
-            color: #666666;
-        }
-        /* a.atag1 {
-    text-align: left;
-} */
-        /* #header::after { content: ''; dispaly: table; clear: both } */
+         /* #header a:hover { color: #666666; } */ 
+
     </style>
 </head>
 <!---------------------------------

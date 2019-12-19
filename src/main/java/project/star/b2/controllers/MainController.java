@@ -354,6 +354,7 @@ public class MainController {
 		String region_2depth_name = webHelper.getString("region_2depth_name");
 
 		/** 방 종류(roomtype) list */
+<<<<<<< HEAD
 		
 		  List<String> roomtypepate = new ArrayList<String>(); 
 		  String[] roomto = room.split("m"); 
@@ -375,6 +376,29 @@ public class MainController {
 		  // 월세, 전세, 매매 
 		filter.setDealingtype(dealingtypepate);
 		 
+=======
+		 List<String> roomtypepate = new ArrayList<String>(); 
+		 String[] roomto = room.split("m"); 
+		 for (int i = 0; i < roomto.length ; i++) {
+		 roomtypepate.add(roomto[i]); }
+		 
+		/** 매물 종류(dealingtype) list */
+		List<String> dealingtypepate = new ArrayList<String>(); String[]
+		dealingtypeto = dealingtype.split("m"); 
+		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
+		
+		double west = webHelper.getDouble("west");
+		double east = webHelper.getDouble("east");
+		double south = webHelper.getDouble("south");
+		double north = webHelper.getDouble("north");
+		
+
+		Filter filter = new Filter();
+		//방종류 
+		filter.setRoomtype(roomtypepate);
+		//월세, 전세, 매매 
+		filter.setDealingtype(dealingtypepate);
+>>>>>>> 56c9e41f96304406eab18b4c1698611c34a98f76
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -407,12 +431,18 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
+<<<<<<< HEAD
 		
 			  Gallery.setRoomTypePate(roomtypepate);
 			  
 			  Gallery.setDealingTypePate(dealingtypepate);
 			 
+=======
+>>>>>>> 56c9e41f96304406eab18b4c1698611c34a98f76
 
+			Gallery.setRoomTypePate(roomtypepate);
+			Gallery.setDealingTypePate(dealingtypepate);
+			
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
 
@@ -427,6 +457,11 @@ public class MainController {
 
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
+			
+			Gallery.setWest(west);
+			Gallery.setEast(east);
+			Gallery.setSouth(south);
+			Gallery.setNorth(north);
 
 			// 전체 게시글 수 조회
 			totalCount = galleryService.getGalleryCount(input);
@@ -560,14 +595,14 @@ public class MainController {
 	@RequestMapping(value = "main/repwd.do")
 	public String repwd(Model model, HttpServletRequest request) {
 
-		/** pwd에서 입력한 이메일 세션 생성 */
-		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("fullemail");
+	    /** pwd에서 입력한 이메일 세션 생성*/
+	    HttpSession session = request.getSession();
+	    String email = (String) session.getAttribute("fullemail");
 
-		model.addAttribute("fullemail", email);
-		session.invalidate();
+	    model.addAttribute("fullemail", email);
+	    session.invalidate();
 
-		return "main/repwd";
+	    return "main/repwd";
 	}
 
 	/********************************************************************
@@ -578,35 +613,37 @@ public class MainController {
 	@RequestMapping(value = "main/repwd_ok.do", method = RequestMethod.POST)
 	public ModelAndView edit(Model model) {
 
-		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
-		String passwd = webHelper.getString("passwd");
-		String email = webHelper.getString("email");
+	/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+	String passwd = webHelper.getString("passwd");
+	String email = webHelper.getString("email");
 
-		if (passwd == null) {
-			return webHelper.redirect(null, "비밀번호를 입력하세요.");
-		}
-
-		/** 2) 데이터 수정하기 */
-		// 수정할 값들을 Beans에 담는다.
-		User input = new User();
-		input.setPasswd(passwd);
-		input.setEmail(email);
-
-		try {
-			try {
-				// 일반회원 데이터 수정
-				userService.getPassword(input);
-
-				/** 3) 결과를 확인하기 위한 페이지 이동 */
-				return webHelper.redirect("/b2", "수정되었습니다.");
-			} catch (Exception e) {
-				e.getLocalizedMessage();
-				return webHelper.redirect(null, e.getLocalizedMessage());
-			}
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
+	if (passwd == null) {
+	   return webHelper.redirect(null, "비밀번호를 입력하세요.");
 	}
+
+	/** 2) 데이터 수정하기 */
+	// 수정할 값들을 Beans에 담는다.
+	User input = new User();
+	input.setPasswd(passwd);
+	input.setEmail(email);
+
+	try {
+	    try {
+	        // 회원 pwd 데이터 수정
+	        userService.getPassword(input);
+	        /** 3) 결과를 확인하기 위한 페이지 이동 */
+	        return webHelper.redirect("/b2", "수정되었습니다.");
+	    }
+	    catch(Exception e) {
+	        e.getLocalizedMessage();
+	        return webHelper.redirect(null, e.getLocalizedMessage());
+	    }
+	}
+	catch(Exception e) {
+	    return webHelper.redirect(null, e.getLocalizedMessage());
+	}
+}
+
 
 	/********************************************************************
 	 * 테스트
