@@ -25,22 +25,27 @@
 			<div>
 				<div class="adm-header">
 					<h1>방관리</h1>
-					<div class="adm">
+					<div class="adm"><form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
 						<div class="input-group">
 							<span class="input-group-addon"> <span
 								class="glyphicon glyphicon-search"></span>
-							</span> <input type="text" class="form-control" /> <span
+							</span> <input type="search" class="form-control" id="keyword" name="keyword" placeholder="이름 종류 검색" value="${keyword}"/> <span
 								class="input-group-btn">
 								<button class="btn btn-default" type="submit">검색</button>
 							</span>
-						</div>
+						</form></div>
 						<br>
 						<div class="box">
+							<form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
 							<div class="adm-radio">
-								<label><input type="radio" name='check' value="html"
-									id=checked-item>확인매물</label> <label><input type='radio'
-									name='check' value="html" id=checked-fake>허위매물</label>
+								<label for="check"></label> 
+								<input type="radio" class="radiobutton" name='check' value="1" id="checked-item" <c:if test="${rememberChecked eq '1'}">checked</c:if> >확인매물
+								<input type='radio' class="radiobutton" name='check' value="2" id="checked-fake" <c:if test="${rememberChecked eq '2'}">checked</c:if> >허위매물
+								<input type='radio' class="radiobutton" name='check' value="3" id="checked-hidden"<c:if test="${rememberChecked eq '3'}">checked</c:if>>숨김매물
+								<input type='radio' class="radiobutton" name='check' value="4" id="checked-done" <c:if test="${rememberChecked eq '4'}">checked</c:if>>거래완료
+ 								<input type="submit" value="확인">
 							</div>
+							</form>
 							<div class="adm-btn">
 								<input type="button" name="" class="btn btn-default"
 									id=confirm-button value="확인매물"> <input type="button"
@@ -67,7 +72,7 @@
 							<th class="text-center">방 주인</th>
 							<th class="text-center">확인매물</th>
 							<th class="text-center">허위매물신고건수</th>
-							<th class="text-center">숨김여부</th>
+							<th class="text-center">상태</th>
 						</tr>
 					</thead>
 					<c:choose>
@@ -86,19 +91,29 @@
 								<c:set var="roomtype" value="${item.roomtype}" />
 								<c:set var="dealingtype" value="${item.dealingtype}" />
 								<c:set var="price" value="${item.price}" />
-								<c:set var="userno" value="${item.name}" />
+								<c:set var="name" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
-								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
+								<%-- <c:set var="fakecount" value="${item.cnt}" /> --%>
 								<c:set var="status" value="${item.status}" />
+								
+						<%--검색어가 있다면? --%>
+						<c:if test="${keyword != ''}">
+							<%-- 검색어에 <mark> 태그를 적용하여 형광펜 효과 준비 --%>
+							<c:set var="mark" value="<mark>${keyword}</mark>" />
+							<%-- 출력을 위해 준비한 유저이름과 위치에서 검색어와 일치하는 단어를 형광펜 효과로 변경 --%>
+							<c:set var="roomtype" value="${fn:replace(roomtype, keyword, mark)}" />
+							<c:set var="dealingtype" value="${fn:replace(dealingtype, keyword, mark)}" />
+							<c:set var="name" value="${fn:replace(name, keyword, mark)}" />
+						</c:if>
 
 								<tr id="bbbb">
 									<td class="text-center"><input type="checkbox" id="aaaa"
 										value="${item.roomno}" class="roomlist"></td>
-									<td align="center">${item.roomno}</td>
-									<td align="center">${item.roomtype}</td>
+									<td align="center">${roomno}</td>
+									<td align="center">${roomtype}</td>
 									<td align="center">${dealingtype}</a></td>
 									<td align="center">${price}만원</td>
-									<td align="center"><a href="${viewUrl}">${userno}님</td>
+									<td align="center">${name}</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
 									<td align="center">${fakecount}</td>
 									<td align="center" id="hidden">${item.status}</td>
@@ -203,150 +218,82 @@
 		});
 
 		$(function() {
-			$('#confirm-button')
-					.on(
-							'click',
-							function() {
-								$('#aaaa:checked')
-										.each(
-												function() {
-													var list = $(this).val();
-
-													$
-															.ajax({
-																//결과 url
-																url : "${pageContext.request.contextPath}/admin/confirm_ok.do",
-																data : {
-																	user_id : list
-																},
-																type : "POST",
-																success : function(
-																		data) {
-																	location
-																			.reload();
-																	$(
-																			"#confirmdate")
-																			.html(
-																					data);
-																},
-																error : function(
-																		error,
-																		status,
-																		request) {
-																	alert("Error!"
-																			+ error
-																			+ "request: "
-																			+ request
-																			+ " status: "
-																			+ status);
-																},
-															});
-												});//checked
-							})
+			$('#confirm-button').on('click',function() {$('#aaaa:checked').each(
+				function() { var list = $(this).val();
+				$.ajax({//결과 url
+				url : "${pageContext.request.contextPath}/admin/confirm_ok.do",
+				data : {user_id : list},
+				type : "POST",
+				success : function(data) {location.reload();
+					$("#confirmdate").html(data);},
+				error : function(error,status,request) {
+				alert("Error!"+ error+ "request: "+ request+ " status: "+ status);},
+				});
+				});//checked
+			})
 		}); //end $.ajax;
 
 		
 		$(function() {
-			$('#hidden-room')
-					.on(
-							'click',
-							function() {
-								$('#aaaa:checked')
-										.each(
-												function() {
-													var hidden = $(this).val();
-
-													$
-															.ajax({
-																//결과 url
-																url : "${pageContext.request.contextPath}/admin/hidden_ok.do",
-																data : {
-																	hidden_id : hidden
-																},
-																type : "POST",
-																datatype : 'text',
-																success : function(
-																		data) {
-																	$("#hidden")
-																			.html(
-																					data)
-																},
-																error : function(
-																		error,
-																		status,
-																		request) {
-																	alert("Error!"
-																			+ error
-																			+ "request: "
-																			+ request
-																			+ " status: "
-																			+ status);
-																},
-															});
-												});//checked
-							})
+			$('#hidden-room').on('click',function() {$('#aaaa:checked').each(
+				function() {var hidden = $(this).val();
+				$.ajax({//결과 url
+				url : "${pageContext.request.contextPath}/admin/hidden_ok.do",
+				data : {hidden_id : hidden},
+				type : "POST",
+				datatype : 'text',
+				success : function(data) {
+				$("#hidden").html(data)},
+				error : function(error,status,request) {
+				alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+				},
+				});
+				});//checked
+			})
 		}); //end $.ajax;
 
 		$(function() {
-			$('#delete-room')
-					.on(
-							'click',
-							function() {
-								$('#aaaa:checked')
-										.each(
-												function() {
-													var delete1 = $(this).val();
-
-													$
-															.ajax({
-																//결과 url
-																url : "${pageContext.request.contextPath}/admin/delete_ok.do",
-																data : {
-																	delete_id : delete1
-																},
-																type : "POST",
-																datatype : 'text',
-																success : function(
-																		data) {
-																	location
-																			.reload();
-																	alert("삭제되었습니다.")
-																},
-																error : function(
-																		error,
-																		status,
-																		request) {
-																	alert("Error!"
-																			+ error
-																			+ "request: "
-																			+ request
-																			+ " status: "
-																			+ status);
-																},
-															});
-												});//checked
-							})
+			$('#delete-room').on('click',function() {
+				$('#aaaa:checked').each(
+					function() {
+					var delete1 = $(this).val();
+					$.ajax({//결과 url
+					url : "${pageContext.request.contextPath}/admin/delete_ok.do",
+					data : {delete_id : delete1},
+					type : "POST",
+					datatype : 'text',
+					success : function(data) {
+					location.reload();
+					alert("삭제되었습니다.")},
+					error : function(error,status,request) {
+					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+					},
+					});
+					});//checked
+			})
 		}); //end $.ajax;
 
 
-		$(function() {
+/*  		$(function() {
 			$('#checked-fake').change(function() {
 								alert("체크 확인");
+								var checkeditem = $(".radiobutton:checked").val();
 								$.ajax({
 								//결과 url
-								url : "${pageContext.request.contextPath}/admin/rmli3.do",
-								type : "POST",
+								url : "${pageContext.request.contextPath}/admin/rmli.do",
+								type : "GET",
 								data : {
-									fake_id : 1
+									check : checkeditem
 									},
 								success : function(data) {
+									alert(checkeditem);
 									$("body").html(data);
 									},
 								error : function(error, status,request) {
 									alert("Error!" + error + "request: " + request+ " status: " + status);},
 								});
 							})
-		}); //end $.ajax;
+		}); //end $.ajax;  */
 	</script>
 	
 			<!-- Handlebar 템플릿 코드 -->
@@ -398,7 +345,7 @@
 		});
 		});
 	}); */
-	$(function() {
+/* 	$(function() {
 		$("#checked-item").change(function(){	
 				$.ajax({
 					//결과 url
@@ -419,7 +366,7 @@
 	}); //end $.ajax;
 	function check(){
 	$("input:radio[id='checked-item']").prop("checked", true);
-	}
+	} */
 	</script>
 </body>
 </html>

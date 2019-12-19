@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import okhttp3.Request;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
@@ -97,30 +98,34 @@ public class AdminController {
 	 * 방 관리
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/rmli.do", method = RequestMethod.GET)
-	public ModelAndView rmli(Model model) {
+	public ModelAndView rmli(Model model, HttpServletRequest request) {
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int keyword2 = webHelper.getInt("keyword", 0); // 검색어
+		int raval = webHelper.getInt("check");
+//		String val = request.getParameter("check");
+//		int radioval = Integer.parseInt(val);
+//		String[] values = request.getParameterValues("check");
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
+//		for (int i=0; i < values.length; i++) {
+//			values[i] = 
+//		}
+
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Room input = new Room();
+		input.setStatus(raval);
 		input.setRoomtype(keyword);
-		input.setTitle(keyword);
-		input.setArea(keyword2);
-		input.setFee(keyword2);
-		input.setConfirmdate(keyword);
-		input.setAddress(keyword);
-		input.setUserno(keyword2);
 		input.setName(keyword);
-		/* input.setHidden(keyword); */
+		input.setDealingtype(keyword);
 
 		List<Room> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산할 결과가 저장될 객체
+		String rememberChecked = "";
 
 		try {
 			// 전체 게시글 수 조회
@@ -133,6 +138,30 @@ public class AdminController {
 			Room.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			output = roomService.getRoomList(input);
+
+			if (raval == 1) {
+				output = roomService.getRoomCheckList(raval);
+				rememberChecked = "1"; // 확인매물
+				totalCount = roomService.getRoomCount(input);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			} else if (raval == 2) {
+				output = roomService.getRoomCheckList(raval);
+				rememberChecked = "2"; // 허위매물
+				totalCount = roomService.getRoomCount(input);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			} else if (raval == 3) {
+				output = roomService.getRoomCheckList(raval);
+				rememberChecked = "3"; // 숨김매물
+				totalCount = roomService.getRoomCount(input);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			} else if (raval == 4) {
+				output = roomService.getRoomCheckList(raval);
+				rememberChecked = "4"; // 숨김매물
+				totalCount = roomService.getRoomCount(input);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+			} else {
+				output = roomService.getRoomList(input);
+			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -141,6 +170,7 @@ public class AdminController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
+		model.addAttribute("rememberChecked", rememberChecked);
 
 		String viewPath = "admin/rmli";
 		return new ModelAndView(viewPath);
@@ -177,32 +207,27 @@ public class AdminController {
 	}
 
 	/****** 체크박스 페이지 ******/
-	@RequestMapping(value = "/admin/rmli2.do", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView room_check_ok(Model model, HttpServletRequest request) {
-
-		String check1 = request.getParameter("check_id");
-		int check = Integer.valueOf(check1);
-
-		Room input = new Room();
-		input.setStatus(check);
-		
-		List<Room> output = null; // 조회결과가 저장될 객체
-		try {
-			// 데이터 조회
-			output = roomService.getRoomCheckConfirmList(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-
-		/** 3) 페이지 이동 */
-		model.addAttribute("output", output);
-		String viewPath = "/admin/rmli2.do";
-		return webHelper.redirect(contextPath + viewPath, null);
-	}
+	/*
+	 * @RequestMapping(value = "/admin/rmli2.do", method = RequestMethod.POST)
+	 * 
+	 * @ResponseBody public ModelAndView room_check_ok(Model model,
+	 * HttpServletRequest request) {
+	 * 
+	 * String check = request.getParameter("check_id");
+	 * 
+	 * Room input = new Room(); input.setStatus(check);
+	 * 
+	 * List<Room> output = null; // 조회결과가 저장될 객체 try { // 데이터 조회 output =
+	 * roomService.getRoomCheckConfirmList(input); } catch (Exception e) { return
+	 * webHelper.redirect(null, e.getLocalizedMessage()); }
+	 * 
+	 *//** 3) 페이지 이동 *//*
+						 * model.addAttribute("output", output); String viewPath = "/admin/rmli2.do";
+						 * return webHelper.redirect(contextPath + viewPath, null); }
+						 */
 
 	/**
-	 * 작성 폼에 대한 방확인  action 페이지
+	 * 작성 폼에 대한 방확인 action 페이지
 	 */
 	@RequestMapping(value = "/admin/confirm_ok.do", method = RequestMethod.POST)
 	@ResponseBody
@@ -260,11 +285,6 @@ public class AdminController {
 	 * 회원 관리
 	 *******************************************************************/
 
-	private Object getCheck() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/****** 목록 페이지 ******/
 	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)
 	public ModelAndView userli(Model model) {
@@ -312,7 +332,6 @@ public class AdminController {
 		String viewPath = "/admin/userli";
 		return new ModelAndView(viewPath);
 	}
-
 
 	/********************************************************************
 	 * 상세 페이지 보기
@@ -526,6 +545,7 @@ public class AdminController {
 
 		return new ModelAndView("admin/write");
 	}
+
 	/********************************************************************
 	 * 체크된 확인매울!
 	 *******************************************************************/
@@ -575,7 +595,6 @@ public class AdminController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 
-		String viewPath = "admin/rmli";
-		return new ModelAndView(viewPath);
+		return new ModelAndView("admin/rmli");
 	}
 }
