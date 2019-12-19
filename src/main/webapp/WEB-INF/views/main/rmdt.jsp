@@ -11,6 +11,226 @@
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/billboard.min.css" />
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/css/ma_css/rmdt.css" />
 <link rel="stylesheet" type="text/css"	href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+
+
+
+
+
+<style type="text/css">
+
+.background_layer {
+	display:none;
+    background-color: rgba(0, 0, 0, 0.98);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 30;
+}
+
+.img_close {
+    width: 29px;
+    height: 28px;
+    background-color: transparent;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    outline:none;
+}
+
+.fkdkpL {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    max-height: 663px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.xDUcp {
+    width: 100%;
+    height: 93px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.railBtn_left {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 28px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.railBtn_left:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.railBtn_left > svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.railBtn_left > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+/* ul */
+.thumnail_rail {
+    width: 860px;
+    height: 93px;
+    position: relative;
+    transition: transform 200ms ease 0s;
+}
+
+/* li */
+.thumnail_rail > li {
+    float: left;
+    width: 140px;
+    height: 93px;
+}
+
+.thumnail_rail > li + li {
+    margin-left: 4px;
+}
+
+.thumnail_rail > li > img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.railBtn_right {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 28px;
+    height: 100%;
+    top: 0px;
+    right: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.railBtn_right:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.giantView {
+    width: 100%;
+    padding-top: 57.2917%;
+    position: relative;
+    background-color: white;
+}
+
+.giantView > img {
+	width: 100%;
+} 
+
+.giantBtn_left {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.giantBtn_left:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+.giantBtn_left > svg {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.giantBtn_left > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.giantBtn_right {
+    background-color: rgba(34, 34, 34, 0.5);
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+
+.giantBtn_right:hover {
+    background-color: rgba(34, 34, 34, 0.7);
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 0px;
+}
+
+/* 특수효과 */
+.fCgViP {
+    width: 100%;
+    height: 100%;
+    background: url(https://d1774jszgerdmk.cloudfront.net/512/116eff37-690d-4315-8f42-73fa082f97f3) center center / cover no-repeat;
+}
+
+.fCgViP::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-bottom: 4px solid rgb(0, 108, 255);
+}
+
+.sm_thumnail { 
+	width: 100%; 
+	height: 100%; 
+	cursor: pointer;
+	background-size: contain; 
+}
+
+
+
+</style>
+
+
+
+
+
+
 </head>
 
 <body>
@@ -29,13 +249,13 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="monthman">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-
+					
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
@@ -62,33 +282,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<!--상단 내용 끝-->
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
-
-			<%-- ---------------하얀색 헤더의 좋아요 시작------------------- --%>
-			<c:choose>
-				<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
-				<c:when test="${loginInfo == null }">
-					<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
-					<a href="${pageContext.request.contextPath}/modal/login.do"
-						data-toggle="modal" data-target="#loginModal"> <%-- 검은색 하트 좋아요 시작--%>
-						<img class="recent-div9 off" data-value="off" /><%-- 검은색 하트 좋아요 끝 --%>
-					</a>
-				</c:when>
-				<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
-				<c:otherwise>
-					<%-- 좋아요 버튼 --%>
-					<img class="recent-div9 off" data-value="on" />
-					<%-- 좋아요 끝 --%>
-				</c:otherwise>
-			</c:choose>
-
-
-			<%-- 검은색 하트 카운트 시작 --%>
-			<span id="lkct"></span>
-			<%-- 검은색 하트 카운트 끝 --%>
-
-			<%-- ---------------하얀색 헤더의 좋아요 끝------------------- --%>
-
-
+			<div class="recent-div9 off" data-value="on"></div>
+			<span id="lkct">1</span>
 			<!-- 도트 -->
 			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 링크 -->
@@ -248,7 +443,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 								<a href="#">
 									<img src="${pageContext.request.contextPath}/assets/img/upload/nophoto.png" /></a></li>
 						</c:otherwise>
-					</c:choose>
+					</c:choose>	
 				</c:forEach>
 			</ul>
 		</div>
@@ -281,44 +476,20 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="textht pull-left texthth1">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-
+					
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
 						</c:choose>
 					</h1>
-
-					<%-- ------- 파란색 헤더바의 좋아요 시작 (하얀색 테두리 하트) ------- --%>
-					<c:choose>
-						<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
-						<c:when test="${loginInfo == null }">
-
-							<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
-							<a href="${pageContext.request.contextPath}/modal/login.do"
-								data-toggle="modal" data-target="#loginModal"> <%-- 검은색 좋아요 시작--%>
-								<div class="recent-div8 off" data-value="off"></div> <%-- 검은색 좋아요 끝 --%>
-							</a>
-						</c:when>
-						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
-						<c:otherwise>
-							<%-- 좋아요 버튼 --%>
-							<div class="recent-div8 off" data-value="on"></div>
-							<%-- 좋아요 끝 --%>
-						</c:otherwise>
-					</c:choose>
-
-
-					<%-- 파란색 헤더의 하트 수 카운트 --%>
+					<div class="recent-div8 on" data-value="off"></div>
 					<span class="cntlk">0</span>
-					<%-- ------- 파란색 헤더바의 좋아요 끝 (하얀색 테두리 하트) ------- --%>
-
-
 					<button class="icngbl ulcp">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
@@ -338,10 +509,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<!--사용자 매물 설명 끝-->
 			<div id="smhead">
 				<div class="xOEdU">
-					<a class="eYDrrB" href="#radar">다방면 스코어</a> <a class="eYDrrB"
-						href="#priceinfo">가격정보</a> <a class="eYDrrB" href="#pictogram">옵션</a>
-					<a class="eYDrrB" href="#location">위치</a>
-					<!-- <a class="eYDrrB">인기매물</a> -->
+					<a class="eYDrrB move1">다방면 스코어</a> 
+					<a class="eYDrrB move2">가격정보</a> 
+					<a class="eYDrrB move3">옵션</a>
+					<a class="eYDrrB move4">위치</a>
 				</div>
 			</div>
 		</div>
@@ -352,16 +523,17 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		 -->
 		<div id="simsim">
 			<div class="xOEdU">
-				<a class="eYDrrB" href="#radar">다방면 스코어</a> <a class="eYDrrB"
-					href="#priceinfo">가격정보</a> <a class="eYDrrB" href="#pictogram">옵션</a>
-				<a class="eYDrrB" href="#location">위치</a>
+				<a id="move1" class="eYDrrB">다방면 스코어</a> 
+				<a id="move2" class="eYDrrB">가격정보</a> 
+				<a id="move3" class="eYDrrB">옵션</a>
+				<a id="move4" class="eYDrrB">위치</a>
 				<!-- <a class="eYDrrB">인기매물</a> -->
 			</div>
 		</div>
 		<!-- 파란색 헤더바 여기서 부터 시작 -->
 		<div id="radar">
 			<!-- 다방면 스코어 시작-->
-			<div class="jFMhNO kBQneM">
+			<div id="location1" class="jFMhNO kBQneM">
 				<h1 class="dbrfvk kBQneM">다방면 스코어</h1>
 				<div class="fCword">
 					<h1>
@@ -374,7 +546,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		</div>
 
 		<!--다방면스코어 끝-->
-		<div id="priceinfo" class="jFMhNO kBQneM">
+		<div id="location2" class="jFMhNO kBQneM">
 			<!--가격정보 시작-->
 			<h1 class="GYLAC">가격정보</h1>
 			<div class="taln">
@@ -396,7 +568,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 								<c:forEach var="k" items="${price}" varStatus="status">
 									<c:if test="${k.dealingtype == '월세'}">
-								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/>
+								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
 							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 								    	<h6>${patternprice1}/${k.price}만 원</h6>
 								    </c:if>
@@ -405,7 +577,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 							<c:forEach var="k" items="${price}" varStatus="status">
 								<c:if test="${k.dealingtype == '전세'}">
-							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
+							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/> 
 						    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
 							    	${patternprice1}만 원
 							    </c:if>
@@ -452,19 +624,19 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			</div>
 		</div>
 		<!--가격정보 끝 -->
-		<div id="pictogram" class="jFMhNO kBQneM">
+		<div id="location3" class="jFMhNO kBQneM">
 			<!--상세 옵션들 아이콘으로 보여줌 시작-->
 			<h1 class="GYLAC">옵션</h1>
-
+			
 			<input type="hidden" id="nice" value="${info.optionitem}" />
-
+			
 			<div class="dDctva">
-
+				
 			</div>
 		</div>
 		<!--상세 옵션들 아이콘으로 보여줌 끝-->
 		<!-- 지도 시작 -->
-		<div id="location" class="jFMhNO kBQneM">
+		<div id="location4" class="jFMhNO kBQneM">
 			<h1 class="fIqmuM">위치</h1>
 			<p class="hwnvlX">${room.address}</p>
 
@@ -482,6 +654,67 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	</div>
 	<!-- 하단 영역 -->
 	<jsp:include page="../assets/inc/ma_bottom.jsp" />
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="portal" id="">
+    <div class="background_layer"> <!-- VPfux -->
+        <button class="img_close"> <!-- jmTKvK -->
+            <svg width="27" height="28" viewBox="0 0 27 28">
+                <g fill="#FFF" fill-rule="evenodd">
+                    <path d="M.67.774l26.366 26.365-.707.707L-.036 1.481z"></path>
+                    <path d="M26.33.774L-.037 27.139l.707.707L27.036 1.481z"></path>
+                </g>
+            </svg>
+        </button>
+        <div class="fkdkpL">   <!-- fkdkpL -->
+            <div class="xDUcp">   <!-- xDUcp -->
+                <button class="railBtn_left">  <!-- Huuqk -->
+                    <svg width="10" height="16" viewBox="0 0 10 16">
+                        <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path>
+                    </svg>
+                </button>
+                
+                <ul width="860" class="thumnail_rail" style="transform: translateX(0px);">  <!-- tHjGe -->
+                <c:forEach var="i" items="${img}" varStatus="status">
+					<c:choose>
+						<c:when test="${i.fileName != null}">
+							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${pageContext.request.contextPath}/assets/img/upload/${i.fileName})";></div></li>
+						</c:when>
+					</c:choose>	
+				</c:forEach>
+
+                </ul>
+
+                <button class="railBtn_right">  <!-- TcMUB * 2-->
+                    <svg width="10" height="16" viewBox="0 0 10 16">
+                        <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="giantView" id="target" style="background: url(${pageContext.request.contextPath}/assets/img/upload/${img[0].fileName}) center center / contain no-repeat;">  <!-- esRNDG -->
+                <button class="giantBtn_left">  <!-- gmzACw *2 -->
+                    <svg width="15" height="24" viewBox="0 0 10 16">
+                        <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path></svg></button>
+                <div class="eKXjJb"></div>   <!-- eKXjJb -->
+                <button class="giantBtn_right">  <!-- hgppiM *2 -->
+                    <svg width="15" height="24" viewBox="0 0 10 16">
+                        <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+	
+
 
 	<!-- Javascript -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
@@ -613,34 +846,23 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		});
 	</script>
 
-	<%-- ---------------하얀색 헤더의 좋아요 시작 (검은테두리 하트)------------------- --%>
-	<script type="text/javascript">
-		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
+	<script>
+		/* 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div9").click(function(e) {
-				$(this).toggleClass('off off');
+				$(this).toggleClass('on off');
 			})
-			if (${loginInfo != null}) {
-				$(".recent-div9").click(function(e) {
-					$(this).toggleClass('off on');
-			})};// end if
 		});
 	</script>
-	<%-- ---------------하얀색 헤더의 좋아요 끝 (검은테두리 하트)------------------- --%>
-	<%-- ---------------파란색 헤더의 좋아요 시작 (하얀색테두리 하트)------------------- --%>
-	<script type="text/javascript">
-		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
+
+	<script>
+		/* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('off off');
+				$(this).toggleClass('on off');
 			})
-			if (${loginInfo != null}) {
-				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('off on');
-			})};// end if
 		});
 	</script>
-	<%-- ---------------파란색 헤더의 좋아요 끝 (하얀색테두리 하트)------------------- --%>
 
 	<!-- 평수 바꾸기 -->
 	<script type="text/javascript">
@@ -663,7 +885,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			});
 		});
 	</script>
-
+	
 		<!-- 평수 미터제곱 같이 바꾸기2 -->
 	<script type="text/javascript">
 		$(function() {
@@ -721,33 +943,61 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	</script>
 
 	<script>
-		$(function() {
-			/** 브라우저에 대한 스크롤 감지 이벤트 정의 */
-			$(window).scroll(
-					function() {
-						// 스크롤이 맨 끝에 도달했음을 감지하는 조건문
-						if ($(window).scrollTop() > 1078) {
-							$("#fxed").css("display", "block");
-							$("#simsim").css("display", "none");
-						} else {
-							$("#fxed").css("display", "none");
-							$("#simsim").css("display", "block", "min-height",
-									"100px");
-						}
-					}); // end scroll
-		});
+	$(function() {
+		/** 브라우저에 대한 스크롤 감지 이벤트 정의 */
+		$(window).scroll(
+			function() {
+				// 스크롤이 맨 끝에 도달했음을 감지하는 조건문
+				if ($(window).scrollTop() > 1060) {
+					$("#fxed").css("display", "block");
+					$("#simsim").css("display", "none");
+				} else {
+					$("#fxed").css("display", "none");
+					$("#simsim").css("display", "block", "min-height", "100px");
+				}
+		}); // end scroll
+	});
+	
+	/* 이동하기 기능 */
+	$(function() {
+		
+		/* 위에 있는 바 */
+		function up_fnMove(seq){
+	        var offset = $("#location" + seq).offset();
+	        $('html, body').animate({scrollTop : offset.top-150}, 300);
+	    }
+		
+		$("#move1").click(function(){ up_fnMove(1) });		
+		$("#move2").click(function(){ up_fnMove(2) });	
+		$("#move3").click(function(){ up_fnMove(3) });	
+		$("#move4").click(function(){ up_fnMove(4) });	
+		
+		/* 밑에 있는 바 */
+		function dn_fnMove(seq){
+	        var offset = $("#location" + seq).offset();
+	        $('html, body').animate({scrollTop : offset.top-80}, 300);
+	    }
+		
+		$(".move1").click(function(){ dn_fnMove(1) });		
+		$(".move2").click(function(){ dn_fnMove(2) });
+		$(".move3").click(function(){ dn_fnMove(3) });
+		$(".move4").click(function(){ dn_fnMove(4) });
+		
+	});
+	
+	
 	</script>
-
+	
 	<script>
 	function binary() {
-
+		
         /* 뿌려줄 String을 배열에 저장 */
         var option = [
         	"<div class='gqtsIc'><div class='dNeTFF'></div><p>에어컨</p></div>",
-        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>",
-        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>",
-        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>",
-        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>",
+        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>", 
+        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>", 
+        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>", 
+        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>", 
         	"<div class='gqtsIc'><div class='gdMhEY'></div><p>냉장고</p></div>",
         	"<div class='gqtsIc'><div class='dQLnLP'></div><p>가스레인지</p></div>",
         	"<div class='gqtsIc'><div class='krFgu'></div><p>인덕션</p></div>",
@@ -757,8 +1007,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         	"<div class='gqtsIc'><div class='mCsgX'></div><p>침대</p></div>",
         	"<div class='gqtsIc'><div class='gaOEWf'></div><p>책상</p></div>"
         	];
-
-
+        
 
         /* 받아온 값을 관리비 항목에 넣는다 */
         var num = $("#nice").val();
@@ -772,22 +1021,22 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         } // for문
     } // binary함수
     binary();
-
+    
 function binary2() {
-
+    		
             /* 뿌려줄 String을 배열에 저장 */
             var option2 = ["인터넷", "유선TV", "청소비", "수도세", "도시가스", "전기세", "기타"];
-
+            
             /* 받아온 값을 관리비 항목에 넣는다 */
             //var num2 = ${info.feeitem};
             var num2 = ${info.feeitem};
 			var sum = new Array;
-
+    		
             for (var i=7; i>=1 ; i--) {
                 if(num2 >= Math.pow(2, i-1)){
                 	num2 = num2 - Math.pow(2, i-1);
                 	sum += option2[7-i];
-
+                    
                     if(num2 == 0 || i == 1){ break; }
                     sum += ", ";
                 } // if문
@@ -796,9 +1045,115 @@ function binary2() {
             $("#apeend_feeitem").append(sum);
         } // binary함수
         binary2();
-
-
+   
 	</script>
 
+	
+	<script>
+
+	$(function() {
+	    /** 링크를 클릭한 경우 */
+	    $("#bigview").click(function(e) {
+	        e.preventDefault();             // 페이지 이동 방지
+	        $(".background_layer").fadeIn(0);   // 배경 레이어를 화면에 표시한다.
+	    });
+
+		/** (화면에 표시된) 배경 레이어를 클릭한 경우 */
+		$(".img_close").click(function() {
+		     $(".background_layer").fadeOut(0);       // 배경 레이어의 숨김
+		});
+	});
+	
+	/* 썸네일 슬라이드 */
+	$(function() {
+		var len = $(".list").length * 140 + ($(".list").length - 1) * 4;
+	    $(".thumnail_rail").css('width',len + "px");
+	    
+	    var location = 0;
+	    
+	    $(".railBtn_left").click(function() {
+	    	location = location + 288;
+	    	if ( location > 0){
+	    		location = 0;
+	    	}
+	    	$(".thumnail_rail").css('transform',"translateX(" + location + "px)");
+	    });
+	    
+	    $(".railBtn_right").click(function() {
+
+	    	location = location - 288;
+	    	if (location < -len + 860) {
+	    		location = -len + 860;
+	    	}
+	    	$(".thumnail_rail").css('transform',"translateX(" + location + "px)");
+	    	
+	    });
+	    
+	    if( $(".list").length < 7 ){  
+	    	$(".railBtn_right").attr('disabled', true);
+	    }
+	    
+	});
+	
+
+	/* 큰 이미지 띄워주기 */
+	$(function() {
+		
+		// 가장 처음 선택하지 않았을 때
+		var img = $(".sm_thumnail:eq(0)").parents('li');
+		
+		var pass = "";
+		
+        $(".sm_thumnail").click(function(e) {
+        	img = $(this).parents('li'); // 클릭한 요소의 src 속성값 가져오기
+        	pass = img;
+
+            $("#target").css('background-image', img.children("div").css('background-image'));
+        });
+        
+        $(".giantBtn_left").click(function(e) {
+        	// img = 해당 div의 부모 요소가 들어가있다
+            if (pass == "") {
+            	pass = img;
+            } 
+        	if (pass != null){
+            	pass2 = $(".list:first-child").children("div").css('background');
+            	if( pass.children("div").css('background') == pass2 ) {
+            		pass = $(".sm_thumnail:eq(0)").parents('li');
+                } else {
+                	pass = pass.prev();
+                }
+            }
+        	
+            var val = pass.children("div").css("background-image");
+            $("#target").css('background-image', val);
+        });
+        
+        
+        $(".giantBtn_right").click(function(e) {
+        	
+        	// img = 해당 div의 부모 요소가 들어가있다
+            if (pass == "") {
+            	pass = img;
+            }
+        	
+            if (pass != null){
+            	pass2 = $(".list:last-child").children("div").css('background');
+            	if( pass.children("div").css('background') == pass2 ) {
+            		pass = $(".list:last-child");
+                } else {
+                	pass = pass.next();
+                }
+            }
+        	
+            console.log(pass);
+        	
+            var val = pass.children("div").css("background-image");
+            $("#target").css('background-image', val);
+        });
+	});
+	
+	</script>
+	
 </body>
 </html>
