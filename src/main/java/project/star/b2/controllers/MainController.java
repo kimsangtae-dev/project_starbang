@@ -354,29 +354,6 @@ public class MainController {
 		String region_2depth_name = webHelper.getString("region_2depth_name");
 
 		/** 방 종류(roomtype) list */
-<<<<<<< HEAD
-		
-		  List<String> roomtypepate = new ArrayList<String>(); 
-		  String[] roomto = room.split("m"); 
-		  for (int i = 0; i < roomto.length ; i++) {
-		  roomtypepate.add(roomto[i]); 
-		  }
-		  
-		 //** 매물 종류(dealingtype) list *//
-											  List<String> dealingtypepate = new ArrayList<String>(); String[]
-											  dealingtypeto = dealingtype.split("m"); for (int i = 0; i <
-											  dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
-											 
-
-		Filter filter = new Filter();
-		
-		  // 방종류
-		filter.setRoomtype(roomtypepate);
-		  
-		  // 월세, 전세, 매매 
-		filter.setDealingtype(dealingtypepate);
-		 
-=======
 		 List<String> roomtypepate = new ArrayList<String>(); 
 		 String[] roomto = room.split("m"); 
 		 for (int i = 0; i < roomto.length ; i++) {
@@ -398,7 +375,6 @@ public class MainController {
 		filter.setRoomtype(roomtypepate);
 		//월세, 전세, 매매 
 		filter.setDealingtype(dealingtypepate);
->>>>>>> 56c9e41f96304406eab18b4c1698611c34a98f76
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -431,14 +407,6 @@ public class MainController {
 		PageData pageData = null;
 
 		try {
-<<<<<<< HEAD
-		
-			  Gallery.setRoomTypePate(roomtypepate);
-			  
-			  Gallery.setDealingTypePate(dealingtypepate);
-			 
-=======
->>>>>>> 56c9e41f96304406eab18b4c1698611c34a98f76
 
 			Gallery.setRoomTypePate(roomtypepate);
 			Gallery.setDealingTypePate(dealingtypepate);
