@@ -51,13 +51,23 @@
 				</p>
 				<p>살고 싶으신가요?</p>
 			</div>
-			<form method="get"
-				action="${pageContext.request.contextPath}/main/search.do">
+			<form method="get" action="${pageContext.request.contextPath}/main/search.do">
 				<div>
-					<input type="text" name="keyword" id="keyword" value="${keyword}">
+					<input type="hidden" class="input-hidden" name="roomtype" id="keyword" value="원룸m투룸m쓰리룸m오피스텔">
+					<input type="hidden" class="input-hidden" name="dealingtype" id="keyword" value="월세m전세m매매">
+					<input type="hidden" class="input-hidden" name="depositFrom" id="keyword" value="0">
+					<input type="hidden" class="input-hidden" name="monthFrom" id="keyword" value="0">
+					<input type="hidden" class="input-hidden" name="buyingFrom" id="keyword" value="0">
+					<input type="hidden" class="input-hidden" name="feeFrom" id="keyword" value="0">
+					<input type="hidden" class="input-hidden" name="sizeFrom" id="keyword" value="0">
+					<input type="hidden" class="input-hidden" name="depositTo" id="keyword" value="999999">
+					<input type="hidden" class="input-hidden" name="monthTo" id="keyword" value="999999">
+					<input type="hidden" class="input-hidden" name="buyingTo" id="keyword" value="999999">
+					<input type="hidden" class="input-hidden" name="feeTo" id="keyword" value="999999">
+					<input type="hidden" class="input-hidden" name="sizeTo" id="keyword" value="999999">
+					<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder = "지역을 검색하세요">
 					<i class="glyphicon glyphicon-search"></i>
-					<button type="submit" href="#" class="btn btn-primary">방
-						찾기</button>
+					<button type="submit" href="#" class="btn btn-primary">방 찾기</button>
 				</div>
 			</form>
 		</div>

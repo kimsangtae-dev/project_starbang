@@ -711,7 +711,7 @@
 		</script>
 		<script>
 if ($('.hit-div5').length) {
-    alert('값이 있어요!');
+/*     alert('값이 있어요!'); */
 }
 </script>
 </body>

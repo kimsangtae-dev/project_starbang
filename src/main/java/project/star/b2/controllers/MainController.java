@@ -354,23 +354,27 @@ public class MainController {
 		String region_2depth_name = webHelper.getString("region_2depth_name");
 
 		/** 방 종류(roomtype) list */
-		/*
-		 * List<String> roomtypepate = new ArrayList<String>(); String[] roomto =
-		 * room.split("m"); for (int i = 0; i < roomto.length ; i++) {
-		 * roomtypepate.add(roomto[i]); }
-		 * 
-		 *//** 매물 종류(dealingtype) list *//*
-											 * List<String> dealingtypepate = new ArrayList<String>(); String[]
-											 * dealingtypeto = dealingtype.split("m"); for (int i = 0; i <
-											 * dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
-											 */
+		
+		  List<String> roomtypepate = new ArrayList<String>(); 
+		  String[] roomto = room.split("m"); 
+		  for (int i = 0; i < roomto.length ; i++) {
+		  roomtypepate.add(roomto[i]); 
+		  }
+		  
+		 //** 매물 종류(dealingtype) list *//
+											  List<String> dealingtypepate = new ArrayList<String>(); String[]
+											  dealingtypeto = dealingtype.split("m"); for (int i = 0; i <
+											  dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
+											 
 
 		Filter filter = new Filter();
-		/*
-		 * // 방종류 filter.setRoomtype(roomtypepate);
-		 * 
-		 * // 월세, 전세, 매매 filter.setDealingtype(dealingtypepate);
-		 */
+		
+		  // 방종류
+		filter.setRoomtype(roomtypepate);
+		  
+		  // 월세, 전세, 매매 
+		filter.setDealingtype(dealingtypepate);
+		 
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
 		filter.setDepositTo(depositTo);
@@ -395,18 +399,19 @@ public class MainController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
 //		input.setRoomtype(room);
+		/* input.setTitle(keyword); */
 		input.setDealingtype(dealingtype);
-		input.setRegion_2depth_name(region_2depth_name);
+		input.setRegion_2depth_name(keyword);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
 
 		try {
-			/*
-			 * Gallery.setRoomTypePate(roomtypepate);
-			 * 
-			 * Gallery.setDealingTypePate(dealingtypepate);
-			 */
+		
+			  Gallery.setRoomTypePate(roomtypepate);
+			  
+			  Gallery.setDealingTypePate(dealingtypepate);
+			 
 
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
@@ -606,13 +611,4 @@ public class MainController {
 	/********************************************************************
 	 * 테스트
 	 *******************************************************************/
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/test_check", method = RequestMethod.POST)
-	public List<String> post(Model model, @RequestParam(value = "valueArrTest[]") List<String> valueArr) {
-		// 파라미터값을 View에게 전달한다.
-		model.addAttribute("valueArr", valueArr);
-
-		return (List<String>) new ModelAndView("main/search");
-	}
-
 }
