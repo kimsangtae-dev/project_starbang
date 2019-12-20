@@ -255,4 +255,51 @@ public class UserServiceImpl implements UserService {
         
         return result;
      }
+	
+	 /**
+     * 마이페이지에서 프로필 수정
+     */ 
+	@Override
+	public int addUploadProfileItem(User input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("UserMapper.updateProfileItem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
+	}
+	
+	 /**
+     * 마이페이지에서 회원수정
+     */ 
+	@Override
+	public int editUserMyPage(User input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.update("UserMapper.mypageupdateItem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
+	}
+	
 }

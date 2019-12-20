@@ -142,5 +142,19 @@
       parameterType="project.star.b2.model.User">
       UPDATE user SET passwd=#{passwd} WHERE email=#{email}
     </update>
+    
+    <!-- 마이페이지에서 데이터 갱신을 위한 기능 정의(나) -->
+    <update id="mypageupdateItem"
+        parameterType="project.star.b2.model.User">
+        UPDATE user SET name=#{name}, email=#{email}, passwd=#{passwd}, tel=#{tel}, editdate=#{editdate}
+        WHERE userno=#{userno};
+    </update>
+    
+    <!-- 프로필 데이터 저장을 위한 기능 정의 -->
+	<update id="updateProfileItem"
+		parameterType="project.star.b2.model.User">
+		UPDATE user SET editdate=#{editdate}, profile_img=#{profile_img}
+        WHERE userno=#{userno};
+	</update>
 
 </mapper>

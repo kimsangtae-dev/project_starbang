@@ -1,6 +1,7 @@
 package project.star.b2.controllers;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,9 @@ import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.UploadItem;
+import project.star.b2.model.User;
 import project.star.b2.service.UploadService;
+import project.star.b2.service.UserService;
 
 @Slf4j
 @Controller
@@ -30,6 +33,9 @@ public class UploadController {
 
 	@Autowired
 	UploadService uploadservice;
+	
+	@Autowired
+	UserService userService;
 
 	/** "/프로젝트이름"에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -131,4 +137,89 @@ public class UploadController {
 		// View를 사용하지 않고 FileStream을 출력하므로 리턴값은 없다.
 		return null;
 	}
+	
+	/** 마이페이지 프로필 업로드 폼을 구성하는 페이지 */
+	@RequestMapping(value = "/main/mypageProfile.do", method = RequestMethod.GET)
+	public String mypageupload() {
+		
+		return "main/mypage";
+	}
+
+	/** 마이페이지 프로필 업로드 폼에 대한 action 페이지 */
+	@RequestMapping(value = "/main/Profileupload_ok.do", method = RequestMethod.POST)
+	public ModelAndView ProfileuploadOk(Model model) {
+
+		/** 1) 업로드를 수행 */
+		try {
+			webHelper.profileUpload();
+			log.debug("profileUpload();다녀왔다");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return webHelper.redirect(null, "업로드에 실패했습니다.");
+		}
+
+		/** 2) 업로드 된 정보 추출하기 */
+		// 파일 정보 추출
+		List<User> fileList = webHelper.getProfileFile();
+		
+		if (fileList == null) {
+			return webHelper.redirect(null, "파일이 없다.");
+		}
+
+		// 조회결과의 Beans에 검색 날짜 추가 후 로그를 통해 내역 확인
+		for (User item : fileList) {
+			item.setUserno(item.getUserno());
+			item.setName(item.getName());
+			item.setEmail(item.getEmail());
+			item.setPasswd(item.getPasswd());
+			item.setTel(item.getTel());
+			item.setRegdate(item.getRegdate());
+			item.setProfile_img(item.getProfile_img());
+			item.setEditdate(item.getEditdate());
+			log.debug(item.toString());
+			
+
+			// DB에 저장하기
+			try {
+				userService.addUploadProfileItem(item);
+			} catch (Exception e) {
+				log.error(e.getLocalizedMessage());
+				e.printStackTrace();
+			}
+		}
+		
+		/** 3) 업로드 결과를 View에게 전달한다 */
+		model.addAttribute("fileList", fileList);
+		
+		webHelper.redirect(null, fileList + "");
+
+		/** 1)필요한 변수값 생성 */
+		int userno = 1; // 회원 이메일기저오기
+		
+		/** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		User input = new User();
+		input.setUserno(userno);
+		
+		User output = null; // 조회결과가 저장될 객체
+		
+		try {
+			// 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다
+			output = userService.getUserItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 3)View 처리 */
+		model.addAttribute("output", output);
+			
+		// 중단 없이 정상적인 실행 종료를 통해 View를 호출해야 하는 경우
+		// View의 경로를 ModelAndView 타입의 객체로 생성하여 리턴한다.
+//		String viewPath = "main/mypage";
+		//return new ModelAndView("main/mypage");
+		
+		String redirectUrl = contextPath + "/main/mypage.do";
+		return webHelper.redirect(redirectUrl, "저장완료");
+	}
+	
 }

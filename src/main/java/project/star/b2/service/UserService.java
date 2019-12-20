@@ -73,4 +73,18 @@ public interface UserService {
       * 비번 변경) 패스워드 변경 
       */ 
      public int getPassword(User input) throws Exception;
+     
+     /**
+      * 이미지 리스트 데이터 등록하기
+      * @param User 저장할 정보를 담고 있는 Beans
+      * @throws Exception
+      */
+     public int addUploadProfileItem(User input) throws Exception;
+     
+     /**
+      * 회원 데이터 수정하기
+      * @param User 수정할 정보를 담고 있는 Beans
+      * @throws Exception
+      */
+     public int editUserMyPage(User input) throws Exception;
 }

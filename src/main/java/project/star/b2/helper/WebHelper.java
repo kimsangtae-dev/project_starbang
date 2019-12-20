@@ -27,6 +27,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 import lombok.extern.slf4j.Slf4j;
 import project.star.b2.model.UploadItem;
+import project.star.b2.model.User;
 
 @Slf4j
 public class WebHelper {
@@ -58,6 +59,9 @@ public class WebHelper {
 
 	/** Multipart 전송시 File정보를 저장하기 위한 컬렉션 */
 	private List<UploadItem> fileList;
+	
+	/** Multipart 전송시 File정보를 저장하기 위한 컬렉션 */
+	private List<User> profileFile;
 
 	/** Multipart 전송시 텍스트 데이터를 저장하기 위한 컬렉션 */
 	private Map<String, String> paramMap;
@@ -124,6 +128,14 @@ public class WebHelper {
 
 	public void setFileList(List<UploadItem> fileList) {
 		this.fileList = fileList;
+	}
+	
+	public List<User> getProfileFile() {
+		return profileFile;
+	}
+	
+	public void setProfileFile(List<User> profileFile) {
+		this.profileFile = profileFile;
 	}
 
 	public Map<String, String> getParamMap() {
@@ -670,6 +682,149 @@ public class WebHelper {
 
 		/** 4) 취득한 정보를 로그로 기록한다. */
 		for (UploadItem item : fileList) {
+			log.debug(String.format("(f) <-- %s", item.toString()));
+		}
+
+		for (String key : paramMap.keySet()) {
+			log.debug(String.format("(p) <-- %s = %s", key, paramMap.get(key)));
+		}
+	}
+	
+	/**
+	 * Multipart로 전송된 데이터를 판별하여 파일리스트와 텍스트 파라미터를 분류한다.
+	 * @param roomno 
+	 *
+	 * @throws Exception
+	 */
+	public void profileUpload() throws Exception {
+		/** 1) 업로드 사전 준비하기 */
+		// items에 저장 데이터가 분류될 컬렉션들 할당하기
+		profileFile = new ArrayList<User>();
+		paramMap = new HashMap<String, String>();
+
+		// 업로드가 수행될 폴더의 존재 여부 체크해서 없다면 생성하기
+		// --> import java.io.File
+		File uploadDirFile = new File(this.uploadDir);
+		if (!uploadDirFile.exists()) {
+			uploadDirFile.mkdirs();
+		}
+
+		// 업로드가 수행될 폴더 연결
+		// --> import org.apache.commons.fileupload.disk.DiskFileItemFactory
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(uploadDirFile);
+
+		/** 2) 업로드 처리하기 */
+		// 업로드 수행을 위한 객체 생성
+		// --> import org.apache.commons.fileupload.servlet.ServletFileUpload;
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		// UTF-8 처리 지정
+		upload.setHeaderEncoding(this.encType);
+		// 최대 파일 크기
+		upload.setSizeMax(this.uploadMaxFileSize);
+		// 실제 업로드를 수행하여 전송된 데이터에 대한 컬렉션 객체 추출하기
+		// -> 이 안에 파일과 텍스트 정보가 함께 들어 있기 때문에
+		// 반복문을 수행하면서 분류 작업을 진행해야 한다.
+		// --> import org.apache.commons.fileupload.FileItem
+		List<FileItem> items = upload.parseRequest(request);
+
+		/** 3) 업로드 정보 분류하기 */
+		// 업로드 된 컬렉션의 데이터 수 만큼 반복하면서 처리한다.
+		for (FileItem f : items) {
+			if (f.isFormField()) {
+				/** 텍스트 형식의 데이터인 경우 --> paramMap에 정보 분류 */
+				// <input>태그 의 name 속성
+				String key = f.getFieldName();
+				// 사용자의 입력값을 UTF-8 형식으로 취득한다.
+				String value = f.getString(this.encType);
+				
+				// 이미 동일한 키값이 map안에 존재한다면?
+				// --> checkbox의 경우 이름이 동일한 요소가 여러개 전송 될 수 있음.
+				if (paramMap.containsKey(key)) {
+					// 기존의 값 뒤에 콤마(,)를 추가해서 값을 병합한다.
+					value = paramMap.get(key) + "," + value;
+					paramMap.put(key, value);
+				} else {
+					// 그렇지 않다면 키와 값을 신규로 추가한다.
+					paramMap.put(key, value);
+				}
+			} else {
+				/** 파일 형식의 데이터인 경우 --> fileList에 정보 분류 */
+				/** 3-1) 파일의 정보를 추출한다 */
+				String fieldName = f.getFieldName(); // <input type='file' />의 name 속성
+				String originName = f.getName(); // 파일의 원본 이름
+				String contentType = f.getContentType(); // 파일 형식
+				long fileSize = f.getSize(); // 파일 사이즈
+
+				// 파일 사이즈가 없다면 for문의 조건식으로 돌아간다.
+				if (fileSize < 1) {
+					continue;
+				}
+
+				/** 3-2) 동일한 이름의 파일이 존재하는지 검사한다. */
+				// 파일의 원본 이름에서 확장자만 추출
+				String ext = originName.substring(originName.lastIndexOf("."));
+				 
+				String fileName = null; // 웹 서버에 저장될 파일이름
+				File uploadFile = null; // 저장된 파일 정보를 담기 위한 File객체
+				String filePath = null; // 최종적으로 업로드 될 파일 경로
+				int count = 0; // 중복된 파일 수
+				// 날짜
+				Calendar c = Calendar.getInstance();
+				c.add(Calendar.DAY_OF_MONTH, -1);
+				String regDate = String.format("%04d-%02d-%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+						c.get(Calendar.DAY_OF_MONTH));
+				String editDate = String.format("%04d-%02d-%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
+						c.get(Calendar.DAY_OF_MONTH)); // 변경일자
+
+				// 일단 무한루프
+				while (true) {
+					// 저장될 파일 이름 --> 현재시각 + 카운트값 + 확장자
+					fileName = String.format("%d%d%s", System.currentTimeMillis(), count, ext);
+					log.info(fileName);
+					// 업로드 파일이 저장될 폴더 + 파일이름으로 파일객체를 생성한다.
+					uploadFile = new File(uploadDirFile, fileName);
+
+					// 동일한 이름의 파일이 없다면 반복 중단.
+					if (!uploadFile.exists()) {
+						filePath = uploadFile.getAbsolutePath();
+						break;
+					}
+
+					// if문을 빠져나올 경우 중복된 이름의 파일이 존재한다는 의미이므로 count를 1증가
+					count++;
+				} // end while
+
+				/** 3-3) 업로드 된 파일을 결정된 파일 경로로 저장 */
+				f.write(uploadFile); // 파일 저장
+				f.delete(); // 파일 객체는 삭제
+
+				// 윈도우에서 처리할 경우 파일 경로상에 존재하는 역슬래시를 모두 슬래시로 변경한다.
+				filePath = filePath.replace("\\", "/");
+
+				// 최종적으로 생성된 경로에서 업로드 폴더까지의 경로를 제거한다.
+				// ex) D:/jsp/upload/2234234435.jpg --> /2234234435.jpg
+				filePath = filePath.replace(this.uploadDir.replace("\\", "/"), "");
+
+				/** 3-4) 파일 정보 분류 처리 */
+				// 생성된 정보를 Beans의 객체로 설정해서 컬렉션에 저장한다.
+				// --> 이 정보는 추후 파일의 업로드 내역을 DB에 저장할 때 사용된다.
+				User info = new User();
+				info.setUserno(2);
+				info.setName("이서준");
+				info.setEmail("Ta7@gmail.com");
+				info.setPasswd("3657");
+				info.setTel("010-1956-2631");
+				info.setRegdate("2019-07-24 00:00:00");
+				info.setProfile_img(fileName);
+				info.setEditdate(editDate);
+				
+				profileFile.add(info);
+			} // end if
+		} // end for
+
+		/** 4) 취득한 정보를 로그로 기록한다. */
+		for (User item : profileFile) {
 			log.debug(String.format("(f) <-- %s", item.toString()));
 		}
 

@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -141,7 +140,32 @@ public class MainController {
 	 * 마이페이지
 	 *******************************************************************/
 	@RequestMapping(value = "/main/mypage.do", method = RequestMethod.GET)
-	public ModelAndView mypage() {
+	public ModelAndView mypage(Model model) {
+		
+		/** 1)필요한 변수값 생성 */
+		int userno = 2; // 회원 이메일기저오기
+		
+		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (userno == 0 ) {
+			return webHelper.redirect(null, "방정보 번호가 없습니다.");
+		}
+
+		/** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		User input = new User();
+		input.setUserno(userno);
+
+		User output = null; // 조회결과가 저장될 객체
+
+		try {
+			// 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다
+			output = userService.getUserItem(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** 3)View 처리 */
+		model.addAttribute("output", output);
 
 		return new ModelAndView("main/mypage");
 	}
