@@ -133,16 +133,18 @@
 <!-- 상단 헤더 -->
 <div id="header">
     <div class="navbar" role="navigation">
-        <a href="${pageContext.request.contextPath}/host/main.do">
+        <a href="${pageContext.request.contextPath}/admin/main.do">
             <img src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
             <div class="menu-left small-font">
                 <a href="${pageContext.request.contextPath}">메인 사이트</a>
+                	<span style="color:white">&nbsp | &nbsp</span>
+                <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
             </div>
             <!-- 메뉴 항목 -->
             <div class="pull-right">
                 <div>
+                	<a href="${pageContext.request.contextPath}/admin/rmli.do" class="padding-l">방관리</a>
                     <a href="${pageContext.request.contextPath}/admin/userli.do" class="padding-l">회원 관리</a>
-                    <a href="${pageContext.request.contextPath}/admin/rmli.do" class="padding-l">방관리</a>
                 </div>
                 <%-- 로그인 시 바뀌는 로그인창 --%>
                 <c:choose>
