@@ -494,14 +494,14 @@ public class HostController {
 			Room.setOffset(pageData.getOffset());
 			Room.setListCount(pageData.getListCount());
 
-			output = heartService.getHeartGalleryList(input);
+			//output = heartService.getHeartGalleryList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** View 처리 */
 		model.addAttribute("keyword", keyword);
-		model.addAttribute("output", output);
+		//model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 
