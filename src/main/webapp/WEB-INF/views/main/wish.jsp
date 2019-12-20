@@ -12,7 +12,7 @@
 
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/wish.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/modal_assets/compare.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/modal_css/compare.css">
 
 </head>
 <body>
@@ -28,7 +28,7 @@
 
 <!-- content - title -->
 	<h1 class="content1-title">관심목록</h1>
-	
+
 	<!-- content-navigation -->
 	<div class="content2-d">
 		<a class="content2-d-a" href="${pageContext.request.contextPath}/main/rtrm.do" aria-current="">최근 본 방</a>
@@ -71,7 +71,7 @@
 													href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 													<!-- 이미지 -->
 													<div class="hit-a-div">
-														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> 
+														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div>
 													<c:if
 														test="${item.confirmdate != null}">
 														<%-- 확인매물 div --%>
@@ -106,7 +106,7 @@
 							<%-- 각 갤러리 끝 --%>
 						</c:choose>
 					</ul>
-					
+
 					<%-- gallery-index --%>
 					<div class ="gallery-footer">
 						<div class="gallery-index">
@@ -181,7 +181,7 @@
 								</div>
 								</div>
 								<%-- gallery-index --%>
-					
+
 			<%-- <!-- li 하나당 한개의 매물 - 외부박스 -->
 			<li class="gallery-li">
 				<!-- 내부박스 거래 완료되었을 때 덮는 박스( 완료된 방은 하트가 없다.) -->
@@ -536,7 +536,7 @@
 <div class="modal fade" id="compareModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
-			
+
 		</div>
 	</div>
 </div>
@@ -545,7 +545,7 @@
 <div class="modal fade" id="similarModal">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content modal-recomand" width="940">
-		    
+
 		    <header class="modal-head">
 		        <h1>비슷한 조건의 다른 방</h1>
 		        <button class="modal-head-btn" data-dismiss="modal">
@@ -576,7 +576,7 @@
 		                </a>
 		            </div>
 		        </div>
-		        
+
 		        <div class="mg-1d">
 		            <div class="mg-2d">
 		                <div class="mg-heart-d">
@@ -610,7 +610,7 @@
 		            </div>
 		        </div>
 		    </div>
-			
+
 		</div>
 	</div>
 </div>
@@ -622,34 +622,34 @@
 	$(function(){
 		/* 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
 		$(document).on('click', '.btn-compare', function(e) {
-			
+
 			$(".compare-d1").css("display","block");
-			
+
 			/* 방 비교하기 버튼 지우기 */
             $("#bar-compare").empty();
-		
+
 			/* checkbox 만들기 */
             var chbox = "";
             chbox += '<div class="comp-chkbox-d">'
         	chbox += '<label class="clearfix comp-chkbox-l" size="22">'
     		chbox += '<input type="checkbox" class="comp-chkbox-i" name="" value="">'
     		chbox += '<span class="comp-chkbox-s"></span></label></div>'
-    		
+
     		/* checkbox 붙이기 */
             $(".gallery-d2-pic").append(chbox);
 		});
-		
+
         /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
         $(document).on('click', '.comp-chkbox-s', function(e) {
 
-        var type = $(this).parents(".gallery-d1-a").children(".gallery-p1").html();
-        var price = $(this).parents(".gallery-d1-a").find(".gallery-p2").html();
+        var type = $(this).parents(".hit-a").children(".hit-a-p1").html();
+        var price = $(this).parents(".hit-a").find(".hit-a-p2").html();
 		var put = '<span class="compbar-newspan">' + type + '</span>';
 			put += '<p class="compbar-newp">' + price + '</p>';
 			put += '<button class="compbar-newbtn"></button>';
 
 			$("#select1").html(put);
-		}); 
+		});
 
 
 		/* 취소하기 눌렀을 때, 비교하기 바 지우고 다시 방 비교하기 버튼 생성 */
@@ -658,16 +658,16 @@
         	/* 비교하기바 숨기기 */
 			$(this).parents(".compare-d1").css("display","none");
 			$("#bar-compare").html("<button class='btn-compare'>방 비교하기</button>");
-			
+
 			/* 체크박스 지우기 */
 			$(".comp-chkbox-d").remove();
         });
 	});
-	
+
 	/* footer와 비교하기바가 겹치지 않기위한 이벤트 */
 	$(function() {
 		$(window).scroll(function() {
-			
+
 			/* 스크롤 이벤트시, footer 위에 붙기 */
 			if ($(window).scrollTop() + $(window).height() - 250 < $(document).height() ) {
 				var control = 0;
@@ -675,7 +675,7 @@
 				$(".compare-d1").css("bottom", 0);
 			}
 			console.log($(window).scrollTop());
-			
+
 			/* 스크롤 올릴 때, 더 올라가는 버그 수정 */
 			if ($(document).height() < $(window).scrollTop() + $(window).height() + 250 ) {
 				var control = 0;
@@ -684,7 +684,7 @@
 			}
 		});
 	});
-	
+
 	/* script용 모달열기 */
 	$(function () {
         $(".complete-smcover").click(function(e) {
@@ -694,7 +694,7 @@
             //$("#myModal").modal('hide');
         });
     });
-	
+
 	/* 하트 toggle */
 	$(function() {
 		$(".hit-div8").click(function(e) {
