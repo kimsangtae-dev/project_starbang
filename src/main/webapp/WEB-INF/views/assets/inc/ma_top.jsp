@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
     <style>
         /*---------------------------------
-|	header * css
+|   header * css
 ----------------------------------*/
         /* 브라우저 최소 넓이 지정 */
         #header {
-            min-width: 1366px;
+             min-width: 1366px; 
         }
         /* 메뉴바 크기, 여백, 테두리 */
         #header .navbar {
@@ -115,28 +115,45 @@
             text-align: left;
         }
         .navbar > .pull-right {
-            width: 520px;
+            width: 570px;
             padding-top: 0;
         }
     </style>
 </head>
 <!---------------------------------
-|	header * body
+|   header * body
 ---------------------------------->
 <!-- 상단 헤더 -->
 <div id="header">
     <div class="navbar" role="navigation">
         <a href="${pageContext.request.contextPath}">
             <img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png"></a>
-            <div class="menu-left small-font">
-                <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
-                <span>&nbsp | &nbsp</span>
-                <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
-            </div>
+<c:choose>
+<c:when test="${loginInfo.email != '1@'}">
+<div class="menu-left small-font">
+<a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
+</div>
+</c:when>
+<c:otherwise>
+<div class="menu-left small-font">
+    <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
+         <span>&nbsp | &nbsp</span>
+    <c:choose>
+    <c:when test="${loginInfo == null}"> 
+    <a href="${pageContext.request.contextPath}/admin/ad_login.do">관리자 사이트</a>
+    </c:when>
+    <c:otherwise>
+    <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
+    </c:otherwise>
+    </c:choose>
+    
+</div>
+</c:otherwise>
+</c:choose>
             <!-- 메뉴 항목 -->
             <div class="pull-right">
                 <div>
-                    <a href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">방찾기</a>
+                    <a href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999">방찾기</a>
                     <a href="${pageContext.request.contextPath}/main/rtrm.do" class="padding-l">관심목록</a>
                     <a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
                     <a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>
@@ -150,6 +167,7 @@
                     </c:when>
                     <c:otherwise>
                         <div class="dropdown small-font1">
+                        <!-- ********************************************************************************************** -->
                             <c:choose>
                                 <c:when test="${loginInfo.profile_img == null}">
                                     <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
@@ -158,10 +176,10 @@
                                     <img src="${loginInfo.profile_img}"/>
                                 </c:otherwise>
                             </c:choose>
+                         <!-- ********************************************************************************************** -->
                             <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag" aria-expanded="false" data-target="#loginModal">
                                 <button>
-                                    <span>${loginInfo.name} 님<span class="caret"></span>
-                                    </span>
+                                    <span>${loginInfo.name} 님<span class="caret"></span></span>
                                 </button>
                             </a>
                             <ul class="dropdown-menu small" role="menu" aria-labelledby="dLabel">

@@ -1,114 +1,210 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-<style>
-/* 브라우저 최소 넓이 지정 */
-body {
-	min-width: 1366px;
-}
-
-/* 텍스트 기본 설정 */
-#header * {
-	color: #ffffff;
-}
-
-/*------------------------------
-/	header
+    <style>
+/*---------------------------------
+|	header * css
 ----------------------------------*/
-/* 헤더 배경 색 지정 */
-#header {
+        /* 브라우저 최소 넓이 지정 */
+        #header {
+            min-width: 1366px;
+        }
+        
+        #header {
 	background-color: rgb(81, 136, 244);
 }
-
-/* 메뉴바 크기, 여백, 테두리 */
-#header .navbar {
+        /* 메뉴바 크기, 여백, 테두리 */
+       #header .navbar {
 	height: 70px;
 	padding: 0 30px;
 	border: 0;
 	/*border-bottom: 1px solid #eee;*/
-}
+        }
+        /* 로고 이미지 크기, 위치 설정 */
+        #header > .navbar > a > img {
+            height: 50px;
+            margin: 8px 0 12px 50px;
+        }
+        /* 방주인사이트 여백 설정 */
+        #header .menu-left {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        /* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
+        .small-font > a {
+            display: inline-block;
+            font-size: 14px;
+            color: white;
+            font-weight: 700;
+        }
+        .pull-right > div > a {
+            line-height: 70px;
+            height: 70px;
+            display: inline-block;
+            font-size: 14px;
+            color: white;
+            font-weight: 700;
+        }
+        /* 메뉴에 마우스오버 시 색 변경 설정 */
+        /* #header a:hover {
+            color: rgb(21, 100, 249);
+        } */
+        /* 각 메뉴들 간 여백 설정 */
+        .padding-l {
+            margin-left: 40px;
+        }
+        /* 메뉴 우측 정렬 */
+        #header .pull-right div {
+            display: inline-block;
+        }
+        /******* 로그인 시 변경  ***/
+        /* 로그인 프로필 이미지 크기 */
+        .pull-right .small-font1 img {
+            width: 35px;
+            height: 35px;
+        }
+        /* 회원가입 , 로그인 창 전체*/
+        .small-font1 {
+            min-width: 70px;
+            height: 70px;
+            margin-left: 57px;
+            margin-right: 50px;
+            cursor: pointer;
+        }
+        /* 이름 상자 */
+        a.atag > button {
+            height: 30px;
+            cursor: pointer;
+            background-color: transparent;
+            border-width: 0;
+            color: white;
+            outline: none;
+            font-weight: 700;
+        }
+        /* 드랍다운 상자 구분 선 */
+        .small .divider {
+            width: 100%;
+            height: 1px;
+            /* margin: 9px 0; */
+            overflow: hidden;
+            background-color: #e5e5e5;
+        }
+        /* 프로필 이미지 크기 */
+        #header .navbar .small-font1.img {
+            height: 25px;
+            width: 25px;
+        }
+        /* 드랍다운 상자 */
+        ul.small {
+            width: 150px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 15px 18px -10px;
+            background-color: rgb(255, 255, 255);
+            position: absolute;
+            /* right: 50px; */
+            /* margin-right: 150px; */
+            top: 75px;
+            z-index: 11;
+            border: 1px solid rgb(212, 212, 212);
+            border-radius: 4px;
+        }
+        .small > li > .atag1 {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            color: rgb(102, 102, 102);
+            font-size: 14px;
+            cursor: pointer;
+            /* padding: 0px 20px; */
+            text-align: left;
+        }
+        .navbar > .pull-right {
+            width: 520px;
+            padding-top: 0;
+        }
+         /* #header a:hover { color: #666666; } */ 
 
-/* 로고 이미지 크기, 위치 설정 */
-#header .navbar img {
-	height: 45px;
-	margin: 8px 0 12px 0;
-}
-
-/* 회원 사이트 여백 설정 */
-#header .menu-left {
-	display: inline-block;
-	margin-left: 20px;
-}
-
-/* 메뉴 세로 가운데 정렬 */
-#header a {
-	display: inline-block;
-	line-height: 70px;
-}
-
-/* 방주인사이트, 회원가입로그인 글씨 크기 및 색상 설정 */
-#header .small-font a {
-	font-size: 13px;
-	color: #ffffff;
-}
-/* 메뉴에 마우스오버 시 색 변경 설정 */
-.navbar a:hover {
-	color: black;
-}
-
-
-/* 각 메뉴들 간 여백 설정 */
-.padding-l {
-	margin-left: 35px;
-}
-
-/* 메뉴 우측 정렬 */
-#header .pull-right div {
-	display: inline-block;
-}
-
-#con {
-	height: 800px;
-}
-
-#sidefont {
-	color: black;
-	font-size: 13px;
-	text-align: center;
-}
-
-.dropdown-menu {
-	min-width: 120px;
-	font-size: 9px;
-}
-
-.dropdown-menu>li {
-	text-align: center;
-}
-</style>
+    </style>
 </head>
+<!---------------------------------
+|	header * body
+---------------------------------->
 <!-- 상단 헤더 -->
 <div id="header">
-	<div class="navbar" role="navigation">
-		<a href="${pageContext.request.contextPath}">
-			<img src="${pageContext.request.contextPath}/assets/ico/logo_white.png">
-		</a>
-		<div class="menu-left small-font">
-			<a href="${pageContext.request.contextPath}">회원 사이트</a>
-		</div>
-		<!-- 메뉴 항목 -->
-		<div class="pull-right">
-			<div>
-				<a href="${pageContext.request.contextPath}/admin/userli.do" class="padding-l">회원관리</a> <a
-					href="${pageContext.request.contextPath}/admin/rmli.do" class="padding-l">방관리</a>
-				<div class="dropdown">
-					<a href="${pageContext.request.contextPath}/admin/faq.do" data-toggle="dropdown" class="padding-l">문의관리</a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/faq.do">자주묻는질문</a></li>
-						<li><a id="sidefont" href="${pageContext.request.contextPath}/admin/notice.do">공지사항</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="navbar" role="navigation">
+        <a href="${pageContext.request.contextPath}/host/main.do">
+            <img src="${pageContext.request.contextPath}/assets/ico/logo_white.png"></a>
+            <div class="menu-left small-font">
+                <a href="${pageContext.request.contextPath}">메인 사이트</a>
+            </div>
+            <!-- 메뉴 항목 -->
+            <div class="pull-right">
+                <div>
+                    <a href="${pageContext.request.contextPath}/admin/userli.do" class="padding-l">회원 관리</a>
+                    <a href="${pageContext.request.contextPath}/admin/rmli.do" class="padding-l">방관리</a>
+                </div>
+                <%-- 로그인 시 바뀌는 로그인창 --%>
+                <c:choose>
+                    <c:when test="${loginInfo == null}">
+                        <div class="small-font">
+                            <a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">로그인</a>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="dropdown small-font1">
+                            <c:choose>
+                                <c:when test="${loginInfo.profile_img == null}">
+                                    <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${loginInfo.profile_img}"/>
+                                </c:otherwise>
+                            </c:choose>
+                            <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag" aria-expanded="false" data-target="#loginModal">
+                                <button>
+                                    <span>${loginInfo.name} 님<span class="caret"></span>
+                                    </span>
+                                </button>
+                            </a>
+                            <ul class="dropdown-menu small" role="menu" aria-labelledby="dLabel">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/main/mypage.do" class="atag1">
+                                        <span>마이페이지</span>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/modal/login_out.do" class="atag1">로그아웃</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+        </div>
+    </div>
+    <!-- 로그인용 모달 로더 -->
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- 비밀번호 찾기용 모달 로더 -->
+    <div class="modal fade" id="passwdModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- 동의하기용 모달 로더 -->
+    <div class="modal fade" id="agreeModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- 회원가입용 모달 로더 -->
+    <div class="modal fade" id="joinModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content"></div>
+        </div>
+    </div>
