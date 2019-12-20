@@ -1,18 +1,18 @@
 @charset "utf-8";
 
 /*****************************************
-*	찜한방	
+*   찜한방
 *****************************************/
 
 
 /* 공통 부분 */
 
 html body #root {
-	width: 100%;
+    width: 100%;
 }
 
 .parent-box {
-	width: 100%;
+    width: 100%;
     min-width: 1366px;
     height: 100%;
     position: relative;
@@ -23,12 +23,12 @@ html body #root {
 ---------------------------------------- */
 
 .content1-title {
-	height: 53px;
-	margin-top: 70px;
-	color: #222222;
-	font-size: 34px;
-	font-weight: 400;
-	text-align: center;
+    height: 53px;
+    margin-top: 70px;
+    color: #222222;
+    font-size: 34px;
+    font-weight: 400;
+    text-align: center;
 }
 
 /* ---------------------------------------
@@ -37,16 +37,16 @@ html body #root {
 
 /* content2 전체박스 */
 .content2-d {
-	display: table;
-	height: 40px;
-	width: 1180px;
-	margin: 45px auto 0;
+    display: table;
+    height: 40px;
+    width: 1180px;
+    margin: 45px auto 0;
 
 }
 
 /* div - a 하위 목록 */
 .content2-d-a {
-	display: table-cell;
+    display: table-cell;
     width: 50%;
     color: rgb(136, 136, 136);
     font-size: 16px;
@@ -57,7 +57,7 @@ html body #root {
 
 /* active 신기하게쓰네 */
 .content2-d-a.active{
-	color: rgb(34, 34, 34);
+    color: rgb(34, 34, 34);
     font-weight: 500;
     border-bottom: 2px solid rgb(34, 34, 34);
 }
@@ -68,33 +68,33 @@ html body #root {
 
 /* 전체박스 */
 .gallery-wholebox {
-	width: 1200px;
-	min-height: 500px;
-	padding-top: 50px;
-	margin: 0 auto;	
-	overflow: hidden;
+    width: 1200px;
+    min-height: 500px;
+    padding-top: 50px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 /* div (총 n개의 최근본 방이 있습니다.) */
 /* div 안에 <p>태그 */
 .count-p {
-	height: 24px;
-	line-height: 24px;
-	font-size: 15px;
-	color: #666666;
-	text-align: left;
-	margin-bottom: 20px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 15px;
+    color: #666666;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 .count-p span {
-	color: #1564F9;
+    color: #1564F9;
 }
 
 /* ---------------------------------------
-|	content3-갤러리
+|   content3-갤러리
 ---------------------------------------- */
 /* ---------------------------------------
-|	완료된 매물
+|   완료된 매물
 ---------------------------------------- */
 
 /* 거래완료 *//* 비공개 부모 박스 */
@@ -103,7 +103,7 @@ html body #root {
 /* 큰부모 박스 */
 /* 매물 하나 전체를 흐릿하게 만듬 */
 .complete-whcover {
-	width: 100%;
+    width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.6);
     background-size: cover;
@@ -116,7 +116,7 @@ html body #root {
 
 /* 작은부모 박스 */
 .complete-smcover {
-	display: table-cell;
+    display: table-cell;
     width: 280px;
     height: 186px;
     box-shadow: rgba(16, 25, 42, 0.1) 0px 1px 5px 0px;
@@ -131,7 +131,7 @@ html body #root {
 }
 
 .complete-h1 {
-	height: 18px;
+    height: 18px;
     margin-bottom: 8px;
     color: rgb(49, 133, 248);
     font-size: 18px;
@@ -140,7 +140,7 @@ html body #root {
 }
 
 .complete-p {
-	height: 20px;
+    height: 20px;
     color: rgb(49, 133, 248);
     font-size: 14px;
     font-weight: 300;
@@ -148,7 +148,7 @@ html body #root {
 }
 
 .complete-plusbtn {
-	width: 37px;
+    width: 37px;
     height: 37px;
     margin: 15px auto 0px;
     background: url(../../img/ma_img/plusbtn.svg) center center / cover no-repeat;
@@ -161,24 +161,24 @@ html body #root {
 
 /* 메인갤러리 시작 */
 .gallery-ul {
-	width: 100%;
-	min-height: 321px;
+    width: 100%;
+    min-height: 321px;
 }
 
 /* 각 박스의 마진 */
 .gallery-li {
-	position: relative;
-	float: left;
-	width: 280px;
-	height: 321px;
-	margin-bottom: 60px;
-	background-color: white;
-	border-radius: 5px;	
+    position: relative;
+    float: left;
+    width: 280px;
+    height: 321px;
+    margin-bottom: 60px;
+    background-color: white;
+    border-radius: 5px;
 }
 
 /* rof */
 .gallery-li + .gallery-li {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 .gallery-li:nth-child(4n+1) {
@@ -188,18 +188,18 @@ html body #root {
 /* 각 박스의 부모박스 */
 
 .gallery-d1 {
-	height: 321px;
-	position: relative;
+    height: 321px;
+    position: relative;
 }
 
 /* 각 박스 링크 */
 .gallery-d1-a{
-	display: block;
+    display: block;
 }
 
 /* 사진 담는 박스 */
 .gallery-d2-pic{
-	width: 100%;
+    width: 100%;
     height: 186px;
     margin-bottom: 12px;
     background-color: rgb(239, 240, 242);
@@ -210,17 +210,17 @@ html body #root {
 
 /* height 100%를 줘야 함 */
 .gallery-d2-pic:before {
-	content: "";
+    content: "";
     height: 100%;
     position: absolute;
     top: 0px;
     right: 0px;
     left: 0px;
-    background: url(../../img/ma_img/comp1.jpeg) center center / cover no-repeat;
+    /* background: url(../../img/ma_img/comp1.jpeg) center center / cover no-repeat; */
 }
 
 .gallery-d2-pic:after {
-	content: "";
+    content: "";
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -232,18 +232,18 @@ html body #root {
 
 /* 확인매물 박스 */
 .gallery-d2-confirm {
-	height: 21px;
-	margin-bottom: 3px;
+    height: 21px;
+    margin-bottom: 3px;
 }
 
 /* 확인매물 내부 박스 */
 .gallery-d3-confirm {
-	display: inline-block;
-	height: 21px;
-	line-height: 19px;
-	vertical-align: top;
-	padding: 0 5px;
-	border-width: 1px;
+    display: inline-block;
+    height: 21px;
+    line-height: 19px;
+    vertical-align: top;
+    padding: 0 5px;
+    border-width: 1px;
     border-style: solid;
     border-color: rgb(168, 193, 252);
     border-image: initial;
@@ -251,7 +251,7 @@ html body #root {
 }
 
 .gallery-d3-confirm > span {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 .gallery-d3-confirm > span, .gallery-d3-confirm > font {
@@ -265,12 +265,12 @@ html body #root {
 
 /* 확인매물 아래 - 룸 타입 p1 */
 .gallery-p1 {
-	font-size: 13px !important;
-	font-weight: 400 !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
 }
 
 .gallery-p2 {
-	color: rgb(34, 34, 34);
+    color: rgb(34, 34, 34);
     font-size: 20px;
     font-weight: 700;
     line-height: 25px;
@@ -278,12 +278,12 @@ html body #root {
 }
 
 .gallery-p2 > span {
-	vertical-align: middle;
-	font-size: 20px;
+    vertical-align: middle;
+    font-size: 20px;
 }
 
 .gallery-p-common {
-	width: 100%;
+    width: 100%;
     color: rgb(102, 102, 102);
     font-size: 14px;
     font-weight: 300;
@@ -296,7 +296,7 @@ html body #root {
 
 /* button - heart */
 .gallery-heart-d2 {
-	width: 36px;
+    width: 36px;
     position: absolute;
     top: 3px;
     right: 7px;
@@ -305,7 +305,7 @@ html body #root {
 }
 
 .gallery-heart-d3 {
-	width: 32px;
+    width: 32px;
     height: 30px;
     margin: 0px auto;
     background: url(../../img/ma_img/fullheart.svg) center center / cover;
@@ -322,24 +322,24 @@ html body #root {
 ---------------------------------------- */
 
 .page-d1 {
-	padding-bottom: 150px;
+    padding-bottom: 150px;
 }
 
 .page-d1 > div {
-	padding-top: 20px;
+    padding-top: 20px;
 }
 
 .page-d2 {
-	text-align: center;
+    text-align: center;
 }
 
 .page-d3 {
-	display: inline-block;
+    display: inline-block;
     height: 32px;
 }
 
 .page-d3-btn1 {
-	float: left;
+    float: left;
     width: 32px;
     height: 32px;
     background-color: rgb(255, 255, 255);
@@ -354,11 +354,11 @@ html body #root {
 }
 
 .page-d3-btn1 > svg {
-	left: 49%;
+    left: 49%;
 }
 
 .page-d3-ul {
-	float: left;
+    float: left;
 }
 
 .page-d3-ul > li + li {
@@ -366,7 +366,7 @@ html body #root {
 }
 
 .page-d3-btn2{
-	float: left;
+    float: left;
     width: 32px;
     height: 32px;
     background-color: rgb(255, 255, 255);
@@ -381,13 +381,13 @@ html body #root {
 }
 
 .page-d3-ul li {
-	display: inline-table;
+    display: inline-table;
     width: 32px;
     height: 32px;
 }
 
 .page-ul-a-clicked {
-	display: table-cell;
+    display: table-cell;
     width: 100%;
     height: 100%;
     font-size: 15px;
@@ -404,11 +404,11 @@ html body #root {
 }
 
 .page-ul-a-clicked:hover {
-	color: white;
+    color: white;
 }
 
 .page-ul-a-unclicked {
-	display: table-cell;
+    display: table-cell;
     width: 100%;
     height: 100%;
     color: rgb(20, 118, 252);
@@ -436,7 +436,7 @@ html body #root {
 
 /* 비교하기 버튼 */
 .btn-compare {
-	width: 140px;
+    width: 140px;
     height: 56px;
     color: rgb(255, 255, 255);
     font-size: 14px;
@@ -456,7 +456,7 @@ html body #root {
 
 /* 비교하기 전체 박스 1번째 부모 - 마진 */
 .compare-d1 {
-	width: 100%;
+    width: 100%;
     min-width: 1366px;
     height: 90px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px -1px 6px 0px;
@@ -469,7 +469,7 @@ html body #root {
 
 /* 비교하기 전체 박스 2번째 부모 - 테이블화 */
 .compare-d2 {
-	display: table;
+    display: table;
     width: 1180px;
     height: 100%;
     margin: 0px auto;
@@ -478,7 +478,7 @@ html body #root {
 /* 비교하기 바 - 버튼 맨앞 설명 */
 
 .compare-exp-d3 {
-	display: table-cell;
+    display: table-cell;
     width: 213px;
     padding-left: 0px;
     position: relative;
@@ -492,7 +492,7 @@ html body #root {
 
 /* 1번째 p태그 */
 .compare-exp-p1 {
-	height: 27px;
+    height: 27px;
     color: rgb(255, 255, 255);
     font-size: 18px;
     font-weight: 500;
@@ -501,7 +501,7 @@ html body #root {
 
 /* 2번째 p태그 */
 .compare-exp-p2 {
-	display: inline-block;
+    display: inline-block;
     height: 32px;
     color: rgb(255, 255, 255);
     font-size: 13px;
@@ -514,7 +514,7 @@ html body #root {
 /* 비교하기 바 - 버튼 2,3,4 비교버튼 */
 
 .compare-select {
-	display: table-cell;
+    display: table-cell;
     width: 241px;
     padding-left: 16px;
     position: relative;
@@ -522,7 +522,7 @@ html body #root {
 }
 
 .compare-select-d {
-	display: inline-block;
+    display: inline-block;
     width: 30px;
     height: 30px;
     margin-right: 8px;
@@ -530,7 +530,7 @@ html body #root {
 }
 
 .compare-select-p {
-	display: inline-block;
+    display: inline-block;
     height: 32px;
     color: rgb(255, 255, 255);
     font-size: 14px;
@@ -542,7 +542,7 @@ html body #root {
 
 /* 버튼을 담고있는 박스 */
 .compare-btn-box {
-	display: table-cell;
+    display: table-cell;
     width: 238px;
     padding-left: 30px;
     position: relative;
@@ -550,8 +550,8 @@ html body #root {
 }
 
 /* 버튼박스 - 취소하기 버튼 */
-.compare-btn-cancel { 
-	width: 80px;
+.compare-btn-cancel {
+    width: 80px;
     height: 45px;
     color: rgb(255, 255, 255);
     font-size: 14px;
@@ -562,14 +562,14 @@ html body #root {
     border-width: 1px;
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.3);
-    border-image: initial; 
+    border-image: initial;
 }
 
 /* 버튼박스 - 비교하기 버튼 */
 .compare-btn-compare {
-	width: 120px;
+    width: 120px;
     height: 45px;
-    
+
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 2px 0px;
     background-color: rgb(24, 105, 216);
     border-width: 1px;
@@ -580,18 +580,18 @@ html body #root {
 
 /* 비교하기 내부 <a> tag */
 .dis-block {
-	display: block;
-	width: auto;
-	color: rgb(255, 255, 255);
+    display: block;
+    width: auto;
+    color: rgb(255, 255, 255);
     font-size: 14px;
     font-weight: 500;
     text-align: center;
-	
+
 }
 
 /* 부트(스)트랩 기능 제거 */
 .dis-block:hover, .dis-block:focus {
-	color: white;
+    color: white;
 }
 
 
@@ -601,29 +601,29 @@ html body #root {
 
 /* 체크박스 나타날 위치 */
 .comp-chkbox-d {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	z-index: 1;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
 }
 
 /* 체크박스 클릭 가능하도록 표시 */
 .comp-chkbox-l {
-	display: block;
-	height: 22px;
-	padding-left: 23px;
-	position: relative;
-	cursor: pointer;
+    display: block;
+    height: 22px;
+    padding-left: 23px;
+    position: relative;
+    cursor: pointer;
 }
 
 /* 체크박스 input 태그 기능, 안보이도록 */
 .comp-chkbox-i {
-	width: 1px;
-	height: 1px;
-	opacity: 0;
-	position: absolute;
-	top: 0px;
-	left: 0px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 /* 체크되었을 때 꾸미기 */
@@ -728,78 +728,78 @@ html body #root {
 }
 
 /******************************************************
-* modal * 거래완료, 비공개된 매물 비슷한방 보여주기 modal 		  *
+* modal * 거래완료, 비공개된 매물 비슷한방 보여주기 modal           *
 ******************************************************/
 
 /* modal 바깥여백 조절 */
 .modal-dialog {
-	width: auto;
+    width: auto;
 }
 
 /* 모달창 전체 박스 */
-	.modal-recomand{
-		width: 940px;
-		background-color: white;
-		margin: 7% auto;
-		box-shadow: rgba(0,0,0,0.25);
-	}
+    .modal-recomand{
+        width: 940px;
+        background-color: white;
+        margin: 7% auto;
+        box-shadow: rgba(0,0,0,0.25);
+    }
 
 /* modal - <header> */
-	.modal-head{
-		padding : 28px 30px 24px;
-		border-bottom: 1px solid #eee;
-		position: relative;
-	}
+    .modal-head{
+        padding : 28px 30px 24px;
+        border-bottom: 1px solid #eee;
+        position: relative;
+    }
 
 /* modal - <header> - <h1> */
-	.modal-head > h1 {
-		font-size: 22px;
-	    line-height: 30px;
-	    font-weight: 700;
-	    text-align: center;
-	}
-	
+    .modal-head > h1 {
+        font-size: 22px;
+        line-height: 30px;
+        font-weight: 700;
+        text-align: center;
+    }
+
 
 /* modal - <header> - <button> */
-	.modal-head-btn {
-		width: 30px;
-	    height: 30px;
-	    background-color: transparent;
-	    position: absolute;
-	    top: 28px;
-	    right: 30px;
-	    border-width: 0px;
-	}
-	
-	.modal-head-btn > svg {
-		position: absolute;
-	    top: 0px;
-	    left: 0px;
+    .modal-head-btn {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        position: absolute;
+        top: 28px;
+        right: 30px;
+        border-width: 0px;
     }
-    
-    g[Attributes Style] {
-	    fill: none;
-	    fill-rule: evenodd;
-    transfo	rm: translate(1, 1);
-	}
 
-	:not(svg) {
-	    transform-origin: 0px 0px;
-	}
-	
-	.modal-head-btn > svg .Circle {
-	    fill: rgb(255, 255, 255);
-	    stroke: rgb(151, 151, 151);
-	    opacity: 0.3;
-	}
-	
-	.modal-head-btn > svg .Close {
-   		stroke: rgb(35, 45, 74);
-	}
+    .modal-head-btn > svg {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+    g[Attributes Style] {
+        fill: none;
+        fill-rule: evenodd;
+    transfo rm: translate(1, 1);
+    }
+
+    :not(svg) {
+        transform-origin: 0px 0px;
+    }
+
+    .modal-head-btn > svg .Circle {
+        fill: rgb(255, 255, 255);
+        stroke: rgb(151, 151, 151);
+        opacity: 0.3;
+    }
+
+    .modal-head-btn > svg .Close {
+        stroke: rgb(35, 45, 74);
+    }
 
 /* modal - <gallery> - 전체를 감싸는 div */
 .mg-whole-d {
-	width: 880px;
+    width: 880px;
     height: 360px;
     padding-top: 30px;
     position: relative;
@@ -809,7 +809,7 @@ html body #root {
 
 /* modal - <gallery> - 각 갤러리 - 1depth div */
 .mg-1d {
-	position: relative;
+    position: relative;
     float: left;
     width: 280px;
     height: 317px;
@@ -820,18 +820,18 @@ html body #root {
 }
 
 .mg-1d:last-child {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 /* modal - <gallery> - 각 갤러리 - 2depth div */
 .mg-2d {
-	height: 280px;
+    height: 280px;
     position: relative;
 }
 
 /* modal - <gallery> - heart - 1depth div */
 .mg-heart-d{
-	width: 36px;
+    width: 36px;
     position: absolute;
     top: 3px;
     right: 7px;
@@ -841,28 +841,28 @@ html body #root {
 
 /* modal - <gallery> - heart - 2depth div  */
 .mg-heart-2d{
-	width: 32px;
+    width: 32px;
     height: 30px;
     margin: 0px auto;
     background: url(../../img/ma_img/like.svg) center center / cover;
 }
 
 .mg-heart-2d.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
+    background: url(../../img/ma_img/like.svg) center center/cover;
 }
 
 .mg-heart-2d.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
+    background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 
 /* modal - <gallery> - 각 갤러리 2div - a태그 */
 .mg-a {
-	display: block;
+    display: block;
 }
 
 /* modal - <gallery> - 각 갤러리 2d - a태그 - 사진 div */
 .mg-a-pic1 {
-	width: 100%;
+    width: 100%;
     height: 186px;
     margin-bottom: 12px;
     background-color: rgb(239, 240, 242);
@@ -877,7 +877,7 @@ html body #root {
     position: absolute;
     top: 0px;
     right: 0px;
-    left: 0px;    
+    left: 0px;
 }
 
 .mg-a-pic1::before {background: url(../../img/ma_img/comp1.jpeg) center center / cover no-repeat;}
@@ -929,249 +929,249 @@ html body #root {
 
 /* 관심목록 하위 탭 (인기매물) */
 .tab-text {
-	padding: 20px 0 20px 20px;
-	margin: auto;
-	width: 1240px;
+    padding: 20px 0 20px 20px;
+    margin: auto;
+    width: 1240px;
 }
 
 .re-div1 span {
-	color: #1564F9;
+    color: #1564F9;
 }
 
 /* 최근본방, 찜한방 하위박스(float과 해제) */
 .re-div1 {
-	font-size: 15px;
+    font-size: 15px;
 }
 
 .tab-con1:after {
-	display: block;
-	clear: both;
-	content: '';
+    display: block;
+    clear: both;
+    content: '';
 }
 
 .hit-div4 {
-	width: 1200px;
-	margin: auto;
-	position: relative;
-	right: 0px;
+    width: 1200px;
+    margin: auto;
+    position: relative;
+    right: 0px;
 }
 
 /* 갤러리 박스 시작 */
 /*박스전체*/
 .hit-div5 {
-	float: left;
-	width: 290px;
-	height: 321px;
-	background-color: rgb(255, 255, 255);
-	position: relative;
-	border-radius: 5px;
-	margin-right: 10px;
-	margin-bottom: 15px;
+    float: left;
+    width: 290px;
+    height: 321px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
 }
 
 /* 두번째부터 마진추가 */
 .margin {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
 /* 좋아요를 위한 엄마박스 -relative */
 .hit-div6 {
-	height: 285px;
-	position: relative;
+    height: 285px;
+    position: relative;
 }
 
 /* <div>좋아요 자식박스 -absolute */
 .hit-div7 {
-	width: 36px;
-	position: absolute;
-	top: 3px;
-	right: 7px;
-	z-index: 1;
-	cursor: pointer;
+    width: 36px;
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    z-index: 1;
+    cursor: pointer;
 }
 /* <div>좋아요 - <div> */
 .hit-div8 {
-	width: 32px;
-	height: 30px;
-	margin: 0px auto;
-	/*background: url(ma_img/like.svg) center center / cover;*/
+    width: 32px;
+    height: 30px;
+    margin: 0px auto;
+    /*background: url(ma_img/like.svg) center center / cover;*/
 }
 
 .hit-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
+    background: url(../../img/ma_img/like.svg) center center/cover;
 }
 
 .hit-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
+    background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 
 /* <a> 태그 */
 .hit-a {
-	display: block;
+    display: block;
 }
 
 /* 부트스트랩에 마진이 들어가있어서 <a> 부분만 초기화시켜주기 */
 .hit-a p {
-	margin: 0px;
+    margin: 0px;
 }
 
 /* <a> 태그 - <div>이미지 */
 .hit-a-div {
-	width: 100%;
-	height: 186px;
-	margin-bottom: 12px;
-	background-color: rgb(239, 240, 242);
-	position: relative;
-	border-radius: 3px;
-	overflow: hidden;
+    width: 100%;
+    height: 186px;
+    margin-bottom: 12px;
+    background-color: rgb(239, 240, 242);
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 .hit-a-div img {
-	width: 100%;
-	height: 190px;
+    width: 100%;
+    height: 190px;
 }
 /* body태그에 이미지가 따로들어가있음 주의 @@*/
 .hit-a-div:before {
-	content: "";
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	left: 0px;
-	/* background: url(../../img/ma_img/1234.jpg) center center / cover no-repeat; */
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    /* background: url(../../img/ma_img/1234.jpg) center center / cover no-repeat; */
 }
 
 .hit-a-div:after {
-	content: "";
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.1);
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+    content: "";
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 /* body태그에 이미지가 따로들어가있음 주의 @@ */
 .hit-a-div2:before {
-	content: "";
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	left: 0px;
-	background: url(../../img/ma_img/2.jpeg) center center/cover no-repeat;
+    content: "";
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background: url(../../img/ma_img/2.jpeg) center center/cover no-repeat;
 }
 
 .hit-a-div2:after {
-	content: "";
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.1);
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
+    content: "";
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 /* <a>태그 - <div>확인매물 박스 */
 .hit-a-confirm {
-	height: 21px;
-	margin-bottom: 3px;
+    height: 21px;
+    margin-bottom: 3px;
 }
 
 .hit-a-confirm span {
-	display: inline-block;
-	color: rgb(50, 108, 249);
-	font-size: 11px;
-	white-space: nowrap;
-	position: relative;
-	bottom: 2px;
+    display: inline-block;
+    color: rgb(50, 108, 249);
+    font-size: 11px;
+    white-space: nowrap;
+    position: relative;
+    bottom: 2px;
 }
 
 .bold {
-	font-weight: 700;
+    font-weight: 700;
 }
 
 /* <a>태그 - <div>확인매물 박스 - <div>인박스 */
 .hit-a-confirm-div {
-	display: inline-block;
-	height: 21px;
-	line-height: 19px;
-	vertical-align: top;
-	padding: 0px 5px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: rgb(168, 193, 252);
-	border-image: initial;
-	border-radius: 2px;
+    display: inline-block;
+    height: 21px;
+    line-height: 19px;
+    vertical-align: top;
+    padding: 0px 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(168, 193, 252);
+    border-image: initial;
+    border-radius: 2px;
 }
 
 /* <a>태그 - <p>방 종류 */
 .hit-a-p1 {
-	width: 100%;
-	color: rgb(102, 102, 102);
-	font-size: 12px;
-	font-weight: 300;
-	line-height: 20px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+    width: 100%;
+    color: rgb(102, 102, 102);
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* <a>태그 - <p>lent방식 / 금액 */
 .hit-a-p2 {
-	color: rgb(34, 34, 34);
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 25px;
-	margin: 3px 0px 6px !important;
+    color: rgb(34, 34, 34);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    margin: 3px 0px 6px !important;
 }
 
 /* <a>태그 - <p>lent방식 / 금액 - <span> */
 .hit-a-p2 span {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 /* <a>태그 - 3th, 4th <p> */
 .hit-a-p34 {
-	width: 100%;
-	color: rgb(102, 102, 102);
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 20px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+    width: 100%;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* 보지 않은방 */
 .hit-div5-vacant {
-	float: left;
-	width: 280px;
-	height: 186px;
-	background-color: rgb(251, 251, 252);
-	border-width: 1px;
-	border-style: dashed;
-	border-color: rgb(214, 216, 219);
-	border-image: initial;
-	border-radius: 3px;
+    float: left;
+    width: 280px;
+    height: 186px;
+    background-color: rgb(251, 251, 252);
+    border-width: 1px;
+    border-style: dashed;
+    border-color: rgb(214, 216, 219);
+    border-image: initial;
+    border-radius: 3px;
 }
 
 .hit-div5-vacant-p {
-	color: rgb(148, 152, 160);
-	font-size: 14px;
-	font-weight: 300;
-	line-height: 186px;
-	text-align: center;
+    color: rgb(148, 152, 160);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 186px;
+    text-align: center;
 }
 .gallery-index{
-	width: fit-content;
+    width: fit-content;
     height: 32px;
     margin: auto;
 }
 .gallery-footer{
-	padding-top: 40px;
-    height: 100px;
-    border-top: 1px solid #ddd;
+    /* padding-top: 40px; */
+    height: 130px;
+    /* border-top: 1px solid #ddd; */
     width:1180px;
     display:table;
     margin:auto;
@@ -1180,7 +1180,7 @@ html body #root {
      float: left;
      width: 32px;
      height: 32px;
-     background-color: rgb(255, 255, 255); 
+     background-color: rgb(255, 255, 255);
      position: relative;
      margin: 0px 18px;
      border-width: 1px;
