@@ -33,7 +33,7 @@
 		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i ON r.roomno=i.roomno
 		<where>
 		r.roomtype IN 
-			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
+ 			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
 			
@@ -81,15 +81,15 @@
 		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
 		ON r.roomno=p.roomno
 		<where>
- 			r.roomtype IN 
-			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
+ 			<!-- r.roomtype IN 
+ 			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
 			
 			AND p.dealingtype IN 
 			<foreach item="dealingtypepate" index="index" collection="dealingtypepate" open="(" separator="," close=")">
 				#{dealingtypepate} 
-			</foreach>
+			</foreach> -->
 		
 			<if test="monthFrom != 0 or monthTo != 999999 or depositFrom != 0 or depositTo != 999999 or buyingFrom != 0 or buyingTo != 999999">
 				AND ( ((p.price between #{monthFrom} and #{monthTo} AND p.dealingtype="월세") AND (p.deposit BETWEEN #{depositFrom} and #{depositTo}))

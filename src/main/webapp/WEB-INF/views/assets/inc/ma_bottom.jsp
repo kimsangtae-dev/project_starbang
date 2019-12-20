@@ -197,10 +197,10 @@
 					href="#">매물관리규정</a> <a href="#">허위매물규정</a> <a href="#">자동저장서비스</a>
 			</div>
 			<div class="top-btn pull-right"></div>
-			<form class="pull-right">
+			<form class="pull-right method="get" action="${pageContext.request.contextPath}/main/rmdt.do">
 				<label for="search-num">
 					<h1>매물번호 조회</h1>
-					<input id="search-num" type="text" name="keyword">
+					<input id="search-num" type="text" name="roomno" value="${keyword}">
 				</label>
 				<button>
 					<i class="glyphicon glyphicon-search"></i>

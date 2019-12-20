@@ -59,7 +59,6 @@
 					</div>
 				</div>
 				<!-- 조회 결과 목록 -->
-				<form action="${pageContext.request.contextPath}/admin/rmli" method="get">
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -93,7 +92,7 @@
 								<c:set var="price" value="${item.price}" />
 								<c:set var="name" value="${item.name}" />
 								<c:set var="confirmdate" value="${item.confirmdate}" />
-								<%-- <c:set var="fakecount" value="${item.cnt}" /> --%>
+								<c:set var="fakecount" value="${item.cnt}" />
 								<c:set var="status" value="${item.status}" />
 								
 						<%--검색어가 있다면? --%>

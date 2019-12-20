@@ -63,7 +63,7 @@
 											<div class="hit-div6">
 												<%-- 좋아요 버튼 --%>
 												<div class="hit-div7">
-													<div class="hit-div8 off" data-value="on"></div>
+													<div class="hit-div8 on" data-value="off"></div>
 												</div>
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>

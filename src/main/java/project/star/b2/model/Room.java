@@ -21,6 +21,7 @@ public class Room {
     private String region_3depth_name;
     private int userno;
     private int status;
+    private int cnt;
     
     /**User랑 조인된 값 */
     private String name;
