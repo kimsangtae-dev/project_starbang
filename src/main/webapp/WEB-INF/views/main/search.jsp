@@ -294,9 +294,9 @@ pageEncoding="UTF-8"%>
                                 <div class="gallery-index">
                                     <!-- 페이지 번호 구현 -->
                                     <%-- 이전 그룹에 대한 링크 --%>
-									<button class="prev-btn" id="temp">
-										<span>&lt;</span>
-									</button>
+                                    <button class="prev-btn" id="temp">
+                                        <span>&lt;</span>
+                                    </button>
 
                                     <%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
                                     <ul class="index-list" id="index-list">
@@ -318,7 +318,7 @@ pageEncoding="UTF-8"%>
 
                                     <%-- 다음 그룹에 대한 링크 --%>
                                     <button class="next-btn">
-                                    	<span>&gt;</span>
+                                        <span>&gt;</span>
                                     </button>
                                 </div>
                                 <%-- gallery-index --%>
@@ -422,137 +422,137 @@ pageEncoding="UTF-8"%>
     /** ajax전송을 위한 파라미터 가져오기 **/
     var roomtype = "${param.roomtype}";
     var dealingtype = "${param.dealingtype}";
-	var deposit_from = ${param.depositFrom};
-	var deposit_to = ${param.depositTo};
-	var month_from = ${param.monthFrom};
-	var month_to= ${param.monthTo};
-	var buying_from = ${param.buyingFrom};
-	var buying_to = ${param.buyingTo};
-	var fee_from = ${param.feeFrom};
-	var fee_to = ${param.feeTo};
-	var size_from = ${param.sizeFrom};
-	var size_to = ${param.sizeTo};
-	
+    var deposit_from = ${param.depositFrom};
+    var deposit_to = ${param.depositTo};
+    var month_from = ${param.monthFrom};
+    var month_to= ${param.monthTo};
+    var buying_from = ${param.buyingFrom};
+    var buying_to = ${param.buyingTo};
+    var fee_from = ${param.feeFrom};
+    var fee_to = ${param.feeTo};
+    var size_from = ${param.sizeFrom};
+    var size_to = ${param.sizeTo};
+    
     var centerLat = ${lat};
     var centerLng = ${lng};
     var level =${level};
-	
-	var west = 0;
-	var east = 0;
-	var south = 0;
-	var north = 0;
-	
-	var startPage;
-	var endPage;
-	var groupCount;
-	var totalPage;
-	var nowPage;
-	var nextPage;
-	var prevPage;
-	
-	/** ajax 전송 메서드 **/
-	function getMapPosition(west,east,south,north, page) {
-		$.ajax({
-           	url: "${pageContext.request.contextPath}/main/search",
-           	method: "get",
-           	data: {
-           		"roomtype": roomtype,
-           		"dealingtype": dealingtype,
-				"depositFrom": deposit_from,
-				"depositTo": deposit_to,
-				"monthFrom": month_from,
-				"monthTo": month_to,
-				"buyingFrom": buying_from,
-				"buyingTo": buying_to,
-				"feeFrom": fee_from,
-				"feeTo": fee_to,
-				"sizeFrom": size_from,
-				"sizeTo": size_to,
-				"east": east,
-				"west": west,
-				"north": north,
-				"south": south,
-				"page": page
-           	},
-           	success: function(req){
-           		Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-           		  if (dealingtype == '월세') {
-           		    return options.fn(this);
-           		  } else {
-           		    return options.inverse(this);
-           		  }
-           		});
-           		
-           		Handlebars.registerHelper('isOver', function(price, options) {
-             		if (price >= 10000 && price%10000 != 0) {
-             			return Math.floor(price/10000) +"억" + price%10000;
-             		} else if (price >= 10000 && price%10000 == 0) {
-             			return price/10000 + "억";
-             		} else {
-             			return price;
-             		}
-             	});
-           		
-           		Handlebars.registerHelper('isOver2', function(deposit, options) {
-             		if (deposit >= 10000 && deposit%10000 != 0) {
-             			return Math.floor(deposit/10000) +"억" + deposit%10000;
-             		} else if (deposit >= 10000 && deposit%10000 == 0) {
-             			return deposit/10000 + "억";
-             		} else {
-             			return deposit;
-             		}
-             	});
-           		
-				var template = Handlebars.compile($("#gallery-data").html());
-				var html = template(req);
-				$("#gallery-list").html(html);
-				$("#room-count").html(req.totalCount);
-				
-				startPage = req.pageData.startPage;
-				endPage = req.pageData.endPage;
-				groupCount = req.pageData.groupCount;
-				totalPage = req.pageData.totalPage;
-				nowPage = req.pageData.nowPage;
-				nextPage = req.pageData.nextPage;
-				prevPage = req.pageData.prevPage;
-				
-				var index_list = new Array();
-				for (var i=startPage; i<=endPage; i++) {
-					var indexno = i;
-					if (nowPage == indexno) {
-						index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';					
-					} else {
-						index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
-					}
-				}
-				$("#index-list").html(index_list);
-				
-				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
-		        });
-           	}
-		});
-	}
-	
+    
+    var west = 0;
+    var east = 0;
+    var south = 0;
+    var north = 0;
+    
+    var startPage;
+    var endPage;
+    var groupCount;
+    var totalPage;
+    var nowPage;
+    var nextPage;
+    var prevPage;
+    
+    /** ajax 전송 메서드 **/
+    function getMapPosition(west,east,south,north, page) {
+        $.ajax({
+            url: "${pageContext.request.contextPath}/main/search",
+            method: "get",
+            data: {
+                "roomtype": roomtype,
+                "dealingtype": dealingtype,
+                "depositFrom": deposit_from,
+                "depositTo": deposit_to,
+                "monthFrom": month_from,
+                "monthTo": month_to,
+                "buyingFrom": buying_from,
+                "buyingTo": buying_to,
+                "feeFrom": fee_from,
+                "feeTo": fee_to,
+                "sizeFrom": size_from,
+                "sizeTo": size_to,
+                "east": east,
+                "west": west,
+                "north": north,
+                "south": south,
+                "page": page
+            },
+            success: function(req){
+                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                  if (dealingtype == '월세') {
+                    return options.fn(this);
+                  } else {
+                    return options.inverse(this);
+                  }
+                });
+                
+                Handlebars.registerHelper('isOver', function(price, options) {
+                    if (price >= 10000 && price%10000 != 0) {
+                        return Math.floor(price/10000) +"억" + price%10000;
+                    } else if (price >= 10000 && price%10000 == 0) {
+                        return price/10000 + "억";
+                    } else {
+                        return price;
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver2', function(deposit, options) {
+                    if (deposit >= 10000 && deposit%10000 != 0) {
+                        return Math.floor(deposit/10000) +"억" + deposit%10000;
+                    } else if (deposit >= 10000 && deposit%10000 == 0) {
+                        return deposit/10000 + "억";
+                    } else {
+                        return deposit;
+                    }
+                });
+                
+                var template = Handlebars.compile($("#gallery-data").html());
+                var html = template(req);
+                $("#gallery-list").html(html);
+                $("#room-count").html(req.totalCount);
+                
+                startPage = req.pageData.startPage;
+                endPage = req.pageData.endPage;
+                groupCount = req.pageData.groupCount;
+                totalPage = req.pageData.totalPage;
+                nowPage = req.pageData.nowPage;
+                nextPage = req.pageData.nextPage;
+                prevPage = req.pageData.prevPage;
+                
+                var index_list = new Array();
+                for (var i=startPage; i<=endPage; i++) {
+                    var indexno = i;
+                    if (nowPage == indexno) {
+                        index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';                    
+                    } else {
+                        index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
+                    }
+                }
+                $("#index-list").html(index_list);
+                
+                $(".recent-div8").click(function(e) {
+                    $(this).toggleClass('on off');
+                });
+            }
+        });
+    }
+    
         /* kakao map API */
         $(function() {
-        	/** 지도 생성하기 */
+            /** 지도 생성하기 */
             var container = document.getElementById('map');
             var options = {
                 center : new kakao.maps.LatLng(centerLat, centerLng), // 지도의 중심 좌표
                 level : level,
-                maxLevel : 9	// 지도 확대 레벨
-			};
-			var map = new kakao.maps.Map(container, options);
+                maxLevel : 9    // 지도 확대 레벨
+            };
+            var map = new kakao.maps.Map(container, options);
 
-			
+            
             /** 마커 클러스터러 생성하기 **/
             var clusterer = new kakao.maps.MarkerClusterer({
-                map : map,					// 마커들을 클러스터로 관리하고 표시할 지도 객체
-                averageCenter : false,		// 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-                minLevel : 1,				// 클러스터 할 최소 지도 레벨
-                disableClickZoom : true,	// 클릭 시 확대기능 해제
-                styles : [ {				// calculator에 적용될 스타일
+                map : map,                  // 마커들을 클러스터로 관리하고 표시할 지도 객체
+                averageCenter : false,      // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+                minLevel : 1,               // 클러스터 할 최소 지도 레벨
+                disableClickZoom : true,    // 클릭 시 확대기능 해제
+                styles : [ {                // calculator에 적용될 스타일
                     minWidth : '40px',
                     height : '40px',
                     padding : '5px 11px',
@@ -608,11 +608,24 @@ pageEncoding="UTF-8"%>
                         centerLng = map.getCenter().getLng();
                         level = map.getLevel();
                     });
+                    
+                    var bounds = map.getBounds();
+                    var southwest = bounds.getSouthWest();
+                    var northeast = bounds.getNorthEast();
+                    east = northeast.getLat();
+                    west = southwest.getLat();
+                    north = northeast.getLng();
+                    south = southwest.getLng();
+                    
+                    getMapPosition(west,east,south,north,1);
+                    
+                    centerLat = map.getCenter().getLat();
+                    centerLng = map.getCenter().getLng();
+                    level = map.getLevel();
 
+            }); // end $.get(address.json)
 
-			}); // end $.get(address.json)
-
-			
+            
             /** 서울시 구 별로 마커 생성하기 **/
             $.getJSON("${pageContext.request.contextPath}/assets/guposition",
                 function(data) {
@@ -626,7 +639,7 @@ pageEncoding="UTF-8"%>
                         gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
                         gumark += '</div>';
                         var customOverlay = new kakao.maps.CustomOverlay({
-							position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
+                            position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
                             clickable : false,
                             content : gumark,
                             zIndex : 3
@@ -637,28 +650,28 @@ pageEncoding="UTF-8"%>
                         // 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
                         $("#gu-marker" + i).click(function() {
                             var poslat = $(this).children("#lat").html();
-							var poslng = $(this).children("#lng").html();
+                            var poslng = $(this).children("#lng").html();
                             map.setCenter(new kakao.maps.LatLng(poslat,poslng));
                             map.setLevel(map.getLevel() - 2,{animate : true});
-						});
+                        });
 
-					} // end for
+                    } // end for
 
                     $("#map > div > div > div > div").hover(
                         function() {$(this).css("z-index", "100");},
                         function() {$(this).css("z-index", "0");}
-					); // end hover()
-				});
+                    ); // end hover()
+                });
 
-			
+            
             /** 검색값 가져와서 지도 위치 변경하기 **/
             $("#search-form").submit(function(e) {
                 e.preventDefault();
 
-                var ps = new kakao.maps.services.Places();	// 장소 검색 객체 생성
-                var value = $('input[name=search]').val();	// input값 가져오기
+                var ps = new kakao.maps.services.Places();  // 장소 검색 객체 생성
+                var value = $('input[name=search]').val();  // input값 가져오기
 
-                ps.keywordSearch(value, placesSearchCB);	// 키워드로 장소 검색
+                ps.keywordSearch(value, placesSearchCB);    // 키워드로 장소 검색
                 // 키워드 검색 완료 시 호출되는 콜백함수
                 function placesSearchCB(data, status, pagination) {
                     if (status === kakao.maps.services.Status.OK) {
@@ -670,15 +683,35 @@ pageEncoding="UTF-8"%>
                             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                         }
 
-                        map.setBounds(bounds);	// 검색된 장소 위치를 기준으로 지도 범위 재설정
+                        map.setBounds(bounds);  // 검색된 장소 위치를 기준으로 지도 범위 재설정
                     }
                 }; // end placesSearchCB()
             }); // end submit()
+            
+            var key = "${keyword}";
+            if (key) {
+                var ps = new kakao.maps.services.Places();  // 장소 검색 객체 생성
+                ps.keywordSearch(key, placesSearchCB);  // 키워드로 장소 검색
+                // 키워드 검색 완료 시 호출되는 콜백함수
+                function placesSearchCB(data, status, pagination) {
+                    if (status === kakao.maps.services.Status.OK) {
+
+                        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해 LatLngBounds 객체에 좌표 추가
+                        var bounds = new kakao.maps.LatLngBounds();
+
+                        for (var i = 0; i < data.length; i++) {
+                            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                        }
+
+                        map.setBounds(bounds);  // 검색된 장소 위치를 기준으로 지도 범위 재설정
+                    }
+                }; // end placesSearchCB()
+            }
 
             
             /** 지도 확대/축소 변경 버튼 **/
-            function zoomIn() { map.setLevel(map.getLevel() - 1); }		// 지도 확대 메서드
-            function zoomOut() { map.setLevel(map.getLevel() + 1); }	// 지도 축소 메서드
+            function zoomIn() { map.setLevel(map.getLevel() - 1); }     // 지도 확대 메서드
+            function zoomOut() { map.setLevel(map.getLevel() + 1); }    // 지도 축소 메서드
 
             // 버튼 클릭과 기능 연결
             $(".zoom-in").click(function() { zoomIn(); });
@@ -687,8 +720,8 @@ pageEncoding="UTF-8"%>
             
             /** 지도 범위 이동이 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'dragend', function() {
-            	var bounds = map.getBounds();
-            	var southwest = bounds.getSouthWest();
+                var bounds = map.getBounds();
+                var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
                 east = northeast.getLat();
                 west = southwest.getLat();
@@ -705,8 +738,8 @@ pageEncoding="UTF-8"%>
             
             /** 지도 확대/축소가 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'zoom_changed', function() {
-            	var bounds = map.getBounds();
-            	var southwest = bounds.getSouthWest();
+                var bounds = map.getBounds();
+                var southwest = bounds.getSouthWest();
                 var northeast = bounds.getNorthEast();
                 east = northeast.getLat();
                 west = southwest.getLat();
@@ -724,25 +757,25 @@ pageEncoding="UTF-8"%>
             /** 페이징 처리 **/
             // 페이지 번호 클릭
             $(document).on('click', ".index-indiv", function(e){
-				var index_no = $(this).html();
-				getMapPosition(west,east,south,north, index_no);
-			});
-			// 다음 그룹으로 가기 버튼 클릭
+                var index_no = $(this).html();
+                getMapPosition(west,east,south,north, index_no);
+            });
+            // 다음 그룹으로 가기 버튼 클릭
             $(document).on('click', ".next-btn", function(e){
-            	if (nextPage == undefined) { nextPage = ${pageData.nextPage}; }
-            	
-            	if (nextPage > 0) {
-					getMapPosition(west,east,south,north, nextPage);
-					return;
-            	} else { return false; }
-			});
+                if (nextPage == undefined) { nextPage = ${pageData.nextPage}; }
+                
+                if (nextPage > 0) {
+                    getMapPosition(west,east,south,north, nextPage);
+                    return;
+                } else { return false; }
+            });
             // 이전 그룹으로 가기 버튼 클릭
             $(document).on('click', ".prev-btn", function(e){
-            	if (prevPage > 0) {
-					getMapPosition(west,east,south,north, prevPage);
-					return;
-            	} else { return false; }
-			});
+                if (prevPage > 0) {
+                    getMapPosition(west,east,south,north, prevPage);
+                    return;
+                } else { return false; }
+            });
             
         });
 
@@ -751,91 +784,91 @@ pageEncoding="UTF-8"%>
         
         /** 원룸, 투쓰리룸, 오피스텔 체크박스 */
         var roomtypeto = "${param.roomtype}";
-		var to = [];
-		to = roomtypeto.split("m");
+        var to = [];
+        to = roomtypeto.split("m");
         var roomtype1 = document.getElementById('roomtype1');   
-		var roomtype2 = document.getElementById('roomtype2'); 
-		var roomtype3 = document.getElementById('roomtype3'); 
+        var roomtype2 = document.getElementById('roomtype2'); 
+        var roomtype3 = document.getElementById('roomtype3'); 
         for (var room in to) {
-        	if (to[room] == "원룸") {
-        		$roomtype1 = $('#roomtype1').attr('checked', true);
-        	}
-        	if (to[room] == "투룸") {
-        		$roomtype1 = $('#roomtype2').attr('checked', true);
-        	}
-        	if (to[room] == "쓰리룸") {
-        		$roomtype1 = $('#roomtype2').attr('checked', true);
-        	}
-        	if (to[room] == "오피스텔") {
-        		$roomtype1 = $('#roomtype3').attr('checked', true);
-        	}
+            if (to[room] == "원룸") {
+                $roomtype1 = $('#roomtype1').attr('checked', true);
+            }
+            if (to[room] == "투룸") {
+                $roomtype1 = $('#roomtype2').attr('checked', true);
+            }
+            if (to[room] == "쓰리룸") {
+                $roomtype1 = $('#roomtype2').attr('checked', true);
+            }
+            if (to[room] == "오피스텔") {
+                $roomtype1 = $('#roomtype3').attr('checked', true);
+            }
         }
-		
-		$('.room-typech').click(function() {
-			var rt = "";
-			
-			if ($("input:checkbox[id='roomtype1']").is(":checked") == true) {
-				rt += "원룸";
-			}
-			if ($("input:checkbox[id='roomtype2']").is(":checked") == true) {
-				rt += "m투룸m쓰리룸";
-			}
-			if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
-				rt += "m오피스텔";
-			}
-			
-			if(rt == "") {
-				return false;
-			}
-			
-        	var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
-        	location.replace(roomtypehref);
-        	
-		});
-		/** 원룸, 투쓰리룸, 오피스텔 체크박스 끝 */
-		
-		/** 월세, 전세, 매매 체크박스 */
+        
+        $('.room-typech').click(function() {
+            var rt = "";
+            
+            if ($("input:checkbox[id='roomtype1']").is(":checked") == true) {
+                rt += "원룸";
+            }
+            if ($("input:checkbox[id='roomtype2']").is(":checked") == true) {
+                rt += "m투룸m쓰리룸";
+            }
+            if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
+                rt += "m오피스텔";
+            }
+            
+            if(rt == "") {
+                return false;
+            }
+            
+            var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+            location.replace(roomtypehref);
+            
+        });
+        /** 원룸, 투쓰리룸, 오피스텔 체크박스 끝 */
+        
+        /** 월세, 전세, 매매 체크박스 */
         var dealingtypeto = "${param.dealingtype}";
-		var to = [];
-		to = dealingtypeto.split("m");
+        var to = [];
+        to = dealingtypeto.split("m");
         var dealingtype1 = document.getElementById('dealingtype1');   
-		var dealingtype2 = document.getElementById('dealingtype2'); 
-		var dealingtype3 = document.getElementById('dealingtype3'); 
+        var dealingtype2 = document.getElementById('dealingtype2'); 
+        var dealingtype3 = document.getElementById('dealingtype3'); 
         for (var dealing in to) {
-        	if (to[dealing] == "월세") {
-        		$dealingtype1 = $('#dealingtype1').attr('checked', true);
-        	}
-        	if (to[dealing] == "전세") {
-        		$dealingtype2 = $('#dealingtype2').attr('checked', true);
-        	}
-        	if (to[dealing] == "매매") {
-        		$dealingtype3 = $('#dealingtype3').attr('checked', true);
-        	}
+            if (to[dealing] == "월세") {
+                $dealingtype1 = $('#dealingtype1').attr('checked', true);
+            }
+            if (to[dealing] == "전세") {
+                $dealingtype2 = $('#dealingtype2').attr('checked', true);
+            }
+            if (to[dealing] == "매매") {
+                $dealingtype3 = $('#dealingtype3').attr('checked', true);
+            }
         }
         
         
-		$('.dealing-typech').click(function() {
-			var dt = "";
-			
-			if ($("input:checkbox[id='dealingtype1']").is(":checked") == true) {
-				dt += "월세";
-			}
-			if ($("input:checkbox[id='dealingtype2']").is(":checked") == true) {
-				dt += "m전세";
-			}
-			if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
-				dt += "m매매";
-			}
-			
-			if(dt == "") {
-				return false;
-			}
-			
-        	var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
-        	location.replace(dealingtypehref);
-        	
-		});
-		/** 월세, 전세, 매매 체크박스 끝 */
+        $('.dealing-typech').click(function() {
+            var dt = "";
+            
+            if ($("input:checkbox[id='dealingtype1']").is(":checked") == true) {
+                dt += "월세";
+            }
+            if ($("input:checkbox[id='dealingtype2']").is(":checked") == true) {
+                dt += "m전세";
+            }
+            if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
+                dt += "m매매";
+            }
+            
+            if(dt == "") {
+                return false;
+            }
+            
+            var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+            location.replace(dealingtypehref);
+            
+        });
+        /** 월세, 전세, 매매 체크박스 끝 */
 
         // 금액별로 단위 표시(만/억)를 위한 메서드
         function fix(val) {

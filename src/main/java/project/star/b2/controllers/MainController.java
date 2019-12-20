@@ -430,34 +430,32 @@ public class MainController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
-//		input.setRoomtype(room);
-		/* input.setTitle(keyword); */
-		input.setDealingtype(dealingtype);
-		input.setRegion_2depth_name(keyword);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
 
 		try {
-
+			/** 조회할 조건값 */
+			// 원룸,투룸,쓰리룸,오피스텔 
 			Gallery.setRoomTypePate(roomtypepate);
+			// 월세,전세,매매
 			Gallery.setDealingTypePate(dealingtypepate);
-			
+			// 보증금/전세가
 			Gallery.setDepositFrom(depositFrom);
 			Gallery.setDepositTo(depositTo);
-
+			// 월세
 			Gallery.setMonthFrom(monthFrom);
 			Gallery.setMonthTo(monthTo);
-
+			//매매
 			Gallery.setBuyingFrom(buyingFrom);
 			Gallery.setBuyingTo(buyingTo);
-
+			// 관리비
 			Gallery.setFeeFrom(feeFrom);
 			Gallery.setFeeTo(feeTo);
-
+			// 방 크기
 			Gallery.setSizeFrom(sizeFrom);
 			Gallery.setSizeTo(sizeTo);
-			
+			// 지도
 			Gallery.setWest(west);
 			Gallery.setEast(east);
 			Gallery.setSouth(south);
@@ -616,36 +614,36 @@ public class MainController {
 	@RequestMapping(value = "main/repwd_ok.do", method = RequestMethod.POST)
 	public ModelAndView edit(Model model) {
 
-	/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
-	String passwd = webHelper.getString("passwd");
-	String email = webHelper.getString("email");
-
-	if (passwd == null) {
-	   return webHelper.redirect(null, "비밀번호를 입력하세요.");
+		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+		String passwd = webHelper.getString("passwd");
+		String email = webHelper.getString("email");
+	
+		if (passwd == null) {
+		   return webHelper.redirect(null, "비밀번호를 입력하세요.");
+		}
+	
+		/** 2) 데이터 수정하기 */
+		// 수정할 값들을 Beans에 담는다.
+		User input = new User();
+		input.setPasswd(passwd);
+		input.setEmail(email);
+	
+		try {
+		    try {
+		        // 회원 pwd 데이터 수정
+		        userService.getPassword(input);
+		        /** 3) 결과를 확인하기 위한 페이지 이동 */
+		        return webHelper.redirect("/b2", "수정되었습니다.");
+		    }
+		    catch(Exception e) {
+		        e.getLocalizedMessage();
+		        return webHelper.redirect(null, e.getLocalizedMessage());
+		    }
+		}
+		catch(Exception e) {
+		    return webHelper.redirect(null, e.getLocalizedMessage());
+		}
 	}
-
-	/** 2) 데이터 수정하기 */
-	// 수정할 값들을 Beans에 담는다.
-	User input = new User();
-	input.setPasswd(passwd);
-	input.setEmail(email);
-
-	try {
-	    try {
-	        // 회원 pwd 데이터 수정
-	        userService.getPassword(input);
-	        /** 3) 결과를 확인하기 위한 페이지 이동 */
-	        return webHelper.redirect("/b2", "수정되었습니다.");
-	    }
-	    catch(Exception e) {
-	        e.getLocalizedMessage();
-	        return webHelper.redirect(null, e.getLocalizedMessage());
-	    }
-	}
-	catch(Exception e) {
-	    return webHelper.redirect(null, e.getLocalizedMessage());
-	}
-}
 
 
 	/********************************************************************

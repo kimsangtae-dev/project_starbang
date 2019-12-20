@@ -66,9 +66,9 @@
 					<input type="hidden" class="input-hidden" name="feeTo" id="keyword" value="999999">
 					<input type="hidden" class="input-hidden" name="sizeTo" id="keyword" value="999999">
 					<input type="hidden" class="input-hidden" name="map" id="keyword" value="37.5642135,126.9743207,9">
-					<input type="search" name="keyword" id="searching-for" value="${keyword}" placeholder = "지역을 검색하세요">
+					<input type="search" name="keyword" id="searching-for" value="${keyword}" placeholder = "지역으로 검색하세요">
 					<i class="glyphicon glyphicon-search"></i>
-					<button type="submit" href="#" class="btn btn-primary">방 찾기</button>
+					<button type="submit" class="btn btn-primary">방 찾기</button>
 				</div>
 			</form>
 		</div>
