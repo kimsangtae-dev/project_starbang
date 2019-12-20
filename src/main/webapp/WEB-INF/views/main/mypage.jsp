@@ -13,6 +13,13 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/ma_mypager.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css">
 
+<script type="text/javascript">
+$(function () {
+			$("#ex_file").change(function(e) {
+				$("#inputsubmit").click();
+			});
+		});
+
 </head>
 <body>
    <!-- 상단 영역 -->
