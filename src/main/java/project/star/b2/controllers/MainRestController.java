@@ -115,9 +115,6 @@ public class MainRestController {
 	 *******************************************************************/
 	@RequestMapping(value ="/professor2", method = RequestMethod.GET)
 	public Map<String, Object>get_list2(HttpServletRequest request){
-	HttpSession session = request.getSession();
-    User loginInfo = (User) session.getAttribute("loginInfo");
-
 	int totalCount = 0; // 전체 게시글 수
 	int listCount = 4; // 한 페이지당 표시할 목록 수
 	int pageCount = 1; // 한 그룹당 표시할 페이지 번호 수

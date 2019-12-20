@@ -66,7 +66,7 @@
 					<input type="hidden" class="input-hidden" name="feeTo" id="keyword" value="999999">
 					<input type="hidden" class="input-hidden" name="sizeTo" id="keyword" value="999999">
 					<input type="hidden" class="input-hidden" name="map" id="keyword" value="37.5642135,126.9743207,9">
-					<input type="search" name="keyword" id="keyword" value="${keyword}" placeholder = "지역을 검색하세요">
+					<input type="search" name="keyword" id="searching-for" value="${keyword}" placeholder = "지역을 검색하세요">
 					<i class="glyphicon glyphicon-search"></i>
 					<button type="submit" href="#" class="btn btn-primary">방 찾기</button>
 				</div>
@@ -269,8 +269,8 @@
 				<div class="tab_container" id="tab_con">
 					<div class="recent-div4">
 					<c:choose>
-								<%-- 조회 결과가 없는 경우 --%>
-								<c:when test="${output == null || fn:length(output) == 0}">
+					<%-- 조회 결과가 없는 경우 --%>
+					<c:when test="${output == null || fn:length(output) == 0}">
 					<div class="recent-div5-vacant margin">
 						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
 					</div>
@@ -283,20 +283,15 @@
 										<div class="recent-div5-vacant margin">
 						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
 					</div>
-								</c:when>
-					</c:choose>								
-					
-<%-- 						<c:forEach var="item" items="${output3}" varStatus="status"
-							end="4">
+					</c:when>
+					<c:otherwise>						
+ 						<c:forEach var="item" items="${output3}" varStatus="status" end="4">
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
-										좋아요 버튼
 										<div class="recent-div7">
 											<div class="recent-div8 off" data-value="on"></div>
 										</div>
-										좋아요 끝
-										전체 링크화
 										<a target="_blank" rel="" class="recent-a"
 											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 											<!-- 이미지 -->
@@ -304,13 +299,11 @@
 												<img
 													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
 											</div> <c:if test="${item.confirmdate != null}">
-												확인매물 div
 												<div class="recent-a-confirm">
 													<div class="recent-a-confirm-div">
 														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
 													</div>
 												</div>
-												확인매물 끝
 											</c:if>
 											<p class="recent-a-p1">${item.roomtype}</p>
 											<p class="recent-a-p2">
@@ -331,7 +324,9 @@
 									</div>
 								</div>
 							</li>
-						</c:forEach> --%>
+						</c:forEach>
+						</c:otherwise>	
+						</c:choose>
 					</div>
 
 				</div>
@@ -469,77 +464,100 @@
 					<a href="#">인기 있는 방</a>
 				</div>
 				<div class="pop-title2">많은 사람들이 찾아본 이곳, 궁금하지 않으세요?</div>
-
+				<div class="fame_container">
 				<!-- 갤러리 전체 박스 -->
-				<div class="hit-div4">
+				<div class="popular-div4">
 					<ul id="gallery-list">
-<%-- 						<c:choose>
-							조회 결과가 없는 경우
-							<c:when test="${output == null || fn:length(output) == 0}">
-					<div class="recent-div5-vacant margin">
-						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-					</div>
-										<div class="recent-div5-vacant margin">
-						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-					</div>
-										<div class="recent-div5-vacant margin">
-						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-					</div>
-										<div class="recent-div5-vacant margin">
-						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
-					</div>
+ 				<%-- 	<c:choose>
+							<c:when test="${output3 == null || fn:length(output) == 0}">
+					<c:forEach var="item" items="${output}" varStatus="status">
+									<li>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<div class="recent-div7">
+											<div class="recent-div8 off" data-value="on"></div>
+										</div>
+										<a target="_blank" rel="" class="recent-a"
+											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
+											<!-- 이미지 -->
+											<div class="recent-a-div">
+												<img
+													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+											</div> <c:if test="${item.confirmdate != null}">
+												<div class="recent-a-confirm">
+													<div class="recent-a-confirm-div">
+														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+													</div>
+												</div>
+											</c:if>
+											<p class="recent-a-p1">${item.roomtype}</p>
+											<p class="recent-a-p2">
+												<c:choose>
+													<c:when test="${item.dealingtype == '월세'}">
+														<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+													</c:when>
+													<c:otherwise>
+														<span>${item.dealingtype}&nbsp;</span>
+														<span id="prc">${item.price}</span>
+													</c:otherwise>
+												</c:choose>
+											</p>
+											<p class="recent-a-p34">${item.floor}층,${item.area}m²,관리비
+												${item.fee}만</p>
+											<p class="recent-a-p34">${item.title}</p>
+										</a>
+									</div>
+								</div>
+							</li>
+							</c:forEach>
 							</c:when>
 							<c:otherwise> --%>
 						<%-- 갤러리 시작 --%>
 								<c:forEach var="item" items="${output}" varStatus="status">
 									<li>
-										<div class="hit-div5">
-											<div class="hit-div6">
-												<%-- 좋아요 버튼 --%>
-												<div class="hit-div7">
-													<div class="hit-div8 off" data-value="on"></div>
-												</div>
-												<%-- 좋아요 끝 --%>
-												<%-- 전체 링크화 --%>
-												<a target="_blank" rel="" class="hit-a"
-													href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
-													<!-- 이미지 -->
-													<div class="hit-a-div">
-														<img
-															src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
-													</div> <c:if test="${item.confirmdate != null}">
-														<%-- 확인매물 div --%>
-														<div class="hit-a-confirm">
-															<div class="hit-a-confirm-div">
-																<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
-															</div>
-														</div>
-														<%-- 확인매물 끝 --%>
-													</c:if>
-													<p class="hit-a-p1">${item.roomtype}</p>
-													<p class="hit-a-p2">
-														<c:choose>
-															<c:when test="${item.dealingtype == '월세'}">
-																<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-															</c:when>
-															<c:otherwise>
-																<span>${item.dealingtype}&nbsp;</span>
-																<span id="prc">${item.price}</span>
-															</c:otherwise>
-														</c:choose>
-													</p>
-													<p class="hit-a-p34">${item.floor}층,${item.area}m²,관리비
-														${item.fee}만</p>
-													<p class="hit-a-p34">${item.title}</p>
-												</a>
-											</div>
+								<div class="recent-div5">
+									<div class="recent-div6">
+										<div class="recent-div7">
+											<div class="recent-div8 off" data-value="on"></div>
 										</div>
-									</li>
-								</c:forEach>
-<%-- 							</c:otherwise>
+										<a target="_blank" rel="" class="recent-a"
+											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
+											<!-- 이미지 -->
+											<div class="recent-a-div">
+												<img
+													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+											</div> <c:if test="${item.confirmdate != null}">
+												<div class="recent-a-confirm">
+													<div class="recent-a-confirm-div">
+														<span class="bold">확인매물</span> <span>${item.confirmdate}</span>
+													</div>
+												</div>
+											</c:if>
+											<p class="recent-a-p1">${item.roomtype}</p>
+											<p class="recent-a-p2">
+												<c:choose>
+													<c:when test="${item.dealingtype == '월세'}">
+														<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+													</c:when>
+													<c:otherwise>
+														<span>${item.dealingtype}&nbsp;</span>
+														<span id="prc">${item.price}</span>
+													</c:otherwise>
+												</c:choose>
+											</p>
+											<p class="recent-a-p34">${item.floor}층,${item.area}m²,관리비
+												${item.fee}만</p>
+											<p class="recent-a-p34">${item.title}</p>
+										</a>
+									</div>
+								</div>
+							</li>
+							</c:forEach>
+<%--  							</c:otherwise>
 						</c:choose> --%>
 						<%-- 각 갤러리 끝 --%>
 					</ul>
+					</div>
 
 					<%-- <!-- 갤러리 전체 박스 -->
         <div class="pop-gallery-d"> 
@@ -778,41 +796,41 @@
 		<script id="prof-list-tmpl" type="text/x-handlebars-template">
 {{#each item}}
 									<li>
-										<div class="hit-div5">
-											<div class="hit-div6">
+										<div class="recent-div5">
+											<div class="recent-div6">
 												<%-- 좋아요 버튼 --%>
-												<div class="hit-div7">
-													<div class="hit-div8 off" data-value="on"></div>
+												<div class="recent-div7">
+													<div class="recent-div8 off" data-value="on"></div>
 												</div>
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
-												<a target="_blank" rel="" class="hit-a"
+												<a target="_blank" rel="" class="recent-a"
 													href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
 													<!-- 이미지 -->
-													<div class="hit-a-div">
+													<div class="recent-a-div">
 														<img
 															src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
 													</div>
 														<%-- 확인매물 div --%>
 				  										{{#if confirmdate}}
-														<div class="hit-a-confirm">
-															<div class="hit-a-confirm-div">
+														<div class="recent-a-confirm">
+															<div class="recent-a-confirm-div">
 																<span class="bold">확인매물</span> <span>{{confirmdate}}</span>
 															</div>
 														</div>
 														<%-- 확인매물 끝 --%>
 				  									{{/if}}
-													<p class="hit-a-p1">{{roomtype}}</p>
-													<p class="hit-a-p2">
+													<p class="recent-a-p1">{{roomtype}}</p>
+													<p class="recent-a-p2">
 					{{#isMonth dealingtype}}
                      <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
 					{{else}}
 					 <span>{{dealingtype}} {{isOver price}}</span>
 					{{/isMonth}}													
 </p>
-													<p class="hit-a-p34">{{floor}}층,{{area}}m²,관리비
+													<p class="recent-a-p34">{{floor}}층,{{area}}m²,관리비
 														{{fee}}만</p>
-													<p class="hit-a-p34">{{title}}</p>
+													<p class="recent-a-p34">{{title}}</p>
 												</a>
 											</div>
 										</div>
@@ -858,7 +876,7 @@
 		});
 		});
 	
-	$(document).ready(function(){
+/*  	$(document).ready(function(){
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
 		,function(json){
@@ -895,7 +913,7 @@
 			$(".recent-div4").empty();
 			$(".recent-div4").append(result);
 		});
-		});
+		});  */
 	
 	$("#tab1").click(function(){
 		alert("테스트중");
@@ -938,9 +956,8 @@
 		});
 		});
 	
-	$(document).ready(function(){ //인기있는 방 AJAX
-		$.get("${pageContext.request.contextPath}/famous",
-				{"heartno":1}
+ 	$(document).ready(function(){ //인기있는 방 AJAX
+		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
 		,function(json){
 			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
          		  if (dealingtype == '월세') {
@@ -972,8 +989,8 @@
 			
 			$(".tabs > li:nth-child(1)").css("color","black");
 			$(".tabs > li:nth-child(2)").css("color","gray");
-			$(".hit-div4").empty();
-			$(".hit-div4").append(result);
+			$(".popular-div4").empty();
+			$(".popular-div4").append(result);
 		});
 		});
 	});
