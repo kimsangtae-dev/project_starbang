@@ -608,15 +608,7 @@ pageEncoding="UTF-8"%>
                         centerLng = map.getCenter().getLng();
                         level = map.getLevel();
                     });
-        			
-        			var bounds = map.getBounds();
-                	var southwest = bounds.getSouthWest();
-                    var northeast = bounds.getNorthEast();
-                    east = northeast.getLat();
-                    west = southwest.getLat();
-                    north = northeast.getLng();
-                    south = southwest.getLng();
-        			getMapPosition(west,east,south,north,1)
+
 
 			}); // end $.get(address.json)
 
