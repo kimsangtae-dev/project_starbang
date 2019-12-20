@@ -507,9 +507,11 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<script type="text/javascript">
 		/* kakao map API */
 		$(function() {
+			var lat = ${room.latitude};
+			var lng = ${room.longitude};
 			var container = document.getElementById('map');
 			var options = {
-				center : new kakao.maps.LatLng(37.5642135, 127.0243207), // 지도의 중심 좌표
+				center : new kakao.maps.LatLng(lat, lng), // 지도의 중심 좌표
 				level : 2
 			// 지도 확대 레벨
 			};
@@ -517,7 +519,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			var map = new kakao.maps.Map(container, options);
 
 			var circle = new kakao.maps.Circle({
-				center : new kakao.maps.LatLng(37.5025398, 127.0243207), // 원의 중심좌표 입니다
+				center : new kakao.maps.LatLng(lat, lng), // 원의 중심좌표 입니다
 				radius : 30, // 미터 단위의 원의 반지름입니다
 				strokeWeight : 2, // 선의 두께입니다
 				strokeColor : '#1564f9', // 선의 색깔입니다
