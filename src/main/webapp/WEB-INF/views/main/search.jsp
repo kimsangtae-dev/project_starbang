@@ -417,7 +417,7 @@ pageEncoding="UTF-8"%>
       {{/each}}
    </script>
 
-        <!-- 지도 api -->
+    <!-- 지도 api -->
     <script type="text/javascript">
     /** ajax전송을 위한 파라미터 가져오기 **/
     var roomtype = "${param.roomtype}";
@@ -432,6 +432,10 @@ pageEncoding="UTF-8"%>
 	var fee_to = ${param.feeTo};
 	var size_from = ${param.sizeFrom};
 	var size_to = ${param.sizeTo};
+	
+    var centerLat = ${lat};
+    var centerLng = ${lng};
+    var level =${level};
 	
 	var west = 0;
 	var east = 0;
@@ -535,8 +539,8 @@ pageEncoding="UTF-8"%>
         	/** 지도 생성하기 */
             var container = document.getElementById('map');
             var options = {
-                center : new kakao.maps.LatLng(37.5642135, 126.9743207), // 지도의 중심 좌표
-                level : 9,
+                center : new kakao.maps.LatLng(centerLat, centerLng), // 지도의 중심 좌표
+                level : level,
                 maxLevel : 9	// 지도 확대 레벨
 			};
 			var map = new kakao.maps.Map(container, options);
@@ -565,7 +569,7 @@ pageEncoding="UTF-8"%>
 
             
             /** 매물 데이터 가져오기 **/
-            $.getJSON('${pageContext.request.contextPath}/assets/roomposition',
+            $.getJSON('${pageContext.request.contextPath}/assets/roomposition', 
                 function(data) {
                     var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
@@ -599,7 +603,20 @@ pageEncoding="UTF-8"%>
                         south = southwest.getLng();
                         
                         getMapPosition(west,east,south,north,1);
+                        
+                        centerLat = map.getCenter().getLat();
+                        centerLng = map.getCenter().getLng();
+                        level = map.getLevel();
                     });
+        			
+        			var bounds = map.getBounds();
+                	var southwest = bounds.getSouthWest();
+                    var northeast = bounds.getNorthEast();
+                    east = northeast.getLat();
+                    west = southwest.getLat();
+                    north = northeast.getLng();
+                    south = southwest.getLng();
+        			getMapPosition(west,east,south,north,1)
 
 			}); // end $.get(address.json)
 
@@ -687,6 +704,10 @@ pageEncoding="UTF-8"%>
                 south = southwest.getLng();
                 
                 getMapPosition(west,east,south,north,1);
+                
+                centerLat = map.getCenter().getLat();
+                centerLng = map.getCenter().getLng();
+                level = map.getLevel();
             });
             
             
@@ -701,101 +722,81 @@ pageEncoding="UTF-8"%>
                 south = southwest.getLng();
                 
                 getMapPosition(west,east,south,north,1);
+                
+                centerLat = map.getCenter().getLat();
+                centerLng = map.getCenter().getLng();
+                level = map.getLevel();
             });
             
-            var center = map.getCenter();
-                
-            $(document).on('click', ".index-indiv", function(event){
+            
+            /** 페이징 처리 **/
+            // 페이지 번호 클릭
+            $(document).on('click', ".index-indiv", function(e){
 				var index_no = $(this).html();
 				getMapPosition(west,east,south,north, index_no);
 			});
-            	
-            $(document).on('click', ".next-btn", function(event){
-            	if (nextPage == undefined) {
-            		nextPage = ${pageData.nextPage};
-            	}
+			// 다음 그룹으로 가기 버튼 클릭
+            $(document).on('click', ".next-btn", function(e){
+            	if (nextPage == undefined) { nextPage = ${pageData.nextPage}; }
             	
             	if (nextPage > 0) {
 					getMapPosition(west,east,south,north, nextPage);
 					return;
-            	} else {
-            		return false;
-            	}
+            	} else { return false; }
 			});
-            
-            $(document).on('click', ".prev-btn", function(event){
-            	
+            // 이전 그룹으로 가기 버튼 클릭
+            $(document).on('click', ".prev-btn", function(e){
             	if (prevPage > 0) {
 					getMapPosition(west,east,south,north, prevPage);
 					return;
-            	} else {
-            		return false;
-            	}
+            	} else { return false; }
 			});
             
         });
-    </script>
 
-    <!-- 필터 -->
-    <script type="text/javascript">
         /* 필터 -드롭다운 - 자동 toggle 해제 */
         $('.dropdown-menu').click(function(e) { e.stopPropagation(); })
         
         /** 원룸, 투쓰리룸, 오피스텔 체크박스 */
         var roomtypeto = "${param.roomtype}";
-		//var roomtypepate = new List;
 		var to = [];
 		to = roomtypeto.split("m");
-		/* for (var i = 0; i < to.length ; i++) {
-				roomtypepate.add(to[i]);
-			} */
         var roomtype1 = document.getElementById('roomtype1');   
 		var roomtype2 = document.getElementById('roomtype2'); 
 		var roomtype3 = document.getElementById('roomtype3'); 
         for (var room in to) {
         	if (to[room] == "원룸") {
         		$roomtype1 = $('#roomtype1').attr('checked', true);
-        		//alert("원룸")
         	}
         	if (to[room] == "투룸") {
         		$roomtype1 = $('#roomtype2').attr('checked', true);
-        		//alert("투룸")
         	}
         	if (to[room] == "쓰리룸") {
         		$roomtype1 = $('#roomtype2').attr('checked', true);
-        		//alert("쓰리룸")
         	}
         	if (to[room] == "오피스텔") {
         		$roomtype1 = $('#roomtype3').attr('checked', true);
-        		//alert("오피스텔")
         	}
         }
-        
-        //var rt = "";
 		
 		$('.room-typech').click(function() {
 			var rt = "";
 			
 			if ($("input:checkbox[id='roomtype1']").is(":checked") == true) {
 				rt += "원룸";
-				//$("#roomtype1").prop("checked", true);
 			}
 			if ($("input:checkbox[id='roomtype2']").is(":checked") == true) {
 				rt += "m투룸m쓰리룸";
-				//$("#roomtype2").prop("checked", true);
 			}
 			if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
 				rt += "m오피스텔";
-				//$("#roomtype3").prop("checked", true);
 			}
 			
-			/* var rtzjq = rt.split("r");
-			alert(rtzjq[0]) */
 			if(rt == "") {
 				return false;
 			}
 			
-        	var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+        	var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
         	location.replace(roomtypehref);
         	
 		});
@@ -803,53 +804,42 @@ pageEncoding="UTF-8"%>
 		
 		/** 월세, 전세, 매매 체크박스 */
         var dealingtypeto = "${param.dealingtype}";
-		//var roomtypepate = new List;
 		var to = [];
 		to = dealingtypeto.split("m");
-		/* for (var i = 0; i < to.length ; i++) {
-				roomtypepate.add(to[i]);
-			} */
         var dealingtype1 = document.getElementById('dealingtype1');   
 		var dealingtype2 = document.getElementById('dealingtype2'); 
 		var dealingtype3 = document.getElementById('dealingtype3'); 
         for (var dealing in to) {
         	if (to[dealing] == "월세") {
         		$dealingtype1 = $('#dealingtype1').attr('checked', true);
-        		//alert("월세")
         	}
         	if (to[dealing] == "전세") {
         		$dealingtype2 = $('#dealingtype2').attr('checked', true);
-        		//alert("전세")
         	}
         	if (to[dealing] == "매매") {
         		$dealingtype3 = $('#dealingtype3').attr('checked', true);
-        		//alert("매매")
         	}
         }
         
-        //var rt = "";
-		
+        
 		$('.dealing-typech').click(function() {
 			var dt = "";
 			
 			if ($("input:checkbox[id='dealingtype1']").is(":checked") == true) {
 				dt += "월세";
-				//$("#dealingtype1").prop("checked", true);
 			}
 			if ($("input:checkbox[id='dealingtype2']").is(":checked") == true) {
 				dt += "m전세";
-				//$("#dealingtype2").prop("checked", true);
 			}
 			if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
 				dt += "m매매";
-				//$("#dealingtype3").prop("checked", true);
 			}
 			
 			if(dt == "") {
 				return false;
 			}
 			
-        	var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+        	var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
         	location.replace(dealingtypehref);
         	
 		});
@@ -913,7 +903,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -959,7 +949,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
                 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1010,7 +1000,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1057,7 +1047,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1112,7 +1102,7 @@ pageEncoding="UTF-8"%>
                     high = 999999;
                 }
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high+'&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1126,7 +1116,7 @@ pageEncoding="UTF-8"%>
             // 가격대 조건삭제
             $("#filter-reset1").click(function(e) {
                 e.preventDefault();
-                var pricehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var pricehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(pricehref);
             })
 
@@ -1135,14 +1125,14 @@ pageEncoding="UTF-8"%>
                 e.preventDefault();
                 /* slide4_value.reset();
                 $("#filter4-value").html("무제한"); */
-                var feehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}';
+                var feehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(feehref);
             })
 
             // 방크기 조건삭제
             $("#filter-reset3").click(function(e) {
                 e.preventDefault();
-                var sizehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999';
+                var sizehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999&map='+centerLat+','+centerLng+','+level;
                 location.replace(sizehref);
             })
 
@@ -1150,7 +1140,7 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999";
+                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map="+centerLat+","+centerLng+","+level;
                 location.replace(resetUrl);
             });
 

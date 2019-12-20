@@ -271,10 +271,10 @@ public class WebHelper {
 	 * 파라미터를 전달받아서 double로 형변환 하여 리턴한다.
 	 *
 	 * @param fieldName    - 파라미터 이름
-	 * @param defaultValue - 값이 없을 경우 사용될 기본값
+	 * @param d - 값이 없을 경우 사용될 기본값
 	 * @return double
 	 */
-	public double getDouble(String fieldName, int defaultValue) {
+	public double getDouble(String fieldName, double defaultValue) {
 		// 리턴을 위한 값을 두 번째 파라미터(기본값)로 설정해 둔다.
 		double result = defaultValue;
 

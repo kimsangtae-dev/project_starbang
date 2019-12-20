@@ -136,7 +136,7 @@
             <!-- 메뉴 항목 -->
             <div class="pull-right">
                 <div>
-                    <a href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999">방찾기</a>
+                    <a href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">방찾기</a>
                     <a href="${pageContext.request.contextPath}/main/rtrm.do" class="padding-l">관심목록</a>
                     <a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
                     <a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>

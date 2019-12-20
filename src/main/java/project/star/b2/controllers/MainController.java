@@ -329,6 +329,12 @@ public class MainController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		
+		String mapTemp = webHelper.getString("map");
+		String[] map = mapTemp.split(",");
+		double lat = Double.parseDouble(map[0]);
+		double lng = Double.parseDouble(map[1]);
+		int level = Integer.parseInt(map[2]);
 
 		/******** 필터 ********/
 		/** 방 종류(roomtype) */
@@ -351,7 +357,6 @@ public class MainController {
 		int sizeFrom = webHelper.getInt("sizeFrom");
 		int sizeTo = webHelper.getInt("sizeTo", 999999);
 
-		String region_2depth_name = webHelper.getString("region_2depth_name");
 
 		/** 방 종류(roomtype) list */
 		 List<String> roomtypepate = new ArrayList<String>(); 
@@ -389,11 +394,12 @@ public class MainController {
 		filter.setFeeTo(feeTo);
 		// 방크기
 		filter.setSizeFrom(sizeFrom);
-		if (sizeTo == 999999) {
-			filter.setSizeTo(115);
-		} else {
-			filter.setSizeTo(sizeTo);
-		}
+		if (sizeTo == 999999) { filter.setSizeTo(115); } 
+		else { filter.setSizeTo(sizeTo); }
+		// 지도 중심좌표 설정
+		filter.setLat(lat);
+		filter.setLng(lng);
+		filter.setLevel(level);
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -451,6 +457,9 @@ public class MainController {
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("param", filter);
+		model.addAttribute("lat", lat);
+		model.addAttribute("lng", lng);
+		model.addAttribute("level", level);
 
 		return new ModelAndView("main/search");
 	}
