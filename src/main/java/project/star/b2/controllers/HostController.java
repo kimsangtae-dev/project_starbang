@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import project.star.b2.helper.PageData;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Address;
+import project.star.b2.model.Heart;
 import project.star.b2.model.Address.Documents;
 import project.star.b2.model.Info;
 import project.star.b2.model.Price;
@@ -28,6 +30,7 @@ import project.star.b2.model.UploadItem;
 import project.star.b2.model.User;
 import project.star.b2.service.ApiKakaoSearchService;
 import project.star.b2.service.RIPService;
+import project.star.b2.service.RoomService;
 import project.star.b2.service.UploadService;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -51,6 +54,10 @@ public class HostController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	RIPService ripService;
+	
+	/** Service 패턴 구현체 주입 */
+	@Autowired
+	RoomService roomService;
 	
 	/** Service 패턴 구현체 주입 */
 	@Autowired
@@ -454,7 +461,52 @@ public class HostController {
 	 * 공실관리
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rmli.do", method = RequestMethod.GET)
-	public ModelAndView rmli() {
+	public ModelAndView rmli(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+
+		/** 1) 필요한 변수값 생성 */
+		int userno = loginInfo.getUserno();
+		int keyword = webHelper.getInt("roomno");			// 검색어
+		String keyword2 = webHelper.getString("roomtype");	// 검색어
+		int nowPage = webHelper.getInt("page", 1); 			// 페이지번호 (기본값 1)
+		int totalCount = 0; 	// 전체 게시글 수
+		int listCount = 10; 	// 한 페이지당 표시할 목록 수
+		int pageCount = 5; 		// 한 그룹당 표시할 페이지 번호 수
+
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Room input = new Room();
+		input.setUserno(userno);
+		input.setRoomno(keyword);
+		input.setRoomtype(keyword2);
+
+		PageData pageData = null;
+
+		try {
+			// 전체 매물 수 조회
+			totalCount = roomService.getRoomCount(input);
+			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+
+			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+			Room.setOffset(pageData.getOffset());
+			Room.setListCount(pageData.getListCount());
+
+			output = heartService.getHeartGalleryList(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		/** View 처리 */
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("output", output);
+		model.addAttribute("pageData", pageData);
+		model.addAttribute("totalCount", totalCount);
+
+		
+		
 
 		return new ModelAndView("host/rmli");
 	}

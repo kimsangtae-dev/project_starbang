@@ -25,6 +25,7 @@
         WHERE priceno=#{priceno};
     </select>
     
+    <!-- 방 번호에 의한 다중행조회하기 기능 -->
     <select id="selectList_by_roomno"
         parameterType="project.star.b2.model.Price"
         resultMap="priceMap">
