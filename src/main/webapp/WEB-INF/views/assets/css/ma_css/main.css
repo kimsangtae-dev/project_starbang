@@ -917,6 +917,9 @@
 
 /* 갤러리 박스 시작 */
 /*박스전체*/
+.hit-div4 > li{
+	list-style:none;
+}
 .hit-div5 {
 	float: left;
 	width: 290px;

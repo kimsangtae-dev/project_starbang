@@ -473,8 +473,8 @@
 				<!-- 갤러리 전체 박스 -->
 				<div class="hit-div4">
 					<ul id="gallery-list">
-						<c:choose>
-							<%-- 조회 결과가 없는 경우 --%>
+<%-- 						<c:choose>
+							조회 결과가 없는 경우
 							<c:when test="${output == null || fn:length(output) == 0}">
 					<div class="recent-div5-vacant margin">
 						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
@@ -489,8 +489,8 @@
 						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
 					</div>
 							</c:when>
-							<%-- 갤러리 시작 --%>
-							<c:otherwise>
+							<c:otherwise> --%>
+						<%-- 갤러리 시작 --%>
 								<c:forEach var="item" items="${output}" varStatus="status">
 									<li>
 										<div class="hit-div5">
@@ -536,9 +536,9 @@
 										</div>
 									</li>
 								</c:forEach>
-							</c:otherwise>
-							<%-- 각 갤러리 끝 --%>
-						</c:choose>
+<%-- 							</c:otherwise>
+						</c:choose> --%>
+						<%-- 각 갤러리 끝 --%>
 					</ul>
 
 					<%-- <!-- 갤러리 전체 박스 -->
@@ -859,7 +859,6 @@
 		});
 	
 	$(document).ready(function(){
-
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
 		,function(json){
@@ -897,6 +896,7 @@
 			$(".recent-div4").append(result);
 		});
 		});
+	
 	$("#tab1").click(function(){
 		alert("테스트중");
 
@@ -935,6 +935,45 @@
 			$(".tabs > li:nth-child(2)").css("color","gray");
 			$(".recent-div4").empty();
 			$(".recent-div4").append(result);
+		});
+		});
+	
+	$(document).ready(function(){ //인기있는 방 AJAX
+		$.get("${pageContext.request.contextPath}/famous",
+				{"heartno":1}
+		,function(json){
+			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+         		  if (dealingtype == '월세') {
+         		    return options.fn(this);
+         		  } else {
+         		    return options.inverse(this);
+         		  }
+         		});
+         		
+         		Handlebars.registerHelper('isOver', function(price, options) {
+           		if (price >= 10000 && price%10000 != 0) {
+           			return Math.floor(price/10000) +"억" + price%10000;
+           		} else {
+           			return price;
+           		}
+           	});
+         		
+         		Handlebars.registerHelper('isOver2', function(deposit, options) {
+           		if (deposit >= 10000 && deposit%10000 != 0) {
+           			return Math.floor(deposit/10000) +"억" + deposit%10000;
+           		} else {
+           			return deposit;
+           		}
+           	});
+         		
+			var source = $("#prof-list-tmpl").html()//템플릿코드
+			var template = Handlebars.compile(source);// 템플릿 컴파일
+			var result = template(json);
+			
+			$(".tabs > li:nth-child(1)").css("color","black");
+			$(".tabs > li:nth-child(2)").css("color","gray");
+			$(".hit-div4").empty();
+			$(".hit-div4").append(result);
 		});
 		});
 	});
