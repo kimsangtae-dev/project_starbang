@@ -162,7 +162,7 @@
                 <c:choose>
                     <c:when test="${loginInfo == null}">
                         <div class="small-font">
-                            <a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입 · 로그인</a>
+                            <a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">로그인</a>
                         </div>
                     </c:when>
                     <c:otherwise>
