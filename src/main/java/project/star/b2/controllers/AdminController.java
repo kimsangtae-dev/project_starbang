@@ -538,4 +538,61 @@ public class AdminController {
 
 		return new ModelAndView("admin/rmli");
 	}
+
+		/********************************************************************
+	 * 관리자 로그인
+	 *******************************************************************/
+	@RequestMapping(value = "/admin/lg.do", method = RequestMethod.GET)
+	public ModelAndView ad_login() {
+
+		return new ModelAndView("admin/lg");
+	}
+	
+	/********************************************************************
+	 * 관리자 로그인 action폼
+	 *******************************************************************/
+	@RequestMapping(value = "/admin/lg_ok.do", method = RequestMethod.POST)
+	public ModelAndView login_ok(Model model, HttpServletRequest request) {
+			
+
+		// 1) 사용자가 입력한 파라미터 수신 및 필수값 검사 */
+		String email = webHelper.getString("email"); 
+		String passwd = webHelper.getString("passwd");
+				
+			
+		// 필수 값의 존재여부 검사 
+		if (email == null || email.contentEquals("")) { 
+			return webHelper.redirect(null, "아이디를 입력하세요."); }
+		
+		if (passwd == null || passwd.contentEquals("")) { 
+			return webHelper.redirect(null, "비밀번호를 입력하세요."); }
+	 
+			
+		// 2) 사용자가 입력한 값을 Beans에 저장
+		User input = new User();
+		input.setEmail(email);
+		input.setPasswd(passwd);
+			
+			
+		// 조회결과를 저장할 객체 선언 
+		User output = null;
+			
+			try { 
+				//데이터 조회 
+			  	output = userService.getUserLogin(input); 
+			} catch (Exception e) { 
+				return webHelper.redirect(null, e.getLocalizedMessage()); }
+			
+			/* request 객체를 사용해서 세션 객체 만들기 */
+			HttpSession session = request.getSession();
+		
+			// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성   
+			if (email.equals(output.getEmail()) || passwd.equals(output.getPasswd())) {
+				session.setAttribute("loginInfo", output);
+			} else {	
+				return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
+			} 
+			
+			return new ModelAndView("admin/main");
+		}
 }
