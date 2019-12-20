@@ -111,6 +111,7 @@ public class MainController {
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			output = galleryService.getPopularGalleryList(input); // 인기있는 방
+			Collections.reverse(list);
 			output3 = galleryService.getCookieList(list); // 최근본방
 		} catch (Exception e) {
 			/* return webHelper.redirect(null, e.getLocalizedMessage()); */
