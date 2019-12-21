@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rmli.css" />
@@ -29,14 +33,15 @@
             <div class="title-box">
                 <h1 class="title-h1">공실관리</h1>
             </div>
+            <form id="form" action="${pageContext.request.contextPath}/host/rmli.do">
             <!--  -->
             <div class="isroom-div">
                 <p class="isroom-p1">
-                    <span>6</span>건의 공실이 있습니다.
+                    <span>${fn:length(output)}</span>건의 공실이 있습니다.
                 </p>
                 <p class="isroom-p2">공실상태</p>
-                <!-- <ul width="135" class="isroom-dropdown-closed">
-                    <li name="option" value="0" class="isroom-dropdown-li">전체
+                <ul width="135" id="dropdown" class="dropdown-closed dropdn">
+                    <li name="status" value="0" class="dropdown-li"><span>전체</span>
                         <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1235.000000, -281.000000)" fill="#444444">
@@ -44,24 +49,17 @@
                                         <g transform="translate(945.000000, 0.000000)">
                                             <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]"></path></g></g></g></g></svg>
                     </li>
-                    <li name="option" value="1" class="isroom-dropdown-li2">공개</li>
-                    <li name="option" value="2" class="isroom-dropdown-li2">비공개</li>
-                </ul> -->
-                <select class="isroom-dropdown-closed">
-                            <option class="isroom-dropdown-li2">전체</option>
-                            <option class="isroom-dropdown-li2">공개</option>
-                            <option class="isroom-dropdown-li2">비공개</option>
-                            
-                        </select>
-                
+                    <li name="status" value="1" class="dropdown-li2">공개</li>
+                    <li name="status" value="2" class="dropdown-li2">비공개</li>
+                </ul>
             </div>
-
+		</form>
         <div class="contain">
             <div class="table-responsive">
                 <table class="table table-hover margin-bottom">
                     <colgroup>
                         <col width="10%">
-                        <col width="45%">
+                        <col width="50%">
                         <col width="15%">
                         <col width="15%">
                         <col width="15%">
@@ -76,144 +74,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">원룸</span>
-                                    <b class="table-span1-1">월세 500/30</b><br>
-                                    <span class="table-span2">서울특별시 관악구 봉천동 945-17</span><br>
-                                    <span>2019.09.24</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-info">소유자 확인중</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">투룸</span>
-                                    <b class="table-span1-1">전세 1억</b><br>
-                                    <span class="table-span2">서울특별시 강북구 수유동 945-17</span><br>
-                                    <span>2019.09.15</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-info">소유자 확인중</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">쓰리룸</span> 
-                                    <b class="table-span1-1">매매 3억</b><br>
-                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
-                                    <span>2019.09.21</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-danger">소유자 확인실패</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">쓰리룸</span> 
-                                    <b class="table-span1-1">매매 3억</b><br>
-                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
-                                    <span>2019.09.21</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-danger">소유자 확인실패</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">쓰리룸</span> 
-                                    <b class="table-span1-1">매매 3억</b><br>
-                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
-                                    <span>2019.09.21</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-primary">&nbsp;공개&nbsp;</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">11469</td>
-                            <td>
-                                <div class="table-div">
-                                    <span class="table-span1">쓰리룸</span> 
-                                    <b class="table-span1-1">매매 3억</b><br>
-                                    <span class="table-span2">서울특별시 강북구 미아동 235</span><br>
-                                    <span>2019.09.21</span>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <span class="label label-primary">&nbsp;공개&nbsp;</span>
-                            </td>
-                            <td class="text-center">
-                                <button class="btn btn-default">수정</button>
-                                <button class="btn btn-default">삭제</button>
-                            </td>
-                            <td class="text-center">
-                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
-                                    <button class="btn btn-default">공실상태전환</button>
-                                </a>
-                            </td>
-                        </tr>
+                    
+                        <c:forEach var="k" items="${output}" varStatus="status">
+	                        <tr>
+	                       		<td class="text-center">${k.roomno}</td>
+	                           	<td>
+	                                <div class="table-div">
+	                                    <span class="table-span1">${k.roomtype}</span>
+	                                    <b class="table-span1-1">${k.dealingtype} ${k.deposit}/${k.price}</b><br>
+	                                    <span class="table-span2">${k.address}</span><br>
+	                                    <span>${fn:substringBefore(k.confirmdate," ")}</span>
+	                                </div>
+	                            </td>
+	                            <td class="text-center">
+	                            
+		                            <c:choose>
+										<c:when test="${k.confirmdate != null}">
+											<span class="label label-primary">&nbsp;공개&nbsp;</span>
+										</c:when>
+										
+										<c:otherwise>
+											<span class="label label-info">소유자 확인중</span>
+										</c:otherwise>
+									</c:choose>
+	                                
+	                            </td>
+	                            <td class="text-center">
+	                                <button class="btn btn-default">수정</button>
+	                                <button class="btn btn-default">삭제</button>
+	                            </td>
+	                            <td class="text-center">
+	                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
+	                                    <button class="btn btn-default">공실상태전환</button>
+	                                </a>
+	                            </td>
+	                        </tr>
+						</c:forEach>
+						
                     </tbody>
                 </table>
 
@@ -264,15 +161,30 @@
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $(".header-dropbox").hover(function() {
-            $(this).toggleClass('header-dropbox header-dropbox-open')
-        });
 
-        $(".isroom-dropdown-closed").click(function() {
-            $(this).toggleClass('isroom-dropdown-closed isroom-dropdown-opened')
-        });
-    });
+	$("#dropdown").click(function() {
+		
+		if ( $("#dropdown").hasClass("dropdown-closed") ) {
+			
+			$(this).addClass('dropdown-opened');
+	        $(this).removeClass('dropdown-closed');
+	        $(".dropdown-li > span").html("전체");
+		
+		} else {
+			
+			$(this).addClass('dropdown-closed');
+	        $(this).removeClass('dropdown-opened');
+
+		/* 바꾸기 */
+		$(".dropdn > li").click(function(){
+			var copy = $(this).html();
+			$(".dropdown-li > span").html(copy);
+			$("#form").submit();
+		});
+			
+	        
+		}
+	});
 
 </script>
 </body>

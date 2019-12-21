@@ -22,7 +22,7 @@ body, #root {
     /* 콘텐츠 전체 박스 */
     .content-box {
         width: 1080px;
-        padding-top: 74px;
+        padding-top: 0px;
         margin: 0px auto;
     }
 
@@ -38,62 +38,57 @@ body, #root {
         font-size: 40px;
     }
 
-    /* 몇 건의 공실이 있습니다 전체박스 */
+    /* 작은 글자 전체박스 */
     .isroom-div {
         position: relative;
         margin-top: 30px;
         height: 41px;
         padding: 7px 0px;
     }
-
+	
+	/* ~건의 공실이 있습니다 <p>태그 */
     .isroom-p1 {
         float: left;
         height: 26px;
         font-size: 16px;
         font-weight: 700;
-        line-height: 26px;
+        line-height: 27px;
         color: rgb(102, 102, 102);
     }
 
+	/* 숫자 <span> 태그 */
     .isroom-p1 > span {
         color: rgb(67, 131, 255);
     }
-
+	
+	/* 공실상태 <p>태그 */
     .isroom-p2 {
         float: right;
         margin-right: 145px;
         font-size: 16px;
-        line-height: 26px;
+        line-height: 27px;
         color: rgb(102, 102, 102);
     }
 
-    
-
-    /*  */
-    .isroom-div select {
+    /* 드롭박스 설정 */
+    .isroom-div > ul {
         position: absolute;
-        top: 10px;
+        top: 0px;
         right: 0px;
     }
-
-    /*  */
-    .isroom-dropdown-closed li {
-        display: none;
+    
+    /* 드롭다운 마우스오버시 꾸미기 설정 */
+    .dropdn > li:hover {
+    	color: rgb(67, 131, 255) !important;
+    	font-weight: 700 !important;
     }
 
-    .isroom-dropdown-closed li:first-child {
-        display: block;
-    }
-
-    .isroom-dropdown-opened svg, .isroom-dropdown-closed svg {
-    position: absolute;
-    top: 50%;
-    right: 15px;    
-    transform: translateY(-50%);
-}
-
-    /* dropdown closed */
-    .isroom-dropdown-closed {
+    /* 
+     * 드롭박스 닫혀있을 때 설정 
+     */
+    
+    /* 드롭박스 ul 닫혀있을때 꾸며줄 class */
+    .dropdown-closed {
         z-index: 10;
         user-select: none;
         width: 135px;
@@ -110,9 +105,25 @@ body, #root {
         border-image: initial;
         border-radius: 3px;
     }
+    .dropdown-closed li {
+        display: none;
+    }
 
-    /* dropdown opened */
-    .isroom-dropdown-opened {
+    .dropdown-closed li:first-child {
+        display: block;
+    }
+
+    .dropdown-opened svg, .dropdown-closed svg {
+    position: absolute;
+    top: 50%;
+    right: 15px;    
+    transform: translateY(-50%);
+}
+
+    /* 
+     * 드롭박스 열려있을 때 설정 
+     */
+    .dropdown-opened {
         z-index: 10;
         user-select: none;
         width: 135px;
@@ -125,7 +136,7 @@ body, #root {
         border-radius: 3px;
     }
 
-    .isroom-dropdown-opened li {
+    .dropdown-opened li {
     height: 50px;
         color: rgb(102, 102, 102);
         font-size: 15px;
@@ -135,12 +146,12 @@ body, #root {
         padding: 10px 0px 10px 15px;
     }
 
-    .isroom-dropdown-li {
+    .dropdown-li {
         font-weight: 700 !important;
         color: rgb(67, 131, 255) !important;
     }
 
-    .isroom-dropdown-li2 {
+    .dropdown-li2 {
         font-weight: 400;
         color: rgb(102, 102, 102);
     }
@@ -216,13 +227,14 @@ body, #root {
     
     /* 모달창 위치 지정 */
     .modal-dialog {
-        width: 420px;
-        margin: 15% auto 0;
+        width: 420px !important;
+        margin: 0 auto 0;
     }
     
     /* 내부전체박스 */
     .modal-whole-chmode {
         width: 420px;
+        margin-top: 40%;
     }
     
     /* 모달창 타이틀 */
