@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.FakeRoom;
 import project.star.b2.model.User;
+import project.star.b2.service.RoomService;
 import project.star.b2.service.UserService;
 
 @Controller
@@ -30,6 +32,7 @@ public class ModalController {
 
 	/** Service 패턴 구현체 주입 */
 	@Autowired UserService userService;
+	@Autowired RoomService roomService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -223,4 +226,36 @@ public class ModalController {
 
 		return new ModelAndView("modal/compare");
 	}
+	
+	
+    /** 허위매물 신고에 대한 action 페이지 */
+    @RequestMapping(value = "/modal/fake_ok.do", method = RequestMethod.POST)
+    public ModelAndView fake_ok(Model model) {
+        /** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
+        int reason = webHelper.getInt("reason");
+        int roomno1 = webHelper.getInt("roomno");
+        int userno = webHelper.getInt("userno");
+
+        if (reason == 0) { return webHelper.redirect(null, "신고 사유를 선택해주세요."); }
+
+        /** 2) 데이터 저장하기 */
+        // 저장할 값들을 Beans에 담는다.
+        FakeRoom input = new FakeRoom();
+        input.setReason(reason);
+        input.setRoomno(roomno1);
+        input.setUserno(userno);
+
+        try {
+            // 데이터 저장
+            // --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+            roomService.addFakeRoom(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+
+        /** 3) 결과를 확인하기 위한 페이지 이동 */
+        // 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
+        String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input.getRoomno();
+        return webHelper.redirect(redirectUrl, "저장되었습니다.");
+    }
 }

@@ -76,12 +76,29 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<!-- 도트 -->
 			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 사이렌 -->
-			<button class="notce"  id="falsehood" class="btn btn-link bot outall" data-toggle="modal" data-target="#falsehoodmo">
-				<img class="siren" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"
-					onmouseover='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/redsiren.png"'
-					onmouseout='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"'> <span
-					class="greyfontnm1">허위매물신고</span>
-			</button>
+			<c:choose>
+				<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+				<c:when test="${loginInfo == null }">
+				<a href="${pageContext.request.contextPath}/modal/login.do"
+						class="st-bang" data-toggle="modal" data-target="#loginModal">
+					<button class="notce"  id="falsehood" class="btn btn-link bot outall">
+					<img class="siren" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"
+						onmouseover='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/redsiren.png"'
+						onmouseout='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"'>
+						<span class="greyfontnm1">허위매물신고</span>
+					</button>
+				</a>
+				</c:when>
+				<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+				<c:otherwise>
+				<button class="notce" id="falsehood" class="btn btn-link bot outall" data-toggle="modal" data-target="#falsehoodmo">
+					<img class="siren" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"
+						onmouseover='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/redsiren.png"'
+						onmouseout='this.src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/siren.png"'>
+					<span class="greyfontnm1">허위매물신고</span>
+				</button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<!--찜,이메일,공유,허위매물신고 끝-->
 		<div id="confirm room">
@@ -938,6 +955,28 @@ function binary2() {
 	
 	</script>
 	
+	<script type="text/javascript">
+		$(function() {
+			$("#modalsubmit").click(function(e) {
+				e.preventDefault;
+				var userno = ${user.userno};
+				var roomno = ${room.roomno};
+				var reason = $("input[name=fakeReason]:checked").val();
+				$.ajax({
+				    type: "POST",
+				    data: {"userno": userno, "roomno": roomno, "reason": reason},
+				    url: "${pageContext.request.contextPath}/modal/fake_ok.do",
+				    success: function(data){
+				          alert("신고가 완료되었습니다.");
+				    },
+				    error: function(data) {
+				        console.log(data); //error message
+				    }
+				});
+			});
+		});
+	</script>
+	
 </body>
 
 <!-- 허위매물 신고 -->
@@ -967,23 +1006,23 @@ function binary2() {
                </pre>
                <div>
             	   <label class="labelss"> 
-            	   		<input type="checkbox" name="room-type" value="oneroom" /> 
+            	   		<input type="radio" name="fakeReason" value="1" /> 
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">거래가 완료된 매물</span>
 					</label>
 					<label class="labelss"> 
-            	   		<input type="checkbox" name="room-type" value="oneroom" /> 
+            	   		<input type="radio" name="fakeReason" value="2" /> 
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">가격이 다른 매물</span>
 					</label>
 					<label class="labelss"> 
-            	   		<input type="checkbox" name="room-type" value="oneroom" /> 
+            	   		<input type="radio" name="fakeReason" value="3" /> 
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">사진이 다른 매물</span>
 					</label>
 					<label class="labelss">  
-               			<input type="checkbox" name="room-type" value="oneroom" /> 
-               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">위치이 다른 매물</span>
+               			<input type="radio" name="fakeReason" value="4" /> 
+               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">위치가 다른 매물</span>
 					</label>
 					<label class="labelss"> 
-               			<input type="checkbox" name="room-type" value="oneroom" /> 
+               			<input type="radio" name="fakeReason" value="5" /> 
                			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">옵션이 다른 매물</span>
 					</label>
 				</div>
@@ -992,10 +1031,11 @@ function binary2() {
                	<h4 class="modal-titlef">이 매물이 허위매물로 판정된 경우 별방 기프티콘을 선물로 드려요</h4>
                	<h4 class="modal-titlef">허위 신고일 경우 서비스 이용이 제한이 될 수 있습니다</h4>
             </div>
+            <input type="hidden" name="roomno" value="${room.roomno}">
+			<input type="hidden" name="userno" value="${user.userno}">
             <div class="modal-footer modal-footerhw ">
-               <button type="submit" id="modalsubmit" class="btn btn-default falsehoodsubmit" data-dismiss="modal" >확인</button>
+               <button type="submit" id="modalsubmit" class="btn btn-default falsehoodsubmit" data-dismiss="modal">확인</button>
             </div>
          </div>
       </div>
-      
 </html>

@@ -2,6 +2,7 @@ package project.star.b2.service;
 
 import java.util.List;
 
+import project.star.b2.model.FakeRoom;
 import project.star.b2.model.Room;
 
 
@@ -75,4 +76,11 @@ public interface RoomService {
     public List<Room> getRoomCheckList(int raval) throws Exception;
     
     public List<Room> getRoomCheckConfirmList(Room input) throws Exception;
+    
+    /**
+     * 허위매물 신고하기 등록
+     * @param FakeRoom 저장할 정보를 담고 있는 Beans
+     * @throws Exception
+     */
+    public int addFakeRoom(FakeRoom input) throws Exception;
 }

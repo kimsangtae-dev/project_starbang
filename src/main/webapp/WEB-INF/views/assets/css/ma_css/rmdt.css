@@ -1156,8 +1156,8 @@ pre {
 
 /** 허위매물 신고 모달창 내용 */
 .modalcont {
-	height: 450px;
-}			
+	height: 480px;
+}
 		
 /** 허위매물 신고 모달창 내용 이미지 바로 밑 글씨 */
 .modal-title {
@@ -1178,12 +1178,12 @@ pre {
 			
 			
 /* 체크박스 스타일 */
-#modaloutcheck input[type="checkbox"] {
+#modaloutcheck input[type="radio"] {
     width: 1px; height: 1px;
     opacity: 0;
 }
 
-#modaloutcheck input[type="checkbox"] + .checkBox {
+#modaloutcheck input[type="radio"] + .checkBox {
     float: left;
     width: 22px; height: 22px;
     background-color: #ffffff;
@@ -1193,12 +1193,12 @@ pre {
 }
 
 /* 체크박스 스타일 - checked */
-#modaloutcheck input[type="checkbox"]:checked + .checkBox {
+#modaloutcheck input[type="radio"]:checked + .checkBox {
     background-color: #006cff;
     border: 1px solid #006cff;
 }
 
-#modaloutcheck input[type="checkbox"]:checked + .checkBox::after {
+#modaloutcheck input[type="radio"]:checked + .checkBox::after {
     content: "";
     display: block;
     width: 47%;
@@ -1240,9 +1240,9 @@ pre {
 }
 
 .checkTextspanma {
-	line-height: 10px;
+	line-height: 22px;
 	margin-top: 20px;
-	margin-left:  25px;
+	margin-left: 30px;
 }
 
 /** modal-dd 내용 마지막 3줄 */
