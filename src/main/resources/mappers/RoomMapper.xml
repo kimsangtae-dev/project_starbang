@@ -19,10 +19,8 @@
 		<result property="ho" column="ho" />
 		<result property="latitude" column="latitude" />
 		<result property="longitude" column="longitude" />
-		<result property="region_2depth_name"
-			column="region_2depth_name" />
-		<result property="region_3depth_name"
-			column="region_3depth_name" />
+		<result property="region_2depth_name" column="region_2depth_name" />
+		<result property="region_3depth_name" column="region_3depth_name" />
 		<result property="userno" column="userno" />
 		<result property="status" column="status" />
 		<result property="dealingtype" column="dealingtype" />
@@ -34,9 +32,8 @@
 	<select id="selectItem"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">
 		SELECT
-		roomno, roomtype, title, floor, area, fee, confirmdate, address, dong, ho,
-		latitude, longitude,
-		region_2depth_name, region_3depth_name, userno
+			roomno, roomtype, title, floor, area, fee, confirmdate, address, dong, ho,
+			latitude, longitude, region_2depth_name, region_3depth_name, userno
 		FROM room
 		WHERE roomno=#{roomno};
 	</select>
@@ -45,15 +42,13 @@
 	<select id="selectList"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">
 		SELECT
-		r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee,
-		confirmdate, address, dong, ho,
-		latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name ,
-		r.status, count(f.roomno) AS cnt
+			r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee,
+			confirmdate, address, dong, ho, latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name ,
+			r.status, count(f.roomno) AS cnt
 		FROM room r
 		INNER JOIN user u ON r.userno=u.userno
 		INNER JOIN price p ON r.roomno=p.roomno
-		LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by
-		roomno)f ON r.roomno=f.roomno
+		LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
 
 		<where>
 			<if test="roomtype != null and roomtype != ''">
@@ -76,17 +71,36 @@
 			LIMIT #{offset}, #{listCount}
 		</if>
 	</select>
+	
+	<!-- '유저번호'에 의한 다중행조회하기 기능 in Host(공실관리) -->
+    <select id="selectList_host_rmli"
+        parameterType="project.star.b2.model.Room"
+        resultMap="roomMap">
+
+        SELECT r.userno, r.roomno, r.roomtype, r.confirmdate, r.address, p.dealingtype, p.deposit, p.price 
+       	FROM room r 
+       	INNER JOIN price p ON r.roomno=p.roomno
+       	INNER JOIN user u ON r.userno=#{userno}
+       	
+       	<where>
+			<if test="status != null and status != ''">
+				status LIKE concat('%', #{status}, '%')
+			</if>
+		</where>
+       	
+       	GROUP BY r.roomno
+       	ORDER BY r.roomno;
+       	
+    </select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem"
 		parameterType="project.star.b2.model.Room" useGeneratedKeys="true"
 		keyProperty="roomno">
-		INSERT INTO room (roomtype, title, floor, area, fee, confirmdate, address,
-		dong, ho, latitude, longitude,
-		region_2depth_name, region_3depth_name, userno)
-		VALUES (#{roomtype}, #{title}, #{floor}, #{area}, #{fee}, #{confirmdate},
-		#{address}, #{dong}, #{ho}, #{latitude}, #{longitude},
-		#{region_2depth_name}, #{region_3depth_name}, #{userno});
+		INSERT INTO room 
+				(roomtype, title, floor, area, fee, confirmdate, address, dong, ho, latitude, longitude, region_2depth_name, region_3depth_name, userno)
+		VALUES (#{roomtype}, #{title}, #{floor}, #{area}, #{fee}, #{confirmdate}, #{address}, #{dong}, #{ho}, #{latitude}, #{longitude},
+				#{region_2depth_name}, #{region_3depth_name}, #{userno});
 	</insert>
 
 	<!-- 데이터 삭제를 위한 기능 정의 -->
@@ -99,11 +113,8 @@
 	<update id="updateItem"
 		parameterType="project.star.b2.model.Room">
 		UPDATE room SET roomtype=#{roomtype}, title=#{title}, floor=#{floor},
-		area=#{area}, fee=#{fee}, confirmdate=#{confirmdate},
-		address=#{address}, dong=#{dong}, ho=#{ho}, latitude=#{latitude},
-		longitude=#{longitude},
-		region_2depth_name=#{region_2depth_name},region_3depth_name=#{region_3depth_name},
-		userno=#{userno}
+			area=#{area}, fee=#{fee}, confirmdate=#{confirmdate}, address=#{address}, dong=#{dong}, ho=#{ho}, latitude=#{latitude}, 
+			longitude=#{longitude}, region_2depth_name=#{region_2depth_name},region_3depth_name=#{region_3depth_name}, userno=#{userno}
 		WHERE roomno=#{roomno};
 	</update>
 
@@ -138,25 +149,26 @@
 		parameterType="project.star.b2.model.Room">
 		UPDATE room SET status="3" WHERE roomno=#{roomno};
 	</update>
+	
 	<!-- 허위매물 리스트 조회를 위한 기능 정의 -->
 	<select id="selectCheckList"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">
 		SELECT
-		r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee,
-		confirmdate, address, dong, ho,
-		latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name ,
-		r.status, count(f.roomno) AS cnt
+			r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee,
+			confirmdate, address, dong, ho,
+			latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name ,
+			r.status, count(f.roomno) AS cnt
 		FROM room r
 		INNER JOIN user u ON r.userno=u.userno
 		INNER JOIN price p ON r.roomno=p.roomno
-		LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by
-		roomno)f ON r.roomno=f.roomno
+		LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
 		WHERE r.status=#{status}
 
 		GROUP BY roomno
 		ORDER BY roomno ASC
 
 	</select>
+	
 	<!-- 체크된 확인매물 리스트 조회를 위한 기능 정의 -->
 	<select id="selectCheckConfirmList"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">

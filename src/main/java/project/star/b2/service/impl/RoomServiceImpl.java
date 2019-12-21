@@ -12,7 +12,7 @@ import project.star.b2.service.RoomService;
 
 
 
-/** 학과 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
+/** Room테이블 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
 @Slf4j
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -23,8 +23,8 @@ public class RoomServiceImpl implements RoomService {
     SqlSession sqlSession;
 
     /**
-     * 학과 데이터 상세 조회
-     * @param Room 조회할 학과의 일련번호를 담고 있는 Beans
+     * Room테이블 데이터 상세 조회
+     * @param  조회할 Room테이블의 일련번호를 담고 있는 Beans
      * @return 조회된 데이터가 저장된 Beans
      * @throws Exception
      */
@@ -50,7 +50,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * 학과 데이터 목록 조회
+     * Room테이블 데이터 목록 조회
      * @return 조회 결과에 대한 컬렉션
      * @throws Exception
      */
@@ -74,9 +74,35 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
     }
+    
+    /**
+     * Room테이블 데이터 목록 조회
+     * @return 조회 결과에 대한 컬렉션
+     * @throws Exception
+     */
+    @Override
+    public List<Room> getRoomList_host_rmli(Room input) throws Exception {
+        List<Room> result = null;
+
+        try {
+            result = sqlSession.selectList("RoomMapper.selectList_host_rmli", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
 
     /**
-     * 학과 데이터가 저장되어 있는 갯수 조회
+     * Room테이블 데이터가 저장되어 있는 갯수 조회
      * @return int
      * @throws Exception
      */
@@ -95,8 +121,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * 학과 데이터 등록하기
-     * @param Room 저장할 정보를 담고 있는 Beans
+     * Room테이블 데이터 등록하기
+     * @param  저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
     @Override
@@ -121,8 +147,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * 학과 데이터 수정하기
-     * @param Room 수정할 정보를 담고 있는 Beans
+     * Room테이블 데이터 수정하기
+     * @param  수정할 정보를 담고 있는 Beans
      * @throws Exception
      */
     @Override
@@ -147,8 +173,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     /**
-     * 학과 데이터 삭제하기
-     * @param Room 삭제할 학과의 일련번호를 담고 있는 Beans
+     * Room테이블 데이터 삭제하기
+     * @param  삭제할 일련번호를 담고 있는 Beans
      * @throws Exception
      */
     @Override

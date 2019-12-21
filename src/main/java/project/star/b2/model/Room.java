@@ -28,6 +28,7 @@ public class Room {
     
 	/* 가격이랑 조인된 값 */
     private String price;
+    private String deposit;    
     private String dealingtype;
     
     

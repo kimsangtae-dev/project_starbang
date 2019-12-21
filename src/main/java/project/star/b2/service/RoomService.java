@@ -23,6 +23,14 @@ public interface RoomService {
     public List<Room> getRoomList(Room input) throws Exception;
     
     /**
+     * 매물 데이터 목록 조회
+     * @return 조회 결과에 대한 컬렉션
+     * @throws Exception
+     */
+    public List<Room> getRoomList_host_rmli(Room input) throws Exception;
+    
+    
+    /**
      * 매물 데이터가 저장되어 있는 갯수 조회
      * @return int
      * @throws Exception
@@ -65,5 +73,6 @@ public interface RoomService {
     public int editHiddenRoom(Room input) throws Exception;
     
     public List<Room> getRoomCheckList(int raval) throws Exception;
+    
     public List<Room> getRoomCheckConfirmList(Room input) throws Exception;
 }
