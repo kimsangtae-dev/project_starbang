@@ -89,7 +89,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=원룸">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up1"></div>
 									<div class="slide-a-div1-down">
@@ -102,7 +102,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=500&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=원룸">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=500&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up2"></div>
 									<div class="slide-a-div1-down">
@@ -128,7 +128,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=20000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&dealingtype=전세&roomtype=투룸">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=투룸m쓰리룸&dealingtype=전세&depositFrom=0&depositTo=20000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up4"></div>
 									<div class="slide-a-div1-down">
@@ -141,7 +141,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=30000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=전세">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=전세&depositFrom=0&depositTo=30000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up5"></div>
 									<div class="slide-a-div1-down">
@@ -167,7 +167,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=20000&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&dealingtype=매매">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=20000&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up7"></div>
 									<div class="slide-a-div1-down">
@@ -193,7 +193,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=원룸">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up9"></div>
 									<div class="slide-a-div1-down">
