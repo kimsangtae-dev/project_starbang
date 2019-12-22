@@ -270,7 +270,7 @@
 					<div class="recent-div4">
 					<c:choose>
 					<%-- 조회 결과가 없는 경우 --%>
-					<c:when test="${output == null || fn:length(output) == 0}">
+					<c:when test="${output3 == null || fn:length(output) == 0}">
 					<div class="recent-div5-vacant margin">
 						<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
 					</div>
@@ -851,7 +851,6 @@
 		<script>
 	$(function(){
 	$("#tab2").click(function(){
-		alert("안녕");
 		
 		
 		$.get("${pageContext.request.contextPath}/professor",
@@ -876,7 +875,7 @@
 		});
 		});
 	
-/*  	$(document).ready(function(){
+/*    	$(document).on(function(){
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
 		,function(json){
@@ -913,10 +912,9 @@
 			$(".recent-div4").empty();
 			$(".recent-div4").append(result);
 		});
-		});  */
+		});    */
 	
 	$("#tab1").click(function(){
-		alert("테스트중");
 
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
