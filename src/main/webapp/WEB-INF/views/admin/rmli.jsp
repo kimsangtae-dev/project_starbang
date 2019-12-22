@@ -52,8 +52,8 @@
 									name="" class="btn btn-default" id=hidden-room value="방 숨기기">
 								<input type="button" name="" class="btn btn-default"
 									id=delete-room value="방 삭제">
-								<!-- 								<input type="button" name="" class="btn btn-primary"
-									value="회원탈퇴"> -->
+								<input type="button" name="" class="btn btn-primary" id=fake-room
+									value="허위매물">
 							</div>
 						</div>
 					</div>
@@ -269,6 +269,26 @@
 					success : function(data) {
 					location.reload();
 					alert("삭제되었습니다.")},
+					error : function(error,status,request) {
+					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+					},
+					});
+					});//checked
+			})
+		}); //end $.ajax;
+		$(function() {
+			$('#fake-room').on('click',function() {
+				$('#aaaa:checked').each(
+					function() {
+					var delete1 = $(this).val();
+					$.ajax({//결과 url
+					url : "${pageContext.request.contextPath}/admin/fake_ok.do",
+					data : {fake_id : delete1},
+					type : "POST",
+					datatype : 'text',
+					success : function(data) {
+					location.reload();
+					alert("변경되었습니다.")},
 					error : function(error,status,request) {
 					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
 					},

@@ -83,4 +83,6 @@ public interface RoomService {
      * @throws Exception
      */
     public int addFakeRoom(FakeRoom input) throws Exception;
+    
+    public int editFakeRoom(Room input) throws Exception;
 }

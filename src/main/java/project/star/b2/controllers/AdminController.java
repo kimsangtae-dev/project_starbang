@@ -281,7 +281,32 @@ public class AdminController {
 		String viewPath = "/admin/rmli.do";
 		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
 	}
+	/**
+	 * fake 페이지에 대한 방 action 페이지
+	 */
+	@RequestMapping(value = "/admin/fake_ok.do", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView room_fake_ok(Model model, HttpServletRequest request) {
 
+		/** 데이터 받기 */
+		String hidden = request.getParameter("fake_id");
+		int roomno = Integer.valueOf(hidden);
+
+		/** 2) 데이터 수정하기 */
+		// 저장할 값들을 Beans에 담는다.
+		Room input = new Room();
+		input.setRoomno(roomno);
+
+		try {
+			// 데이터 수
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			roomService.editFakeRoom(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		String viewPath = "/admin/rmli.do";
+		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
+	}
 	/********************************************************************
 	 * 회원 관리
 	 *******************************************************************/

@@ -150,6 +150,12 @@
 		UPDATE room SET status="3" WHERE roomno=#{roomno};
 	</update>
 	
+	<!-- 관리자 페이지 허위매물 데이터 갱신을 위한 기능 정의 -->
+	<update id="updateFakeItem"
+		parameterType="project.star.b2.model.Room">
+		UPDATE room SET status="2" WHERE roomno=#{roomno};
+	</update>
+	
 	<!-- 허위매물 리스트 조회를 위한 기능 정의 -->
 	<select id="selectCheckList"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">
