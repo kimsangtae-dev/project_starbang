@@ -236,8 +236,6 @@ public class ModalController {
         int roomno1 = webHelper.getInt("roomno");
         int userno = webHelper.getInt("userno");
 
-        if (reason == 0) { return webHelper.redirect(null, "신고 사유를 선택해주세요."); }
-
         /** 2) 데이터 저장하기 */
         // 저장할 값들을 Beans에 담는다.
         FakeRoom input = new FakeRoom();

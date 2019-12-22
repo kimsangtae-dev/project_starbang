@@ -291,9 +291,25 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<button class="icngbl ulcp">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
-					<button class="icngbl">
-						<img class="siren notce" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whsiren.png">
-					</button>
+					<!-- 신고하기 -->
+					<c:choose>
+						<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
+						<c:when test="${loginInfo == null }">
+						<a href="${pageContext.request.contextPath}/modal/login.do"
+								class="st-bang" data-toggle="modal" data-target="#loginModal">
+							<button class="icngbl">
+								<img class="siren notce" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whsiren.png">
+							</button>
+						</a>
+						</c:when>
+						<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
+						<c:otherwise>
+						<button class="icngbl" data-toggle="modal" data-target="#falsehoodmo">
+							<img class="siren notce" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whsiren.png">
+						</button>
+						</c:otherwise>
+					</c:choose>
+					
 					<div id="plrt">
 						<span class="texthtlvc">방주인</span> <span
 							class="textht skyblue lvc">${user.name}님</span>
@@ -555,12 +571,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<script>
 		$(function() {
 			/*문의하기 클릭*/
-			$(".grml")
-					.click(
-							function() {
-								// 메시지 내용만 적용하여 확인창 표시
-								swal("${user.name}님의 이메일입니다.<br/><br/>${user.email}<br/><br/>*문의에티켓을 지켜주세요.");
-							});
+			$(".grml").click(function() {
+				// 메시지 내용만 적용하여 확인창 표시
+				swal("${user.name}님의 이메일입니다.<br/><br/>${user.email}<br/><br/>*문의에티켓을 지켜주세요.");
+				});
 			/*허위매물신고 클릭*/
 			/* $(".notce")
 					.click(
@@ -587,14 +601,12 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 								});
 							}); */
 			/*확인매물 바의 물음표 클릭*/
-			$(".mola")
-					.click(
-							function() {
-								swal(
-										'확인매물이란?<br/>',
-										'확인매물은 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.<hr /> 방주인 확인 -<br><br>방주인이 직접 거래가격, 위치, 중개사무소까지 확인했어요! <hr /> 인증날짜 확인 - <br><br>인증날짜를 확인하세요.<br>최근에 인증된 방이 더욱 믿을 수 있어요!',
-										'question');
-							});
+			$(".mola").click(function() {
+				swal(
+					'확인매물이란?<br/>',
+					'확인매물은 절차를 모두 통과한 가장 믿을 수 있는 매물정보입니다.<hr /> 방주인 확인 -<br><br>방주인이 직접 거래가격, 위치, 중개사무소까지 확인했어요! <hr /> 인증날짜 확인 - <br><br>인증날짜를 확인하세요.<br>최근에 인증된 방이 더욱 믿을 수 있어요!',
+					'question');
+			});
 		});
 	</script>
 
@@ -955,6 +967,7 @@ function binary2() {
 	
 	</script>
 	
+	<!-- 허위매물 신고하기 -->
 	<script type="text/javascript">
 		$(function() {
 			$("#modalsubmit").click(function(e) {
@@ -962,17 +975,22 @@ function binary2() {
 				var userno = ${user.userno};
 				var roomno = ${room.roomno};
 				var reason = $("input[name=fakeReason]:checked").val();
-				$.ajax({
-				    type: "POST",
-				    data: {"userno": userno, "roomno": roomno, "reason": reason},
-				    url: "${pageContext.request.contextPath}/modal/fake_ok.do",
-				    success: function(data){
-				          alert("신고가 완료되었습니다.");
-				    },
-				    error: function(data) {
-				        console.log(data); //error message
-				    }
-				});
+				
+				if (!reason) {
+					alert("신고 사유를 선택해주세요.");
+				} else {
+					$.ajax({
+					    type: "POST",
+					    data: {"userno": userno, "roomno": roomno, "reason": reason},
+					    url: "${pageContext.request.contextPath}/modal/fake_ok.do",
+					    success: function(data){
+					          alert("신고가 완료되었습니다.");
+					    },
+					    error: function(data) {
+					        console.log(data);
+					    }
+					});
+				}
 			});
 		});
 	</script>

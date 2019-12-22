@@ -391,8 +391,8 @@ public class MainController {
 		 roomtypepate.add(roomto[i]); }
 		 
 		/** 매물 종류(dealingtype) list */
-		List<String> dealingtypepate = new ArrayList<String>(); String[]
-		dealingtypeto = dealingtype.split("m"); 
+		List<String> dealingtypepate = new ArrayList<String>(); 
+		String[] dealingtypeto = dealingtype.split("m"); 
 		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
 		
 		double west = webHelper.getDouble("west");

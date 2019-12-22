@@ -32,7 +32,7 @@
 		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p ON r.roomno=p.roomno
 		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i ON r.roomno=i.roomno
 		<where>
-		r.roomtype IN 
+			r.roomtype IN 
  			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
