@@ -181,6 +181,7 @@ public class GalleryServiceImpl implements GalleryService {
 
         return result;
     }
+    
 
     /**
      * 쿠키 데이터 목록 조회
@@ -221,6 +222,20 @@ public class GalleryServiceImpl implements GalleryService {
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
+
+	@Override
+	public int getGalleryCount2(Popular input) throws Exception {
+        int result = 0;
+
+        try {
+            result = sqlSession.selectOne("GalleryMapper.selectCountAll2", null);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
