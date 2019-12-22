@@ -41,14 +41,14 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList"
 		parameterType="project.star.b2.model.Room" resultMap="roomMap">
-		SELECT
+ 		SELECT
 			r.roomno, r.roomtype, p.dealingtype, p.price, title, floor, area, fee,
 			confirmdate, address, dong, ho, latitude, longitude, region_2depth_name, region_3depth_name, r.userno, u.name ,
-			r.status, count(f.roomno) AS cnt
+			r.status, cnt
 		FROM room r
 		INNER JOIN user u ON r.userno=u.userno
 		INNER JOIN price p ON r.roomno=p.roomno
-		LEFT OUTER JOIN (SELECT roomno, count(roomno) from fakeroom group by roomno)f ON r.roomno=f.roomno
+		LEFT OUTER JOIN (SELECT roomno, count(roomno) AS cnt from fakeroom group by roomno)f ON r.roomno=f.roomno
 
 		<where>
 			<if test="roomtype != null and roomtype != ''">
@@ -64,8 +64,8 @@
 			</if>
 		</where>
 
-		GROUP BY roomno
-		ORDER BY roomno ASC
+		GROUP BY r.roomno
+		ORDER BY r.roomno ASC
 
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
