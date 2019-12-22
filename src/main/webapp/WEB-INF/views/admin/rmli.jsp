@@ -47,6 +47,13 @@
  								<input type="submit" value="확인" class="btn btn-primary">
 							</div>
 							</form>
+<!-- 							<select class="form-control">
+  							<option>전체</option>
+  							<option>확인매물</option>
+  							<option>허위매물</option>
+  							<option>숨김매물</option>
+  							<option>거래완료</option>
+							</select> -->
 					<div class="adm-btn">
 					<input type="button" name="" class="btn btn-success" id=confirm-button value="확인매물"> 
 					<input type="button" name="" class="btn btn-info" id=hidden-room value="방 숨기기">
@@ -57,7 +64,7 @@
 					</div>
 				</div>
 				<!-- 조회 결과 목록 -->
-				<table class="table table-striped">
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th class="text-center"><input type="checkbox"
