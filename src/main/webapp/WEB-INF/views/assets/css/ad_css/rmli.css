@@ -30,7 +30,7 @@
 .input-group { float: right; }
 .box { float: right; }
 
-.adm-radio, .adm-btn { float: left; }
+.adm-radio, .adm-btn { float: right; margin-top:3px; }
 
 #content .adm-radio { line-height: 34px; margin-right: 10px; }
 

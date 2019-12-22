@@ -626,7 +626,7 @@ public class MainController {
 		// 수정할 값들을 Beans에 담는다.
 		User input = new User();
 		input.setPasswd(passwd);
-		input.setEmail(email);
+		input.setEmail(email);	
 	
 		try {
 		    try {

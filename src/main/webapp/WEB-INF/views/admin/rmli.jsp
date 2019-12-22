@@ -25,7 +25,8 @@
 			<div>
 				<div class="adm-header">
 					<h1>방관리</h1>
-					<div class="adm"><form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
+					<div class="adm">
+					<form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
 						<div class="input-group">
 							<span class="input-group-addon"> <span
 								class="glyphicon glyphicon-search"></span>
@@ -38,22 +39,19 @@
 						<div class="box">
 							<form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
 							<div class="adm-radio">
-								<label for="check"></label> 
-								<input type="radio" class="radiobutton" name='check' value="1" id="checked-item" <c:if test="${rememberChecked eq '1'}">checked</c:if> >확인매물
-								<input type='radio' class="radiobutton" name='check' value="2" id="checked-fake" <c:if test="${rememberChecked eq '2'}">checked</c:if> >허위매물
-								<input type='radio' class="radiobutton" name='check' value="3" id="checked-hidden"<c:if test="${rememberChecked eq '3'}">checked</c:if>>숨김매물
-								<input type='radio' class="radiobutton" name='check' value="4" id="checked-done" <c:if test="${rememberChecked eq '4'}">checked</c:if>>거래완료
- 								<input type="submit" value="확인">
+								<label for="check"></label>
+								<input type="checkbox" class="radiobutton" name='check' value="1" id="checked-item" <c:if test="${rememberChecked eq '1'}">checked</c:if> >확인매물
+								<input type='checkbox' class="radiobutton" name='check' value="2" id="checked-fake" <c:if test="${rememberChecked eq '2'}">checked</c:if> >허위매물
+								<input type='checkbox' class="radiobutton" name='check' value="3" id="checked-hidden"<c:if test="${rememberChecked eq '3'}">checked</c:if>>숨김매물
+								<input type='checkbox' class="radiobutton" name='check' value="4" id="checked-done" <c:if test="${rememberChecked eq '4'}">checked</c:if>>거래완료
+ 								<input type="submit" value="확인" class="btn btn-primary">
 							</div>
 							</form>
-							<div class="adm-btn">
-								<input type="button" name="" class="btn btn-default"
-									id=confirm-button value="확인매물"> <input type="button"
-									name="" class="btn btn-default" id=hidden-room value="방 숨기기">
-								<input type="button" name="" class="btn btn-default"
-									id=delete-room value="방 삭제">
-								<input type="button" name="" class="btn btn-primary" id=fake-room
-									value="허위매물">
+					<div class="adm-btn">
+					<input type="button" name="" class="btn btn-success" id=confirm-button value="확인매물"> 
+					<input type="button" name="" class="btn btn-info" id=hidden-room value="방 숨기기">
+					<input type="button" name="" class="btn btn-warning" id=delete-room value="방 삭제">
+					<input type="button" name="" class="btn btn-danger" id=fake-room value="허위매물">
 							</div>
 						</div>
 					</div>
@@ -114,7 +112,7 @@
 									<td align="center">${price}만원</td>
 									<td align="center">${name}</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
-									<td align="center">${fakecount}</td>
+									<td align="center"><a href="${pageContext.request.contextPath}/modal/fake_check.do" data-toggle="modal" data-target="#myModal">${fakecount}</a></td>
 									<td align="center" id="hidden">
 									<c:choose><c:when test="${status eq '1'}">확인매물</c:when>
     											<c:when test="${status eq '2'}">허위매물</c:when>

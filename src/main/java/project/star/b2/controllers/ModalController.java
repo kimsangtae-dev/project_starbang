@@ -256,4 +256,12 @@ public class ModalController {
         String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input.getRoomno();
         return webHelper.redirect(redirectUrl, "저장되었습니다.");
     }
+	/********************************************************************
+	 * 관리자페이지 - 신고사유
+	 *******************************************************************/
+	@RequestMapping(value = "/modal/fake_check.do", method = RequestMethod.GET)
+	public ModelAndView fake_check() {
+
+		return new ModelAndView("modal/adminfake");
+	}
 }
