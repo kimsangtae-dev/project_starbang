@@ -172,7 +172,7 @@
 							<c:choose>
 								<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
 								<c:when test="${pageData.nowPage == i}">
-									<li><a class="index-indiv indexs-active">${i}</a></li>
+									<li><a class="index-indiv index-active">${i}</a></li>
 								</c:when>
 								<%-- 나머지 페이지의 경우 링크 적용함 --%>
 								<c:otherwise>
