@@ -40,14 +40,14 @@ $(function () {
                <h1 class="h1">MY별방</h1>
             </div>
             <div class="div2">
-            <!-- 아직 프로필 수정은 새로고침과 window에서 설정을 해주어야 실행된다 -->
+                        <!-- 아직 프로필 수정은 새로고침과 window에서 설정을 해주어야 실행된다 -->
               <div class="imgs_wrap imgupload" id="imgupload" >
         		<c:choose>
-					<c:when test="${output.profile_img == null}">
+					<c:when test="${loginInfo.profile_img == null}">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/mypa.png" id="proflie">
 					</c:when>
-					<c:when test="${output.profile_img != null}">
-						<img src="${pageContext.request.contextPath}/assets/img/upload/${output.profile_img}" id="proflie" />
+					<c:when test="${loginInfo.profile_img != null}">
+						<img src="${pageContext.request.contextPath}/assets/img/upload/${loginInfo.profile_img}" id="proflie" />
 						<!-- "${pageContext.request.contextPath}/${fn:substring(output.profile_img ,63, fn:length(output.profile_img))}" -->
 					</c:when>
 				</c:choose>
@@ -56,9 +56,6 @@ $(function () {
        		<form method="post" action="${pageContext.request.contextPath}/main/Profileupload_ok.do" enctype="multipart/form-data">
 	       		<div class="div2">
 	    			<div class="filebox">
-					    <!-- <input type="button" onClick="ajaxFileUpload();" value="업로드"/>
-		    			<input type="file" id="ajaxFile" onChange="ajaxFileChange();" style="display:none;"/>
-		    			<input type="submit" id="inputsubmit" style="display:none;" > -->
 	                	<label for="ex_file">프로필 사진 변경
 	               		<input type="file" id="ex_file" name="profile_img" >  <!-- onchange="handleFiles(this.files)" -->
 	               		<input type="submit" value="보내기" id="inputsubmit" style="display:none;" ></label>
@@ -69,12 +66,12 @@ $(function () {
             <br/>
             <div id="textcontent">
                <h3 class="h31">본인 성명</h3>
-	               <input type="hidden" value="${output.userno}" id="userno" >
-	               <input type="hidden" id="nowmyname" value="${output.name}">
-	               <input type="text" id="myname" name="myname" value="${output.name}" class="input" >
+	               <input type="hidden" value="${loginInfo.userno}" id="userno" >
+	               <input type="hidden" id="nowmyname" value="${loginInfo.name}">
+	               <input type="text" id="myname" name="myname" value="${loginInfo.name}" class="input" >
                <h3 class="h32">이메일주소</h3>
-					<input type="hidden" id="nowemail" value="${output.email}">
-					<input type="text" name="email" id="email" disabled value="${output.email}" class="emailmypage">
+					<input type="hidden" id="nowemail" value="${loginInfo.email}">
+					<input type="text" name="email" id="email" disabled value="${loginInfo.email}" class="emailmypage">
 					<button type="button" class="btn btn-default focse ponbutton" id="reemail">변경</button>
                <button type="button" class="btn btn-default focse ponbutton reemailaut" id="reemailaut">인증</button>
                <div id="emailinumberdiv">
@@ -82,8 +79,8 @@ $(function () {
                   <button type="button" class="btn btn-default focse reemailinumber" id="reemailinumber">인증번호확인</button>
                </div>
                <h3 class="h33">휴대폰 번호</h3>
-               <input type="hidden" id="nowallpon" value="${output.tel}"> 
-                <select class="pon input" name="pont1" id="pon1" value="${fn:substring(output.tel,0,3)}" >
+               <input type="hidden" id="nowallpon" value="${loginInfo.tel}"> 
+                <select class="pon input" name="pont1" id="pon1" value="${fn:substring(loginInfo.tel,0,3)}" >
 					<option value="010" >010</option>
 					<option value="011" >011</option>
 					<option value="016" >016</option>
@@ -91,11 +88,11 @@ $(function () {
 					<option value="018" >018</option>
 					<option value="019" >019</option>
 				</select> - 
-               <input type="number" name="pont2" id="pon2" value="${fn:substring(output.tel,4,8)}" disabled class="pon input"> - 
-               <input type="number" name="pont3" id="pon3" value="${fn:substring(output.tel,9,13)}" disabled class="pon input">
+               <input type="number" name="pont2" id="pon2" value="${fn:substring(loginInfo.tel,4,8)}" disabled class="pon input"> - 
+               <input type="number" name="pont3" id="pon3" value="${fn:substring(loginInfo.tel,9,13)}" disabled class="pon input">
                <button type="button" class="btn btn-default focse ponbutton" id="repon">변경</button>
                <h3 class="h34">휴대폰 번호</h3>
-               <input type="hidden" value="${output.passwd}" id="pwd" >
+               <input type="hidden" value="${loginInfo.passwd}" id="pwd" >
                <input type="passwd" name="pwd1" id="pwd1" class="pwd input" placeholder="현재비밀번호를 입력하세요">
                <br/>
                <input type="passwd" name="pwd2" id="pwd2" class="pwd input" placeholder="변경될 비밀번호를 입력하세요" >
@@ -120,6 +117,7 @@ $(function () {
    <script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
    <!-- 모달창 -->
    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+   <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
    <script type="text/javascript">
    $(function() {
        /** 변경 버튼 */
@@ -141,9 +139,47 @@ $(function () {
          $reemailaut = $('#reemailaut').attr('display', inline-block); 
       });
        
+      /** 랜덤값 함수 */
+		function random() {
+			var num = Math.floor(Math.random() * 10);
+			return num;
+		}
+
+		var auth = "";
+
+		for (var i = 0; i < 6; i++) {
+			auth += random();
+		}
+		
+		/** 이메일인증확인창 */
+		$("#reemailinumber").click(function() {
+			var user = $('#emailinumber').val();
+			if (auth == user) {
+				swal("인증되었습니다");
+			} else {
+				swal("인증번호를 다시 확인해 주세요");
+
+			}
+		});
+       
        $('#reemail').on("click", function() {
-         $("#reemail").html("인증");
-          swal("새로운 이메일에 인증번호를 발송했습니다");
+    	   var email = $("#email").val();
+			swal("새로운 이메일에 인증번호를 발송했습니다");
+			$.ajax({
+				url : "mypageema.do",
+				type : 'POST',
+				data : {
+					"email" : email,
+					"auth" : auth
+				},
+				success : function(data) {
+					swal(allemail + "으로 메일이 발송되었습니다");
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					swal("이메일발송에러 발생~~ \n" + textStatus + " : " + errorThrown);
+					self.close();
+				}
+			});
       });
       
        /** 휴대폰 번호 바꿈 */
@@ -164,10 +200,6 @@ $(function () {
          
       });
       
-      /** 이메일인증확인창 */
-      $("#reemailinumber").click(function() {
-         swal("인증되었습니다");
-      });
 
 
       $('#modal').modal("hide"); //닫기 
@@ -175,51 +207,125 @@ $(function () {
       var myname = document.getElementById('myname'); 
       var mynamevalue = $('#myname').val();
       
-      /** 확인버튼 */
-      $("#submit").click(function() {
-         
-         if(!mynamevalue.equals($('#myname').val())) {
-            swal("이름이 변경되었습니다")
-         }
-         
-         
-      });
+      /** 회원  수정하기 */ 
+		$("#submitedit").click(function() {
+								//if () db에서 가져온 값과 현재 input에 있는 값이 하나라도 다르다면 실행 
+								//$("#form_useredit").submit(function() {
+													// 기본동작 수행 방식
+													/* e.preventDefault(); */
+			/** 이름 검사 */
+			var nowmyname = $('#nowmyname').val(); // 유저 이름
+			var myname = $('#myname').val(); // 유저 이름
+			if(nowmyname != myname) {
+				if (!regex.value('#myname','이름을 입력하세요.')) {return false;}
+				if (!regex.kor('#myname','이름은 한글만 입력 가능합니다.')) {return false;}
+				if (!regex.min_length('#myname', 2, '이름은 최소 2자 이상 입력 가능합니다.')) {return false;}
+				nowmyname = myname;
+			}
+			/** 이메일 검사 */
+			var nowemail = $('#nowemail').val(); // 유저 이메일
+			var email = $('#email').val(); // 유저 이메일
+			var user = $('#emailinumber').val(); // 유저 이메일인증번호
+			if (nowemail != email) {
+				if (!regex.value('#email','이메일을 입력하세요.')) {return false;}
+				if (!regex.email('#email', '이메일 형식에 맞춰서 입력해주세요.')) {return false;}
+				if (!regex.value('#emailinumber', '인증번호를 입력하세요.')) { return false; }
+			        if (user != auth) {
+						alert("인증번호를 다시 입력해주세요");
+						return false;
+					}
+				nowemail = email;
+			}
+			/** 휴대폰 검사 */
+			var nowallpon = $('#nowallpon').val();
+			var pon1 = $('#pon1').val(); // 유저 휴대폰1
+			var pon2 = $('#pon2').val(); // 유저 휴대폰2
+			var pon3 = $('#pon3').val(); // 유저 휴대폰3
+			var allpon = pon1 + "-" + pon2 + "-" + pon3; // 유저 all휴대폰
+			if (nowallpon != allpon) {
+				if (!regex.value('#pon1', '휴대폰번호를 입력하세요.')) {return false;}
+				if (!regex.value('#pon2', '휴대폰번호를 입력하세요.')) {return false;}
+				if (!regex.value('#pon3', '휴대폰번호를 입력하세요.')) {return false;}
+				nowallpon = allpon;
+			}
+			/** 비밀번호 검사 */
+			var pwd = $('#pwd').val(); 
+			var pwd1 = $('#pwd1').val(); // 유저 구비밀번호
+			var pwd2 = $('#pwd2').val(); // 유저 신비밀번호
+			var pwd3 = $('#pwd3').val(); // 유저 신비밀번호확인
+			if ($('#pwd1').val() != "") {
+				if ($('#pwd').val() != $('#pwd1').val()) {
+					alert("변경전 비밀번호를 다시 입력해주세요.");
+				}
+				if (!regex.value('#pwd2','새로운 비밀번호를 입력하세요.')) {return false;}
+				if (!regex.value('#pwd3','새로운 비밀번호를 다시 입력하세요.')) {return false;}
+				if (!regex.min_length('#pwd2', 4, '비밀번호는 최소 4자 이상 입력 가능합니다.')) {return false;}
+				if (!regex.compare_to('#pwd2', '#pwd3', '비밀번호 확인이 잘못되었습니다.')) {return false;}
+				pwd = pwd2;
+			}
+			
+			if ($('#nowmyname').val() == $('#myname').val() && $('#nowemail').val() == $('#email').val() && nowallpon == allpon && $('#pwd1').val() == "") {
+				alert("바뀐 정보가 없습니다")
+				return false;
+			}
+
+		
+		var userno = $('#userno').val(); // 유저넘버
+		var d = new Date();
+		var noweditdate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+			$.ajax({
+				url:"mypageedit.do",
+				type:'POST',
+		    	data: {"userno" : userno,
+		    		"nowmyname" : nowmyname,
+		    		"nowemail" : nowemail,
+		    		"nowallpon" : nowallpon,
+		    		"pwd" : pwd,
+		    		"noweditdate" : noweditdate},
+				success:function(data){
+		        	alert(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
+		    	},
+		    	error:function(jqXHR, textStatus, errorThrown){
+		    	   	alert("mypagesubmit회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		    		self.close();
+	        	}	
+	    	});	
+		}); //$("#mypagesubmit").click(function() {
+								
    });
 
-</script>
-      
-<!--    <script type="text/javascript">
-      // 회원탈퇴에 모달창에 들어 있는 버튼
-      function byId(e){return document.getElementById(e);}
-   
-      window.addEventListener('load', mInit, false);
-
-      function mInit()
-      {
-          var tgt = byId('modelcheck');
-          tgt.secondSource = 'ma_assets/ma_img/eede.png';
-      }
-
-      function byId(e){return document.getElementById(e);}
-
-      function action() 
-      {
-          var tgt = byId('modelcheck');   
-          var tmp = tgt.src;
-          tgt.src = tgt.secondSource;
-          tgt.secondSource = tmp;
-      };
-   </script>  -->  
+	</script>
       
    <script type="text/javascript">
-      $("#modalsubmit").click(function() {
-         swal("탈퇴되었습니다");
-      })
+   $(function() {
+		$("#modalsubmit").click(function() {
+			var outtextarea = $('#outtextarea').val(); 
+			//alert(outtextarea);
+			if (!regex.value('#outtextarea', '탈퇴 이유를 입력하세요.')) {return false;}
+			if (outtextarea.trim() == "") {
+				alert("탈퇴 이유를 입력하세요.");
+				return false;
+			}
+			if ($("input:checkbox[id='outokinput']").is(":checked") == false) {
+				alert("안내사항에 대해 동의해주세요");
+				return false;
+            }
+    	  	$.ajax({
+				url:"mypagedelect.do",
+				type:'POST',
+				data: {"userno" : userno,
+					"outtextarea" : outtextarea},
+    	  		success:function(data){
+					alert(userno + outtextarea + "데이터 삭제");
+				},
+				error:function(jqXHR, textStatus, errorThrown){
+					alert("mypagedelect회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+ 				self.close();
+				}
+	        });
+		});
+   });
    </script>
-      
-</body>
-
-
 
       <!-- 탈퇴 -->
       <div class="modal fade modalwit" id="outall">
@@ -237,27 +343,22 @@ $(function () {
 4. 회원 정보 및 서비스 이용 기록은 모두 삭제되며, 삭제된 데이터는복구되지 않습니다. 
 5. 광고를 위한 매물이 등록되어 있을 경우, 탈퇴 시 모든 정보는 삭제 처리됩니다.
                </pre>
-               <textarea rows="10" cols="64" placeholder="탈퇴사유를 써주세요" class="outtextarea"></textarea>
+               <textarea rows="10" cols="64" placeholder="탈퇴사유를 써주세요" class="outtextarea" id="outtextarea"></textarea>
                <!-- <button onClick="action();" class="actionbutton"><img src="ma_assets/ma_img/eede.png" width="16px" id="modelcheck" class="buttonimg"></button> -->
-               <label> <input type="checkbox" name="room-type" value="oneroom" checked /> 
+               <label> <input type="checkbox" name="room-type" value="oneroom" id="outokinput" /> 
                <span class="checkBox"></span> <span class="checkText checkTextspan">안내사항을 모두 확인하였으며, 이에 동의합니다.</span>
                            </label>
                <!-- <p class="modelpp" >안내사항을 모두 확인하였으며, 이에 동의합니다.</p> -->
             </div>
             <div class="modal-footer modal-footerhw ">
-               <button type="submit" id="modalsubmit" class="btn btn-default btnmodaloutsubmit" data-dismiss="modal" >확인</button>
+               <button type="button" id="modalsubmit" class="btn btn-default btnmodaloutsubmit" >확인</button>
+               <!-- data-dismiss="modal" -->
             </div>
          </div>
       </div>
+      
+</body>
 
 
-
-
-
-
-
-
-
-
-
+</html>
 
