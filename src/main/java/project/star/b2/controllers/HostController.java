@@ -21,7 +21,6 @@ import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Address;
-import project.star.b2.model.Heart;
 import project.star.b2.model.Address.Documents;
 import project.star.b2.model.Info;
 import project.star.b2.model.Price;
@@ -465,49 +464,68 @@ public class HostController {
 		
 		HttpSession session = request.getSession();
 		User loginInfo = (User) session.getAttribute("loginInfo");
+		
+        if (loginInfo == null) {        
+        	return webHelper.redirect(null, "로그인 후 공실관리가 가능합니다.");
+        }
 
 		/** 1) 필요한 변수값 생성 */
 		int userno = loginInfo.getUserno();
-		int keyword = webHelper.getInt("roomno");			// 검색어
-		String keyword2 = webHelper.getString("roomtype");	// 검색어
+		
+		// 페이징 처리		
 		int nowPage = webHelper.getInt("page", 1); 			// 페이지번호 (기본값 1)
 		int totalCount = 0; 	// 전체 게시글 수
 		int listCount = 10; 	// 한 페이지당 표시할 목록 수
 		int pageCount = 5; 		// 한 그룹당 표시할 페이지 번호 수
-
+		
+		
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-		Room input = new Room();
-		input.setUserno(userno);
-		input.setRoomno(keyword);
-		input.setRoomtype(keyword2);
+		Room input_room = new Room();
+		input_room.setUserno(userno);
+		
+		int status = 0;
+		if ( webHelper.getInt("status") != 0 || webHelper.getInt("status") != 0 ) {
+			status = webHelper.getInt("status");
+		}
+
 
 		PageData pageData = null;
-
+		List<Room> output_room = null;
+		
 		try {
+			
+			/* 페이징처리 */
+			
 			// 전체 매물 수 조회
-			totalCount = roomService.getRoomCount(input);
+			totalCount = roomService.getRoomCount(input_room);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Room.setOffset(pageData.getOffset());
 			Room.setListCount(pageData.getListCount());
-
-			//output = heartService.getHeartGalleryList(input);
+			
+			/* room 테이블 조인문 불러오기 */
+			if (status == 1 || status == 0) {
+				output_room = roomService.getRoomList_host_rmli1(input_room);
+			} else if (status == 1) {
+				output_room = roomService.getRoomList_host_rmli2(input_room);
+			} else if (status == 2) {
+				output_room = roomService.getRoomList_host_rmli3(input_room);
+			}
+			
+			
+			
+			
+			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		/** View 처리 */
-		model.addAttribute("keyword", keyword);
-		//model.addAttribute("output", output);
-		model.addAttribute("pageData", pageData);
-		model.addAttribute("totalCount", totalCount);
-
+		model.addAttribute("output", output_room);
 		
 		
-
 		return new ModelAndView("host/rmli");
 	}
 }
