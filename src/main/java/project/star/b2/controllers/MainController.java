@@ -142,10 +142,15 @@ public class MainController {
 	 * 마이페이지
 	 *******************************************************************/
 	@RequestMapping(value = "/main/mypage.do", method = RequestMethod.GET)
-	public ModelAndView mypage(Model model) {
-
+	public ModelAndView mypage(Model model, HttpServletRequest request) {
+		
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        /*----------------------*/
+		
 		/** 1)필요한 변수값 생성 */
-		int userno = 2; // 회원 이메일기저오기
+		int userno = loginInfo.getUserno();; // 회원 이메일기저오기
 
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0 ) {
@@ -168,6 +173,7 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
+		model.addAttribute("logininfo", loginInfo);
 
 		return new ModelAndView("main/mypage");
 	}
