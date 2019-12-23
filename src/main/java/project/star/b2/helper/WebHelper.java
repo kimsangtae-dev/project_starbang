@@ -697,6 +697,10 @@ public class WebHelper {
 	 * @throws Exception
 	 */
 	public void profileUpload() throws Exception {
+		
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+		
 		/** 1) 업로드 사전 준비하기 */
 		// items에 저장 데이터가 분류될 컬렉션들 할당하기
 		profileFile = new ArrayList<User>();
@@ -810,12 +814,12 @@ public class WebHelper {
 				// 생성된 정보를 Beans의 객체로 설정해서 컬렉션에 저장한다.
 				// --> 이 정보는 추후 파일의 업로드 내역을 DB에 저장할 때 사용된다.
 				User info = new User();
-				info.setUserno(2);
-				info.setName("이서준");
-				info.setEmail("Ta7@gmail.com");
-				info.setPasswd("3657");
-				info.setTel("010-1956-2631");
-				info.setRegdate("2019-07-24 00:00:00");
+				info.setUserno(loginInfo.getUserno());
+				info.setName(loginInfo.getName());
+				info.setEmail(loginInfo.getEmail());
+				info.setPasswd(loginInfo.getPasswd());
+				info.setTel(loginInfo.getTel());
+				info.setRegdate(loginInfo.getRegdate());
 				info.setProfile_img(fileName);
 				info.setEditdate(editDate);
 				
