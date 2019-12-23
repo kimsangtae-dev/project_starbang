@@ -235,16 +235,16 @@ public class MainController {
 		int newRoomno = Integer.parseInt(roomno);
 
 		Room input_room = new Room();
-		input_room.setRoomno(roomno);
+		input_room.setRoomno(newRoomno);
 
 		Info input_info = new Info();
-		input_info.setRoomno(roomno);
+		input_info.setRoomno(newRoomno);
 
 		Price input_price = new Price();
-		input_price.setRoomno(roomno);
+		input_price.setRoomno(newRoomno);
 
 		UploadItem input_image = new UploadItem();
-		input_image.setRoomno(roomno);
+		input_image.setRoomno(newRoomno);
 
 		User input_user = new User();
 
