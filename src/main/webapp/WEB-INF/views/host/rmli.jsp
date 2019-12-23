@@ -41,7 +41,7 @@
                 </p>
                 <p class="isroom-p2">공실상태</p>
                 <ul width="135" id="dropdown" class="dropdown-closed dropdn">
-                    <li name="status" value="0" class="dropdown-li"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0"><span>전체</span>
+                    <li name="status" value="0" class="dropdown-li"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0" onclick="return false;"><span>전체</span>
                         <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1235.000000, -281.000000)" fill="#444444">
@@ -70,39 +70,64 @@
                             <th class="text-center">공실번호</th>
                             <th class="text-center">공실정보</th>
                             <th class="text-center">공실현황</th>
-                            <th class="text-center">게시글관리</th>
                             <th class="text-center">공실관리</th>
+                            <th class="text-center">상태변경</th>
                         </tr>
                     </thead>
                     <tbody>
-                    
+                    	<%-- 한행 씩 for문 --%>
                         <c:forEach var="k" items="${output}" varStatus="status">
 	                        <tr>
+	                        	<%-- roomno 열 --%>
 	                       		<td class="text-center">${k.roomno}</td>
+	                       		
+	                       		<%-- 공실정보열 --%>
 	                           	<td>
 	                                <div class="table-div">
 	                                    <span class="table-span1">${k.roomtype}</span>
-	                                    <b class="table-span1-1">${k.dealingtype} ${k.deposit}/${k.price}</b><br>
+	                                    <b class="table-span1-1">
+		                                    <c:choose>
+											    <c:when test="${k.dealingtype == '월세'}">
+												    <fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
+											    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+												    	${k.dealingtype}&nbsp;${patternprice1}/${k.price}만 원
+											    </c:when>
+										    	<c:otherwise>
+											    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok2" /> 
+											    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
+											    		${k.dealingtype}&nbsp;${patternprice2}만 원
+										    	</c:otherwise>
+											</c:choose>
+	                                    </b><br>
 	                                    <span class="table-span2">${k.address}</span><br>
 	                                    <span>${fn:substringBefore(k.confirmdate," ")}</span>
 	                                </div>
 	                            </td>
+	                            <%-- 공실현황 열 --%>
 	                            <td class="text-center">
-	                            
 		                            <c:choose>
 										<c:when test="${k.confirmdate != null}">
 											<span class="label label-primary">&nbsp;공개&nbsp;</span>
 										</c:when>
-										
 										<c:otherwise>
 											<span class="label label-info">소유자 확인중</span>
 										</c:otherwise>
 									</c:choose>
-	                                
 	                            </td>
+	                            <%-- 공실관리 열 --%>
 	                            <td class="text-center">
-	                                <button class="btn btn-default">수정</button>
-	                                <button class="btn btn-default">삭제</button>
+	                                <button class="btn btn-default">
+	                                	<c:url value="${contextPath}/host/rm_edit.do" var="update">
+											<c:param name="roomno" value="${k.roomno}"></c:param>
+										</c:url>
+										<a href="${update}">수정</a>
+	                                </button>
+	                                <button class="btn btn-default">
+			                            <c:url value="${contextPath}/host/rmli_delete.do" var="delete">
+										      <c:param name="roomno" value="${k.roomno}"></c:param>
+										</c:url>
+										<a href="${delete}">삭제</a>
+	                                </button>
 	                            </td>
 	                            <td class="text-center">
 	                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
@@ -186,8 +211,15 @@
 	        
 		}
 	});
-	
+</script>
 
+<script>
+	/* 페이지 이동 막은걸 풀어주고, 값 보내주기 */
+	$("#dropdown").click(function(){
+	   if ( $("#dropdown").hasClass("dropdown-opened") ) {   
+		   $(".dropdown-li > a").prop("onclick", null);
+	   }
+	});
 </script>
 </body>
 </html>

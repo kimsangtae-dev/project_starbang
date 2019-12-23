@@ -45,8 +45,8 @@ body, #root {
         height: 41px;
         padding: 7px 0px;
     }
-	
-	/* ~건의 공실이 있습니다 <p>태그 */
+   
+   /* ~건의 공실이 있습니다 <p>태그 */
     .isroom-p1 {
         float: left;
         height: 26px;
@@ -56,12 +56,12 @@ body, #root {
         color: rgb(102, 102, 102);
     }
 
-	/* 숫자 <span> 태그 */
+   /* 숫자 <span> 태그 */
     .isroom-p1 > span {
         color: rgb(67, 131, 255);
     }
-	
-	/* 공실상태 <p>태그 */
+   
+   /* 공실상태 <p>태그 */
     .isroom-p2 {
         float: right;
         margin-right: 145px;
@@ -78,9 +78,9 @@ body, #root {
     }
     
     /* 드롭다운 마우스오버시 꾸미기 설정 */
-    .dropdn > li:hover {
-    	color: rgb(67, 131, 255) !important;
-    	font-weight: 700 !important;
+    .dropdn a:hover {
+       color: rgb(67, 131, 255) !important;
+       font-weight: 700 !important;
     }
     
     
@@ -100,7 +100,7 @@ body, #root {
         line-height: 20px;
         position: relative;
         cursor: pointer;
-        padding: 10px 0px 10px 15px;
+/*         padding: 10px 0px 10px 15px; */
         border-width: 1px;
         border-style: solid;
         border-color: rgb(211, 211, 211);
@@ -139,13 +139,13 @@ body, #root {
     }
 
     .dropdown-opened li {
-    height: 50px;
-        color: rgb(102, 102, 102);
+       height: 50px;
+        /* color: rgb(102, 102, 102); */
         font-size: 15px;
         line-height: 20px;
         position: relative;
         cursor: pointer;
-        padding: 10px 0px 10px 15px;
+        /* padding: 10px 0px 10px 15px; */
     }
 
     .dropdown-li {
@@ -159,8 +159,12 @@ body, #root {
     }
     
     #dropdown > li > a {
-    	width:135px;
-    	height:42px;
+       width: 100%;
+       height: 100%;
+       min-height: 20px;
+       display: block;
+       padding: 10px 0px 10px 15px;
+       color: rgb(102, 102, 102);
     }
 
 /* ------------------------------------------
