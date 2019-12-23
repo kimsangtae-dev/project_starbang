@@ -513,7 +513,7 @@
 							</c:when>
 							<c:otherwise> --%>
 						<%-- 갤러리 시작 --%>
-								<c:forEach var="item" items="${output}" varStatus="status">
+<%-- 								<c:forEach var="item" items="${output}" varStatus="status">
 									<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
@@ -552,7 +552,7 @@
 									</div>
 								</div>
 							</li>
-							</c:forEach>
+							</c:forEach> --%>
 <%--  							</c:otherwise>
 						</c:choose> --%>
 						<%-- 각 갤러리 끝 --%>
@@ -872,6 +872,13 @@
 			
 			$(".recent-div4").empty(); 
 			$(".recent-div4").append(result);
+			
+			/* 좋아요 클릭 -> 하트 색 변경 */
+			$(function() {
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+				});
+			});
 		});
 		});
 	
@@ -951,10 +958,17 @@
 			$(".tabs > li:nth-child(2)").css("color","gray");
 			$(".recent-div4").empty();
 			$(".recent-div4").append(result);
+			
+			/* 좋아요 클릭 -> 하트 색 변경 */
+			$(function() {
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+				});
+			});
 		});
 		});
 	
- 	$(document).ready(function(){ //인기있는 방 AJAX
+  	$(document).ready(function(){ //인기있는 방 AJAX
 		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
 		,function(json){
 			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
@@ -979,6 +993,7 @@
            		} else {
            			return deposit;
            		}
+           		
            	});
          		
 			var source = $("#prof-list-tmpl").html()//템플릿코드
@@ -989,8 +1004,15 @@
 			$(".tabs > li:nth-child(2)").css("color","gray");
 			$(".popular-div4").empty();
 			$(".popular-div4").append(result);
+			
+			/* 좋아요 클릭 -> 하트 색 변경 */
+			$(function() {
+				$(".recent-div8").click(function(e) {
+					$(this).toggleClass('on off');
+				});
+			});
 		});
-		});
+		}); 
 	});
 	</script>
 </body>

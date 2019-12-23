@@ -263,9 +263,7 @@
 		<foreach item="list" index="index" collection="list" separator=",">
 			#{list} 
 		</foreach>) 
-		<if test="listCount > 0">
-			LIMIT #{offset}, #{listCount}
-		</if>
+			LIMIT 4
 	</select> 
 
 </mapper>
