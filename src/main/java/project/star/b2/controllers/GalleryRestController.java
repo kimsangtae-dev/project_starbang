@@ -102,7 +102,7 @@ public class GalleryRestController {
 		/******** 필터 ********/
 		/** 방 종류(roomtype) */
 		String room = webHelper.getString("roomtype");
-		/** 매물 종류(dealingtype) */
+		/** 거래 종류(dealingtype) */
 		String dealingtype = webHelper.getString("dealingtype");
 		/** 보증금/전세가(deposit/price) */
 		int depositFrom = webHelper.getInt("depositFrom");
@@ -128,7 +128,7 @@ public class GalleryRestController {
 		 for (int i = 0; i < roomto.length ; i++) {
 		 roomtypepate.add(roomto[i]); }
 		 
-		/** 매물 종류(dealingtype) list */
+		/** 거래 종류(dealingtype) list */
 		List<String> dealingtypepate = new ArrayList<String>(); String[]
 		dealingtypeto = dealingtype.split("m"); 
 		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
@@ -140,9 +140,9 @@ public class GalleryRestController {
 		double north = webHelper.getDouble("north");
 
 		Filter filter = new Filter();
-		//방종류 
+		// 방종류 
 		filter.setRoomtype(roomtypepate);
-		//월세, 전세, 매매 
+		// 거래종류 
 		filter.setDealingtype(dealingtypepate);
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);

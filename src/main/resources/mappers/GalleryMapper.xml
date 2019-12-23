@@ -55,6 +55,7 @@
 			<if test="sizeFrom != 0 or sizeTo != 999999">
 				AND r.area between #{sizeFrom} and #{sizeTo}
 			</if>
+			
 			<if test="region_2depth_name != null and region_2depth_name != ''">
 				AND region_2depth_name LIKE concat('%', #{region_2depth_name}, '%')
 			</if>

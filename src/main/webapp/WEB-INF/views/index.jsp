@@ -115,7 +115,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=원룸&region_2depth_name=송파구">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=송파구&map=37.5048534,127.1144822,5">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up3"></div>
 									<div class="slide-a-div1-down">
@@ -154,7 +154,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=10000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&roomtype=오피스텔">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=10000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up6"></div>
 									<div class="slide-a-div1-down">
@@ -180,7 +180,7 @@
 
 						<div>
 							<a class="slide-a"
-								href="${pageContext.request.contextPath}/main/search.do?depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region_2depth_name=강남구">
+								href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=강남구&map=37.4959854,127.0664091,5">
 								<div class="slide-a-div1">
 									<div class="slide-a-div1-up8"></div>
 									<div class="slide-a-div1-down">

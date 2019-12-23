@@ -356,11 +356,15 @@ public class MainController {
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
 		
+		/** 지도 상태유지를 위한 중심좌표와 레벨 */
 		String mapTemp = webHelper.getString("map");
 		String[] map = mapTemp.split(",");
 		double lat = Double.parseDouble(map[0]);
 		double lng = Double.parseDouble(map[1]);
 		int level = Integer.parseInt(map[2]);
+		
+		/** 쉬운방찾기-지역 */
+		String region = webHelper.getString("region");
 
 		/******** 필터 ********/
 		/** 방 종류(roomtype) */
@@ -390,7 +394,7 @@ public class MainController {
 		 for (int i = 0; i < roomto.length ; i++) {
 		 roomtypepate.add(roomto[i]); }
 		 
-		/** 매물 종류(dealingtype) list */
+		/** 거래 종류(dealingtype) list */
 		List<String> dealingtypepate = new ArrayList<String>(); 
 		String[] dealingtypeto = dealingtype.split("m"); 
 		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
@@ -402,9 +406,9 @@ public class MainController {
 		
 
 		Filter filter = new Filter();
-		//방종류 
+		// 방종류
 		filter.setRoomtype(roomtypepate);
-		//월세, 전세, 매매 
+		// 거래종류
 		filter.setDealingtype(dealingtypepate);
 		// 보증금/전세
 		filter.setDepositFrom(depositFrom);
@@ -430,6 +434,7 @@ public class MainController {
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Gallery input = new Gallery();
+		input.setRegion_2depth_name(region);
 
 		List<Gallery> output = null;
 		PageData pageData = null;
@@ -446,7 +451,7 @@ public class MainController {
 			// 월세
 			Gallery.setMonthFrom(monthFrom);
 			Gallery.setMonthTo(monthTo);
-			//매매
+			// 매매
 			Gallery.setBuyingFrom(buyingFrom);
 			Gallery.setBuyingTo(buyingTo);
 			// 관리비

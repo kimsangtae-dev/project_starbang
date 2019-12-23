@@ -34,9 +34,8 @@ pageEncoding="UTF-8"%>
                 <div class="filters clearfix">
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
-                        <button type="button" class="btn dropdown-toggle btn-rt"
-                            data-toggle="dropdown">
-                            원룸,투·쓰리룸,오피스텔<span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle btn-rt" data-toggle="dropdown">
+							원룸,투·쓰리룸,오피스텔<span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width1" role="menu">
                             <form id="room-type">
@@ -65,9 +64,8 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 끝 -->
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
-                        <button type="button" class="btn dropdown-toggle btn-st"
-                            data-toggle="dropdown">
-                            월세,전세,매매 <span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle btn-st" data-toggle="dropdown">
+							월세,전세,매매 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width1" role="menu">
                             <h1>매물종류</h1>
@@ -94,14 +92,12 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 끝 -->
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
-                        <button type="button" class="btn dropdown-toggle"
-                            data-toggle="dropdown">
-                            가격대 <span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							가격대 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width2" role="menu">
                             <div class="filter-slide">
-                                <h1>
-                                    보증금/전세가
+                                <h1>보증금/전세가
                                     <p class="inf" id="filter1-value">무제한</p>
                                 </h1>
                                 <input type="text" id="slide-price1" name="">
@@ -112,8 +108,7 @@ pageEncoding="UTF-8"%>
                                 </ul>
                             </div>
                             <div class="filter-slide mar-top">
-                                <h1>
-                                    월세
+                                <h1>월세
                                     <p class="inf" id="filter2-value">무제한</p>
                                 </h1>
                                 <input type="text" id="slide-price2" name="">
@@ -124,8 +119,7 @@ pageEncoding="UTF-8"%>
                                 </ul>
                             </div>
                             <div class="filter-slide mar-top">
-                                <h1>
-                                    매매가
+                                <h1>매매가
                                     <p class="inf" id="filter3-value">무제한</p>
                                 </h1>
                                 <input type="text" id="slide-price3" name="">
@@ -143,14 +137,12 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 끝 -->
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
-                        <button type="button" class="btn dropdown-toggle"
-                            data-toggle="dropdown">
-                            관리비 <span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							관리비 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width2" role="menu">
                             <div class="filter-slide">
-                                <h1>
-                                    관리비
+                                <h1>관리비
                                     <p class="inf" id="filter4-value">무제한</p>
                                 </h1>
                                 <input type="text" id="slide-price4" name="">
@@ -168,14 +160,12 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 끝 -->
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
-                        <button type="button" class="btn dropdown-toggle"
-                            data-toggle="dropdown">
-                            방크기 <span class="caret"></span>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+							 방크기 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu pull-right width2" role="menu">
                             <div class="filter-slide">
-                                <h1>
-                                    방크기
+                                <h1>방크기
                                     <p class="inf" id="filter5-value">무제한</p>
                                 </h1>
                                 <input type="text" id="slide-size" name="">
@@ -475,32 +465,27 @@ pageEncoding="UTF-8"%>
                 "page": page
             },
             success: function(req){
+            	/** 월세인지 전세/매매인지 구분 **/
                 Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                  if (dealingtype == '월세') {
-                    return options.fn(this);
-                  } else {
-                    return options.inverse(this);
-                  }
+                  if (dealingtype == '월세') { return options.fn(this); } 
+                  else { return options.inverse(this); }
                 });
-                
+                /** 억 단위 표현하기 price **/
                 Handlebars.registerHelper('isOver', function(price, options) {
                     if (price >= 10000 && price%10000 != 0) {
                         return Math.floor(price/10000) +"억" + price%10000;
                     } else if (price >= 10000 && price%10000 == 0) {
                         return price/10000 + "억";
-                    } else {
-                        return price;
-                    }
+                    } else { return price; }
                 });
                 
+                /** 억 단위 표현하기 deposit **/
                 Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit%10000 != 0) {
                         return Math.floor(deposit/10000) +"억" + deposit%10000;
                     } else if (deposit >= 10000 && deposit%10000 == 0) {
                         return deposit/10000 + "억";
-                    } else {
-                        return deposit;
-                    }
+                    } else { return deposit; }
                 });
                 
                 var template = Handlebars.compile($("#gallery-data").html());
@@ -508,6 +493,7 @@ pageEncoding="UTF-8"%>
                 $("#gallery-list").html(html);
                 $("#room-count").html(req.totalCount);
                 
+                /** 페이징을 위한 정보 가져오기 **/
                 startPage = req.pageData.startPage;
                 endPage = req.pageData.endPage;
                 groupCount = req.pageData.groupCount;
@@ -515,7 +501,7 @@ pageEncoding="UTF-8"%>
                 nowPage = req.pageData.nowPage;
                 nextPage = req.pageData.nextPage;
                 prevPage = req.pageData.prevPage;
-                
+                /** 페이지 번호 출력 **/
                 var index_list = new Array();
                 for (var i=startPage; i<=endPage; i++) {
                     var indexno = i;
@@ -526,7 +512,7 @@ pageEncoding="UTF-8"%>
                     }
                 }
                 $("#index-list").html(index_list);
-                
+                /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
                     $(this).toggleClass('on off');
                 });
@@ -609,7 +595,7 @@ pageEncoding="UTF-8"%>
                         level = map.getLevel();
                     });
                     
-                    var bounds = map.getBounds();
+/*                     var bounds = map.getBounds();
                     var southwest = bounds.getSouthWest();
                     var northeast = bounds.getNorthEast();
                     east = northeast.getLat();
@@ -617,7 +603,7 @@ pageEncoding="UTF-8"%>
                     north = northeast.getLng();
                     south = southwest.getLng();
                     
-                    getMapPosition(west,east,south,north,1);
+                    getMapPosition(west,east,south,north,1); */
                     
                     centerLat = map.getCenter().getLat();
                     centerLng = map.getCenter().getLng();
