@@ -40,16 +40,11 @@
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
   	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
   	<script type="text/javascript">
-    $("#loginbtn").click(function(){
-        //아이디 미입력시
+   $("#loginbtn").click(function(){
         if($("#loginid").val() == "1@" && $("#passwd").val() == "1") {
         	alert("관리자페이지로 이동합니다.");
-        //아이디 입력시
-    }  else {
-    	alert("관리자가 아닙니다.");
-        return;
     } 
-});
-  	</script>
+	}); 
+ </script>
 </body>
 </html>

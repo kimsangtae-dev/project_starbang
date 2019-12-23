@@ -307,6 +307,8 @@ public class AdminController {
 		String viewPath = "/admin/rmli.do";
 		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
 	}
+	
+	
 	/********************************************************************
 	 * 회원 관리
 	 *******************************************************************/
@@ -315,13 +317,13 @@ public class AdminController {
 	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)
 	public ModelAndView userli(Model model) {
 
-		/** 1) 필요한 변수값 생성 */
+		/** 1) 필요한 변수값 생성 (페이징처리 변수) */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
-
+		
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		User input = new User();
@@ -331,10 +333,12 @@ public class AdminController {
 		input.setTel(keyword);
 		input.setRegdate(keyword);
 		input.setEditdate(keyword);
-
+		
+		
 		List<User> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산할 결과가 저장될 객체
 
+		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = userService.getUserCount(input);
@@ -349,7 +353,8 @@ public class AdminController {
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		
+		
 		/** 3)View 처리 */
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
@@ -360,26 +365,30 @@ public class AdminController {
 	}
 
 
+	
 	/****** 상세페이지 ******/
 	@RequestMapping(value = "/admin/userlist/view.do", method = RequestMethod.GET)
 	public ModelAndView view(Model model) {
+		
 		/** 1) 필요한 변수값 생성 */
 		// 조회할 대상에 대한 PK값
 		int userno = webHelper.getInt("userno");
 
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		// 필수값 유효성검사.
 		if (userno == 0) {
 			return webHelper.redirect(null, "회원번호가 없습니다.");
 		}
-
+		
 		/** 2) 데이터 조회하기 */
 		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
 		User input = new User();
 		input.setUserno(userno);
 
+		
 		// 조회결과를 저장할 객체 선언
 		User output = null;
 
+		
 		try {
 			// 데이터 조회
 			output = userService.getUserItem(input);
@@ -387,6 +396,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
 
@@ -407,11 +417,13 @@ public class AdminController {
 			return webHelper.redirect(null, "회원번호가 없습니다.");
 		}
 
+		
 		/** 2) 데이터 삭제하기 */
 		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
 		User input = new User();
 		input.setUserno(userno);
 
+		
 		try {
 			// 데이터 삭제
 			userService.deleteUser(input);
@@ -419,6 +431,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		
 		/** 3) 페이지 이동 */
 		// 확인할 대상이 삭제된 상태이므로 목록 페이지로 이동
 		return webHelper.redirect(contextPath + "/admin/userli.do", "삭제되었습니다."); 
@@ -442,15 +455,18 @@ public class AdminController {
 		User input = new User();
 		input.setUserno(userno);
 
+		
 		// 조회결과를 저장할 객체 선언
 		User output = null;
 
+		
 		try {
 			output = userService.getUserItem(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
 		return new ModelAndView("admin/userlist/edit");
@@ -479,6 +495,7 @@ public class AdminController {
 			return webHelper.redirect(null, "회원이름을 입력하세요.");
 		}
 
+		
 		/** 2) 데이터 수정하기 */
 		// 수정할 값들을 Beans에 담는다.
 		User input = new User();
@@ -491,6 +508,7 @@ public class AdminController {
 		input.setEditdate(editdate);
 		input.setProfile_img(profile_img);
 
+		
 		try {
 			// 데이터 수정
 			userService.editUser(input);
@@ -498,6 +516,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
+		
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 수정한 대상을 상세페이지에 알려주기 위해서 PK값을 전달해야 한다.
 		String redirectUrl = contextPath + "/admin/userli.do";
@@ -565,7 +584,7 @@ public class AdminController {
 		return new ModelAndView("admin/rmli");
 	}
 
-		/********************************************************************
+	/********************************************************************
 	 * 관리자 로그인
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/lg.do", method = RequestMethod.GET)
@@ -579,21 +598,22 @@ public class AdminController {
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/lg_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request) {
-			
 
 		// 1) 사용자가 입력한 파라미터 수신 및 필수값 검사 */
 		String email = webHelper.getString("email"); 
 		String passwd = webHelper.getString("passwd");
-				
 			
 		// 필수 값의 존재여부 검사 
 		if (email == null || email.contentEquals("")) { 
-			return webHelper.redirect(null, "아이디를 입력하세요."); }
+			return webHelper.redirect(null, "이메일을 입력하세요."); }
 		
 		if (passwd == null || passwd.contentEquals("")) { 
 			return webHelper.redirect(null, "비밀번호를 입력하세요."); }
 	 
+		if (!email.equals("1@") && !passwd.equals("1")) { 
+			return webHelper.redirect(null, "관리자가 아닙니다."); }
 			
+		
 		// 2) 사용자가 입력한 값을 Beans에 저장
 		User input = new User();
 		input.setEmail(email);
@@ -603,6 +623,7 @@ public class AdminController {
 		// 조회결과를 저장할 객체 선언 
 		User output = null;
 			
+		
 			try { 
 				//데이터 조회 
 			  	output = userService.getUserLogin(input); 
@@ -615,8 +636,6 @@ public class AdminController {
 			// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성   
 			if (email.equals(output.getEmail()) || passwd.equals(output.getPasswd())) {
 				session.setAttribute("loginInfo", output);
-			} else {	
-				return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
 			} 
 			
 			return new ModelAndView("admin/main");
