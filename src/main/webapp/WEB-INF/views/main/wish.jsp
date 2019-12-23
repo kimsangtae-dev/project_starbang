@@ -383,6 +383,7 @@
 
 		}); /* END OF 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
 
+		var i=1;
         /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
         $(document).on('click', '.comp-chkbox-s', function(e) {
 
@@ -393,7 +394,10 @@
 			put += '<p class="compbar-newp">' + price + '</p>';
 			put += '<button class="compbar-newbtn"></button>';
 
-			$("#select1").html(put);
+			// 순차적으로 값 입력
+			$("#select"+i).html(put);
+			i++;
+			return;
 		});
 
 
