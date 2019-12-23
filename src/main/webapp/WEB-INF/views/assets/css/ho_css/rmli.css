@@ -82,6 +82,8 @@ body, #root {
     	color: rgb(67, 131, 255) !important;
     	font-weight: 700 !important;
     }
+    
+    
 
     /* 
      * 드롭박스 닫혀있을 때 설정 
@@ -154,6 +156,11 @@ body, #root {
     .dropdown-li2 {
         font-weight: 400;
         color: rgb(102, 102, 102);
+    }
+    
+    #dropdown > li > a {
+    	width:135px;
+    	height:42px;
     }
 
 /* ------------------------------------------

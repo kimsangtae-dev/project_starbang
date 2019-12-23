@@ -41,16 +41,17 @@
                 </p>
                 <p class="isroom-p2">공실상태</p>
                 <ul width="135" id="dropdown" class="dropdown-closed dropdn">
-                    <li name="status" value="0" class="dropdown-li"><span>전체</span>
+                    <li name="status" value="0" class="dropdown-li"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0"><span>전체</span>
                         <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1235.000000, -281.000000)" fill="#444444">
                                     <g transform="translate(180.000000, 263.000000)">
                                         <g transform="translate(945.000000, 0.000000)">
                                             <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]"></path></g></g></g></g></svg>
-                    </li>
-                    <li name="status" value="1" class="dropdown-li2">공개</li>
-                    <li name="status" value="2" class="dropdown-li2">비공개</li>
+                   	</a></li>
+                    
+                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=2">공개</a></li>
+                    <li name="status" value="2" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=3">비공개</a></li>
                 </ul>
             </div>
 		</form>
@@ -159,6 +160,7 @@
 
 <!-- Javascript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
@@ -179,12 +181,12 @@
 		$(".dropdn > li").click(function(){
 			var copy = $(this).html();
 			$(".dropdown-li > span").html(copy);
-			$("#form").submit();
 		});
 			
 	        
 		}
 	});
+	
 
 </script>
 </body>
