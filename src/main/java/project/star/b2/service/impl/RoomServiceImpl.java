@@ -77,16 +77,62 @@ public class RoomServiceImpl implements RoomService {
     }
     
     /**
-     * Room테이블 데이터 목록 조회
-     * @return 조회 결과에 대한 컬렉션
-     * @throws Exception
+     * 공실관리 전체 조회하기
      */
     @Override
-    public List<Room> getRoomList_host_rmli(Room input) throws Exception {
+    public List<Room> getRoomList_host_rmli1(Room input) throws Exception {
         List<Room> result = null;
 
         try {
-            result = sqlSession.selectList("RoomMapper.selectList_host_rmli", input);
+            result = sqlSession.selectList("RoomMapper.selectList_host_rmli1", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
+    
+    /**
+     * 공실관리 공개 조회하기
+     */
+    @Override
+    public List<Room> getRoomList_host_rmli2(Room input) throws Exception {
+        List<Room> result = null;
+
+        try {
+            result = sqlSession.selectList("RoomMapper.selectList_host_rmli2", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("조회된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
+    
+    /**
+     * 공실관리 비공개 조회하기
+     */
+    @Override
+    public List<Room> getRoomList_host_rmli3(Room input) throws Exception {
+        List<Room> result = null;
+
+        try {
+            result = sqlSession.selectList("RoomMapper.selectList_host_rmli3", input);
 
             if (result == null) {
                 throw new NullPointerException("result=null");

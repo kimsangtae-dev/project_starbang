@@ -24,11 +24,11 @@ public interface RoomService {
     public List<Room> getRoomList(Room input) throws Exception;
     
     /**
-     * 매물 데이터 목록 조회
-     * @return 조회 결과에 대한 컬렉션
-     * @throws Exception
+     * 공실관리 조회용 전체, 공개, 비공개
      */
-    public List<Room> getRoomList_host_rmli(Room input) throws Exception;
+    public List<Room> getRoomList_host_rmli1(Room input) throws Exception;
+    public List<Room> getRoomList_host_rmli2(Room input) throws Exception;
+    public List<Room> getRoomList_host_rmli3(Room input) throws Exception;
     
     
     /**
