@@ -355,6 +355,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 <script>
 	$(function(){
+
 		/* 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
 		$(document).on('click', '.btn-compare', function(e) {
 
@@ -363,33 +364,34 @@
 			/* 방 비교하기 버튼 지우기 */
             $("#bar-compare").empty();
 
-            /** roomno 스크립트로 가져오기 */
-        	var roomno =$(this).parents(".gallery-d2-pic").children('input[name=getroomno]').val();
-			console.log(roomno)
-
 			/* checkbox 만들기 */
             var chbox = "";
             chbox += '<div class="comp-chkbox-d">'
         	chbox += '<label class="clearfix comp-chkbox-l" size="22">'
-    		chbox += '<input type="checkbox" class="comp-chkbox-i" name="newroomno" value='+ roomno +'>'
+    		chbox += '<input type="checkbox" class="comp-chkbox-i" name="newroomno" value="" />'
     		chbox += '<span class="comp-chkbox-s"></span></label></div>'
 
     		/* checkbox 붙이기 */
             $(".gallery-d2-pic").append(chbox);
+
+    		/** roomno 스크립트로 가져오기 */
+    		$(document).on('click', '.comp-chkbox-i', function(e){
+                var roomno =$(this).parents(".gallery-d2-pic").children('input[name=getroomno]').val();
+    			nwroomno = roomno*1; // 문자를 숫자로 바꿈
+    			$(".comp-chkbox-i").val(nwroomno);
+    		});
+
 		}); /* END OF 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
 
-
+        /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
         $(document).on('click', '.comp-chkbox-s', function(e) {
-
-
 
         var type = $(this).parents(".hit-a").children(".hit-a-p1").html();
         var price = $(this).parents(".hit-a").find(".hit-a-p2").html();
+
 		var put = '<span class="compbar-newspan">' + type + '</span>';
 			put += '<p class="compbar-newp">' + price + '</p>';
 			put += '<button class="compbar-newbtn"></button>';
-			//$(roomno).prop("checked",true);
-
 
 			$("#select1").html(put);
 		});
@@ -406,18 +408,6 @@
 			$(".comp-chkbox-d").remove();
         });
 	});
-
-
-
-
-
-
-
-
-
-
-
-
 
 	/* footer와 비교하기바가 겹치지 않기위한 이벤트 */
 	$(function() {
