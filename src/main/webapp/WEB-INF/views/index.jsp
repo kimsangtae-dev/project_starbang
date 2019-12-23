@@ -285,7 +285,7 @@
 					</div>
 					</c:when>
 					<c:otherwise>						
- 						<c:forEach var="item" items="${output3}" varStatus="status" end="4">
+ 						<c:forEach var="item" items="${output3}" varStatus="status" end="3">
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">

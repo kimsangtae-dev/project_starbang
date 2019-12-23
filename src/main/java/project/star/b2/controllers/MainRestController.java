@@ -1,6 +1,7 @@
 package project.star.b2.controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,11 @@ import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
+import project.star.b2.model.Info;
 import project.star.b2.model.Popular;
+import project.star.b2.model.Price;
+import project.star.b2.model.Room;
+import project.star.b2.model.UploadItem;
 import project.star.b2.model.User;
 import project.star.b2.service.GalleryService;
 import project.star.b2.service.HeartService;
@@ -193,6 +198,35 @@ public class MainRestController {
 	data.put("keyword",keyword);
 	data.put("item",output);
 	data.put("meta",pageData);
+	
+	return webHelper.getJsonData(data);
+}
+	/********************************************************************
+	 * AJAX로 차트값 가져오기
+	 *******************************************************************/
+	@RequestMapping(value ="/chart", method = RequestMethod.GET)
+	public Map<String, Object>get_chart(HttpServletRequest request){
+		int newRoomno = webHelper.getInt("chartdata");
+
+		Info input_info = new Info();
+		input_info.setRoomno(newRoomno);
+
+		Info output_info = null;
+
+
+		try {
+			output_info = infoService.getInfoItem(input_info);
+
+
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+
+		}
+
+
+	/** 3)Json 출력 하기  */
+	Map<String, Object>data = new HashMap<String, Object>();
+	data.put("item",output_info);
 	
 	return webHelper.getJsonData(data);
 }

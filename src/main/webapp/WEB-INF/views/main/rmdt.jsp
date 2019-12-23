@@ -964,7 +964,52 @@ function binary2() {
             $("#target").css('background-image', val);
         });
 	});
-	
+ 	$(document).ready(function(){ //인기있는 방 AJAX
+ 		$.ajax({
+ 			url:"${pageContext.request.contextPath}/chart",
+ 			data:{"chartdata": ${room.roomno}},
+ 			type: "GET",
+ 			success:function(data){
+ 				alert("안녕 그래프 생성");
+ 				var chart = bb.generate({
+ 					data : {
+ 						x : "x",
+ 						columns : [ [ "x", "가격", "관리비", "옵션", "편의시설", "교통" ],
+ 								[ "data1", data.item.chart1, data.item.chart2, data.item.chart3, data.item.chart4, data.item.chart5 ]
+ 						// ["data2", 130, 100, 30, 200, 80],
+ 						// ["data3", 230, 153, 85, 300, 250]
+ 						],
+ 						type : "radar",
+ 						labels : true
+ 					},
+ 					radar : {
+ 						axis : {
+ 							max : 100
+ 						},
+ 						level : {
+ 							depth : 1
+ 						},
+ 						direction : {
+ 							clockwise : true
+ 						},
+ 						line : {
+ 							connectNull : true,
+ 							classes : [ "line-class1", "line-class2" ]
+ 						},
+
+ 					},
+ 					bindto : "#radarChart"
+ 				});
+
+ 				chart.data.colors({
+ 					data1 : "#0040FF",
+ 				});
+		    },
+		    error: function(data) {
+		        console.log(data);
+		    }
+ 		});
+ 	});
 	</script>
 	
 	<!-- 허위매물 신고하기 -->

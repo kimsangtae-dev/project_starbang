@@ -19,6 +19,11 @@ public class Info {
 	private String buildtype;
 	private String content;
 	private int roomno;
+	private int chart1;
+	private int chart2;
+	private int chart3;
+	private int chart4;
+	private int chart5;
 	
 	/** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치

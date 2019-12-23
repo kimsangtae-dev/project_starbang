@@ -262,7 +262,10 @@
 		ORDER BY FIELD (r.roomno,
 		<foreach item="list" index="index" collection="list" separator=",">
 			#{list} 
-		</foreach>) limit 4
+		</foreach>) 
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
 	</select> 
 
 </mapper>

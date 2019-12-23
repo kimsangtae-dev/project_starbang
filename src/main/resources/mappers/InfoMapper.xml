@@ -23,6 +23,11 @@
         <result property="buildtype" column="buildtype" />
         <result property="content" column="content" />
         <result property="roomno" column="roomno" />
+        <result property="chart1" column="chart1" />
+        <result property="chart2" column="chart2" />
+        <result property="chart3" column="chart3" />
+        <result property="chart4" column="chart4" />
+        <result property="chart5" column="chart5" />
     </resultMap>
 
     <!-- 단일행 조회를 위한 기능 정의 -->
@@ -31,7 +36,7 @@
         resultMap="infoMap">
         SELECT 
         feeitem, parking, pet, elevator, veranda, builtin, optionitem, loan, supplyarea, maxfloor, heater, commingday,
-        buildtype, content, roomno
+        buildtype, content, roomno, chart1, chart2, chart3, chart4, chart5
         FROM info 
         WHERE roomno=#{roomno};
     </select>
@@ -40,7 +45,7 @@
     <select id="selectList"
         parameterType="project.star.b2.model.Info"
         resultMap="infoMap">
-        SELECT feeitem, parking, pet, elevator, veranda, builtin, optionitem, loan, supplyarea, maxfloor, heater, commingday, buildtype, content, roomno 
+        SELECT feeitem, parking, pet, elevator, veranda, builtin, optionitem, loan, supplyarea, maxfloor, heater, commingday, buildtype, content, roomno, chart1, chart2, chart3, chart4, chart5 
         FROM info 
         ORDER BY roomno ASC
         
