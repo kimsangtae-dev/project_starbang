@@ -373,4 +373,25 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
 	}
+	
+	/**
+     * 허위매물 상세 조회
+     * @param FakeRoom 저장할 정보를 담고 있는 Beans
+     * @return 조회된 데이터가 저장된 Beans
+     * @throws Exception
+     */
+    @Override
+    public FakeRoom getFakeRoomItem(FakeRoom input) throws Exception {
+        FakeRoom result = null;
+
+        try {
+            result = sqlSession.selectOne("FakeRoomMapper.selectItem", input);
+
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+    }
 }

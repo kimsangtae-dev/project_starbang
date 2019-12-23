@@ -20,5 +20,17 @@
 	INSERT INTO fakeroom (regdate, reason, roomno, userno)
 	VALUES (now(), #{reason}, #{roomno}, #{userno});
 	</insert>
+	
+	<!-- 단일행 조회를 위한 기능 정의 -->
+    <select id="selectItem"
+        parameterType="project.star.b2.model.FakeRoom" resultMap="fakeMap">
+        SELECT fakeno, reason, roomno, userno, singo 
+        FROM fakeroom
+        <where>
+            <if test="roomno != null and userno != null">
+                roomno=#{roomno} AND singo=${singo}
+            </if>
+        </where>
+    </select>
 
 </mapper>

@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import project.star.b2.helper.CookieUtils;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
+import project.star.b2.model.FakeRoom;
 import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
@@ -237,8 +238,16 @@ public class MainController {
 	@RequestMapping(value = "/main/rmdt.do", method = RequestMethod.GET)
 	public ModelAndView rmdt(Model model, HttpServletResponse response, HttpServletRequest request,
 			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
-
+		
 		int newRoomno = Integer.parseInt(roomno);
+		
+		/*---세션 불러오기 ----*/
+        HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        } 
 
 		Room input_room = new Room();
 		input_room.setRoomno(newRoomno);
@@ -253,12 +262,17 @@ public class MainController {
 		input_image.setRoomno(newRoomno);
 
 		User input_user = new User();
+		
+		FakeRoom input_fake = new FakeRoom();
+        input_fake.setRoomno(newRoomno);
+        input_fake.setSingo(userno);
 
 		Room output_room = null;
 		Info output_info = null;
 		List<Price> output_price = null;
 		List<UploadItem> output_image = null;
 		User output_user = null;
+		FakeRoom output_fake = null;
 
 		try {
 
@@ -273,6 +287,8 @@ public class MainController {
 
 			output_image = uploadService.getImageList_by_roomno(input_image);
 			log.info("성공 uploadService");
+			
+			if (userno != 0) { output_fake = roomService.getFakeRoomItem(input_fake); }
 
 			input_user.setUserno(output_room.getUserno());
 			output_user = userService.getUserItem(input_user);
@@ -312,6 +328,7 @@ public class MainController {
 		model.addAttribute("price", output_price);
 		model.addAttribute("img", output_image);
 		model.addAttribute("user", output_user);
+		model.addAttribute("fake", output_fake);
 
 		return new ModelAndView("main/rmdt");
 	}

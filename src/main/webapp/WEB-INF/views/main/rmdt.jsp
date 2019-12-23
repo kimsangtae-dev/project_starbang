@@ -465,6 +465,16 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		</div>
 		<!-- 지도 끝 -->
 		<!--매물 이미지 끝-->
+		
+		<!-- 현재 로그인한 사용자의 해당 매물 신고 여부 -->
+		<c:choose>
+            <c:when test="${fake != null}">
+                <input type="hidden" value="${fake.singo}" id="fake_singo"/>
+            </c:when>
+            <c:otherwise>
+                <input type="hidden" value="0" id="fake_singo"/>
+            </c:otherwise>
+        </c:choose>
 	</div>
 	<!-- 하단 영역 -->
 	<jsp:include page="../assets/inc/ma_bottom.jsp" />
@@ -1014,30 +1024,39 @@ function binary2() {
 	
 	<!-- 허위매물 신고하기 -->
 	<script type="text/javascript">
-		$(function() {
-			$("#modalsubmit").click(function(e) {
-				e.preventDefault;
-				var userno = ${user.userno};
-				var roomno = ${room.roomno};
-				var reason = $("input[name=fakeReason]:checked").val();
-				
-				if (!reason) {
-					alert("신고 사유를 선택해주세요.");
-				} else {
-					$.ajax({
-					    type: "POST",
-					    data: {"userno": userno, "roomno": roomno, "reason": reason},
-					    url: "${pageContext.request.contextPath}/modal/fake_ok.do",
-					    success: function(data){
-					          alert("신고가 완료되었습니다.");
-					    },
-					    error: function(data) {
-					        console.log(data);
-					    }
-					});
-				}
-			});
-		});
+	$(function() {
+        $("#modalsubmit").click(function(e) {
+            e.preventDefault;
+            var userno = ${user.userno};    // 방주인의 회원번호
+            var roomno = ${room.roomno};    // 방 번호
+            var reason = $("input[name=fakeReason]:checked").val(); // 신고 사유
+            var singo;                      // 신고한 회원번호 (현재 로그인중인 회원)
+            var loginInfo = ${loginInfo.userno};
+            if (!loginInfo) { singo = 0; } 
+            else { singo = ${loginInfo.userno}; }
+            
+            var fake_singo = $("#fake_singo").val();    // 이미 신고한 회원인지 구별하기
+            
+            if (!reason) {
+                alert("신고 사유를 선택해주세요.");
+            } else if (fake_singo == singo) {
+                alert("같은 매물은 한 번만 신고할 수 있습니다.");
+            } else{
+                $.ajax({
+                    type: "POST",
+                    data: {"userno": userno, "roomno": roomno, "reason": reason, "singo": singo},
+                    url: "${pageContext.request.contextPath}/modal/fake_ok.do",
+                    success: function(data){
+                          alert("신고가 완료되었습니다.");
+                          window.location.reload();
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        });
+    });
 	</script>
 	
 </body>

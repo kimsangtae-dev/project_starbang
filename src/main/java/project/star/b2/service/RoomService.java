@@ -86,4 +86,11 @@ public interface RoomService {
     
     public int editFakeRoom(Room input) throws Exception;
     
+    /**
+     * 허위매물 상세 조회
+     * @param FakeRoom 저장할 정보를 담고 있는 Beans
+     * @return 조회된 데이터가 저장된 Beans
+     * @throws Exception
+     */
+    public FakeRoom getFakeRoomItem(FakeRoom input) throws Exception;
 }
