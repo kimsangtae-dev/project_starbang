@@ -92,7 +92,7 @@ public class MainController {
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Popular input = new Popular();
-		
+
 		List<String> list = null;
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
@@ -143,10 +143,10 @@ public class MainController {
 	 *******************************************************************/
 	@RequestMapping(value = "/main/mypage.do", method = RequestMethod.GET)
 	public ModelAndView mypage(Model model) {
-		
+
 		/** 1)필요한 변수값 생성 */
 		int userno = 2; // 회원 이메일기저오기
-		
+
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0 ) {
 			return webHelper.redirect(null, "방정보 번호가 없습니다.");
@@ -229,7 +229,10 @@ public class MainController {
 	 * 상세페이지 (rmdt 파라미터 읽기)
 	 *******************************************************************/
 	@RequestMapping(value = "/main/rmdt.do", method = RequestMethod.GET)
-	public ModelAndView rmdt(Model model, @RequestParam(value = "roomno", defaultValue = "") int roomno) {
+	public ModelAndView rmdt(Model model, HttpServletResponse response, HttpServletRequest request,
+			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
+
+		int newRoomno = Integer.parseInt(roomno);
 
 		Room input_room = new Room();
 		input_room.setRoomno(roomno);
@@ -276,23 +279,9 @@ public class MainController {
 
 		}
 
-		/** view 화면으로 보여주기 */
-		model.addAttribute("room", output_room);
-		model.addAttribute("info", output_info);
-		model.addAttribute("price", output_price);
-		model.addAttribute("img", output_image);
-		model.addAttribute("user", output_user);
-
-		return new ModelAndView("main/rmdt");
-	}
-
-	/********************************************************************
-	 * 상세페이지 (rmdt 쿠키 다중 저장)
-	 *******************************************************************/
-	@RequestMapping(value = "/main/rmdtsave.do", method = RequestMethod.GET)
-	public String rmdtsave(HttpServletResponse response, HttpServletRequest request,
-			@RequestParam(value = "roomno", defaultValue = "") String roomno) {
-
+		// -----------------------------------
+		// 쿠키 다중저장 시작
+		// -----------------------------------
 		if (!roomno.equals("")) {
 			try {
 				roomno = URLEncoder.encode(roomno, "utf-8");
@@ -306,7 +295,19 @@ public class MainController {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/main/rmdt.do?roomno=" + roomno;
+
+		// -----------------------------------
+		// 쿠키 다중저장 끝
+		// -----------------------------------
+
+		/** view 화면으로 보여주기 */
+		model.addAttribute("room", output_room);
+		model.addAttribute("info", output_info);
+		model.addAttribute("price", output_price);
+		model.addAttribute("img", output_image);
+		model.addAttribute("user", output_user);
+
+		return new ModelAndView("main/rmdt");
 	}
 
 	/********************************************************************
@@ -355,14 +356,14 @@ public class MainController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
-		
+
 		/** 지도 상태유지를 위한 중심좌표와 레벨 */
 		String mapTemp = webHelper.getString("map");
 		String[] map = mapTemp.split(",");
 		double lat = Double.parseDouble(map[0]);
 		double lng = Double.parseDouble(map[1]);
 		int level = Integer.parseInt(map[2]);
-		
+
 		/** 쉬운방찾기-지역 */
 		String region = webHelper.getString("region");
 
@@ -389,21 +390,21 @@ public class MainController {
 
 
 		/** 방 종류(roomtype) list */
-		 List<String> roomtypepate = new ArrayList<String>(); 
-		 String[] roomto = room.split("m"); 
+		 List<String> roomtypepate = new ArrayList<String>();
+		 String[] roomto = room.split("m");
 		 for (int i = 0; i < roomto.length ; i++) {
 		 roomtypepate.add(roomto[i]); }
-		 
+
 		/** 거래 종류(dealingtype) list */
-		List<String> dealingtypepate = new ArrayList<String>(); 
-		String[] dealingtypeto = dealingtype.split("m"); 
+		List<String> dealingtypepate = new ArrayList<String>();
+		String[] dealingtypeto = dealingtype.split("m");
 		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
-		
+
 		double west = webHelper.getDouble("west");
 		double east = webHelper.getDouble("east");
 		double south = webHelper.getDouble("south");
 		double north = webHelper.getDouble("north");
-		
+
 
 		Filter filter = new Filter();
 		// 방종류
@@ -424,7 +425,7 @@ public class MainController {
 		filter.setFeeTo(feeTo);
 		// 방크기
 		filter.setSizeFrom(sizeFrom);
-		if (sizeTo == 999999) { filter.setSizeTo(115); } 
+		if (sizeTo == 999999) { filter.setSizeTo(115); }
 		else { filter.setSizeTo(sizeTo); }
 		// 지도 중심좌표 설정
 		filter.setLat(lat);
@@ -441,7 +442,7 @@ public class MainController {
 
 		try {
 			/** 조회할 조건값 */
-			// 원룸,투룸,쓰리룸,오피스텔 
+			// 원룸,투룸,쓰리룸,오피스텔
 			Gallery.setRoomTypePate(roomtypepate);
 			// 월세,전세,매매
 			Gallery.setDealingTypePate(dealingtypepate);
@@ -622,17 +623,17 @@ public class MainController {
 		/** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
 		String passwd = webHelper.getString("passwd");
 		String email = webHelper.getString("email");
-	
+
 		if (passwd == null) {
 		   return webHelper.redirect(null, "비밀번호를 입력하세요.");
 		}
-	
+
 		/** 2) 데이터 수정하기 */
 		// 수정할 값들을 Beans에 담는다.
 		User input = new User();
 		input.setPasswd(passwd);
-		input.setEmail(email);	
-	
+		input.setEmail(email);
+
 		try {
 		    try {
 		        // 회원 pwd 데이터 수정
