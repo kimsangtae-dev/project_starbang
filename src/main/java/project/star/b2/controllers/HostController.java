@@ -28,9 +28,12 @@ import project.star.b2.model.Room;
 import project.star.b2.model.UploadItem;
 import project.star.b2.model.User;
 import project.star.b2.service.ApiKakaoSearchService;
+import project.star.b2.service.InfoService;
+import project.star.b2.service.PriceService;
 import project.star.b2.service.RIPService;
 import project.star.b2.service.RoomService;
 import project.star.b2.service.UploadService;
+import project.star.b2.service.UserService;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -61,6 +64,15 @@ public class HostController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired
 	UploadService uploadService;
+	
+	@Autowired
+	InfoService infoService;
+	
+	@Autowired
+	PriceService priceService;
+	
+	@Autowired
+	UserService userService;
 
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
@@ -80,58 +92,16 @@ public class HostController {
 	 * 공실 등록하기
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rm_add.do", method = RequestMethod.GET)
-	public ModelAndView rm_add(HttpServletRequest request) {
+	public ModelAndView rm_add(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        
         	return webHelper.redirect(null, "로그인 후 방등록이 가능합니다.");
-        	
         }
 
 		return new ModelAndView("host/rm_add");
-	}
-	
-	/********************************************************************
-	 * 상세 페이지 보기
-	 *******************************************************************/
-	@RequestMapping(value = "/host/roominfo/view.do", method = RequestMethod.GET)
-	public ModelAndView view(Model model) { 
-		/** 1) 필요한 변수값 생성 */
-		// 조회할 대상에 대한 PK값
-		int roomno = webHelper.getInt("roomno");
-		
-		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
-		if (roomno == 0) {
-			return webHelper.redirect(null, "방번호가 없습니다.");
-		}
-		
-		/** 2) 데이터 조회하기 */
-		// 데이터 조회에 필요한 조건값을 Beans에 저장하기
-		Room input1 = new Room();
-		Info input2 = new Info();
-		input1.setRoomno(roomno);
-		input2.setRoomno(roomno);
-		
-		// 조회결과를 저장할 객체 선언
-		Room output1 = null;
-		Info output2 = null;
-		
-		try {
-			//데이터 조회
-			output1 = ripService.getRoomItem(input1);
-			output2 = ripService.getInfoItem(input2);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 3) View 처리 */
-		model.addAttribute("output1", output1);
-		model.addAttribute("output2", output2);
-		
-		return new ModelAndView("host/roominfo/view"); 
 	}
 
 	/********************************************************************
@@ -451,9 +421,61 @@ public class HostController {
 	 * 공실 수정하기
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rm_edit.do", method = RequestMethod.GET)
-	public ModelAndView rm_edit() {
+	public ModelAndView rm_edit(Model model) {
+		
+		int roomno = webHelper.getInt("roomno");
 
-		return new ModelAndView("jsp/host/rm_edit");
+		Room input_room = new Room();
+		input_room.setRoomno(roomno);
+
+		Info input_info = new Info();
+		input_info.setRoomno(roomno);
+
+		Price input_price = new Price();
+		input_price.setRoomno(roomno);
+
+		UploadItem input_image = new UploadItem();
+		input_image.setRoomno(roomno);
+
+		User input_user = new User();
+
+		Room output_room = null;
+		Info output_info = null;
+		List<Price> output_price = null;
+		List<UploadItem> output_image = null;
+		User output_user = null;
+
+		try {
+
+			output_room = roomService.getRoomItem(input_room);
+			log.info("성공 roomService");
+
+			output_info = infoService.getInfoItem(input_info);
+			log.info("성공 infoService");
+
+			output_price = priceService.getPriceList_by_roomno(input_price);
+			log.info("성공 priceService");
+
+			output_image = uploadService.getImageList_by_roomno(input_image);
+			log.info("성공 uploadService");
+
+			input_user.setUserno(output_room.getUserno());
+			output_user = userService.getUserItem(input_user);
+
+		} catch (Exception e) {
+			log.debug("방 조회에 실패하였습니다.");
+			log.error(e.getLocalizedMessage());
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// view 화면으로 보여주기 
+		model.addAttribute("room", output_room);
+		model.addAttribute("info", output_info);
+		model.addAttribute("price", output_price);
+		model.addAttribute("img", output_image);
+		model.addAttribute("user", output_user);
+
+		return new ModelAndView("host/rm_edit");
 	}
 
 	/********************************************************************
@@ -528,4 +550,104 @@ public class HostController {
 		
 		return new ModelAndView("host/rmli");
 	}
+	
+	
+	
+	/********************************************************************
+	 * 공실관리 매물 삭제
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rmli_delete.do", method = RequestMethod.GET)
+	public ModelAndView remove() {
+		
+		/** 1) 필요한 변수값 생성 */
+		// 삭제할 대상에 대한 PK값
+		int roomno = webHelper.getInt("roomno");
+
+		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
+		if (roomno == 0) {
+			return webHelper.redirect(null, "회원번호가 없습니다.");
+		}
+
+		/** 2) 데이터 삭제하기 */
+		// 데이터 삭제에 필요한 조건값을 Beans에 저장하기
+		Room input = new Room();
+		input.setRoomno(roomno);
+
+		try {
+			// 데이터 수
+			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			roomService.deleteRoom(input);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		String viewPath = contextPath+"/host/rmli.do";
+		return webHelper.redirect(viewPath, "삭제되었습니다");
+	}
+	
+	/********************************************************************
+	 * 공실관리 매물 상태 수정
+	 *******************************************************************/
+	/**
+	@RequestMapping(value = "/host/rmli_update.do", method = RequestMethod.GET)
+	public ModelAndView update(Model model) {
+		
+		int roomno = webHelper.getInt("roomno");
+
+		Room input_room = new Room();
+		input_room.setRoomno(roomno);
+
+		Info input_info = new Info();
+		input_info.setRoomno(roomno);
+
+		Price input_price = new Price();
+		input_price.setRoomno(roomno);
+
+		UploadItem input_image = new UploadItem();
+		input_image.setRoomno(roomno);
+
+		User input_user = new User();
+
+		Room output_room = null;
+		Info output_info = null;
+		List<Price> output_price = null;
+		List<UploadItem> output_image = null;
+		User output_user = null;
+
+		try {
+
+			output_room = roomService.getRoomItem(input_room);
+			log.info("성공 roomService");
+
+			output_info = infoService.getInfoItem(input_info);
+			log.info("성공 infoService");
+
+			output_price = priceService.getPriceList_by_roomno(input_price);
+			log.info("성공 priceService");
+
+			output_image = uploadService.getImageList_by_roomno(input_image);
+			log.info("성공 uploadService");
+
+			input_user.setUserno(output_room.getUserno());
+			output_user = userService.getUserItem(input_user);
+
+		} catch (Exception e) {
+			log.debug("방 조회에 실패하였습니다.");
+			log.error(e.getLocalizedMessage());
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		// view 화면으로 보여주기 
+		model.addAttribute("room", output_room);
+		model.addAttribute("info", output_info);
+		model.addAttribute("price", output_price);
+		model.addAttribute("img", output_image);
+		model.addAttribute("user", output_user);
+		
+		String viewPath = contextPath+"/host/rm_add.do";
+		return new ModelAndView(viewPath);
+	}
+	
+	*/
+	
 }
