@@ -162,19 +162,19 @@
         <div class="modal-content modal-whole-chmode">
             <p class="chmode-title">공실 상태를 변경합니다.</p>
             <div class="chmode-div clearfix">
-                <a>
+                <a class="status" id="0">
                     <span>공개</span>
                     <p>게시글을 공개상태로 전환합니다.</p>
                 </a>
             </div>
             <div class="chmode-div clearfix">
-                <a>
+                <a class="status" id="1">
                     <span>비공개</span>
                     <p>게시글을 비공개 상태로 전환합니다.</p>
                 </a>
             </div>
             <div class="chmode-div clearfix">
-                <a>
+                <a class="status" id="2">
                     <span>거래완료</span>
                     <p>거래를 완료했습니다.</p>
                 </a>
@@ -220,6 +220,33 @@
 		   $(".dropdown-li > a").prop("onclick", null);
 	   }
 	});
+</script>
+<script type="text/javascript">
+	/* 공실상태 전환하기 */
+	$(function() {
+		var roomno;
+		var status;
+		$(".changemode").click(function(e) {
+			e.preventDefault();
+			roomno = $(this).parents("tr").children().eq(0).html();
+		});
+		
+		$(".status").click(function(e) {
+			e.preventDefault();
+			status = $(this).attr('id');
+			$.ajax({
+	            type: "GET",
+	            data: {"roomno": roomno, "status": status},
+	            url: "${pageContext.request.contextPath}/host/rmli_status.do",
+	            success: function(data){
+	            	alert("공실상태가 변경되었습니다.");
+	            },
+	            error: function(data) {
+	                console.log(data);
+	            }
+	        });
+		});
+	})
 </script>
 </body>
 </html>

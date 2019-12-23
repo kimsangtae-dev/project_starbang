@@ -650,4 +650,40 @@ public class HostController {
 	
 	*/
 	
+	/********************************************************************
+	 * 공실관리 공실상태 전환하기
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rmli_status.do", method = RequestMethod.GET)
+	public ModelAndView rmli_status(Model model, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		
+        if (loginInfo == null) {        
+        	return webHelper.redirect(null, "로그인 후 공실관리가 가능합니다.");
+        }
+
+		/** 1) 필요한 변수값 생성 */
+		int userno = loginInfo.getUserno();
+		int roomno = webHelper.getInt("roomno");
+		int status = webHelper.getInt("status");
+
+		
+		/** 2) 데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+		Room input = new Room();
+		input.setRoomno(roomno);
+		input.setStatus(status);
+		
+		
+		try {
+			
+			roomService.updateStatus(input);
+			
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+
+		return null;
+	}
 }

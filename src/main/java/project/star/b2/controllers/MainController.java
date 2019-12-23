@@ -450,10 +450,6 @@ public class MainController {
 		filter.setSizeFrom(sizeFrom);
 		if (sizeTo == 999999) { filter.setSizeTo(115); }
 		else { filter.setSizeTo(sizeTo); }
-		// 지도 중심좌표 설정
-		filter.setLat(lat);
-		filter.setLng(lng);
-		filter.setLevel(level);
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.

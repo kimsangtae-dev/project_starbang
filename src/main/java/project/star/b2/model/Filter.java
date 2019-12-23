@@ -25,8 +25,4 @@ public class Filter {
 	// 방크기
 	private int sizeFrom;
 	private int sizeTo;
-	// 위도 경도
-	double lat;
-	double lng;
-	int level;
 }

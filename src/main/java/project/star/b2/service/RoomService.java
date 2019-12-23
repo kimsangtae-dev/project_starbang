@@ -30,6 +30,11 @@ public interface RoomService {
     public List<Room> getRoomList_host_rmli2(Room input) throws Exception;
     public List<Room> getRoomList_host_rmli3(Room input) throws Exception;
     
+    /**
+     * 공실관리 - 공실상태 전환하기
+     */
+    public int updateStatus(Room input) throws Exception;
+    
     
     /**
      * 매물 데이터가 저장되어 있는 갯수 조회
