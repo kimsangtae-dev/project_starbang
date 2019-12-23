@@ -42,19 +42,19 @@ pageEncoding="UTF-8"%>
                                 <h1>방종류</h1>
                                 <p>중복 선택이 가능합니다.</p>
                                 <ul>
-                                    <li><label class="room-typech"> 
-                                        <input type="checkbox" name="room-type" value="oneroom" id="roomtype1" /> 
-                                        <span class="checkBox"></span> 
+                                    <li><label class="room-typech">
+                                        <input type="checkbox" name="room-type" value="oneroom" id="roomtype1" />
+                                        <span class="checkBox"></span>
                                         <span class="checkText">원룸</span>
                                     </label></li>
-                                    <li><label class="room-typech"> 
-                                        <input type="checkbox" name="room-type" value="tworoom" id="roomtype2" /> 
-                                        <span class="checkBox"></span> 
+                                    <li><label class="room-typech">
+                                        <input type="checkbox" name="room-type" value="tworoom" id="roomtype2" />
+                                        <span class="checkBox"></span>
                                         <span class="checkText">투·쓰리룸</span>
                                     </label></li>
-                                    <li><label class="room-typech"> 
-                                        <input type="checkbox" name="room-type" value="officetel" id="roomtype3" /> 
-                                        <span class="checkBox"></span> 
+                                    <li><label class="room-typech">
+                                        <input type="checkbox" name="room-type" value="officetel" id="roomtype3" />
+                                        <span class="checkBox"></span>
                                         <span class="checkText">오피스텔</span>
                                     </label></li>
                                 </ul>
@@ -71,19 +71,19 @@ pageEncoding="UTF-8"%>
                             <h1>매물종류</h1>
                             <p>중복 선택이 가능합니다.</p>
                             <ul>
-                                <li><label class="dealing-typech"> 
-                                    <input type="checkbox" name="sale-type" value="monthly" id="dealingtype1" /> 
-                                    <span class="checkBox"></span> 
+                                <li><label class="dealing-typech">
+                                    <input type="checkbox" name="sale-type" value="monthly" id="dealingtype1" />
+                                    <span class="checkBox"></span>
                                     <span class="checkText">월세</span>
                                 </label></li>
-                                <li><label class="dealing-typech"> 
-                                    <input type="checkbox" name="sale-type" value="charter" id="dealingtype2" /> 
-                                    <span class="checkBox"></span> 
+                                <li><label class="dealing-typech">
+                                    <input type="checkbox" name="sale-type" value="charter" id="dealingtype2" />
+                                    <span class="checkBox"></span>
                                     <span class="checkText">전세</span>
                                 </label></li>
-                                <li><label class="dealing-typech"> 
-                                    <input type="checkbox" name="sale-type" value="buying" id="dealingtype3" /> 
-                                    <span class="checkBox"></span> 
+                                <li><label class="dealing-typech">
+                                    <input type="checkbox" name="sale-type" value="buying" id="dealingtype3" />
+                                    <span class="checkBox"></span>
                                     <span class="checkText">매매</span>
                                 </label></li>
                             </ul>
@@ -227,14 +227,14 @@ pageEncoding="UTF-8"%>
 
                                                         <%-- 파라미터 GET으로 보내기 작업 --%>
                                                         <a target="_blank" rel="" class="recent-a"
-                                                            href="${pageContext.request.contextPath}/main/rmdtsave.do?roomno=${item.roomno}">
+                                                            href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 
                                                             <%-- -------------------쿠키 굽기---------------------- --%>
 
                                                             <!-- 이미지 -->
                                                             <div class="recent-a-div">
                                                                 <img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
-                                                            </div> 
+                                                            </div>
                                                             <c:if test="${item.confirmdate != null}">
                                                                 <%-- 확인매물 div --%>
                                                                 <div class="recent-a-confirm">
@@ -250,14 +250,14 @@ pageEncoding="UTF-8"%>
                                                                     <%-- 월세인 경우 --%>
                                                                     <c:when test="${item.dealingtype == '월세'}">
                                                                         <span>${item.dealingtype}&nbsp;<!--
-                                                        --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber> 
+                                                        --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber>
                                                         <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" /> <!--
                                                         -->${patternprice1}/${item.price}</span>
                                                                     </c:when>
                                                                     <%-- 전세 혹은 매매인 경우 --%>
                                                                     <c:otherwise>
                                                                         <span>${item.dealingtype}&nbsp;<!--
-                                                        --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+                                                        --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
                                                         <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> <!--
                                                         -->${patternprice2}</span>
                                                                     </c:otherwise>
@@ -345,7 +345,7 @@ pageEncoding="UTF-8"%>
             var mHeight = wHeight - 136;
             $(".gallery-container").css("height", gHeight);
             $(".map-container").css("height", mHeight);
-    
+
             // 조회 결과가 없는 경우를 위한 크기 조정
             $(".noresultbox").css("height", gHeight-60);
         }
@@ -354,14 +354,14 @@ pageEncoding="UTF-8"%>
             $(window).resize(function(e) {
                 contentSize();
             });
-    
+
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
                 $(this).toggleClass('on off');
             });
         });
     </script>
-    
+
     <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
     <%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
@@ -422,16 +422,16 @@ pageEncoding="UTF-8"%>
     var fee_to = ${param.feeTo};
     var size_from = ${param.sizeFrom};
     var size_to = ${param.sizeTo};
-    
+
     var centerLat = ${lat};
     var centerLng = ${lng};
     var level =${level};
-    
+
     var west = 0;
     var east = 0;
     var south = 0;
     var north = 0;
-    
+
     var startPage;
     var endPage;
     var groupCount;
@@ -439,7 +439,7 @@ pageEncoding="UTF-8"%>
     var nowPage;
     var nextPage;
     var prevPage;
-    
+
     /** ajax 전송 메서드 **/
     function getMapPosition(west,east,south,north, page) {
         $.ajax({
@@ -467,7 +467,7 @@ pageEncoding="UTF-8"%>
             success: function(req){
             	/** 월세인지 전세/매매인지 구분 **/
                 Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                  if (dealingtype == '월세') { return options.fn(this); } 
+                  if (dealingtype == '월세') { return options.fn(this); }
                   else { return options.inverse(this); }
                 });
                 /** 억 단위 표현하기 price **/
@@ -478,7 +478,7 @@ pageEncoding="UTF-8"%>
                         return price/10000 + "억";
                     } else { return price; }
                 });
-                
+
                 /** 억 단위 표현하기 deposit **/
                 Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit%10000 != 0) {
@@ -487,12 +487,12 @@ pageEncoding="UTF-8"%>
                         return deposit/10000 + "억";
                     } else { return deposit; }
                 });
-                
+
                 var template = Handlebars.compile($("#gallery-data").html());
                 var html = template(req);
                 $("#gallery-list").html(html);
                 $("#room-count").html(req.totalCount);
-                
+
                 /** 페이징을 위한 정보 가져오기 **/
                 startPage = req.pageData.startPage;
                 endPage = req.pageData.endPage;
@@ -506,7 +506,7 @@ pageEncoding="UTF-8"%>
                 for (var i=startPage; i<=endPage; i++) {
                     var indexno = i;
                     if (nowPage == indexno) {
-                        index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';                    
+                        index_list[i] = '<li><a class="index-indiv index-active">'+indexno+'</a></li> ';
                     } else {
                         index_list[i] = '<li><a class="index-indiv">'+indexno+'</a></li> ';
                     }
@@ -519,7 +519,7 @@ pageEncoding="UTF-8"%>
             }
         });
     }
-    
+
         /* kakao map API */
         $(function() {
             /** 지도 생성하기 */
@@ -531,7 +531,7 @@ pageEncoding="UTF-8"%>
             };
             var map = new kakao.maps.Map(container, options);
 
-            
+
             /** 마커 클러스터러 생성하기 **/
             var clusterer = new kakao.maps.MarkerClusterer({
                 map : map,                  // 마커들을 클러스터로 관리하고 표시할 지도 객체
@@ -553,9 +553,9 @@ pageEncoding="UTF-8"%>
                 } ]
             });
 
-            
+
             /** 매물 데이터 가져오기 **/
-            $.getJSON('${pageContext.request.contextPath}/assets/roomposition', 
+            $.getJSON('${pageContext.request.contextPath}/assets/roomposition',
                 function(data) {
                     var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
@@ -587,14 +587,14 @@ pageEncoding="UTF-8"%>
                         west = southwest.getLat();
                         north = northeast.getLng();
                         south = southwest.getLng();
-                        
+
                         getMapPosition(west,east,south,north,1);
-                        
+
                         centerLat = map.getCenter().getLat();
                         centerLng = map.getCenter().getLng();
                         level = map.getLevel();
                     });
-                    
+
 /*                     var bounds = map.getBounds();
                     var southwest = bounds.getSouthWest();
                     var northeast = bounds.getNorthEast();
@@ -602,16 +602,16 @@ pageEncoding="UTF-8"%>
                     west = southwest.getLat();
                     north = northeast.getLng();
                     south = southwest.getLng();
-                    
+
                     getMapPosition(west,east,south,north,1); */
-                    
+
                     centerLat = map.getCenter().getLat();
                     centerLng = map.getCenter().getLng();
                     level = map.getLevel();
 
             }); // end $.get(address.json)
 
-            
+
             /** 서울시 구 별로 마커 생성하기 **/
             $.getJSON("${pageContext.request.contextPath}/assets/guposition",
                 function(data) {
@@ -649,7 +649,7 @@ pageEncoding="UTF-8"%>
                     ); // end hover()
                 });
 
-            
+
             /** 검색값 가져와서 지도 위치 변경하기 **/
             $("#search-form").submit(function(e) {
                 e.preventDefault();
@@ -673,7 +673,7 @@ pageEncoding="UTF-8"%>
                     }
                 }; // end placesSearchCB()
             }); // end submit()
-            
+
             var key = "${keyword}";
             if (key) {
                 var ps = new kakao.maps.services.Places();  // 장소 검색 객체 생성
@@ -694,7 +694,7 @@ pageEncoding="UTF-8"%>
                 }; // end placesSearchCB()
             }
 
-            
+
             /** 지도 확대/축소 변경 버튼 **/
             function zoomIn() { map.setLevel(map.getLevel() - 1); }     // 지도 확대 메서드
             function zoomOut() { map.setLevel(map.getLevel() + 1); }    // 지도 축소 메서드
@@ -702,8 +702,8 @@ pageEncoding="UTF-8"%>
             // 버튼 클릭과 기능 연결
             $(".zoom-in").click(function() { zoomIn(); });
             $(".zoom-out").click(function() { zoomOut(); });
-            
-            
+
+
             /** 지도 범위 이동이 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'dragend', function() {
                 var bounds = map.getBounds();
@@ -713,15 +713,15 @@ pageEncoding="UTF-8"%>
                 west = southwest.getLat();
                 north = northeast.getLng();
                 south = southwest.getLng();
-                
+
                 getMapPosition(west,east,south,north,1);
-                
+
                 centerLat = map.getCenter().getLat();
                 centerLng = map.getCenter().getLng();
                 level = map.getLevel();
             });
-            
-            
+
+
             /** 지도 확대/축소가 이루어지면 실행 -> 리스트에 보이는 매물 변경 **/
             kakao.maps.event.addListener(map, 'zoom_changed', function() {
                 var bounds = map.getBounds();
@@ -731,15 +731,15 @@ pageEncoding="UTF-8"%>
                 west = southwest.getLat();
                 north = northeast.getLng();
                 south = southwest.getLng();
-                
+
                 getMapPosition(west,east,south,north,1);
-                
+
                 centerLat = map.getCenter().getLat();
                 centerLng = map.getCenter().getLng();
                 level = map.getLevel();
             });
-            
-            
+
+
             /** 페이징 처리 **/
             // 페이지 번호 클릭
             $(document).on('click', ".index-indiv", function(e){
@@ -749,7 +749,7 @@ pageEncoding="UTF-8"%>
             // 다음 그룹으로 가기 버튼 클릭
             $(document).on('click', ".next-btn", function(e){
                 if (nextPage == undefined) { nextPage = ${pageData.nextPage}; }
-                
+
                 if (nextPage > 0) {
                     getMapPosition(west,east,south,north, nextPage);
                     return;
@@ -762,19 +762,19 @@ pageEncoding="UTF-8"%>
                     return;
                 } else { return false; }
             });
-            
+
         });
 
         /* 필터 -드롭다운 - 자동 toggle 해제 */
         $('.dropdown-menu').click(function(e) { e.stopPropagation(); })
-        
+
         /** 원룸, 투쓰리룸, 오피스텔 체크박스 */
         var roomtypeto = "${param.roomtype}";
         var to = [];
         to = roomtypeto.split("m");
-        var roomtype1 = document.getElementById('roomtype1');   
-        var roomtype2 = document.getElementById('roomtype2'); 
-        var roomtype3 = document.getElementById('roomtype3'); 
+        var roomtype1 = document.getElementById('roomtype1');
+        var roomtype2 = document.getElementById('roomtype2');
+        var roomtype3 = document.getElementById('roomtype3');
         for (var room in to) {
             if (to[room] == "원룸") {
                 $roomtype1 = $('#roomtype1').attr('checked', true);
@@ -789,10 +789,10 @@ pageEncoding="UTF-8"%>
                 $roomtype1 = $('#roomtype3').attr('checked', true);
             }
         }
-        
+
         $('.room-typech').click(function() {
             var rt = "";
-            
+
             if ($("input:checkbox[id='roomtype1']").is(":checked") == true) {
                 rt += "원룸";
             }
@@ -802,24 +802,24 @@ pageEncoding="UTF-8"%>
             if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
                 rt += "m오피스텔";
             }
-            
+
             if(rt == "") {
                 return false;
             }
-            
+
             var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
             location.replace(roomtypehref);
-            
+
         });
         /** 원룸, 투쓰리룸, 오피스텔 체크박스 끝 */
-        
+
         /** 월세, 전세, 매매 체크박스 */
         var dealingtypeto = "${param.dealingtype}";
         var to = [];
         to = dealingtypeto.split("m");
-        var dealingtype1 = document.getElementById('dealingtype1');   
-        var dealingtype2 = document.getElementById('dealingtype2'); 
-        var dealingtype3 = document.getElementById('dealingtype3'); 
+        var dealingtype1 = document.getElementById('dealingtype1');
+        var dealingtype2 = document.getElementById('dealingtype2');
+        var dealingtype3 = document.getElementById('dealingtype3');
         for (var dealing in to) {
             if (to[dealing] == "월세") {
                 $dealingtype1 = $('#dealingtype1').attr('checked', true);
@@ -831,11 +831,11 @@ pageEncoding="UTF-8"%>
                 $dealingtype3 = $('#dealingtype3').attr('checked', true);
             }
         }
-        
-        
+
+
         $('.dealing-typech').click(function() {
             var dt = "";
-            
+
             if ($("input:checkbox[id='dealingtype1']").is(":checked") == true) {
                 dt += "월세";
             }
@@ -845,14 +845,14 @@ pageEncoding="UTF-8"%>
             if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
                 dt += "m매매";
             }
-            
+
             if(dt == "") {
                 return false;
             }
-            
+
             var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
             location.replace(dealingtypehref);
-            
+
         });
         /** 월세, 전세, 매매 체크박스 끝 */
 
@@ -959,7 +959,7 @@ pageEncoding="UTF-8"%>
             onFinish: function(data) {
                 var low = data.from_value;
                 var high = data.to_value;
-                
+
                 var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
                 location.replace(href);
             },
@@ -1108,7 +1108,7 @@ pageEncoding="UTF-8"%>
             onFinish: function(data) {
                 var low = data.from;
                 var high = data.to;
-                
+
                 if(high == 115) {
                     high = 999999;
                 }
@@ -1120,7 +1120,7 @@ pageEncoding="UTF-8"%>
             hide_min_max : true
         });
         var slide5_value = $("#slide-size").data("ionRangeSlider");
-        
+
 
         // 필터 초기화
         $(function() {
