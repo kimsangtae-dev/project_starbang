@@ -50,8 +50,8 @@
                                             <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]"></path></g></g></g></g></svg>
                    	</a></li>
                     
-                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=2">공개</a></li>
-                    <li name="status" value="2" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=3">비공개</a></li>
+                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=1">공개</a></li>
+                    <li name="status" value="2" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=2">비공개</a></li>
                 </ul>
             </div>
 		</form>
