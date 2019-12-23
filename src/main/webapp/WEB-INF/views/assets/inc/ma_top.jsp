@@ -116,8 +116,15 @@
         }
         .navbar > .pull-right {
             width: 570px;
-            padding-top: 0;
+            padding-top: 0;    
         }
+        
+        #loginprofile {
+        	height: 80px;
+		    width: 80px;
+    		border-radius: 50%;
+        }
+        
     </style>
 </head>
 <!---------------------------------
@@ -173,7 +180,7 @@
                                     <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${loginInfo.profile_img}"/>
+                                    <img src="${pageContext.request.contextPath}/assets/img/upload/${loginInfo.profile_img}" id="loginprofile"/>
                                 </c:otherwise>
                             </c:choose>
                          <!-- ********************************************************************************************** -->
