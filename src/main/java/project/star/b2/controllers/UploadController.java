@@ -147,8 +147,8 @@ public class UploadController {
 
 	/** 마이페이지 프로필 업로드 폼에 대한 action 페이지 */
 	@RequestMapping(value = "/main/Profileupload_ok.do", method = RequestMethod.POST)
-	public ModelAndView ProfileuploadOk(Model model) {
-
+	public ModelAndView ProfileuploadOk(Model model, HttpServletRequest request) {
+        
 		/** 1) 업로드를 수행 */
 		try {
 			webHelper.profileUpload();
@@ -161,11 +161,13 @@ public class UploadController {
 		/** 2) 업로드 된 정보 추출하기 */
 		// 파일 정보 추출
 		List<User> fileList = webHelper.getProfileFile();
-		
+
 		if (fileList == null) {
 			return webHelper.redirect(null, "파일이 없다.");
 		}
-
+		
+		String transfer = null;
+		
 		// 조회결과의 Beans에 검색 날짜 추가 후 로그를 통해 내역 확인
 		for (User item : fileList) {
 			item.setUserno(item.getUserno());
@@ -178,6 +180,7 @@ public class UploadController {
 			item.setEditdate(item.getEditdate());
 			log.debug(item.toString());
 			
+			transfer = item.getProfile_img();
 
 			// DB에 저장하기
 			try {
@@ -188,36 +191,43 @@ public class UploadController {
 			}
 		}
 		
+		
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+        loginInfo.setProfile_img(transfer);
+        
+        session.setAttribute("loginInfo", loginInfo);
+
 		/** 3) 업로드 결과를 View에게 전달한다 */
 		model.addAttribute("fileList", fileList);
-		
-		webHelper.redirect(null, fileList + "");
 
-		/** 1)필요한 변수값 생성 */
-		int userno = 1; // 회원 이메일기저오기
-		
-		/** 2)데이터 조회하기 */
-		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
-		User input = new User();
-		input.setUserno(userno);
-		
-		User output = null; // 조회결과가 저장될 객체
-		
-		try {
-			// 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다
-			output = userService.getUserItem(input);
-		} catch (Exception e) {
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		/** 3)View 처리 */
-		model.addAttribute("output", output);
-			
+		/*
+		 * webHelper.redirect(null, fileList + "");
+		 * 
+		 *//** 1)필요한 변수값 생성 */
+		/*
+		 * int userno = 1; // 회원 이메일기저오기
+		 * 
+		 *//** 2)데이터 조회하기 */
+		/*
+		 * // 조회에 필요한 조건값(검색어)를 Beans에 담는다. User input = new User();
+		 * input.setUserno(userno);
+		 * 
+		 * User output = null; // 조회결과가 저장될 객체
+		 * 
+		 * try { // 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다 output =
+		 * userService.getUserItem(input); } catch (Exception e) { return
+		 * webHelper.redirect(null, e.getLocalizedMessage()); }
+		 * 
+		 *//** 3)View 처리 *//*
+							 * model.addAttribute("output", output);
+							 */
+
 		// 중단 없이 정상적인 실행 종료를 통해 View를 호출해야 하는 경우
 		// View의 경로를 ModelAndView 타입의 객체로 생성하여 리턴한다.
 //		String viewPath = "main/mypage";
-		//return new ModelAndView("main/mypage");
-		
+		// return new ModelAndView("main/mypage");
+
 		String redirectUrl = contextPath + "/main/mypage.do";
 		return webHelper.redirect(redirectUrl, "저장완료");
 	}
