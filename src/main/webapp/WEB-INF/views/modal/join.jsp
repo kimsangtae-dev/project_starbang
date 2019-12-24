@@ -6,8 +6,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/etc/reset.css">
 
 <!-- js -->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> --%>
 <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
 
 <!-- script 시작 -->

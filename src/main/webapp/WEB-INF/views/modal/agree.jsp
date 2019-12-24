@@ -5,10 +5,10 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/assets/css/modal_css/agree.css">
 
 	<!-- sweetalert --> 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
+<%-- 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.css" />
 
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script> --%>
 	
 	<script type="text/javascript">
 	$('html, body').css({'overflow': 'hidden', 'height': '100%'}); 
@@ -50,7 +50,7 @@
             		agreejoin.setAttribute('data-dismiss','modal');
             		agreejoin.setAttribute('data-toggle','modal');
             		agreejoin.setAttribute('data-target','#joinModal');
-            		$("#element").hide();
+            		/* $("#element").hide(); */
             	}
             });
         });

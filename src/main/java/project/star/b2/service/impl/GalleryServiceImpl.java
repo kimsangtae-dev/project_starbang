@@ -243,4 +243,22 @@ public class GalleryServiceImpl implements GalleryService {
 
         return result;
     }
+
+	@Override
+	public List<Heart> getHeartList(Heart input) throws Exception {
+		List<Heart> result = null;
+
+        try {
+            result = sqlSession.selectList("HeartMapper.selectHeartList", input);
+
+            if (result == null) {
+                throw new NullPointerException("result=null");
+            }
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 조회에 실패했습니다.");
+        }
+
+        return result;
+	}
 }

@@ -3,6 +3,7 @@ package project.star.b2.service;
 import java.util.List;
 
 import project.star.b2.model.Gallery;
+import project.star.b2.model.Heart;
 import project.star.b2.model.Popular;
 
 
@@ -57,4 +58,6 @@ public interface GalleryService {
     public List<Gallery> getCookieMainList(List<String> input) throws Exception;
     
     public int getGalleryCount2(Popular input) throws Exception;
+    
+    public List<Heart> getHeartList(Heart input) throws Exception;
 }

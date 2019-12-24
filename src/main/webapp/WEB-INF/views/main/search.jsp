@@ -218,9 +218,29 @@ pageEncoding="UTF-8"%>
                                                 <div class="recent-div5">
                                                     <div class="recent-div6">
                                                         <%-- 좋아요 버튼 --%>
-                                                        <div class="recent-div7">
-                                                            <div class="recent-div8 off" data-value="on"></div>
-                                                        </div>
+                                                        <c:choose>
+                                                        	<%-- 세션 없을 때 --%>
+                                                        	<c:when test="${loginInfo == null}">
+                                                        	<div class="recent-div7">
+                                                               <div class="recent-div8 off" data-value="off"></div>
+                                                           	</div>
+                                                        	</c:when>
+                                                        	<%-- 세션 있을 때 --%>
+                                                        	<c:otherwise>
+	                                                        <c:forEach var="h" items="${heart}" varStatus="status">
+	                                                        	<c:if test="${h.roomno==item.roomno}">
+	                                                        	<div class="recent-div7">
+																	<div class="recent-div8 on" data-value="off"></div>
+																</div>
+	                                                        	</c:if>
+	                                                        </c:forEach>
+	                                                        <c:if test="${h.roomno!=item.roomno}">
+	                                                        	<div class="recent-div7">
+																	<div class="recent-div8 off" data-value="on"></div>
+																</div>
+	                                                        </c:if>
+                                                        	</c:otherwise>
+                                                        </c:choose>
                                                         <%-- 좋아요 끝 --%>
                                                         <%-- 전체 링크화 --%>
                                                         <%-- -------------------쿠키 굽기---------------------- --%>
@@ -366,45 +386,45 @@ pageEncoding="UTF-8"%>
     <%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
    <script id="gallery-data" type="text/x-handlebars-template">
-      {{#each output}}
-      <li>
-         <div class="recent-div5">
-            <div class="recent-div6">
-               {{!-- 좋아요 버튼 --}}
-               <div class="recent-div7">
-                  <div class="recent-div8 off" data-value="on"></div>
-               </div>
-               {{!-- 좋아요 끝 --}}
-               {{!-- 전체 링크화 --}}
-               <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
-                  {{!-- 이미지 --}}
-                  <div class="recent-a-div">
-                    <img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
-                  </div>
-                  {{!-- 확인매물 div --}}
-                  {{#if confirmdate}}
-                  <div class="recent-a-confirm">
-                     <div class="recent-a-confirm-div">
-                        <span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
-                     </div>
-                  </div>
-                  {{/if}}
-                  {{!-- 확인매물 끝 --}}
-                  <p class="recent-a-p1">{{roomtype}}</p>
-                  <p class="recent-a-p2">
-                    {{#isMonth dealingtype}}
-                     <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
-                    {{else}}
-                     <span>{{dealingtype}} {{isOver price}}</span>
-                    {{/isMonth}}
-                  </p>
-                  <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
-                  <p class="recent-a-p34">{{title}}</p>
-               </a>
-            </div>
-         </div>
-      </li>
-      {{/each}}
+	{{#each output}}
+	<li>
+		<div class="recent-div5">
+		<div class="recent-div6">
+			{{!-- 좋아요 버튼 --}}
+			{{#session roomno}}
+			{{else}}
+			{{/session}}
+			{{!-- 좋아요 끝 --}}
+			{{!-- 전체 링크화 --}}
+			<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
+			{{!-- 이미지 --}}
+			<div class="recent-a-div">
+				<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+			</div>
+			{{!-- 확인매물 div --}}
+			{{#if confirmdate}}
+			<div class="recent-a-confirm">
+				<div class="recent-a-confirm-div">
+				<span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
+				</div>
+			</div>
+			{{/if}}
+			{{!-- 확인매물 끝 --}}
+			<p class="recent-a-p1">{{roomtype}}</p>
+			<p class="recent-a-p2">
+				{{#isMonth dealingtype}}
+				<span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
+				{{else}}
+				<span>{{dealingtype}} {{isOver price}}</span>
+				{{/isMonth}}
+			</p>
+			<p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
+			<p class="recent-a-p34">{{title}}</p>
+			</a>
+		</div>
+		</div>
+	</li>
+	{{/each}}
    </script>
 
     <!-- 지도 api -->
@@ -439,6 +459,9 @@ pageEncoding="UTF-8"%>
     var nowPage;
     var nextPage;
     var prevPage;
+    
+    var session = "${loginInfo}";
+    var heart = "${heart}";
 
     /** ajax 전송 메서드 **/
     function getMapPosition(west,east,south,north, page) {
@@ -478,7 +501,6 @@ pageEncoding="UTF-8"%>
                         return price/10000 + "억";
                     } else { return price; }
                 });
-
                 /** 억 단위 표현하기 deposit **/
                 Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit%10000 != 0) {
@@ -486,6 +508,34 @@ pageEncoding="UTF-8"%>
                     } else if (deposit >= 10000 && deposit%10000 == 0) {
                         return deposit/10000 + "억";
                     } else { return deposit; }
+                });
+                
+                /** 세션 식별하기 **/
+                Handlebars.registerHelper('session', function(roomno, options) {
+                    if (session == null || session == "") {
+                    	var heart_div = '<div class="recent-div7">'
+                    		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                    		heart_div += '</div>'
+                    	return heart_div;
+                    }
+                    else {
+                    	for (var i=0; i<req.heart.length; i++) {
+                    		if (req.heart[i].roomno == roomno) {
+                    			var heart_div = '<div class="recent-div7">'
+                            		heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                            		heart_div += '</div>'
+                            	return heart_div;
+                    		}
+                    	}
+                    	for (var i=0; i<req.heart.length; i++) {
+                    		if (req.heart[i].roomno != roomno) {
+                    			var heart_div = '<div class="recent-div7">'
+                            		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            		heart_div += '</div>'
+                            	return heart_div;
+                    		}
+                    	}
+                    }
                 });
 
                 var template = Handlebars.compile($("#gallery-data").html());

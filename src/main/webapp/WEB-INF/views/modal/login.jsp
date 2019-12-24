@@ -50,6 +50,7 @@
     </div>
 </div>
 </div>
+</div>
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.cookie.js"></script>
 

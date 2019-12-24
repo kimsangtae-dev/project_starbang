@@ -247,7 +247,7 @@ public class MainController {
         int userno = 0;
         if (loginInfo != null) {
             userno = loginInfo.getUserno();
-        } 
+        }
 
 		Room input_room = new Room();
 		input_room.setRoomno(newRoomno);
@@ -372,13 +372,21 @@ public class MainController {
 	 * 방찾기
 	 *******************************************************************/
 	@RequestMapping(value = "/main/search.do", method = RequestMethod.GET)
-	public ModelAndView search(Model model) {
+	public ModelAndView search(Model model, HttpServletRequest request) {
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", "");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		
+		/*---세션 불러오기 ----*/
+        HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
 
 		/** 지도 상태유지를 위한 중심좌표와 레벨 */
 		String mapTemp = webHelper.getString("map");
@@ -427,6 +435,10 @@ public class MainController {
 		double east = webHelper.getDouble("east");
 		double south = webHelper.getDouble("south");
 		double north = webHelper.getDouble("north");
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 
 		Filter filter = new Filter();
@@ -494,7 +506,10 @@ public class MainController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Gallery.setOffset(pageData.getOffset());
 			Gallery.setListCount(pageData.getListCount());
-
+			
+			if (userno != 0) {
+				heartlist = galleryService.getHeartList(input_heart);
+			}
 			output = galleryService.getGalleryList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -509,6 +524,8 @@ public class MainController {
 		model.addAttribute("lat", lat);
 		model.addAttribute("lng", lng);
 		model.addAttribute("level", level);
+		model.addAttribute("heart", heartlist);
+		model.addAttribute("loginInfo", loginInfo);
 
 		return new ModelAndView("main/search");
 	}
