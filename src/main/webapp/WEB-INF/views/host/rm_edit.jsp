@@ -185,7 +185,7 @@
 									<select class="floor1 hRFrgm" id="maxfloor" name="maxfloor">
 										<option value="">건물 층수 선택</option>
 										<option value="1">1층</option>
-										<option value="2" selected>2층</option>
+										<option value="2">2층</option>
 										<option value="3">3층</option>
 										<option value="4">4층</option>
 										<option value="5">5층</option>
@@ -221,7 +221,7 @@
 										<option value="">해당 층수 선택</option>
 										<option value="-1">반지층</option>
 										<option value="0">옥탑</option>
-										<option value="1" selected>1층</option>
+										<option value="1">1층</option>
 										<option value="2">2층</option>
 										<option value="3">3층</option>
 										<option value="4">4층</option>
@@ -249,7 +249,7 @@
 								<td class="base_line" colspan="3">
 								<select id="heater" class="heating hRFrgm" name="heater">
 										<option value="">난방 종류 선택</option>
-										<option value="1" selected>중앙 난방</option>
+										<option value="1">중앙 난방</option>
 										<option value="2">개별 난방</option>
 										<option value="3">지역 난방</option>
 								</select></td>
@@ -258,7 +258,7 @@
 								<th>입주 가능일</th>
 								<td class="base_line" colspan="3">
 									<label class="in_date">
-										<input type="radio" id="commingday" name="commingday" checked value="즉시입주">
+										<input type="radio" id="commingday" name="commingday" value="즉시입주">
 										<p>즉시 입주</p>
 									</label> 
 									<label class="in_date"> 
@@ -348,7 +348,7 @@
 								<th>반려동물</th>
 								<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="pet" value="1" checked="">
+									<input type="radio" name="pet" value="1">
 									<p>가능</p>
 								</label>
 								<label class="add1 Square_box">
@@ -361,7 +361,7 @@
 							<th>엘리베이터</th>
 							<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="elevator" value="0" checked="">
+									<input type="radio" name="elevator" value="0">
 									<p>없음</p>
 								</label>
 								<label class="add1 Square_box">
@@ -372,10 +372,11 @@
 							<th>베란다/발코니</th>
 							<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="veranda" value="0" checked="">
+									<input type="radio" name="veranda" value="0">
 									<p>없음</p>
 								</label>
-								<label class="add1 Square_box"><input type="radio" name="veranda" value="1">
+								<label class="add1 Square_box">
+								<input type="radio" name="veranda" value="1">
 									<p>있음</p> 
 								</label>
 							</td>
@@ -384,7 +385,7 @@
 								<th>빌트인</th>
 								<td class="add_info" colspan="1">
 									<label class="add1 Square_box">
-										<input type="radio" name="builtin" value="0" checked="">
+										<input type="radio" name="builtin" value="0">
 										<p>없음</p>
 									</label>
 									<label class="add1 Square_box">
@@ -469,17 +470,18 @@
 						<tbody>
 							<tr>
 								<th>제목</th>
-								<td class="detail_box"><input type="text" id="title" class="detail_box1 input_box" name="title" value="제목"
+								<td class="detail_box">
+								<input type="text" id="title" class="detail_box1 input_box" name="title"
 									placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다.">
 								</td>
 							</tr>
 							<tr>
 								<th>상세 설명</th>
 								<td class="detail_box">
-									<textarea class="detail_des" value="하하" style="resize: none;" id="content_input" name="content"
+									<textarea class="detail_des" style="resize: none;" id="content_input" name="content"
 											placeholder="※상세설명 작성 주의사항
-	                                
-	                                
+											
+											
 	- 방 정보와 관련없는 홍보성 정보는 입력하실 수 없습니다. (홈페이지 주소, 블로그, SNS, 메신저ID, 전화번호, 이메일 등)
 	
 	- 중개수수료를 언급한 내용은 입력할 수 없습니다. (중개수수료 무료, 꽁짜, 반값 등)
@@ -487,8 +489,7 @@
 	
 	* 주의사항 위반시 허위매물로 간주되어 매물 삭제 및 이용의 제한이 있을 수 있습니다.
 	
-	* 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다.">
-									</textarea>
+	* 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다."></textarea>
 								</td>
 							</tr>
 						</tbody>
@@ -992,33 +993,159 @@ $(function() {
 </script>
 
 <script>	
-		
-	 	/* 종류 선택 */ 
-		if (${room.roomtype == "원룸"}) {
-			$("input:radio[name='roomtype']:radio[value='원룸']").attr("checked",true);
-		} else if (${room.roomtype == "투룸"}){
-			$("input:radio[name='roomtype']:radio[value='투룸']").attr("checked",true);
-		} else if (${room.roomtype == "쓰리룸"}) {
-			$("input:radio[name='roomtype']:radio[value='쓰리룸']").attr("checked",true);
-		} else if (${room.roomtype == "오피스텔"}) {
-			$("input:radio[name='roomtype']:radio[value='오피스텔']").attr("checked",true);
+
+		/* 
+		 * 종류 선택 
+		 */ 	 	
+		var roomtype = "${room.roomtype}";
+		var roomtype_arr = ["원룸","투룸","쓰리룸","오피스텔"];
+
+		for (var i in roomtype_arr){
+			if (roomtype == roomtype_arr[i]){
+				$("input:radio[name='roomtype']:radio[value=" + roomtype_arr[i] + "]").attr("checked",true);
+			}
+		}
+	 	 
+	 	/* 
+	 	 * 건물유형 
+	 	 */
+		var buildtype = "${info.buildtype}";
+		var buildtype_arr = ["단독주택","다가구주택","빌라/연립/다세대","오피스텔"];
+
+		for (var i in buildtype_arr){
+			if (buildtype == buildtype_arr[i]){
+				$("input:radio[name='buildtype']:radio[value=" + buildtype_arr[i] + "]").attr("checked",true);
+			}
 		}
 	 	
+	 	
+		/* 거래정보 PRICE */
 		
-	 	/* 건물유형 */
-		if (${info.buildtype == "단독주택"}) {
-			$("input:radio[name='buildtype']:radio[value='단독주택']").attr("checked",true);
-		} else if (${info.buildtype == "다가구주택"}){
-			$("input:radio[name='buildtype']:radio[value='다가구주택']").attr("checked",true);
-		} else if (${info.buildtype == "빌라/연립/다세대"}) {
-			$("input:radio[name='buildtype']:radio[value='빌라/연립/다세대']").attr("checked",true);
-		} else if (${info.buildtype == "오피스텔"}){
-			$("input:radio[name='buildtype']:radio[value='오피스텔']").attr("checked",true);
+
+		/* 
+		 * 기본정보 
+		 */
+		
+		// 전체층수 
+		$(document).ready(function(){
+			$("#maxfloor option").each(function(){
+				if($(this).val()=="${info.maxfloor}"){
+			    	$(this).attr("selected","selected");
+		    	}
+		  	});
+		});
+		
+		// 해당층수
+		$(document).ready(function(){
+			$("#floor option").each(function(){
+				if($(this).val()=="${room.floor}"){
+			    	$(this).attr("selected","selected");
+		    	}
+		  	});
+		});
+		
+		//히터타입
+		$(document).ready(function(){
+			$("#heater option").each(function(){
+				if($(this).val()=="${info.heater}"){
+			    	$(this).attr("selected","selected");
+		    	}
+		  	});
+		});
+
+		/* 
+		 * 추가정보 
+		 */
+		 
+		// 반려동물
+		var pet = "${info.pet}";
+		var pet_arr = ["0","1"];
+		
+		for (var i in pet_arr){
+			if (pet == pet_arr[i]){
+				$("input:radio[name='pet']:radio[value=" + pet_arr[i] + "]").attr("checked",true);
+			}
 		}
-	 	
-	 	
-		/* 건물유형 */
-	
+		
+		// 엘리베이터
+		var elevator = "${info.elevator}";
+		var elevator_arr = ["0","1"];
+		
+		for (var i in elevator_arr){
+			if (elevator == elevator_arr[i]){
+				$("input:radio[name='elevator']:radio[value=" + elevator_arr[i] + "]").attr("checked",true);
+			}
+		}
+		
+		// 베란다
+		var veranda = "${info.veranda}";
+		var veranda_arr = ["0","1"];
+		
+		for (var i in veranda_arr){
+			if (veranda == veranda_arr[i]){
+				$("input:radio[name='veranda']:radio[value=" + veranda_arr[i] + "]").attr("checked",true);
+			}
+		}
+		
+		// 빌트인
+		var builtin = "${info.builtin}";
+		var builtin_arr = ["0","1"];
+		
+		for (var i in builtin_arr){
+			if (builtin == builtin_arr[i]){
+				$("input:radio[name='builtin']:radio[value=" + builtin_arr[i] + "]").attr("checked",true);
+			}
+		}
+		
+		// 대출가능
+		var loan = "${info.loan}";
+		var loan_arr = ["0","1"];
+		
+		for (var i in loan_arr){
+			if (loan == loan_arr[i]){
+				$("input:radio[name='loan']:radio[value=" + loan_arr[i] + "]").attr("checked",true);
+			}
+		}
+		
+		
+		// 이진법 다시 넣어주기 - 관리비항목 feeitem
+		$(function() {
+            /* 받아온 값을 관리비 항목에 넣는다 */
+            var num1 = "${info.feeitem}";
+            
+    		for (var i=7; i>=1 ; i--) {
+                if(num1 >= Math.pow(2, i-1)){
+                	num1 = num1 - Math.pow(2, i-1);
+                	$("input:checkbox[name='feeitem']:checkbox[value=" + Math.pow(2, i-1) + "]").attr("checked",true);
+                } // if문
+            } // for문
+            
+            if (num1 != 0 ){
+            	$("#main_input").attr("checked", false);
+            	$("fee").val("${room.fee}");
+            }
+		});// function
+		
+		// 이진법 다시 넣어주기 optionitem
+		$(function() {
+            /* 받아온 값을 관리비 항목에 넣는다 */
+            var num2 = "${info.optionitem}";
+            console.log(num2);
+    		for (var i=13; i>=1 ; i--) {
+                if(num2 >= Math.pow(2, i-1)){
+                	num2 = num2 - Math.pow(2, i-1);
+                	$("input:checkbox[name='optionitem']:checkbox[value=" + Math.pow(2, i-1) + "]").attr("checked",true);
+                	console.log(num2);
+                } // if문
+            } // for문
+		});// function
+        
+		/* 상세설명 */
+		$("#title").val("${room.title}");
+		$("#content_input").val("${info.content}");
+		
+
+		
 	
 
 
