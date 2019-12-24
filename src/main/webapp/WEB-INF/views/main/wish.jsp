@@ -207,7 +207,7 @@
 									opacity=".5"></path>
 						<text fill="#FFF" font-family="Noto Sans KR" font-size="15"
 									font-weight="700" transform="translate(1 1)">
-							<tspan x="11" y="20.2">1</tspan>
+							<tspan class="331" x="11" y="20.2">1</tspan>
 						</text>
 					</g>
 				</svg>
@@ -223,7 +223,7 @@
 									opacity=".5"></path>
 						<text fill="#FFF" font-family="Noto Sans KR" font-size="15"
 									font-weight="700" transform="translate(1 1)">
-							<tspan x="11" y="20.2">2</tspan>
+							<tspan class="332" x="11" y="20.2">2</tspan>
 						</text>
 					</g>
 				</svg>
@@ -461,7 +461,14 @@
 		<script>
 if ($('.hit-div5').length) {
 /*     alert('값이 있어요!'); */
+
 }
+/* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
+$(document).on('click', '.compbar-newbtn', function(e) {
+	alert("hi")
+	$(".compare-select").hide();
+	$(".compare-select").show();
+});
 </script>
 </body>
 </html>

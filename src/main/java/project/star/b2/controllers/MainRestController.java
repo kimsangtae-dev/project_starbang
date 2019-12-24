@@ -1,7 +1,6 @@
 package project.star.b2.controllers;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -12,12 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import project.star.b2.helper.CookieUtils;
 import project.star.b2.helper.PageData;
@@ -26,9 +22,6 @@ import project.star.b2.model.Gallery;
 import project.star.b2.model.Heart;
 import project.star.b2.model.Info;
 import project.star.b2.model.Popular;
-import project.star.b2.model.Price;
-import project.star.b2.model.Room;
-import project.star.b2.model.UploadItem;
 import project.star.b2.model.User;
 import project.star.b2.service.GalleryService;
 import project.star.b2.service.HeartService;
@@ -227,6 +220,39 @@ public class MainRestController {
 	/** 3)Json 출력 하기  */
 	Map<String, Object>data = new HashMap<String, Object>();
 	data.put("item",output_info);
+	
+	return webHelper.getJsonData(data);
+}
+	/********************************************************************
+	 * AJAX로 좋아요 하기
+	 *******************************************************************/
+	@RequestMapping(value ="/like", method = RequestMethod.GET)
+	public Map<String, Object>get_like(HttpServletRequest request){
+		int newRoomno = webHelper.getInt("userno");
+
+		Heart input = new Heart();
+		input.setRoomno(newRoomno);
+		input.setUserno(newRoomno);
+
+		Heart output = null;
+
+
+		try {
+			//데이터 저장
+			heartService.addHeart(input);
+			
+			//데이터 조회
+			//output = heartService.getHeartItem(input);
+
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+
+		}
+
+
+	/** 3)Json 출력 하기  */
+	Map<String, Object>data = new HashMap<String, Object>();
+	data.put("item",output);
 	
 	return webHelper.getJsonData(data);
 }

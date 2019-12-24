@@ -1009,11 +1009,22 @@
 			$(function() {
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
-				});
-			});
+					alert("실행");
+					 $.ajax({
+				            url: "${pageContext.request.contextPath}/like",
+				            method: "GET",
+				            data: {"userno":3},
+				            success:function(data){
+				            	alert("hello");
+				            	alert(data.item);
+				            	}
+				            });
+					
+		}); 
+		});
 		});
 		}); 
 	});
-	</script>
+</script>	
 </body>
 </html>
