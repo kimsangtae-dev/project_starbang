@@ -77,28 +77,29 @@
     <select id="selectList_host_rmli1"
         parameterType="project.star.b2.model.Room"
         resultMap="roomMap">
-
         SELECT r.userno, r.status, r.roomno, r.roomtype, r.confirmdate, r.address, p.dealingtype, p.deposit, p.price 
        	FROM room r 
        	INNER JOIN price p ON r.roomno=p.roomno
        	INNER JOIN user u ON r.userno=#{userno}
 
        	GROUP BY r.roomno
-       	ORDER BY r.roomno;
+       	ORDER BY r.roomno
+		<if test="listCount > 0">
+			LIMIT #{offset}, #{listCount}
+		</if>
     </select>
     
     <!-- '유저번호'에 의한 다중행조회하기 기능2 in Host(공실관리) -->
     <select id="selectList_host_rmli2"
         parameterType="project.star.b2.model.Room"
         resultMap="roomMap">
-
         SELECT r.userno, r.status, r.roomno, r.roomtype, r.confirmdate, r.address, p.dealingtype, p.deposit, p.price 
        	FROM room r 
        	INNER JOIN price p ON r.roomno=p.roomno
        	INNER JOIN user u ON r.userno=#{userno}
 		WHERE status IN (0,1)
        	GROUP BY r.roomno
-       	ORDER BY r.roomno;
+       	ORDER BY r.roomno
     </select>
     
     <!-- '유저번호'에 의한 다중행조회하기 기능3 in Host(공실관리) -->
@@ -112,7 +113,7 @@
        	INNER JOIN user u ON r.userno=#{userno}
 		WHERE status IN (2,3,4)
        	GROUP BY r.roomno
-       	ORDER BY r.roomno;
+       	ORDER BY r.roomno
     </select>
 
 	<!-- 데이터 저장을 위한 기능 정의 -->
@@ -156,6 +157,9 @@
 			</if>
 			<if test="status != null and status != ''">
 				status = #{status}
+			</if>
+			<if test="userno != null and userno != ''">
+				AND userno = #{userno}
 			</if>
 		</where>
 	</select>

@@ -853,7 +853,7 @@ $(function() {
 	function handleImgFileSelect(e) {
 	    // 이미지 정보들을 초기화
 	    sel_files = [];
-	    $(".up_list").empty();
+	    /* $(".up_list").empty(); */
 	
 	    var files = e.target.files;
 	    var filesArr = Array.prototype.slice.call(files);

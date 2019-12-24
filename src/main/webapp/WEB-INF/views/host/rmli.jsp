@@ -41,7 +41,8 @@
                 </p>
                 <p class="isroom-p2">공실상태</p>
                 <ul width="135" id="dropdown" class="dropdown-closed dropdn">
-                    <li name="status" value="0" class="dropdown-li"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0" onclick="return false;"><span>전체</span>
+                    <li name="status" value="0" class="dropdown-li"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0" onclick="return false;">
+                    <span><c:choose><c:when test="${rememberChecked eq '1'}">공개</c:when><c:when test="${rememberChecked eq '2'}">비공개</c:when><c:otherwise>전체</c:otherwise></c:choose></span>
                         <svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1235.000000, -281.000000)" fill="#444444">
@@ -49,9 +50,9 @@
                                         <g transform="translate(945.000000, 0.000000)">
                                             <path d="M119.297,18 L114.9935,21.755 L114.5345,21.3545455 L114.537,21.3568182 L110.7135,18.0204545 L110,18.6427273 C111.0565,19.565 114.007,22.1395455 114.9935,23 C115.7265,22.3609091 115.012,22.9840909 120,18.6318182 L119.297,18 Z" id="arrow_down-[#339]"></path></g></g></g></g></svg>
                    	</a></li>
-                    
-                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=1">공개</a></li>
-                    <li name="status" value="2" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=2">비공개</a></li>
+                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=0" >전체보기</a></li>
+                    <li name="status" value="1" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=1" >공개</a></li>
+                    <li name="status" value="2" class="dropdown-li2"><a href="${pageContext.request.contextPath}/host/rmli.do?status=2" >비공개</a></li>
                 </ul>
             </div>
 		</form>
@@ -76,37 +77,48 @@
                     </thead>
                     <tbody>
                     	<%-- 한행 씩 for문 --%>
-                        <c:forEach var="k" items="${output}" varStatus="status">
+                        <c:forEach var="item" items="${output}" varStatus="status">
+                        		<%-- 출력을 위해 준비한 요소 --%>
+	                    		<c:set var="roomno" value="${item.roomno}" />
+								<c:set var="roomtype" value="${item.roomtype}" />
+								<c:set var="dealingtype" value="${item.dealingtype}" />
+								<c:set var="price" value="${item.price}" />
+								<c:set var="name" value="${item.name}" />
+								<c:set var="confirmdate" value="${item.confirmdate}" />
+								<c:set var="status" value="${item.status}" />
+								<c:set var="deposit" value="${item.deposit}" />
+								<c:set var="address" value="${item.address}" />      
+	                        
 	                        <tr>
 	                        	<%-- roomno 열 --%>
-	                       		<td class="text-center">${k.roomno}</td>
+	                       		<td class="text-center">${roomno}</td>
 	                       		
 	                       		<%-- 공실정보열 --%>
 	                           	<td>
 	                                <div class="table-div">
-	                                    <span class="table-span1">${k.roomtype}</span>
+	                                    <span class="table-span1">${roomtype}</span>
 	                                    <b class="table-span1-1">
 		                                    <c:choose>
-											    <c:when test="${k.dealingtype == '월세'}">
-												    <fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
+											    <c:when test="${dealingtype == '월세'}">
+												    <fmt:formatNumber value="${deposit}" pattern="#,####" var="eok1"/> 
 											    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-												    	${k.dealingtype}&nbsp;${patternprice1}/${k.price}만 원
+												    	${dealingtype}&nbsp;${patternprice1}/${k.price}만 원
 											    </c:when>
 										    	<c:otherwise>
-											    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok2" /> 
+											    	<fmt:formatNumber value="${price}" pattern="#,####" var="eok2" /> 
 											    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
-											    		${k.dealingtype}&nbsp;${patternprice2}만 원
+											    		${dealingtype}&nbsp;${patternprice2}만 원
 										    	</c:otherwise>
 											</c:choose>
 	                                    </b><br>
-	                                    <span class="table-span2">${k.address}</span><br>
-	                                    <span>${fn:substringBefore(k.confirmdate," ")}</span>
+	                                    <span class="table-span2">${address}</span><br>
+	                                    <span>${fn:substringBefore(confirmdate," ")}</span>
 	                                </div>
 	                            </td>
 	                            <%-- 공실현황 열 --%>
 	                            <td class="text-center">
 		                            <c:choose>
-										<c:when test="${k.confirmdate != null}">
+										<c:when test="${confirmdate != null}">
 											<span class="label label-primary">&nbsp;공개&nbsp;</span>
 										</c:when>
 										<c:otherwise>
@@ -118,13 +130,13 @@
 	                            <td class="text-center">
 	                                <button class="btn btn-default">
 	                                	<c:url value="${contextPath}/host/rm_edit.do" var="update">
-											<c:param name="roomno" value="${k.roomno}"></c:param>
+											<c:param name="roomno" value="${roomno}"></c:param>
 										</c:url>
 										<a href="${update}">수정</a>
 	                                </button>
 	                                <button class="btn btn-default">
 			                            <c:url value="${contextPath}/host/rmli_delete.do" var="delete">
-										      <c:param name="roomno" value="${k.roomno}"></c:param>
+										      <c:param name="roomno" value="${roomno}"></c:param>
 										</c:url>
 										<a href="${delete}">삭제</a>
 	                                </button>
@@ -147,6 +159,81 @@
     </div>
     <!-- / content -->
     
+    	<%-- gallery-index --%>
+	<div class="gallery-footer">
+		<div class="gallery-index">
+			<!-- 페이지 번호 구현 -->
+			<%-- 이전 그룹에 대한 링크 --%>
+			<c:choose>
+				<%-- 이전 그룹으로 이동 가능하다면? --%>
+				<c:when test="${pageData.prevPage > 0}">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/host/rmli.do" var="prevPageUrl">
+						<c:param name="keyword" value="${keyword}" />
+						<c:param name="page" value="${pageData.prevPage}" />
+					</c:url>
+					<a href="${prevPageUrl}" id="temp">
+						<button class="prev-btn">
+							<span>&lt;</span>
+						</button>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<button class="prev-btn" id="temp">
+						<span>&lt;</span>
+					</button>
+				</c:otherwise>
+			</c:choose>
+
+			<%-- 페이지 번호 (시작 페이지 부터 끝 페이지까지 반복) --%>
+			<ul class="index-list">
+				<c:forEach var="i" begin="${pageData.startPage}"
+					end="${pageData.endPage}" varStatus="status">
+					<%-- 이동할 URL 생성 --%>
+					<c:url value="/host/rmli.do" var="pageUrl">
+						<c:param name="keyword" value="${keyword}" />
+						<c:param name="page" value="${i}" />
+					</c:url>
+
+					<%-- 페이지 번호 출력 --%>
+					<c:choose>
+						<%-- 현재 머물고 있는 페이지 번호를 출력할 경우 링크 적용 안함 --%>
+						<c:when test="${pageData.nowPage == i}">
+							<li><a class="index-indiv index-active">${i}</a></li>
+						</c:when>
+						<%-- 나머지 페이지의 경우 링크 적용함 --%>
+						<c:otherwise>
+							<li><a class="index-indiv" href="${pageUrl}">${i}</a></li>
+						</c:otherwise>
+					</c:choose>
+						</c:forEach>
+					</ul>
+
+					<%-- 다음 그룹에 대한 링크 --%>
+					<c:choose>
+						<%-- 다음 그룹으로 이동 가능하다면? --%>
+						<c:when test="${pageData.nextPage > 0}">
+							<%-- 이동할 URL 생성 --%>
+							<c:url value="/host/rmli.do" var="nextPageUrl">
+								<c:param name="keyword" value="${keyword}" />
+								<c:param name="page" value="${pageData.nextPage}" />
+							</c:url>
+							<a href="${nextPageUrl}">
+								<button class="next-btn">
+									<span>&gt;</span>
+								</button>
+							</a>
+						</c:when>
+						<c:otherwise>
+							<button class="next-btn">
+								<span>&gt;</span>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			<%-- gallery-index --%>
+			
     <!-- footer -->
     <%@ include file="../assets/inc/ho_footer.jsp"%>
     

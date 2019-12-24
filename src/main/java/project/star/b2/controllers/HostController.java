@@ -493,6 +493,12 @@ public class HostController {
 
 		/** 1) 필요한 변수값 생성 */
 		int userno = loginInfo.getUserno();
+		int status = 0;
+		
+		if ( webHelper.getInt("status") != 0 || webHelper.getInt("status") != 0 ) {
+			status = webHelper.getInt("status");
+			System.out.println(status);
+		}
 		
 		// 페이징 처리		
 		int nowPage = webHelper.getInt("page", 1); 			// 페이지번호 (기본값 1)
@@ -505,20 +511,13 @@ public class HostController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Room input_room = new Room();
 		input_room.setUserno(userno);
+		input_room.setStatus(status);
 		
-		int status = 0;
-		if ( webHelper.getInt("status") != 0 || webHelper.getInt("status") != 0 ) {
-			status = webHelper.getInt("status");
-		}
-
-
 		PageData pageData = null;
 		List<Room> output_room = null;
+		String rememberChecked = "";
 		
 		try {
-			
-			/* 페이징처리 */
-			
 			// 전체 매물 수 조회
 			totalCount = roomService.getRoomCount(input_room);
 			// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
@@ -526,18 +525,23 @@ public class HostController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Room.setOffset(pageData.getOffset());
 			Room.setListCount(pageData.getListCount());
-			
+			output_room = roomService.getRoomList_host_rmli1(input_room);
 			/* room 테이블 조인문 불러오기 */
-			if (status == 1 || status == 0) {
+			if (status == 0) {
 				output_room = roomService.getRoomList_host_rmli1(input_room);
+				totalCount = roomService.getRoomCount(input_room);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			} else if (status == 1) {
+				rememberChecked = "1"; // 확인매물
 				output_room = roomService.getRoomList_host_rmli2(input_room);
+				totalCount = roomService.getRoomCount(input_room);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			} else if (status == 2) {
+				rememberChecked = "2"; // 허위매물
 				output_room = roomService.getRoomList_host_rmli3(input_room);
+				totalCount = roomService.getRoomCount(input_room);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			}
-			
-			
-			
 			
 			
 		} catch (Exception e) {
@@ -546,7 +550,8 @@ public class HostController {
 
 		/** View 처리 */
 		model.addAttribute("output", output_room);
-		
+		model.addAttribute("pageData", pageData);
+		model.addAttribute("rememberChecked", rememberChecked);
 		
 		return new ModelAndView("host/rmli");
 	}
