@@ -383,9 +383,37 @@
 
 		}); /* END OF 방 비교하기 버튼 눌렀을 때 보이도록 발생하는 이벤트 */
 
-		var i=1;
+
+
+		/**-------------체크 하기 & 체크 풀기------------------------- */
+	      var i=1;
+	      $(document).on('click', '.comp-chkbox-i', function(e) {
+	      var check = $(this).is(":checked")
+
+	         if (check == true) {
+
+	            var type = $(this).parents(".hit-a").children(".hit-a-p1").html();
+	              var price = $(this).parents(".hit-a").find(".hit-a-p2").html();
+
+	            var put = '<span class="compbar-newspan">' + type + '</span>';
+	               put += '<p class="compbar-newp">' + price + '</p>';
+	               put += '<button class="compbar-newbtn"></button>';
+	               //$(".comp-chkbox-i").prop("checked", true);
+
+	               // 순차적으로 값 입력
+	               $("#select"+i).html(put);
+	               i++;
+	               return;
+	         } else {
+	            i--;
+	            $("#select"+i).html("rkskekfkfkefk");
+	            return;
+	         }
+	      });
+
+		/**-------------기존 내용------------------------- */
         /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
-        $(document).on('click', '.comp-chkbox-s', function(e) {
+       /*  $(document).on('click', '.comp-chkbox-s', function(e) {
 
         var type = $(this).parents(".hit-a").children(".hit-a-p1").html();
         var price = $(this).parents(".hit-a").find(".hit-a-p2").html();
@@ -393,12 +421,13 @@
 		var put = '<span class="compbar-newspan">' + type + '</span>';
 			put += '<p class="compbar-newp">' + price + '</p>';
 			put += '<button class="compbar-newbtn"></button>';
+			//$(".comp-chkbox-i").prop("checked", true);
 
 			// 순차적으로 값 입력
 			$("#select"+i).html(put);
 			i++;
 			return;
-		});
+			});   */
 
 
 		/* 취소하기 눌렀을 때, 비교하기 바 지우고 다시 방 비교하기 버튼 생성 */
