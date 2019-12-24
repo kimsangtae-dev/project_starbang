@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import project.star.b2.helper.WebHelper;
 import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Gu;
+import project.star.b2.model.Heart;
+import project.star.b2.model.User;
 import project.star.b2.service.GalleryService;
 import project.star.b2.service.RoomService;
 
@@ -91,13 +96,21 @@ public class GalleryRestController {
 	 * 방찾기
 	 *******************************************************************/
 	@RequestMapping(value = "/main/search", method = RequestMethod.GET)
-	public Map<String, Object> search() {
+	public Map<String, Object> search(HttpServletRequest request) {
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", "");// 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		
+		/*---세션 불러오기 ----*/
+        HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
 
 		/******** 필터 ********/
 		/** 방 종류(roomtype) */
@@ -138,6 +151,10 @@ public class GalleryRestController {
 		double east = webHelper.getDouble("east");
 		double south = webHelper.getDouble("south");
 		double north = webHelper.getDouble("north");
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		Filter filter = new Filter();
 		// 방종류 
@@ -206,6 +223,8 @@ public class GalleryRestController {
 			Gallery.setOffset(pageData.getOffset());
 			Gallery.setListCount(pageData.getListCount());
 
+			if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
+			
 			output = galleryService.getGalleryList(input);
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
@@ -218,6 +237,7 @@ public class GalleryRestController {
 		data.put("pageData", pageData);
 		data.put("totalCount", totalCount);
 		data.put("param", filter);
+		data.put("heart", heartlist);
 
 		return webHelper.getJsonData(data);
 	}

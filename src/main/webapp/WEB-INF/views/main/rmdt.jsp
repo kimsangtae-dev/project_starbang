@@ -1036,6 +1036,15 @@ function binary2() {
             else { singo = ${loginInfo.userno}; }
             
             var fake_singo = $("#fake_singo").val();    // 이미 신고한 회원인지 구별하기
+            var user_singo = "${fake.singo}";
+            var singono;
+            if (user_singo == "") {
+            	singono = 0;
+            	return singono;
+            } else {
+            	singono = ${fake.singo};
+            	return singono;
+            }
             
             if (!reason) {
                 alert("신고 사유를 선택해주세요.");
