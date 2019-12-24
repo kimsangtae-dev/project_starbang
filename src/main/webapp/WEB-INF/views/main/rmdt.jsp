@@ -30,13 +30,13 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="monthman">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-					
+
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
@@ -241,7 +241,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 								<a href="#">
 									<img src="${pageContext.request.contextPath}/assets/img/upload/nophoto.png" /></a></li>
 						</c:otherwise>
-					</c:choose>	
+					</c:choose>
 				</c:forEach>
 			</ul>
 		</div>
@@ -274,13 +274,13 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					<h1 class="textht pull-left texthth1">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/> 
+						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
 					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-					
+
 					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber> 
+					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
 					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
@@ -309,7 +309,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 						</button>
 						</c:otherwise>
 					</c:choose>
-					
+
 					<div id="plrt">
 						<span class="texthtlvc">방주인</span> <span
 							class="textht skyblue lvc">${user.name}님</span>
@@ -323,8 +323,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<!--사용자 매물 설명 끝-->
 			<div id="smhead">
 				<div class="xOEdU">
-					<a class="eYDrrB move1">다방면 스코어</a> 
-					<a class="eYDrrB move2">가격정보</a> 
+					<a class="eYDrrB move1">다방면 스코어</a>
+					<a class="eYDrrB move2">가격정보</a>
 					<a class="eYDrrB move3">옵션</a>
 					<a class="eYDrrB move4">위치</a>
 				</div>
@@ -337,8 +337,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		 -->
 		<div id="simsim">
 			<div class="xOEdU">
-				<a id="move1" class="eYDrrB">다방면 스코어</a> 
-				<a id="move2" class="eYDrrB">가격정보</a> 
+				<a id="move1" class="eYDrrB">다방면 스코어</a>
+				<a id="move2" class="eYDrrB">가격정보</a>
 				<a id="move3" class="eYDrrB">옵션</a>
 				<a id="move4" class="eYDrrB">위치</a>
 				<!-- <a class="eYDrrB">인기매물</a> -->
@@ -382,7 +382,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 								<c:forEach var="k" items="${price}" varStatus="status">
 									<c:if test="${k.dealingtype == '월세'}">
-								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/> 
+								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/>
 							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
 								    	<h6>${patternprice1}/${k.price}만 원</h6>
 								    </c:if>
@@ -391,7 +391,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<td class="bdlntd">
 							<c:forEach var="k" items="${price}" varStatus="status">
 								<c:if test="${k.dealingtype == '전세'}">
-							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/> 
+							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
 						    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
 							    	${patternprice1}만 원
 							    </c:if>
@@ -441,11 +441,11 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="location3" class="jFMhNO kBQneM">
 			<!--상세 옵션들 아이콘으로 보여줌 시작-->
 			<h1 class="GYLAC">옵션</h1>
-			
+
 			<input type="hidden" id="nice" value="${info.optionitem}" />
-			
+
 			<div class="dDctva">
-				
+
 			</div>
 		</div>
 		<!--상세 옵션들 아이콘으로 보여줌 끝-->
@@ -465,7 +465,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		</div>
 		<!-- 지도 끝 -->
 		<!--매물 이미지 끝-->
-		
+
 		<!-- 현재 로그인한 사용자의 해당 매물 신고 여부 -->
 		<c:choose>
             <c:when test="${fake != null}">
@@ -478,15 +478,15 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	</div>
 	<!-- 하단 영역 -->
 	<jsp:include page="../assets/inc/ma_bottom.jsp" />
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
 	<div class="portal" id="">
     <div class="background_layer"> <!-- VPfux -->
         <button class="img_close"> <!-- jmTKvK -->
@@ -504,14 +504,14 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                         <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path>
                     </svg>
                 </button>
-                
+
                 <ul width="860" class="thumnail_rail" style="transform: translateX(0px);">  <!-- tHjGe -->
                 <c:forEach var="i" items="${img}" varStatus="status">
 					<c:choose>
 						<c:when test="${i.fileName != null}">
 							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${pageContext.request.contextPath}/assets/img/upload/${i.fileName})";></div></li>
 						</c:when>
-					</c:choose>	
+					</c:choose>
 				</c:forEach>
 
                 </ul>
@@ -537,7 +537,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         </div>
     </div>
 </div>
-	
+
 
 
 	<!-- Javascript -->
@@ -707,7 +707,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			});
 		});
 	</script>
-	
+
 		<!-- 평수 미터제곱 같이 바꾸기2 -->
 	<script type="text/javascript">
 		$(function() {
@@ -779,47 +779,47 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				}
 		}); // end scroll
 	});
-	
+
 	/* 이동하기 기능 */
 	$(function() {
-		
+
 		/* 위에 있는 바 */
 		function up_fnMove(seq){
 	        var offset = $("#location" + seq).offset();
 	        $('html, body').animate({scrollTop : offset.top-150}, 300);
 	    }
-		
-		$("#move1").click(function(){ up_fnMove(1) });		
-		$("#move2").click(function(){ up_fnMove(2) });	
-		$("#move3").click(function(){ up_fnMove(3) });	
-		$("#move4").click(function(){ up_fnMove(4) });	
-		
+
+		$("#move1").click(function(){ up_fnMove(1) });
+		$("#move2").click(function(){ up_fnMove(2) });
+		$("#move3").click(function(){ up_fnMove(3) });
+		$("#move4").click(function(){ up_fnMove(4) });
+
 		/* 밑에 있는 바 */
 		function dn_fnMove(seq){
 	        var offset = $("#location" + seq).offset();
 	        $('html, body').animate({scrollTop : offset.top-80}, 300);
 	    }
-		
-		$(".move1").click(function(){ dn_fnMove(1) });		
+
+		$(".move1").click(function(){ dn_fnMove(1) });
 		$(".move2").click(function(){ dn_fnMove(2) });
 		$(".move3").click(function(){ dn_fnMove(3) });
 		$(".move4").click(function(){ dn_fnMove(4) });
-		
+
 	});
-	
-	
+
+
 	</script>
-	
+
 	<script>
 	function binary() {
-		
+
         /* 뿌려줄 String을 배열에 저장 */
         var option = [
         	"<div class='gqtsIc'><div class='dNeTFF'></div><p>에어컨</p></div>",
-        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>", 
-        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>", 
-        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>", 
-        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>", 
+        	"<div class='gqtsIc'><div class='bisIQz'></div><p>세탁기</p></div>",
+        	"<div class='gqtsIc'><div class='ecqNej'></div><p>옷장</p></div>",
+        	"<div class='gqtsIc'><div class='gdTorF'></div><p>TV</p></div>",
+        	"<div class='gqtsIc'><div class='fuJjGK'></div><p>신발장</p></div>",
         	"<div class='gqtsIc'><div class='gdMhEY'></div><p>냉장고</p></div>",
         	"<div class='gqtsIc'><div class='dQLnLP'></div><p>가스레인지</p></div>",
         	"<div class='gqtsIc'><div class='krFgu'></div><p>인덕션</p></div>",
@@ -829,7 +829,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         	"<div class='gqtsIc'><div class='mCsgX'></div><p>침대</p></div>",
         	"<div class='gqtsIc'><div class='gaOEWf'></div><p>책상</p></div>"
         	];
-        
+
 
         /* 받아온 값을 관리비 항목에 넣는다 */
         var num = $("#nice").val();
@@ -843,22 +843,22 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
         } // for문
     } // binary함수
     binary();
-    
+
 function binary2() {
-    		
+
             /* 뿌려줄 String을 배열에 저장 */
             var option2 = ["인터넷", "유선TV", "청소비", "수도세", "도시가스", "전기세", "기타"];
-            
+
             /* 받아온 값을 관리비 항목에 넣는다 */
             //var num2 = ${info.feeitem};
             var num2 = ${info.feeitem};
 			var sum = new Array;
-    		
+
             for (var i=7; i>=1 ; i--) {
                 if(num2 >= Math.pow(2, i-1)){
                 	num2 = num2 - Math.pow(2, i-1);
                 	sum += option2[7-i];
-                    
+
                     if(num2 == 0 || i == 1){ break; }
                     sum += ", ";
                 } // if문
@@ -867,10 +867,10 @@ function binary2() {
             $("#apeend_feeitem").append(sum);
         } // binary함수
         binary2();
-   
+
 	</script>
 
-	
+
 	<script>
 
 	$(function() {
@@ -885,14 +885,14 @@ function binary2() {
 		     $(".background_layer").fadeOut(0);       // 배경 레이어의 숨김
 		});
 	});
-	
+
 	/* 썸네일 슬라이드 */
 	$(function() {
 		var len = $(".list").length * 140 + ($(".list").length - 1) * 4;
 	    $(".thumnail_rail").css('width',len + "px");
-	    
+
 	    var location = 0;
-	    
+
 	    $(".railBtn_left").click(function() {
 	    	location = location + 288;
 	    	if ( location > 0){
@@ -900,7 +900,7 @@ function binary2() {
 	    	}
 	    	$(".thumnail_rail").css('transform',"translateX(" + location + "px)");
 	    });
-	    
+
 	    $(".railBtn_right").click(function() {
 
 	    	location = location - 288;
@@ -908,36 +908,36 @@ function binary2() {
 	    		location = -len + 860;
 	    	}
 	    	$(".thumnail_rail").css('transform',"translateX(" + location + "px)");
-	    	
+
 	    });
-	    
-	    if( $(".list").length < 7 ){  
+
+	    if( $(".list").length < 7 ){
 	    	$(".railBtn_right").attr('disabled', true);
 	    }
-	    
+
 	});
-	
+
 
 	/* 큰 이미지 띄워주기 */
 	$(function() {
-		
+
 		// 가장 처음 선택하지 않았을 때
 		var img = $(".sm_thumnail:eq(0)").parents('li');
-		
+
 		var pass = "";
-		
+
         $(".sm_thumnail").click(function(e) {
         	img = $(this).parents('li'); // 클릭한 요소의 src 속성값 가져오기
         	pass = img;
 
             $("#target").css('background-image', img.children("div").css('background-image'));
         });
-        
+
         $(".giantBtn_left").click(function(e) {
         	// img = 해당 div의 부모 요소가 들어가있다
             if (pass == "") {
             	pass = img;
-            } 
+            }
         	if (pass != null){
             	pass2 = $(".list:first-child").children("div").css('background');
             	if( pass.children("div").css('background') == pass2 ) {
@@ -946,19 +946,19 @@ function binary2() {
                 	pass = pass.prev();
                 }
             }
-        	
+
             var val = pass.children("div").css("background-image");
             $("#target").css('background-image', val);
         });
-        
-        
+
+
         $(".giantBtn_right").click(function(e) {
-        	
+
         	// img = 해당 div의 부모 요소가 들어가있다
             if (pass == "") {
             	pass = img;
             }
-        	
+
             if (pass != null){
             	pass2 = $(".list:last-child").children("div").css('background');
             	if( pass.children("div").css('background') == pass2 ) {
@@ -967,9 +967,9 @@ function binary2() {
                 	pass = pass.next();
                 }
             }
-        	
+
             console.log(pass);
-        	
+
             var val = pass.children("div").css("background-image");
             $("#target").css('background-image', val);
         });
@@ -980,7 +980,6 @@ function binary2() {
  			data:{"chartdata": ${room.roomno}},
  			type: "GET",
  			success:function(data){
- 				alert("안녕 그래프 생성");
  				var chart = bb.generate({
  					data : {
  						x : "x",
@@ -1021,7 +1020,7 @@ function binary2() {
  		});
  	});
 	</script>
-	
+
 	<!-- 허위매물 신고하기 -->
 	<script type="text/javascript">
 	$(function() {
@@ -1032,9 +1031,9 @@ function binary2() {
             var reason = $("input[name=fakeReason]:checked").val(); // 신고 사유
             var singo;                      // 신고한 회원번호 (현재 로그인중인 회원)
             var loginInfo = ${loginInfo.userno};
-            if (!loginInfo) { singo = 0; } 
+            if (!loginInfo) { singo = 0; }
             else { singo = ${loginInfo.userno}; }
-            
+
             var fake_singo = $("#fake_singo").val();    // 이미 신고한 회원인지 구별하기
             var user_singo = "${fake.singo}";
             var singono;
@@ -1045,7 +1044,7 @@ function binary2() {
             	singono = ${fake.singo};
             	return singono;
             }
-            
+
             if (!reason) {
                 alert("신고 사유를 선택해주세요.");
             } else if (fake_singo == singo) {
@@ -1067,7 +1066,7 @@ function binary2() {
         });
     });
 	</script>
-	
+
 </body>
 
 <!-- 허위매물 신고 -->
@@ -1087,7 +1086,7 @@ function binary2() {
                  </svg>
               </button>
                 </div>
-            <div class="modal-body modalbody modalcont" id="modaloutcheck">         
+            <div class="modal-body modalbody modalcont" id="modaloutcheck">
 			   <img class="sirenmodal" src="/b2/assets/img/ma_img/rmdt/siren.png" >
 			   <h4 class="modal-title modal-titlecolor">허위매물을 신고해주세요!</h4>
                <h4 class="modal-title">허위매물 신고를 접수해주시면, 매물 검증 단계를 거친 후</h4>
@@ -1096,28 +1095,28 @@ function binary2() {
                <pre class="mypageoutpre">
                </pre>
                <div>
-            	   <label class="labelss"> 
-            	   		<input type="radio" name="fakeReason" value="1" /> 
+            	   <label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="1" />
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">거래가 완료된 매물</span>
 					</label>
-					<label class="labelss"> 
-            	   		<input type="radio" name="fakeReason" value="2" /> 
+					<label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="2" />
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">가격이 다른 매물</span>
 					</label>
-					<label class="labelss"> 
-            	   		<input type="radio" name="fakeReason" value="3" /> 
+					<label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="3" />
             	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">사진이 다른 매물</span>
 					</label>
-					<label class="labelss">  
-               			<input type="radio" name="fakeReason" value="4" /> 
+					<label class="labelss">
+               			<input type="radio" name="fakeReason" value="4" />
                			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">위치가 다른 매물</span>
 					</label>
-					<label class="labelss"> 
-               			<input type="radio" name="fakeReason" value="5" /> 
+					<label class="labelss">
+               			<input type="radio" name="fakeReason" value="5" />
                			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">옵션이 다른 매물</span>
 					</label>
 				</div>
-				
+
 				<h4 class="modal-titlef modal-dd">별방은 상시 검수를 통해 허위매물 근절을 위해 노력중입니다</h4>
                	<h4 class="modal-titlef">이 매물이 허위매물로 판정된 경우 별방 기프티콘을 선물로 드려요</h4>
                	<h4 class="modal-titlef">허위 신고일 경우 서비스 이용이 제한이 될 수 있습니다</h4>
