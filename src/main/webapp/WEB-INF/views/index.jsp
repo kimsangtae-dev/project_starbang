@@ -53,19 +53,19 @@
 			</div>
 			<form method="get" action="${pageContext.request.contextPath}/main/search.do">
 				<div>
-					<input type="hidden" class="input-hidden" name="roomtype" id="" value="원룸m투룸m쓰리룸m오피스텔">
-					<input type="hidden" class="input-hidden" name="dealingtype" id="" value="월세m전세m매매">
-					<input type="hidden" class="input-hidden" name="depositFrom" id="" value="0">
-					<input type="hidden" class="input-hidden" name="monthFrom" id="" value="0">
-					<input type="hidden" class="input-hidden" name="buyingFrom" id="" value="0">
-					<input type="hidden" class="input-hidden" name="feeFrom" id="" value="0">
-					<input type="hidden" class="input-hidden" name="sizeFrom" id="" value="0">
-					<input type="hidden" class="input-hidden" name="depositTo" id="" value="999999">
-					<input type="hidden" class="input-hidden" name="monthTo" id="" value="999999">
-					<input type="hidden" class="input-hidden" name="buyingTo" id="" value="999999">
-					<input type="hidden" class="input-hidden" name="feeTo" id="" value="999999">
-					<input type="hidden" class="input-hidden" name="sizeTo" id="" value="999999">
-					<input type="hidden" class="input-hidden" name="map" id="" value="37.5642135,126.9743207,9">
+					<input type="hidden" class="input-hidden" name="roomtype" value="원룸m투룸m쓰리룸m오피스텔">
+					<input type="hidden" class="input-hidden" name="dealingtype" value="월세m전세m매매">
+					<input type="hidden" class="input-hidden" name="depositFrom" value="0">
+					<input type="hidden" class="input-hidden" name="monthFrom" value="0">
+					<input type="hidden" class="input-hidden" name="buyingFrom" value="0">
+					<input type="hidden" class="input-hidden" name="feeFrom" value="0">
+					<input type="hidden" class="input-hidden" name="sizeFrom" value="0">
+					<input type="hidden" class="input-hidden" name="depositTo" value="999999">
+					<input type="hidden" class="input-hidden" name="monthTo" value="999999">
+					<input type="hidden" class="input-hidden" name="buyingTo" value="999999">
+					<input type="hidden" class="input-hidden" name="feeTo" value="999999">
+					<input type="hidden" class="input-hidden" name="sizeTo" value="999999">
+					<input type="hidden" class="input-hidden" name="map" value="37.5642135,126.9743207,9">
 					<input type="search" name="keyword" id="searching-for" value="${keyword}" placeholder = "지역으로 검색하세요">
 					<i class="glyphicon glyphicon-search"></i>
 					<button type="submit" class="btn btn-primary">방 찾기</button>
