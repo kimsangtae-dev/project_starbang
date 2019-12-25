@@ -40,10 +40,10 @@
 							<form method="get" action="${pageContext.request.contextPath}/admin/rmli.do">
 							<div class="adm-radio">
 								<label for="check"></label>
-								<input type="checkbox" class="radiobutton" name='check' value="1" id="checked-item" <c:if test="${rememberChecked eq '1'}">checked</c:if> >확인매물
-								<input type='checkbox' class="radiobutton" name='check' value="2" id="checked-fake" <c:if test="${rememberChecked eq '2'}">checked</c:if> >허위매물
-								<input type='checkbox' class="radiobutton" name='check' value="3" id="checked-hidden"<c:if test="${rememberChecked eq '3'}">checked</c:if>>숨김매물
-								<input type='checkbox' class="radiobutton" name='check' value="4" id="checked-done" <c:if test="${rememberChecked eq '4'}">checked</c:if>>거래완료
+								<input type="radio" class="radiobutton" name='check' value="1" id="checked-item" <c:if test="${rememberChecked eq '1'}">checked</c:if> >확인매물
+								<input type="radio" class="radiobutton" name='check' value="2" id="checked-fake" <c:if test="${rememberChecked eq '2'}">checked</c:if> >허위매물
+								<input type="radio" class="radiobutton" name='check' value="3" id="checked-hidden"<c:if test="${rememberChecked eq '3'}">checked</c:if>>숨김매물
+								<input type="radio" class="radiobutton" name='check' value="4" id="checked-done" <c:if test="${rememberChecked eq '4'}">checked</c:if>>거래완료
  								<input type="submit" value="확인" class="btn btn-primary">
 							</div>
 							</form>
