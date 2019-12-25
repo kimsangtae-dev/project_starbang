@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -20,7 +24,9 @@
 		<%@ include file="../assets/inc/ho_header2.jsp"%>
 		<!-- header 끝 -->
 					
-		<form id="edit_room" name="edit_room" method="post" action="${pageContext.request.contextPath}/host/rm_add_ok.do" enctype="multipart/form-data">
+		<form id="edit_room" name="edit_room" method="post" action="${pageContext.request.contextPath}/host/rm_edit_ok.do" enctype="multipart/form-data">
+		
+		<input type="hidden" name="roomno" value="${room.roomno}">
 		
 		<!-- content 시작 -->
 			<div id="content">
@@ -140,7 +146,60 @@
 						<tbody>
 							<tr class="hide_box removing">
 								<th rowspan="2">거래 종류</th>
-								<td class="deal77"></td>
+								<td class="deal77">
+									<c:forEach var="k" items="${price}" varStatus="status">
+										
+										<c:choose>
+											<c:when test="${k.dealingtype == '월세'}">
+												<div class="d_div">
+													<p class="bbtn">월세</p>
+													<input type="hidden" name="priceno" value="${k.priceno}">
+													<input type="hidden" class="dealingtype" name="dealingtype" value="월세">
+													<input type="text" class="d_input_box1 d_input_box2 deposit" name="deposit" value="${k.deposit}" placeholder="보증금"><p class="midle_box">/</p>
+													<input type="text" class="d_input_box1 d_input_box2 price" name="price" value="${k.price}" placeholder="월세">
+													<p class="dp_text">만원
+													    <span id="reflex1">(예 월세 1000만원/50만원)</span>
+													    <span class="glyphicon glyphicon-remove pp"></span>
+													</p>
+												</div>
+											</c:when>
+
+											<c:when test="${k.dealingtype == '전세'}">
+												<div class="d_div1">
+												    <p class="bbtn">전세</p>
+												    <input type="hidden" name="priceno" value="${k.priceno}">
+												    <input type="hidden" class="dealingtype" name="dealingtype" value="전세">
+												    <input type="hidden" class="deposit" name="deposit" value="-1" >
+												    <input type="text" class="d_input_box1 d_input_box2 price" name="price" value="${k.price}" placeholder="전세">
+												    
+												    <p class="dp_text">만원
+												        <span>(예 전세 2000만원)</span>
+												        <span class="glyphicon glyphicon-remove pp1"></span>
+												    </p>
+												</div>
+											</c:when>
+											
+											<c:when test="${k.dealingtype == '매매'}">
+												<div class="d_div2">
+												    <p class="bbtn">매매</p>
+												    <input type="hidden" name="priceno" value="${k.priceno}">
+												    <input type="hidden" class="dealingtype" name="dealingtype" value="매매">
+												    <input type="hidden" class="deposit" name="deposit" value="-1" >
+												    <input type="text" class="d_input_box1 d_input_box2 price" name="price" value="${k.price}" placeholder="매매">
+												
+												    <p class="dp_text">만원
+												        <span>(예 매매 10000만원)</span>
+												        <span class="glyphicon glyphicon-remove pp2"></span>
+												    </p>
+												</div>
+											</c:when>
+										</c:choose>
+									     
+									</c:forEach>
+								
+								
+								
+								</td>
 							</tr>
 							<tr>
 								<td class="deal_box_pd">
@@ -174,7 +233,7 @@
 								</th>
 								<td class="base_line">
 									<p class="base_title">공급 면적</p> 
-									<input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);" value="${info.supplyarea}">
+									<input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);">
 									<p class="base_kiho">평</p> 
 									<input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);" >
 									<p class="base_kiho">㎡</p>
@@ -210,9 +269,9 @@
 							<tr>
 								<td class="base_line">
 									<p class="base_title">전용 면적</p>
-									<input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);" value="${room.area }">
+									<input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);">
 									<p class=" base_kiho">평</p> 
-									<input type="text" id="ator2" class="base_pd input_box" onkeyup="ator(2);">
+									<input type="text" id="ator2" class="base_pd input_box" onkeyup="ator(2);" >
 									<p class="base_kiho">㎡</p>
 								</td>
 								<td class="base_line">
@@ -258,18 +317,18 @@
 								<th>입주 가능일</th>
 								<td class="base_line" colspan="3">
 									<label class="in_date">
-										<input type="radio" id="commingday" name="commingday" value="즉시입주">
+										<input type="radio" id="commingday" name="commingday" value="0">
 										<p>즉시 입주</p>
 									</label> 
 									<label class="in_date"> 
-									<input type="radio" name="commingday" value="날짜협의">
+									<input type="radio" name="commingday" value="1">
 										<p>날짜 협의</p>
 									</label>
-									<input type="text" id="datepicker" name="commingday">
 									<label class="in_date">
-										<input type="radio" name="commingday" value="1" id="cal">
+										<input type="radio" name="commingday" value="2" id="cal">
 										<p>날짜 선택</p>
 									</label>
+									<input type="text" id="datepicker" name="commingday">
 								</td>
 							</tr>
 						</tbody>
@@ -569,17 +628,22 @@
 	<script>
 	var mapContainer = document.getElementById('box'), // 지도를 표시할 div
             mapOption = {
-                center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+                center: new daum.maps.LatLng(${room.latitude}, ${room.longitude}), // 지도의 중심좌표
                 level: 5 // 지도의 확대 레벨
             };
-    
+		
+		/* 처음부터 열어놓기 */
+		$("#pon_box").css("display", "none")
+		mapContainer.style.display = "block";
+
+	
         //지도를 미리 생성
         var map = new daum.maps.Map(mapContainer, mapOption);
         //주소-좌표 변환 객체를 생성
         var geocoder = new daum.maps.services.Geocoder();
         //마커를 미리 생성
         var marker = new daum.maps.Marker({
-            position: new daum.maps.LatLng(37.537187, 127.005476),
+            position: new daum.maps.LatLng(${room.latitude}, ${room.longitude}),
             map: map
         });
     
@@ -590,7 +654,6 @@
                     var addr = data.address; // 최종 주소 변수
                     
                 // 주소 정보를 해당 필드에 넣는다.
-                <!--document.getElementById("sample5_address").value = addr;-->
                 document.getElementById("point_address").value = addr;
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
@@ -610,12 +673,13 @@
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);
                     // 마커를 결과값으로 받은 위치로 옮긴다.
-                    marker.setPosition(coords)
+                    marker.setPosition(coords);
                 } // if 끝
             }); // document 끝
         } // oncomplete 끝
     }).open();
 }
+        
 </script>
 <!-- 카카오 지도 끝 -->
 
@@ -854,7 +918,7 @@ $(function() {
 	function handleImgFileSelect(e) {
 	    // 이미지 정보들을 초기화
 	    sel_files = [];
-	    $(".up_list").empty();
+	   /*  $(".up_list").empty(); */
 	
 	    var files = e.target.files;
 	    var filesArr = Array.prototype.slice.call(files);
@@ -889,8 +953,6 @@ $(function() {
 
 // 이미지 지우기
 function deleteImageAction(index) {
-    console.log("index : "+index);
-    console.log("sel length : "+sel_files.length);
 
     sel_files.splice(index, 1);
 
@@ -1025,6 +1087,15 @@ $(function() {
 		/* 
 		 * 기본정보 
 		 */
+		 
+		// 공급면적 평수넣기 
+		$("#ator1").val("${room.area}");
+		$("#ator2").val("${room.area * 3.3}");
+
+		// 공급면적 평수넣기 
+		$("#pyeong1").val("${info.supplyarea}");
+		$("#pyeong2").val("${info.supplyarea * 3.3}");
+		 
 		
 		// 전체층수 
 		$(document).ready(function(){
@@ -1052,6 +1123,24 @@ $(function() {
 		    	}
 		  	});
 		});
+		
+		// 입주가능일
+		
+		var commingday = "${info.commingday}";
+		commingday = commingday.replace(",", "");
+		var commingday_arr = ["0","1"];
+		
+		for (var i in commingday_arr){
+			if (commingday == commingday_arr[i]){
+				$("input:radio[name='commingday']:radio[value=" + commingday_arr[i] + "]").attr("checked",true);
+			}
+		}
+		
+		if(commingday != 0 || commingday != 1){
+				$("#datepicker").val("${commingday}");
+		}
+		
+		
 
 		/* 
 		 * 추가정보 
@@ -1130,12 +1219,10 @@ $(function() {
 		$(function() {
             /* 받아온 값을 관리비 항목에 넣는다 */
             var num2 = "${info.optionitem}";
-            console.log(num2);
     		for (var i=13; i>=1 ; i--) {
                 if(num2 >= Math.pow(2, i-1)){
                 	num2 = num2 - Math.pow(2, i-1);
                 	$("input:checkbox[name='optionitem']:checkbox[value=" + Math.pow(2, i-1) + "]").attr("checked",true);
-                	console.log(num2);
                 } // if문
             } // for문
 		});// function
@@ -1143,11 +1230,6 @@ $(function() {
 		/* 상세설명 */
 		$("#title").val("${room.title}");
 		$("#content_input").val("${info.content}");
-		
-
-		
-	
-
 
 </script>
 </body>
