@@ -479,6 +479,312 @@ public class HostController {
 	}
 
 	/********************************************************************
+	 * 공실 수정하기_ok
+	 * @return 
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rm_edit_ok.do", method = RequestMethod.POST)
+	public ModelAndView rm_edit_ok(HttpServletRequest request) {
+		
+		try {
+			webHelper.upload();
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		List<UploadItem> fileList = webHelper.getFileList();
+		Map<String, String> paramMap = webHelper.getParamMap();
+		
+		
+		/** * * 1) 사용자가 입력한 파라미터 수신 * * */
+		
+		/***
+		 *  Room DB TABLE (15 Columns)
+		 *     Column name(param)		description				info
+		 *  1.  roomno - o				방번호  					(Auto Increment)
+		 *  2.  roomtype - o			매물종류
+		 *  3.  title - o				매물에 대한 제목
+		 *  4.  floor - o 				매물 해당 층
+		 *  5.  area - o 				전용면적
+		 *  6.  fee - o 				관리비
+		 *  7.  confirmdate  			확인날짜  					(초기 데이터 없음)
+		 *  8.  address					API에서 받아온 주소 		
+		 *  9.  dong - o				사용자가 입력한 동
+		 *  10. ho - o					사용자가 입력한 호
+		 *  11. latitude  				API에서 받아온 경도-y축  	(Kakao API)
+		 *  12. longitude  				API에서 받아온 위도-x축  	(Kakao API)
+		 *  13. region_2depth_name		지도사용 2depth info   	(Kakao API)
+		 *  14. region_3depth_name  	지도사용 3depth info   	(Kakao API)
+		 *  15. userno 					세션에서 가져올 회원번호	 	(Session에서 값 주입)
+		 */
+		
+		/** room ** parameter 수신 (10 / 15) except(5) - confirmdate(1), address API(4) */		
+		int roomno = Integer.parseInt(paramMap.get("roomno"));			
+		String roomtype = paramMap.get("roomtype");			
+		String title = paramMap.get("title");				
+		int floor = Integer.parseInt(paramMap.get("floor"));
+		float area = Float.parseFloat(paramMap.get("area"));
+		int fee = Integer.parseInt(paramMap.get("fee"));
+		String dong = paramMap.get("dong");
+		String ho = paramMap.get("ho");
+		String address = paramMap.get("address");
+
+		HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = loginInfo.getUserno();
+        
+        
+        /***
+		 *  Info DB TABLE (15 Columns)
+		 *  	Column name(params)		Description			info
+		 *  1.  feeitem - o				관리비 항목 			8개 - 2진법 SUM 저장 및 인수분해로 추출
+		 *  2.  parking - o				주차 및 주차비 여부 		불가능 - -1 ; 가능 무료 - 0 ; 가능 가격o - int 
+		 *  3.  pet - o					애완동물 가능 여부
+		 *  4.  elevator - o 			엘리베이터 여부
+		 *  5.  veranda - o 			베란다 여부			
+		 *  6.  builtin - o 			빌트인 여부				
+		 *  7.  optionitem - o			옵션 항목 선택 	 		13개 - 2진법 SUM 저장 및 인수분해로 추출
+		 *  8.  loan - o				대출 가능 여부 	
+		 *  9.  supplyarea - o			공급면적
+		 *  10. maxfloor - o			매물의 전체 층수
+		 *  11. heater - o				난방 종류				
+		 *  12. commingday - o 			입주가능일				
+		 *  13. buildtype - o			건물유형				
+		 *  14. content - o				상세 설명
+		 *  15. roomno					방 번호				참조키 - room DB 입력시 생성될 PRI값 주입
+		 */
+        
+        /** info ** parameter 수신 (14 / 15) - except(1) roomno - mul */
+		/** 관리비 항목 2진법 계산해서 DB 넣기 */
+		int parking = Integer.parseInt(paramMap.get("parking")); 
+		int pet = Integer.parseInt(paramMap.get("pet"));
+		int elevator = Integer.parseInt(paramMap.get("elevator"));
+		int veranda = Integer.parseInt(paramMap.get("veranda"));
+		int builtin = Integer.parseInt(paramMap.get("builtin"));
+		
+		/** 옵션항목 2진법 계산해서 DB 넣기 */
+		// feeitem
+		String feeitem = paramMap.get("feeitem"); 		// 관리비항목 계산해서 넣기
+
+		log.debug("로그기록임!!" + feeitem);
+		log.error(feeitem);
+		log.info(feeitem);
+		
+		String[] feeitems = null;
+		if (feeitem != null) {
+			feeitems = feeitem.split(",");
+		}
+		
+		int sum_fee = 0;
+		if (feeitems != null) {
+			for (String item : feeitems) {
+				int bin_fee = Integer.parseInt(item);
+					sum_fee += bin_fee;
+			}
+		}
+		
+		// optionitem
+		String optionitem = paramMap.get("optionitem");
+
+		String[] optionitems = null;
+		if (optionitem != null) {
+			optionitems = optionitem.split(",");
+		}
+		
+		int sum_option = 0;
+		if (optionitems != null) {
+			for (String item : optionitems) {
+				int bin_option = Integer.parseInt(item);
+					sum_option += bin_option;
+			}
+		}
+		
+		int loan = Integer.parseInt(paramMap.get("loan"));
+		float supplyarea = Float.parseFloat(paramMap.get("supplyarea"));
+		int maxfloor = Integer.parseInt(paramMap.get("maxfloor"));
+		int heater = Integer.parseInt(paramMap.get("heater"));
+		String commingday = paramMap.get("commingday");
+		String buildtype = paramMap.get("buildtype");
+		String content = paramMap.get("content");
+		
+		/***
+		 *  Price DB TABLE (6 Columns)
+		 *  	Column name(params)		Description			info
+		 *  1.  priceno					가격정보 번호			(Auto Increment)
+		 *  3.  dealingtype - o			매물종류				월세-o, 전세-o, 매매-o
+		 *  2.  deposit - o				보증금				월세-o, 전세-x, 매매-x  
+		 *  4.  price - o 				금액					월세-o, 전세-o, 매매-o
+		 *  5.  short_room - o 			단기가능 여부
+		 *  6.  roomno 					방번호				참조키 - room DB 입력시 생성될 PRI값 주입
+		 */
+		
+		/** price ** parameter 수신 */
+		String priceno = paramMap.get("priceno");
+		String dealingtype = paramMap.get("dealingtype");
+		String deposit = paramMap.get("deposit");
+		String price = paramMap.get("price");
+		String short_room = paramMap.get("short_room");
+		
+		String[] pricenos = null;
+		String[] dealingtypes = null; 
+		String[] deposits = null;
+		String[] prices = null;
+		
+		if (priceno != null)	 { pricenos = priceno.split(","); }
+		if (dealingtype != null) { dealingtypes = dealingtype.split(","); }
+		if (deposit != null) 	 { deposits = deposit.split(","); }
+		if (price != null) 		 { prices = price.split(","); }
+		
+		
+		/** * * 3) 데이터 저장하기 * * */
+		Room input_R = new Room();
+		Info input_I = new Info();
+		
+		/** (1) room 정보 받아오기 */		
+		input_R.setRoomno(roomno);
+		input_R.setRoomtype(roomtype);
+		input_R.setTitle(title);
+		input_R.setFloor(floor);
+		input_R.setArea(area);
+		input_R.setFee(fee);
+		input_R.setAddress(address);
+		input_R.setDong(dong);
+		input_R.setHo(ho);
+		input_R.setUserno(userno);
+		
+		/*** 
+		 * KakaoSearch API 통해 주소정보 5가지 - (위도, 경도, 2depth, 3depth, road_address) 수신 및 쓰기
+		 */
+		
+		/** 1. API 연동 객체 생성 */
+		Retrofit retrofit = retrofitHelper.getRetrofit(ApiKakaoSearchService.BASE_URL);
+		ApiKakaoSearchService apiKakaoSearchService = retrofit.create(ApiKakaoSearchService.class);
+
+		/** 2. 파라미터 처리 */
+		
+		String query = paramMap.get("address");
+
+		/** 3. KAKAO API 요청 */
+		Address kakaoAddress = null;
+		if (!query.equals("")) {
+			Call<Address> call = apiKakaoSearchService.getAddress(query);
+			try {
+				kakaoAddress = call.execute().body();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			List<Documents> list = kakaoAddress.getDocuments();
+
+			for (Documents item : list) {
+				input_R.setRegion_2depth_name(item.getRoad_address().region_2depth_name);
+				input_R.setRegion_3depth_name(item.getRoad_address().region_3depth_name);
+				input_R.setLongitude(Double.parseDouble(item.getRoad_address().x));
+				input_R.setLatitude(Double.parseDouble(item.getRoad_address().y));
+			}
+		}
+		
+		/***
+		 * KakaoSearch API End
+		 */
+		
+		/** (2) info정보 받아오기 */
+		input_I.setFeeitem(sum_fee);
+		
+		// 주차가능 체크박스에 체크되어 있다면? 금액정보를 가져와 인풋
+		if(parking == 1) {
+			parking = webHelper.getInt("parking_val");
+		}
+		
+		input_I.setParking(parking);
+		input_I.setPet(pet);
+		input_I.setElevator(elevator);
+		input_I.setVeranda(veranda);
+		input_I.setBuiltin(builtin);
+		input_I.setOptionitem(sum_option);
+		input_I.setLoan(loan);
+		input_I.setSupplyarea(supplyarea);
+		input_I.setMaxfloor(maxfloor);
+		input_I.setHeater(heater);
+		input_I.setCommingday(commingday);
+		input_I.setBuildtype(buildtype);
+		input_I.setContent(content);
+		input_I.setRoomno(roomno);
+		
+		
+		
+		/** * * 4) DB 수정하기 * * */
+
+		/** 1. room DB 데이터 수정 */
+		 
+		try {
+			roomService.editRoom(input_R);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		/** 2. info DB 데이터 수정 */
+		
+		try {
+			infoService.editInfo(input_I);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+
+		}
+		
+		/** 3. price DB 데이터 수정 및 추가 저장 {ing} */
+		try {
+			
+			int before = 0;
+			int after = 0;
+			
+			
+			
+			Price input_p = new Price();
+			int priceno_temp = 0;
+			int deposit_temp = 0;
+			int price_temp = 0;
+			
+			for (int i = 0; i < deposits.length; i++) {
+				
+				// 가격테이블번호가 있다면 할당
+				if (pricenos[i] != null || pricenos[i] != "") {
+					priceno_temp = Integer.parseInt(pricenos[i]);
+				}
+				
+				// 보증금값이 있다면 할당
+				if (deposits[i] != null || deposits[i] != "") {
+					deposit_temp = Integer.parseInt(deposits[i]);
+				}
+				
+				// 가격값이 있다면 할당
+				if (prices[i] != null || prices[i] != "") {
+					price_temp = Integer.parseInt(prices[i]);
+				}
+				
+				// 빈즈에담기
+				input_p.setPriceno(priceno_temp);
+				input_p.setDeposit(deposit_temp);
+				input_p.setDealingtype(dealingtypes[i]);
+				input_p.setPrice(price_temp);
+				input_p.setShort_room(short_room);
+				input_p.setRoomno(roomno);
+
+				priceService.editPrice(input_p);
+			}
+				
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		
+		
+		String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input_R.getRoomno();
+		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+		
+	}
+	
+
+	/********************************************************************
 	 * 공실관리
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rmli.do", method = RequestMethod.GET)
@@ -589,71 +895,7 @@ public class HostController {
 		String viewPath = contextPath+"/host/rmli.do";
 		return webHelper.redirect(viewPath, "삭제되었습니다");
 	}
-	
-	/********************************************************************
-	 * 공실관리 매물 상태 수정
-	 *******************************************************************/
-	/**
-	@RequestMapping(value = "/host/rmli_update.do", method = RequestMethod.GET)
-	public ModelAndView update(Model model) {
-		
-		int roomno = webHelper.getInt("roomno");
 
-		Room input_room = new Room();
-		input_room.setRoomno(roomno);
-
-		Info input_info = new Info();
-		input_info.setRoomno(roomno);
-
-		Price input_price = new Price();
-		input_price.setRoomno(roomno);
-
-		UploadItem input_image = new UploadItem();
-		input_image.setRoomno(roomno);
-
-		User input_user = new User();
-
-		Room output_room = null;
-		Info output_info = null;
-		List<Price> output_price = null;
-		List<UploadItem> output_image = null;
-		User output_user = null;
-
-		try {
-
-			output_room = roomService.getRoomItem(input_room);
-			log.info("성공 roomService");
-
-			output_info = infoService.getInfoItem(input_info);
-			log.info("성공 infoService");
-
-			output_price = priceService.getPriceList_by_roomno(input_price);
-			log.info("성공 priceService");
-
-			output_image = uploadService.getImageList_by_roomno(input_image);
-			log.info("성공 uploadService");
-
-			input_user.setUserno(output_room.getUserno());
-			output_user = userService.getUserItem(input_user);
-
-		} catch (Exception e) {
-			log.debug("방 조회에 실패하였습니다.");
-			log.error(e.getLocalizedMessage());
-			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
-		
-		// view 화면으로 보여주기 
-		model.addAttribute("room", output_room);
-		model.addAttribute("info", output_info);
-		model.addAttribute("price", output_price);
-		model.addAttribute("img", output_image);
-		model.addAttribute("user", output_user);
-		
-		String viewPath = contextPath+"/host/rm_add.do";
-		return new ModelAndView(viewPath);
-	}
-	
-	*/
 	
 	/********************************************************************
 	 * 공실관리 공실상태 전환하기
