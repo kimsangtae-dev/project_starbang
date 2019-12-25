@@ -119,7 +119,7 @@
 									<td align="center">${price}만원</td>
 									<td align="center">${name}</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
-									<td align="center"><a href="${pageContext.request.contextPath}/modal/fake_check.do" data-toggle="modal" data-target="#myModal">${fakecount}</a></td>
+									<td align="center"><a href="${pageContext.request.contextPath}/admin/count.do">${fakecount}</a></td>
 									<td align="center" id="hidden">
 									<c:choose><c:when test="${status eq '1'}">확인매물</c:when>
     											<c:when test="${status eq '2'}">허위매물</c:when>

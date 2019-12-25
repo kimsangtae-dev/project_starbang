@@ -7,7 +7,8 @@ import project.star.b2.model.FakeRoom;
 public interface FakeService {
 	 public int addFake(FakeRoom input) throws Exception;
 
-	 public FakeRoom getFakeItem(FakeRoom input) throws Exception;
+	 public List<FakeRoom> getFakeItem(FakeRoom input) throws Exception;
 	 
 	 public List<FakeRoom> getFakeList(FakeRoom input) throws Exception;
-}
+
+	}
