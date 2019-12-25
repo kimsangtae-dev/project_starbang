@@ -1064,7 +1064,7 @@ $(function() {
 
 		for (var i in roomtype_arr){
 			if (roomtype == roomtype_arr[i]){
-				$("input:radio[name='roomtype']:radio[value=" + roomtype_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='roomtype']:radio[value='" + roomtype_arr[i] + "']").attr("checked",true);
 			}
 		}
 	 	 
@@ -1076,7 +1076,7 @@ $(function() {
 
 		for (var i in buildtype_arr){
 			if (buildtype == buildtype_arr[i]){
-				$("input:radio[name='buildtype']:radio[value=" + buildtype_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='buildtype']:radio[value='" + buildtype_arr[i] + "']").attr("checked",true);
 			}
 		}
 	 	
@@ -1132,7 +1132,7 @@ $(function() {
 		
 		for (var i in commingday_arr){
 			if (commingday == commingday_arr[i]){
-				$("input:radio[name='commingday']:radio[value=" + commingday_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='commingday']:radio[value='" + commingday_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1152,7 +1152,7 @@ $(function() {
 		
 		for (var i in pet_arr){
 			if (pet == pet_arr[i]){
-				$("input:radio[name='pet']:radio[value=" + pet_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='pet']:radio[value='" + pet_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1162,7 +1162,7 @@ $(function() {
 		
 		for (var i in elevator_arr){
 			if (elevator == elevator_arr[i]){
-				$("input:radio[name='elevator']:radio[value=" + elevator_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='elevator']:radio[value='" + elevator_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1172,7 +1172,7 @@ $(function() {
 		
 		for (var i in veranda_arr){
 			if (veranda == veranda_arr[i]){
-				$("input:radio[name='veranda']:radio[value=" + veranda_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='veranda']:radio[value='" + veranda_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1182,7 +1182,7 @@ $(function() {
 		
 		for (var i in builtin_arr){
 			if (builtin == builtin_arr[i]){
-				$("input:radio[name='builtin']:radio[value=" + builtin_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='builtin']:radio[value='" + builtin_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1192,7 +1192,7 @@ $(function() {
 		
 		for (var i in loan_arr){
 			if (loan == loan_arr[i]){
-				$("input:radio[name='loan']:radio[value=" + loan_arr[i] + "]").attr("checked",true);
+				$("input:radio[name='loan']:radio[value='" + loan_arr[i] + "']").attr("checked",true);
 			}
 		}
 		
@@ -1205,7 +1205,7 @@ $(function() {
     		for (var i=7; i>=1 ; i--) {
                 if(num1 >= Math.pow(2, i-1)){
                 	num1 = num1 - Math.pow(2, i-1);
-                	$("input:checkbox[name='feeitem']:checkbox[value=" + Math.pow(2, i-1) + "]").attr("checked",true);
+                	$("input:checkbox[name='feeitem']:checkbox[value='" + Math.pow(2, i-1) + "']").attr("checked",true);
                 } // if문
             } // for문
             
@@ -1222,7 +1222,7 @@ $(function() {
     		for (var i=13; i>=1 ; i--) {
                 if(num2 >= Math.pow(2, i-1)){
                 	num2 = num2 - Math.pow(2, i-1);
-                	$("input:checkbox[name='optionitem']:checkbox[value=" + Math.pow(2, i-1) + "]").attr("checked",true);
+                	$("input:checkbox[name='optionitem']:checkbox[value='" + Math.pow(2, i-1) + "']").attr("checked",true);
                 } // if문
             } // for문
 		});// function
