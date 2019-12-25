@@ -174,11 +174,11 @@ public class AdminController {
 		/** 1) 필요한 변수값 생성 */
 		// 삭제할 대상에 대한 PK값
 		String delete = request.getParameter("delete_id");
-		int roomno = Integer.valueOf(delete);
+		int roomno = Integer.valueOf(delete); //String 으로 전달 받기 때문에 int형으로 변환하여 전달한다.
 
 		// 이 값이 존재하지 않는다면 데이터 삭제가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (roomno == 0) {
-			return webHelper.redirect(null, "회원번호가 없습니다.");
+			return webHelper.redirect(null, "삭제될 방이 존재하지 않습니다.");
 		}
 
 		/** 2) 데이터 삭제하기 */
@@ -187,15 +187,13 @@ public class AdminController {
 		input.setRoomno(roomno);
 
 		try {
-			// 데이터 수
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
-			roomService.deleteRoom(input);
+			roomService.deleteRoom(input); //input 값을 받아서 삭제 처리 할수 있게 한다.
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 
 		String viewPath = "admin/rmli";
-		return webHelper.redirect(viewPath, "수정되었습니다");
+		return webHelper.redirect(viewPath, "삭제되었습니다");
 	}
 
 	/****** 체크박스 페이지 ******/
