@@ -270,8 +270,8 @@
         parameterType="project.star.b2.model.Gallery"
         useGeneratedKeys="true"
         keyProperty="heartno">
-        INSERT INTO heart (regdate, editdate, roomno, userno) 
-        VALUES (now(),now(),2,3);
+        INSERT INTO heart (regdate, roomno, userno) 
+        VALUES (now(),2,3);
     </insert>
     
     <!-- 단일행 조회를 위한 기능 정의 -->
