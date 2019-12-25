@@ -196,7 +196,7 @@ public class AdminController {
 		}
 
 		String viewPath = "admin/rmli";
-		return webHelper.redirect(viewPath, "삭제되었습니다");
+		return webHelper.redirect(viewPath, null);
 	}
 
 	/********************************************************************
@@ -222,7 +222,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		String viewPath = "/admin/rmli.do";
-		return webHelper.redirect(contextPath + viewPath, "확인되었습니다");
+		return webHelper.redirect(contextPath + viewPath, null);
 	}
 	
 	/********************************************************************
@@ -249,7 +249,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		String viewPath = "/admin/rmli.do";
-		return webHelper.redirect(contextPath + viewPath, "숨김처리 되었습니다");
+		return webHelper.redirect(contextPath + viewPath, null);
 	}
 	
 	/********************************************************************
@@ -275,7 +275,7 @@ public class AdminController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		String viewPath = "/admin/rmli.do";
-		return webHelper.redirect(contextPath + viewPath, "수정되었습니다");
+		return webHelper.redirect(contextPath + viewPath, null);
 	}
 	
 	
