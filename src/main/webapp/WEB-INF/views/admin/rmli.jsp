@@ -47,13 +47,7 @@
  								<input type="submit" value="확인" class="btn btn-primary">
 							</div>
 							</form>
-<!-- 							<select class="form-control">
-  							<option>전체</option>
-  							<option>확인매물</option>
-  							<option>허위매물</option>
-  							<option>숨김매물</option>
-  							<option>거래완료</option>
-							</select> -->
+
 					<div class="adm-btn">
 					<input type="button" name="" class="btn btn-success" id=confirm-button value="확인매물"> 
 					<input type="button" name="" class="btn btn-info" id=hidden-room value="방 숨기기">
@@ -63,6 +57,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<!-- 조회 결과 목록 -->
 				<table class="table table-striped table-hover">
 					<thead>
@@ -115,7 +110,7 @@
 										value="${item.roomno}" class="roomlist"></td>
 									<td align="center">${roomno}</td>
 									<td align="center">${roomtype}</td>
-									<td align="center">${dealingtype}</a></td>
+									<td align="center">${dealingtype}</td>
 									<td align="center">${price}만원</td>
 									<td align="center">${name}</td>
 									<td align="center" id="confirmdate">${confirmdate}</td>
@@ -132,7 +127,6 @@
 					</c:choose>
 					</tbody>
 				</table>
-				</form>
 			</div>
 		</div>
 		<!-- 하단 영역 -->
@@ -212,7 +206,7 @@
 			</div>
 			<%-- gallery-index --%>
 		</div>
-	</div>
+		
 	<!-- Javascript -->
 	<script
 		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
@@ -302,100 +296,6 @@
 			})
 		}); //end $.ajax;
 
-
-/*  		$(function() {
-			$('#checked-fake').change(function() {
-								alert("체크 확인");
-								var checkeditem = $(".radiobutton:checked").val();
-								$.ajax({
-								//결과 url
-								url : "${pageContext.request.contextPath}/admin/rmli.do",
-								type : "GET",
-								data : {
-									check : checkeditem
-									},
-								success : function(data) {
-									alert(checkeditem);
-									$("body").html(data);
-									},
-								error : function(error, status,request) {
-									alert("Error!" + error + "request: " + request+ " status: " + status);},
-								});
-							})
-		}); //end $.ajax;  */
-	</script>
-	
-			<!-- Handlebar 템플릿 코드 -->
-		<script id="prof-list-tmpl3" type="text/x-handlebars-template">
-{{#each item}}
-								<%-- 출력을 위해 준비한 유저이름과 위치 --%>
-								<c:set var="roomno" value="{{roomno}}]" />
-								<c:set var="roomtype" value="{{roomtype}}" />
-								<c:set var="dealingtype" value="{{dealingtype}}" />
-								<c:set var="price" value="{{price}}" />
-								<c:set var="userno" value="{{name}}" />
-								<c:set var="confirmdate" value="{{confirmdate}}" />
-								<%-- 								<c:set var="fakecount" value="${item.cnt}" /> --%>
-								<c:set var="status" value="{{status}}" />
-								<tr>
-									<td class="text-center"><input type="checkbox" id="aaaa"
-										value="{{roomno}}" class="roomlist"></td>
-									<td align="center">{{roomno}}</td>
-									<td align="center">{{roomtype}}</td>
-									<td align="center">{{dealingtype}}</a></td>
-									<td align="center">{{price}}만원</td>
-									<td align="center"><a href="${viewUrl}">{{userno}}님</td>
-									<td align="center" id="confirmdate">{{confirmdate}}</td>
-									<td align="center">{{fakecount}}</td>
-									<td align="center" id="hidden">{{status}}</td>
-								</tr>
-{{/each}}
-	</script>
-		<!-- user code -->
-		<script
-			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-		<script
-			src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
-		<script>
-/* 	$(function(){
-	$("#checked-item").click(function(){
-		alert("안녕");
-		
-		
-		$.get("${pageContext.request.contextPath}/professor3",
-				{"userno":2}
-		,function(json){	
-			var source = $("#prof-list-tmpl3").html()//템플릿코드
-			var template = Handlebars.compile(source);// 템플릿 컴파일
-			var result = template(json);
-			
-			$("#bbbb").empty(); 
-			$("#bbbb").append(result); 
-		});
-		});
-	}); */
-/* 	$(function() {
-		$("#checked-item").change(function(){	
-				$.ajax({
-					//결과 url
-					url : "${pageContext.request.contextPath}/admin/rmli2.do",
-					type : "POST",
-					data : {
-						check_id : 2
-					},
-					success : function(data) {
-					alert(data);
-					$("body").html(data);
-					check();
-					},
-					error : function(error, status,request) {
-					alert("Error!" + error+ "request: " + request+ " status: " + status);},
-									});
-						})
-	}); //end $.ajax;
-	function check(){
-	$("input:radio[id='checked-item']").prop("checked", true);
-	} */
 	</script>
 </body>
 </html>
