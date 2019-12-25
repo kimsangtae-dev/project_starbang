@@ -94,37 +94,29 @@ public class AdminController {
 	}
 
 	/********************************************************************
-	 * 방 관리
+	 * 방 관리(b2/admin/rmli.do)
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/rmli.do", method = RequestMethod.GET)
-	public ModelAndView rmli(Model model, HttpServletRequest request) {
+	public ModelAndView rmli(Model model) {
 		/** 1) 필요한 변수값 생성 */
-		String keyword = webHelper.getString("keyword", ""); // 검색어
-		int keyword2 = webHelper.getInt("keyword", 0); // 검색어
-		int raval = webHelper.getInt("check");
-//		String val = request.getParameter("check");
-//		int radioval = Integer.parseInt(val);
-//		String[] values = request.getParameterValues("check");
+		String keyword = webHelper.getString("keyword", ""); // 검색어를 위한 변수 처리
+		int raval = webHelper.getInt("check"); // 체크박스를 통한 값 조회를 위한 변수 생성, submit을 통해 파라미터로 받는다.
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
-//		for (int i=0; i < values.length; i++) {
-//			values[i] = 
-//		}
-
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Room input = new Room();
-		input.setStatus(raval);
+		input.setStatus(raval); //Status 컬럼을 조회하기 위해서 setStatus에 input에서 전달받은 raval값을 넣는다.
 		input.setRoomtype(keyword);
 		input.setName(keyword);
 		input.setDealingtype(keyword);
 
 		List<Room> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산할 결과가 저장될 객체
-		String rememberChecked = "";
+		String rememberChecked = ""; //체크박스 값을 담기 위한 변수 생성
 
 		try {
 			// 전체 게시글 수 조회
@@ -138,28 +130,29 @@ public class AdminController {
 			// 데이터 조회하기
 			output = roomService.getRoomList(input);
 
-			if (raval == 1) {
+			/** 데이터 조회시 input 조건에 따른 다른 결과값을 받기 위한 처리*/
+			if (raval == 1) { // 확인매물
 				output = roomService.getRoomCheckList(raval);
-				rememberChecked = "1"; // 확인매물
+				rememberChecked = "1"; //체크박스 유지를 위한 값 처리
 				totalCount = roomService.getRoomCount(input);
 				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			} else if (raval == 2) {
+			} else if (raval == 2) { // 허위매물
 				output = roomService.getRoomCheckList(raval);
-				rememberChecked = "2"; // 허위매물
+				rememberChecked = "2"; 
 				totalCount = roomService.getRoomCount(input);
 				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			} else if (raval == 3) {
+			} else if (raval == 3) { // 숨김매물
 				output = roomService.getRoomCheckList(raval);
-				rememberChecked = "3"; // 숨김매물
+				rememberChecked = "3"; 
 				totalCount = roomService.getRoomCount(input);
 				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
-			} else if (raval == 4) {
+			} else if (raval == 4) { // 숨김매물
 				output = roomService.getRoomCheckList(raval);
-				rememberChecked = "4"; // 숨김매물
+				rememberChecked = "4"; 
 				totalCount = roomService.getRoomCount(input);
 				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			} else {
-				output = roomService.getRoomList(input);
+				output = roomService.getRoomList(input); //전체 매물
 			}
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -169,8 +162,8 @@ public class AdminController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
-		model.addAttribute("rememberChecked", rememberChecked);
-
+		model.addAttribute("rememberChecked", rememberChecked); //체크박스를 유지하기 위한 변수, View페이지에서 처리 할 수 있게 한다.
+		
 		String viewPath = "admin/rmli";
 		return new ModelAndView(viewPath);
 	}
