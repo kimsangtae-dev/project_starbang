@@ -159,9 +159,9 @@ public class AdminController {
 		}
 
 		/** 3)View 처리 */
-		model.addAttribute("keyword", keyword);
+		model.addAttribute("keyword", keyword); //검색어
 		model.addAttribute("output", output);
-		model.addAttribute("pageData", pageData);
+		model.addAttribute("pageData", pageData); //페이지 번호
 		model.addAttribute("rememberChecked", rememberChecked); //체크박스를 유지하기 위한 변수, View페이지에서 처리 할 수 있게 한다.
 		
 		String viewPath = "admin/rmli";
@@ -228,6 +228,7 @@ public class AdminController {
 	/********************************************************************
 	 * 숨김매물 버튼 클릭을 통한 숨김 매물 설정 기능
 	 *******************************************************************/
+	
 	@RequestMapping(value = "/admin/hidden_ok.do", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView room_hidden_ok(Model model, HttpServletRequest request) {
@@ -250,25 +251,25 @@ public class AdminController {
 		String viewPath = "/admin/rmli.do";
 		return webHelper.redirect(contextPath + viewPath, "숨김처리 되었습니다");
 	}
-	/**
-	 * fake 페이지에 대한 방 action 페이지
-	 */
+	
+	/********************************************************************
+	 * 허위매물 버튼 클릭을 통한 허위 매물 설정 기능
+	 *******************************************************************/
+	
 	@RequestMapping(value = "/admin/fake_ok.do", method = RequestMethod.POST)
-	@ResponseBody
 	public ModelAndView room_fake_ok(Model model, HttpServletRequest request) {
 
 		/** 데이터 받기 */
-		String hidden = request.getParameter("fake_id");
-		int roomno = Integer.valueOf(hidden);
+		String fake = request.getParameter("fake_id"); //버튼클릭을 통해 클릭값을 받는다.
+		int roomno = Integer.valueOf(fake);
 
 		/** 2) 데이터 수정하기 */
 		// 저장할 값들을 Beans에 담는다.
 		Room input = new Room();
-		input.setRoomno(roomno);
+		input.setRoomno(roomno); //조회 할 방번호를 input에 넣는다.
 
 		try {
-			// 데이터 수
-			// --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+			// 허위 매물 처리 하고자 하는 방에 넣어 처리할 수 있게 한다.
 			roomService.editFakeRoom(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
