@@ -487,8 +487,7 @@
 	
 	* 주의사항 위반시 허위매물로 간주되어 매물 삭제 및 이용의 제한이 있을 수 있습니다.
 	
-	* 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다.">
-									</textarea>
+	* 다방의 매물등록 규정에 위반되는 금칙어는 등록이 불가합니다."></textarea>
 								</td>
 							</tr>
 						</tbody>
@@ -551,7 +550,6 @@
 		
 	</div>
 	<!-- box 끝 -->
-
 
 
 	<!-- Javascript -->
@@ -818,12 +816,7 @@ $(function() {
         });
     });
 
-	$(function() {
-		$("#uploadPhoto").click(function(e){	
-			e.preventDefault();
-    		$("#addfile").trigger('click');
-    	});
-	}); 
+	
 
 
 	/* 유효성검사 */
@@ -842,19 +835,25 @@ $(function() {
 	    return true;
 	}
     
-	//이미지 정보들을 담을 배열
-	var sel_files = [];
 	
-	//대기타다가 input에 change가 있을경우 handleImgFileSelect 함수실행
+	
+	$(function() {
+		$("#uploadPhoto").click(function(e){	
+			e.preventDefault();
+    		$("#addfile").trigger('click');
+    	});
+	}); 
+	
+	//대기하다 input에 change가 있을경우 handleImgFileSelect 함수실행
 	$(document).ready(function() {
 	    $("#addfile").on("change", handleImgFileSelect);
 	}); 
 	
-	function handleImgFileSelect(e) {
-	    // 이미지 정보들을 초기화
-	    sel_files = [];
-	    /* $(".up_list").empty(); */
+	var sel_files = [];		//이미지 정보들을 담을 배열
+	sel_files = [];			// 이미지 정보들을 초기화
 	
+	function handleImgFileSelect(e) {
+		
 	    var files = e.target.files;
 	    var filesArr = Array.prototype.slice.call(files);
 	    var index = 0;
@@ -863,8 +862,9 @@ $(function() {
 	    filesArr.forEach(function(f) {
 	        if(!f.type.match("image.*")) {
 	            alert("확장자는 이미지 확장자만 가능합니다.");
-		// return;
+				return;
 	        }
+	        
 	        sel_files.push(f);
 	
 	        var reader = new FileReader();
@@ -973,17 +973,13 @@ $(function() {
 	    
 	    
 		/* 중복클릭 방지 */
-	    var doubleSubmitFlag = false;
-	    console.log(doubleSubmitFlag);
-        if(doubleSubmitFlag){
-        	log.console()
+	    var preventSubmit = false;
+        if(preventSubmit){
             alert('저장 중입니다.');
         	console.log("트루로 변환 보냈습니다.");
         }else {
             $(this).unbind().submit();
-            doubleSubmitFlag = true;
-            console.log("보내고 트루");
-            console.log(doubleSubmitFlag);
+            preventSubmit = true;
         }
 
 	});
