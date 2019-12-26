@@ -733,45 +733,111 @@ public class HostController {
 		}
 		
 		/** 3. price DB 데이터 수정 및 추가 저장 {ing} */
-		try {
-			
-			int before = 0;
-			int after = 0;
-			
-			
+		try {		
 			
 			Price input_p = new Price();
 			int priceno_temp = 0;
 			int deposit_temp = 0;
 			int price_temp = 0;
 			
-			for (int i = 0; i < deposits.length; i++) {
+			int priceno_size = pricenos.length;
+			int deposit_size = deposits.length;
+			
+			
+			// 수정하는 경우의 수
+			if (priceno_size == deposit_size) {
 				
-				// 가격테이블번호가 있다면 할당
-				if (pricenos[i] != null || pricenos[i] != "") {
-					priceno_temp = Integer.parseInt(pricenos[i]);
-				}
-				
-				// 보증금값이 있다면 할당
-				if (deposits[i] != null || deposits[i] != "") {
-					deposit_temp = Integer.parseInt(deposits[i]);
-				}
-				
-				// 가격값이 있다면 할당
-				if (prices[i] != null || prices[i] != "") {
-					price_temp = Integer.parseInt(prices[i]);
-				}
-				
-				// 빈즈에담기
-				input_p.setPriceno(priceno_temp);
-				input_p.setDeposit(deposit_temp);
-				input_p.setDealingtype(dealingtypes[i]);
-				input_p.setPrice(price_temp);
-				input_p.setShort_room(short_room);
-				input_p.setRoomno(roomno);
+				for (int i = 0; i < deposits.length; i++) {
+					
+					if (pricenos[i] != null || pricenos[i] != "") { priceno_temp = Integer.parseInt(pricenos[i]); }		// 가격테이블번호가 있다면 할당
+					if (deposits[i] != null || deposits[i] != "") { deposit_temp = Integer.parseInt(deposits[i]); }		// 보증금값이 있다면 할당
+					if (prices[i] != null || prices[i] != "") 	  { price_temp = Integer.parseInt(prices[i]); }			// 가격값이 있다면 할당
 
-				priceService.editPrice(input_p);
+					// 빈즈에 담기
+					input_p.setPriceno(priceno_temp);
+					input_p.setDeposit(deposit_temp);
+					input_p.setDealingtype(dealingtypes[i]);
+					input_p.setPrice(price_temp);
+					input_p.setShort_room(short_room);
+					input_p.setRoomno(roomno);
+
+					priceService.editPrice(input_p);
+				}
+				
+			} 
+			// 추가하는 경우의 수
+			else if(priceno_size < deposit_size) {
+				// (p) <-- priceno = 361,362,364
+				// (p) <-- deposit = -1,1,3,500,-1
+				
+				// 수정하기
+				for (int i = 0; i < priceno_size; i++) {
+					
+					if (pricenos[i] != null || pricenos[i] != "") { priceno_temp = Integer.parseInt(pricenos[i]); }		// 가격테이블번호가 있다면 할당
+					if (deposits[i] != null || deposits[i] != "") { deposit_temp = Integer.parseInt(deposits[i]); }		// 보증금값이 있다면 할당
+					if (prices[i] != null || prices[i] != "") 	  { price_temp = Integer.parseInt(prices[i]); }			// 가격값이 있다면 할당
+
+					// 빈즈에 담기
+					input_p.setPriceno(priceno_temp);
+					input_p.setDeposit(deposit_temp);
+					input_p.setDealingtype(dealingtypes[i]);
+					input_p.setPrice(price_temp);
+					input_p.setShort_room(short_room);
+					input_p.setRoomno(roomno);
+
+					priceService.editPrice(input_p);
+				}
+				
+				// 추가하기
+				for (int i = priceno_size; i < deposit_size; i++) {
+
+					if (deposits[i] != null || deposits[i] != "") { deposit_temp = Integer.parseInt(deposits[i]); }		// 보증금값이 있다면 할당
+					if (prices[i] != null || prices[i] != "") 	  { price_temp = Integer.parseInt(prices[i]); }			// 가격값이 있다면 할당
+
+					// 빈즈에 담기
+					input_p.setDeposit(deposit_temp);
+					input_p.setDealingtype(dealingtypes[i]);
+					input_p.setPrice(price_temp);
+					input_p.setShort_room(short_room);
+					input_p.setRoomno(roomno);
+
+					priceService.addPrice(input_p);
+				}
+				
+				
 			}
+			
+			/**
+			 * UPLOAD 
+			 */
+
+			// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
+			for (UploadItem item : fileList) {
+				
+				item.setFieldName(item.getFieldName());
+				item.setOriginName(item.getOriginName());
+				item.setFilePath(item.getFilePath());
+				item.setContentType(item.getContentType());
+				item.setFileSize(item.getFileSize());
+				item.setFileName(item.getFileName());
+				item.setRegDate(item.getRegDate());
+				item.setEditDate(item.getEditDate());
+				item.setRoomno(input_R.getRoomno());
+				log.debug("업로드 될 항목" + item.toString());
+
+				// DB에 저장하기
+				try {
+					uploadService.addUploadItem(item);
+				} catch (Exception e) {
+					log.error(e.getLocalizedMessage());
+					e.printStackTrace();
+					return webHelper.redirect(null, e.getLocalizedMessage());
+				}	
+			}//end for	
+			
+			
+			
+			
 				
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -780,7 +846,7 @@ public class HostController {
 		
 		
 		String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input_R.getRoomno();
-		return webHelper.redirect(redirectUrl, "저장되었습니다.");
+		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 		
 	}
 	
