@@ -21,6 +21,7 @@ import project.star.b2.model.FakeRoom;
 import project.star.b2.model.User;
 import project.star.b2.service.RoomService;
 import project.star.b2.service.UserService;
+import project.star.b2.service.UserService;
 
 @Controller
 public class ModalController {
@@ -33,6 +34,7 @@ public class ModalController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired UserService userService;
 	@Autowired RoomService roomService;
+	@Autowired GalleryService galleryService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -108,7 +110,7 @@ public class ModalController {
 		/** 3) 결과를 확인하기 위한 페이지 이동 */
 		// 저장 결과를 확인하기 위해서 데이터 저장시 생성된 PK값을 상세 페이지로 전달해야 한다.
 		String redirectUrl = contextPath + "/";
-		
+
 		return webHelper.redirect(redirectUrl, "저장되었습니다.");
 	}
 
@@ -118,56 +120,56 @@ public class ModalController {
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/login.do", method = RequestMethod.GET)
 	public ModelAndView login(Model model, HttpServletRequest request) {
-		
-     
+
+
         return new ModelAndView("modal/login");
 	}
 
-	
+
 	/********************************************************************
 	 * 로그인 action폼
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request) {
-		
+
 
 		// 1) 사용자가 입력한 파라미터 수신 및 필수값 검사 */
-		String email = webHelper.getString("email"); 
+		String email = webHelper.getString("email");
 		String passwd = webHelper.getString("passwd");
-			
-		
-		// 필수 값의 존재여부 검사 
-		if (email == null || email.contentEquals("")) { 
+
+
+		// 필수 값의 존재여부 검사
+		if (email == null || email.contentEquals("")) {
 			return webHelper.redirect(null, "아이디를 입력하세요."); }
-		
-		if (passwd == null || passwd.contentEquals("")) { 
+
+		if (passwd == null || passwd.contentEquals("")) {
 			return webHelper.redirect(null, "비밀번호를 입력하세요."); }
- 
-		
+
+
 		// 2) 사용자가 입력한 값을 Beans에 저장
 		User input = new User();
 		input.setEmail(email);
-		
-		
-		// 조회결과를 저장할 객체 선언 
+
+
+		// 조회결과를 저장할 객체 선언
 		User output = null;
-		
-		try { 
-			//데이터 조회 
-		  	output = userService.getUserLogin(input); 
-		} catch (Exception e) { 
+
+		try {
+			//데이터 조회
+		  	output = userService.getUserLogin(input);
+		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage()); }
-		
+
 		/* request 객체를 사용해서 세션 객체 만들기 */
 		HttpSession session = request.getSession();
-	
-		// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성   
+
+		// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성
 		if ( passwd.equals(output.getPasswd())) {
 			session.setAttribute("loginInfo", output);
-		} else {	
+		} else {
 			return webHelper.redirect(null, "비밀번호가 잘못되었습니다.");
-		} 
-		
+		}
+
 		// 로그인 이전 페이지로 보내주는 처리
 		request.getHeader("REFERER");
 	    String referer = (String)request.getHeader("REFERER");
@@ -181,32 +183,32 @@ public class ModalController {
 
 	@RequestMapping(value = "/modal/login_out.do", method = RequestMethod.GET)
 	public ModelAndView login_out(Model model, HttpServletRequest request) {
-		// request 객체를 사용해서 세션 객체 만들기 
+		// request 객체를 사용해서 세션 객체 만들기
 		HttpSession session = request.getSession();
-		
+
 		/* session 삭제 */
 		session.removeAttribute("loginInfo");
-	
+
 		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
 	}
 
-	
+
 	/********************************************************************
-	 * 중복확인 
+	 * 중복확인
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/idCheck.do",method = RequestMethod.GET)
 	@ResponseBody
 	public String idCheck(HttpServletRequest request) throws Exception {
-		
+
 		// 사용자 입력 값 가져오기
 		String email = request.getParameter("email");
 
-		// DB에 있는 입력값과 비교하기 
+		// DB에 있는 입력값과 비교하기
 		int result = userService.idCheck(email);
 		return Integer.toString(result);
 	}
- 
+
 
 	/********************************************************************
 	 * 비밀번호 찾기 폼
@@ -226,9 +228,49 @@ public class ModalController {
 
 		return new ModelAndView("modal/compare");
 	}
-	
-	
-    /** 허위매물 신고에 대한 action 페이지 */
+
+	/********************************************************************
+	 * AJAX 호출 (찜한방 - 비교하기)
+	 *******************************************************************/
+    @RequestMapping(value="/modal/comparelist.do", method=RequestMethod.POST)
+    public ModelAndView comparelist(Model model,
+            @RequestParam(value="checkArray[]") List<String> arrayParams,
+            @RequestParam(value="userId") String userId) {
+
+    	// 파라미터로 받아온 userid 확인용
+        System.out.println("=user=");
+        System.out.println(userId);
+
+        // 파라미터로 받아온 방 번호들 확인용
+        System.out.println("=roomno=");
+        for(String hahat : arrayParams) {
+            System.out.println(hahat);
+        }
+
+        /** 2)데이터 조회하기 */
+		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        //Gallery input = new Gallery();
+		//input.setRegion_2depth_name(region);
+
+        List<String> list = arrayParams;
+		List<Gallery> output = null;
+
+		try {
+			// 쿠키로 저장된 방번호로 조회
+			output = galleryService.getCompareList(list);
+		} catch (Exception e) {
+			return new ModelAndView("main/wish");
+		}
+
+
+		/** view 화면으로 보여주기 */
+		model.addAttribute("output", output);
+        return new ModelAndView("modal/compare");
+    }
+
+	/********************************************************************
+	 * 허위매물 신고에 대한 action 페이지
+	 *******************************************************************/
     @RequestMapping(value = "/modal/fake_ok.do", method = RequestMethod.POST)
     public ModelAndView fake_ok(Model model) {
         /** 1) 사용자가 입력한 파라미터 수신 및 유효성 검사 */
