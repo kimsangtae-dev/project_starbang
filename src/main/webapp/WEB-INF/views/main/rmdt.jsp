@@ -466,15 +466,6 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<!-- 지도 끝 -->
 		<!--매물 이미지 끝-->
 
-		<!-- 현재 로그인한 사용자의 해당 매물 신고 여부 -->
-		<c:choose>
-            <c:when test="${fake != null}">
-                <input type="hidden" value="${fake.singo}" id="fake_singo"/>
-            </c:when>
-            <c:otherwise>
-                <input type="hidden" value="0" id="fake_singo"/>
-            </c:otherwise>
-        </c:choose>
 	</div>
 	<!-- 하단 영역 -->
 	<jsp:include page="../assets/inc/ma_bottom.jsp" />
@@ -1035,7 +1026,7 @@ function binary2() {
             if (loginInfo == "") { singo = 0; }
             else { singo = "${loginInfo.userno}"; }
 
-            var fake_singo = $("#fake_singo").val();    // 이미 신고한 회원인지 구별하기
+            var fake_singo = "${fake.singo}";    // 이미 신고한 회원인지 구별하기
 
             if (!reason) {
                 alert("신고 사유를 선택해주세요.");
