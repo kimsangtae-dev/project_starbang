@@ -289,15 +289,17 @@
 							<li>
 								<div class="recent-div5">
 									<div class="recent-div6">
+										<input type="hidden" value="${item.roomno}" class="room_num">
 										<div class="recent-div7">
 											<div class="recent-div8 off" data-value="on"></div>
 										</div>
+										
 										<a target="_blank" rel="" class="recent-a"
 											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
+
 											<!-- 이미지 -->
 											<div class="recent-a-div">
-												<img
-													src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+												<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
 											</div> <c:if test="${item.confirmdate != null}">
 												<div class="recent-a-confirm">
 													<div class="recent-a-confirm-div">
@@ -447,21 +449,18 @@
 									<li>
 										<div class="recent-div5">
 											<div class="recent-div6">
-											<input type="hidden" value="{{roomno}}" class="room_num">
+
+												<input type="hidden" value="{{roomno}}" class="room_num">
 												<%-- 좋아요 버튼 --%>
 												{{#session roomno}}
 												{{else}}
 												{{/session}}
-												<div class="recent-div7">
-													<div class="recent-div8 off" data-value="on"></div>
-												</div>
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
 												<a target="_blank" rel="" class="recent-a"
 													href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
 													<!-- 이미지 -->
 													<div class="recent-a-div">
-														<input type="hidden" id="getpopular" value="{{roomno}}"/>
 														<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
 													</div>
 														<%-- 확인매물 div --%>
@@ -502,13 +501,67 @@
 		<script
 			src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
 		<script>
+		
+	    var session = "${logininfo}"; //세션 식별을 위한 값
+	    
 	$(function(){
 	$("#tab2").click(function(){
-		
-		
 		$.get("${pageContext.request.contextPath}/professor",
 				{"userno":2}
-		,function(json){	
+		,function(json){
+			
+			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+       		  if (dealingtype == '월세') {
+       		    return options.fn(this);
+       		  } else {
+       		    return options.inverse(this);
+       		  }
+       		});
+       		
+       		Handlebars.registerHelper('isOver', function(price, options) {
+         		if (price >= 10000 && price%10000 != 0) {
+         			return Math.floor(price/10000) +"억" + price%10000;
+         		} else {
+         			return price;
+         		}
+         	});
+       		
+       		Handlebars.registerHelper('isOver2', function(deposit, options) {
+         		if (deposit >= 10000 && deposit%10000 != 0) {
+         			return Math.floor(deposit/10000) +"억" + deposit%10000;
+         		} else {
+         			return deposit;
+         		}
+         		
+         	});
+       	
+              /** 세션 식별하기 **/
+              Handlebars.registerHelper('session', function(roomno, options) {
+                  if (session == null || session == "") {
+                  	var heart_div = '<div class="recent-div7">'
+                  		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                  		heart_div += '</div>'
+                  	return heart_div;
+                  }
+                  else {
+                  	for (var i=0; i<json.heart.length; i++) {
+                  		if (json.heart[i].roomno == roomno) {
+                  			var heart_div = '<div class="recent-div7">'
+                          		heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                          		heart_div += '</div>'
+                          	return heart_div;
+                  		}
+                  	}
+                  	for (var i=0; i<json.heart.length; i++) {
+                  		if (json.heart[i].roomno != roomno) {
+                  			var heart_div = '<div class="recent-div7">'
+                          		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                          		heart_div += '</div>'
+                          	return heart_div;
+                  		}
+                  	}
+                  }
+              });
 			var source = $("#prof-list-tmpl").html()//템플릿코드
 			var template = Handlebars.compile(source);// 템플릿 컴파일
 			var result = template(json);
@@ -535,44 +588,6 @@
 		});
 		});
 	
-/*    	$(document).on(function(){
-		$.get("${pageContext.request.contextPath}/professor2",
-				{"userno":1}
-		,function(json){
-			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-         		  if (dealingtype == '월세') {
-         		    return options.fn(this);
-         		  } else {
-         		    return options.inverse(this);
-         		  }
-         		});
-         		
-         		Handlebars.registerHelper('isOver', function(price, options) {
-           		if (price >= 10000 && price%10000 != 0) {
-           			return Math.floor(price/10000) +"억" + price%10000;
-           		} else {
-           			return price;
-           		}
-           	});
-         		
-         		Handlebars.registerHelper('isOver2', function(deposit, options) {
-           		if (deposit >= 10000 && deposit%10000 != 0) {
-           			return Math.floor(deposit/10000) +"억" + deposit%10000;
-           		} else {
-           			return deposit;
-           		}
-           	});
-         		
-			var source = $("#prof-list-tmpl").html()//템플릿코드
-			var template = Handlebars.compile(source);// 템플릿 컴파일
-			var result = template(json);
-			
-			$(".tabs > li:nth-child(1)").css("color","black");
-			$(".tabs > li:nth-child(2)").css("color","gray");
-			$(".recent-div4").empty();
-			$(".recent-div4").append(result);
-		});
-		});    */
 	
 	$("#tab1").click(function(){
 		$.get("${pageContext.request.contextPath}/professor2",
@@ -618,15 +633,11 @@
 				});
 			});
 		});
-		});
-		/** roomno 스크립트로 가져오기 */
-        $(document).on('click', '.recent-div8', function(e){
-        	var value = $('#getpopular').val();
-        	$(this).val(value);
-			console.log(value);        
+		});      
         });
 	
-        var session = "${logininfo}";	
+    var session = "${logininfo}"; //세션 식별을 위한 값
+    
   	$(document).ready(function(){ //인기있는 방 AJAX
 		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
 		,function(json){
@@ -664,16 +675,16 @@
                     	return heart_div;
                     }
                     else {
-                    	for (var i=0; i<json.item.length; i++) {
-                    		if (json.item[i].roomno == roomno) {
+                    	for (var i=0; i<json.heart.length; i++) {
+                    		if (json.heart[i].roomno == roomno) {
                     			var heart_div = '<div class="recent-div7">'
                             		heart_div += '<div class="recent-div8 on" data-value="off"></div>'
                             		heart_div += '</div>'
                             	return heart_div;
                     		}
                     	}
-                    	for (var i=0; i<json.item.length; i++) {
-                    		if (json.item[i].roomno != roomno) {
+                    	for (var i=0; i<json.heart.length; i++) {
+                    		if (json.heart[i].roomno != roomno) {
                     			var heart_div = '<div class="recent-div7">'
                             		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                             		heart_div += '</div>'
@@ -693,15 +704,16 @@
 			$(".popular-div4").append(result);
 			
 			/* 좋아요 클릭 -> 하트 색 변경 */
-			$(function() {
+ 			$(function() {
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
 					var onoff = $(this).hasClass("on");
 		               if(onoff ==true){
 		            	   alert("안녕")
-		            	   var a = "${logininfo.userno}"; //로그인한 유저넘버
+		            	   var a = '${logininfo}'; //로그인한 유저넘버
 		            	   var b = $(this).parent().prev().val();
-		                    alert(b);
+		            	   console.log(a);
+							console.log(b);		            	   
 		                    $.ajax({
 				            url: "${pageContext.request.contextPath}/like",
 				            method: "GET",
@@ -710,21 +722,31 @@
 				            	},
 				            success:function(data){
 				            	alert("hello");
-				            	alert(data.item);
 				            	}
 				            }); 
 					
 		               }else{
-		            		alert("잘가요")   
-		            	   }
-
-					 
+		            		alert("잘가요")
+		            		var a = "${logininfo.userno}"; //로그인한 유저넘버
+			            	var b = $(this).parent().prev().val();
+		            		console.log(b);
+		            		
+			            	$.ajax({
+					            url: "${pageContext.request.contextPath}/dislike",
+					            method: "GET",
+					            data: {"userno":a,
+					            	"roomno":b
+					            	},
+					            success:function(data){
+					            	alert("삭제함!");
+					            	}
+					            }); 
+		            	   } 
 			});
 		});
 		});
 		}); 
   	
-	});
 </script>	
 </body>
 </html>

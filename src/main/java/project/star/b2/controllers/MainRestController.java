@@ -163,12 +163,25 @@ public class MainRestController {
 	int totalCount = 0; // 전체 게시글 수
 	int listCount = 4; // 한 페이지당 표시할 목록 수
 	int pageCount = 1; // 한 그룹당 표시할 페이지 번호 수
+	
+	/*---세션 불러오기 ----*/
+    HttpSession session = request.getSession();
+    User loginInfo = (User) session.getAttribute("loginInfo");
+    int userno = 0;
+    if (loginInfo != null) {
+        userno = loginInfo.getUserno();
+    }
 
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		Popular input = new Popular();
-
 		List<Popular> output = null; // 조회결과가 저장될 객체
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
+
+
 		PageData pageData = null;
 
 		try {
@@ -181,6 +194,7 @@ public class MainRestController {
 			Popular.setOffset(pageData.getOffset());
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
+			if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
 			output = galleryService.getPopularGalleryList(input);
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
@@ -191,6 +205,7 @@ public class MainRestController {
 	data.put("keyword",keyword);
 	data.put("item",output);
 	data.put("meta",pageData);
+	data.put("heart", heartlist);
 	
 	return webHelper.getJsonData(data);
 }
@@ -238,10 +253,44 @@ public class MainRestController {
 
 		Heart output = null;
 
-
 		try {
 			//데이터 저장
 			heartService.addHeart(input);
+			
+			//데이터 조회
+			//output = heartService.getHeartItem(input);
+
+		} catch (Exception e) {
+			return webHelper.getJsonError(e.getLocalizedMessage());
+
+		}
+
+
+	/** 3)Json 출력 하기  */
+	Map<String, Object>data = new HashMap<String, Object>();
+	data.put("item",output);
+	
+	return webHelper.getJsonData(data);
+}
+	
+	/********************************************************************
+	 * AJAX로 좋아요  삭제하기
+	 *******************************************************************/
+	@RequestMapping(value ="/dislike", method = RequestMethod.GET)
+	public Map<String, Object>get_dislike(HttpServletRequest request){
+		
+		int newuserno = webHelper.getInt("userno");
+		int newroomno = webHelper.getInt("roomno");
+
+		Heart input = new Heart();
+		input.setRoomno(newroomno);
+		input.setUserno(newuserno);
+
+		Heart output = null;
+
+		try {
+			//데이터 삭제
+			heartService.deleteHeart(input);
 			
 			//데이터 조회
 			//output = heartService.getHeartItem(input);

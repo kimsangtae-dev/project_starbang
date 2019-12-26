@@ -296,6 +296,12 @@
         resultMap="galleryMap">
         SELECT * FROM Heart
     </select>
+    
+    <!-- 데이터 삭제를 위한 기능 정의 -->
+	<delete id="deleteItem"
+		parameterType="project.star.b2.model.Gallery">
+		DELETE FROM Heart WHERE roomno=#{roomno} AND userno=#{userno};
+	</delete>
 
 	<!-- 찜한방(체크박스 value로 조회) 다중행 조회를 위한 기능 정의 -->
 	<select id="CompareList"

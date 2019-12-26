@@ -2,6 +2,7 @@ package project.star.b2.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +20,7 @@ import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.FakeRoom;
 import project.star.b2.model.User;
+import project.star.b2.service.FakeService;
 import project.star.b2.service.RoomService;
 import project.star.b2.service.UserService;
 
@@ -33,6 +35,7 @@ public class ModalController {
 	/** Service 패턴 구현체 주입 */
 	@Autowired UserService userService;
 	@Autowired RoomService roomService;
+	@Autowired FakeService fakeService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")
@@ -260,8 +263,26 @@ public class ModalController {
 	 * 관리자페이지 - 신고사유
 	 *******************************************************************/
 	@RequestMapping(value = "/modal/adminfake.do", method = RequestMethod.GET)
-	public ModelAndView fake_check() {
+	public ModelAndView fake_check(Model model, HttpServletRequest request) {
+		
+        int roomno1 = webHelper.getInt("roomno");
 
+        /** 2) 데이터 저장하기 */
+        // 저장할 값들을 Beans에 담는다.
+        FakeRoom input = new FakeRoom();
+        input.setRoomno(roomno1);
+        
+        List<FakeRoom> output = null;
+
+        try {
+            // 데이터 저장
+            // --> 데이터 저장에 성공하면 파라미터로 전달하는 input 객체에 PK값이 저장된다.
+            output = fakeService.getFakeList(input);
+        } catch (Exception e) {
+            return webHelper.redirect(null, e.getLocalizedMessage());
+        }
+		
+		model.addAttribute("output", output);
 		return new ModelAndView("modal/adminfake");
 	}
 }

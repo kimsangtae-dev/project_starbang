@@ -31,6 +31,13 @@
                 roomno=#{roomno} AND singo=${singo}
             </if>
         </where>
+            </select>
+ 	
+ 	<!-- 다중행 조회를 위한 기능 정의 -->           
+     <select id="selectList"
+        parameterType="project.star.b2.model.FakeRoom"
+        resultMap="fakeMap">
+        SELECT * FROM fakeroom WHERE roomno=#{roomno}
     </select>
 
 </mapper>

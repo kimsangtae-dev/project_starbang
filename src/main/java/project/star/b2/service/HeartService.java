@@ -26,6 +26,8 @@ public interface HeartService {
     public int getHeartGalleryCount(Heart input) throws Exception;
     
     public int addHeart(Heart input) throws Exception;
+    
+    public int deleteHeart(Heart input) throws Exception;
 
 	public Heart getHeartItem(Heart input) throws Exception;
 }
