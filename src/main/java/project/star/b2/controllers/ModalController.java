@@ -2,6 +2,10 @@ package project.star.b2.controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,15 +16,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.FakeRoom;
+import project.star.b2.model.Gallery;
 import project.star.b2.model.User;
+import project.star.b2.service.GalleryService;
 import project.star.b2.service.RoomService;
-import project.star.b2.service.UserService;
 import project.star.b2.service.UserService;
 
 @Controller
