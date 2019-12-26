@@ -1175,7 +1175,7 @@ select::-ms-expand { display:none; }
 
 .up-d {
     float: left;
-    width: 224px;
+    width: 219px;
     height: 165px;
     position: relative;
     z-index: 1;
@@ -1292,7 +1292,7 @@ select::-ms-expand { display:none; }
 
 .register-after-d {
     float: left;
-    width: 224px;
+    width: 219px;
     height: 165px;
     position: relative;
     padding: 10px;
