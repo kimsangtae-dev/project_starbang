@@ -571,7 +571,6 @@
 		});    */
 	
 	$("#tab1").click(function(){
-
 		$.get("${pageContext.request.contextPath}/professor2",
 				{"userno":1}
 		,function(json){
@@ -658,8 +657,7 @@
 			$(function() {
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
-					alert("실행");
-					 $.ajax({
+/* 					 $.ajax({
 				            url: "${pageContext.request.contextPath}/like",
 				            method: "GET",
 				            data: {"userno":3},
@@ -667,9 +665,10 @@
 				            	alert("hello");
 				            	alert(data.item);
 				            	}
-				            });
-					
-		}); 
+				            }); 
+					}*/
+					 
+			});			
 		});
 		});
 		}); 
