@@ -53,11 +53,23 @@ public interface GalleryService {
 
     public int getGalleryCount(Popular input) throws Exception;
 
+    /**
+     * @param 쿠키를 이용해서 최근 본 방 목록 조회
+     * @return
+     * @throws Exception
+     */
     public List<Gallery> getCookieList(List<String> input) throws Exception;
-    
+
     public List<Gallery> getCookieMainList(List<String> input) throws Exception;
-    
+
     public int getGalleryCount2(Popular input) throws Exception;
-    
+
     public List<Heart> getHeartList(Heart input) throws Exception;
+
+    /**
+     * @param 체크박스 값들을 가져와서 비교하기 목록 조회
+     * @return
+     * @throws Exception
+     */
+    public List<Gallery> getCompareList(List<String> input) throws Exception;
 }
