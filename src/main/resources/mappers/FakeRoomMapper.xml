@@ -17,8 +17,8 @@
 	<insert id="insertItem"
 		parameterType="project.star.b2.model.FakeRoom" useGeneratedKeys="true"
 		keyProperty="fakeno">
-	INSERT INTO fakeroom (regdate, reason, roomno, userno)
-	VALUES (now(), #{reason}, #{roomno}, #{userno});
+	INSERT INTO fakeroom (regdate, reason, roomno, userno, singo)
+	VALUES (now(), #{reason}, #{roomno}, #{userno}, #{singo});
 	</insert>
 	
 	<!-- 단일행 조회를 위한 기능 정의 -->

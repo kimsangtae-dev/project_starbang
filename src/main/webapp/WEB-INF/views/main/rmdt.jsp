@@ -975,9 +975,10 @@ function binary2() {
         });
 	});
  	$(document).ready(function(){ //인기있는 방 AJAX
+ 		var chart_roomno = ${room.roomno};
  		$.ajax({
  			url:"${pageContext.request.contextPath}/chart",
- 			data:{"chartdata": ${room.roomno}},
+ 			data:{"chartdata": chart_roomno},
  			type: "GET",
  			success:function(data){
  				var chart = bb.generate({
@@ -1030,20 +1031,11 @@ function binary2() {
             var roomno = ${room.roomno};    // 방 번호
             var reason = $("input[name=fakeReason]:checked").val(); // 신고 사유
             var singo;                      // 신고한 회원번호 (현재 로그인중인 회원)
-            var loginInfo = ${loginInfo.userno};
-            if (!loginInfo) { singo = 0; }
-            else { singo = ${loginInfo.userno}; }
+            var loginInfo = "${loginInfo.userno}";
+            if (loginInfo == "") { singo = 0; }
+            else { singo = "${loginInfo.userno}"; }
 
             var fake_singo = $("#fake_singo").val();    // 이미 신고한 회원인지 구별하기
-            var user_singo = "${fake.singo}";
-            var singono;
-            if (user_singo == "") {
-            	singono = 0;
-            	return singono;
-            } else {
-            	singono = ${fake.singo};
-            	return singono;
-            }
 
             if (!reason) {
                 alert("신고 사유를 선택해주세요.");

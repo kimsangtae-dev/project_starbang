@@ -238,6 +238,7 @@ public class ModalController {
         int reason = webHelper.getInt("reason");
         int roomno1 = webHelper.getInt("roomno");
         int userno = webHelper.getInt("userno");
+        int singo = webHelper.getInt("singo");
 
         /** 2) 데이터 저장하기 */
         // 저장할 값들을 Beans에 담는다.
@@ -245,6 +246,7 @@ public class ModalController {
         input.setReason(reason);
         input.setRoomno(roomno1);
         input.setUserno(userno);
+        input.setSingo(singo);
 
         try {
             // 데이터 저장
