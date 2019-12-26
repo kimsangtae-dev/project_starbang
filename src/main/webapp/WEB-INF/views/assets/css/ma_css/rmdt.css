@@ -1258,3 +1258,66 @@ pre {
 	margin-top: 50px;
 }
 
+/* 매물번호 박스, 글씨 */
+.room_num {
+    display: inline-block;
+    height: 42px;
+    background-color: rgba(34, 34, 34, 0.7);
+    position: absolute;
+    z-index: 10;
+    padding: 0px 17px;
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.room_num > p {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;
+    line-height: 42px;
+}
+
+/* 이미지 더보기 박스, 글씨 */
+.roomnum {
+    display: inline-block;
+    height: 210px;
+    background-color: rgba(34, 34, 34, 0.7);
+    position: absolute;
+    z-index: 1;
+    padding: 0px 17px;
+    border-radius: 3px;
+    /* margin: 10px; */
+    width: 300px;
+    cursor:pointer
+}
+
+.roomnum > p {
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    position: absolute;
+    top: 122px;
+    left: 0px;
+}
+
+.line1 {
+	width: 39px;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    top: 91px;
+    position: absolute;
+    left: 130px;
+	
+}
+
+.line2 {
+	width: 1px;
+    height: 39px;
+    background-color: rgb(255, 255, 255);
+    top: 72px;
+    position: absolute;
+    left: 150px;
+}
+

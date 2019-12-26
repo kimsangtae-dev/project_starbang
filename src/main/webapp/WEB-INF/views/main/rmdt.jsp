@@ -227,12 +227,17 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			<!-- 매물 이미지 시작  -->
 			<ul class="bigviewul">
 				<li class="bigviewigli">
+				<div class="room_num"><p>매물번호 ${room.roomno}</p></div>
 					<a href="#">
 						<img src="${pageContext.request.contextPath}/assets/img/upload/${img[0].fileName}" /></a></li>
 				<c:forEach var="i" begin="1" end="4" step="1">
 					<c:choose>
 						<c:when test="${img[i].fileName != null}">
 							<li class="bigviewiglism">
+							<!-- null값이 아니고 4번재 사진에 덧씌어질 이미지 -->
+							<c:if test="${img[i].fileName != null && i == 4}">
+							<div class="roomnum"><div class="line1"></div><div class="line2"></div><p>전체보기</p></div>
+							</c:if>
 								<a href="#">
 									<img src="${pageContext.request.contextPath}/assets/img/upload/${img[i].fileName}" /></a></li>
 						</c:when>
