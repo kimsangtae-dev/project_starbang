@@ -151,7 +151,7 @@
 										
 										<c:choose>
 											<c:when test="${k.dealingtype == '월세'}">
-												<div class="d_div">
+												<div class="d_div remove">
 													<p class="bbtn">월세</p>
 													<input type="hidden" name="priceno" value="${k.priceno}">
 													<input type="hidden" class="dealingtype" name="dealingtype" value="월세">
@@ -165,7 +165,7 @@
 											</c:when>
 
 											<c:when test="${k.dealingtype == '전세'}">
-												<div class="d_div1">
+												<div class="d_div1 remove">
 												    <p class="bbtn">전세</p>
 												    <input type="hidden" name="priceno" value="${k.priceno}">
 												    <input type="hidden" class="dealingtype" name="dealingtype" value="전세">
@@ -180,7 +180,7 @@
 											</c:when>
 											
 											<c:when test="${k.dealingtype == '매매'}">
-												<div class="d_div2">
+												<div class="d_div2 remove">
 												    <p class="bbtn">매매</p>
 												    <input type="hidden" name="priceno" value="${k.priceno}">
 												    <input type="hidden" class="dealingtype" name="dealingtype" value="매매">
@@ -317,18 +317,18 @@
 								<th>입주 가능일</th>
 								<td class="base_line" colspan="3">
 									<label class="in_date">
-										<input type="radio" id="commingday" name="commingday" value="0">
+										<input type="radio" id="commingday0" name="commingday" checked value="0">
 										<p>즉시 입주</p>
 									</label> 
 									<label class="in_date"> 
-									<input type="radio" name="commingday" value="1">
+									<input type="radio" id="commingday1" name="commingday" value="1">
 										<p>날짜 협의</p>
 									</label>
+									<input type="text" id="datepicker" name="commingday">
 									<label class="in_date">
-										<input type="radio" name="commingday" value="2" id="cal">
+										<input type="radio" id="commingday2" name="commingday" value="2" id="cal">
 										<p>날짜 선택</p>
 									</label>
-									<input type="text" id="datepicker" name="commingday">
 								</td>
 							</tr>
 						</tbody>
@@ -694,7 +694,7 @@
                 format: 'yyyy-mm-dd',   // 날짜 형식
                 language: 'ko-KR',      // 언어
                 weekStart: 0,            // 시작요일(0=일요일~6=토요일)
-                trigger:'#cal'     // 클릭시 달력을 표시할 요소의 id
+                trigger:'#commingday2'     // 클릭시 달력을 표시할 요소의 id
             });
         });
     </script>
@@ -712,6 +712,22 @@ $(function() {
          $(".dong").css("display", "block");
       }
    });
+});
+
+/* 입주가능일 commingday */
+	$("#commingday0").click(function(){
+		$("input:radio[name='commingday']").val(0);
+	});
+	
+	$("#commingday1").click(function(){
+		$("input:radio[name='commingday']").val(1);
+	});
+
+$("#datepicker").change(function(){
+	var commingday_value = $("#datepicker").val();
+	
+	$("input:radio[name='commingday']").val(commingday_value);
+	console.log($("input:radio[name='commingday']").val());
 });
 </script>
 	<!-- 동정보 위치이동 끝 -->
@@ -861,6 +877,33 @@ $(function() {
             $(this).parents('.d_div2').remove();
             $(".deal_btn2").removeAttr("disabled");
         });
+        
+        
+		/* 삭제버튼 클릭시 DB 동적삭제 */
+		$(function() {
+			$('.glyphicon-remove').on('click',function() {
+				
+				var priceno = $(this).parents(".remove").find("input:hidden[name='priceno']").val();
+				console.log(priceno);
+				
+				//결과 url
+				$.ajax({
+				url : "${pageContext.request.contextPath}/host/rm_edit_delPrice.do",
+				data : {priceno : priceno},
+				type : "POST",
+				datatype : 'text',
+				success : function() {
+					
+					alert(priceno+"번 방 삭제 처리 되었습니다.")
+				},
+				error : function(error,status,request) {
+					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+					},
+				});
+		})
+	}); //end $.ajax;
+        
+        
     });
     
     // 월세 전세 매매 자동반영 기능 -->
@@ -1084,6 +1127,8 @@ $(function() {
 		/* 거래정보 PRICE */
 		
 
+		
+
 		/* 
 		 * 기본정보 
 		 */
@@ -1230,6 +1275,8 @@ $(function() {
 		/* 상세설명 */
 		$("#title").val("${room.title}");
 		$("#content_input").val("${info.content}");
+		
+		
 
 </script>
 </body>
