@@ -34,9 +34,11 @@
     <thead>
       <tr>
                 <th width="80" class="text-center">신고번호</th>
-                <th width="80" class="text-center">신고자이름</th>
+                <th width="80" class="text-center">신고날짜</th>
                 <th width="200" class="text-center">신고된 이유</th>
-                <th width="100" class="text-center">신고날짜</th>
+                <th width="100" class="text-center">방번호</th>
+                <th width="100" class="text-center">유저번호</th>
+                <th width="100" class="text-center">신고자</th>
       </tr>
     </thead>
     <tbody>
@@ -52,16 +54,20 @@
           <%-- 조회 결과에 따른 반복 처리 --%>
           <c:forEach var="item" items="${output}" varStatus="status">
             <%-- 출력을 위해 준비한 유저이름과 위치 --%>
-            <c:set var="name" value="${item.name}" />
-            <c:set var="email" value="${item.email}" />
-            <c:set var="tel" value="${item.tel}" />
+            <c:set var="fakeno" value="${item.fakeno}" />
             <c:set var="regdate" value="${item.regdate}" />
+            <c:set var="reason" value="${item.reason}" />
+            <c:set var="roomno" value="${item.roomno}" />
+            <c:set var="userno" value="${item.userno}" />
+            <c:set var="singo" value="${item.singo}" />
 
             <tr>
-              <td align="center">${name}</td>
-              <td align="center">${email}</td>
-              <td align="center">${tel}</td>
+              <td align="center">${fakeno}</td>
               <td align="center">${regdate}</td>
+              <td align="center">${reason}</td>
+              <td align="center">${roomno}</td>
+              <td align="center">${userno}</td>
+              <td align="center">${singo}</td>
             </tr>
           </c:forEach>
         </c:otherwise>
@@ -70,3 +76,12 @@
   </table>
   </div>
 </div>
+
+<script>
+
+// 새로고침
+$('.btnclose').click(function(){
+	alert("테스트")
+	 location.reload()
+});
+</script>
