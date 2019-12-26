@@ -67,15 +67,6 @@ public class AdminController {
 	}
 
 	/********************************************************************
-	 * 관리자 로그인
-	 *******************************************************************/
-	@RequestMapping(value = "/admin/login.do", method = RequestMethod.GET)
-	public ModelAndView login() {
-
-		return new ModelAndView("admin/login");
-	}
-
-	/********************************************************************
 	 * 관리자 메인
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/main.do", method = RequestMethod.GET)
@@ -505,16 +496,16 @@ public class AdminController {
 	/********************************************************************
 	 * 관리자 로그인
 	 *******************************************************************/
-	@RequestMapping(value = "/admin/lg.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/login.do", method = RequestMethod.GET)
 	public ModelAndView ad_login() {
 
-		return new ModelAndView("admin/lg");
+		return new ModelAndView("admin/login");
 	}
 	
 	/********************************************************************
 	 * 관리자 로그인 action폼
 	 *******************************************************************/
-	@RequestMapping(value = "/admin/lg_ok.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/login_ok.do", method = RequestMethod.POST)
 	public ModelAndView login_ok(Model model, HttpServletRequest request) {
 
 		// 1) 사용자가 입력한 파라미터 수신 및 필수값 검사 */

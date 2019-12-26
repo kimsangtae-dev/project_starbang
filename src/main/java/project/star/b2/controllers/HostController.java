@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -784,6 +785,26 @@ public class HostController {
 	}
 	
 
+	/********************************************************************
+	 * 공실 수정하기_ok
+	 * @return 
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rm_edit_delPrice.do", method = RequestMethod.POST)
+	public ModelAndView rm_edit_delPrice(@RequestParam(value = "priceno", defaultValue = "") int priceno) {
+		
+		Price input = new Price();
+		input.setPriceno(priceno);
+		
+		try {
+			priceService.deletePrice(input);
+		}catch (Exception e){
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		return null;
+
+	}
+	
 	/********************************************************************
 	 * 공실관리
 	 *******************************************************************/

@@ -258,16 +258,16 @@
 								<th>입주 가능일</th>
 								<td class="base_line" colspan="3">
 									<label class="in_date">
-										<input type="radio" id="commingday" name="commingday" checked value="즉시입주">
+										<input type="radio" id="commingday0" name="commingday" checked value="0">
 										<p>즉시 입주</p>
 									</label> 
 									<label class="in_date"> 
-									<input type="radio" name="commingday" value="날짜협의">
+									<input type="radio" id="commingday1" name="commingday" value="1">
 										<p>날짜 협의</p>
 									</label>
 									<input type="text" id="datepicker" name="commingday">
 									<label class="in_date">
-										<input type="radio" name="commingday" value="1" id="cal">
+										<input type="radio" id="commingday2" name="commingday" value="2" id="cal">
 										<p>날짜 선택</p>
 									</label>
 								</td>
@@ -617,8 +617,6 @@
 <!-- 카카오 지도 끝 -->
 
 <!-- datepicker 시작 -->
-
-
 	<script>
         $(function() {
             $("#datepicker").datepicker({
@@ -627,7 +625,7 @@
                 format: 'yyyy-mm-dd',   // 날짜 형식
                 language: 'ko-KR',      // 언어
                 weekStart: 0,            // 시작요일(0=일요일~6=토요일)
-                trigger:'#cal'     // 클릭시 달력을 표시할 요소의 id
+                trigger:'#commingday2'     // 클릭시 달력을 표시할 요소의 id
             });
         });
     </script>
@@ -646,6 +644,24 @@ $(function() {
       }
    });
 });
+
+/* 입주가능일 commingday */
+ 	$("#commingday0").click(function(){
+ 		$("input:radio[name='commingday']").val(0);
+ 	});
+ 	
+ 	$("#commingday1").click(function(){
+ 		$("input:radio[name='commingday']").val(1);
+ 	});
+	
+	$("#datepicker").change(function(){
+		var commingday_value = $("#datepicker").val();
+		
+		$("input:radio[name='commingday']").val(commingday_value);
+		console.log($("input:radio[name='commingday']").val());
+	});
+	
+
 </script>
 	<!-- 동정보 위치이동 끝 -->
 
@@ -740,7 +756,7 @@ $(function() {
         // 월세 버튼
         $(document).on("click", ".deal_btn", function() {
             
-        	var ad = '<div class="d_div"><p class="bbtn">월세</p>'
+        	var ad = '<div class="d_div remove"><p class="bbtn">월세</p>'
         		+'<input type="hidden" class="dealingtype" name="dealingtype" value="월세">' 														// input-dealingtype
         		+'<input type="text" class="d_input_box1 d_input_box2 deposit" name="deposit" placeholder="보증금"><p class="midle_box">/</p>' 	// input-deposit
             	+'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="월세">' 									// input-price
@@ -752,7 +768,7 @@ $(function() {
         // 전세 버튼
         $(document).on("click", ".deal_btn1", function() {
 
-            var bc = '<div class="d_div1"><p class="bbtn">전세</p>'
+            var bc = '<div class="d_div1 remove"><p class="bbtn">전세</p>'
             	+'<input type="hidden" class="dealingtype" name="dealingtype" value="전세">'		// input-dealingtype
             	+'<input type="hidden" class="deposit" name="deposit" value="-1" >'				// input-deposit
             	+'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="전세">'		// input-price
@@ -765,7 +781,7 @@ $(function() {
         // 매매 버튼
         $(document).on("click", ".deal_btn2", function() {
         	
-            var cd = '<div class="d_div2"><p class="bbtn">매매</p>'
+            var cd = '<div class="d_div2 remove"><p class="bbtn">매매</p>'
             +'<input type="hidden" class="dealingtype" name="dealingtype" value="매매">'		// input-dealingtype
             +'<input type="hidden" class="deposit" name="deposit" value="-1" >'				// input-deposit
             +'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="매매">'		// input-price
@@ -794,6 +810,8 @@ $(function() {
             $(this).parents('.d_div2').remove();
             $(".deal_btn2").removeAttr("disabled");
         });
+        
+        
     });
     
     // 월세 전세 매매 자동반영 기능 -->

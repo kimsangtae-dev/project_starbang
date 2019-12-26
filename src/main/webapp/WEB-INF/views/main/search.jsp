@@ -227,19 +227,29 @@ pageEncoding="UTF-8"%>
                                                         	</c:when>
                                                         	<%-- 세션 있을 때 --%>
                                                         	<c:otherwise>
-	                                                        <c:forEach var="h" items="${heart}" varStatus="status">
-	                                                        	<c:if test="${h.roomno==item.roomno}">
-	                                                        	<div class="recent-div7">
-																	<div class="recent-div8 on" data-value="off"></div>
-																</div>
-	                                                        	</c:if>
-	                                                        </c:forEach>
-	                                                        <c:if test="${h.roomno!=item.roomno}">
-	                                                        	<div class="recent-div7">
-																	<div class="recent-div8 off" data-value="on"></div>
-																</div>
-	                                                        </c:if>
-                                                        	</c:otherwise>
+                                                                <c:set var="count" value="0" />
+                                                                <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                    <c:if test="${h.roomno==item.roomno}">
+                                                                    <c:set var="count" value="${count + 1}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${count == 0}">
+                                                                    <div class="recent-div7">
+                                                                        <div class="recent-div8 off" data-value="on"></div>
+                                                                    </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                    <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                        <c:if test="${item.roomno==h.roomno}">
+                                                                        <div class="recent-div7">
+                                                                            <div class="recent-div8 on" data-value="off"></div>
+                                                                        </div>
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:otherwise>
                                                         </c:choose>
                                                         <%-- 좋아요 끝 --%>
                                                         <%-- 전체 링크화 --%>

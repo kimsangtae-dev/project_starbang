@@ -73,6 +73,7 @@
 													<div class="hit-a-div gallery-d2-pic">
 														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/>
 														<input type="hidden" name="getroomno" value="${item.roomno}" />
+														<input type="hidden" id="getuserno" name="getuserno" value="${userno}" />
 														</div>
 													<c:if
 														test="${item.confirmdate != null}">
@@ -251,7 +252,7 @@
 					<div class="compare-btn-box" width="238">
 						<button class="compare-btn-cancel" width="80">취소</button>
 						<button class="compare-btn-compare">
-							<a class="dis-block" href="${pageContext.request.contextPath}/modal/compare.do?roomno=${item.roomno}"
+								<a class="dis-block" href="${pageContext.request.contextPath}/modal/compare.do"
 								data-toggle="modal" data-target="#compareModal">비교하기</a>
 						</button>
 					</div>
@@ -411,23 +412,36 @@
 	         }
 	      });
 
-		/**-------------기존 내용------------------------- */
-        /* 체크박스 클릭했을 때, 비우고 다른내용으로 채우기  */
-       /*  $(document).on('click', '.comp-chkbox-s', function(e) {
 
-        var type = $(this).parents(".hit-a").children(".hit-a-p1").html();
-        var price = $(this).parents(".hit-a").find(".hit-a-p2").html();
 
-		var put = '<span class="compbar-newspan">' + type + '</span>';
-			put += '<p class="compbar-newp">' + price + '</p>';
-			put += '<button class="compbar-newbtn"></button>';
-			//$(".comp-chkbox-i").prop("checked", true);
+	      /**-------------체크 된 값 가지고 ajax로 보내기------------------------- */
 
-			// 순차적으로 값 입력
-			$("#select"+i).html(put);
-			i++;
-			return;
-			});   */
+	      $(".compare-btn-compare").click(function sendCompare() {
+	    	    // 사용자 ID를 갖고 온다.
+	    	    var userId = $("#getuserno").val();
+
+	    	    // name이 같은 체크박스의 값들을 배열에 담는다.
+	    	    var checkboxValues = [];
+	    	    $("input[name='newroomno']:checked").each(function(i) {
+	    	        checkboxValues.push($(this).val());
+	    	    });
+
+	    	    // 사용자 ID(문자열)와 체크박스 값들(배열)을 name/value 형태로 담는다.
+	    	    var allData = { "userId": userId, "checkArray": checkboxValues };
+
+	    	    $.ajax({
+	    	        url:"${pageContext.request.contextPath}/modal/comparelist.do",
+	    	        type:'POST',
+	    	        data: allData,
+	    	        success: function(data){
+	    	        	alert("성공");
+	    	        	$(".content").append(data);
+	    	        },
+                    error : function(request, status, error){
+                        console.log("AJAX_ERROR");
+                    }
+	    	    });
+	    	});
 
 
 		/* 취소하기 눌렀을 때, 비교하기 바 지우고 다시 방 비교하기 버튼 생성 */

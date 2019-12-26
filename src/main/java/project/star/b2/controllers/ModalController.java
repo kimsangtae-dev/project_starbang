@@ -259,7 +259,7 @@ public class ModalController {
 	/********************************************************************
 	 * 관리자페이지 - 신고사유
 	 *******************************************************************/
-	@RequestMapping(value = "/modal/fake_check.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/modal/adminfake.do", method = RequestMethod.GET)
 	public ModelAndView fake_check() {
 
 		return new ModelAndView("modal/adminfake");
