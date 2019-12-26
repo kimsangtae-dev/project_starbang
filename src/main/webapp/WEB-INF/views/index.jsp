@@ -449,6 +449,9 @@
 											<div class="recent-div6">
 											<input type="hidden" value="{{roomno}}" class="room_num">
 												<%-- 좋아요 버튼 --%>
+												{{#session roomno}}
+												{{else}}
+												{{/session}}
 												<div class="recent-div7">
 													<div class="recent-div8 off" data-value="on"></div>
 												</div>
@@ -622,7 +625,8 @@
         	$(this).val(value);
 			console.log(value);        
         });
-		
+	
+        var session = "${logininfo}";	
   	$(document).ready(function(){ //인기있는 방 AJAX
 		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
 		,function(json){
@@ -650,7 +654,35 @@
            		}
            		
            	});
-         		
+         	
+                /** 세션 식별하기 **/
+                Handlebars.registerHelper('session', function(roomno, options) {
+                    if (session == null || session == "") {
+                    	var heart_div = '<div class="recent-div7">'
+                    		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                    		heart_div += '</div>'
+                    	return heart_div;
+                    }
+                    else {
+                    	for (var i=0; i<json.item.length; i++) {
+                    		if (json.item[i].roomno == roomno) {
+                    			var heart_div = '<div class="recent-div7">'
+                            		heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                            		heart_div += '</div>'
+                            	return heart_div;
+                    		}
+                    	}
+                    	for (var i=0; i<json.item.length; i++) {
+                    		if (json.item[i].roomno != roomno) {
+                    			var heart_div = '<div class="recent-div7">'
+                            		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            		heart_div += '</div>'
+                            	return heart_div;
+                    		}
+                    	}
+                    }
+                });
+                
 			var source = $("#prof-list-tmpl").html()//템플릿코드
 			var template = Handlebars.compile(source);// 템플릿 컴파일
 			var result = template(json);

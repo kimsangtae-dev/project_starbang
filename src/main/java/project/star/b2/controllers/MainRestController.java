@@ -228,6 +228,7 @@ public class MainRestController {
 	 *******************************************************************/
 	@RequestMapping(value ="/like", method = RequestMethod.GET)
 	public Map<String, Object>get_like(HttpServletRequest request){
+		
 		int newuserno = webHelper.getInt("userno");
 		int newroomno = webHelper.getInt("roomno");
 
