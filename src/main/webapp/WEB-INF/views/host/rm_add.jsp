@@ -843,8 +843,7 @@ $(function() {
 	    return true;
 	}
     
-	var i = 0;
-	var index = 0;
+	
 	
 	$(function() {
         $("#addfile0").change(function(){
@@ -854,16 +853,18 @@ $(function() {
         });
     });
 	
+	var i = 0;
+	var index = 0;
+	var sel_files = [];
+	
 	$(function() {
 		$("#uploadPhoto").click(function(e){
 			e.preventDefault();
 			console.log(i);
 			$("input:file[name='iloveupload" + i + "']").trigger('click');
-			console.log($("input:file[name='iloveupload" + i + "']"));
     	});
 	}); 
 	
-    var sel_files = [];
 	
 	//대기하다 input에 change가 있을경우 함수실행
 	$(document).ready(function() {
@@ -878,10 +879,11 @@ $(function() {
 		    var filesArr = Array.prototype.slice.call(files);
 		    
 		  	//이미지 정보들을 담을 배열
-		    var sel_files = [];
+
 		    
 	    	 // 유효성검사하기
 		    filesArr.forEach(function(f) {
+		    	console.log(f);
 		    	
 		        sel_files.push(f);
 		        var reader = new FileReader();
@@ -896,19 +898,15 @@ $(function() {
 		        }
 		        reader.readAsDataURL(f);
 		    });
-			
 		});
 	}); 
 	
-
-		// 이미지 지우기
-		function deleteImageAction(index) {
-
-		    sel_files.splice(index, 1);
-		
-		    var img_id = "#img_id_"+index;
-		    $(img_id).remove(); 
-		} 
+	// 이미지 지우기
+	function deleteImageAction(index) {
+	    sel_files.splice(index, 1);
+	    var img_id = "#img_id_"+index;
+	    $(img_id).remove(); 
+	}
 
 </script>
 

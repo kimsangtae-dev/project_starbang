@@ -947,6 +947,7 @@ $(function() {
     
 	var i = 0;
 	var index = 0;
+    var sel_files = [];
 	
 	$(function() {
         $("#addfile0").change(function(){
@@ -969,8 +970,7 @@ $(function() {
 	$(document).ready(function() {
 		$(document).on('change', $("input:file[name='iloveupload" + i + "']"), function(e) {
 			
-			i = i + 1;
-
+			i++;
 		    var addInput = '<input id="addfile' + i + '" class="addfile" type="file" name="iloveupload' + i + '" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">';
 				$("#addfile_container").append(addInput);
 				
@@ -978,7 +978,7 @@ $(function() {
 		    var filesArr = Array.prototype.slice.call(files);
 		    
 		  	//이미지 정보들을 담을 배열
-		    var sel_files = [];
+
 		    
 	    	 // 유효성검사하기
 		    filesArr.forEach(function(f) {
@@ -1084,7 +1084,7 @@ $(function() {
 	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
 	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
 		
-	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.value('#addfile0', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
 	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
 	    
 	    
