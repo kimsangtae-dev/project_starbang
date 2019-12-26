@@ -8,7 +8,7 @@
 <title>별방 관리자 로그인</title>
 <%@ include file="../assets/inc/meta.jsp"%>
 <!-- CSS적용 -->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/lg.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/login.css">
 <style type="text/css">
 </style>
 </head>

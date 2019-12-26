@@ -224,7 +224,7 @@ a:link, a:visited, a:hover { color: rgb(133, 133, 133); text-decoration: none;}
 				<span>사업자번호: 220-88-59156</span> <span>통신판매업신고번호 : 제2013-서울 강남-02884호</span> <span>프로모션/사업 제휴문의
 					: narabyeol@gmail.com</span>
 			</p>
-			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/lg.do">Station3</a>, Inc. All rights reserved.</p>
+			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/login.do">Station3</a>, Inc. All rights reserved.</p>
 		</div>
 	</div>
 </div>
