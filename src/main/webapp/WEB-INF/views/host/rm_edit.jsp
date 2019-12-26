@@ -577,7 +577,7 @@
                                	<div class="register-d" style="position: relative;">
                                   	<button class="register-btn" id="uploadPhoto">사진 등록</button>
                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
-                                       	<input id="addfile" type="file" name="iloveupload" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">
+                                       	<input id="addfile0" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">
                                    	</div>
                                	</div>
                            	</div>
@@ -879,6 +879,16 @@ $(function() {
         });
         
         
+        /* 기능 - 전세가 있다면 전세버튼 비활성화 */
+        if( $('.d_div1').hasClass('d_div1') ){
+          	 $(".deal_btn1").attr("disabled", true);
+        }
+        
+        /* 기능 - 매매가 있다면 매매버튼 비활성화 */
+        if( $('.d_div2').hasClass('d_div2') ){
+        	 $(".deal_btn2").attr("disabled", true);
+        }
+        
 		/* 삭제버튼 클릭시 DB 동적삭제 */
 		$(function() {
 			$('.glyphicon-remove').on('click',function() {
@@ -894,7 +904,7 @@ $(function() {
 				datatype : 'text',
 				success : function() {
 					
-					alert(priceno+"번 방 삭제 처리 되었습니다.")
+					alert(priceno+"번 가격테이블이 삭제 처리 되었습니다.")
 				},
 				error : function(error,status,request) {
 					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
@@ -918,22 +928,7 @@ $(function() {
 /***
  *  업로드
  */
-    $(function() {
-        $("#addfile").change(function(){
-            $(".photo_pic2").remove();
-            $(".register-d").attr("class", "register-after-d");
-            $(".register-btn").attr("class", "register-after-btn");
-        });
-    });
-
-	$(function() {
-		$("#uploadPhoto").click(function(e){	
-			e.preventDefault();
-    		$("#addfile").trigger('click');
-    	});
-	}); 
-
-
+ 
 	/* 유효성검사 */
  	function getCmaFileView() {
 	    //파일정보
@@ -950,58 +945,73 @@ $(function() {
 	    return true;
 	}
     
-	//이미지 정보들을 담을 배열
-	var sel_files = [];
+	var i = 0;
+	var index = 0;
 	
-	//대기타다가 input에 change가 있을경우 handleImgFileSelect 함수실행
-	$(document).ready(function() {
-	    $("#addfile").on("change", handleImgFileSelect);
+	$(function() {
+        $("#addfile0").change(function(){
+            $(".photo_pic2").remove();
+            $(".register-d").attr("class", "register-after-d");
+            $(".register-btn").attr("class", "register-after-btn");
+        });
+    });
+	
+	$(function() {
+		$("#uploadPhoto").click(function(e){
+			e.preventDefault();
+			console.log(i);
+			$("input:file[name='iloveupload" + i + "']").trigger('click');
+			console.log($("input:file[name='iloveupload" + i + "']"));
+    	});
 	}); 
 	
-	function handleImgFileSelect(e) {
-	    // 이미지 정보들을 초기화
-	    sel_files = [];
-	   /*  $(".up_list").empty(); */
-	
-	    var files = e.target.files;
-	    var filesArr = Array.prototype.slice.call(files);
-	    var index = 0;
-	
-	    // 유효성검사하기
-	    filesArr.forEach(function(f) {
-	        if(!f.type.match("image.*")) {
-	            alert("확장자는 이미지 확장자만 가능합니다.");
-		// return;
-	        }
-	        sel_files.push(f);
-	
-	        var reader = new FileReader();
-	        reader.onload = function(e) {
-	        	
-	            var html = "<a href='javascript:void(0);' onclick='deleteImageAction('"+index+")' id='img_id_"+index+"'>"
-	            +"<img src=" + e.target.result + " data-file='"+f.name+"' class='selProductFile' title='Click to remove'></a>";
-	           
-	            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
-	            +'<button class="up-close-b"></button>'
-	            +'<div class="up-d2"><img src="' + e.target.result + '"></div></div>';
-	            
-	            //+'<p class="up-p">대표이미지</p>'
-	            
-	            $(".up_list").append(item);
-	            index++;
-	        }
-	        reader.readAsDataURL(f);
-	    });
-	}
+	//대기하다 input에 change가 있을경우 함수실행
+	$(document).ready(function() {
+		$(document).on('change', $("input:file[name='iloveupload" + i + "']"), function(e) {
+			
+			i = i + 1;
 
-// 이미지 지우기
-function deleteImageAction(index) {
+		    var addInput = '<input id="addfile' + i + '" class="addfile" type="file" name="iloveupload' + i + '" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">';
+				$("#addfile_container").append(addInput);
+				
+			var files = e.target.files;
+		    var filesArr = Array.prototype.slice.call(files);
+		    
+		  	//이미지 정보들을 담을 배열
+		    var sel_files = [];
+		    
+	    	 // 유효성검사하기
+		    filesArr.forEach(function(f) {
+		    	
+		        sel_files.push(f);
+		        var reader = new FileReader();
+		        
+		        reader.onload = function(e) {
+		        	
+		            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
+		            			+'<button class="up-close-b"></button>'
+		            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
+		            $(".up_list").append(item);
+		            index++;
+		        }
+		        reader.readAsDataURL(f);
+		    });
+			
+		});
+	}); 
+	
 
-    sel_files.splice(index, 1);
+		// 이미지 지우기
+		function deleteImageAction(index) {
+		    console.log("index : "+index);
+		    console.log("sel length : "+sel_files.length);
+		
+		    sel_files.splice(index, 1);
+		
+		    var img_id = "#img_id_"+index;
+		    $(img_id).remove(); 
+		} 
 
-    var img_id = "#img_id_"+index;
-    $(img_id).remove(); 
-} 
 </script>
 
 <script>
@@ -1276,8 +1286,6 @@ $(function() {
 		$("#title").val("${room.title}");
 		$("#content_input").val("${info.content}");
 		
-		
-
 </script>
 </body>
 </html>
