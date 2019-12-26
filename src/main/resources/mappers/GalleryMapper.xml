@@ -271,7 +271,7 @@
         useGeneratedKeys="true"
         keyProperty="heartno">
         INSERT INTO heart (regdate, roomno, userno) 
-        VALUES (now(),2,3);
+        VALUES (now(),#{roomno},#{userno});
     </insert>
     
     <!-- 단일행 조회를 위한 기능 정의 -->

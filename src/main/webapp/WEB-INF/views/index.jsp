@@ -447,6 +447,7 @@
 									<li>
 										<div class="recent-div5">
 											<div class="recent-div6">
+											<input type="hidden" value="{{roomno}}" class="room_num">
 												<%-- 좋아요 버튼 --%>
 												<div class="recent-div7">
 													<div class="recent-div8 off" data-value="on"></div>
@@ -457,8 +458,8 @@
 													href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
 													<!-- 이미지 -->
 													<div class="recent-a-div">
-														<img
-															src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+														<input type="hidden" id="getpopular" value="{{roomno}}"/>
+														<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
 													</div>
 														<%-- 확인매물 div --%>
 				  										{{#if confirmdate}}
@@ -615,7 +616,13 @@
 			});
 		});
 		});
-	
+		/** roomno 스크립트로 가져오기 */
+        $(document).on('click', '.recent-div8', function(e){
+        	var value = $('#getpopular').val();
+        	$(this).val(value);
+			console.log(value);        
+        });
+		
   	$(document).ready(function(){ //인기있는 방 AJAX
 		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
 		,function(json){
@@ -657,21 +664,34 @@
 			$(function() {
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('on off');
-/* 					 $.ajax({
+					var onoff = $(this).hasClass("on");
+		               if(onoff ==true){
+		            	   alert("안녕")
+		            	   var a = "${logininfo.userno}"; //로그인한 유저넘버
+		            	   var b = $(this).parent().prev().val();
+		                    alert(b);
+		                    $.ajax({
 				            url: "${pageContext.request.contextPath}/like",
 				            method: "GET",
-				            data: {"userno":3},
+				            data: {"userno":a,
+				            	"roomno":b
+				            	},
 				            success:function(data){
 				            	alert("hello");
 				            	alert(data.item);
 				            	}
 				            }); 
-					}*/
+					
+		               }else{
+		            		alert("잘가요")   
+		            	   }
+
 					 
-			});			
+			});
 		});
 		});
 		}); 
+  	
 	});
 </script>	
 </body>
