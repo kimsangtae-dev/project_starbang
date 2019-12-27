@@ -30,5 +30,12 @@ public interface HeartService {
     public int deleteHeart(Heart input) throws Exception;
 
 	public Heart getHeartItem(Heart input) throws Exception;
+	
+	public Heart numberHeart(Heart input) throws Exception;
+	
+	public int delectHeart(Heart input) throws Exception; 
+	
+	public Heart getHeartitem(Heart input) throws Exception; 
+	
 }
 
