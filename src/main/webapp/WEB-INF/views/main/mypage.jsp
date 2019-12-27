@@ -102,7 +102,7 @@ $(function () {
             </div>
             <hr class="hr" />
             <button type="reset" id="resert" class="btn btn-default focse" onclick="location='${pageContext.request.contextPath}/'">취소</button>
-            <button type="submit" id="submitedit" class="btn btn-default">확인</button>
+            <button type="submit" id="submitedit" class="btn btn-default focse hwmyp">확인</button>
             <p class="rhdrks"></p>
             <button id="out" class="btn btn-link bot outall" data-toggle="modal" data-target="#outall">회원탈퇴</button>
             <p class="rhdrks2"></p>
@@ -284,6 +284,8 @@ $(function () {
 		    		"noweditdate" : noweditdate},
 				success:function(data){
 		        	alert(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
+		        	var http = "${pageContext.request.contextPath}/main/mypage.do"
+						location.replace(http);
 		    	},
 		    	error:function(jqXHR, textStatus, errorThrown){
 		    	   	alert("mypagesubmit회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
@@ -298,7 +300,7 @@ $(function () {
       
    <script type="text/javascript">
    $(function() {
-		$("#modalsubmit").click(function() {
+	   $("#modalsubmit").click(function() {
 			var outtextarea = $('#outtextarea').val(); 
 			//alert(outtextarea);
 			if (!regex.value('#outtextarea', '탈퇴 이유를 입력하세요.')) {return false;}
@@ -309,18 +311,20 @@ $(function () {
 			if ($("input:checkbox[id='outokinput']").is(":checked") == false) {
 				alert("안내사항에 대해 동의해주세요");
 				return false;
-            }
-    	  	$.ajax({
+           }
+			alert("ajax전송준비완료");
+   	  	$.ajax({
 				url:"mypagedelect.do",
 				type:'POST',
-				data: {"userno" : userno,
-					"outtextarea" : outtextarea},
-    	  		success:function(data){
-					alert(userno + outtextarea + "데이터 삭제");
+				data: {"outtextarea" : outtextarea},
+   	  		success:function(data){
+					alert(outtextarea + "데이터 삭제");
+					var http = "${pageContext.request.contextPath}/"
+					location.replace(http);
 				},
 				error:function(jqXHR, textStatus, errorThrown){
 					alert("mypagedelect회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
- 				self.close();
+				self.close();
 				}
 	        });
 		});
@@ -344,10 +348,12 @@ $(function () {
 5. 광고를 위한 매물이 등록되어 있을 경우, 탈퇴 시 모든 정보는 삭제 처리됩니다.
                </pre>
                <textarea rows="10" cols="64" placeholder="탈퇴사유를 써주세요" class="outtextarea" id="outtextarea"></textarea>
+               <input type="hidden" id="hiddentext">
                <!-- <button onClick="action();" class="actionbutton"><img src="ma_assets/ma_img/eede.png" width="16px" id="modelcheck" class="buttonimg"></button> -->
-               <label> <input type="checkbox" name="room-type" value="oneroom" id="outokinput" /> 
-               <span class="checkBox"></span> <span class="checkText checkTextspan">안내사항을 모두 확인하였으며, 이에 동의합니다.</span>
-                           </label>
+               <label>
+               		<input type="checkbox" name="room-type" value="oneroom" id="outokinput" /> 
+               		<span class="checkBox"></span> <span class="checkText checkTextspan">안내사항을 모두 확인하였으며, 이에 동의합니다.</span>
+				</label>
                <!-- <p class="modelpp" >안내사항을 모두 확인하였으며, 이에 동의합니다.</p> -->
             </div>
             <div class="modal-footer modal-footerhw ">
