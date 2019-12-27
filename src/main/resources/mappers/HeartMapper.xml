@@ -24,5 +24,11 @@
 		<if test="userno != 0 and userno != null">userno=#{userno}</if>
 	</where>
 	</select>
+	
+	<!-- 데이터 삭제을 위한 기능 정의 -->
+    <delete id="deleteItem"
+        parameterType="project.star.b2.model.Heart">
+        DELETE FROM heart WHERE userno=#{userno} and roomno=#{roomno};
+    </delete>
 
 </mapper>
