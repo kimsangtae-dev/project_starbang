@@ -151,7 +151,7 @@ public class MainController {
         /*----------------------*/
 		
 		/** 1)필요한 변수값 생성 */
-		int userno = loginInfo.getUserno();; // 회원 이메일기저오기
+		int userno = loginInfo.getUserno(); // 회원 이메일기저오기
 
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0 ) {
@@ -273,6 +273,16 @@ public class MainController {
 		List<UploadItem> output_image = null;
 		User output_user = null;
 		FakeRoom output_fake = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		Heart heart = null;
+		int fheart = 0;
+		
+		Heart heartint = new Heart();
+		heartint.setRoomno(newRoomno);
+		Heart heartint2 = new Heart(); 
+		int fheartint = 0;
 
 		try {
 
@@ -292,6 +302,26 @@ public class MainController {
 
 			input_user.setUserno(output_room.getUserno());
 			output_user = userService.getUserItem(input_user);
+			
+			if (userno != 0) {
+				heart = heartService.getHeartitem(input_heart);
+				/* heartint = heartService.numberHeart(newRoomno); */
+				System.out.println("-------------------------------");
+				System.out.println(heart);
+				System.out.println("-------------------------------");
+				if (heart != null) {
+					fheart = 1;
+				}
+			}
+			
+			if (userno != 0) {
+				heartint2 = heartService.numberHeart(heartint);
+				/* heartint = heartService.numberHeart(newRoomno); */
+				System.out.println("-------------------------------");
+				System.out.println(heartint2);
+				System.out.println(fheartint);
+				System.out.println("-------------------------------");
+			}
 
 		} catch (Exception e) {
 
@@ -329,6 +359,8 @@ public class MainController {
 		model.addAttribute("img", output_image);
 		model.addAttribute("user", output_user);
 		model.addAttribute("fake", output_fake);
+		model.addAttribute("heart", fheart);
+		model.addAttribute("heartint", fheartint);
 
 		return new ModelAndView("main/rmdt");
 	}
@@ -691,4 +723,73 @@ public class MainController {
 	/********************************************************************
 	 * 테스트
 	 *******************************************************************/
+	
+	/********************************************************************
+	 * 좋아요 삭제
+	 *******************************************************************/
+	@RequestMapping(value = "/main/delectstar.do", method = RequestMethod.GET)
+	public ModelAndView delectstar(Model model, HttpServletRequest request) {
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
+		int userno = loginInfo.getUserno();
+		int x = webHelper.getInt("x");
+		
+		Heart input = new Heart();
+		input.setUserno(userno);
+		input.setRoomno(x);
+		System.out.println("--------------------------");
+		System.out.println(x);
+		System.out.println("--------------------------");
+		
+		try {
+			heartService.delectHeart(input);
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/** view 화면으로 보여주기 */
+		return webHelper.redirect(contextPath + "/main/search.do", "좋아요가 삭제되었습니다.");
+	}
+	
+	/********************************************************************
+	 * 좋아요 저장
+	 *******************************************************************/
+	@RequestMapping(value ="/main/insertstar.do", method = RequestMethod.GET)
+	public ModelAndView insertstar(Model model, HttpServletRequest request){
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
+		
+		int userno = loginInfo.getUserno();
+		int roomno = webHelper.getInt("x");
+
+		Heart input = new Heart();
+		input.setRoomno(roomno);
+		input.setUserno(userno);
+		System.out.println("-----------------------");
+		System.out.println(roomno);
+		System.out.println(userno);
+		System.out.println("-----------------------");
+
+		try {
+			//데이터 저장
+			heartService.addHeart(input);
+
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	return webHelper.redirect(contextPath + "/main/search.do", "좋아요가 저장되었습니다.");
+	
+}
+	
 }
