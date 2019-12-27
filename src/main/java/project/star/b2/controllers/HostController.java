@@ -424,6 +424,14 @@ public class HostController {
 	@RequestMapping(value = "/host/rm_edit.do", method = RequestMethod.GET)
 	public ModelAndView rm_edit(Model model) {
 		
+		HttpSession session = webHelper.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect(null, "로그인 후 방등록이 가능합니다.");
+        }
+		
+		
 		int roomno = webHelper.getInt("roomno");
 
 		Room input_room = new Room();
@@ -806,38 +814,7 @@ public class HostController {
 				
 				
 			}
-			
-			/**
-			 * UPLOAD 
-			 */
-
-			// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
-			for (UploadItem item : fileList) {
-				
-				item.setFieldName(item.getFieldName());
-				item.setOriginName(item.getOriginName());
-				item.setFilePath(item.getFilePath());
-				item.setContentType(item.getContentType());
-				item.setFileSize(item.getFileSize());
-				item.setFileName(item.getFileName());
-				item.setRegDate(item.getRegDate());
-				item.setEditDate(item.getEditDate());
-				item.setRoomno(input_R.getRoomno());
-				log.debug("업로드 될 항목" + item.toString());
-
-				// DB에 저장하기
-				try {
-					uploadService.addUploadItem(item);
-				} catch (Exception e) {
-					log.error(e.getLocalizedMessage());
-					e.printStackTrace();
-					return webHelper.redirect(null, e.getLocalizedMessage());
-				}	
-			}//end for	
-			
-			
-			
-			
+						
 				
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -852,7 +829,7 @@ public class HostController {
 	
 
 	/********************************************************************
-	 * 공실 수정하기_ok
+	 * 공실 수정하기 가격 테이블 행삭제 _ok_delPrice
 	 * @return 
 	 *******************************************************************/
 	@RequestMapping(value = "/host/rm_edit_delPrice.do", method = RequestMethod.POST)
@@ -866,6 +843,80 @@ public class HostController {
 		}catch (Exception e){
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
+		
+		return null;
+
+	}
+	
+	/********************************************************************
+	 * 공실 수정하기 이미지 테이블 행삭제 _ok_delImage 
+	 * @return 
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rm_edit_delImage.do", method = RequestMethod.POST)
+	public ModelAndView rm_edit_delImage() {
+		
+		int imageno = webHelper.getInt("imageno");
+		
+		UploadItem input = new UploadItem();
+		input.setImageno(imageno);
+		
+		try {
+			uploadService.deleteUploadItem(input);
+		}catch (Exception e){
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		return null;
+
+	}
+	
+	/********************************************************************
+	 * 공실 수정하기 이미지 테이블 행추가 _ok_addImage 
+	 * @return 
+	 *******************************************************************/
+	@RequestMapping(value = "/host/rm_edit_addImage.do", method = RequestMethod.POST)
+	public ModelAndView rm_edit_addImage() {
+		
+		
+		
+		/**
+		 * UPLOAD 
+		 */
+
+		try {
+			webHelper.upload();
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		List<UploadItem> fileList = webHelper.getFileList();
+		Map<String, String> paramMap = webHelper.getParamMap();
+		
+		int roomno = Integer.parseInt( paramMap.get("roomno") );
+		
+		// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
+		for (UploadItem item : fileList) {
+			
+			item.setFieldName(item.getFieldName());
+			item.setOriginName(item.getOriginName());
+			item.setFilePath(item.getFilePath());
+			item.setContentType(item.getContentType());
+			item.setFileSize(item.getFileSize());
+			item.setFileName(item.getFileName());
+			item.setRegDate(item.getRegDate());
+			item.setEditDate(item.getEditDate());
+			item.setRoomno(roomno);
+			log.debug("업로드 될 항목" + item.toString());
+
+			// DB에 저장하기
+			try {
+				uploadService.addUploadItem(item);
+			} catch (Exception e) {
+				log.error(e.getLocalizedMessage());
+				e.printStackTrace();
+				return webHelper.redirect(null, e.getLocalizedMessage());
+			}	
+		}//end for
 		
 		return null;
 
