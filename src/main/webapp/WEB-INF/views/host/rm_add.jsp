@@ -516,7 +516,7 @@
                                	<div class="register-d" style="position: relative;">
                                   	<button class="register-btn" id="uploadPhoto">사진 등록</button>
                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
-                                       	<input id="addfile0" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept=".jpg,.jpeg,.png">
+                                       	<input id="addfile" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept=".jpg,.jpeg,.png">
                                    	</div>
                                	</div>
                            	</div>
@@ -837,16 +837,19 @@ $(function() {
 	var z = 0;
 	var index = 0;
     var sel_files = [];
+    
+    
+    $("#addfile").change(function(){
+		// 기존의 설명 지우기
+		$(".photo_pic2").remove();
+        $(".register-d").attr("class", "register-after-d");
+        $(".register-btn").attr("class", "register-after-btn");
+    });
 	
 	$(function() {
 		$("#uploadPhoto").click(function(e){
 			e.preventDefault();
 			$("input:file[name='iloveupload" + z + "']").trigger('click');
-			
-			// 기존의 설명 지우기
-			$(".photo_pic2").remove();
-            $(".register-d").attr("class", "register-after-d");
-            $(".register-btn").attr("class", "register-after-btn");
 			
     	});
 	}); 
@@ -973,7 +976,7 @@ $(function() {
 	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
 	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
 		
-	    //if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
 	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
 	    
 	    
