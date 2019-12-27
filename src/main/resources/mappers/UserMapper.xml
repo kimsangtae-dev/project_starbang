@@ -16,6 +16,8 @@
         <result property="regdate" column="regdate" />
         <result property="editdate" column="editdate" />
         <result property="profile_img" column="profile_img" />
+        
+        <result property="reason" column="reason" />
     </resultMap>
 
     <!-- 단일행 조회를 위한 기능 정의 -->
@@ -156,5 +158,14 @@
 		UPDATE user SET editdate=#{editdate}, profile_img=#{profile_img}
         WHERE userno=#{userno};
 	</update>
+	
+	<!-- 데이터 저장을 위한 기능 정의 -->
+    <insert id="outUserinsert"
+        parameterType="project.star.b2.model.User"
+        useGeneratedKeys="true"
+        keyProperty="userno">
+        INSERT INTO outuser (userno, reason, regdate) 
+        VALUES (#{userno}, #{reason}, now());
+    </insert>
 
 </mapper>
