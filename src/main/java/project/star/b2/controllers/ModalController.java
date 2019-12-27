@@ -232,6 +232,51 @@ public class ModalController {
 
 		return new ModelAndView("modal/compare");
 	}
+	/********************************************************************
+     * AJAX 호출 (찜한방 - 비교하기)
+     *******************************************************************/
+    @RequestMapping(value="/modal/comparelist.do", method=RequestMethod.POST)
+    public ModelAndView comparelist(Model model,
+            @RequestParam(value="checkArray[]") List<String> arrayParams, 
+            @RequestParam(value="userId") String userId) {
+        
+        // 파라미터로 받아온 userid 확인용
+        System.out.println("=user=");
+        System.out.println(userId);
+        
+        // 파라미터로 받아온 방 번호들 확인용
+        System.out.println("=roomno=");
+        for(String hahat : arrayParams) {
+            System.out.println(hahat);
+        }
+        
+        /** 2)데이터 조회하기 */
+        // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
+        //Gallery input = new Gallery();
+        //input.setRegion_2depth_name(region);
+        
+        List<String> list = arrayParams;
+        List<Gallery> output = null;
+        List<Price> price = null;
+            
+        try {
+            // 체크된 방번호로 조회
+            output = galleryService.getCompareList(list);
+            
+            // 체크된 방번호 중 가격 조회
+            price = priceService.getCompareList(list);
+            log.info("성공 priceService");
+            
+        } catch (Exception e) {
+            return new ModelAndView("main/wish");
+        }
+        
+        
+        /** view 화면으로 보여주기 */
+        model.addAttribute("output", output);
+        model.addAttribute("price", price);
+        return new ModelAndView("modal/compare");
+    }
 	
 	
     /** 허위매물 신고에 대한 action 페이지 */
