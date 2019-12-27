@@ -623,14 +623,17 @@ pageEncoding="UTF-8"%>
                 $("#index-list").html(index_list);
                 /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
-                    $(this).toggleClass('on off');
-                    var onoff = $(this).hasClass("on");
-                    alert(onoff);
-                    if(onoff == true) {
-                    	insertstar();
-                    }else {
-                    	delectstar();
-                    }
+                	var loginInfouser = ${loginInfo.userno};
+                	if(loginInfouser != 0) {         
+	                    $(this).toggleClass('on off');
+    	                var onoff = $(this).hasClass("on");
+        	            alert(onoff);
+            	        if(onoff == true) {
+                	    	insertstar();
+                    	}else {
+                    		delectstar();
+	                    }
+                	}
                 });
             }
         });
