@@ -331,6 +331,10 @@ public class UserController {
 	 *******************************************************************/
 	@RequestMapping(value = "/main/mypageedit.do", method = RequestMethod.POST)
 	public ModelAndView mypage(Model model, HttpServletRequest request) {
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
 		
 		/** 1)필요한 변수값 생성 */
 		int userno = webHelper.getInt("userno"); // 회원 번호
@@ -366,8 +370,6 @@ public class UserController {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
 		
-		HttpSession session = request.getSession();
-		User loginInfo = (User) session.getAttribute("loginInfo");
         loginInfo.setName(nowmyname);
         loginInfo.setEmail(nowemail);
         loginInfo.setTel(nowallpon);
@@ -391,38 +393,60 @@ public class UserController {
 	 * 마이페이지 회원정보 삭제하기
 	 *******************************************************************/
 	@RequestMapping(value = "/main/mypagedelect.do", method = RequestMethod.POST)
-	public ModelAndView mypagedelect(Model model) {
+	public ModelAndView mypagedelect(Model model, HttpServletRequest request) {
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
+
 		/** 1)필요한 변수값 생성 */
-		int userno = webHelper.getInt("userno"); // 회원 번호
+		int userno = loginInfo.getUserno(); // 회원 번호
 		String outtextarea = webHelper.getString("outtextarea");
+		String Regdate = loginInfo.getRegdate(); // 회원 가입 날짜
+
+		/* session 삭제 */
+		session.removeAttribute("loginInfo");
 		
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0 ) {
 			return webHelper.redirect(null, "회원정보 번호가 없습니다.");
 		}
-		
+
 //		Calendar c = Calendar.getInstance();
 //		String editDate = String.format("%04d-%02d-%02d", c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
 //				c.get(Calendar.DAY_OF_MONTH)); // 변경일자
 
-		/** 2)데이터 조회하기 */
+		/** 2 - 1) user 삭제 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		User input = new User();
 		input.setUserno(userno);
-
+		
 		try {
 			// 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다
 			userService.deleteUser(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
-
+		
+		/** 2 - 2) 삭제 이유 저장 */
+		User outinput = new User();
+		outinput.setUserno(userno);
+		outinput.setReason(outtextarea);
+		
+		try {
+			// 현재 로그인 되어있는 회원번호를 사용해 정보를 추출한다
+			userService.outUserinsert(outinput);
+		} catch (Exception e) {
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		
 		/** 3)View 처리 */
 //		String redirectUrl = contextPath + "/main/mypage.do?roomno=" + input.getRoomno();
 //		return webHelper.redirect(redirectUrl, "수정되었습니다.");
 
 		//return new ModelAndView("main/mypage");
-		String redirectUrl = contextPath;
+		String redirectUrl = contextPath + "/";
 		return webHelper.redirect(redirectUrl, "탈퇴되었습니다");
 	}
 	
