@@ -87,4 +87,11 @@ public interface UserService {
       * @throws Exception
       */
      public int editUserMyPage(User input) throws Exception;
+     
+     /**
+      * 회원 탈퇴 이유
+      * @param User 수정할 정보를 담고 있는 Beans
+      * @throws Exception
+      */
+     public int outUserinsert(User input) throws Exception;
 }
