@@ -900,8 +900,8 @@ function binary2() {
 	    $(".railBtn_right").click(function() {
 
 	    	location = location - 288;
-	    	if (location < -len + 860) {
-	    		location = -len + 860;
+	    	if (location < -len + 932) {
+	    		location = -len + 932;
 	    	}
 	    	$(".thumnail_rail").css('transform',"translateX(" + location + "px)");
 
