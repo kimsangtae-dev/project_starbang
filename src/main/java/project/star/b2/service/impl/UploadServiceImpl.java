@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import project.star.b2.model.Price;
 import project.star.b2.model.UploadItem;
 import project.star.b2.service.UploadService;
 
@@ -24,6 +25,7 @@ public class UploadServiceImpl implements UploadService {
 	public UploadItem getUploadItem(UploadItem input) throws Exception {
 		return null;
 	}
+	
 	
 	@Override
 	public List<UploadItem> getImageList_by_roomno(UploadItem input) throws Exception {
@@ -45,6 +47,41 @@ public class UploadServiceImpl implements UploadService {
 		
 		return result;
 	}
+	
+	
+	@Override
+	public List<UploadItem> getUploadItemList(UploadItem input) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+	@Override
+	public int getUploadItemCount(UploadItem input) throws Exception {
+		return 0;
+	}
+	
+	
+	@Override
+	public int addUploadItem(UploadItem input) throws Exception {
+		int result = 0;
+
+		try {
+			result = sqlSession.insert("UploadMapper.insertItem", input);
+
+			if (result == 0) {
+				throw new NullPointerException("result=0");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("저장된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 저장에 실패했습니다.");
+		}
+		return result;
+	}
+	
 
 	@Override
 	public int editUploadItem(UploadItem input) throws Exception {
@@ -67,39 +104,30 @@ public class UploadServiceImpl implements UploadService {
         return result;
     }
 
+
 	@Override
 	public int deleteUploadItem(UploadItem input) throws Exception {
-		return 0;
-	}
-
-	@Override
-	public int addUploadItem(UploadItem input) throws Exception {
 		int result = 0;
-
+		
 		try {
-			result = sqlSession.insert("UploadMapper.insertItem", input);
-
+			result = sqlSession.delete("UploadMapper.deleteItem_by_imageno", input);
+			
 			if (result == 0) {
 				throw new NullPointerException("result=0");
 			}
 		} catch (NullPointerException e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("저장된 데이터가 없습니다.");
+			throw new Exception("삭제된 데이터가 없습니다.");
 		} catch (Exception e) {
 			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 저장에 실패했습니다.");
+			throw new Exception("데이터 삭제에 실패했습니다.");
 		}
+		
 		return result;
 	}
-	
-	@Override
-	public int getUploadItemCount(UploadItem input) throws Exception {
-		return 0;
-	}
 
-	@Override
-	public List<UploadItem> getUploadItemList(UploadItem input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
+	
+	
 }
