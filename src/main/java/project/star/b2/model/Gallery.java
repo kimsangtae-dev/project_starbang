@@ -46,6 +46,7 @@ public class Gallery {
 	/** user */
 	private int userno;			// 방을 올린 유저
 	private String email;		// 방을 올린 유저의 이메일
+	private String name;		// 방을 올린 유저이 이름
 
 
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
