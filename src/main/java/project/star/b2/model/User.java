@@ -14,6 +14,9 @@ public class User {
     private String editdate;
     private String profile_img;
     
+    private String reason;		// 탈퇴이유
+	//private String regdate;		// 탈퇴 날짜
+	private String joindate;	// 가입 날짜
     
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치
