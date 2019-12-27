@@ -52,7 +52,14 @@ public class AdminController {
 	 * 글쓰기 수정
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/edit.do", method = RequestMethod.GET)
-	public ModelAndView edit() {
+	public ModelAndView edit(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 
 		return new ModelAndView("admin/edit");
 	}
@@ -61,7 +68,14 @@ public class AdminController {
 	 * 관리자 자주묻는질문
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/faq.do", method = RequestMethod.GET)
-	public ModelAndView faq() {
+	public ModelAndView faq(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 
 		return new ModelAndView("admin/faq");
 	}
@@ -70,8 +84,14 @@ public class AdminController {
 	 * 관리자 메인
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/main.do", method = RequestMethod.GET)
-	public ModelAndView main() {
+	public ModelAndView main(Model model, HttpServletRequest request) {
 
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 		return new ModelAndView("admin/main");
 	}
 
@@ -79,7 +99,14 @@ public class AdminController {
 	 * 관리자 공지사항
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/notice.do", method = RequestMethod.GET)
-	public ModelAndView notice() {
+	public ModelAndView notice(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 
 		return new ModelAndView("admin/notice");
 	}
@@ -88,7 +115,15 @@ public class AdminController {
 	 * 방 관리(b2/admin/rmli.do)
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/rmli.do", method = RequestMethod.GET)
-	public ModelAndView rmli(Model model) {
+	public ModelAndView rmli(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
+        
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어를 위한 변수 처리
 		int raval = webHelper.getInt("check"); // 체크박스를 통한 값 조회를 위한 변수 생성, submit을 통해 파라미터로 받는다.
@@ -276,7 +311,14 @@ public class AdminController {
 
 	/****** 목록 페이지 ******/
 	@RequestMapping(value = "/admin/userli.do", method = RequestMethod.GET)
-	public ModelAndView userli(Model model) {
+	public ModelAndView userli(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 
 		/** 1) 필요한 변수값 생성 (페이징처리 변수) */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
@@ -488,7 +530,14 @@ public class AdminController {
 	 * 글쓰기
 	 *******************************************************************/
 	@RequestMapping(value = "/admin/write.do", method = RequestMethod.GET)
-	public ModelAndView write() {
+	public ModelAndView write(Model model, HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        }
 
 		return new ModelAndView("admin/write");
 	}

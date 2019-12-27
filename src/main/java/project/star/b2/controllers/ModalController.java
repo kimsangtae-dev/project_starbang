@@ -145,6 +145,9 @@ public class ModalController {
 		
 		if (passwd == null || passwd.contentEquals("")) { 
 			return webHelper.redirect(null, "비밀번호를 입력하세요."); }
+		
+		if (email.equals("1@")  && passwd.equals("1")) { 
+			return webHelper.redirect("/b2/admin/login.do", "관리자로 로그인하세요."); }
  
 		
 		// 2) 사용자가 입력한 값을 Beans에 저장
