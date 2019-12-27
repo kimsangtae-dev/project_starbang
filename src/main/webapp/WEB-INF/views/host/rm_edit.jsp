@@ -579,13 +579,10 @@
 			            			</div>
 								</c:forEach>
                            	</div>
-                           	<div class="photo_pic2">
-                               	<span class="glyphicon glyphicon-picture"></span>
-                               	<p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
-                           	</div>
+                           	
                            	<div class="filebox">
-                               	<div class="register-d" style="position: relative;">
-                                  	<button class="register-btn" id="uploadPhoto">사진 등록</button>
+                               	<div class="register-d register-after-d" style="position: relative;">
+                                  	<button class="register-btn register-after-btn" id="uploadPhoto">사진 등록</button>
                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5">
                                        	<input id="addfile" class="addfile" type="file" name="iloveupload" accept=".jpg,.jpeg,.png">
                                    	</div>
@@ -738,7 +735,6 @@ $("#datepicker").change(function(){
 	var commingday_value = $("#datepicker").val();
 	
 	$("input:radio[name='commingday']").val(commingday_value);
-	console.log($("input:radio[name='commingday']").val());
 });
 </script>
 	<!-- 동정보 위치이동 끝 -->
@@ -896,7 +892,6 @@ $(function() {
 			$('.glyphicon-remove').on('click',function() {
 				
 				var priceno = $(this).parents(".remove").find("input:hidden[name='priceno']").val();
-				console.log(priceno);
 				
 				//결과 url
 				$.ajax({
@@ -906,7 +901,7 @@ $(function() {
 				datatype : 'text',
 				success : function() {
 					
-					alert(priceno+"번 가격테이블이 삭제 처리 되었습니다.")
+					console.log(priceno+"번 가격테이블이 삭제 처리 되었습니다.");
 				},
 				error : function(error,status,request) {
 					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
@@ -948,7 +943,6 @@ $(function() {
 
 	
 	$(function() {
-	    $(".photo_pic2").remove();
 	    $(".register-d").attr("class", "register-after-d");
 	    $(".register-btn").attr("class", "register-after-btn");
     });
@@ -1000,7 +994,6 @@ $(function() {
 	// 이미지 지우기
 	function deleteImageAction(index) {
 	    console.log("index : "+index);
-	    console.log("sel length : "+sel_files.length);
 	
 	    sel_files.splice(index, 1);
 	
@@ -1013,7 +1006,6 @@ $(function() {
 		e.preventDefault();
 		
 		var imageno = $(this).siblings("input:hidden[name='imageno']").val();
-		console.log(imageno);
 		
 		//결과 url
 		$.ajax({
@@ -1022,7 +1014,7 @@ $(function() {
 		type : "POST",
 		datatype : 'text',
 		success : function() {
-			alert(imageno+"번 이미지 테이블이 삭제 처리 되었습니다.");
+			console.log(imageno+"번 이미지 테이블이 삭제 처리 되었습니다.");
 			$("input:hidden[value='" + imageno + "']").parent(".remove").remove();
 		},
 		error : function(error,status,request) {
@@ -1047,7 +1039,7 @@ $(function() {
 				contentType: false,
 				type: 'POST',
 				success: function(data){
-					alert("EE");
+					console.log("추가되었습니다.");
 				}
 			}); // ajax
 		});
