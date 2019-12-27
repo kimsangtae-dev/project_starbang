@@ -568,7 +568,17 @@
 							<p>- 사진 용량은 사진 한 장당 10MB 까지 등록이 가능합니다.</p>
 						</div>
                        	<div class="photo_info">
-                           	<div class="up_list"></div>
+                           	<div class="up_list">
+								<c:forEach var="k" items="${img}" varStatus="status">
+									<div class="up-d remove">
+										<input type="hidden" value="${k.imageno}" name="imageno" />
+				            			<button class="up-close-b"></button>
+				            			<div class="up-d2">
+				            				<img src="${pageContext.request.contextPath}/assets/img/upload/${k.fileName}" />
+			            				</div>
+			            			</div>
+								</c:forEach>
+                           	</div>
                            	<div class="photo_pic2">
                                	<span class="glyphicon glyphicon-picture"></span>
                                	<p class="pic_tell">실 사진 최소 3장 이상 등록하셔야 하며, 가로 사진을 권장합니다.</p>
@@ -576,18 +586,19 @@
                            	<div class="filebox">
                                	<div class="register-d" style="position: relative;">
                                   	<button class="register-btn" id="uploadPhoto">사진 등록</button>
-                                   	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
-                                       	<input id="addfile0" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">
+                                   	<div id="addfile_container" class="moxie-shim moxie-shim-html5">
+                                       	<input id="addfile" class="addfile" type="file" name="iloveupload" accept=".jpg,.jpeg,.png">
                                    	</div>
                                	</div>
                            	</div>
                        	</div>
-					</div>
-					<p class="warning_text">
+                       	<p class="warning_text">
 						<span class="glyphicon glyphicon-exclamation-sign"></span>
 						<span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span>
-						<a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
+						<a href="#">허위매물 제재 정책 확인하기</a>
 					</p>
+					</div>
+					
 				</div>
 				
 				<div class="low_box">
@@ -780,15 +791,6 @@ $(function() {
 </script>
 
 <script>
-// 오피스텔 선택시 자동선택
-/*     $( document ).ready( function() {
-        $( '.ab' ).click( function() {
-        	$( '.ab1' ).prop( 'checked', this.checked );
-        });
-    }); */
-</script>
-
-<script>
 	// 관리비 fee
 	$("input#main_input").click(function() {
 		if ($("input#main_input:checked").val()) {
@@ -819,7 +821,7 @@ $(function() {
 
 	<!-- 월세, 전세, 매매 버튼 활성화 -->
 	<script>
-    $(function() {  	
+    $(function() {
         // 월세 버튼
         $(document).on("click", ".deal_btn", function() {
             
@@ -836,8 +838,8 @@ $(function() {
         $(document).on("click", ".deal_btn1", function() {
 
             var bc = '<div class="d_div1"><p class="bbtn">전세</p>'
-            	+'<input type="hidden" class="dealingtype" name="dealingtype" value="전세">'		// input-dealingtype
-            	+'<input type="hidden" class="deposit" name="deposit" value="-1" >'				// input-deposit
+            	+'<input type="hidden" class="dealingtype" name="dealingtype" value="전세">'							// input-dealingtype
+            	+'<input type="hidden" class="deposit" name="deposit" value="-1" >'									// input-deposit
             	+'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="전세">'		// input-price
             	+'<p class="dp_text">만원<span>(예 전세 2000만원)</span><span class="glyphicon glyphicon-remove pp1"></span></p></div>';
 
@@ -849,9 +851,9 @@ $(function() {
         $(document).on("click", ".deal_btn2", function() {
         	
             var cd = '<div class="d_div2"><p class="bbtn">매매</p>'
-            +'<input type="hidden" class="dealingtype" name="dealingtype" value="매매">'		// input-dealingtype
-            +'<input type="hidden" class="deposit" name="deposit" value="-1" >'				// input-deposit
-            +'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="매매">'		// input-price
+            +'<input type="hidden" class="dealingtype" name="dealingtype" value="매매">'								// input-dealingtype
+            +'<input type="hidden" class="deposit" name="deposit" value="-1" >'										// input-deposit
+            +'<input type="text" class="d_input_box1 d_input_box2 price" name="price" placeholder="매매">'			// input-price
             +'<p class="dp_text">만원<span>(예 매매 10000만원)</span><span class="glyphicon glyphicon-remove pp2"></span></p></div>';
             
             $(".deal77").append(cd);
@@ -910,11 +912,10 @@ $(function() {
 					alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
 					},
 				});
-		})
-	}); //end $.ajax;
-        
-        
-    });
+			})
+		}); //end $.ajax;
+		
+    }); // 
     
     // 월세 전세 매매 자동반영 기능 -->
         /* function reflex(){
@@ -944,74 +945,114 @@ $(function() {
 	    }
 	    return true;
 	}
-    
-	var i = 0;
-	var index = 0;
-    var sel_files = [];
+
 	
 	$(function() {
-        $("#addfile0").change(function(){
-            $(".photo_pic2").remove();
-            $(".register-d").attr("class", "register-after-d");
-            $(".register-btn").attr("class", "register-after-btn");
-        });
+	    $(".photo_pic2").remove();
+	    $(".register-d").attr("class", "register-after-d");
+	    $(".register-btn").attr("class", "register-after-btn");
     });
+	
+	var index = 0;	// 지우기 위한 변수
+    var sel_files = [];	// 파일 추가를 위한 변수
 	
 	$(function() {
 		$("#uploadPhoto").click(function(e){
 			e.preventDefault();
-			console.log(i);
-			$("input:file[name='iloveupload" + i + "']").trigger('click');
-			console.log($("input:file[name='iloveupload" + i + "']"));
+			$("input:file[name='iloveupload']").trigger('click');
     	});
 	}); 
 	
 	//대기하다 input에 change가 있을경우 함수실행
 	$(document).ready(function() {
-		$(document).on('change', $("input:file[name='iloveupload" + i + "']"), function(e) {
-			
-			i++;
-		    var addInput = '<input id="addfile' + i + '" class="addfile" type="file" name="iloveupload' + i + '" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">';
-				$("#addfile_container").append(addInput);
+		$(document).on('change', ( $("input:file[name='iloveupload']") ), function(e) {
+
+			var files = null;
+			var filesArr = null;
+
+			if (e.target.files != null) {
 				
-			var files = e.target.files;
-		    var filesArr = Array.prototype.slice.call(files);
-		    
-		  	//이미지 정보들을 담을 배열
+				files = e.target.files;
+			    filesArr = Array.prototype.slice.call(files);
+			    
+			    filesArr.forEach(function(f) {
+			    	
+			        sel_files.push(f);
+			        var reader = new FileReader();
+			        
+			        reader.onload = function(e) {
+			        	
+			            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
+			            			+'<button class="up-close-b"></button>'
+			            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
+			            $(".up_list").append(item);
+			            
+			            index++;
+			            
+			         	
+			        }
+			        reader.readAsDataURL(f);
+			    }); // forEach
+			} // if
+		}); // document.change
+	});  // document.ready
 
-		    
-	    	 // 유효성검사하기
-		    filesArr.forEach(function(f) {
-		    	
-		        sel_files.push(f);
-		        var reader = new FileReader();
-		        
-		        reader.onload = function(e) {
-		        	
-		            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
-		            			+'<button class="up-close-b"></button>'
-		            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
-		            $(".up_list").append(item);
-		            index++;
-		        }
-		        reader.readAsDataURL(f);
-		    });
-			
-		});
-	}); 
+	// 이미지 지우기
+	function deleteImageAction(index) {
+	    console.log("index : "+index);
+	    console.log("sel length : "+sel_files.length);
 	
-
-		// 이미지 지우기
-		function deleteImageAction(index) {
-		    console.log("index : "+index);
-		    console.log("sel length : "+sel_files.length);
+	    sel_files.splice(index, 1);
+	
+	    var img_id = "#img_id_"+index;
+	    $(img_id).remove(); 
+	} 
+	
+	// 삭제버튼 클릭시 이미지 DB Ajax 삭제 
+	$('.up-close-b').click(function(e) {
+		e.preventDefault();
 		
-		    sel_files.splice(index, 1);
+		var imageno = $(this).siblings("input:hidden[name='imageno']").val();
+		console.log(imageno);
 		
-		    var img_id = "#img_id_"+index;
-		    $(img_id).remove(); 
-		} 
-
+		//결과 url
+		$.ajax({
+		url : "${pageContext.request.contextPath}/host/rm_edit_delImage.do",
+		data : {imageno : imageno},
+		type : "POST",
+		datatype : 'text',
+		success : function() {
+			alert(imageno+"번 이미지 테이블이 삭제 처리 되었습니다.");
+			$("input:hidden[value='" + imageno + "']").parent(".remove").remove();
+		},
+		error : function(error,status,request) {
+			alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+			},
+		});
+	})
+	
+	// 이미지파일 추가시 이미지 DB Ajax로 추가 
+	$(document).ready(function() {
+		$(document).on('change', $(".addfile"), function(e) {
+			
+			var roomno = "${room.roomno}";
+			var formData = new FormData();
+				formData.append("upload", $(".addfile")[0].files[0]);
+				formData.append("roomno", roomno);
+					
+			$.ajax({
+				url: '${pageContext.request.contextPath}/host/rm_edit_addImage.do',
+				data: formData,
+				processData: false,
+				contentType: false,
+				type: 'POST',
+				success: function(data){
+					alert("EE");
+				}
+			}); // ajax
+		});
+	});
+	
 </script>
 
 <script>
@@ -1084,22 +1125,21 @@ $(function() {
 	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
 	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
 		
-	    if ( !regex.value('#addfile0', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
 	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
+	    
+	    if($("#addfile").val() != null ) {
+	    	$("#addfile").val(null);
+	    }
 	    
 	    
 		/* 중복클릭 방지 */
-	    var doubleSubmitFlag = false;
-	    console.log(doubleSubmitFlag);
-        if(doubleSubmitFlag){
-        	log.console()
+	    var preventSubmit = false;
+        if(preventSubmit){
             alert('저장 중입니다.');
-        	console.log("트루로 변환 보냈습니다.");
         }else {
             $(this).unbind().submit();
-            doubleSubmitFlag = true;
-            console.log("보내고 트루");
-            console.log(doubleSubmitFlag);
+            preventSubmit = true;
         }
 
 	});
@@ -1180,7 +1220,6 @@ $(function() {
 		});
 		
 		// 입주가능일
-		
 		var commingday = "${info.commingday}";
 		commingday = commingday.replace(",", "");
 		var commingday_arr = ["0","1"];
