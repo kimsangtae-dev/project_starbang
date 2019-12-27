@@ -516,17 +516,17 @@
                                	<div class="register-d" style="position: relative;">
                                   	<button class="register-btn" id="uploadPhoto">사진 등록</button>
                                    	<div id="addfile_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 498px; width: 124px; height: 40px; overflow: hidden; z-index: 0;">
-                                       	<input id="addfile0" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">
+                                       	<input id="addfile0" class="addfile" type="file" name="iloveupload0" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept=".jpg,.jpeg,.png">
                                    	</div>
                                	</div>
                            	</div>
                        	</div>
-					</div>
-					<p class="warning_text">
+                       	<p class="warning_text">
 						<span class="glyphicon glyphicon-exclamation-sign"></span>
 						<span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span>
 						<a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
 					</p>
+					</div>
 				</div>
 				
 				<div class="low_box">
@@ -713,15 +713,6 @@ $(function() {
 </script>
 
 <script>
-// 오피스텔 선택시 자동선택
-/*     $( document ).ready( function() {
-        $( '.ab' ).click( function() {
-        	$( '.ab1' ).prop( 'checked', this.checked );
-        });
-    }); */
-</script>
-
-<script>
 	// 관리비 fee
 	$("input#main_input").click(function() {
 		if ($("input#main_input:checked").val()) {
@@ -843,70 +834,72 @@ $(function() {
 	    return true;
 	}
     
-	
-	
-	$(function() {
-        $("#addfile0").change(function(){
-            $(".photo_pic2").remove();
-            $(".register-d").attr("class", "register-after-d");
-            $(".register-btn").attr("class", "register-after-btn");
-        });
-    });
-	
-	var i = 0;
+	var z = 0;
 	var index = 0;
-	var sel_files = [];
+    var sel_files = [];
 	
 	$(function() {
 		$("#uploadPhoto").click(function(e){
 			e.preventDefault();
-			console.log(i);
-			$("input:file[name='iloveupload" + i + "']").trigger('click');
+			$("input:file[name='iloveupload" + z + "']").trigger('click');
+			
+			// 기존의 설명 지우기
+			$(".photo_pic2").remove();
+            $(".register-d").attr("class", "register-after-d");
+            $(".register-btn").attr("class", "register-after-btn");
+			
     	});
 	}); 
 	
-	
 	//대기하다 input에 change가 있을경우 함수실행
 	$(document).ready(function() {
-		$(document).on('change', $("input:file[name='iloveupload" + i + "']"), function(e) {
-			
-			i = i + 1;
-
-		    var addInput = '<input id="addfile' + i + '" class="addfile" type="file" name="iloveupload' + i + '" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept=".jpg,.jpeg,.png">';
-				$("#addfile_container").append(addInput);
+		$(document).on('change', ( $("input:file[name='iloveupload" + z + "']") ), function(e) {
 				
-			var files = e.target.files;
-		    var filesArr = Array.prototype.slice.call(files);
-		    
-		  	//이미지 정보들을 담을 배열
+				var files = null;
+				var filesArr = null;
+				
+			if (e.target.files != null) {
+				
+				files = e.target.files;
+			    filesArr = Array.prototype.slice.call(files);
+			    
+			    filesArr.forEach(function(f) {
+			    	
+			        sel_files.push(f);
+			        var reader = new FileReader();
+			        
+			        reader.onload = function(e) {
+			            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
+			            			+'<button class="up-close-b"></button>'
+			            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
+			            			
+			            $(".up_list").append(item);
+			            
+			            index++;
+			         	// z 값을 1추가하고, input태그 생성
+			            z++;
+			            
+					    var addInput = '<input id="addfile' + z + '" class="addfile" type="file" name="iloveupload' + z + '" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" accept=".jpg,.jpeg,.png">';
+							$("#addfile_container").append(addInput);
+			        }
+			        reader.readAsDataURL(f);
+			    }); // forEach
+			} // if
+		}); // document.change
+	});  // document.ready
 
+		// 이미지 지우기
+		function deleteImageAction(index) {
+		    console.log("index : "+index);
+		    console.log("sel length : "+sel_files.length);
+		
+		    sel_files.splice(index, 1);
+		
+		    var img_id = "#img_id_"+index;
+		    $(img_id).remove(); 
+		    $("input:file[name='iloveupload" + index + "']").remove();
 		    
-	    	 // 유효성검사하기
-		    filesArr.forEach(function(f) {
-		    	console.log(f);
-		    	
-		        sel_files.push(f);
-		        var reader = new FileReader();
-		        
-		        reader.onload = function(e) {
-		        	
-		            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
-		            			+'<button class="up-close-b"></button>'
-		            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
-		            $(".up_list").append(item);
-		            index++;
-		        }
-		        reader.readAsDataURL(f);
-		    });
-		});
-	}); 
-	
-	// 이미지 지우기
-	function deleteImageAction(index) {
-	    sel_files.splice(index, 1);
-	    var img_id = "#img_id_"+index;
-	    $(img_id).remove(); 
-	}
+		} 
 
 </script>
 
@@ -985,13 +978,17 @@ $(function() {
 	    
 	    
 		/* 중복클릭 방지 */
-	    var preventSubmit = false;
+	    var preventSubmit = true;
         if(preventSubmit){
-            alert('저장 중입니다.');
-        	console.log("트루로 변환 보냈습니다.");
+        	$(this).unbind().submit();
+        	$('.low_btn2').trigger('click');
+        	
+        	preventSubmit = false;
+        	console.log("바인드");
         }else {
-            $(this).unbind().submit();
-            preventSubmit = true;
+        	alert('저장 중입니다.');
+        	console.log("트루로 변환 보냈습니다.");
+            
         }
 
 	});
@@ -999,11 +996,5 @@ $(function() {
 
 </script>
 
-<select>
-
-
-
-
-</select>
 </body>
 </html>
