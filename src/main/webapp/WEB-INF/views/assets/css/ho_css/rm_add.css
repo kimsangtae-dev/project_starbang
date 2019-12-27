@@ -958,7 +958,6 @@ select::-ms-expand { display:none; }
 
 /* 허위 매물 경고문 */
 .warning_text {
-    margin-top: 23px;
     margin-bottom: 4px;
     line-height: 20px;
     position: relative;
@@ -1166,7 +1165,7 @@ select::-ms-expand { display:none; }
  * upload CSS 
  */
  
- .photo_info {
+ .photo_info::after {
  	display: block;
     content: "";
     clear: both;
