@@ -18,7 +18,7 @@
 <!-- .modal-content -->
 <!-- 여기가 나오는부분 -->
 <div class="modal-content mainbox">
-    <div id="header" class="height">
+    <div id="header_compare" class="height">
         <h1>방 비교하기</h1>
     </div>
     <div class="content">
@@ -36,58 +36,29 @@
                 </c:when>
                 <%-- 갤러리 시작 --%>
                 <c:otherwise>
-                    <c:forEach var="item" items="${output}" varStatus="status">
 
                         <!-- table 1번째 시작 -->
                         <tbody>
                             <tr>
+                                <c:forEach var="item" items="${output}" varStatus="status">
                                 <td>
-                                    <!-- 닫기버튼 -->
-                                    <button class="bclose">
-                                        <svg width="9" height="9" viewbox="0 0 9 9">
-                                        <g fill="none" fill-rule="evenodd" stroke="#222"
-                                                stroke-width=".6">
-                                            <path d="M.543.814l7.936 7.937M.543 8.75L8.479.815"></path>
-                                        </g>
-                                    </svg>
-                                    </button>
-                                    <p class="tbody-top-p">매물번호 ${item.roomno}</p>
+                                    <p class="tbody-top-p" id="${item.roomno}">매물번호 ${item.roomno}</p>
                                 </td>
-                                <td>
-                                    <button class="bclose">
-                                        <svg width="9" height="9" viewbox="0 0 9 9">
-                                        <g fill="none" fill-rule="evenodd" stroke="#222"
-                                                stroke-width=".6">
-                                            <path d="M.543.814l7.936 7.937M.543 8.75L8.479.815"></path>
-                                        </g>
-                                    </svg>
-                                    </button>
-                                    <p class="tbody-top-p">매물번호 ${item.roomno}</p>
-                                </td>
-                                <td>
-                                    <button class="bclose">
-                                        <svg width="9" height="9" viewbox="0 0 9 9">
-                                        <g fill="none" fill-rule="evenodd" stroke="#222"
-                                                stroke-width=".6">
-                                            <path d="M.543.814l7.936 7.937M.543 8.75L8.479.815"></path>
-                                        </g>
-                                    </svg>
-                                    </button>
-                                    <p class="tbody-top-p">매물번호 ${item.roomno}</p>
-                                </td>
+                                </c:forEach>
                             </tr>
                             <tr>
-                                <td><div class="compare-img1"></div></td>
-                                <td><div class="compare-img2"></div></td>
-                                <td><div class="compare-img3"></div></td>
+                                <c:forEach var="item" items="${output}" varStatus="status">
+                                    <td><div class="compare-img1"><img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div></td>
+                                </c:forEach>
                             </tr>
                             <tr>
-                                <td><p class="room-num">${item.roomtype}</p></td>
-                                <td><p class="room-num">${item.roomtype}</p></td>
-                                <td><p class="room-num">${item.roomtype}</p></td>
+                                <c:forEach var="item" items="${output}" varStatus="status">
+                                    <td><p class="room-num">${item.roomtype}</p></td>
+                                </c:forEach>
                             </tr>
                             <tr>
-                                <td><p class="room-price">
+                                <c:forEach var="item" items="${output}" varStatus="status">
+                                    <td><p class="room-price">
                                         <c:choose>
                                             <c:when test="${item.dealingtype == '월세'}">
                                                 <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
@@ -98,28 +69,7 @@
                                             </c:otherwise>
                                         </c:choose>
                                     </p></td>
-                                <td><p class="room-price">
-                                        <c:choose>
-                                            <c:when test="${item.dealingtype == '월세'}">
-                                                <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span>${item.dealingtype}&nbsp;</span>
-                                                <span id="prc">${item.price}</span>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </p></td>
-                                <td><p class="room-price">
-                                        <c:choose>
-                                            <c:when test="${item.dealingtype == '월세'}">
-                                                <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <span>${item.dealingtype}&nbsp;</span>
-                                                <span id="prc">${item.price}</span>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </p></td>
+                                </c:forEach>
                             </tr>
                         </tbody>
                         <!-- 테이블 1번째 끝 -->
@@ -138,113 +88,42 @@
                                     <th>가격대</th>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table2-margin">
                                         <p class="table2-price-lp">가격</p>
                                         <p class="table2-price-rp">
-                                            <span><c:choose>
-                                                    <c:when test="${item.dealingtype == '월세'}">
-                                                        <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+                                            <c:forEach var="p" items="${price}" varStatus="status">
+                                            <c:if test="${item.roomno==p.roomno}">
+                                                <c:choose>
+                                                    <c:when test="${p.dealingtype == '월세'}">
+                                                        <span>${p.dealingtype}&nbsp;${p.deposit}/${p.price}</span>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <span>${item.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${item.price}</span>
-                                                    </c:otherwise>
-                                                </c:choose></span> <span><c:choose>
-                                                    <c:when test="${item.dealingtype == '월세'}">
-                                                        <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <span>${item.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${item.price}</span>
-                                                    </c:otherwise>
-                                                </c:choose></span> <span><c:choose>
-                                                    <c:when test="${item.dealingtype == '월세'}">
-                                                        <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <span>${item.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${item.price}</span>
-                                                    </c:otherwise>
-                                                </c:choose></span>
-                                        </p>
-                                    </td>
-                                    <td class="table2-margin">
-                                        <p class="table2-price-lp">가격</p>
-                                        <p class="table2-price-rp">
-                                            <span> <c:choose>
-                                                    <c:when test="${item.dealingtype == '월세'}">
-                                                        <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <span>${item.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${item.price}</span>
+                                                        <span>${p.dealingtype}&nbsp;</span>
+                                                        <span id="prc">${p.price}</span>
                                                     </c:otherwise>
                                                 </c:choose>
-                                            </span>
+                                            </c:if>
+                                            </c:forEach>
                                         </p>
                                     </td>
-                                    <td class="table2-margin">
-                                        <p class="table2-price-lp">가격</p>
-                                        <p class="table2-price-rp">
-                                            <span> <c:choose>
-                                                    <c:when test="${item.dealingtype == '월세'}">
-                                                        <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <span>${item.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${item.price}</span>
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </span>
-                                        </p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table2-margin" style="padding-bottom: 20px;">
                                         <p class="table2-price-lp">관리비</p>
                                         <p class="table2-price-rp">
                                             <c:choose>
-                                                <c:when test="${room.fee =='0'}">
-                                        없음
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${item.fee}만 원
-                                    </c:otherwise>
+                                                <c:when test="${room.fee =='0'}">없음</c:when>
+                                            <c:otherwise>
+                                                ${item.fee}만 원
+                                            </c:otherwise>
                                             </c:choose>
-                                            <input type="hidden" name="getfeeitem"
-                                                value="${item.feeitem}" /> <span id="apeend_feeitem"></span>
+                                            <input type="hidden" name="getfeeitem" value="${item.feeitem}" class="fee"/>
                                         </p>
                                     </td>
-                                    <td class="table2-margin" style="padding-bottom: 20px;">
-                                        <p class="table2-price-lp">관리비</p>
-                                        <p class="table2-price-rp">
-                                            <c:choose>
-                                                <c:when test="${room.fee =='0'}">
-                                        없음
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${item.fee}만 원
-                                    </c:otherwise>
-                                            </c:choose>
-                                            <input type="hidden" name="getfeeitem"
-                                                value="${item.feeitem}" /> <span id="apeend_feeitem"></span>
-                                        </p>
-                                    </td>
-                                    <td class="table2-margin" style="padding-bottom: 20px;">
-                                        <p class="table2-price-lp">관리비</p>
-                                        <p class="table2-price-rp">
-                                            <c:choose>
-                                                <c:when test="${room.fee =='0'}">
-                                        없음
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${item.fee}만 원
-                                    </c:otherwise>
-                                            </c:choose>
-                                            <input type="hidden" name="getfeeitem"
-                                                value="${item.feeitem}" /> <span id="apeend_feeitem"></span>
-                                        </p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                             </tbody>
                         </table>
@@ -264,96 +143,42 @@
                                     <th>상세정보</th>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table3-padding">
                                         <p class="table3-detail-lp">주소</p>
                                         <p class="table3-detail-rp">${item.address}</p>
                                     </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">주소</p>
-                                        <p class="table3-detail-rp">${item.address}</p>
-                                    </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">주소</p>
-                                        <p class="table3-detail-rp">${item.address}</p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table3-padding">
                                         <p class="table3-detail-lp">면적</p>
                                         <p class="table3-detail-rp">${item.area}㎡(${item.supplyarea}㎡)</p>
                                     </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">면적</p>
-                                        <p class="table3-detail-rp">${item.area}㎡(${item.supplyarea}㎡)</p>
-                                    </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">면적</p>
-                                        <p class="table3-detail-rp">${item.area}㎡(${item.supplyarea}㎡)</p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table3-padding">
                                         <p class="table3-detail-lp">층수</p>
                                         <p class="table3-detail-rp">${item.floor}층</p>
                                     </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">층수</p>
-                                        <p class="table3-detail-rp">${item.floor}층</p>
-                                    </td>
-                                    <td class="table3-padding">
-                                        <p class="table3-detail-lp">층수</p>
-                                        <p class="table3-detail-rp">${item.floor}층</p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table3-padding" style="padding-bottom: 20px;">
                                         <p class="table3-detail-lp">주차</p>
                                         <p class="table3-detail-rp">
                                             <c:choose>
-                                                <c:when test="${item.parking =='-1'}">
-                                        불가
-                                    </c:when>
-                                                <c:when test="${item.parking =='0'}">
-                                        가능(무료)
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${info.parking}만 원
-                                    </c:otherwise>
+                                                <c:when test="${item.parking =='-1'}">불가</c:when>
+                                                <c:when test="${item.parking =='0'}">가능(무료)</c:when>
+                                                <c:otherwise>${info.parking}만 원</c:otherwise>
                                             </c:choose>
                                         </p>
                                     </td>
-                                    <td class="table3-padding" style="padding-bottom: 20px;">
-                                        <p class="table3-detail-lp">주차</p>
-                                        <p class="table3-detail-rp">
-                                        <c:choose>
-                                                <c:when test="${item.parking =='-1'}">
-                                        불가
-                                    </c:when>
-                                                <c:when test="${item.parking =='0'}">
-                                        가능(무료)
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${info.parking}만 원
-                                    </c:otherwise>
-                                            </c:choose>
-                                        </p>
-                                    </td>
-                                    <td class="table3-padding" style="padding-bottom: 20px;">
-                                        <p class="table3-detail-lp">주차</p>
-                                        <p class="table3-detail-rp">
-                                        <c:choose>
-                                                <c:when test="${item.parking =='-1'}">
-                                        불가
-                                    </c:when>
-                                                <c:when test="${item.parking =='0'}">
-                                        가능(무료)
-                                    </c:when>
-                                                <c:otherwise>
-                                    ${info.parking}만 원
-                                    </c:otherwise>
-                                            </c:choose>
-                                        </p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                             </tbody>
                         </table>
@@ -373,17 +198,12 @@
                                     <th>옵션</th>
                                 </tr>
                                 <tr>
-                                    <td class="table4-padding">-</td>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table4-padding">
-                                        <p class="table4-option-p">
-                                        <input type="hidden" id="nice" value="${item.optionitem}" />
-                                        <div class="dDctva">
-                                        </p>
+                                        <input type="hidden" value="${item.optionitem}" name="getoption" class="option"/>
+                                        <p class="dDctva table5-option-p"></p>
                                     </td>
-                                    <td class="table4-padding">
-                                        <p class="table4-option-p">에어컨, 세탁기, 신발장, 냉장고, 가스레인지,
-                                            전자도어락</p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                             </tbody>
                         </table>
@@ -402,75 +222,54 @@
                                     <th>기타</th>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="table5-padding">
-                                        <p class="table5-option-p">개별난방</p>
-                                        <p class="table5-option-p">빌트인 아님</p>
-                                        <p class="table5-option-p">엘리베이터 있음</p>
-                                        <p class="table5-option-p">반려동물 가능</p>
-                                        <p class="table5-option-p">발코니/베란다 없음</p>
-                                        <p class="table5-option-p">전세자금대출 가능</p>
-                                        <p class="table5-option-p">날짜 협의</p>
-                                        <p class="table5-option-p">공인중개사 중개거래</p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.heater == '1'}">중앙난방</c:if>
+                                            <c:if test="${item.heater == '2'}">개별난방</c:if>
+                                            <c:if test="${item.heater == '3'}">지역난방</c:if>
+                                        </p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.builtin == '0'}">빌트인 아님</c:if>
+                                            <c:if test="${item.builtin == '1'}">빌트인 주방</c:if>
+                                        </p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.elevator == '0'}">엘리베이터 없음</c:if>
+                                            <c:if test="${item.elevator == '1'}">엘리베이터 있음</c:if>
+                                        </p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.pet == '0'}">반려동물 불가능</c:if>
+                                            <c:if test="${item.pet == '1'}">반려동물 가능</c:if>
+                                        </p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.veranda == '0'}">베란다/발코니 없음</c:if>
+                                            <c:if test="${item.veranda == '1'}">베란다/발코니 있음</c:if>
+                                        </p>
+                                        <p class="table5-option-p">
+                                            <c:if test="${item.loan == '0'}">전세자금대출 불가능</c:if>
+                                            <c:if test="${item.loan == '1'}">전세자금대출 가능</c:if>
+                                        </p>
+                                        <p class="table5-option-p">${item.commingday}</p>
                                     </td>
-                                    <td class="table5-padding">
-                                        <p class="table5-option-p">개별난방</p>
-                                        <p class="table5-option-p">빌트인 아님</p>
-                                        <p class="table5-option-p">엘리베이터 있음</p>
-                                        <p class="table5-option-p">반려동물 가능</p>
-                                        <p class="table5-option-p">발코니/베란다 없음</p>
-                                        <p class="table5-option-p">전세자금대출 가능</p>
-                                        <p class="table5-option-p">날짜 협의</p>
-                                        <p class="table5-option-p">공인중개사 중개거래</p>
-                                    </td>
-                                    <td class="table5-padding">
-                                        <p class="table5-option-p">개별난방</p>
-                                        <p class="table5-option-p">빌트인 주방</p>
-                                        <p class="table5-option-p">엘리베이터 있음</p>
-                                        <p class="table5-option-p">반려동물 가능</p>
-                                        <p class="table5-option-p">발코니/베란다 없음</p>
-                                        <p class="table5-option-p">전세자금대출 가능</p>
-                                        <p class="table5-option-p">즉시 입주</p>
-                                        <p class="table5-option-p">공인중개사 중개거래</p>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                                 <tr>
+                                    <c:forEach var="item" items="${output}" varStatus="status">
                                     <td class="last-contact-td">
                                         <div class="last-contact-div">
                                             <div>
                                                 <div>
-                                                    <p>조수민</p>
-                                                    <p>breath@naver.com</p>
+                                                    <p>${item.name}</p>
+                                                    <p>${item.email}</p>
                                                 </div>
                                             </div>
                                             <button>문의하기</button>
                                         </div>
                                     </td>
-                                    <td class="last-contact-td">
-                                        <div class="last-contact-div">
-                                            <div>
-                                                <div>
-                                                    <p>김상태</p>
-                                                    <p>status@gmail.com</p>
-                                                </div>
-                                            </div>
-                                            <button>문의하기</button>
-                                        </div>
-                                    </td>
-                                    <td class="last-contact-td">
-                                        <div class="last-contact-div">
-                                            <div>
-                                                <div>
-                                                    <p>김수진</p>
-                                                    <p>sujinzzang@daum.net</p>
-                                                </div>
-                                            </div>
-                                            <button>문의하기</button>
-                                        </div>
-                                    </td>
+                                    </c:forEach>
                                 </tr>
                             </tbody>
                         </table>
-                    </c:forEach>
                 </c:otherwise>
             </c:choose>
         </table>
@@ -491,32 +290,43 @@ function binary() {
 
     /* 뿌려줄 String을 배열에 저장 */
     var option = [
-        "<p>에어컨</p>",
-        "<p>세탁기</p>",
-        "<p>옷장</p>",
-        "<p>TV</p>",
-        "</div><p>신발장</p>",
-        "</div><p>냉장고</p>",
-        "<p>가스레인지</p>",
-        "<p>인덕션</p>",
-        "<p>전자레인지</p>",
-        "<p>전자도어락</p>",
-        "<p>비데</p>",
-        "<p>침대</p>",
-        "<p>책상</p>"
+        "<span'>에어컨</span>",
+        "<span'>세탁기</span>",
+        "<span'>옷장</span>",
+        "<span'>TV</span>",
+        "<span'>신발장</span>",
+        "<span'>냉장고</span>",
+        "<span'>가스레인지</span>",
+        "<span'>인덕션</span>",
+        "<span'>전자레인지</span>",
+        "<span'>전자도어락</span>",
+        "<span'>비데</span>",
+        "<span'>침대</span>",
+        "<span'>책상</span>"
         ];
 
 
     /* 받아온 값을 관리비 항목에 넣는다 */
-    var num = $("#nice").val();
-    var num = ${info.optionitem};
+        var num1 = new Array;
+        for(var j=0; j<$(".option").length; j++) {
+            num1[j] = $(".option").eq(j).val();
+            var sum = new Array;
+            for (var i=13; i>=0 ; i--) {
+                if(num1[j] >= Math.pow(2, i-1)){
+                    num1[j] = num1[j] - Math.pow(2, i-1);
+                    sum += option[13-i];
+                    if (num1[j] == 0 || i == 1) {
+                        break;
+                    }
+                    sum += ", ";
+                } // if문
+            } // for문
+                    $(".dDctva").eq(j).append(sum);
+        }
+    
+    //alert(num);
 
-    for (var i=13; i>=0 ; i--) {
-        if(num >= Math.pow(2, i-1)){
-            num = num - Math.pow(2, i-1);
-            $(".dDctva").append(option[13-i]);
-        } // if문
-    } // for문
+    
 } // binary함수
 binary(); //return
 
@@ -526,23 +336,29 @@ binary(); //return
         var option2 = [ "인터넷", "유선TV", "청소비", "수도세", "도시가스", "전기세", "기타" ];
 
         /* 받아온 값을 관리비 항목에 넣는다 */
-        //var num2 = ${info.feeitem};
-        var num2 = ('input[name=getfeeitem]').val();
-        var sum = new Array;
-
-        for (var i = 7; i >= 1; i--) {
-            if (num2 >= Math.pow(2, i - 1)) {
-                num2 = num2 - Math.pow(2, i - 1);
-                sum += option2[7 - i];
-
-                if (num2 == 0 || i == 1) {
-                    break;
-                }
-                sum += ", ";
-            } // if문
-        } // for문
-        sum = "(" + sum + ")";
-        $("#apeend_feeitem").append(sum);
+        var num2 = new Array;
+        for(var j=0; j<$(".fee").length; j++) {
+            num2[j] = $(".fee").eq(j).val();
+            
+            var sum = new Array;
+        
+            for (var i = 7; i >= 1; i--) {
+                if (num2[j] >= Math.pow(2, i - 1)) {
+                    num2[j] = num2[j] - Math.pow(2, i - 1);
+                    sum += option2[7 - i];
+    
+                    if (num2[j] == 0 || i == 1) {
+                        break;
+                    }
+                    sum += ", ";
+                } // if문
+            } // for문
+            if(sum==""){sum="없음";};
+            sum = "(" + sum + ")";
+            $(".fee").eq(j).parent().append(sum);
+        }
     } // binary함수
+    
+
     binary2();
 </script>
