@@ -13,18 +13,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.WebHelper;
 import project.star.b2.model.FakeRoom;
+import project.star.b2.model.Gallery;
+import project.star.b2.model.Price;
 import project.star.b2.model.User;
 import project.star.b2.service.FakeService;
+import project.star.b2.service.GalleryService;
+import project.star.b2.service.PriceService;
 import project.star.b2.service.RoomService;
 import project.star.b2.service.UserService;
 
 @Controller
+@Slf4j
 public class ModalController {
 	/** WebHelper 주입 */
 	@Autowired WebHelper webHelper;
@@ -36,6 +43,8 @@ public class ModalController {
 	@Autowired UserService userService;
 	@Autowired RoomService roomService;
 	@Autowired FakeService fakeService;
+	@Autowired GalleryService galleryService;
+	@Autowired PriceService priceService;
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
 	@Value("#{servletContext.contextPath}")

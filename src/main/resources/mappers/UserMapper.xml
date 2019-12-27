@@ -16,7 +16,6 @@
         <result property="regdate" column="regdate" />
         <result property="editdate" column="editdate" />
         <result property="profile_img" column="profile_img" />
-        
         <result property="reason" column="reason" />
     </resultMap>
 

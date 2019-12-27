@@ -21,5 +21,10 @@ public interface PriceService {
 
 	public int deletePrice(Price input) throws Exception ;
 
-
+	/**
+     * @param 체크박스 값들을 가져와서 비교하기 목록 조회
+     * @return
+     * @throws Exception
+     */
+	public List<Price> getCompareList(List<String> input) throws Exception;
 }
