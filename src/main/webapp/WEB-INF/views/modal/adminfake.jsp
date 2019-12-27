@@ -81,7 +81,6 @@
 
 // 새로고침
 $('.btnclose').click(function(){
-	alert("테스트")
 	 location.reload()
 });
 </script>
