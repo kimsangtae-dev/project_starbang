@@ -33,7 +33,7 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList_by_roomno"
 		parameterType="project.star.b2.model.UploadItem" resultMap="uploadMap">
-		SELECT roomno, fieldName, originName, filePath, contentType, fileSize,fileName,regDate,editDate
+		SELECT imageno, roomno, fieldName, originName, filePath, contentType, fileSize,fileName,regDate,editDate
 		FROM image
 		where roomno = #{roomno};
 	</select>
