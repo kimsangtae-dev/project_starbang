@@ -218,17 +218,12 @@ pageEncoding="UTF-8"%>
                                                 <div class="recent-div5">
                                                     <div class="recent-div6">
                                                         <%-- 좋아요 버튼 --%>
-	                                                    <input type="hidden" value="${item.roomno}">
                                                         <c:choose>
                                                         	<%-- 세션 없을 때 --%>
                                                         	<c:when test="${loginInfo == null}">
-                                                        	<a href="${pageContext.request.contextPath}/modal/login.do"
-																class="st-bang padding-l" data-toggle="modal"
-																data-target="#loginModal">
-		                                                        <div class="recent-div7">
-        	                                                       <div class="recent-div8 offff"></div>
-            	                                               	</div>
-                                                           	</a>
+                                                        	<div class="recent-div7">
+                                                               <div class="recent-div8 off" data-value="off"></div>
+                                                           	</div>
                                                         	</c:when>
                                                         	<%-- 세션 있을 때 --%>
                                                         	<c:otherwise>
@@ -372,38 +367,6 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
-    
-    <script type="text/javascript">
-    	function delectstar(x) {
-    		$.ajax({
-                url: "delectstar.do",
-                method: "get",
-                data: {"x" : x},
-                success: function(req){
-    				alert(x + "delectstar");
-                },
-                error : function() {
-					swal("delectstar발송에러 발생");
-				}
-    		});
-    	}
-    	
-    	function insertstar(x) {
-    		$.ajax({
-                url: "insertstar.do",
-                method: "get",
-                data: {"x" : x},
-                success: function(req){
-                	alert( x + "insertstar");
-                },
-                error : function() {
-					swal("insertstar발송에러 발생");
-				}
-    		});
-    	}
-    	
-    </script>	
-    
     <script type="text/javascript">
         /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
         function contentSize() {
@@ -424,19 +387,7 @@ pageEncoding="UTF-8"%>
 
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
-            	var loginInfouser = ${loginInfo.userno};
-            	if(loginInfouser != 0) {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
-            		var a = $(this).parent().prev().val();
-            		alert(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-					}else {
-						delectstar(a);
-	        	    }
-            	}
+                $(this).toggleClass('on off');
             });
         });
     </script>
@@ -624,13 +575,6 @@ pageEncoding="UTF-8"%>
                 /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
                     $(this).toggleClass('on off');
-                    var onoff = $(this).hasClass("on");
-                    alert(onoff);
-                    if(onoff == true) {
-                    	insertstar();
-                    }else {
-                    	delectstar();
-                    }
                 });
             }
         });
