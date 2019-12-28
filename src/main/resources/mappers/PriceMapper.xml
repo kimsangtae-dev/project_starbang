@@ -100,5 +100,17 @@
             </if>
         </where>
     </select>
-
+	
+	<!-- (체크박스 리스트로 조회)방 번호에 의한 다중행조회하기 기능 -->
+    <select id="CompareList"
+        parameterType="project.star.b2.model.Price"
+        resultMap="priceMap">
+        SELECT roomno, priceno, deposit, dealingtype, price, short_room 
+        FROM price
+        WHERE roomno IN
+		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
+			#{list}
+		</foreach>
+        
+    </select>
 </mapper>
