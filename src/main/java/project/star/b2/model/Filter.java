@@ -25,4 +25,13 @@ public class Filter {
 	// 방크기
 	private int sizeFrom;
 	private int sizeTo;
+	// 좌표
+	private double west;
+	private double east;
+	private double south;
+	private double north;
+	// 지도 중심
+	private double centerLat;
+	private double centerLng;
+	private int level;
 }

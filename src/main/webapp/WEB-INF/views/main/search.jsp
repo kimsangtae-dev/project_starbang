@@ -218,43 +218,31 @@ pageEncoding="UTF-8"%>
                                                 <div class="recent-div5">
                                                     <div class="recent-div6">
                                                         <%-- 좋아요 버튼 --%>
-	                                                    <input type="hidden" value="${item.roomno}">
                                                         <c:choose>
                                                         	<%-- 세션 없을 때 --%>
                                                         	<c:when test="${loginInfo == null}">
                                                         	<a href="${pageContext.request.contextPath}/modal/login.do"
-																class="st-bang padding-l" data-toggle="modal"
-																data-target="#loginModal">
-		                                                        <div class="recent-div7">
-        	                                                       <div class="recent-div8 offff"></div>
-            	                                               	</div>
+																data-toggle="modal" data-target="#loginModal">
+                                                        	<div class="recent-div7">
+                                                               <div class="recent-div8 off" data-value="off"></div>
+                                                           	</div>
                                                            	</a>
                                                         	</c:when>
                                                         	<%-- 세션 있을 때 --%>
                                                         	<c:otherwise>
-                                                                <c:set var="count" value="0" />
-                                                                <c:forEach var="h" items="${heart}" varStatus="status">
-                                                                    <c:if test="${h.roomno==item.roomno}">
-                                                                    <c:set var="count" value="${count + 1}" />
-                                                                    </c:if>
-                                                                </c:forEach>
-                                                                <c:choose>
-                                                                    <c:when test="${count == 0}">
-                                                                    <div class="recent-div7">
-                                                                        <div class="recent-div8 off" data-value="on"></div>
-                                                                    </div>
-                                                                    </c:when>
-                                                                    <c:otherwise>
-                                                                    <c:forEach var="h" items="${heart}" varStatus="status">
-                                                                        <c:if test="${item.roomno==h.roomno}">
-                                                                        <div class="recent-div7">
-                                                                            <div class="recent-div8 on" data-value="off"></div>
-                                                                        </div>
-                                                                        </c:if>
-                                                                    </c:forEach>
-                                                                    </c:otherwise>
-                                                                </c:choose>
-                                                            </c:otherwise>
+	                                                        <c:forEach var="h" items="${heart}" varStatus="status">
+	                                                        	<c:if test="${h.roomno==item.roomno}">
+	                                                        	<div class="recent-div7">
+																	<div class="recent-div8 on" data-value="off"></div>
+																</div>
+	                                                        	</c:if>
+	                                                        </c:forEach>
+	                                                        <c:if test="${h.roomno!=item.roomno}">
+	                                                        	<div class="recent-div7">
+																	<div class="recent-div8 off" data-value="on"></div>
+																</div>
+	                                                        </c:if>
+                                                        	</c:otherwise>
                                                         </c:choose>
                                                         <%-- 좋아요 끝 --%>
                                                         <%-- 전체 링크화 --%>
@@ -372,38 +360,6 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
-    
-    <script type="text/javascript">
-    	function delectstar(x) {
-    		$.ajax({
-                url: "delectstar.do",
-                method: "get",
-                data: {"x" : x},
-                success: function(req){
-    				alert(x + "delectstar");
-                },
-                error : function() {
-					swal("delectstar발송에러 발생");
-				}
-    		});
-    	}
-    	
-    	function insertstar(x) {
-    		$.ajax({
-                url: "insertstar.do",
-                method: "get",
-                data: {"x" : x},
-                success: function(req){
-                	alert( x + "insertstar");
-                },
-                error : function() {
-					swal("insertstar발송에러 발생");
-				}
-    		});
-    	}
-    	
-    </script>	
-    
     <script type="text/javascript">
         /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
         function contentSize() {
@@ -424,25 +380,13 @@ pageEncoding="UTF-8"%>
 
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
-            	var loginInfouser = ${loginInfo.userno};
-            	if(loginInfouser != 0) {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
-            		var a = $(this).parent().prev().val();
-            		alert(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-					}else {
-						delectstar(a);
-	        	    }
-            	}
+                $(this).toggleClass('on off');
             });
         });
     </script>
 
     <!-- Ajax로 읽어온 내용을 출력하는데 사용될 템플릿 -->
-    <%-- <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script> --%>
+    <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
    <script id="gallery-data" type="text/x-handlebars-template">
 	{{#each output}}
@@ -487,7 +431,13 @@ pageEncoding="UTF-8"%>
    </script>
 
     <!-- 지도 api -->
-    <script type="text/javascript">
+    <script type="text/javascript">    
+    var mapDefaultInfo = {
+    	lat: 37.5880618964351,
+    	lng: 126.987409633377,
+    	level: 5
+    };
+    
     /** ajax전송을 위한 파라미터 가져오기 **/
     var roomtype = "${param.roomtype}";
     var dealingtype = "${param.dealingtype}";
@@ -502,14 +452,14 @@ pageEncoding="UTF-8"%>
     var size_from = ${param.sizeFrom};
     var size_to = ${param.sizeTo};
 
-    var centerLat = ${lat};
-    var centerLng = ${lng};
-    var level =${level};
-
-    var west = 0;
-    var east = 0;
-    var south = 0;
-    var north = 0;
+    var centerLat = ${filter.centerLat};
+    var centerLng = ${filter.centerLng};
+    var level =${filter.level};
+    
+    var west = ${filter.west};
+    var east = ${filter.east};
+    var south = ${filter.south};
+    var north = ${filter.north};
 
     var startPage;
     var endPage;
@@ -524,10 +474,7 @@ pageEncoding="UTF-8"%>
 
     /** ajax 전송 메서드 **/
     function getMapPosition(west,east,south,north, page) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/main/search",
-            method: "get",
-            data: {
+    	var params = {
                 "roomtype": roomtype,
                 "dealingtype": dealingtype,
                 "depositFrom": deposit_from,
@@ -545,7 +492,14 @@ pageEncoding="UTF-8"%>
                 "north": north,
                 "south": south,
                 "page": page
-            },
+            };
+    	
+    	console.log(params);
+    	
+        $.ajax({
+            url: "${pageContext.request.contextPath}/main/search",
+            method: "get",
+            data: params,
             success: function(req){
             	/** 월세인지 전세/매매인지 구분 **/
                 Handlebars.registerHelper('isMonth', function(dealingtype, options) {
@@ -623,8 +577,8 @@ pageEncoding="UTF-8"%>
                 $("#index-list").html(index_list);
                 /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
-                	var loginInfouser = ${loginInfo.userno};
-                	if(loginInfouser != 0) {         
+                	var loginInfouser = "${loginInfo.userno}";
+                	if(loginInfouser != "") {         
 	                    $(this).toggleClass('on off');
     	                var onoff = $(this).hasClass("on");
         	            alert(onoff);
@@ -648,6 +602,7 @@ pageEncoding="UTF-8"%>
                 level : level,
                 maxLevel : 9    // 지도 확대 레벨
             };
+            console.log("centerLat=%s, centerLng=%s", centerLat, centerLng);
             var map = new kakao.maps.Map(container, options);
 
 
@@ -674,8 +629,28 @@ pageEncoding="UTF-8"%>
 
 
             /** 매물 데이터 가져오기 **/
-            $.getJSON('${pageContext.request.contextPath}/assets/roomposition',
-                function(data) {
+            var params = {
+                	roomtype: "${param.roomtype}", 
+                	dealingtype: "${param.dealingtype}", 
+                	depositFrom: "${param.depositFrom}", 
+                	depositTo: "${param.depositTo}", 
+                	monthFrom: "${param.monthFrom}", 
+                	monthTo: "${param.monthTo}", 
+                	buyingFrom: "${param.buyingFrom}", 
+                	buyingTo: "${param.buyingTo}", 
+                	feeFrom: "${param.feeFrom}", 
+                	feeTo: "${param.feeTo}", 
+                	sizeFrom: "${param.sizeFrom}", 
+                	sizeTo: "${param.sizeTo}",
+                	east: east,
+                    west: west,
+                    north: north,
+                    south: south
+                };
+            
+            console.log(params);
+            
+            $.get('${pageContext.request.contextPath}/main/search', params, function(data) {
                     var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
                             position : new kakao.maps.LatLng(position.latitude, position.longitude)
@@ -714,59 +689,51 @@ pageEncoding="UTF-8"%>
                         level = map.getLevel();
                     });
 
-/*                     var bounds = map.getBounds();
-                    var southwest = bounds.getSouthWest();
-                    var northeast = bounds.getNorthEast();
-                    east = northeast.getLat();
-                    west = southwest.getLat();
-                    north = northeast.getLng();
-                    south = southwest.getLng();
-
-                    getMapPosition(west,east,south,north,1); */
-
                     centerLat = map.getCenter().getLat();
                     centerLng = map.getCenter().getLng();
                     level = map.getLevel();
+                    
+
+
+
+                    /** 서울시 구 별로 마커 생성하기 **/
+                    $.get("${pageContext.request.contextPath}/assets/guposition", {},
+                        function(data) {
+                            var guPosition = data.guPositions;
+                            var gumark;
+                            for (var i = 0; i < guPosition.length; i++) {
+                                gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
+                                gumark += '<div class="gu-count">' + guPosition[i].guCount + '</div>';
+                                gumark += '<div class="gu-name">' + guPosition[i].guName + '</div>';
+                                gumark += '<span id="lat" style="display:none;">' + guPosition[i].guLat + '</span>'; // 해당 구의 위도 저장
+                                gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
+                                gumark += '</div>';
+                                var customOverlay = new kakao.maps.CustomOverlay({
+                                    position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
+                                    clickable : false,
+                                    content : gumark,
+                                    zIndex : 3
+                                });
+
+                                customOverlay.setMap(map);
+
+                                // 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
+                                $("#gu-marker" + i).click(function() {
+                                    var poslat = $(this).children("#lat").html();
+                                    var poslng = $(this).children("#lng").html();
+                                    map.setCenter(new kakao.maps.LatLng(poslat,poslng));
+                                    map.setLevel(map.getLevel() - 2,{animate : true});
+                                });
+
+                            } // end for
+
+                            $("#map > div > div > div > div").hover(
+                                function() {$(this).css("z-index", "100");},
+                                function() {$(this).css("z-index", "0");}
+                            ); // end hover()
+                        });
 
             }); // end $.get(address.json)
-
-
-            /** 서울시 구 별로 마커 생성하기 **/
-            $.getJSON("${pageContext.request.contextPath}/assets/guposition",
-                function(data) {
-                    var guPosition = data.guPositions;
-                    var gumark;
-                    for (var i = 0; i < guPosition.length; i++) {
-                        gumark = '<div class="gu-marker" id="gu-marker' + i + '">';
-                        gumark += '<div class="gu-count">' + guPosition[i].guCount + '</div>';
-                        gumark += '<div class="gu-name">' + guPosition[i].guName + '</div>';
-                        gumark += '<span id="lat" style="display:none;">' + guPosition[i].guLat + '</span>'; // 해당 구의 위도 저장
-                        gumark += '<span id="lng" style="display:none;">' + guPosition[i].guLng + '</span>'; // 해당 구의 경도 저장
-                        gumark += '</div>';
-                        var customOverlay = new kakao.maps.CustomOverlay({
-                            position : new kakao.maps.LatLng(guPosition[i].guLat, guPosition[i].guLng),
-                            clickable : false,
-                            content : gumark,
-                            zIndex : 3
-                        });
-
-                        customOverlay.setMap(map);
-
-                        // 마커 클릭 시 마커를 중심으로 지도 확대 이벤트
-                        $("#gu-marker" + i).click(function() {
-                            var poslat = $(this).children("#lat").html();
-                            var poslng = $(this).children("#lng").html();
-                            map.setCenter(new kakao.maps.LatLng(poslat,poslng));
-                            map.setLevel(map.getLevel() - 2,{animate : true});
-                        });
-
-                    } // end for
-
-                    $("#map > div > div > div > div").hover(
-                        function() {$(this).css("z-index", "100");},
-                        function() {$(this).css("z-index", "0");}
-                    ); // end hover()
-                });
 
 
             /** 검색값 가져와서 지도 위치 변경하기 **/
@@ -834,6 +801,7 @@ pageEncoding="UTF-8"%>
                 south = southwest.getLng();
 
                 getMapPosition(west,east,south,north,1);
+                console.log("west=%s south=%s", west, south);
 
                 centerLat = map.getCenter().getLat();
                 centerLng = map.getCenter().getLng();
@@ -926,7 +894,7 @@ pageEncoding="UTF-8"%>
                 return false;
             }
 
-            var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+            var roomtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype='+ rt +'&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
             location.replace(roomtypehref);
 
         });
@@ -969,7 +937,7 @@ pageEncoding="UTF-8"%>
                 return false;
             }
 
-            var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+            var dealingtypehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=' + dt + '&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
             location.replace(dealingtypehref);
 
         });
@@ -1033,7 +1001,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom='+low+'&depositTo='+high+'&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1079,7 +1047,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom='+low+'&monthTo='+high+'&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1130,7 +1098,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom='+low+'&buyingTo='+high+'&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1177,7 +1145,7 @@ pageEncoding="UTF-8"%>
                 var low = data.from_value;
                 var high = data.to_value;
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom='+low+'&feeTo='+high + '&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1232,7 +1200,7 @@ pageEncoding="UTF-8"%>
                     high = 999999;
                 }
 
-                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high+'&map='+centerLat+','+centerLng+','+level;
+                var href = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom='+low+'&sizeTo='+high+'&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(href);
             },
             hide_from_to : true,
@@ -1246,7 +1214,7 @@ pageEncoding="UTF-8"%>
             // 가격대 조건삭제
             $("#filter-reset1").click(function(e) {
                 e.preventDefault();
-                var pricehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var pricehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(pricehref);
             })
 
@@ -1255,14 +1223,14 @@ pageEncoding="UTF-8"%>
                 e.preventDefault();
                 /* slide4_value.reset();
                 $("#filter4-value").html("무제한"); */
-                var feehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level;
+                var feehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=0&feeTo=999999&sizeFrom=${param.sizeFrom}&sizeTo=${param.sizeTo}&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(feehref);
             })
 
             // 방크기 조건삭제
             $("#filter-reset3").click(function(e) {
                 e.preventDefault();
-                var sizehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999&map='+centerLat+','+centerLng+','+level;
+                var sizehref = '${pageContext.request.contextPath}/main/search.do?roomtype=${param.roomtype}&dealingtype=${param.dealingtype}&depositFrom=${param.depositFrom}&depositTo=${param.depositTo}&monthFrom=${param.monthFrom}&monthTo=${param.monthTo}&buyingFrom=${param.buyingFrom}&buyingTo=${param.buyingTo}&feeFrom=${param.feeFrom}&feeTo=${param.feeTo}&sizeFrom=0&sizeTo=999999&map='+centerLat+','+centerLng+','+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(sizehref);
             })
 
@@ -1270,7 +1238,7 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map="+centerLat+","+centerLng+","+level;
+                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map="+centerLat+","+centerLng+","+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(resetUrl);
             });
 
