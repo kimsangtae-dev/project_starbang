@@ -84,7 +84,7 @@
 
 /* main */
 #easyfind {
-	width: 1180px;
+	width: 1200px;
 	height: 420px;
 	border-top: 1px solid #eee;
 	margin: 0 auto;
@@ -324,7 +324,7 @@
 
 /* 두번째 전체박스 */
 .pop-entire-d2 {
-	width: 1180px;
+	width: 1200px;
 	height: 520px;
 	margin: 60px auto 0px;
 }
@@ -362,7 +362,7 @@
 
 /*  */
 .pop-gallery-d {
-	width: 1180px;
+	width: 1200px;
 	height: 438px;
 	margin-top: 30px;
 }
@@ -564,7 +564,7 @@
 }
 
 .recent-div0 {
-	width: 1180px;
+	width: 1200px;
 	height: 520px;
 	margin: 80px auto 0px;
 }
@@ -614,6 +614,7 @@
 	font-weight: 300;
 	line-height: 35px;
 	text-align: left;
+	padding-left: 20px;
 }
 
 .recent-div4 {
@@ -961,7 +962,6 @@
 	width: 32px;
 	height: 30px;
 	margin: 0px auto;
-	/*background: url(ma_img/like.svg) center center / cover;*/
 }
 
 .hit-div8.off {
@@ -1195,7 +1195,6 @@
     top: 0px;
     right: 0px;
     left: 0px;
-    /* background: url(../../img/ma_img/1234.jpg) center center/cover no-repeat; */
 }
 
 .recent-a-div:after {
@@ -1303,7 +1302,7 @@
 .tabs > li:nth-child(1){
 	font-size: 28px;
 	display: inline-block;
-	padding: 0px 16px 0px 0px;
+	padding: 0px 16px 0px 20px;
 	border-right:1px solid rgb(221, 221, 221);
 	font-weight: 300;
 	cursor: pointer;

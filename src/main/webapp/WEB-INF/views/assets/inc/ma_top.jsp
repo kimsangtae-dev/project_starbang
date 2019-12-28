@@ -3,8 +3,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-    <style>
-        /*---------------------------------
+	<style>
+/*---------------------------------
 |   header * css
 ----------------------------------*/
         /* 브라우저 최소 넓이 지정 */
@@ -15,7 +15,7 @@
         #header .navbar {
             height: 70px;
             min-height: 70px;
-            padding: 0 50px 0 30px;
+            padding-right: 20px;
             border: 0;
             border-bottom: 1px solid #eee;
             margin: 0;
@@ -23,7 +23,7 @@
         /* 로고 이미지 크기, 위치 설정 */
         #header > .navbar > a > img {
             height: 50px;
-            margin: 8px 0 12px 50px;
+            margin: 8px 0 12px 30px;
         }
         /* 방주인사이트 여백 설정 */
         #header .menu-left {
@@ -37,12 +37,12 @@
             color: #777;
             /* font-weight: 700; */
         }
-        .pull-right > div > a {
+        .pull-right > div.pages > a {
             line-height: 70px;
             height: 70px;
             display: inline-block;
             font-size: 14px;
-            color: #777;
+            color: #222;
         }
         /* 메뉴에 마우스오버 시 색 변경 설정 */
         #header a:hover {
@@ -114,10 +114,6 @@
             /* padding: 0px 20px; */
             text-align: left;
         }
-        .navbar > .pull-right {
-            width: 570px;
-            padding-top: 0;    
-        }
         
         #loginprofile {
         	height: 80px;
@@ -159,8 +155,8 @@
 </c:choose>
             <!-- 메뉴 항목 -->
             <div class="pull-right">
-                <div>
-                    <a href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">방찾기</a>
+                <div class="pages">
+                    <a href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9&news=0,0,0,0">방찾기</a>
                     <a href="${pageContext.request.contextPath}/main/rtrm.do" class="padding-l">관심목록</a>
                     <a href="${pageContext.request.contextPath}/main/faq.do" class="padding-l">문의하기</a>
                     <a href="${pageContext.request.contextPath}/main/pprm.do" class="padding-l">인기매물</a>
