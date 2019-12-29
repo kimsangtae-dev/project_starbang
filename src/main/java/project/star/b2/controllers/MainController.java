@@ -344,7 +344,7 @@ public class MainController {
 
 			if (userno != 0) {
 				heartox = heartService.getHeartitemox(input_heart);
-				if (heartox == 0) {
+				if (heartox != 0) {
 					heartox = 1;
 				}
 			}
