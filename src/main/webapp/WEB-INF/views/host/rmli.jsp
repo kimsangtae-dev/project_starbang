@@ -131,9 +131,8 @@
 										</c:when>
 										
 										<c:when test="${status == 4}">
-											<span class="label label-info" style="background-color:#000fff;">&nbsp;거래완료&nbsp;</span>
+											<span class="label complete">&nbsp;거래완료&nbsp;</span>
 										</c:when>
-										
 										
 										<c:otherwise>
 											<span class="label label-info">소유자 확인중</span>
@@ -344,13 +343,13 @@
 	            	alert("공실상태가 변경되었습니다.");
 	            	if (status==1){
 	            		select.html("&nbsp;공개&nbsp;");
-	            		select.removeClass().addClass("label").addClass("label-info");
+	            		select.removeClass().addClass("label").addClass("label-primary");
 	            	} else if (status == 3) {
 	            		select.html("&nbsp;비공개&nbsp;");
-	            		select.removeClass().addClass("label").addClass("label-primary");
+	            		select.removeClass().addClass("label").addClass("label-info");
 	            	} else if (status == 4) {
 	            		select.html("거래완료");
-	            		select.removeClass().addClass("label").addClass("label-success");
+	            		select.removeClass().addClass("label").addClass("complete");
 	            	}
 	            },
 	            error: function(data) {

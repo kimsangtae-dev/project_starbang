@@ -231,6 +231,10 @@ body, #root {
         width: auto;
     }
     
+    .complete {
+    	background-color:#000fff;
+    }
+    
     
 /* ------------------------------------------
 |   Modal
