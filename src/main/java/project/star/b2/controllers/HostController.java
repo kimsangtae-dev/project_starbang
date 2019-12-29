@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
+import project.star.b2.helper.DownloadHelper;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.RegexHelper;
 import project.star.b2.helper.RetrofitHelper;
@@ -42,38 +43,16 @@ import retrofit2.Retrofit;
 @Controller
 public class HostController {
 
-	/** WebHelper 주입 */
-	@Autowired
-	WebHelper webHelper;
-
-	/** RegexHelper 주입 */
-	@Autowired
-	RegexHelper regexHelper;
-
-	/** RegexHelper 주입 */
-	@Autowired
-	RetrofitHelper retrofitHelper;
-
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	RIPService ripService;
-	
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	RoomService roomService;
-	
-	/** Service 패턴 구현체 주입 */
-	@Autowired
-	UploadService uploadService;
-	
-	@Autowired
-	InfoService infoService;
-	
-	@Autowired
-	PriceService priceService;
-	
-	@Autowired
-	UserService userService;
+	@Autowired WebHelper webHelper;
+	@Autowired RegexHelper regexHelper;
+	@Autowired RetrofitHelper retrofitHelper;
+	@Autowired DownloadHelper downloadHelper;
+	@Autowired RIPService ripService;
+	@Autowired RoomService roomService;
+	@Autowired UploadService uploadService;
+	@Autowired InfoService infoService;
+	@Autowired PriceService priceService;
+	@Autowired UserService userService;
 
 
 	/** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
@@ -390,6 +369,16 @@ public class HostController {
 		// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
 		for (UploadItem item : fileList) {
 			
+			String thumbnail = null;
+			
+			try {
+				thumbnail = downloadHelper.createThumbnail(item.getFilePath(), 320, 320, false);
+				log.debug(":::::::::::::::::::::"+thumbnail);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 			item.setFieldName(item.getFieldName());
 			item.setOriginName(item.getOriginName());
 			item.setFilePath(item.getFilePath());
@@ -400,7 +389,16 @@ public class HostController {
 			item.setEditDate(item.getEditDate());
 			item.setRoomno(input_R.getRoomno());
 			log.debug("업로드 될 항목" + item.toString());
+			
+			item.setThumbnail(thumbnail);
 
+			
+			
+			
+			
+			
+			
+			
 			// DB에 저장하기
 			try {
 				uploadService.addUploadItem(item);
@@ -408,7 +406,10 @@ public class HostController {
 				log.error(e.getLocalizedMessage());
 				e.printStackTrace();
 				return webHelper.redirect(null, e.getLocalizedMessage());
-			}	
+			}
+
+			
+			
 		}//end for	
 		
 		String redirectUrl = contextPath + "/main/rmdt.do?roomno=" + input_R.getRoomno();
@@ -502,6 +503,8 @@ public class HostController {
 		
 		List<UploadItem> fileList = webHelper.getFileList();
 		Map<String, String> paramMap = webHelper.getParamMap();
+		
+		fileList.iterator();
 		
 		
 		/** * * 1) 사용자가 입력한 파라미터 수신 * * */
@@ -908,6 +911,7 @@ public class HostController {
 			item.setRoomno(roomno);
 			log.debug("업로드 될 항목" + item.toString());
 
+			
 			// DB에 저장하기
 			try {
 				uploadService.addUploadItem(item);

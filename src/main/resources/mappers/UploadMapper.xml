@@ -18,6 +18,7 @@
 		<result property="regDate" column="regDate" />
 		<result property="editDate" column="editDate" />
 		<result property="roomno" column="roomno" />
+		<result property="thumbnail" column="thumbnail" />		
 	</resultMap>
 
 	<!-- 단일행 조회를 위한 기능 정의 -->
@@ -52,11 +53,9 @@
 		parameterType="project.star.b2.model.UploadItem"
 		useGeneratedKeys="true" keyProperty="imageno">
 		INSERT INTO image (
-		fieldName, originName, filePath, contentType,
-		fileSize, fileName, regDate, editDate, roomno
+		fieldName, originName, filePath, contentType, fileSize, fileName, regDate, editDate, roomno, thumbnail
 		) VALUES (
-		#{fieldName}, #{originName}, #{filePath}, #{contentType},
-		#{fileSize}, #{fileName},now(), now(), #{roomno}
+		#{fieldName}, #{originName}, #{filePath}, #{contentType}, #{fileSize}, #{fileName}, now(), now(), #{roomno}, #{thumbnail}
 		);
 	</insert>
 

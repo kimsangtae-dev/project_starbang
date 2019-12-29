@@ -18,6 +18,7 @@ public class UploadItem {
     private String fileName; 		// 저장된 파일 이름
     private String regDate; 		// 등록일시
     private String editDate; 		// 변경일시
+    private String thumbnail;
     
     private int roomno;				// 방 번호
 }
