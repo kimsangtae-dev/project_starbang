@@ -77,31 +77,45 @@
 										<li>
 											<div class="recent-div5">
 												<div class="recent-div6">
-
-
+													<input type="hidden" value="${item.roomno}">
 													<c:choose>
 														<%-- 컨트롤러에서 식별한 세션 없을 때 --%>
 														<c:when test="${loginInfo == null }">
-
 															<%-- 좋아요 버튼 클릭 시 로그인 모달 띄우기 --%>
-															<a
-																href="${pageContext.request.contextPath}/modal/login.do"
+															<a href="${pageContext.request.contextPath}/modal/login.do"
 																class="st-bang padding-l" data-toggle="modal"
 																data-target="#loginModal">
 																<%-- 좋아요 버튼 --%>
 																<div class="recent-div7">
-																	<div class="recent-div8 off" data-value="off"></div>
+																	<div class="recent-div8 offff"></div>
 																</div>
 																<%-- 좋아요 끝 --%>
 															</a>
 														</c:when>
 														<%-- 컨트롤러에서 식별한 세션 있을 때 --%>
 														<c:otherwise>
-															<%-- 좋아요 버튼 --%>
-															<div class="recent-div7">
-																<div class="recent-div8 off" data-value="on"></div>
-															</div>
-															<%-- 좋아요 끝 --%>
+															<c:set var="count" value="0" />
+                                                                <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                    <c:if test="${h.roomno==item.roomno}">
+                                                                  		<c:set var="count" value="${count + 1}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${count == 0}">
+                                                                    <div class="recent-div7">
+                                                                        <div class="recent-div8 off" data-value="on"></div>
+                                                                    </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
+                                                                        	<c:if test="${item.roomno==h.roomno}">
+                                                                        	<div class="recent-div7">
+                                                                        	    <div class="recent-div8 on" data-value="off"></div>
+                                                                        	</div>
+                                                                        	</c:if>
+                                                                    	</c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
 														</c:otherwise>
 													</c:choose>
 
@@ -164,18 +178,60 @@
 		src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		
+	<script type="text/javascript">
+    	function delectstar(x) {
+    		$.ajax({
+                url: "delectstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+    				alert(x + "delectstar");
+                },
+                error : function() {
+                	alert("delectstar발송에러 발생");
+				}
+    		});
+    	}
+    	
+    	function insertstar(x) {
+    		$.ajax({
+                url: "insertstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+                	alert( x + "insertstar");
+                },
+                error : function() {
+                	alert("insertstar발송에러 발생");
+				}
+    		});
+    	}
+    </script>
 
 	<%-- ---------------하얀색 헤더의 좋아요 시작------------------- --%>
 	<script type="text/javascript">
 		/* 로그인 세션 있을 때 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('off off');
+				var loginInfouser = "${loginInfo.userno}";
+            	if(loginInfouser != "") {            		
+	            	$(this).toggleClass('on off');
+    		        var onoff = $(this).hasClass("on");
+        		    alert(onoff);
+            		var a = $(this).parent().prev().val();
+            		alert(a);
+            	    if(onoff == true) {
+            	    	insertstar(a);
+					}else {
+						delectstar(a);
+	        	    }
+            	}
 			})
-			if (${loginInfo != null}) {
+			/* if (${loginInfo != null}) {
 				$(".recent-div8").click(function(e) {
 					$(this).toggleClass('off on');
-			})};// end if
+			})};// end if */
 		});
 	</script>
 	<%-- ---------------하얀색 헤더의 좋아요 끝------------------- --%>

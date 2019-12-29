@@ -62,6 +62,7 @@
                                         <div class="hit-div5">
                                             <div class="hit-div6">
                                                 <%-- 좋아요 버튼 --%>
+                                                <input type="hidden" value="${item.roomno}">
                                                 <div class="hit-div7">
                                                     <div class="hit-div8 on" data-value="off"></div>
                                                 </div>
@@ -355,6 +356,23 @@
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    	function delectstar(x) {
+    		$.ajax({
+                url: "delectstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+    				alert(x + "delectstar");
+                },
+                error : function() {
+					swal("delectstar발송에러 발생");
+				}
+    		});
+    	}
+</script>
+
 <script>
     $(function(){
 
@@ -491,7 +509,14 @@
     /* 하트 toggle */
     $(function() {
         $(".hit-div8").click(function(e) {
-            $(this).toggleClass('on off');
+        	$(this).toggleClass('on off');
+		    var onoff = $(this).hasClass("on");
+    		alert(onoff);
+        	var a = $(this).parent().prev().val();
+        	alert(a);
+			delectstar(a);
+			var http = "${pageContext.request.contextPath}/main/wish.do"
+			location.replace(http);
         });
     });
 </script>

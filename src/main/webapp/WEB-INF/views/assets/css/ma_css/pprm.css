@@ -104,6 +104,11 @@
 	background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 
+.hit-div8.offff { 
+	background: url(../../img/ma_img/like.svg) center center / cover; 
+	margin-top: 5px;
+}
+
 /* <a> 태그 */
 .hit-a {
 	display: block;

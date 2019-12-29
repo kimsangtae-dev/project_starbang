@@ -15,6 +15,10 @@ public class Gallery {
 	private int fee;			// 추가정보 > 관리비
 	private String confirmdate;	// 확인매물 일자
 	private String address;		// 주소
+	
+	private int heartno;		// 하트넘버
+	private String regdate;		// 좋아요 클릭 일자
+
 
 	/** info */
 	private int supplyarea;		// 기본정보 > 건물크기 > 공급면적 제곱미터

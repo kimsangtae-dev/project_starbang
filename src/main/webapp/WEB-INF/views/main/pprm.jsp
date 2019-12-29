@@ -51,9 +51,46 @@
 										<div class="hit-div5">
 											<div class="hit-div6">
 												<%-- 좋아요 버튼 --%>
-												<div class="hit-div7">
+												<input type="hidden" value="${item.roomno}">
+                                                        <c:choose>
+                                                        	<%-- 세션 없을 때 --%>
+                                                        	<c:when test="${loginInfo == null}">
+                                                        	<a href="${pageContext.request.contextPath}/modal/login.do"
+																data-toggle="modal" data-target="#loginModal">
+                                                        	<div class="hit-div7">
+                                                               <div class="hit-div8 offff"></div>
+                                                           	</div>
+                                                           	</a>
+                                                        	</c:when>
+                                                        	<%-- 세션 있을 때 --%>
+                                                        	<c:otherwise>
+	                                                        	<c:set var="count" value="0" />
+                                                                <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                    <c:if test="${h.roomno==item.roomno}">
+                                                                  		<c:set var="count" value="${count + 1}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${count == 0}">
+                                                                    <div class="hit-div7">
+                                                                        <div class="hit-div8 off" data-value="on"></div>
+                                                                    </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
+                                                                        	<c:if test="${item.roomno==h.roomno}">
+                                                                        	<div class="hit-div7">
+                                                                        	    <div class="hit-div8 on" data-value="off"></div>
+                                                                        	</div>
+                                                                        	</c:if>
+                                                                    	</c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                        	</c:otherwise>
+                                                        </c:choose>
+												<!-- <div class="hit-div7">
 													<div class="hit-div8 off" data-value="on"></div>
-												</div>
+												</div> -->
 												<%-- 좋아요 끝 --%>
 												<%-- 전체 링크화 --%>
 												<a target="_blank" rel="" class="hit-a"
@@ -240,7 +277,19 @@
 			/* 좋아요 클릭 -> 하트 색 변경 */
 			$(function() {
 				$(".hit-div8").click(function(e) {
-					$(this).toggleClass('on off');
+					var loginInfouser = "${loginInfo.userno}";
+                	if(loginInfouser != "") {         
+	                    $(this).toggleClass('on off');
+    	                var onoff = $(this).hasClass("on");
+        	            alert(onoff);
+        	            var a = $(this).parent().prev().val();
+                		alert("a = " + a);
+            	        if(onoff == true) {
+                	    	insertstar(a);
+                    	}else {
+                    		delectstar(a);
+	                    }
+                	}
 				});
 			});
 		</script>

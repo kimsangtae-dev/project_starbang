@@ -290,9 +290,45 @@
 								<div class="recent-div5">
 									<div class="recent-div6">
 										<input type="hidden" value="${item.roomno}" class="room_num">
-										<div class="recent-div7">
+										<c:choose>
+                                        	<%-- 세션 없을 때 --%>
+                                            <c:when test="${loginInfo == null}">
+                                            	<a href="${pageContext.request.contextPath}/modal/login.do"
+															data-toggle="modal" data-target="#loginModal">
+                                                        	<div class="recent-div7">
+                                                               <div class="recent-div8 offf"></div>
+                                                           	</div>
+                                                           	</a>
+                                                        	</c:when>
+                                                        	<%-- 세션 있을 때 --%>
+                                                        	<c:otherwise>
+	                                                        	<c:set var="count" value="0" />
+                                                                <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                    <c:if test="${h.roomno==item.roomno}">
+                                                                  		<c:set var="count" value="${count + 1}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${count == 0}">
+                                                                    <div class="recent-div7">
+                                                                        <div class="recent-div8 off" data-value="on"></div>
+                                                                    </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
+                                                                        	<c:if test="${item.roomno==h.roomno}">
+                                                                        	<div class="recent-div7">
+                                                                        	    <div class="recent-div8 on" data-value="off"></div>
+                                                                        	</div>
+                                                                        	</c:if>
+                                                                    	</c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                        	</c:otherwise>
+                                                        </c:choose>
+										<!-- <div class="recent-div7">
 											<div class="recent-div8 off" data-value="on"></div>
-										</div>
+										</div> -->
 										
 										<a target="_blank" rel="" class="recent-a"
 											href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
@@ -384,6 +420,36 @@
 			src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js"
 			type="text/javascript" charset="utf-8"></script>
 
+		<script type="text/javascript">
+    	function delectstar(x) {
+    		$.ajax({
+                url: "${pageContext.request.contextPath}/main/delectstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+    				alert(x + "delectstar");
+                },
+                error : function() {
+                	alert("delectstar발송에러 발생");
+				}
+    		});
+    	}
+    	
+    	function insertstar(x) {
+    		$.ajax({
+                url: "${pageContext.request.contextPath}/main/insertstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+                	alert( x + "insertstar");
+                },
+                error : function() {
+                	alert("insertstar발송에러 발생");
+				}
+    		});
+    	}
+    	
+    </script>
 
 		<script>
 				/* 슬라이더 세팅 */
@@ -398,7 +464,20 @@
 				/* 좋아요 클릭 -> 하트 색 변경 */
 				$(function() {
 					$(".recent-div8").click(function(e) {
-						$(this).toggleClass('on off');
+						var loginInfo = "${loginInfo}";
+						if(loginInfo != "") {
+							$(this).toggleClass('on off');
+		    		        var onoff = $(this).hasClass("on");
+		        		    alert("1" + onoff);
+		            		var a = $(this).parent().prev().val();
+		            		alert("a = " + a);
+		            		alert("1");
+		            	    if(onoff == true) {
+		            	    	insertstar(a);
+							}else {
+								delectstar(a);
+			        	    }
+		            	}
 					});
 				});
 
@@ -433,7 +512,20 @@
 				/* 좋아요 클릭 -> 하트 색 변경 */
 				$(function() {
 					$(".hit-div8").click(function(e) {
-						$(this).toggleClass('on off');
+						var loginInfo = "${loginInfo}";
+						if(loginInfo != "") {
+							$(this).toggleClass('on off');
+		    		        var onoff = $(this).hasClass("on");
+		        		    alert("1" + onoff);
+		            		var a = $(this).parent().prev().val();
+		            		alert("a = " + a);
+		            		alert("1");
+		            	    if(onoff == true) {
+		            	    	insertstar(a);
+							}else {
+								delectstar(a);
+			        	    }
+		            	}
 					});
 				});
 			</script>
@@ -503,11 +595,12 @@
 		<script>
 		
 	    var session = "${logininfo}"; //세션 식별을 위한 값
+	    var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
 	    
 	$(function(){
 	$("#tab2").click(function(){
 		$.get("${pageContext.request.contextPath}/professor",
-				{"userno":2}
+				{"userno":sessionuserno}
 		,function(json){
 			
 			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
@@ -538,10 +631,12 @@
               /** 세션 식별하기 **/
               Handlebars.registerHelper('session', function(roomno, options) {
                   if (session == null || session == "") {
-                  	var heart_div = '<div class="recent-div7">'
-                  		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                  		heart_div += '</div>'
-                  	return heart_div;
+                	  var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                    		heart_div += '<div class="recent-div7">'
+                    		heart_div += '<div class="recent-div8 offff"></div>'
+                    		heart_div += '</div>'
+                    		heart_div += '</a>'
+                    	return heart_div;
                   }
                   else {
                   	for (var i=0; i<json.heart.length; i++) {
@@ -582,7 +677,20 @@
 			/* 좋아요 클릭 -> 하트 색 변경 */
 			$(function() {
 				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
+					var loginInfo = "${loginInfo}";
+					if(loginInfo != "") {
+	            		$(this).toggleClass('on off');
+	    		        var onoff = $(this).hasClass("on");
+	        		    alert("3" + onoff);
+	            		var a = $(this).parent().prev().val();
+	            		alert("a = " + a);
+	            		alert("3");
+	            	    if(onoff == true) {
+	            	    	insertstar(a);
+						}else {
+							delectstar(a);
+		        	    }
+	            	}
 				});
 			});
 		});
@@ -591,7 +699,7 @@
 	
 	$("#tab1").click(function(){
 		$.get("${pageContext.request.contextPath}/professor2",
-				{"userno":1}
+				{"userno": sessionuserno}
 		,function(json){
 			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
          		  if (dealingtype == '월세') {
@@ -629,7 +737,20 @@
 			/* 좋아요 클릭 -> 하트 색 변경 */
 			$(function() {
 				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
+					var loginInfo = "${loginInfo}";
+					if(loginInfo != "") {
+	            		$(this).toggleClass('on off');
+	    		        var onoff = $(this).hasClass("on");
+	        		    alert("4" + onoff);
+	            		var a = $(this).parent().prev().val();
+	            		alert("a = " + a);
+	            		alert("4");
+	            	    if(onoff == true) {
+	            	    	insertstar(a);
+						}else {
+							delectstar(a);
+		        	    }
+	            	}
 				});
 			});
 		});
@@ -639,7 +760,7 @@
     var session = "${logininfo}"; //세션 식별을 위한 값
     
   	$(document).ready(function(){ //인기있는 방 AJAX
-		$.get("${pageContext.request.contextPath}/famous",{"heartno":1}
+		$.get("${pageContext.request.contextPath}/famous",{"heartno":9}
 		,function(json){
 			Handlebars.registerHelper('isMonth', function(dealingtype, options) {
          		  if (dealingtype == '월세') {
@@ -669,9 +790,11 @@
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
-                    	var heart_div = '<div class="recent-div7">'
-                    		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                    		heart_div += '</div>'
+                    	var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                      		heart_div += '<div class="recent-div7">'
+                      		heart_div += '<div class="recent-div8 offff"></div>'
+                      		heart_div += '</div>'
+                      		heart_div += '</a>'
                     	return heart_div;
                     }
                     else {
@@ -706,42 +829,20 @@
 			/* 좋아요 클릭 -> 하트 색 변경 */
  			$(function() {
 				$(".recent-div8").click(function(e) {
-					$(this).toggleClass('on off');
-					var onoff = $(this).hasClass("on");
-		               if(onoff ==true){
-		            	   alert("안녕")
-		            	   var a = '${logininfo}'; //로그인한 유저넘버
-		            	   var b = $(this).parent().prev().val();
-		            	   console.log(a);
-							console.log(b);		            	   
-		                    $.ajax({
-				            url: "${pageContext.request.contextPath}/like",
-				            method: "GET",
-				            data: {"userno":a,
-				            	"roomno":b
-				            	},
-				            success:function(data){
-				            	alert("hello");
-				            	}
-				            }); 
-					
-		               }else{
-		            		alert("잘가요")
-		            		var a = "${logininfo.userno}"; //로그인한 유저넘버
-			            	var b = $(this).parent().prev().val();
-		            		console.log(b);
-		            		
-			            	$.ajax({
-					            url: "${pageContext.request.contextPath}/dislike",
-					            method: "GET",
-					            data: {"userno":a,
-					            	"roomno":b
-					            	},
-					            success:function(data){
-					            	alert("삭제함!");
-					            	}
-					            }); 
-		            	   } 
+					var loginInfo = "${loginInfo}";
+					if(loginInfo != "") {
+	            		$(this).toggleClass('on off');
+	    		        var onoff = $(this).hasClass("on");
+	        		    alert("5" + onoff);
+	            		var a = $(this).parent().prev().val();
+	            		alert("a = " + a);
+	            		alert("5");
+	            	    if(onoff == true) {
+	            	    	insertstar(a);
+						}else {
+							delectstar(a);
+		        	    }
+	            	}
 			});
 		});
 		});

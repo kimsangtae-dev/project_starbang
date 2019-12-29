@@ -83,6 +83,12 @@ public class MainController {
 		HttpSession session = request.getSession();
 		User loginInfo = (User) session.getAttribute("loginInfo");
 		/*----------------------*/
+		
+		int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
+		
 		/** 1)필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -98,6 +104,10 @@ public class MainController {
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
 		List<Gallery> output3 = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		try {
 			// 전체 게시글 수 조회
@@ -114,6 +124,11 @@ public class MainController {
 			output = galleryService.getPopularGalleryList(input); // 인기있는 방
 			Collections.reverse(list);
 			output3 = galleryService.getCookieList(list); // 최근본방
+			
+			if (userno != 0) {
+				heartlist = heartService.getHeartList(input_heart);
+			}
+			
 		} catch (Exception e) {
 			/* return webHelper.redirect(null, e.getLocalizedMessage()); */
 			return new ModelAndView("index");
@@ -126,6 +141,7 @@ public class MainController {
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("logininfo", loginInfo);
+		model.addAttribute("heart", heartlist);
 
 		return new ModelAndView("index");
 	}
@@ -192,7 +208,18 @@ public class MainController {
 	 * 인기매물
 	 *******************************************************************/
 	@RequestMapping(value = "/main/pprm.do", method = RequestMethod.GET)
-	public ModelAndView pprm(Model model) {
+	public ModelAndView pprm(Model model, HttpServletRequest request) {
+		
+		/*---세션 불러오기 ----*/
+		HttpSession session = request.getSession();
+		User loginInfo = (User) session.getAttribute("loginInfo");
+		/*----------------------*/
+		
+		int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
+        
 		/** 1)필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
 		int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
@@ -206,6 +233,10 @@ public class MainController {
 
 		List<Popular> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		try {
 			// 전체 게시글 수 조회
@@ -218,6 +249,11 @@ public class MainController {
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			output = galleryService.getPopularGalleryList(input);
+			
+			if (userno != 0) {
+				heartlist = heartService.getHeartList(input_heart);
+			}
+			
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -228,6 +264,8 @@ public class MainController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("logininfo", loginInfo);
+		model.addAttribute("heart", heartlist);
 
 		return new ModelAndView("main/pprm");
 	}
@@ -276,12 +314,11 @@ public class MainController {
 		
 		Heart input_heart = new Heart();
 		input_heart.setUserno(userno);
-		Heart heart = null;
-		int fheart = 0;
+		input_heart.setRoomno(newRoomno);
+		int heartox = 0;
 		
 		Heart heartint = new Heart();
 		heartint.setRoomno(newRoomno);
-		Heart heartint2 = new Heart(); 
 		int fheartint = 0;
 
 		try {
@@ -303,24 +340,13 @@ public class MainController {
 			input_user.setUserno(output_room.getUserno());
 			output_user = userService.getUserItem(input_user);
 			
+			fheartint = heartService.numberHeart(heartint);
+
 			if (userno != 0) {
-				heart = heartService.getHeartitem(input_heart);
-				/* heartint = heartService.numberHeart(newRoomno); */
-				System.out.println("-------------------------------");
-				System.out.println(heart);
-				System.out.println("-------------------------------");
-				if (heart != null) {
-					fheart = 1;
+				heartox = heartService.getHeartitemox(input_heart);
+				if (heartox == 0) {
+					heartox = 1;
 				}
-			}
-			
-			if (userno != 0) {
-				heartint2 = heartService.numberHeart(heartint);
-				/* heartint = heartService.numberHeart(newRoomno); */
-				System.out.println("-------------------------------");
-				System.out.println(heartint2);
-				System.out.println(fheartint);
-				System.out.println("-------------------------------");
 			}
 
 		} catch (Exception e) {
@@ -359,8 +385,9 @@ public class MainController {
 		model.addAttribute("img", output_image);
 		model.addAttribute("user", output_user);
 		model.addAttribute("fake", output_fake);
-		model.addAttribute("heart", fheart);
+		model.addAttribute("heartox", heartox);
 		model.addAttribute("heartint", fheartint);
+		model.addAttribute("newRoomno", newRoomno);
 
 		return new ModelAndView("main/rmdt");
 	}
@@ -374,6 +401,11 @@ public class MainController {
 		HttpSession session = request.getSession();
 		User loginInfo = (User) session.getAttribute("loginInfo");
 		/*----------------------*/
+		
+		int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
 
 		List<String> list = null;
 
@@ -385,11 +417,20 @@ public class MainController {
 		/** 2)데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		List<Gallery> output = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		try {
 			// 쿠키로 저장된 방번호로 조회
 			output = galleryService.getCookieList(list);
 			Collections.reverse(output);
+			
+			if (userno != 0) {
+				heartlist = heartService.getHeartList(input_heart);
+			}
+			
 		} catch (Exception e) {
 			return new ModelAndView("main/rtrm");
 		}
@@ -397,6 +438,9 @@ public class MainController {
 		/** view 화면으로 보여주기 */
 		model.addAttribute("output", output);
 		model.addAttribute("loginInfo", loginInfo);
+		model.addAttribute("heart", heartlist);
+		
+		
 		return new ModelAndView("main/rtrm");
 	}
 
@@ -474,7 +518,6 @@ public class MainController {
 		input_heart.setUserno(userno);
 		List<Heart> heartlist = null;
 
-
 		Filter filter = new Filter();
 		// 방종류
 		filter.setRoomtype(roomtypepate);
@@ -505,7 +548,6 @@ public class MainController {
 		filter.setCenterLat(lat);
 		filter.setCenterLng(lng);
 		filter.setLevel(level);
-		
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -598,6 +640,10 @@ public class MainController {
 
 		List<Heart> output = null;
 		PageData pageData = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		try {
 			// 전체 게시글 수 조회
@@ -608,8 +654,11 @@ public class MainController {
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Heart.setOffset(pageData.getOffset());
 			Heart.setListCount(pageData.getListCount());
+			
+			heartlist = heartService.getHeartList(input_heart);
 
 			output = heartService.getHeartGalleryList(input);
+
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
 		}
@@ -619,6 +668,7 @@ public class MainController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("heart", heartlist);
 
 		return new ModelAndView("main/wish");
 	}
@@ -627,7 +677,7 @@ public class MainController {
 	 * 쉬운방찾기
 	 *******************************************************************/
 	@RequestMapping(value = "/main/search2.do", method = RequestMethod.GET)
-	public ModelAndView search2(Model model) {
+	public ModelAndView search2(Model model, HttpServletRequest request) {
 		/** 1) 필요한 변수값 생성 */
 		int keyword = webHelper.getInt("roomno");// 검색어
 		String keyword2 = webHelper.getString("roomtype");// 검색어
@@ -637,6 +687,14 @@ public class MainController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
+		
+		/*---세션 불러오기 ----*/
+        HttpSession session = request.getSession();
+        User loginInfo = (User) session.getAttribute("loginInfo");
+        int userno = 0;
+        if (loginInfo != null) {
+            userno = loginInfo.getUserno();
+        }
 
 		/** 2) 데이터 조회하기 */
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
@@ -648,6 +706,10 @@ public class MainController {
 
 		List<Gallery> output = null;
 		PageData pageData = null;
+		
+		Heart input_heart = new Heart();
+		input_heart.setUserno(userno);
+		List<Heart> heartlist = null;
 
 		try {
 			// 전체 게시글 수 조회
@@ -659,6 +721,10 @@ public class MainController {
 			Room.setOffset(pageData.getOffset());
 			Room.setListCount(pageData.getListCount());
 
+			if (userno != 0) {
+				heartlist = heartService.getHeartList(input_heart);
+			}
+			
 			output = galleryService.getGalleryList(input);
 		} catch (Exception e) {
 			return webHelper.redirect(null, e.getLocalizedMessage());
@@ -669,6 +735,8 @@ public class MainController {
 		model.addAttribute("output", output);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("heart", heartlist);
+		model.addAttribute("loginInfo", loginInfo);
 
 		return new ModelAndView("main/search");
 	}

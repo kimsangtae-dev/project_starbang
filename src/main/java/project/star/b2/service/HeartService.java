@@ -31,11 +31,14 @@ public interface HeartService {
 
 	public Heart getHeartItem(Heart input) throws Exception;
 	
-	public Heart numberHeart(Heart input) throws Exception;
+	public int numberHeart(Heart input) throws Exception;
 	
 	public int delectHeart(Heart input) throws Exception; 
 	
 	public Heart getHeartitem(Heart input) throws Exception; 
 	
+	public List<Heart> getHeartList(Heart input) throws Exception;
+	
+	public int getHeartitemox(Heart input) throws Exception; 
 }
 

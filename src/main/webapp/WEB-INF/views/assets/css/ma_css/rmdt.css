@@ -54,6 +54,11 @@ a {
 	display: inline-block;
 }
 
+.recent-div9.offff {
+	background: url(../../img/ma_img/rmdt/blacklv.svg) center center/cover;
+	display: inline-block;
+}
+
 /*좋아요 갯수 카운트 글씨 수정*/
 #lkct {
 	font-size: 16.5px;

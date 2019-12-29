@@ -218,30 +218,41 @@ pageEncoding="UTF-8"%>
                                                 <div class="recent-div5">
                                                     <div class="recent-div6">
                                                         <%-- 좋아요 버튼 --%>
+                                                        <input type="hidden" value="${item.roomno}">
                                                         <c:choose>
                                                         	<%-- 세션 없을 때 --%>
                                                         	<c:when test="${loginInfo == null}">
                                                         	<a href="${pageContext.request.contextPath}/modal/login.do"
 																data-toggle="modal" data-target="#loginModal">
                                                         	<div class="recent-div7">
-                                                               <div class="recent-div8 off" data-value="off"></div>
+                                                               <div class="recent-div8 offff"></div>
                                                            	</div>
                                                            	</a>
                                                         	</c:when>
                                                         	<%-- 세션 있을 때 --%>
                                                         	<c:otherwise>
-	                                                        <c:forEach var="h" items="${heart}" varStatus="status">
-	                                                        	<c:if test="${h.roomno==item.roomno}">
-	                                                        	<div class="recent-div7">
-																	<div class="recent-div8 on" data-value="off"></div>
-																</div>
-	                                                        	</c:if>
-	                                                        </c:forEach>
-	                                                        <c:if test="${h.roomno!=item.roomno}">
-	                                                        	<div class="recent-div7">
-																	<div class="recent-div8 off" data-value="on"></div>
-																</div>
-	                                                        </c:if>
+	                                                        	<c:set var="count" value="0" />
+                                                                <c:forEach var="h" items="${heart}" varStatus="status">
+                                                                    <c:if test="${h.roomno==item.roomno}">
+                                                                  		<c:set var="count" value="${count + 1}" />
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <c:choose>
+                                                                    <c:when test="${count == 0}">
+                                                                    <div class="recent-div7">
+                                                                        <div class="recent-div8 off" data-value="on"></div>
+                                                                    </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
+                                                                        	<c:if test="${item.roomno==h.roomno}">
+                                                                        	<div class="recent-div7">
+                                                                        	    <div class="recent-div8 on" data-value="off"></div>
+                                                                        	</div>
+                                                                        	</c:if>
+                                                                    	</c:forEach>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                         	</c:otherwise>
                                                         </c:choose>
                                                         <%-- 좋아요 끝 --%>
@@ -360,6 +371,37 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
+    
+    <script type="text/javascript">
+    	function delectstar(x) {
+    		$.ajax({
+                url: "delectstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+    				alert(x + "delectstar");
+                },
+                error : function() {
+                	alert("delectstar발송에러 발생");
+				}
+    		});
+    	}
+    	
+    	function insertstar(x) {
+    		$.ajax({
+                url: "insertstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+                	alert( x + "insertstar");
+                },
+                error : function() {
+                	alert("insertstar발송에러 발생");
+				}
+    		});
+    	}
+    </script>
+    
     <script type="text/javascript">
         /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
         function contentSize() {
@@ -380,7 +422,19 @@ pageEncoding="UTF-8"%>
 
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
-                $(this).toggleClass('on off');
+            	var loginInfouser = "${loginInfo.userno}";
+            	if(loginInfouser != "") {            		
+	            	$(this).toggleClass('on off');
+    		        var onoff = $(this).hasClass("on");
+        		    alert(onoff);
+            		var a = $(this).parent().prev().val();
+            		alert(a);
+            	    if(onoff == true) {
+            	    	insertstar(a);
+					}else {
+						delectstar(a);
+	        	    }
+            	}
             });
         });
     </script>
@@ -394,6 +448,7 @@ pageEncoding="UTF-8"%>
 		<div class="recent-div5">
 		<div class="recent-div6">
 			{{!-- 좋아요 버튼 --}}
+			<input type="hidden" value="{{roomno}}" class="room_num">
 			{{#session roomno}}
 			{{else}}
 			{{/session}}
@@ -526,9 +581,11 @@ pageEncoding="UTF-8"%>
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
-                    	var heart_div = '<div class="recent-div7">'
-                    		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                    	var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                    		heart_div += '<div class="recent-div7">'
+                    		heart_div += '<div class="recent-div8 offff"></div>'
                     		heart_div += '</div>'
+                    		heart_div += '</a>'
                     	return heart_div;
                     }
                     else {
@@ -582,10 +639,12 @@ pageEncoding="UTF-8"%>
 	                    $(this).toggleClass('on off');
     	                var onoff = $(this).hasClass("on");
         	            alert(onoff);
+        	            var a = $(this).parent().prev().val();
+                		alert("a = " + a);
             	        if(onoff == true) {
-                	    	insertstar();
+                	    	insertstar(a);
                     	}else {
-                    		delectstar();
+                    		delectstar(a);
 	                    }
                 	}
                 });

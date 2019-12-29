@@ -63,8 +63,29 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<!--상단 내용 끝-->
 		<div id="iconlist">
 			<!--찜,이메일,공유,허위매물신고 시작-->
-			<div class="recent-div9 off" data-value="on"></div>
-			<span id="lkct">1</span>
+			<input type="hidden" value="${newRoomno}">
+            <c:choose>
+            	<%-- 세션 없을 때 --%>
+            	<c:when test="${loginInfo == null}">
+						<a href="${pageContext.request.contextPath}/modal/login.do"
+							class="st-bang" data-toggle="modal"
+							data-target="#loginModal">
+        					<div class="recent-div9 offff"></div>
+						</a>
+					</c:when>
+                	<%-- 세션 있을 때 --%>
+                	<c:otherwise>
+                        <c:choose>
+                        	<c:when test="${heartox == 0}">
+                        		<div class="recent-div9 off" data-value="on"></div>
+							</c:when>
+                        	<c:otherwise>
+ 	                    		<div class="recent-div9 on" data-value="off"></div>
+                        	</c:otherwise>
+                        </c:choose>
+				</c:otherwise>
+			</c:choose>
+			<span id="lkct">${heartint}</span>
 			<!-- 도트 -->
 			<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/blackdot.png" class="dotsize">
 			<!-- 링크 -->
@@ -543,6 +564,56 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
+	
+	<script type="text/javascript">
+		function delectstar(x) {
+			$.ajax({
+				url: "delectstar.do",
+            	method: "get",
+            	data: {"x" : x},
+            	success: function(req){
+					alert(x + "delectstar");
+            	},
+            	error : function() {
+					swal("delectstar발송에러 발생");
+				}
+			});
+		}
+	
+		function insertstar(x) {
+			$.ajax({
+            	url: "insertstar.do",
+            	method: "get",
+            	data: {"x" : x},
+            	success: function(req){
+            		alert( x + "insertstar");
+            	},
+            	error : function() {
+					swal("insertstar발송에러 발생");
+				}
+			});
+		}
+	
+		$(function() {
+			/** 좋아요 */
+            $(".recent-div8").click(function(e) {
+	            var loginInfouser = ${loginInfo.userno};
+            	if(loginInfouser != 0) {            		
+	            	$(this).toggleClass('on off');
+    		        var onoff = $(this).hasClass("on");
+        		    alert(onoff);
+        		    var a = $(this).prev().val();
+            		alert(a);
+            	    if(onoff == true) {
+            	    	insertstar(a);
+					}else {
+						delectstar(a);
+	        	    }
+            	}
+            });
+		});
+	</script>
+		
 	<script type="text/javascript">
 		/* kakao map API */
 		$(function() {
@@ -668,7 +739,19 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		/* 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div9").click(function(e) {
-				$(this).toggleClass('on off');
+				var loginInfouser = "${loginInfo.userno}";
+            	if(loginInfouser != "") {            		
+	            	$(this).toggleClass('on off');
+    		        var onoff = $(this).hasClass("on");
+        		    alert(onoff);
+        		    var a = $(this).prev().val();
+            		alert(a);
+            	    if(onoff == true) {
+            	    	insertstar(a);
+					}else {
+						delectstar(a);
+	        	    }
+            	}
 			})
 		});
 	</script>
@@ -677,7 +760,19 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		/* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
 		$(function() {
 			$(".recent-div8").click(function(e) {
-				$(this).toggleClass('on off');
+				var loginInfouser = "${loginInfo.userno}";
+				if(loginInfouser != "") {            		
+	            	$(this).toggleClass('on off');
+    		        var onoff = $(this).hasClass("on");
+        		    alert(onoff);
+        		    var a = $(this).prev().val();
+            		alert(a);
+            	    if(onoff == true) {
+            	    	insertstar(a);
+					}else {
+						delectstar(a);
+	        	    }
+            	}
 			})
 		});
 	</script>
