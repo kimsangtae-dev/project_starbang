@@ -118,9 +118,23 @@
 	                            <%-- 공실현황 열 --%>
 	                            <td class="text-center">
 		                            <c:choose>
-										<c:when test="${confirmdate != null}">
+										<c:when test="${status == 0 || status == 1}">
 											<span class="label label-primary">&nbsp;공개&nbsp;</span>
 										</c:when>
+										
+										<c:when test="${status == 2}">
+											<span class="label label-danger">&nbsp;허위매물&nbsp;</span>
+										</c:when>
+										
+										<c:when test="${status == 3}">
+											<span class="label label-info">&nbsp;비공개&nbsp;</span>
+										</c:when>
+										
+										<c:when test="${status == 4}">
+											<span class="label label-info" style="background-color:#000fff;">&nbsp;거래완료&nbsp;</span>
+										</c:when>
+										
+										
 										<c:otherwise>
 											<span class="label label-info">소유자 확인중</span>
 										</c:otherwise>
@@ -128,18 +142,16 @@
 	                            </td>
 	                            <%-- 공실관리 열 --%>
 	                            <td class="text-center">
-	                                <button class="btn btn-default">
-	                                	<c:url value="${contextPath}/host/rm_edit.do" var="update">
-											<c:param name="roomno" value="${roomno}"></c:param>
-										</c:url>
-										<a href="${update}">수정</a>
-	                                </button>
-	                                <button class="btn btn-default">
-			                            <c:url value="${contextPath}/host/rmli_delete.do" var="delete">
-										      <c:param name="roomno" value="${roomno}"></c:param>
-										</c:url>
-										<a href="${delete}">삭제</a>
-	                                </button>
+	                            
+                                	<c:url value="${contextPath}/host/rm_edit.do" var="update">
+										<c:param name="roomno" value="${roomno}"></c:param>
+									</c:url>
+									
+									<c:url value="${contextPath}/host/rmli_delete.do" var="delete">
+									      <c:param name="roomno" value="${roomno}"></c:param>
+									</c:url>
+									<a href="${update}" class="btn btn-default">수정</a>
+									<a href="${delete}" class="btn btn-default">삭제</a>
 	                            </td>
 	                            <td class="text-center">
 	                                <a href="#chmodeModal" data-toggle="modal" class="changemode">
@@ -249,19 +261,19 @@
         <div class="modal-content modal-whole-chmode">
             <p class="chmode-title">공실 상태를 변경합니다.</p>
             <div class="chmode-div clearfix">
-                <a class="status" id="0">
+                <a class="status" id="1">
                     <span>공개</span>
                     <p>게시글을 공개상태로 전환합니다.</p>
                 </a>
             </div>
             <div class="chmode-div clearfix">
-                <a class="status" id="1">
+                <a class="status" id="3">
                     <span>비공개</span>
                     <p>게시글을 비공개 상태로 전환합니다.</p>
                 </a>
             </div>
             <div class="chmode-div clearfix">
-                <a class="status" id="2">
+                <a class="status" id="4">
                     <span>거래완료</span>
                     <p>거래를 완료했습니다.</p>
                 </a>
@@ -313,9 +325,12 @@
 	$(function() {
 		var roomno;
 		var status;
+		var select;
 		$(".changemode").click(function(e) {
 			e.preventDefault();
 			roomno = $(this).parents("tr").children().eq(0).html();
+			select = $(this).parents("td").prev().prev().find("span");
+			
 		});
 		
 		$(".status").click(function(e) {
@@ -327,6 +342,16 @@
 	            url: "${pageContext.request.contextPath}/host/rmli_status.do",
 	            success: function(data){
 	            	alert("공실상태가 변경되었습니다.");
+	            	if (status==1){
+	            		select.html("&nbsp;공개&nbsp;");
+	            		select.removeClass().addClass("label").addClass("label-info");
+	            	} else if (status == 3) {
+	            		select.html("&nbsp;비공개&nbsp;");
+	            		select.removeClass().addClass("label").addClass("label-primary");
+	            	} else if (status == 4) {
+	            		select.html("거래완료");
+	            		select.removeClass().addClass("label").addClass("label-success");
+	            	}
 	            },
 	            error: function(data) {
 	                console.log(data);
