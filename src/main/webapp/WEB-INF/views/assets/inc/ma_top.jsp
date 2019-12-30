@@ -97,9 +97,8 @@
             box-shadow: rgba(0, 0, 0, 0.25) 0 15px 18px -10px;
             background-color: rgb(255, 255, 255);
             position: absolute;
-            /* right: 50px; */
-            /* margin-right: 150px; */
-            top: 75px;
+            left: -30px !important;
+            top: 39px;
             z-index: 11;
             border: 1px solid rgb(212, 212, 212);
             border-radius: 4px;
