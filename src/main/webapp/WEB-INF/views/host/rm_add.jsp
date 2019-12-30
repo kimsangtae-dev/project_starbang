@@ -976,7 +976,7 @@ $(function() {
 	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
 	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
 		
-	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.value('.addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
 	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
 	    
 	    
