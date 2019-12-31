@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -365,6 +365,8 @@
                 data: {"x" : x},
                 success: function(req){
                 	console.log(x + "delectstar");
+		var http = "${pageContext.request.contextPath}/main/wish.do"
+			location.replace(http);
                 },
                 error : function() {
                 	console.log("delectstar발송에러 발생");
@@ -515,8 +517,7 @@
         	var a = $(this).parent().prev().val();
         	console.log(a);
 			delectstar(a);
-			var http = "${pageContext.request.contextPath}/main/wish.do"
-			location.replace(http);
+			
         });
     });
 </script>
