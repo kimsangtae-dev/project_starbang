@@ -48,8 +48,8 @@
         </div>
         <form method="get" action="${pageContext.request.contextPath}/main/search.do">
            <div>
-              <input type="hidden" class="input-hidden" name="roomtype" value="원룸m투룸m쓰리룸m오피스텔">
-              <input type="hidden" class="input-hidden" name="dealingtype" value="월세m전세m매매">
+              <input type="hidden" class="input-hidden" name="roomtype" value="원룸,투룸,쓰리룸,오피스텔">
+              <input type="hidden" class="input-hidden" name="dealingtype" value="월세,전세,매매">
               <input type="hidden" class="input-hidden" name="depositFrom" value="0">
               <input type="hidden" class="input-hidden" name="monthFrom" value="0">
               <input type="hidden" class="input-hidden" name="buyingFrom" value="0">
@@ -261,14 +261,27 @@
               <span>최근에 본 방과 찜한방을 볼 수 있어요</span>
            </div>
 
-           <div class="tab_container" id="tab_con">
-              <div class="recent-div4">
-              
-              </div>
-           </div>
-        </div>
+			<div class="tab_container" id="tab_con">
+	           	<div class="recent-div4">
+	               <%-- 조회 결과가 없는 경우 --%>
+	               <c:if test="${output3 == null || fn:length(output) == 0}">
+	               <div class="recent-div5-vacant margin">
+	                  <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	               </div>
+	               <div class="recent-div5-vacant margin">
+	                  <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	               </div>
+	               <div class="recent-div5-vacant margin">
+	                  <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	               </div>
+	               <div class="recent-div5-vacant margin">
+	                  <p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>
+	               </div>
+	               </c:if>
+	            </div>
+			</div>
+		</div>
         <!-- div0 끝 -->
-
       </div>
       <!-- 최근본방 / 찜한방 끝  -->
 
@@ -495,6 +508,12 @@
                         heart_div += '</div>'
                     return heart_div;
                 }
+                if (json.heart.length == 0) {
+                	var heart_div = '<div class="recent-div7">'
+                		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                		heart_div += '</div>'
+                	return heart_div;
+				}
             });
 	        var source = $("#prof-list-tmpl").html()//템플릿코드
 	        var template = Handlebars.compile(source);// 템플릿 컴파일
@@ -602,9 +621,9 @@
                  }
                  
               });
-                
+        
         var empty_div = "";
-        if (json.item.length < 4) {
+        if (json.cookie_size < 4) {
             for (var k=0; k<4-json.item.length; k++) {
                 empty_div += '<li><div class="recent-div5-vacant margin">';
                 empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
@@ -649,12 +668,12 @@
                 else { return options.inverse(this); }
             });
             
-            Handlebars.registerHelper('isMonth', function(price, options) {
+            Handlebars.registerHelper('isOver', function(price, options) {
                 if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                 else { return price; }
             });
             
-            Handlebars.registerHelper('isMonth', function(deposit, options) {
+            Handlebars.registerHelper('isOver2', function(deposit, options) {
                 if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                 else { return deposit; }
             });

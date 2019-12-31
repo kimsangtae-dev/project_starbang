@@ -131,6 +131,7 @@ public class MainRestController {
 	
 	List<String> list = null;
 	PageData pageData = null;
+	int cookie_size = 0;
 
 	try {
 				// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
@@ -141,6 +142,7 @@ public class MainRestController {
 				Heart.setListCount(pageData.getListCount());
 				// 데이터 조회하기
 		list=CookieUtils.getValueList("cookieName", request);
+		cookie_size = list.size();
 	} catch (UnsupportedEncodingException e1) {
 		e1.printStackTrace();
 	}
@@ -166,6 +168,7 @@ public class MainRestController {
 	data.put("item",output);
 	data.put("meta",pageData);
 	data.put("heart", heartlist);
+	data.put("cookie_size", cookie_size);
 	
 	return webHelper.getJsonData(data);
 }
@@ -275,7 +278,7 @@ public class MainRestController {
 			heartService.addHeart(input);
 			
 			//데이터 조회
-			//output = heartService.getHeartItem(input);
+			output = heartService.getHeartItem(input);
 
 		} catch (Exception e) {
 			return webHelper.getJsonError(e.getLocalizedMessage());
