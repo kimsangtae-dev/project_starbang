@@ -89,9 +89,12 @@ public class AdminController {
 		HttpSession session = request.getSession();
         User loginInfo = (User) session.getAttribute("loginInfo");
         
+        /* 로그인이 여부 확인 */
         if (loginInfo == null) {
         	return webHelper.redirect("/b2/admin/lg.do", "관리자로그인 후 접근이 가능합니다.");
         } 
+        
+        /* 관리자 아이디로 로그인 여부 확인*/
         String id = loginInfo.getEmail();
         String pw = loginInfo.getPasswd();
         
