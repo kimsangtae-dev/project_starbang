@@ -325,7 +325,7 @@
     <select id="selectItemint"
         parameterType="project.star.b2.model.Gallery"
         resultType="int">
-        select count(roomno) from heart where roomno=#{roomno} group by roomno;
+        select count(roomno) from heart where roomno=#{roomno};
     </select>
     
     <!-- 단일행 조회를 위한 기능 정의 -->

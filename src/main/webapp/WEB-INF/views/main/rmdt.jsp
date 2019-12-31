@@ -312,8 +312,15 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					    	</c:otherwise>
 						</c:choose>
 					</h1>
-					<div class="recent-div8 on" data-value="off"></div>
-					<span class="cntlk">0</span>
+					<c:choose>
+						<c:when test="${heartox == 0}">
+	                    	<div class="recent-div8 off" data-value="on"></div>
+						</c:when>
+	                    <c:otherwise>
+	 	                    <div class="recent-div8 on" data-value="off"></div>
+	                    </c:otherwise>
+                    </c:choose>
+					<span class="cntlk" id="blueh">${heartint}</span>
 					<button class="icngbl ulcp">
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
@@ -566,6 +573,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
 	
 	<script type="text/javascript">
+	var count_heart = ${heartint};
+	
 		function delectstar(x) {
 			$.ajax({
 				url: "delectstar.do",
@@ -573,6 +582,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             	data: {"x" : x},
             	success: function(req){
 					alert(x + "delectstar");
+					alert(count_heart);
+					count_heart -= 1;
+					$("#lkct").html(count_heart);
+					$("#blueh").html(count_heart);
             	},
             	error : function() {
 					swal("delectstar발송에러 발생");
@@ -587,6 +600,9 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             	data: {"x" : x},
             	success: function(req){
             		alert( x + "insertstar");
+            		count_heart += 1;
+        	    	$("#lkct").html(count_heart);
+        	    	$("#blueh").html(count_heart);
             	},
             	error : function() {
 					swal("insertstar발송에러 발생");
@@ -748,8 +764,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             		alert(a);
             	    if(onoff == true) {
             	    	insertstar(a);
+            		    $(".recent-div8").addClass('on');
 					}else {
 						delectstar(a);
+	        		    $(".recent-div8").addClass('off');
 	        	    }
             	}
 			})
@@ -769,8 +787,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             		alert(a);
             	    if(onoff == true) {
             	    	insertstar(a);
+            		    $(".recent-div9").addClass('on');
 					}else {
 						delectstar(a);
+	        		    $(".recent-div9").addClass('off');
 	        	    }
             	}
 			})

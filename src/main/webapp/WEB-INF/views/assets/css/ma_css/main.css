@@ -1146,7 +1146,7 @@
 }
 
 /* <div>좋아요 자식박스 -absolute */
-.recent-div7 {
+.recent-div7,.wish-div7 {
     width: 36px;
     position: absolute;
     top: 3px;
@@ -1156,18 +1156,18 @@
 }
 
 /* <div>좋아요 - <div> */
-.recent-div8 {
+.recent-div8,.wish-div8 {
     width: 32px;
     height: 30px;
     margin: 0px auto;
     /*background: url(ma_img/like.svg) center center / cover;*/
 }
 
-.recent-div8.off {
+.recent-div8.off,.wish-div8.off {
     background: url(../../img/ma_img/like.svg) center center/cover;
 }
 
-.recent-div8.on {
+.recent-div8.on,.wish-div8.on {
     background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 

@@ -121,6 +121,14 @@ public class MainRestController {
 	int pageCount = 1; // 한 그룹당 표시할 페이지 번호 수
 	int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
 	
+	/*---세션 불러오기 ----*/
+    HttpSession session = request.getSession();
+    User loginInfo = (User) session.getAttribute("loginInfo");
+    int userno = 0;
+    if (loginInfo != null) {
+        userno = loginInfo.getUserno();
+    }
+	
 	List<String> list = null;
 	PageData pageData = null;
 
@@ -139,11 +147,16 @@ public class MainRestController {
 	/** 2)데이터 조회하기 */
 	// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 	List<Gallery> output = null;
+	
+	Heart input_heart = new Heart();
+	input_heart.setUserno(userno);
+	List<Heart> heartlist = null;
 
 	try {
 		// 쿠키로 저장된 방번호로 조회
 		Collections.reverse(list);
 		output = galleryService.getCookieMainList(list);
+		if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
@@ -152,6 +165,7 @@ public class MainRestController {
 	Map<String, Object>data = new HashMap<String, Object>();
 	data.put("item",output);
 	data.put("meta",pageData);
+	data.put("heart", heartlist);
 	
 	return webHelper.getJsonData(data);
 }
