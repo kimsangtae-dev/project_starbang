@@ -312,17 +312,31 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 					    	</c:otherwise>
 						</c:choose>
 					</h1>
-					<c:choose>
-						<c:when test="${heartox == 0}">
-	                    	<div class="recent-div8 off" data-value="on"></div>
-						</c:when>
-	                    <c:otherwise>
-	 	                    <div class="recent-div8 on" data-value="off"></div>
-	                    </c:otherwise>
-                    </c:choose>
-					<span class="cntlk" id="blueh">${heartint}</span>
+					<input type="hidden" value="${newRoomno}">
+                  <c:choose>
+                        <%-- 세션 없을 때 --%>
+                     <c:when test="${loginInfo == null}">
+                     <a href="${pageContext.request.contextPath}/modal/login.do"
+                        class="st-bang" data-toggle="modal"
+                        data-target="#loginModal">
+                          <div class="recent-div8 offff"></div>
+                     </a>
+                  </c:when>
+                      <%-- 세션 있을 때 --%>
+                      <c:otherwise>
+                           <c:choose>
+                              <c:when test="${heartox == 0}">
+                                 <div class="recent-div8 off" data-value="on"></div>
+                        </c:when>
+                              <c:otherwise>
+                                 <div class="recent-div8 on" data-value="off"></div>
+                              </c:otherwise>
+                           </c:choose>
+                  </c:otherwise>
+               </c:choose>
+               <span class="cntlk" id="blueh">${heartint}</span>
 					<button class="icngbl ulcp">
-						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
+						<img class="upup" src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/whlink.png">
 					</button>
 					<!-- 신고하기 -->
 					<c:choose>
@@ -609,25 +623,6 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				}
 			});
 		}
-	
-		$(function() {
-			/** 좋아요 */
-            $(".recent-div8").click(function(e) {
-	            var loginInfouser = ${loginInfo.userno};
-            	if(loginInfouser != 0) {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
-        		    var a = $(this).prev().val();
-            		alert(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-					}else {
-						delectstar(a);
-	        	    }
-            	}
-            });
-		});
 	</script>
 		
 	<script type="text/javascript">
@@ -668,31 +663,6 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				// 메시지 내용만 적용하여 확인창 표시
 				swal("${user.name}님의 이메일입니다.<br/><br/>${user.email}<br/><br/>*문의에티켓을 지켜주세요.");
 				});
-			/*허위매물신고 클릭*/
-			/* $(".notce")
-					.click(
-							function() {
-								// 옵션 지정하여 메시지 창 표시
-								swal(
-										{
-											title : '<font color="red">허위매물신고</font>', // 제목
-											html : '실제로 허위매물이 맞습니까?<br/><font color="red">*거짓신고 시 사이트이용이 제한됩니다.</font>', // 내용
-											type : 'error', // 종류
-											showCloseButton : true, // 닫기 버튼 표시 여부
-											confirmButtonText : '신고', // 확인버튼 표시 문구
-											confirmButtonColor : '#a00', // 확인버튼 색상
-											showCancelButton : true, // 취소버튼 표시 여부
-											cancelButtonText : '취소', // 취소버튼 표시 문구
-											cancelButtonColor : '#f60' // 취소버튼 색상
-										}).then(function(result) { // 버튼이 눌러졌을 경우의 콜백 연결
-									if (result.value) { // 신고 버튼이 눌러진 경우
-										swal('신고', '신고가 완료되었습니다.', 'success');
-									} else if (result.dismiss === 'cancel') { // 취소버튼이 눌러진 경우
-										swal('취소', '신고가 취소되었습니다.', 'error');
-									}
-									;
-								});
-							}); */
 			/*확인매물 바의 물음표 클릭*/
 			$(".mola").click(function() {
 				swal(
@@ -744,58 +714,68 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 	<script type="text/javascript">
 		$(function() {
 			$(".more").click(
-					function(e) {
-						$("#smallexplan > div").toggleClass(
-								'explan-on explan-off', 400);
-					});
+				function(e) {
+					$("#smallexplan > div").toggleClass('explan-on explan-off', 400);
+				});
 		});
 	</script>
 
 	<script>
-		/* 좋아요 클릭 -> 하트 색 변경 */
-		$(function() {
-			$(".recent-div9").click(function(e) {
-				var loginInfouser = "${loginInfo.userno}";
-            	if(loginInfouser != "") {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
-        		    var a = $(this).prev().val();
-            		alert(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-            		    $(".recent-div8").addClass('on');
-					}else {
-						delectstar(a);
-	        		    $(".recent-div8").addClass('off');
-	        	    }
-            	}
-			})
-		});
-	</script>
+      /* 좋아요 클릭 -> 하트 색 변경 */
+      $(function() {
+         $(".recent-div9").click(function(e) {
+            var loginInfouser = "${loginInfo.userno}";
+               if(loginInfouser != "") {                  
+                  $(this).toggleClass('on off');
+                  var onoff = $(this).hasClass("on");
+                  alert(onoff);
+                  $(".recent-div8").toggleClass('on off');
+                  var onoffh = $(".recent-div8").hasClass("on");
+                  if (onoffh == true) {
+                     $('.recent-div8').css('background', 'url(../../img/ma_img/rmdt/like.svg) center center/cover;');
+                  }else {
+                     $('.recent-div8').css('background', 'url(../../img/ma_img/rmdt/like-on.svg) center center/cover;');
+                  }
+                  alert(onoffh);
+                  var a = $(this).prev().val();
+                  alert(a);
+                   if(onoff == true) {
+                      insertstar(a);
+               }else {
+                  delectstar(a);
+                  }
+               }
+         })
+      });
+   </script>
 
-	<script>
-		/* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
-		$(function() {
-			$(".recent-div8").click(function(e) {
-				var loginInfouser = "${loginInfo.userno}";
-				if(loginInfouser != "") {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
-        		    var a = $(this).prev().val();
-            		alert(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-            		    $(".recent-div9").addClass('on');
-					}else {
-						delectstar(a);
-	        		    $(".recent-div9").addClass('off');
-	        	    }
-            	}
-			})
-		});
-	</script>
+   <script>
+      /* 파란색 헤더바 좋아요 클릭 -> 하트 색 변경 */
+      $(function() {
+         $(".recent-div8").click(function(e) {
+            var loginInfouser = "${loginInfo.userno}";
+            if(loginInfouser != "") {                  
+                  $(this).toggleClass('on off');
+                  var onoff = $(this).hasClass("on");
+                  alert(onoff);
+                  $(".recent-div9").toggleClass('on off');
+                  var onoffh = $(".recent-div9").hasClass("on");
+                  if (onoffh == true) {
+                     $('.recent-div9').css('background', 'url(../../img/ma_img/rmdt/like.svg) center center/cover;');
+                  }else {
+                     $('.recent-div9').css('background', 'url(../../img/ma_img/rmdt/like-on.svg) center center/cover;');
+                  }
+                  var a = $(this).prev().val();
+                  alert(a);
+                   if(onoff == true) {
+                      insertstar(a);
+               }else {
+                  delectstar(a);
+                  }
+               }
+         })
+      });
+   </script>
 
 	<!-- 평수 바꾸기 -->
 	<script type="text/javascript">

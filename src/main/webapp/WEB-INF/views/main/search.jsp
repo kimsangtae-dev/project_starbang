@@ -605,6 +605,12 @@ pageEncoding="UTF-8"%>
                             	return heart_div;
                     		}
                     	}
+                    	if (json.heart.length == 0) {
+                        	var heart_div = '<div class="recent-div7">'
+                        		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                        		heart_div += '</div>'
+                        	return heart_div;
+						}
                     }
                 });
 
@@ -704,7 +710,8 @@ pageEncoding="UTF-8"%>
                     east: 0,
                     west: 0,
                     north: 0,
-                    south: 0
+                    south: 0,
+                    pagelist: 1
                 };
             
             console.log(params);

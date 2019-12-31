@@ -455,22 +455,22 @@ p {
 }
 
 .recent-div8.off {
-	background: url(../../img/ma_img/rmdt/like-on.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/like.svg) center center/cover;
 	display: inline-block;
 	width: 30px;
 	height: 30px;
 	position: relative;
-	top: 27px;
+	top: 30px;
 	left: 10px;
 }
 
 .recent-div8.on {
 	width: 30px;
 	height: 30px;
-	background: url(../../img/ma_img/rmdt/like.svg) center center/cover;
+	background: url(../../img/ma_img/rmdt/like-on.svg) center center/cover;
 	display: inline-block;
 	position: relative;
-	top: 27px;
+	top: 30px;
 	left: 10px;
 }
 
@@ -1328,3 +1328,6 @@ pre {
     z-index: 10;
 }
 
+.upup {
+   margin-top: 5px;
+}

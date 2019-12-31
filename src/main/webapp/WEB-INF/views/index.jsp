@@ -12,17 +12,13 @@
 <%@ include file="assets/inc/meta.jsp"%>
 
 <!-- css 적용 -->
-<link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/assets/css/ma_css/main.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ma_css/main.css">
 
 <!--  slider css -->
 
 <%--쓰지 않을 css --%>
-<link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css">
-<link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css">
-<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/plugin/slick/slick-theme.css">
 
 
 </head>
@@ -245,7 +241,7 @@
            </c:when>
                    <%-- 컨트롤러에서 식별한 세션 있을 때 --%>
                    <c:otherwise>
-                      ${loginInfo.name}님의 최근 본 방</a>
+                      ${loginInfo.name}님의 최근 본 방
                    </c:otherwise>
                 </c:choose></li>
               <li id="tab2"><c:choose>
@@ -319,19 +315,38 @@
       <script src="${pageContext.request.contextPath}/assets/plugin/slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
 
       <script type="text/javascript">
-       function delectstar(x) {
-         $.ajax({
-               url: "${pageContext.request.contextPath}/main/delectstar.do",
-               method: "get",
-               data: {"x" : x},
-               success: function(req){
-               alert(x + "delectstar");
-               },
-               error : function() {
-                 alert("delectstar발송에러 발생");
-           }
-         });
-       }
+      
+      
+	function delectstar(x) {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/main/delectstar.do",
+			method: "get",
+			data: {"x" : x},
+			success: function(req){
+				console.log(x + "delectstar");
+				popularityroom();
+			},
+			error : function() {
+				console.log("delectstar발송에러 발생");
+			}
+		});
+	}
+       
+	function delect3(x) {
+		$.ajax({
+			url: "${pageContext.request.contextPath}/main/delectstar.do",
+			method: "get",
+			data: {"x" : x},
+			success: function(req){
+				console.log(x + "delectstar");
+				$("#tab2").click();
+				popularityroom();
+			},
+			error : function() {
+				console.log("delectstar발송에러 발생");
+			}
+		});
+	}
        
        function insertstar(x) {
          $.ajax({
@@ -339,10 +354,11 @@
                method: "get",
                data: {"x" : x},
                success: function(req){
-                 alert( x + "insertstar");
+            	   console.log( x + "insertstar");
+                 popularityroom();
                },
                error : function() {
-                 alert("insertstar발송에러 발생");
+            	   console.log("insertstar발송에러 발생");
            }
          });
        }
@@ -440,106 +456,21 @@
     <!-- user code -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
-    <script>
+	<script>
       
-       var session = "${logininfo}"; //세션 식별을 위한 값
-       var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
-       var heartlist = "${heart}"; //세션 식별을 위한 값
+	var session = "${logininfo}"; //세션 식별을 위한 값
+	var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
+	var heartlist = "${heart}"; //세션 식별을 위한 값
        
     $(function(){
+		/** 최근본방 **/
         $(document).ready(function(){
-            $.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
-                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                    if (dealingtype == '월세') { return options.fn(this); }
-                    else { return options.inverse(this); }
-                });
-                    
-                Handlebars.registerHelper('isOver', function(price, options) {
-                    if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
-                    else { return price; }
-                });
-                    
-                Handlebars.registerHelper('isOver2', function(deposit, options) {
-                    if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
-                    else { return deposit; }
-                });
-                      
-                /** 세션 식별하기 **/
-                Handlebars.registerHelper('session', function(roomno, options) {
-                    if (session == null || session == "") {
-                        var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
-                            heart_div += '<div class="recent-div7">'
-                            heart_div += '<div class="recent-div8 off"></div>'
-                            heart_div += '</div>'
-                            heart_div += '</a>'
-                        return heart_div;
-                    }
-                    else {
-                        for (var i=0; i<json.heart.length; i++) {
-                            if (json.heart[i].roomno == roomno) {
-                                var heart_div = '<div class="recent-div7">'
-                                    heart_div += '<div class="recent-div8 on" data-value="off"></div>'
-                                    heart_div += '</div>'
-                                return heart_div;
-                            }
-                        }
-                        for (var i=0; i<json.heart.length; i++) {
-                            if (json.heart[i].roomno != roomno) {
-                                var heart_div = '<div class="recent-div7">'
-                                    heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                    heart_div += '</div>'
-                                return heart_div;
-                            }
-                        }
-                    }
-                });
-                
-                
-                var source = $("#prof-list-tmpl").html()//템플릿코드
-                var template = Handlebars.compile(source);// 템플릿 컴파일
-                var result = template(json);
-                var empty_div = "";
-                
-                if (json.item.length < 4) {
-                    for (var k=0; k<4-json.item.length; k++) {
-                        empty_div += '<li><div class="recent-div5-vacant margin">';
-                        empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
-                        empty_div += '</div></li>';
-                    }
-                }
-                
-                $(".tabs > li:nth-child(1)").css("color","black");
-                $(".tabs > li:nth-child(2)").css("color","gray");
-                $(".recent-div4").empty();
-                $(".recent-div4").append(result);
-                $(".recent-div4").append(empty_div);
-                
-                
-                /* 좋아요 클릭 -> 하트 색 변경 */
-                $(function() {
-                   $(".recent-div8").click(function(e) {
-                      var loginInfo = "${loginInfo}";
-                      if(loginInfo != "") {
-                           $(this).toggleClass('on off');
-                           var onoff = $(this).hasClass("on");
-                           alert("4" + onoff);
-                           var a = $(this).parent().prev().val();
-                           alert("a = " + a);
-                           alert("4");
-                            if(onoff == true) {
-                               insertstar(a);
-                            }else {
-                                delectstar(a);
-                           }
-                        }
-                    });
-                });
-            });
+        	recentroom();
         });
        
        
     /** 찜한방 **/
-    $("#tab2").click(function(){
+	$("#tab2").click(function(){
         $.get("${pageContext.request.contextPath}/professor", {"userno":sessionuserno}, function(json){
             Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                 if (dealingtype == '월세') { return options.fn(this); }
@@ -565,52 +496,57 @@
                     return heart_div;
                 }
             });
-        var source = $("#prof-list-tmpl").html()//템플릿코드
-        var template = Handlebars.compile(source);// 템플릿 컴파일
-        var result = template(json);
-        var a = Object.keys({item:[]});
-        console.log(a); //json 데이터 알아보기
-        $(".tabs > li:nth-child(2)").css("color","black");
-        $(".tabs > li:nth-child(1)").css("color","gray");
-
-        if(a == "item"){
-            var source2 =$("#no-list-tmpl").html()
-            var template = Handlebars.compile(source2);// 템플릿 컴파일
-            $(".recent-div4").append(template);
-        }
-        
-        var empty_div = "";
-		if (json.item.length < 4) {
-			for (var k=0; k<4-json.item.length; k++) {
-				empty_div += '<li><div class="recent-div5-vacant margin">';
-				empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
-				empty_div += '</div></li>';
+	        var source = $("#prof-list-tmpl").html()//템플릿코드
+	        var template = Handlebars.compile(source);// 템플릿 컴파일
+	        var result = template(json);
+	        var a = Object.keys({item:[]});
+	        console.log(a); //json 데이터 알아보기
+	        $(".tabs > li:nth-child(2)").css("color","black");
+	        $(".tabs > li:nth-child(1)").css("color","gray");
+	
+	        if(a == "item"){
+	            var source2 =$("#no-list-tmpl").html()
+	            var template = Handlebars.compile(source2);// 템플릿 컴파일
+	            $(".recent-div4").append(template);
+	        }
+	        
+	        var empty_div = "";
+			if (json.item.length < 4) {
+				for (var k=0; k<4-json.item.length; k++) {
+					empty_div += '<li><div class="recent-div5-vacant margin">';
+					empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
+					empty_div += '</div></li>';
+				}
 			}
-		}
-        
-        $(".recent-div4").empty(); 
-        $(".recent-div4").append(result);
-        $(".recent-div4").append(empty_div);
-        
-        /* 좋아요 클릭 -> 하트 색 변경 */
-        $(function() {
-           $(".wish-div8").click(function(e) {
-                $(this).toggleClass('on off');
-                var onoff = $(this).hasClass("on");
-                alert("3" + onoff);
-                var a = $(this).parent().prev().val();
-                alert("a = " + a);
-                alert("3");
-				delectstar(a);
-				$("#tab2").click();
-           });
-        });
-      });
-      });
+	        
+	        $(".recent-div4").empty(); 
+	        $(".recent-div4").append(result);
+	        $(".recent-div4").append(empty_div);
+	        
+	        /* 좋아요 클릭 -> 하트 색 변경 */
+	        $(function() {
+	           $(".wish-div8").click(function(e) {
+	                $(this).toggleClass('on off');
+	                var onoff = $(this).hasClass("on");
+	                var a = $(this).parent().prev().val();
+					delect3(a);
+				});
+	        });
+		});
+	});
    
-   
+	/** 최근본방 **/
     $("#tab1").click(function(){
-        $.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
+    	recentroom();
+	});
+   
+	$(document).ready(function(){ //인기있는 방 AJAX
+		popularityroom();
+	}); 
+    
+    /** 최근본방 ajax처리 함수 */
+	function recentroom() {
+		$.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
             Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                 if (dealingtype == '월세') { return options.fn(this); }
                 else { return options.inverse(this); }
@@ -629,14 +565,18 @@
               /** 세션 식별하기 **/
               Handlebars.registerHelper('session', function(roomno, options) {
                  if (session == null || session == "") {
-                    var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                    var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
                         heart_div += '<div class="recent-div7">'
                         heart_div += '<div class="recent-div8 off"></div>'
                         heart_div += '</div>'
                         heart_div += '</a>'
                     return heart_div;
-                 }
-                 else {
+                 } else if (json.heart.length==0) {
+                	 var heart_div = '<div class="recent-div7">'
+                         heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                         heart_div += '</div>'
+                      return heart_div;
+                 } else {
                     for (var i=0; i<json.heart.length; i++) {
                        if (json.heart[i].roomno == roomno) {
                          var heart_div = '<div class="recent-div7">'
@@ -653,6 +593,12 @@
                            return heart_div;
                        }
                     }
+                    if (json.heart.length == 0) {
+                    	var heart_div = '<div class="recent-div7">'
+                    		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                    		heart_div += '</div>'
+                    	return heart_div;
+					}
                  }
                  
               });
@@ -683,10 +629,7 @@
               if(loginInfo != "") {
                    $(this).toggleClass('on off');
                    var onoff = $(this).hasClass("on");
-                   alert("4" + onoff);
                    var a = $(this).parent().prev().val();
-                   alert("a = " + a);
-                   alert("4");
                     if(onoff == true) {
                        insertstar(a);
                 }else {
@@ -696,24 +639,22 @@
            });
         });
       });
-      });
-});
-   
-    var session = "${logininfo}"; //세션 식별을 위한 값
+	}
     
-     $(document).ready(function(){ //인기있는 방 AJAX
-      $.get("${pageContext.request.contextPath}/famous",{},function(json){
+    /** 인기있는 방 ajax처리 함수 */
+    function popularityroom() {
+        $.get("${pageContext.request.contextPath}/famous",{},function(json){
             Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                 if (dealingtype == '월세') { return options.fn(this); }
                 else { return options.inverse(this); }
             });
             
-            Handlebars.registerHelper('isOver', function(price, options) {
+            Handlebars.registerHelper('isMonth', function(price, options) {
                 if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                 else { return price; }
             });
             
-            Handlebars.registerHelper('isOver2', function(deposit, options) {
+            Handlebars.registerHelper('isMonth', function(deposit, options) {
                 if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                 else { return deposit; }
             });
@@ -745,9 +686,15 @@
                             return heart_div;
                         }
                      }
+                     if (json.heart.length == 0) {
+                     	var heart_div = '<div class="recent-div7">'
+                     		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                     		heart_div += '</div>'
+                     	return heart_div;
+ 					}
                   }
                });
-
+               
         var source = $("#prof-list-tmpl").html()//템플릿코드
         var template = Handlebars.compile(source);// 템플릿 컴파일
         var result = template(json);
@@ -764,18 +711,15 @@
             if(loginInfo != "") {
                 $(this).toggleClass('on off');
                 var onoff = $(this).hasClass("on");
-                alert("5" + onoff);
                 var a = $(this).parent().prev().val();
-                alert("a = " + a);
-                alert("5");
                 if(onoff == true) { insertstar(a); }
                 else { delectstar(a); }
             }
         });
     });
     });
-    }); 
-     
+        }// popularityroom()끝
+});
 </script>   
 </body>
 </html>

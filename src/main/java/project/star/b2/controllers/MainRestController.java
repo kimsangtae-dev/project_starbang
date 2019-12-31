@@ -368,6 +368,7 @@ public class MainRestController {
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 24; // 한 페이지당 표시할 목록 수
 		int pageCount = 7; // 한 그룹당 표시할 페이지 번호 수
+		int pagelist = webHelper.getInt("pagelist");
 		
 		/*---세션 불러오기 ----*/
         HttpSession session = request.getSession();
@@ -486,8 +487,12 @@ public class MainRestController {
 
 			// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
 			Gallery.setOffset(pageData.getOffset());
-			Gallery.setListCount(pageData.getListCount());
-
+			if(pagelist==1) {
+				Gallery.setListCount(totalCount);
+			} else {
+				Gallery.setListCount(pageData.getListCount());
+			}
+			
 			if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
 			
 			output = galleryService.getGalleryList(input);
