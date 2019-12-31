@@ -15,7 +15,7 @@
         #header .navbar {
             height: 70px;
             min-height: 70px;
-            padding-right: 20px;
+            padding-right: 30px;
             border: 0;
             border-bottom: 1px solid #eee;
             margin: 0;
@@ -164,7 +164,7 @@
                 <c:choose>
                     <c:when test="${loginInfo == null}">
                         <div class="small-font">
-                            <a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">로그인</a>
+                            <a href="${pageContext.request.contextPath}/modal/login.do" class="padding-l" data-toggle="modal" data-target="#loginModal">회원가입·로그인</a>
                         </div>
                     </c:when>
                     <c:otherwise>

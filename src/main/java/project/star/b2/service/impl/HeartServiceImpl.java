@@ -138,15 +138,8 @@ public class HeartServiceImpl implements HeartService{
 			
 			try { 
 				result = sqlSession.selectOne("GalleryMapper.selectItemint", input);
-		 
-				if (result == 0) {
-					throw new NullPointerException("result=0"); 
-		    	} 
-		    } catch (NullPointerException e) {
-		    	log.error(e.getLocalizedMessage()); 
-		    	throw new Exception("numberHeart저장된 데이터가 없습니다."); 
 		    } catch (Exception e) {
-		    log.error(e.getLocalizedMessage()); throw new Exception("numberHeart데이터 저장에 실패했습니다."); 
+		    	log.error(e.getLocalizedMessage()); throw new Exception("numberHeart데이터 저장에 실패했습니다."); 
 		    }
 		   
 			return result; 

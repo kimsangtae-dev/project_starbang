@@ -15,13 +15,13 @@ public class Gallery {
 	private int fee;			// 추가정보 > 관리비
 	private String confirmdate;	// 확인매물 일자
 	private String address;		// 주소
+	private int status;			// 공실상태
 	
 	private int heartno;		// 하트넘버
 	private String regdate;		// 좋아요 클릭 일자
 
 
 	/** info */
-	private int supplyarea;		// 기본정보 > 건물크기 > 공급면적 제곱미터
 	private int feeitem;		// 추가정보 > 관리비항목
 	private int parking;		// 추가정보 > 주차여부
 	private int pet;			// 추가정보 > 반려동물 여부
@@ -30,6 +30,7 @@ public class Gallery {
 	private int builtin;		// 추가정보 > 빌트인여부
 	private int optionitem;		// 추가정보 > 옵션항목
 	private int loan;			// 추가정보 > 전세자금대출 가능 여부
+	private int supplyarea;		// 기본정보 > 건물크기 > 공급면적 제곱미터
 	private int heater;			// 추가정보 > 난방 종류
 	private String commingday;	// 추가정보 > 입주 가능 날짜
 

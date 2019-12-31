@@ -15,12 +15,9 @@
 		<result property="area" column="area" />
 		<result property="fee" column="fee" />
 		<result property="confirmdate" column="confirmdate" />
-		<result property="priceno" column="priceno" />
-		<result property="deposit" column="deposit" />
-		<result property="dealingtype" column="dealingtype" />
-		<result property="price" column="price" />
-		
 		<result property="address" column="address" />
+		<result property="status" column="status" />
+		
 		<result property="feeitem" column="feeitem" />
 		<result property="supplyarea" column="supplyarea" />
 		<result property="parking" column="parking" />
@@ -35,6 +32,12 @@
 		<result property="userno" column="userno" />
 		<result property="email" column="email" />
 		<result property="name" column="name" />
+		
+		<result property="priceno" column="priceno" />
+		<result property="deposit" column="deposit" />
+		<result property="dealingtype" column="dealingtype" />
+		<result property="price" column="price" />
+		
 		<result property="filename" column="filename" />
 		
 		<result property="heartno" column="heartno" />
@@ -52,7 +55,8 @@
 		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
 		INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
 		<where>
-			r.roomtype IN 
+			r.status=0 OR r.status=1
+			AND r.roomtype IN 
  			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
@@ -101,7 +105,8 @@
 		SELECT COUNT(r.roomno) FROM room AS r
 		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
 		<where>
-			r.roomtype IN 
+			r.status=0 OR r.status=1
+			AND r.roomtype IN 
  			<foreach item="roomtypepate" index="index" collection="roomtypepate" open="(" separator="," close=")">
 				#{roomtypepate} 
 			</foreach>
