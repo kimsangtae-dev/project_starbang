@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- css 적용 -->
-<link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/assets/css/etc_css/all.css">
+
+<style>
+body {
+	white-space:pre;
+}
+</style>
+
 <title>자동저장서비스</title>
 </head>
 <body>

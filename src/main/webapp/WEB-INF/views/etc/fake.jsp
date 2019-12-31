@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- css 적용 -->
-<link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/assets/css/etc_css/all.css">
 <meta charset="UTF-8">
+<style>
+body {
+	white-space:pre;
+}
+</style>
 <title>허위매물규정</title>
 </head>
 <body>
