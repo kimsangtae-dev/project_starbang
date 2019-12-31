@@ -426,7 +426,7 @@
                    return;
              } else {
                 i--;
-                $("#select"+i).html("rkskekfkfkefk");
+                $("#select"+i).html("체크가 해제되었습니다.");
                 return;
              }
           });

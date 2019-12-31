@@ -182,6 +182,7 @@
 	<select id="selectCountGu"
 		parameterType="project.star.b2.model.Gallery" resultType="int">
 		SELECT COUNT(roomno) FROM room WHERE
+		(status=0 OR status=1) AND
 		region_2depth_name=#{region_2depth_name};
 	</select>
 
