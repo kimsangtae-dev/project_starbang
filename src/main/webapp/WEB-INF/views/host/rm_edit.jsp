@@ -27,6 +27,11 @@
 		<form id="edit_room" name="edit_room" method="post" action="${pageContext.request.contextPath}/host/rm_edit_ok.do" enctype="multipart/form-data">
 		
 		<input type="hidden" name="roomno" value="${room.roomno}">
+		<input type="hidden" name="region_2depth_name" value="${room.region_2depth_name}">
+		<input type="hidden" name="region_3depth_name" value="${room.region_3depth_name}">
+		<input type="hidden" name="latitude" value="${room.latitude}">
+		<input type="hidden" name="longitude" value="${room.longitude}">
+		
 		
 		<!-- content 시작 -->
 			<div id="content">
@@ -1047,97 +1052,7 @@ $(function() {
 	
 </script>
 
-<script>
 
-$(function() {
-	$('.low_btn2').click(function(e){
-		e.preventDefault();
-		
-		/** 매물종류 검사 (1) */
-	    if (!regex.check("input[name='buildtype']:checked", '건물유형을 선택해주세요.')) {	$("input[name='buildtype'").focus(); return false; } // 건물유형 buildtype  		
-	    
-	    /** 
-	     * 주소 검사 (3) 
-	     */
-	    if (!regex.value('#point_address', '주소를 입력해주세요.')) { $("#point_address").focus(); return false; } 								// 주소 address
-	   	if ( $("#is_noinfo_dong:checked").length == 0 ){ if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 }				// 동 dong
-	   	if ( !regex.value('#ho', '호 주소를 입력해주세요.') ) { $("#ho").focus(); return false; }	 		 										// 호 ho
-	    
-	    /** 
-	     * 거래정보 검사 (3) - 매물종류, 보증금, 가격 
-	     */
-	    var dealingtype = $(".dealingtype");
-	    var deposit = $(".deposit");
-	    var price = $(".price");
-	    
-	    if( dealingtype.val() ) {
-	    	for (var i = 0 ; i < dealingtype.length ; i ++) {
-	        	if( !dealingtype.eq(i).val()) { alert("거래종류를 선택해주세요."); return false; }
-	        	if( !deposit.eq(i).val()) { alert( dealingtype.eq(i).val()+"의 보증금 액수를 입력해주세요." ); deposit.eq(i).focus(); return false; }
-	        	if( !price.eq(i).val()) { alert(dealingtype.eq(i).val()+"의 금액을 입력해주세요."); price.eq(i).focus(); return false; }
-	        }
-	    } else {
-	    	alert("거래종류를 선택해주세요.");
-	    	$("#monthly").focus();
-	    	return false;
-	    }
-	    
-	    /** 
-	     * 기본정보 검사 (6) = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일 
-	     */
-	    if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { $("#pyeong1").focus(); return false; }	 			// 공급면적 supplyarea
-	    if (!regex.value('#ator1', '전용면적을 입력해주세요.')) { $("#pyeong2").focus(); return false; }	 			// 전용면적 area
-	    
-	    /** 공급면적 < 전용면적일때, 에러창 띄우기 */
-	    if ( $("#pyeong1").val() < $("#ator1").val() ) {
-	    	alert("전용면적은 공급면적보다 클 수 없습니다."); $("#ator1").focus(); return false;
-	    }
-	    
-	    if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수 
-	    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
-	    
-	    /** 층수 < 건물층수 설정 */
-	    if($("#floor").val() > $("#maxfloor").val()) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
-	    
-	    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
-	    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
-	    		$("#commingday").focus(); return false; 
-	    	}
-	    
-	    /** 관리비 검사 */
-	    var check = $("#main_input:checked");
-	    if ( check.length == 0 ){
-	    	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { $("#main_pr_v1").focus(); return false; }	// 관리비 금액 
-	    }
-	
-	    /** 주차여부 검사 */
-	    var check = $("#parkingok:checked");
-	    if ( check.length > 0 ){ if (!regex.value('#parking', '주차비 금액을 입력해주세요.')) { $("#parking").focus(); return false; }	} 	// 주차비 
-	   
-	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
-	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		// 해당층수
-		
-	    if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
-	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
-	    
-	    if($("#addfile").val() != null ) {
-	    	$("#addfile").val(null);
-	    }
-	    
-	    
-		/* 중복클릭 방지 */
-	    var preventSubmit = false;
-        if(preventSubmit){
-            alert('저장 중입니다.');
-        }else {
-            $(this).unbind().submit();
-            preventSubmit = true;
-        }
-
-	});
-});
-
-</script>
 
 <script>	
 
@@ -1225,8 +1140,6 @@ $(function() {
 		if(commingday != 0 || commingday != 1){
 				$("#datepicker").val("${commingday}");
 		}
-		
-		
 
 		/* 
 		 * 추가정보 
@@ -1288,6 +1201,12 @@ $(function() {
             /* 받아온 값을 관리비 항목에 넣는다 */
             var num1 = "${info.feeitem}";
             
+            if (num1 != 0 ){
+            	$("#main_input").attr("checked", false);
+            	$("#main_pr_v1").removeAttr("disabled");
+            	$("input:text[name='fee']").val("${room.fee}");
+            }
+            
     		for (var i=7; i>=1 ; i--) {
                 if(num1 >= Math.pow(2, i-1)){
                 	num1 = num1 - Math.pow(2, i-1);
@@ -1295,10 +1214,7 @@ $(function() {
                 } // if문
             } // for문
             
-            if (num1 != 0 ){
-            	$("#main_input").attr("checked", false);
-            	$("fee").val("${room.fee}");
-            }
+            
 		});// function
 		
 		// 이진법 다시 넣어주기 optionitem
@@ -1318,5 +1234,104 @@ $(function() {
 		$("#content_input").val("${info.content}");
 		
 </script>
+
+<script>
+
+$(function() {
+	$('.low_btn2').click(function(e){
+		e.preventDefault();
+		
+		/** 매물종류 검사 (1) */
+	    if (!regex.check("input[name='buildtype']:checked", '건물유형을 선택해주세요.')) {	$("input[name='buildtype'").focus(); return false; } // 건물유형 buildtype  		
+	    
+	    /** 
+	     * 주소 검사 (3) 
+	     */
+	    if (!regex.value('#point_address', '주소를 입력해주세요.')) { $("#point_address").focus(); return false; } 								// 주소 address
+	   	if ( $("#is_noinfo_dong:checked").length == 0 ){ if (!regex.value('#dong', '동 주소를 입력해주세요.')) { return false; }	 }				// 동 dong
+	   	if ( !regex.value('#ho', '호 주소를 입력해주세요.') ) { $("#ho").focus(); return false; }	 		 										// 호 ho
+	    
+	    /** 
+	     * 거래정보 검사 (3) - 매물종류, 보증금, 가격 
+	     */
+	    var dealingtype = $(".dealingtype");
+	    var deposit = $(".deposit");
+	    var price = $(".price");
+	    
+	    if( dealingtype.val() ) {
+	    	for (var i = 0 ; i < dealingtype.length ; i ++) {
+	        	if( !dealingtype.eq(i).val()) { alert("거래종류를 선택해주세요."); return false; }
+	        	if( !deposit.eq(i).val()) { alert( dealingtype.eq(i).val()+"의 보증금 액수를 입력해주세요." ); deposit.eq(i).focus(); return false; }
+	        	if( !price.eq(i).val()) { alert(dealingtype.eq(i).val()+"의 금액을 입력해주세요."); price.eq(i).focus(); return false; }
+	        }
+	    } else {
+	    	alert("거래종류를 선택해주세요.");
+	    	$("#monthly").focus();
+	    	return false;
+	    }
+	    
+	    /** 
+	     * 기본정보 검사 (6) = 공급면적, 전용면적, 전체 층, 해당 층, 난방 종류, 입주 가능일 
+	     */
+	    if (!regex.value('#pyeong1', '공급면적을 입력해주세요.')) { $("#pyeong1").focus(); return false; }	 			// 공급면적 supplyarea
+	    if (!regex.value('#ator1', '전용면적을 입력해주세요.')) { $("#pyeong2").focus(); return false; }	 			// 전용면적 area
+	    
+	    /** 공급면적 < 전용면적일때, 에러창 띄우기 */
+	    if ( $("#pyeong1").val() < $("#ator1").val() ) {
+	    	alert("전용면적은 공급면적보다 클 수 없습니다."); $("#ator1").focus(); return false;
+	    }
+	    
+	    if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수 
+	    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
+	    
+	    console.log("해당층수" + $("#floor").val());
+	    console.log("전체층수" + $("#maxfloor").val());
+	    
+	    var what = Boolean($("#maxfloor").val() < $("#floor").val() );
+	    console.log(what);
+	    
+	    /** 층수 < 건물층수 설정 */
+	    //if( $("#floor").val() > $("#maxfloor").val() ) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+	    
+	    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
+	    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
+	    		$("#commingday").focus(); return false; 
+	    	}
+	    
+	    /** 관리비 검사 */
+	    var check = $("#main_input:checked");
+	    if ( check.length == 0 ){
+	    	if (!regex.value('#main_pr_v1', '관리비 금액을 입력해주세요.')) { $("#main_pr_v1").focus(); return false; }	// 관리비 금액 
+	    }
+	
+	    /** 주차여부 검사 */
+	    var check = $("#parkingok:checked");
+	    if ( check.length > 0 ){ if (!regex.value('#parking', '주차비 금액을 입력해주세요.')) { $("#parking").focus(); return false; }	} 	// 주차비 
+	   
+	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
+	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		
+		
+	    //if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
+	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
+	    
+	    if($("#addfile").val() != null ) {
+	    	$("#addfile").val(null);
+	    }
+	    
+	    
+		/* 중복클릭 방지 */
+	    var preventSubmit = false;
+        if(preventSubmit){
+            alert('저장 중입니다.');
+        }else {
+            $(this).unbind().submit();
+            preventSubmit = true;
+        }
+
+	});
+});
+
+</script>
+
 </body>
 </html>
