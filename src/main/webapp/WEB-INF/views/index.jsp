@@ -454,12 +454,12 @@
                     else { return options.inverse(this); }
                 });
                     
-                Handlebars.registerHelper('isMonth', function(price, options) {
+                Handlebars.registerHelper('isOver', function(price, options) {
                     if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                     else { return price; }
                 });
                     
-                Handlebars.registerHelper('isMonth', function(deposit, options) {
+                Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                     else { return deposit; }
                 });
@@ -546,12 +546,12 @@
                 else { return options.inverse(this); }
             });
             
-            Handlebars.registerHelper('isMonth', function(price, options) {
+            Handlebars.registerHelper('isOver', function(price, options) {
                 if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                 else { return price; }
             });
             
-            Handlebars.registerHelper('isMonth', function(deposit, options) {
+            Handlebars.registerHelper('isOver2', function(deposit, options) {
                 if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                 else { return deposit; }
             });
@@ -579,8 +579,18 @@
             $(".recent-div4").append(template);
         }
         
+        var empty_div = "";
+		if (json.item.length < 4) {
+			for (var k=0; k<4-json.item.length; k++) {
+				empty_div += '<li><div class="recent-div5-vacant margin">';
+				empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
+				empty_div += '</div></li>';
+			}
+		}
+        
         $(".recent-div4").empty(); 
         $(".recent-div4").append(result);
+        $(".recent-div4").append(empty_div);
         
         /* 좋아요 클릭 -> 하트 색 변경 */
         $(function() {
@@ -605,12 +615,12 @@
                 else { return options.inverse(this); }
             });
             
-            Handlebars.registerHelper('isMonth', function(price, options) {
+            Handlebars.registerHelper('isOver', function(price, options) {
                 if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                 else { return price; }
             });
             
-            Handlebars.registerHelper('isMonth', function(deposit, options) {
+            Handlebars.registerHelper('isOver2', function(deposit, options) {
                 if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                 else { return deposit; }
             });
@@ -647,7 +657,6 @@
               });
                 
         var empty_div = "";
-                    
         if (json.item.length < 4) {
             for (var k=0; k<4-json.item.length; k++) {
                 empty_div += '<li><div class="recent-div5-vacant margin">';
@@ -655,6 +664,7 @@
                 empty_div += '</div></li>';
             }
         }
+        
         var source = $("#prof-list-tmpl").html()//템플릿코드
         var template = Handlebars.compile(source);// 템플릿 컴파일
         var result = template(json);
@@ -697,12 +707,12 @@
                 else { return options.inverse(this); }
             });
             
-            Handlebars.registerHelper('isMonth', function(price, options) {
+            Handlebars.registerHelper('isOver', function(price, options) {
                 if (price >= 10000 && price%10000 != 0) { return Math.floor(price/10000) +"억" + price%10000; }
                 else { return price; }
             });
             
-            Handlebars.registerHelper('isMonth', function(deposit, options) {
+            Handlebars.registerHelper('isOver2', function(deposit, options) {
                 if (deposit >= 10000 && deposit%10000 != 0) { return Math.floor(deposit/10000) +"억" + deposit%10000; }
                 else { return deposit; }
             });
@@ -736,7 +746,7 @@
                      }
                   }
                });
-               
+
         var source = $("#prof-list-tmpl").html()//템플릿코드
         var template = Handlebars.compile(source);// 템플릿 컴파일
         var result = template(json);
