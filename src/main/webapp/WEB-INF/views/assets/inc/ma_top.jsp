@@ -140,15 +140,7 @@
 <div class="menu-left small-font">
     <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
          <span>&nbsp | &nbsp</span>
-    <c:choose>
-    <c:when test="${loginInfo == null}"> 
-    <a href="${pageContext.request.contextPath}/admin/ad_login.do">관리자 사이트</a>
-    </c:when>
-    <c:otherwise>
-    <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
-    </c:otherwise>
-    </c:choose>
-    
+    <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>    
 </div>
 </c:otherwise>
 </c:choose>
