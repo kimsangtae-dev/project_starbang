@@ -574,7 +574,7 @@
 										<input type="hidden" value="${k.imageno}" name="imageno" />
 				            			<button class="up-close-b"></button>
 				            			<div class="up-d2">
-				            				<img src="${pageContext.request.contextPath}/assets/img/upload/${k.fileName}" />
+				            				<img src="${pageContext.request.contextPath}/assets/img/upload${k.thumbnail}" />
 			            				</div>
 			            			</div>
 								</c:forEach>
