@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
+<link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
 <style>
 
 
