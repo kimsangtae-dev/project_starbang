@@ -25,7 +25,7 @@
 	<select id="selectItem"
 		parameterType="project.star.b2.model.UploadItem" resultMap="uploadMap">
 		SELECT
-		fieldName, originName, filePath, contentType,
+		thumbnail, fieldName, originName, filePath, contentType,
 		fileSize,fileName,regDate,editDate,roomno
 		FROM image
 		WHERE imageno=#{imageno};
@@ -34,7 +34,7 @@
 	<!-- 다중행 조회를 위한 기능 정의 -->
 	<select id="selectList_by_roomno"
 		parameterType="project.star.b2.model.UploadItem" resultMap="uploadMap">
-		SELECT imageno, roomno, fieldName, originName, filePath, contentType, fileSize,fileName,regDate,editDate
+		SELECT imageno, roomno, fieldName, originName, filePath, contentType, fileSize,fileName,regDate,editDate,thumbnail
 		FROM image
 		where roomno = #{roomno};
 	</select>
@@ -43,7 +43,7 @@
 	<select id="selectList"
 		parameterType="project.star.b2.model.UploadItem" resultMap="uploadMap">
 		SELECT imageno, fieldName, originName, filePath, contentType,
-		fileSize,fileName,regDate,editDate,roomno
+		fileSize,fileName,regDate,editDate,roomno, thumbnail
 		FROM image
 		ORDER BY imageno ASC
 	</select>
@@ -76,7 +76,7 @@
 		parameterType="project.star.b2.model.UploadItem">
 		UPDATE image SET
             fieldName=#{fieldName}, originName=#{originName}, filePath=#{filePath},
-            contentType=#{contentType}, fileSize=#{fileSize}, fileName=#{fileName}, editDate=#{now()}
+            contentType=#{contentType}, fileSize=#{fileSize}, fileName=#{fileName}, editDate=#{now()}, thumbnail=#{thumbnail}
         WHERE imageno=#{imageno}
 	</update>
 
