@@ -91,7 +91,7 @@
 				AND r.longitude between #{south} and #{north}
 			</if>
 		</where>
-		ORDER BY r.roomno ASC
+		ORDER BY r.roomno DESC
 
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
