@@ -80,7 +80,7 @@
     <!-- 데이터 갱신을 위한 기능 정의 -->
     <update id="updateItem"
         parameterType="project.star.b2.model.User">
-        UPDATE user SET name=#{name}, email=#{email}, passwd=#{passwd}, tel=#{tel}, editdate=now(), profile_img=#{profile_img}
+        UPDATE user SET name=#{name}, email=#{email}, passwd=#{passwd}, tel=#{tel}, profile_img=#{profile_img}, editdate=now()
         WHERE userno=#{userno};
     </update>
     

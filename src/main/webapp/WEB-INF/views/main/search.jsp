@@ -379,10 +379,10 @@ pageEncoding="UTF-8"%>
                 method: "get",
                 data: {"x" : x},
                 success: function(req){
-    				alert(x + "delectstar");
+                	console.log(x + "delectstar");
                 },
                 error : function() {
-                	alert("delectstar발송에러 발생");
+                	console.log("delectstar발송에러 발생");
 				}
     		});
     	}
@@ -393,10 +393,10 @@ pageEncoding="UTF-8"%>
                 method: "get",
                 data: {"x" : x},
                 success: function(req){
-                	alert( x + "insertstar");
+                	console.log( x + "insertstar");
                 },
                 error : function() {
-                	alert("insertstar발송에러 발생");
+                	console.log("insertstar발송에러 발생");
 				}
     		});
     	}
@@ -426,9 +426,9 @@ pageEncoding="UTF-8"%>
             	if(loginInfouser != "") {            		
 	            	$(this).toggleClass('on off');
     		        var onoff = $(this).hasClass("on");
-        		    alert(onoff);
+    		        console.log(onoff);
             		var a = $(this).parent().prev().val();
-            		alert(a);
+            		console.log(a);
             	    if(onoff == true) {
             	    	insertstar(a);
 					}else {
@@ -644,9 +644,9 @@ pageEncoding="UTF-8"%>
                 	if(loginInfouser != "") {         
 	                    $(this).toggleClass('on off');
     	                var onoff = $(this).hasClass("on");
-        	            alert(onoff);
+    	                console.log(onoff);
         	            var a = $(this).parent().prev().val();
-                		alert("a = " + a);
+        	            console.log("a = " + a);
             	        if(onoff == true) {
                 	    	insertstar(a);
                     	}else {

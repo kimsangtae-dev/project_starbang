@@ -181,7 +181,7 @@
 	    			//$(".content").not($(target)).slideUp(100);
 	    		});
 
-	    		$(".collapse-title3").click(function(e) {
+	    		/* $(".collapse-title3").click(function(e) {
         	        // 링크의 기본 동작(페이지 이동) 방지
     				e.preventDefault();
 
@@ -189,7 +189,7 @@
 
 	               	 var con = document.getElementById("h2m");
 				       con.style.display = 'block';
-	    		});
+	    		}); */
 	    	});	
 		</script>
 		

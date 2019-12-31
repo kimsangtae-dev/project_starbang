@@ -342,7 +342,6 @@ public class UserController {
 		String nowemail = webHelper.getString("nowemail"); //
 		String nowallpon = webHelper.getString("nowallpon"); //
 		String pwd = webHelper.getString("pwd"); //
-		String noweditdate = webHelper.getString("noweditdate"); //
 		
 		// 이 값이 존재하지 않는다면 데이터 조회가 불가능하므로 반드시 필수값으로 처리해야 한다.
 		if (userno == 0 ) {
@@ -360,7 +359,6 @@ public class UserController {
 		input.setEmail(nowemail);
 		input.setTel(nowallpon);
 		input.setPasswd(pwd);
-		input.setEditdate(noweditdate);
 		input.setUserno(userno);
 
 		try {

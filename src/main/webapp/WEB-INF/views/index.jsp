@@ -563,6 +563,7 @@
 		popularityroom();
 	}); 
     
+});	
     /** 최근본방 ajax처리 함수 */
 	function recentroom() {
 		$.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
@@ -738,7 +739,7 @@
     });
     });
         }// popularityroom()끝
-});
+
 </script>   
 </body>
 </html>

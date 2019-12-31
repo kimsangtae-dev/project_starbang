@@ -273,6 +273,37 @@
 			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+    	function delectstar(x) {
+    		$.ajax({
+                url: "delectstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+                	console.log(x + "delectstar");
+                },
+                error : function() {
+                	console.log("delectstar발송에러 발생");
+				}
+    		});
+    	}
+    	
+    	function insertstar(x) {
+    		$.ajax({
+                url: "insertstar.do",
+                method: "get",
+                data: {"x" : x},
+                success: function(req){
+                	console.log( x + "insertstar");
+                },
+                error : function() {
+                	console.log("insertstar발송에러 발생");
+				}
+    		});
+    	}
+    </script>	
+			
 		<script type="text/javascript">
 			/* 좋아요 클릭 -> 하트 색 변경 */
 			$(function() {
@@ -281,9 +312,9 @@
                 	if(loginInfouser != "") {         
 	                    $(this).toggleClass('on off');
     	                var onoff = $(this).hasClass("on");
-        	            alert(onoff);
+    	                console.log(onoff);
         	            var a = $(this).parent().prev().val();
-                		alert("a = " + a);
+        	            console.log("a = " + a);
             	        if(onoff == true) {
                 	    	insertstar(a);
                     	}else {

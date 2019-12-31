@@ -364,10 +364,10 @@
                 method: "get",
                 data: {"x" : x},
                 success: function(req){
-    				alert(x + "delectstar");
+                	console.log(x + "delectstar");
                 },
                 error : function() {
-					swal("delectstar발송에러 발생");
+                	console.log("delectstar발송에러 발생");
 				}
     		});
     	}
@@ -511,9 +511,9 @@
         $(".hit-div8").click(function(e) {
         	$(this).toggleClass('on off');
 		    var onoff = $(this).hasClass("on");
-    		alert(onoff);
+		    console.log(onoff);
         	var a = $(this).parent().prev().val();
-        	alert(a);
+        	console.log(a);
 			delectstar(a);
 			var http = "${pageContext.request.contextPath}/main/wish.do"
 			location.replace(http);

@@ -595,14 +595,14 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             	method: "get",
             	data: {"x" : x},
             	success: function(req){
-					alert(x + "delectstar");
-					alert(count_heart);
+            		console.log(x + "delectstar");
+            		console.log(count_heart);
 					count_heart -= 1;
 					$("#lkct").html(count_heart);
 					$("#blueh").html(count_heart);
             	},
             	error : function() {
-					swal("delectstar발송에러 발생");
+            		console.log("delectstar발송에러 발생");
 				}
 			});
 		}
@@ -613,13 +613,13 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             	method: "get",
             	data: {"x" : x},
             	success: function(req){
-            		alert( x + "insertstar");
+            		console.log( x + "insertstar");
             		count_heart += 1;
         	    	$("#lkct").html(count_heart);
         	    	$("#blueh").html(count_heart);
             	},
             	error : function() {
-					swal("insertstar발송에러 발생");
+            		console.log("insertstar발송에러 발생");
 				}
 			});
 		}
@@ -728,7 +728,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                if(loginInfouser != "") {                  
                   $(this).toggleClass('on off');
                   var onoff = $(this).hasClass("on");
-                  alert(onoff);
+                  console.log(onoff);
                   $(".recent-div8").toggleClass('on off');
                   var onoffh = $(".recent-div8").hasClass("on");
                   if (onoffh == true) {
@@ -736,9 +736,9 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                   }else {
                      $('.recent-div8').css('background', 'url(../../img/ma_img/rmdt/like-on.svg) center center/cover;');
                   }
-                  alert(onoffh);
+                  console.log(onoffh);
                   var a = $(this).prev().val();
-                  alert(a);
+                  console.log(a);
                    if(onoff == true) {
                       insertstar(a);
                }else {
@@ -757,7 +757,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
             if(loginInfouser != "") {                  
                   $(this).toggleClass('on off');
                   var onoff = $(this).hasClass("on");
-                  alert(onoff);
+                  console.log(onoff);
                   $(".recent-div9").toggleClass('on off');
                   var onoffh = $(".recent-div9").hasClass("on");
                   if (onoffh == true) {
@@ -766,7 +766,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                      $('.recent-div9').css('background', 'url(../../img/ma_img/rmdt/like-on.svg) center center/cover;');
                   }
                   var a = $(this).prev().val();
-                  alert(a);
+                  console.log(a);
                    if(onoff == true) {
                       insertstar(a);
                }else {

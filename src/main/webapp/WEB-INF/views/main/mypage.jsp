@@ -176,7 +176,7 @@ $(function () {
 					swal(allemail + "으로 메일이 발송되었습니다");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
-					swal("이메일발송에러 발생~~ \n" + textStatus + " : " + errorThrown);
+					console.log("이메일발송에러 발생~~ \n" + textStatus + " : " + errorThrown);
 					self.close();
 				}
 			});
@@ -256,6 +256,7 @@ $(function () {
 			if ($('#pwd1').val() != "") {
 				if ($('#pwd').val() != $('#pwd1').val()) {
 					alert("변경전 비밀번호를 다시 입력해주세요.");
+					return false;
 				}
 				if (!regex.value('#pwd2','새로운 비밀번호를 입력하세요.')) {return false;}
 				if (!regex.value('#pwd3','새로운 비밀번호를 다시 입력하세요.')) {return false;}
@@ -280,15 +281,14 @@ $(function () {
 		    		"nowmyname" : nowmyname,
 		    		"nowemail" : nowemail,
 		    		"nowallpon" : nowallpon,
-		    		"pwd" : pwd,
-		    		"noweditdate" : noweditdate},
+		    		"pwd" : pwd},
 				success:function(data){
-		        	alert(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
+					console.log(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
 		        	var http = "${pageContext.request.contextPath}/main/mypage.do"
 						location.replace(http);
 		    	},
 		    	error:function(jqXHR, textStatus, errorThrown){
-		    	   	alert("mypagesubmit회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		    		console.log("mypagesubmit회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
 		    		self.close();
 	        	}	
 	    	});	
@@ -318,13 +318,13 @@ $(function () {
 				type:'POST',
 				data: {"outtextarea" : outtextarea},
    	  		success:function(data){
-					alert(outtextarea + "데이터 삭제");
+   	  				console.log(outtextarea + "데이터 삭제");
 					var http = "${pageContext.request.contextPath}/"
 					location.replace(http);
 				},
 				error:function(jqXHR, textStatus, errorThrown){
-					alert("mypagedelect회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
-				self.close();
+					console.log("mypagedelect회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
+					self.close();
 				}
 	        });
 		});
