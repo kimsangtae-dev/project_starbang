@@ -224,7 +224,7 @@
 				<span>사업자번호: 220-88-59156</span> <span>통신판매업신고번호 : 제2013-서울 강남-02884호</span> <span>프로모션/사업 제휴문의
 					: b2maratang@gmail.com</span>
 			</p>
-			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/login.do">b2</a>, Inc. All rights reserved.</p>
+			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/lg.do">b2</a>, Inc. All rights reserved.</p>
 		</div>
 	</div>
 </div>

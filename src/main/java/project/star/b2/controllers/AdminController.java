@@ -58,7 +58,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
 
 		return new ModelAndView("admin/edit");
@@ -74,7 +74,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
 
 		return new ModelAndView("admin/faq");
@@ -87,10 +87,16 @@ public class AdminController {
 	public ModelAndView main(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
-		
         User loginInfo = (User) session.getAttribute("loginInfo");
+        
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "관리자로그인 후 접근이 가능합니다.");
+        } 
+        String id = loginInfo.getEmail();
+        String pw = loginInfo.getPasswd();
+        
+        if (!id.equals("admin") && !pw.equals("admin")) {
+        	return webHelper.redirect("/b2/admin/lg.do", "관리자로그인 후 접근이 가능합니다.");
         }
 		return new ModelAndView("admin/main");
 	}
@@ -105,7 +111,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
 
 		return new ModelAndView("admin/notice");
@@ -121,7 +127,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
         
 		/** 1) 필요한 변수값 생성 */
@@ -317,7 +323,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
 
 		/** 1) 필요한 변수값 생성 (페이징처리 변수) */
@@ -536,7 +542,7 @@ public class AdminController {
 		
         User loginInfo = (User) session.getAttribute("loginInfo");
         if (loginInfo == null) {
-        	return webHelper.redirect("/b2/admin/login.do", "로그인 후 접근이 가능합니다.");
+        	return webHelper.redirect("/b2/admin/lg.do", "로그인 후 접근이 가능합니다.");
         }
 
 		return new ModelAndView("admin/write");
@@ -545,10 +551,10 @@ public class AdminController {
 	/********************************************************************
 	 * 관리자 로그인
 	 *******************************************************************/
-	@RequestMapping(value = "/admin/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/lg.do", method = RequestMethod.GET)
 	public ModelAndView ad_login() {
 
-		return new ModelAndView("admin/login");
+		return new ModelAndView("admin/lg");
 	}
 	
 	/********************************************************************

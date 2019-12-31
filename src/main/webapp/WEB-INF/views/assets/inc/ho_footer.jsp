@@ -112,10 +112,10 @@
 	</p>
 	<p class="text">
 		<span>고객센터:02-532-6500</span> <span>프로모션/사업
-			제휴문의:narabyeol@gmail.com</span> <span>사업자 번호:220-88-59156</span> <span>통신판매업신고번호:제2019-서울
+			제휴문의:b2maratang@gmail.com</span> <span>사업자 번호:220-88-59156</span> <span>통신판매업신고번호:제2019-서울
 			강남-02112호</span>
 	</p>
-	<p class="min_t">사이트에 대한 문의사항은 aaa@gmail.com으로 부탁드립니다.</p>
+	<p class="min_t">사이트에 대한 문의사항은 b2maratang@gmail.com으로 부탁드립니다.</p>
 
 	<ul class="last">
 		<li><a target="_blank" rel="noopener noreferrer" href="${pageContext.request.contextPath}/etc/team.do" class="">팀소개</a></li>
