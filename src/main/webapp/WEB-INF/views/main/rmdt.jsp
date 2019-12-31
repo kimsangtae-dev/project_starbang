@@ -250,17 +250,17 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				<li class="bigviewigli">
 				<div class="room_num"><p>매물번호 ${room.roomno}</p></div>
 					<a href="#">
-						<img src="${pageContext.request.contextPath}/assets/img/upload/${img[0].fileName}" /></a></li>
+						<img src="${pageContext.request.contextPath}/assets/img/upload${img[0].thumbnail}" /></a></li>
 				<c:forEach var="i" begin="1" end="4" step="1">
 					<c:choose>
-						<c:when test="${img[i].fileName != null}">
+						<c:when test="${img[i].thumbnail != null}">
 							<li class="bigviewiglism">
 							<!-- null값이 아니고 4번재 사진에 덧씌어질 이미지 -->
-							<c:if test="${img[i].fileName != null && i == 4}">
+							<c:if test="${img[i].thumbnail != null && i == 4}">
 							<div class="roomnum"><div class="line1"></div><div class="line2"></div><p>전체보기</p></div>
 							</c:if>
 								<a href="#">
-									<img src="${pageContext.request.contextPath}/assets/img/upload/${img[i].fileName}" /></a></li>
+									<img src="${pageContext.request.contextPath}/assets/img/upload${img[i].thumbnail}" /></a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="bigviewiglism">
@@ -546,8 +546,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                 <ul width="860" class="thumnail_rail" style="transform: translateX(0px);">  <!-- tHjGe -->
                 <c:forEach var="i" items="${img}" varStatus="status">
 					<c:choose>
-						<c:when test="${i.fileName != null}">
-							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${pageContext.request.contextPath}/assets/img/upload/${i.fileName})";></div></li>
+						<c:when test="${i.thumbnail != null}">
+							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${pageContext.request.contextPath}/assets/img/upload${i.thumbnail})";></div></li>
 						</c:when>
 					</c:choose>
 				</c:forEach>
@@ -561,7 +561,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                 </button>
             </div>
 
-            <div class="giantView" id="target" style="background: url(${pageContext.request.contextPath}/assets/img/upload/${img[0].fileName}) center center / contain no-repeat;">  <!-- esRNDG -->
+            <div class="giantView" id="target" style="background: url(${pageContext.request.contextPath}/assets/img/upload${img[0].thumbnail}) center center / contain no-repeat;">  <!-- esRNDG -->
                 <button class="giantBtn_left">  <!-- gmzACw *2 -->
                     <svg width="15" height="24" viewBox="0 0 10 16">
                         <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path></svg></button>
