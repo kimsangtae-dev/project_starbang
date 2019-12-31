@@ -24,6 +24,13 @@
 #content .input-group {	
 	width: 300px;
 	position: relative;
+	right: 900px;
+    top: 80px;
+}
+
+/* input 버튼 크기*/
+button.btn.btn-default {
+    height: 34px;
 }
 
 /* 검색바, 버튼들 우측 정렬 */
@@ -32,7 +39,7 @@
 
 .adm-radio, .adm-btn { float: right; margin-top:3px; }
 
-#content .adm-radio { line-height: 34px; margin-right: 10px; }
+#content .adm-radio { line-height: 34px; }
 
 #content .adm-radio label { margin-right: 10px; }
 
