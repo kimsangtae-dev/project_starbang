@@ -185,7 +185,7 @@
 }
 
 /* a태그 효과 지우기 */
-a:link, a:visited, a:hover { color: rgb(133, 133, 133); text-decoration: none;}
+#footer a:link, #footer a:visited, #footer a:hover { color: rgb(133, 133, 133); text-decoration: none;}
 
 </style>
 </head>
@@ -197,11 +197,11 @@ a:link, a:visited, a:hover { color: rgb(133, 133, 133); text-decoration: none;}
 	<div id="footer-content">
 		<div id="top">
 			<div class="pull-left footer-top-left">
-				<a href="#">팀 소개</a> <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a
-					href="#">매물관리규정</a> <a href="#">허위매물규정</a> <a href="#">자동저장서비스</a>
+				<a href="${pageContext.request.contextPath}/etc/team.do">팀 소개</a> <a href="${pageContext.request.contextPath}/etc/useSite.do">이용약관</a> <a href="${pageContext.request.contextPath}/etc/personal.do">개인정보처리방침</a> <a
+					href="${pageContext.request.contextPath}/etc/regulation.do">매물관리규정</a> <a href="${pageContext.request.contextPath}/etc/fake.do">허위매물규정</a> <a href="${pageContext.request.contextPath}/etc/auto.do">자동저장서비스</a>
 			</div>
 			<div class="top-btn pull-right"></div>
-			<form class="pull-right method="get" action="${pageContext.request.contextPath}/main/rmdt.do">
+			<form class="pull-right" method="get" action="${pageContext.request.contextPath}/main/rmdt.do">
 				<label for="search-num">
 					<h1>매물번호 조회</h1>
 					<input id="search-num" type="text" name="roomno" value="${keyword}">
@@ -218,13 +218,13 @@ a:link, a:visited, a:hover { color: rgb(133, 133, 133); text-decoration: none;}
 					:서울특별시 서초구 서초대로77길 55 에이프로스퀘어 3층</span>
 			</p>
 			<p class="text">
-				<span>고객센터: 02-532-6509</span> <span>문의하기 : narabyeol@gmail.com</span>
+				<span>고객센터: 02-532-6509</span> <span>문의하기 : b2maratang@gmail.com</span>
 			</p>
 			<p class="text">
 				<span>사업자번호: 220-88-59156</span> <span>통신판매업신고번호 : 제2013-서울 강남-02884호</span> <span>프로모션/사업 제휴문의
-					: narabyeol@gmail.com</span>
+					: b2maratang@gmail.com</span>
 			</p>
-			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/login.do">Station3</a>, Inc. All rights reserved.</p>
+			<p class="copyright"><a href="${pageContext.request.contextPath}/admin/login.do">b2</a>, Inc. All rights reserved.</p>
 		</div>
 	</div>
 </div>

@@ -869,4 +869,40 @@ public class MainController {
 	
 }
 	
+	/********************************************************************
+	 * bottom
+	 *******************************************************************/
+	@RequestMapping(value = "/etc/auto.do", method = RequestMethod.GET)
+	public ModelAndView auto() {
+
+		return new ModelAndView("/etc/auto");
+	}
+	@RequestMapping(value = "/etc/fake.do", method = RequestMethod.GET)
+	public ModelAndView fake() {
+
+		return new ModelAndView("/etc/fake");
+	}
+	@RequestMapping(value = "/etc/personal.do", method = RequestMethod.GET)
+	public ModelAndView personal() {
+
+		return new ModelAndView("/etc/personal");
+	}
+	@RequestMapping(value = "/etc/regulation.do", method = RequestMethod.GET)
+	public ModelAndView regulation() {
+
+		return new ModelAndView("/etc/regulation");
+	}
+	@RequestMapping(value = "/etc/team.do", method = RequestMethod.GET)
+	public ModelAndView team() {
+
+		return new ModelAndView("/etc/team");
+	}
+	@RequestMapping(value = "/etc/useSite.do", method = RequestMethod.GET)
+	public ModelAndView useSite() {
+
+		return new ModelAndView("/etc/useSite");
+	}
+	
+	
+	
 }
