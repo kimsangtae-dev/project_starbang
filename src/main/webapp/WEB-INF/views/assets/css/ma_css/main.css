@@ -406,24 +406,6 @@
 	/* background: url(../../img/ma_img/like.svg) center center / cover; */
 }
 
-.recent-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
-}
-
-.recent-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
-}
-
-.recent-div8.offff {
-	background: url(../../img/ma_img/like.svg) center center/cover;
-	margin-top: 20px;
-}
-
-.recent-div8.offf {
-	background: url(../../img/ma_img/like.svg) center center/cover;
-	margin-top: 5px;
-}
-
 /* <a> 태그 */
 .gallery-a {
 	display: block;
@@ -434,11 +416,6 @@
 	margin: 0px;
 }
 
-/* 글자에 호버가 들어가서 디버깅해야함 */
-/*.recent-a:hover
-{
-                color:;
- }*/
 
 /* <a> 태그 - <div>이미지 */
 .gallery-pic {
@@ -673,14 +650,6 @@
 	height: 30px;
 	margin: 0px auto;
 	/* background: url(../../img/ma_img/like.svg) center center / cover; */
-}
-
-.recent-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
-}
-
-.recent-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 
 /* <a> 태그 */
@@ -974,14 +943,6 @@
 	margin: 0px auto;
 }
 
-.hit-div8.off {
-	background: url(../../img/ma_img/like.svg) center center/cover;
-}
-
-.hit-div8.on {
-	background: url(../../img/ma_img/like-on.svg) center center/cover;
-}
-
 /* <a> 태그 */
 .hit-a {
 	display: block;
@@ -1146,7 +1107,7 @@
 }
 
 /* <div>좋아요 자식박스 -absolute */
-.recent-div7,.wish-div7 {
+.recent-div7,.wish-div7,.hit-div7 {
     width: 36px;
     position: absolute;
     top: 3px;
@@ -1156,18 +1117,18 @@
 }
 
 /* <div>좋아요 - <div> */
-.recent-div8,.wish-div8 {
+.recent-div8,.wish-div8,.hit-div8 {
     width: 32px;
     height: 30px;
     margin: 0px auto;
     /*background: url(ma_img/like.svg) center center / cover;*/
 }
 
-.recent-div8.off,.wish-div8.off {
+.recent-div8.off,.wish-div8.off,.hit-div8.off {
     background: url(../../img/ma_img/like.svg) center center/cover;
 }
 
-.recent-div8.on,.wish-div8.on {
+.recent-div8.on,.wish-div8.on,.hit-div8.on {
     background: url(../../img/ma_img/like-on.svg) center center/cover;
 }
 

@@ -601,7 +601,8 @@
                 var a = $(this).parent().prev().val();
                 alert("a = " + a);
                 alert("3");
-              delectstar(a);
+				delectstar(a);
+				$("#tab2").click();
            });
         });
       });
@@ -720,9 +721,9 @@
                /** 세션 식별하기 **/
                Handlebars.registerHelper('session', function(roomno, options) {
                   if (session == null || session == "") {
-                     var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                     var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
                          heart_div += '<div class="hit-div7">'
-                         heart_div += '<div class="hit-div8 offff"></div>'
+                         heart_div += '<div class="hit-div8 off"></div>'
                          heart_div += '</div>'
                          heart_div += '</a>'
                      return heart_div;

@@ -700,7 +700,11 @@ pageEncoding="UTF-8"%>
                 	feeFrom: "${param.feeFrom}", 
                 	feeTo: "${param.feeTo}", 
                 	sizeFrom: "${param.sizeFrom}", 
-                	sizeTo: "${param.sizeTo}"
+                	sizeTo: "${param.sizeTo}",
+                    east: 0,
+                    west: 0,
+                    north: 0,
+                    south: 0
                 };
             
             console.log(params);
