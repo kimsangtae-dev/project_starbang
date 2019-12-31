@@ -118,12 +118,10 @@
 	<p class="min_t">사이트에 대한 문의사항은 aaa@gmail.com으로 부탁드립니다.</p>
 
 	<ul class="last">
-		<li><a target="_blank" rel="noopener noreferrer" href="" class="">회사소개</a></li>
+		<li><a target="_blank" rel="noopener noreferrer" href="${pageContext.request.contextPath}/etc/team.do" class="">팀소개</a></li>
 		<li><a target="_blank" rel="noopener noreferrer" class=""
-			href="/term/9">이용약관</a></li>
+			href="${pageContext.request.contextPath}/etc/regulation.do">이용약관</a></li>
 		<li><a target="_blank" rel="noopener noreferrer" class=""
-			href="/term/10">개인정보처리방침</a></li>
-		<li><a target="_blank" rel="noopener noreferrer" class=""
-			href="${pageContext.request.contextPath}/admin/login.do">관리자페이지</a></li>
+			href="${pageContext.request.contextPath}/etc/personal.do">개인정보처리방침</a></li>
 	</ul>
 </div>
