@@ -131,7 +131,7 @@
         <a href="${pageContext.request.contextPath}">
             <img src="${pageContext.request.contextPath}/assets/ico/logo_blue.png"></a>
 <c:choose>
-<c:when test="${loginInfo.email != '1@'}">
+<c:when test="${loginInfo.email != 'admin'}">
 <div class="menu-left small-font">
 <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
 </div>
