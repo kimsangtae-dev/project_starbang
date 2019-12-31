@@ -568,7 +568,7 @@ public class AdminController {
 		if (passwd == null || passwd.contentEquals("")) { 
 			return webHelper.redirect(null, "비밀번호를 입력하세요."); }
 	 
-		if (!email.equals("1@") && !passwd.equals("1")) { 
+		if (!email.equals("admin") && !passwd.equals("admin")) { 
 			return webHelper.redirect(null, "관리자가 아닙니다."); }
 			
 		

@@ -41,7 +41,7 @@
   	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
   	<script type="text/javascript">
    $("#loginbtn").click(function(){
-        if($("#loginid").val() == "1@" && $("#passwd").val() == "1") {
+        if($("#loginid").val() == "admin" && $("#passwd").val() == "admin") {
         	alert("관리자페이지로 이동합니다.");
     } 
 	}); 
