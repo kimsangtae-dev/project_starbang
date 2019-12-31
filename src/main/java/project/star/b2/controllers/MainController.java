@@ -505,13 +505,13 @@ public class MainController {
 
 		/** 방 종류(roomtype) list */
 		 List<String> roomtypepate = new ArrayList<String>();
-		 String[] roomto = room.split("m");
+		 String[] roomto = room.split(",");
 		 for (int i = 0; i < roomto.length ; i++) {
 		 roomtypepate.add(roomto[i]); }
 
 		/** 거래 종류(dealingtype) list */
 		List<String> dealingtypepate = new ArrayList<String>();
-		String[] dealingtypeto = dealingtype.split("m");
+		String[] dealingtypeto = dealingtype.split(",");
 		for (int i = 0; i < dealingtypeto.length ; i++) { dealingtypepate.add(dealingtypeto[i]); }
 
 		Heart input_heart = new Heart();

@@ -581,7 +581,7 @@ pageEncoding="UTF-8"%>
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
-                    	var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" class="st-bang padding-l" data-toggle="modal" data-target="#loginModal">'
+                    	var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
                     		heart_div += '<div class="recent-div7">'
                     		heart_div += '<div class="recent-div8 offff"></div>'
                     		heart_div += '</div>'
@@ -700,11 +700,7 @@ pageEncoding="UTF-8"%>
                 	feeFrom: "${param.feeFrom}", 
                 	feeTo: "${param.feeTo}", 
                 	sizeFrom: "${param.sizeFrom}", 
-                	sizeTo: "${param.sizeTo}",
-                	east: east,
-                    west: west,
-                    north: north,
-                    south: south
+                	sizeTo: "${param.sizeTo}"
                 };
             
             console.log(params);
@@ -917,7 +913,7 @@ pageEncoding="UTF-8"%>
         /** 원룸, 투쓰리룸, 오피스텔 체크박스 */
         var roomtypeto = "${param.roomtype}";
         var to = [];
-        to = roomtypeto.split("m");
+        to = roomtypeto.split(",");
         var roomtype1 = document.getElementById('roomtype1');
         var roomtype2 = document.getElementById('roomtype2');
         var roomtype3 = document.getElementById('roomtype3');
@@ -943,10 +939,10 @@ pageEncoding="UTF-8"%>
                 rt += "원룸";
             }
             if ($("input:checkbox[id='roomtype2']").is(":checked") == true) {
-                rt += "m투룸m쓰리룸";
+                rt += ",투룸,쓰리룸";
             }
             if ($("input:checkbox[id='roomtype3']").is(":checked") == true) {
-                rt += "m오피스텔";
+                rt += ",오피스텔";
             }
 
             if(rt == "") {
@@ -962,7 +958,7 @@ pageEncoding="UTF-8"%>
         /** 월세, 전세, 매매 체크박스 */
         var dealingtypeto = "${param.dealingtype}";
         var to = [];
-        to = dealingtypeto.split("m");
+        to = dealingtypeto.split(",");
         var dealingtype1 = document.getElementById('dealingtype1');
         var dealingtype2 = document.getElementById('dealingtype2');
         var dealingtype3 = document.getElementById('dealingtype3');
@@ -986,10 +982,10 @@ pageEncoding="UTF-8"%>
                 dt += "월세";
             }
             if ($("input:checkbox[id='dealingtype2']").is(":checked") == true) {
-                dt += "m전세";
+                dt += ",전세";
             }
             if ($("input:checkbox[id='dealingtype3']").is(":checked") == true) {
-                dt += "m매매";
+                dt += ",매매";
             }
 
             if(dt == "") {
@@ -1297,7 +1293,7 @@ pageEncoding="UTF-8"%>
             $("#filters-reset").click(function(e) {
                 e.preventDefault();
                 $("input[type='checkbox']").prop('checked', true);
-                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map="+centerLat+","+centerLng+","+level+"&news="+west+","+east+","+south+","+north;
+                var resetUrl = "${pageContext.request.contextPath}/main/search.do?roomtype=원룸,투룸,쓰리룸,오피스텔&dealingtype=월세,전세,매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map="+centerLat+","+centerLng+","+level+"&news="+west+","+east+","+south+","+north;
                 location.replace(resetUrl);
             });
 

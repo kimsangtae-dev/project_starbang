@@ -88,7 +88,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up1"></div>
                         <div class="slide-a-div1-down">
@@ -101,7 +101,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=500&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세&depositFrom=0&depositTo=500&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up2"></div>
                         <div class="slide-a-div1-down">
@@ -114,7 +114,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=송파구&map=37.5048534,127.1144822,5">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세,전세,매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=송파구&map=37.5048534,127.1144822,5">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up3"></div>
                         <div class="slide-a-div1-down">
@@ -127,7 +127,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=투룸m쓰리룸&dealingtype=전세&depositFrom=0&depositTo=20000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=투룸,쓰리룸&dealingtype=전세&depositFrom=0&depositTo=20000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up4"></div>
                         <div class="slide-a-div1-down">
@@ -140,7 +140,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=전세&depositFrom=0&depositTo=30000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸,투룸,쓰리룸,오피스텔&dealingtype=전세&depositFrom=0&depositTo=30000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up5"></div>
                         <div class="slide-a-div1-down">
@@ -153,7 +153,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=오피스텔&dealingtype=월세m전세m매매&depositFrom=0&depositTo=10000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=오피스텔&dealingtype=월세,전세,매매&depositFrom=0&depositTo=10000&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up6"></div>
                         <div class="slide-a-div1-down">
@@ -166,7 +166,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸m투룸m쓰리룸m오피스텔&dealingtype=매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=20000&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸,투룸,쓰리룸,오피스텔&dealingtype=매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=20000&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up7"></div>
                         <div class="slide-a-div1-down">
@@ -179,7 +179,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=강남구&map=37.4959854,127.0664091,5">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세,전세,매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=999999&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&region=강남구&map=37.4959854,127.0664091,5">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up8"></div>
                         <div class="slide-a-div1-down">
@@ -192,7 +192,7 @@
 
                 <div>
                    <a class="slide-a"
-                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세m전세m매매&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
+                      href="${pageContext.request.contextPath}/main/search.do?roomtype=원룸&dealingtype=월세&depositFrom=0&depositTo=999999&monthFrom=0&monthTo=50&buyingFrom=0&buyingTo=999999&feeFrom=0&feeTo=999999&sizeFrom=0&sizeTo=999999&map=37.5642135,126.9743207,9">
                       <div class="slide-a-div1">
                         <div class="slide-a-div1-up9"></div>
                         <div class="slide-a-div1-down">
