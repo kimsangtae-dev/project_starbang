@@ -90,11 +90,16 @@
                                                     <p class="hit-a-p2">
                                                         <c:choose>
                                                             <c:when test="${item.dealingtype == '월세'}">
-                                                                <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+                                                                <span>${item.dealingtype}&nbsp;<!--
+                                                        	 --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber>
+                                                        		<c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" /> <!--
+                                                        	 -->${patternprice1}/${item.price}</span>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <span>${item.dealingtype}&nbsp;</span>
-                                                                <span id="prc">${item.price}</span>
+                                                                <span>${item.dealingtype}&nbsp;<!--
+                                                        	 --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+                                                        		<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> <!--
+                                                        	 -->${patternprice2}</span>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </p>

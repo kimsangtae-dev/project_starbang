@@ -61,11 +61,16 @@
                                     <td><p class="room-price">
                                         <c:choose>
                                             <c:when test="${item.dealingtype == '월세'}">
-                                                <span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
+                                                <span>${item.dealingtype}&nbsp;<!--
+                                             --><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber>
+                                                <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" /> <!--
+                                             -->${patternprice1}/${item.price}</span>
                                             </c:when>
                                             <c:otherwise>
-                                                <span>${item.dealingtype}&nbsp;</span>
-                                                <span id="prc">${item.price}</span>
+                                                <span>${item.dealingtype}&nbsp;<!--
+                                             --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+                                                <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> <!--
+                                             -->${patternprice2}</span>
                                             </c:otherwise>
                                         </c:choose>
                                     </p></td>
@@ -96,11 +101,16 @@
                                             <c:if test="${item.roomno==p.roomno}">
                                                 <c:choose>
                                                     <c:when test="${p.dealingtype == '월세'}">
-                                                        <span>${p.dealingtype}&nbsp;${p.deposit}/${p.price}</span>
+                                                        <span>${p.dealingtype}&nbsp;<!--
+                                                        --><fmt:formatNumber value="${p.deposit}" pattern="#,####" var="eok1"></fmt:formatNumber>
+                                                        <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" /> <!--
+                                                        -->${patternprice1}/${p.price}</span>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <span>${p.dealingtype}&nbsp;</span>
-                                                        <span id="prc">${p.price}</span>
+                                                        <span>${p.dealingtype}&nbsp;<!--
+                                                        --><fmt:formatNumber value="${p.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+                                                        <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> <!--
+                                                        -->${patternprice2}</span>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:if>
