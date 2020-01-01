@@ -87,6 +87,7 @@ public class MainRestController {
 
 	List<Heart> output = null; // 조회결과가 저장될 객체
 	PageData pageData = null;
+	int heart_size = 0;
 
 	try {
 		// 전체 게시글 수 조회
@@ -99,6 +100,7 @@ public class MainRestController {
 		Heart.setListCount(pageData.getListCount());
 		// 데이터 조회하기
 		output = heartService.getHeartGalleryList(input);
+		heart_size = output.size();
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
@@ -108,6 +110,7 @@ public class MainRestController {
 	data.put("keyword",keyword);
 	data.put("item",output);
 	data.put("meta",pageData);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }
@@ -132,6 +135,7 @@ public class MainRestController {
 	List<String> list = null;
 	PageData pageData = null;
 	int cookie_size = 0;
+	int heart_size=0;
 
 	try {
 				// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
@@ -159,6 +163,7 @@ public class MainRestController {
 		Collections.reverse(list);
 		output = galleryService.getCookieMainList(list);
 		if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
+		heart_size = heartlist.size();
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
@@ -169,6 +174,7 @@ public class MainRestController {
 	data.put("meta",pageData);
 	data.put("heart", heartlist);
 	data.put("cookie_size", cookie_size);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }
@@ -200,7 +206,7 @@ public class MainRestController {
 		Heart input_heart = new Heart();
 		input_heart.setUserno(userno);
 		List<Heart> heartlist = null;
-
+		int heart_size = 0;
 
 		PageData pageData = null;
 
@@ -215,6 +221,7 @@ public class MainRestController {
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
+			heart_size = heartlist.size();
 			output = galleryService.getPopularGalleryList(input);
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
@@ -226,6 +233,7 @@ public class MainRestController {
 	data.put("item",output);
 	data.put("meta",pageData);
 	data.put("heart", heartlist);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }
