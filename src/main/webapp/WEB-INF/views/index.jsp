@@ -566,7 +566,7 @@
 });	
     /** 최근본방 ajax처리 함수 */
 	function recentroom() {
-		$.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
+		$.get("${pageContext.request.contextPath}/professor2", {}, function(json){
             Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                 if (dealingtype == '월세') { return options.fn(this); }
                 else { return options.inverse(this); }
