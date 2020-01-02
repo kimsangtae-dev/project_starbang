@@ -300,19 +300,19 @@ function binary() {
 
     /* 뿌려줄 String을 배열에 저장 */
     var option = [
-        "<span'>에어컨</span>",
-        "<span'>세탁기</span>",
-        "<span'>옷장</span>",
-        "<span'>TV</span>",
-        "<span'>신발장</span>",
-        "<span'>냉장고</span>",
-        "<span'>가스레인지</span>",
-        "<span'>인덕션</span>",
-        "<span'>전자레인지</span>",
-        "<span'>전자도어락</span>",
-        "<span'>비데</span>",
-        "<span'>침대</span>",
-        "<span'>책상</span>"
+        "에어컨",
+        "세탁기",
+        "옷장",
+        "TV",
+        "신발장",
+        "냉장고",
+        "가스레인지",
+        "인덕션",
+        "전자레인지",
+        "전자도어락",
+        "비데",
+        "침대",
+        "책상"
         ];
 
 
@@ -331,7 +331,7 @@ function binary() {
                     sum += ", ";
                 } // if문
             } // for문
-                    $(".dDctva").eq(j).append(sum);
+                    $(".dDctva").eq(j).append("<span>"+sum+"</span>");
         }
     
     //alert(num);
