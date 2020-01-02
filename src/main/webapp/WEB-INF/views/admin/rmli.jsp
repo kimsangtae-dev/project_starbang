@@ -96,7 +96,7 @@
 					<%-- 조회결과가 없는 경우 --%>
 					<c:when test="${output == null || fn:length(output) == 0}">
 						<tr>
-							<td colspan="3" align="center">조회결과가 존재 하지 않습니다.</td>
+							<td colspan="9" align="center">조회결과가 존재 하지 않습니다.</td>
 						</tr>
 					</c:when>
 					<%-- 조회 결과가 있는 경우 --%>
@@ -187,6 +187,7 @@
 						<c:url value="/admin/rmli.do" var="pageUrl">
 							<c:param name="keyword" value="${keyword}" />
 							<c:param name="page" value="${i}" />
+							<c:param name="check" value="${rememberChecked}" />
 						</c:url>
 
 						<%-- 페이지 번호 출력 --%>
@@ -211,6 +212,7 @@
 						<c:url value="/admin/rmli.do" var="nextPageUrl">
 							<c:param name="keyword" value="${keyword}" />
 							<c:param name="page" value="${pageData.nextPage}" />
+							<c:param name="check" value="${rememberChecked}" />
 						</c:url>
 						<a href="${nextPageUrl}">
 							<button class="next-btn">

@@ -78,7 +78,7 @@ public interface RoomService {
      */
     public int editHiddenRoom(Room input) throws Exception;
     
-    public List<Room> getRoomCheckList(int raval) throws Exception;
+    public List<Room> getRoomCheckList(Room raval) throws Exception;
     
     public List<Room> getRoomCheckConfirmList(Room input) throws Exception;
     

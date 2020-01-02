@@ -313,7 +313,7 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public List<Room> getRoomCheckList(int input) throws Exception {
+	public List<Room> getRoomCheckList(Room input) throws Exception {
 		List<Room> result = null;
 
         try {
