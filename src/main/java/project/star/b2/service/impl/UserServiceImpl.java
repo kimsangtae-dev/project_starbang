@@ -12,7 +12,7 @@ import project.star.b2.service.UserService;
 
 
 
-/** 학과 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
+/** 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 학과 데이터 목록 조회
+     * 데이터 목록 조회
      * @return 조회 결과에 대한 컬렉션
      * @throws Exception
      */
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 학과 데이터가 저장되어 있는 갯수 조회
+     * 데이터가 저장되어 있는 갯수 조회
      * @return int
      * @throws Exception
      */
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 학과 데이터 등록하기
+     * 데이터 등록하기
      * @param User 저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 학과 데이터 수정하기
+     * 데이터 수정하기
      * @param User 수정할 정보를 담고 있는 Beans
      * @throws Exception
      */
@@ -147,7 +147,7 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     * 학과 데이터 삭제하기
+     * 데이터 삭제하기
      * @param User 삭제할 학과의 일련번호를 담고 있는 Beans
      * @throws Exception
      */

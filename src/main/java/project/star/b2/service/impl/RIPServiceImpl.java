@@ -12,7 +12,7 @@ import project.star.b2.service.RIPService;
 
 
 
-/** 학과 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
+/** 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
 @Slf4j
 @Service
 public class RIPServiceImpl implements RIPService {
@@ -23,7 +23,7 @@ public class RIPServiceImpl implements RIPService {
     SqlSession sqlSession;
 	
     /**
-     * 학과 데이터 등록하기
+     * 데이터 등록하기
      * @param Room 저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
