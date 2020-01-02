@@ -146,7 +146,6 @@
 	<select id="selectCountAll"
 		parameterType="project.star.b2.model.Room" resultType="int">
 		SELECT COUNT(*) FROM room
-
 		<where>
 			<if test="roomtype != null and roomtype != ''">
 				roomtype LIKE concat('%', #{roomtype}, '%')

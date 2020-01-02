@@ -8,6 +8,7 @@
    href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
 <link rel="apple-touch-icon-precomposed"
    href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /><!-- 어썸 폰트 -->
 <style>
 a > img {
    height: 100px;
@@ -248,10 +249,10 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="https://i.pinimg.com/originals/d1/1e/c3/d11ec374c68f527bec9a5719e7043fe8.jpg"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
-               <div class="recent-a-confirm-div">
+               <div class="recent-a-confirm-div"> 
                   <span class="bold">생년월일</span> <span>10.09</span>
                </div>
             </div> <!-- 생년월일 끝 -->
@@ -260,7 +261,17 @@ a > img {
                <span>이명섭</span>
             </p>
             <p class="recent-a-p34">narabyeol@gmail.com</p>
+            <p class="recent-a-p34">▶▶데이터베이스◀◀</p>
             <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
+            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
+            <i class="fa fa-refresh fa-spin fa-fw"></i>
+            <i class="fa fa-spinner fa-pulse fa-fw"></i> 
+            <span class="fa-stack fa-lg">
+			<i class="fa fa-camera fa-stack-1x"></i> 
+			<i class="fa fa-ban fa-stack-2x text-danger"></i>
+			</span>
+			<i class="fas fa-angry"></i>
+            <a href="http://www.naver.com">검색</a>
          </div>
       </div>
       <!-- 4번째 갤러리 끝 -->
