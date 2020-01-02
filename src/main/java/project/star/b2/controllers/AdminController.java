@@ -138,7 +138,7 @@ public class AdminController {
 		int raval = webHelper.getInt("check"); // 체크박스를 통한 값 조회를 위한 변수 생성, submit을 통해 파라미터로 받는다.
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
-		int listCount = 20; // 한 페이지당 표시할 목록 수
+		int listCount = 10; // 한 페이지당 표시할 목록 수
 		int pageCount = 5; // 한 그룹당 표시할 페이지 번호 수
 
 		/** 2) 데이터 조회하기 */
@@ -163,13 +163,14 @@ public class AdminController {
 			Room.setOffset(pageData.getOffset());
 			Room.setListCount(pageData.getListCount());
 			// 데이터 조회하기
+			output = roomService.getRoomList(input);
 
 			/** 데이터 조회시 input 조건에 따른 다른 결과값을 받기 위한 처리*/
 			if (raval == 1) { // 확인매물
 				output = roomService.getRoomCheckList(input);
 				rememberChecked = "1"; //체크박스 유지를 위한 값 처리
-				/* totalCount = roomService.getRoomCount(input); */ 
-				/* pageData = new PageData(nowPage, totalCount, listCount, pageCount); */
+				totalCount = roomService.getRoomCount(input);
+				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			} else if (raval == 2) { // 허위매물
 				output = roomService.getRoomCheckList(input);
 				rememberChecked = "2"; 
@@ -330,6 +331,7 @@ public class AdminController {
 
 		/** 1) 필요한 변수값 생성 (페이징처리 변수) */
 		String keyword = webHelper.getString("keyword", ""); // 검색어
+		int keywordno = webHelper.getInt("keyword");
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
 		int listCount = 10; // 한 페이지당 표시할 목록 수
@@ -339,11 +341,7 @@ public class AdminController {
 		// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 		User input = new User();
 		input.setName(keyword);
-		input.setEmail(keyword);
-		input.setPasswd(keyword);
-		input.setTel(keyword);
-		input.setRegdate(keyword);
-		input.setEditdate(keyword);
+		input.setUserno(keywordno);
 		
 		
 		List<User> output = null; // 조회결과가 저장될 객체
@@ -590,20 +588,20 @@ public class AdminController {
 		User output = null;
 			
 		
-			try { 
-				//데이터 조회 
-			  	output = userService.getUserLogin(input); 
-			} catch (Exception e) { 
-				return webHelper.redirect(null, e.getLocalizedMessage()); }
+		try { 
+			//데이터 조회 
+			output = userService.getUserLogin(input); 
+		} catch (Exception e) { 
+			return webHelper.redirect(null, e.getLocalizedMessage()); }
 			
-			/* request 객체를 사용해서 세션 객체 만들기 */
-			HttpSession session = request.getSession();
+		/* request 객체를 사용해서 세션 객체 만들기 */
+		HttpSession session = request.getSession();
 		
-			// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성   
-			if (email.equals(output.getEmail()) || passwd.equals(output.getPasswd())) {
-				session.setAttribute("loginInfo", output);
-			} 
+		// 가입된 정보와 DB가 일치하는지 검사 후 세션 생성   
+		if (email.equals(output.getEmail()) || passwd.equals(output.getPasswd())) {
+			session.setAttribute("loginInfo", output);
+		} 
 			
-			return new ModelAndView("admin/main");
-		}
+		return new ModelAndView("admin/main");
+	}
 }

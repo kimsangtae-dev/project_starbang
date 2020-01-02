@@ -37,20 +37,8 @@
                 name LIKE concat('%', #{name}, '%')
             </if>
             
-            <if test="email != null and email != ''">
-                OR email LIKE concat('%', #{email}, '%')
-            </if>
-            
-            <if test="passwd != null and passwd != ''">
-                OR passwd LIKE concat('%', #{passwd}, '%')
-            </if>
-            
-            <if test="tel != null and tel != ''">
-                OR tel LIKE concat('%', #{tel}, '%')
-            </if>
-            
-            <if test="regdate != null and regdate != ''">
-                OR regdate LIKE concat('%', #{regdate}, '%')
+            <if test="userno != null and userno != 0">
+                OR userno = #{userno}
             </if>
             
         </where>
@@ -123,8 +111,8 @@
         resultMap="userMap">
         SELECT userno, name, email, passwd, tel, regdate, editdate, profile_img FROM user WHERE email=#{email};
     </select>
-    	
-	 <!-- 아이디조회를 위한 기능 정의 -->
+        
+     <!-- 아이디조회를 위한 기능 정의 -->
     <select id="idCheck"
         parameterType="project.star.b2.model.User"
         resultType="int">
@@ -152,13 +140,13 @@
     </update>
     
     <!-- 프로필 데이터 저장을 위한 기능 정의 -->
-	<update id="updateProfileItem"
-		parameterType="project.star.b2.model.User">
-		UPDATE user SET editdate=#{editdate}, profile_img=#{profile_img}
+    <update id="updateProfileItem"
+        parameterType="project.star.b2.model.User">
+        UPDATE user SET editdate=#{editdate}, profile_img=#{profile_img}
         WHERE userno=#{userno};
-	</update>
-	
-	<!-- 데이터 저장을 위한 기능 정의 -->
+    </update>
+    
+    <!-- 데이터 저장을 위한 기능 정의 -->
     <insert id="outUserinsert"
         parameterType="project.star.b2.model.User"
         useGeneratedKeys="true"

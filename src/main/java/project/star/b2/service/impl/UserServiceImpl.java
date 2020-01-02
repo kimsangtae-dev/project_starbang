@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 
     /** MyBatis */
     // --> import org.apache.ibatis.session.SqlSession
-	@Autowired
+    @Autowired
     SqlSession sqlSession;
 
     /**
@@ -204,16 +204,16 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int idCheck(String email) throws Exception {
-    	int result = sqlSession.selectOne("UserMapper.idCheck", email);
-		return result;
-	}
+        int result = sqlSession.selectOne("UserMapper.idCheck", email);
+        return result;
+    }
 
     /**
      * 비번 변경) DB에 있는 이메일 중복 조회
      */
-	@Override
-	public User getUserEmail(User input) throws Exception {
-		User result = null;
+    @Override
+    public User getUserEmail(User input) throws Exception {
+        User result = null;
 
         try {
             result = sqlSession.selectOne("UserMapper.selectEmail", input);
@@ -235,9 +235,9 @@ public class UserServiceImpl implements UserService {
     /**
      * 비번 변경) 패스워드 변경 
      */ 
-	@Override
-	public int getPassword(User input) throws Exception {
-		int result = 0;
+    @Override
+    public int getPassword(User input) throws Exception {
+        int result = 0;
         
         try {
              result = sqlSession.update("UserMapper.updatePassword", input);
@@ -255,72 +255,72 @@ public class UserServiceImpl implements UserService {
         
         return result;
      }
-	
-	 /**
+    
+     /**
      * 마이페이지에서 프로필 수정
      */ 
-	@Override
-	public int addUploadProfileItem(User input) throws Exception {
-		int result = 0;
+    @Override
+    public int addUploadProfileItem(User input) throws Exception {
+        int result = 0;
 
-		try {
-			result = sqlSession.update("UserMapper.updateProfileItem", input);
+        try {
+            result = sqlSession.update("UserMapper.updateProfileItem", input);
 
-			if (result == 0) {
-				throw new NullPointerException("result=0");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("저장된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 저장에 실패했습니다.");
-		}
-		return result;
-	}
-	
-	 /**
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("저장된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 저장에 실패했습니다.");
+        }
+        return result;
+    }
+    
+     /**
      * 마이페이지에서 회원수정
      */ 
-	@Override
-	public int editUserMyPage(User input) throws Exception {
-		int result = 0;
+    @Override
+    public int editUserMyPage(User input) throws Exception {
+        int result = 0;
 
-		try {
-			result = sqlSession.update("UserMapper.mypageupdateItem", input);
+        try {
+            result = sqlSession.update("UserMapper.mypageupdateItem", input);
 
-			if (result == 0) {
-				throw new NullPointerException("result=0");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("저장된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 저장에 실패했습니다.");
-		}
-		return result;
-	}
-	
-	/** 회원 탈퇴 이유 */
-	@Override
-	public int outUserinsert(User input) throws Exception {
-		int result = 0;
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("저장된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 저장에 실패했습니다.");
+        }
+        return result;
+    }
+    
+    /** 회원 탈퇴 이유 */
+    @Override
+    public int outUserinsert(User input) throws Exception {
+        int result = 0;
 
-		try {
-			result = sqlSession.update("UserMapper.outUserinsert", input);
+        try {
+            result = sqlSession.update("UserMapper.outUserinsert", input);
 
-			if (result == 0) {
-				throw new NullPointerException("result=0");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("저장된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 저장에 실패했습니다.");
-		}
-		return result;
-	}
-	
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("저장된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 저장에 실패했습니다.");
+        }
+        return result;
+    }
+    
 }
