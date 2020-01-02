@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
-import project.star.b2.model.Price;
 import project.star.b2.model.UploadItem;
 import project.star.b2.service.UploadService;
 
@@ -77,6 +76,27 @@ public class UploadServiceImpl implements UploadService {
 		return 0;
 	}
 	
+	@Override
+	public int getUploadMaxItem(UploadItem input) throws Exception {
+		int result = 0;
+		
+		try {
+			result = sqlSession.selectOne("UploadMapper.selectMaxItem", input);
+			
+			if (result == 0) {
+				throw new NullPointerException("result=null");
+			}
+		} catch (NullPointerException e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("조회된 데이터가 없습니다.");
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+			throw new Exception("데이터 조회에 실패했습니다.");
+		}
+		
+		return result;
+	}
+	
 	
 	@Override
 	public int addUploadItem(UploadItem input) throws Exception {
@@ -141,6 +161,9 @@ public class UploadServiceImpl implements UploadService {
 		
 		return result;
 	}
+
+
+
 
 	
 	

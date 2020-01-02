@@ -36,7 +36,14 @@ public interface UploadService {
     public int getUploadItemCount(UploadItem input) throws Exception;
     
     /**
-     * 이미지 리스트 데이터 등록하기
+     * 마지막 PRI 값 조회
+     * @return int
+     * @throws Exception
+     */
+    public int getUploadMaxItem(UploadItem input) throws Exception;
+    
+    /**
+     * 이미지 데이터 등록하기
      * @param User 저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
