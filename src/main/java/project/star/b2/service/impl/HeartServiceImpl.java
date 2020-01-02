@@ -150,7 +150,7 @@ public class HeartServiceImpl implements HeartService{
 		int result = 0;
 
         try {
-            result = sqlSession.selectOne("HeartMapper.deleteItem", input);
+            result = sqlSession.delete("HeartMapper.deleteItem", input);
 
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());

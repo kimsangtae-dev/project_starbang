@@ -111,10 +111,6 @@ $(function () {
          <!-- 하단 영역 -->
    <%@ include file="../assets/inc/ma_bottom.jsp"%>
     
-    <!-- Javascript -->
-   <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-   <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-   <script src="${pageContext.request.contextPath}/assets/plugin/sweetalert/sweetalert2.all.min.js"></script>
    <!-- 모달창 -->
    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
    <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
@@ -231,7 +227,7 @@ $(function () {
 				if (!regex.email('#email', '이메일 형식에 맞춰서 입력해주세요.')) {return false;}
 				if (!regex.value('#emailinumber', '인증번호를 입력하세요.')) { return false; }
 			        if (user != auth) {
-						alert("인증번호를 다시 입력해주세요");
+						alert("인증번호를 다시 입력해주세요.");
 						return false;
 					}
 				nowemail = email;
@@ -266,7 +262,7 @@ $(function () {
 			}
 			
 			if ($('#nowmyname').val() == $('#myname').val() && $('#nowemail').val() == $('#email').val() && nowallpon == allpon && $('#pwd1').val() == "") {
-				alert("바뀐 정보가 없습니다")
+				alert("바뀐 정보가 없습니다.")
 				return false;
 			}
 
@@ -283,6 +279,7 @@ $(function () {
 		    		"nowallpon" : nowallpon,
 		    		"pwd" : pwd},
 				success:function(data){
+					alert("정보가 수정되었습니다.");
 					console.log(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
 		        	var http = "${pageContext.request.contextPath}/main/mypage.do"
 						location.replace(http);
@@ -309,10 +306,9 @@ $(function () {
 				return false;
 			}
 			if ($("input:checkbox[id='outokinput']").is(":checked") == false) {
-				alert("안내사항에 대해 동의해주세요");
+				alert("안내사항에 대해 동의해주세요.");
 				return false;
            }
-			alert("ajax전송준비완료");
    	  	$.ajax({
 				url:"mypagedelect.do",
 				type:'POST',

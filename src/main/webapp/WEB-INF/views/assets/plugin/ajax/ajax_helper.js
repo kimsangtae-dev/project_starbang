@@ -3,7 +3,10 @@ $(function() {
     var loader = $("<div>").addClass('ajax-loader');
     loader.hide();
     $("body").prepend(loader);
+});
 
+$(function() {
+	var loader = $("<div>").addClass('ajax-loader');
     $.ajaxSetup({
         /** ajax 기본 옵션 */
         cache : false, // 캐쉬 사용 금지 처리

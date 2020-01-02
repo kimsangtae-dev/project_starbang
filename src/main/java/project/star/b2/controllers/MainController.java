@@ -830,7 +830,7 @@ public class MainController {
 		}
 		
 		/** view 화면으로 보여주기 */
-		return webHelper.redirect(contextPath + "/main/search.do", "좋아요가 삭제되었습니다.");
+		return null;
 	}
 	
 	/********************************************************************
@@ -865,7 +865,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 		
-	return webHelper.redirect(contextPath + "/main/search.do", "좋아요가 저장되었습니다.");
+	return null;
 	
 }
 	
