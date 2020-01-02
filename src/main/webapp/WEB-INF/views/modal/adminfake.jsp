@@ -64,7 +64,11 @@
             <tr>
               <td align="center">${fakeno}</td>
               <td align="center">${regdate}</td>
-              <td align="center">${reason}</td>
+              <td align="center"><c:choose><c:when test="${reason eq '1'}">거래가 완료된 매물</c:when>
+              <c:when test="${reason eq '2'}">가격이 다른 매물</c:when>
+              <c:when test="${reason eq '3'}">사진이 다른 매물</c:when>
+              <c:when test="${reason eq '4'}">위치가 다른 매물</c:when>
+              <c:when test="${reason eq '5'}">옵션이 다른 매물</c:when></c:choose></td>
               <td align="center">${roomno}</td>
               <td align="center">${userno}</td>
               <td align="center">${singo}</td>
