@@ -85,6 +85,7 @@
 						<th class="text-center">매물 종류</th>
 						<th class="text-center">가격대</th>
 						<th class="text-center">방 주인</th>
+						<th class="text-center">유저번호</th>
 						<th class="text-center">확인매물</th>
 						<th class="text-center">허위매물신고건수</th>
 						<th class="text-center">상태</th>
@@ -109,6 +110,7 @@
 							<c:set var="dealingtype" value="${item.dealingtype}" />
 							<c:set var="price" value="${item.price}" />
 							<c:set var="name" value="${item.name}" />
+							<c:set var="userno" value="${item.userno}" />
 							<c:set var="confirmdate" value="${item.confirmdate}" />
 							<c:set var="fakecount" value="${item.cnt}" />
 							<c:set var="status" value="${item.status}" />
@@ -131,8 +133,22 @@
 								<td align="center">${roomno}</td>
 								<td align="center">${roomtype}</td>
 								<td align="center">${dealingtype}</td>
-								<td align="center">${price}만원</td>
+								<c:choose>
+                                <%-- 월세인 경우 --%>
+                                <c:when test="${item.dealingtype == '월세'}">
+                                <fmt:formatNumber value="${item.price}" pattern="#,####" var="eok1"></fmt:formatNumber>
+                                <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" />
+                                <td align="center">${patternprice1}만원</td>
+                                </c:when>
+                                <%-- 전세 혹은 매매인 경우 --%>
+                                <c:otherwise>
+                                <fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2"></fmt:formatNumber>
+                                <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" />
+                                <td align="center">${patternprice2}</td>
+                                </c:otherwise>
+                                </c:choose>
 								<td align="center">${name}</td>
+								<td align="center">${userno}</td>
 								<td align="center" id="confirmdate">${confirmdate}</td>
 								<td align="center"><a href="${pageContext.request.contextPath}/modal/adminfake.do?roomno=${roomno}" data-toggle="modal" data-target="#fakeModal">${fakecount}</a></td>
 								<td align="center" id="hidden"><c:choose>
