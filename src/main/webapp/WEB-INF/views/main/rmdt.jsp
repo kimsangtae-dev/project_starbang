@@ -70,7 +70,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 						<a href="${pageContext.request.contextPath}/modal/login.do"
 							class="st-bang" data-toggle="modal"
 							data-target="#loginModal">
-        					<div class="recent-div9 offff"></div>
+        					<div class="recent-div9 off"></div>
 						</a>
 					</c:when>
                 	<%-- 세션 있을 때 --%>
@@ -339,7 +339,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                      <a href="${pageContext.request.contextPath}/modal/login.do"
                         class="st-bang" data-toggle="modal"
                         data-target="#loginModal">
-                          <div class="recent-div8 offff"></div>
+                          <div class="recent-div8 off"></div>
                      </a>
                   </c:when>
                       <%-- 세션 있을 때 --%>
