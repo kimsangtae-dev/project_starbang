@@ -42,7 +42,9 @@
                             <tr>
                                 <c:forEach var="item" items="${output}" varStatus="status">
                                 <td>
+                                    <a target="_blank" href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
                                     <p class="tbody-top-p" id="${item.roomno}">매물번호 ${item.roomno}</p>
+                                    </a>
                                 </td>
                                 </c:forEach>
                             </tr>
