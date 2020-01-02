@@ -107,13 +107,9 @@
                                                                     </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
-                                                                        	<c:if test="${item.roomno==h.roomno}">
-                                                                        	<div class="recent-div7">
-                                                                        	    <div class="recent-div8 on" data-value="off"></div>
-                                                                        	</div>
-                                                                        	</c:if>
-                                                                    	</c:forEach>
+                                                                    <div class="recent-div7">
+                                                                        <div class="recent-div8 on" data-value="off"></div>
+                                                                    </div>
                                                                     </c:otherwise>
                                                                 </c:choose>
 														</c:otherwise>
