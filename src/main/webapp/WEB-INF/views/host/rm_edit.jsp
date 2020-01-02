@@ -329,7 +329,7 @@
 									<input type="radio" id="commingday1" name="commingday" value="1">
 										<p>날짜 협의</p>
 									</label>
-									<input type="text" id="datepicker" name="commingday">
+									<input type="text" id="datepicker">
 									<label class="in_date">
 										<input type="radio" id="commingday2" name="commingday" value="2" id="cal">
 										<p>날짜 선택</p>
@@ -727,20 +727,6 @@ $(function() {
    });
 });
 
-/* 입주가능일 commingday */
-	$("#commingday0").click(function(){
-		$("input:radio[name='commingday']").val(0);
-	});
-	
-	$("#commingday1").click(function(){
-		$("input:radio[name='commingday']").val(1);
-	});
-
-$("#datepicker").change(function(){
-	var commingday_value = $("#datepicker").val();
-	
-	$("input:radio[name='commingday']").val(commingday_value);
-});
 </script>
 	<!-- 동정보 위치이동 끝 -->
 
@@ -1298,6 +1284,16 @@ $(function() {
 	    		$("#commingday").focus(); return false; 
 	    	}
 	    
+	    /* * * 입주가능일 commingday 값을 넣습니다. * * */
+		var commingday_value = $("input:radio[name='commingday']:checked").val();
+	    var available = $("#datepicker").val()
+	    
+	    if ( commingday_value == 0 || commingday_value == 1) { 
+	    	$("input:radio[name='commingday']").val( commingday_value );
+	    } else if ( commingday_value == 2) {
+	    	$("input:radio[name='commingday']").val( available );
+	    }
+	    
 	    /** 관리비 검사 */
 	    var check = $("#main_input:checked");
 	    if ( check.length == 0 ){
@@ -1311,7 +1307,6 @@ $(function() {
 	    if (!regex.value('#title', '제목을 입력해주세요.')) { $("#title").focus(); return false; }	 	 						// 제목
 	    if (!regex.value('#content_input', '상세설명을 입력해주세요.')) { $("#content_input").focus(); return false; }	 	 		
 		
-	    //if ( !regex.value('#addfile', '사진을 업로드 해주세요.')) { $("#addfile").focus(); return false; }
 	    if ( !regex.check('#isAgree', '매물관리 규정에 동의해주세요.') ) { $("#isAgree").focus(); return false; }
 	    
 	    if($("#addfile").val() != null ) {
