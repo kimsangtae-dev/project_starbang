@@ -1,6 +1,7 @@
 package project.star.b2.controllers;
 
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -375,7 +376,7 @@ public class HostController {
 				thumbnail = downloadHelper.createThumbnail(item.getFilePath(), 320, 320, false);
 				log.debug(":::::::::::::::::::::"+thumbnail);
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
+				// TODO TODO
 				e1.printStackTrace();
 			}
 			
@@ -391,12 +392,6 @@ public class HostController {
 			log.debug("업로드 될 항목" + item.toString());
 			
 			item.setThumbnail(thumbnail);
-
-			
-			
-			
-			
-			
 			
 			
 			// DB에 저장하기
@@ -674,6 +669,12 @@ public class HostController {
 		/** 2. 파라미터 처리 */
 		
 		String query = paramMap.get("address");
+		
+		String temp_address = paramMap.get("address");
+		String temp_region_2depth_name = paramMap.get("region_2depth_name");
+		String temp_region_3depth_name = paramMap.get("region_3depth_name");
+		Double temp_latitude = Double.parseDouble(paramMap.get("latitude"));
+		Double temp_longitude = Double.parseDouble(paramMap.get("longitude"));
 
 		/** 3. KAKAO API 요청 */
 		Address kakaoAddress = null;
@@ -694,6 +695,15 @@ public class HostController {
 				input_R.setLatitude(Double.parseDouble(item.getRoad_address().y));
 			}
 		}
+		
+		if(input_R.getRegion_2depth_name() == null) {
+			input_R.setAddress(temp_address);
+			input_R.setRegion_2depth_name(temp_region_2depth_name);
+			input_R.setRegion_3depth_name(temp_region_3depth_name);
+			input_R.setLongitude(temp_latitude);
+			input_R.setLatitude(temp_longitude);
+		}
+		
 		
 		/***
 		 * KakaoSearch API End
@@ -863,6 +873,35 @@ public class HostController {
 		UploadItem input = new UploadItem();
 		input.setImageno(imageno);
 		
+		UploadItem output = null;
+		
+		try {
+			output = uploadService.getUploadItem(input);
+		}catch (Exception e){
+			return webHelper.redirect(null, e.getLocalizedMessage());
+		}
+		
+		log.debug(output.getThumbnail() + ":::::::::::::::::::::::::");
+		
+		if ( output.getThumbnail() != null) {
+			
+			File thumbnail = new File("/Users/hope/Desktop/b2/src/main/webapp/WEB-INF/views/assets/img/upload" + output.getThumbnail());
+			boolean del_ok1 = thumbnail.delete();
+			System.out.println("thumbnail 삭제성공여부 :" + del_ok1);
+			
+		}
+		
+		
+		if (output.getFileName() != null) {
+			
+			File originalFile = new File("/Users/hope/Desktop/b2/src/main/webapp/WEB-INF/views/assets/img/upload/" + output.getFileName());
+			boolean del_ok2 = originalFile.delete();
+			System.out.println("originalFile 삭제성공여부 :" + del_ok2);
+			
+		}
+		
+		
+		
 		try {
 			uploadService.deleteUploadItem(input);
 		}catch (Exception e){
@@ -880,8 +919,6 @@ public class HostController {
 	@RequestMapping(value = "/host/rm_edit_addImage.do", method = RequestMethod.POST)
 	public ModelAndView rm_edit_addImage() {
 		
-		
-		
 		/**
 		 * UPLOAD 
 		 */
@@ -896,9 +933,17 @@ public class HostController {
 		Map<String, String> paramMap = webHelper.getParamMap();
 		
 		int roomno = Integer.parseInt( paramMap.get("roomno") );
-		
 		// 조회결과의 Beans에 추가 후 로그를 통해 내역 확인
 		for (UploadItem item : fileList) {
+			
+			String thumbnail = null;
+			
+			try {
+				thumbnail = downloadHelper.createThumbnail(item.getFilePath(), 320, 320, false);
+			} catch (Exception e1) {
+				// TODO
+				e1.printStackTrace();
+			}
 			
 			item.setFieldName(item.getFieldName());
 			item.setOriginName(item.getOriginName());
@@ -909,6 +954,7 @@ public class HostController {
 			item.setRegDate(item.getRegDate());
 			item.setEditDate(item.getEditDate());
 			item.setRoomno(roomno);
+			item.setThumbnail(thumbnail);
 			log.debug("업로드 될 항목" + item.toString());
 
 			

@@ -87,6 +87,7 @@ public class MainRestController {
 
 	List<Heart> output = null; // 조회결과가 저장될 객체
 	PageData pageData = null;
+	int heart_size = 0;
 
 	try {
 		// 전체 게시글 수 조회
@@ -99,6 +100,7 @@ public class MainRestController {
 		Heart.setListCount(pageData.getListCount());
 		// 데이터 조회하기
 		output = heartService.getHeartGalleryList(input);
+		heart_size = output.size();
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
@@ -108,6 +110,7 @@ public class MainRestController {
 	data.put("keyword",keyword);
 	data.put("item",output);
 	data.put("meta",pageData);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }
@@ -132,20 +135,22 @@ public class MainRestController {
 	List<String> list = null;
 	PageData pageData = null;
 	int cookie_size = 0;
+	int heart_size=0;
 
 	try {
-				// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
-				pageData = new PageData(nowPage, totalCount, listCount, pageCount);
+		// 페이지 번호 계산 --> 계산결과를 로그로 출력될 것이다.
+		pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 
-				// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
-				Heart.setOffset(pageData.getOffset());
-				Heart.setListCount(pageData.getListCount());
-				// 데이터 조회하기
+		// SQL의 LIMIT절에서 사용될 값을 Beans의 static 변수에 저장
+		Heart.setOffset(pageData.getOffset());
+		Heart.setListCount(pageData.getListCount());
+		// 데이터 조회하기
 		list=CookieUtils.getValueList("cookieName", request);
 		cookie_size = list.size();
 	} catch (UnsupportedEncodingException e1) {
 		e1.printStackTrace();
 	}
+	
 	/** 2)데이터 조회하기 */
 	// 조회에 필요한 조건값(검색어)를 Beans에 담는다.
 	List<Gallery> output = null;
@@ -159,6 +164,11 @@ public class MainRestController {
 		Collections.reverse(list);
 		output = galleryService.getCookieMainList(list);
 		if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
+		if (heartlist==null) {
+			heart_size = 0;
+		} else {
+			heart_size = heartlist.size();
+		}
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
 	}
@@ -169,6 +179,7 @@ public class MainRestController {
 	data.put("meta",pageData);
 	data.put("heart", heartlist);
 	data.put("cookie_size", cookie_size);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }
@@ -200,7 +211,7 @@ public class MainRestController {
 		Heart input_heart = new Heart();
 		input_heart.setUserno(userno);
 		List<Heart> heartlist = null;
-
+		int heart_size = 0;
 
 		PageData pageData = null;
 
@@ -215,6 +226,11 @@ public class MainRestController {
 			Popular.setListCount(pageData.getListCount());
 			// 데이터 조회하기
 			if (userno != 0) { heartlist = galleryService.getHeartList(input_heart); }
+			if (heartlist==null) {
+				heart_size = 0;
+			} else {
+				heart_size = heartlist.size();
+			}
 			output = galleryService.getPopularGalleryList(input);
 	} catch (Exception e) {
 		return webHelper.getJsonError(e.getLocalizedMessage());
@@ -226,6 +242,7 @@ public class MainRestController {
 	data.put("item",output);
 	data.put("meta",pageData);
 	data.put("heart", heartlist);
+	data.put("heart_size", heart_size);
 	
 	return webHelper.getJsonData(data);
 }

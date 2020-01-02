@@ -502,13 +502,13 @@
          
             /** 세션 식별하기 **/
             Handlebars.registerHelper('session', function(roomno, options) {
-                for (var i=0; i<heartlist.length; i++) {
+                for (var i=0; i<json.heart_size; i++) {
                     var heart_div = '<div class="wish-div7">'
                         heart_div += '<div class="wish-div8 on" data-value="off"></div>'
                         heart_div += '</div>'
                     return heart_div;
                 }
-                if (json.heart.length == 0) {
+                if (json.heart_size == 0) {
                 	var heart_div = '<div class="recent-div7">'
                 		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                 		heart_div += '</div>'
@@ -566,7 +566,7 @@
 });	
     /** 최근본방 ajax처리 함수 */
 	function recentroom() {
-		$.get("${pageContext.request.contextPath}/professor2", {"userno": sessionuserno}, function(json){
+		$.get("${pageContext.request.contextPath}/professor2", {}, function(json){
             Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                 if (dealingtype == '월세') { return options.fn(this); }
                 else { return options.inverse(this); }
@@ -591,13 +591,13 @@
                         heart_div += '</div>'
                         heart_div += '</a>'
                     return heart_div;
-                 } else if (json.heart.length==0) {
+                 } else if (json.heart_size==0) {
                 	 var heart_div = '<div class="recent-div7">'
                          heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                          heart_div += '</div>'
                       return heart_div;
                  } else {
-                    for (var i=0; i<json.heart.length; i++) {
+                    for (var i=0; i<json.heart_size; i++) {
                        if (json.heart[i].roomno == roomno) {
                          var heart_div = '<div class="recent-div7">'
                               heart_div += '<div class="recent-div8 on" data-value="off"></div>'
@@ -605,7 +605,7 @@
                            return heart_div;
                        }
                     }
-                    for (var i=0; i<json.heart.length; i++) {
+                    for (var i=0; i<json.heart_size; i++) {
                        if (json.heart[i].roomno != roomno) {
                          var heart_div = '<div class="recent-div7">'
                               heart_div += '<div class="recent-div8 off" data-value="on"></div>'
@@ -613,7 +613,7 @@
                            return heart_div;
                        }
                     }
-                    if (json.heart.length == 0) {
+                    if (json.heart_size == 0) {
                     	var heart_div = '<div class="recent-div7">'
                     		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                     		heart_div += '</div>'
@@ -625,7 +625,7 @@
         
         var empty_div = "";
         if (json.cookie_size < 4) {
-            for (var k=0; k<4-json.item.length; k++) {
+            for (var k=0; k<4-json.cookie_size; k++) {
                 empty_div += '<li><div class="recent-div5-vacant margin">';
                 empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
                 empty_div += '</div></li>';
@@ -690,7 +690,7 @@
                      return heart_div;
                   }
                   else {
-                     for (var i=0; i<json.heart.length; i++) {
+                     for (var i=0; i<json.heart_size; i++) {
                         if (json.heart[i].roomno == roomno) {
                           var heart_div = '<div class="hit-div7">'
                                heart_div += '<div class="hit-div8 on" data-value="off"></div>'
@@ -698,7 +698,7 @@
                             return heart_div;
                         }
                      }
-                     for (var i=0; i<json.heart.length; i++) {
+                     for (var i=0; i<json.heart_size; i++) {
                         if (json.heart[i].roomno != roomno) {
                           var heart_div = '<div class="hit-div7">'
                                heart_div += '<div class="hit-div8 off" data-value="on"></div>'
@@ -706,7 +706,7 @@
                             return heart_div;
                         }
                      }
-                     if (json.heart.length == 0) {
+                     if (json.heart_size == 0) {
                      	var heart_div = '<div class="recent-div7">'
                      		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                      		heart_div += '</div>'
