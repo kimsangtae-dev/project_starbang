@@ -4,26 +4,26 @@ import lombok.Data;
 
 @Data
 public class Info {
-	private int feeitem;
-	private int parking;
-	private int pet;
-	private int elevator;
-	private int veranda;
-	private int builtin;
-	private int optionitem;
-	private int loan;
-	private float supplyarea;
-	private int maxfloor;
-	private int heater;
-	private String commingday;
-	private String buildtype;
-	private String content;
-	private int roomno;
-	private int chart1;
-	private int chart2;
-	private int chart3;
-	private int chart4;
-	private int chart5;
+	private int feeitem; //관리비정보
+	private int parking; //주차정보
+	private int pet; //애완동물 가능 여부
+	private int elevator; //엘리베이터 여부
+	private int veranda; //베란다 여부
+	private int builtin; //빌트인 여부
+	private int optionitem; //옵션아이템여부
+	private int loan; //대출 여부
+	private float supplyarea; //공급면적
+	private int maxfloor; //전용면적
+	private int heater; //히터여부
+	private String commingday; //입주일
+	private String buildtype; //건물유형	
+	private String content; //상세내용
+	private int roomno; //방 번호
+	private int chart1; //오각형 그래프 차트 수치 첫번째 값
+	private int chart2; //오각형 그래프 차트 수치 두번째 값
+	private int chart3; //오각형 그래프 차트 수치 세번째 값
+	private int chart4; //오각형 그래프 차트 수치 네번째 값
+	private int chart5; //오각형 그래프 차트 수치 다섯번째 값
 	
 	/** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치
