@@ -47,7 +47,21 @@
 		FROM image
 		ORDER BY imageno ASC
 	</select>
+	
 
+	<!-- 조건에 맞는 데이터 수를 집계하여 int 타입으로 반환한다. 
+		count, max, min, sum, avg 함수를 사용한 경우 Mapper에서는 resultMap이 아닌 resultType으로 반환한다. -->
+	<select id="selectCountAll"
+		parameterType="project.star.b2.model.UploadItem" resultType="int">
+		SELECT COUNT(*) FROM image
+	</select>
+
+	<!-- 마지막 PRI값 조회를 위한 기능 -->
+	<select id="selectMaxItem"
+		parameterType="project.star.b2.model.UploadItem" resultType="int">
+		SELECT MAX(imageno) FROM image
+	</select>
+	
 	<!-- 데이터 저장을 위한 기능 정의 -->
 	<insert id="insertItem"
 		parameterType="project.star.b2.model.UploadItem"
@@ -79,12 +93,5 @@
             contentType=#{contentType}, fileSize=#{fileSize}, fileName=#{fileName}, editDate=#{now()}, thumbnail=#{thumbnail}
         WHERE imageno=#{imageno}
 	</update>
-
-	<!-- 조건에 맞는 데이터 수를 집계하여 int 타입으로 반환한다. count, max, min, sum, avg 함수를 사용한 
-		경우 Mapper에서는 resultMap이 아닌 resultType으로 반환한다. -->
-	<select id="selectCountAll"
-		parameterType="project.star.b2.model.UploadItem" resultType="int">
-		SELECT COUNT(*) FROM image
-	</select>
 
 </mapper>
