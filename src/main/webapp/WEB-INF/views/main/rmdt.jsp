@@ -590,6 +590,68 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 
 
 
+<!-- 허위매물 신고 -->
+      <div class="modal fade modalwit" id="falsehoodmo">
+         <div class="modal-content modal-contentwit">
+            <div class="modal-header">
+                   <h4 class="falhooh4">허위매물 신고</h4>
+                   <!-- 닫기버튼 -->
+              <button class="btnclose"  data-dismiss="modal">
+                 <svg width="30" height="30" viewBox="0 0 32 32">
+                    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                       <circle class="Circle" cx="15" cy="15" r="15"></circle>
+                       <g class="Close" stroke-linecap="round" stroke-width="2">
+                          <path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
+                       </g>
+                    </g>
+                 </svg>
+              </button>
+                </div>
+            <div class="modal-body modalbody modalcont" id="modaloutcheck">
+			   <img class="sirenmodal" src="/b2/assets/img/ma_img/rmdt/siren.png" >
+			   <h4 class="modal-title modal-titlecolor">허위매물을 신고해주세요!</h4>
+               <h4 class="modal-title">허위매물 신고를 접수해주시면, 매물 검증 단계를 거친 후</h4>
+               <h4 class="modal-title">허위매물 여부를 판정하여 목록에서 삭제등의 조치가 진행됩니다.</h4>
+               <br/>
+               <pre class="mypageoutpre">
+               </pre>
+               <div>
+            	   <label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="1" />
+            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">거래가 완료된 매물</span>
+					</label>
+					<label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="2" />
+            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">가격이 다른 매물</span>
+					</label>
+					<label class="labelss">
+            	   		<input type="radio" name="fakeReason" value="3" />
+            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">사진이 다른 매물</span>
+					</label>
+					<label class="labelss">
+               			<input type="radio" name="fakeReason" value="4" />
+               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">위치가 다른 매물</span>
+					</label>
+					<label class="labelss">
+               			<input type="radio" name="fakeReason" value="5" />
+               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">옵션이 다른 매물</span>
+					</label>
+				</div>
+
+				<h4 class="modal-titlef modal-dd">별방은 상시 검수를 통해 허위매물 근절을 위해 노력중입니다</h4>
+               	<h4 class="modal-titlef">이 매물이 허위매물로 판정된 경우 별방 기프티콘을 선물로 드려요</h4>
+               	<h4 class="modal-titlef">허위 신고일 경우 서비스 이용이 제한이 될 수 있습니다</h4>
+            </div>
+            <input type="hidden" name="roomno" value="${room.roomno}">
+			<input type="hidden" name="userno" value="${user.userno}">
+            <div class="modal-footer modal-footerhw ">
+               <button type="submit" id="modalsubmit" class="btn btn-default falsehoodsubmit" data-dismiss="modal">확인</button>
+            </div>
+         </div>
+      </div>
+
+
+
 	<!-- Javascript -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
@@ -1163,66 +1225,4 @@ function binary2() {
 	</script>
 
 </body>
-
-
-<!-- 허위매물 신고 -->
-      <div class="modal fade modalwit" id="falsehoodmo">
-         <div class="modal-content modal-contentwit">
-            <div class="modal-header">
-                   <h4 class="falhooh4">허위매물 신고</h4>
-                   <!-- 닫기버튼 -->
-              <button class="btnclose"  data-dismiss="modal">
-                 <svg width="30" height="30" viewBox="0 0 32 32">
-                    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-                       <circle class="Circle" cx="15" cy="15" r="15"></circle>
-                       <g class="Close" stroke-linecap="round" stroke-width="2">
-                          <path d="M19.243 19.243l-8.486-8.486M19.243 10.757l-8.486 8.486"></path>
-                       </g>
-                    </g>
-                 </svg>
-              </button>
-                </div>
-            <div class="modal-body modalbody modalcont" id="modaloutcheck">
-			   <img class="sirenmodal" src="/b2/assets/img/ma_img/rmdt/siren.png" >
-			   <h4 class="modal-title modal-titlecolor">허위매물을 신고해주세요!</h4>
-               <h4 class="modal-title">허위매물 신고를 접수해주시면, 매물 검증 단계를 거친 후</h4>
-               <h4 class="modal-title">허위매물 여부를 판정하여 목록에서 삭제등의 조치가 진행됩니다.</h4>
-               <br/>
-               <pre class="mypageoutpre">
-               </pre>
-               <div>
-            	   <label class="labelss">
-            	   		<input type="radio" name="fakeReason" value="1" />
-            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">거래가 완료된 매물</span>
-					</label>
-					<label class="labelss">
-            	   		<input type="radio" name="fakeReason" value="2" />
-            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">가격이 다른 매물</span>
-					</label>
-					<label class="labelss">
-            	   		<input type="radio" name="fakeReason" value="3" />
-            	   		<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">사진이 다른 매물</span>
-					</label>
-					<label class="labelss">
-               			<input type="radio" name="fakeReason" value="4" />
-               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">위치가 다른 매물</span>
-					</label>
-					<label class="labelss">
-               			<input type="radio" name="fakeReason" value="5" />
-               			<span class="checkBox"></span> <span class="checkText checkTextspan checkTextspanma">옵션이 다른 매물</span>
-					</label>
-				</div>
-
-				<h4 class="modal-titlef modal-dd">별방은 상시 검수를 통해 허위매물 근절을 위해 노력중입니다</h4>
-               	<h4 class="modal-titlef">이 매물이 허위매물로 판정된 경우 별방 기프티콘을 선물로 드려요</h4>
-               	<h4 class="modal-titlef">허위 신고일 경우 서비스 이용이 제한이 될 수 있습니다</h4>
-            </div>
-            <input type="hidden" name="roomno" value="${room.roomno}">
-			<input type="hidden" name="userno" value="${user.userno}">
-            <div class="modal-footer modal-footerhw ">
-               <button type="submit" id="modalsubmit" class="btn btn-default falsehoodsubmit" data-dismiss="modal">확인</button>
-            </div>
-         </div>
-      </div>
-
 </html>
