@@ -5,14 +5,14 @@ import lombok.Data;
 /** 테이블 구조에 맞춘 Java Beans 생성 */
 @Data
 public class User {
-    private int userno;
-    private String name;
-    private String email;
-    private String passwd;
-    private String tel;
-    private String regdate;
-    private String editdate;
-    private String profile_img;
+    private int userno; //유저번호
+    private String name; //유저이름
+    private String email; //이메일
+    private String passwd; //비밀번호
+    private String tel; //휴대폰번호
+    private String regdate; //등록일자
+    private String editdate; //수정일자
+    private String profile_img; //프로필 이미지
     
     private String reason;		// 탈퇴이유
 	//private String regdate;		// 탈퇴 날짜

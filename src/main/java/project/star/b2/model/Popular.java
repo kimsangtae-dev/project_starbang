@@ -19,11 +19,11 @@ public class Popular {
 	private int price;			// 거래정보 > 거래종류 > 거래금액(월세,매매,전세)
 	
 	/** heart */
-	private int heartno;
+	private int heartno; //인기매물번호
 	
 	/** image */
-	private String filepath;
-	private String filename;
+	private String filepath; //이미지 파일경로
+	private String filename; //이미지 파일 이름
 		
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치

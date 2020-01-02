@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class Price {
 
-	private int priceno;
-	private String dealingtype;
-	private int deposit;
-	private int price;
-	private String short_room;
-	private int roomno;
+	private int priceno; //가격번호
+	private String dealingtype; //방 종류
+	private int deposit; //전세금, 보증금
+	private int price; //가격
+	private String short_room; //단기여부
+	private int roomno; //방 번호
 
 	/** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치

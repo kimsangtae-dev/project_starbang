@@ -13,7 +13,6 @@ public interface HeartService {
      */
     public List<Heart> getHeartGalleryList(Heart input) throws Exception;
     
-    
     public List<Gallery> getGalleryList(Gallery input) throws Exception;
         
         /**

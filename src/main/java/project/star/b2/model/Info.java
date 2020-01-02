@@ -13,7 +13,7 @@ public class Info {
 	private int optionitem; //옵션아이템여부
 	private int loan; //대출 여부
 	private float supplyarea; //공급면적
-	private int maxfloor; //전용면적
+	private int maxfloor; //건물 최대 층 수
 	private int heater; //히터여부
 	private String commingday; //입주일
 	private String buildtype; //건물유형	
