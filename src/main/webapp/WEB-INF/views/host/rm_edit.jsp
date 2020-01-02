@@ -156,7 +156,7 @@
 										
 										<c:choose>
 											<c:when test="${k.dealingtype == '월세'}">
-												<div class="d_div remove">
+												<div class="d_div remove_p">
 													<p class="bbtn">월세</p>
 													<input type="hidden" name="priceno" value="${k.priceno}">
 													<input type="hidden" class="dealingtype" name="dealingtype" value="월세">
@@ -170,7 +170,7 @@
 											</c:when>
 
 											<c:when test="${k.dealingtype == '전세'}">
-												<div class="d_div1 remove">
+												<div class="d_div1 remove_p">
 												    <p class="bbtn">전세</p>
 												    <input type="hidden" name="priceno" value="${k.priceno}">
 												    <input type="hidden" class="dealingtype" name="dealingtype" value="전세">
@@ -185,7 +185,7 @@
 											</c:when>
 											
 											<c:when test="${k.dealingtype == '매매'}">
-												<div class="d_div2 remove">
+												<div class="d_div2 remove_p">
 												    <p class="bbtn">매매</p>
 												    <input type="hidden" name="priceno" value="${k.priceno}">
 												    <input type="hidden" class="dealingtype" name="dealingtype" value="매매">
@@ -575,7 +575,7 @@
                        	<div class="photo_info">
                            	<div class="up_list">
 								<c:forEach var="k" items="${img}" varStatus="status">
-									<div class="up-d remove">
+									<div class="up-d remove_i">
 										<input type="hidden" value="${k.imageno}" name="imageno" />
 				            			<button class="up-close-b"></button>
 				            			<div class="up-d2">
@@ -882,7 +882,7 @@ $(function() {
 		$(function() {
 			$('.glyphicon-remove').on('click',function() {
 				
-				var priceno = $(this).parents(".remove").find("input:hidden[name='priceno']").val();
+				var priceno = $(this).parents(".remove_p").find("input:hidden[name='priceno']").val();
 				
 				//결과 url
 				$.ajax({
@@ -940,6 +940,7 @@ $(function() {
 	
 	var index = 0;	// 지우기 위한 변수
     var sel_files = [];	// 파일 추가를 위한 변수
+    var pri = Number("${primary}");
 	
 	$(function() {
 		$("#uploadPhoto").click(function(e){
@@ -967,13 +968,15 @@ $(function() {
 			        
 			        reader.onload = function(e) {
 			        	
-			            var item = '<div class="up-d" onclick="deleteImageAction(' + index + ')" id="img_id_' + index + '" data-id="' + index + '">'	
-			            			+'<button class="up-close-b"></button>'
-			            			+'<div class="up-d2"><img src="' + e.target.result + '" data-file="' + f.name + '" /></div></div>';
+			        		pri++
+			        		console.log(pri);
+			        		 
+			        	
+			            var item = '<div class="up-d remove_i">'
+			            			+'<input type="hidden" value="' + pri + '" name="imageno">'
+			            			+'<button type="button" class="up-close-b delete"></button>'
+			            			+'<div class="up-d2"><img src="' + e.target.result + '"/></div></div>';
 			            $(".up_list").append(item);
-			            
-			            index++;
-			            
 			         	
 			        }
 			        reader.readAsDataURL(f);
@@ -982,7 +985,7 @@ $(function() {
 		}); // document.change
 	});  // document.ready
 
-	// 이미지 지우기
+/* 	// 이미지 지우기
 	function deleteImageAction(index) {
 	    console.log("index : "+index);
 	
@@ -990,29 +993,8 @@ $(function() {
 	
 	    var img_id = "#img_id_"+index;
 	    $(img_id).remove(); 
-	} 
+	}  */
 	
-	// 삭제버튼 클릭시 이미지 DB Ajax 삭제 
-	$('.up-close-b').click(function(e) {
-		e.preventDefault();
-		
-		var imageno = $(this).siblings("input:hidden[name='imageno']").val();
-		
-		//결과 url
-		$.ajax({
-		url : "${pageContext.request.contextPath}/host/rm_edit_delImage.do",
-		data : {imageno : imageno},
-		type : "POST",
-		datatype : 'text',
-		success : function() {
-			console.log(imageno+"번 이미지 테이블이 삭제 처리 되었습니다.");
-			$("input:hidden[value='" + imageno + "']").parent(".remove").remove();
-		},
-		error : function(error,status,request) {
-			alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
-			},
-		});
-	})
 	
 	// 이미지파일 추가시 이미지 DB Ajax로 추가 
 	$(document).ready(function() {
@@ -1034,7 +1016,34 @@ $(function() {
 				}
 			}); // ajax
 		});
+		
+		
+		// 삭제버튼 클릭시 이미지 DB Ajax 삭제 
+		$(document).on("click", ".up-close-b", function(e) {
+			e.preventDefault();
+			
+			var imageno = $(this).siblings("input:hidden[name='imageno']").val();
+			
+			//결과 url
+			$.ajax({
+			url : "${pageContext.request.contextPath}/host/rm_edit_delImage.do",
+			data : {imageno : imageno},
+			type : "POST",
+			datatype : 'text',
+			success : function() {
+				console.log(imageno+"번 이미지 테이블이 삭제 처리 되었습니다.");
+				$("input:hidden[value='" + imageno + "']").parent(".remove_i").remove();
+			},
+			error : function(error,status,request) {
+				alert("Error!"+ error+ "request: "+ request+ " status: "+ status);
+				},
+			});
+		});
+		
 	});
+	
+	
+	
 	
 </script>
 
@@ -1068,8 +1077,6 @@ $(function() {
 	 	
 	 	
 		/* 거래정보 PRICE */
-		
-
 		
 
 		/* 
