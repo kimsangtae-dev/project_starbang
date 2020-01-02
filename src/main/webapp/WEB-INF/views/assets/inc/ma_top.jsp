@@ -115,8 +115,8 @@
         }
         
         #loginprofile {
-        	height: 80px;
-		    width: 80px;
+        	height: 30px;
+		    width: 30px;
     		border-radius: 50%;
         }
         
