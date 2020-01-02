@@ -449,6 +449,7 @@ public class HostController {
 		List<Price> output_price = null;
 		List<UploadItem> output_image = null;
 		User output_user = null;
+		int primary = 0;
 
 		try {
 
@@ -466,6 +467,8 @@ public class HostController {
 
 			input_user.setUserno(output_room.getUserno());
 			output_user = userService.getUserItem(input_user);
+			
+			primary = uploadService.getUploadMaxItem(null);
 
 		} catch (Exception e) {
 			log.debug("방 조회에 실패하였습니다.");
@@ -479,6 +482,7 @@ public class HostController {
 		model.addAttribute("price", output_price);
 		model.addAttribute("img", output_image);
 		model.addAttribute("user", output_user);
+		model.addAttribute("primary", primary);
 
 		return new ModelAndView("host/rm_edit");
 	}
