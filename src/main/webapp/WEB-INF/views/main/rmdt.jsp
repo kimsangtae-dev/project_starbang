@@ -122,23 +122,31 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			</c:choose>
 		</div>
 		<!--찜,이메일,공유,허위매물신고 끝-->
-		<div id="confirm room">
-			<!--확인매물 푸른색바 시작-->
-			<div class="eTgAil confirm">
-				<p class="gknGpv onfirm">
-					확인매물<span>
-					<c:set var="confirmdate" value="${fn:replace(room.confirmdate, ' 00:00:00', '')}" />
-					${confirmdate}
-					</span>
-				</p>
-				<p class="cETKtB">
-					<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
-					<button class="mola">
-						<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/confirmq.png">
-					</button>
-				</p>
-			</div>
-		</div>
+		<c:choose>
+			<c:when test="${room.confirmdate == null }">
+			</c:when>
+			<c:when test="${room.confirmdate != null }">
+				<div id="confirm room">
+					<!--확인매물 푸른색바 시작-->
+					<div class="eTgAil confirm">
+						<p class="gknGpv onfirm">
+							확인매물<span>
+							<c:set var="confirmdate" value="${fn:replace(room.confirmdate, ' 00:00:00', '')}" />
+							${confirmdate}
+							</span>
+						</p>
+						<p class="cETKtB">
+							<span class="confirmsm">방주인과 공인중개사가 거래정보를 확인한 매물입니다.</span>
+							<button class="mola">
+								<img src="${pageContext.request.contextPath}/assets/img/ma_img/rmdt/confirmq.png">
+							</button>
+						</p>
+					</div>
+				</div>
+			</c:when>
+		</c:choose>
+		
+		
 		<!--확인매물 푸른색바 끝-->
 		<div id="summury-option">
 			<!--방등록시 상세 옵션값들 시작-->
