@@ -236,7 +236,19 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				</li>
 				<li class="gWdVQs">
 					<p class=" gPsGgb">입주가능일</p>
-					<div class="gbAeEp">${info.commingday}</div>
+					<div class="gbAeEp">
+						<c:choose>
+							<c:when test="${info.commingday == '0'}">
+								<span>즉시 입주</span>
+							</c:when>
+							<c:when test="${info.commingday == '1'}">
+								<span>날짜 협의</span>
+							</c:when>
+							<c:otherwise>
+								<span>${info.commingday}</span>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</li>
 				<li></li>
 				<li></li>
@@ -1152,6 +1164,7 @@ function binary2() {
 
 </body>
 
+
 <!-- 허위매물 신고 -->
       <div class="modal fade modalwit" id="falsehoodmo">
          <div class="modal-content modal-contentwit">
@@ -1211,4 +1224,5 @@ function binary2() {
             </div>
          </div>
       </div>
+
 </html>
