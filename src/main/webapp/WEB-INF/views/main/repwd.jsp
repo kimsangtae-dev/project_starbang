@@ -38,13 +38,5 @@
 <!-- Javascript -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	/* 좋아요 클릭 -> 하트 색 변경 */
-	$(function() {
-		$(".hit-div8").click(function(e) {
-			$(this).toggleClass('on off');
-		});
-	});
-</script>
 </body>
 </html>
