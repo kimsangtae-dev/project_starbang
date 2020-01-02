@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,6 @@
    href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
 <link rel="apple-touch-icon-precomposed"
    href="${pageContext.request.contextPath}/assets/ico/logo_bb.png" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /><!-- 어썸 폰트 -->
 <style>
 a > img {
    height: 100px;
@@ -176,6 +175,11 @@ a > img {
    top: 18px;
    left: 200px;
 }
+
+.recent-a-div img {
+	width: 300px;
+	height: 150px
+}
 </style>
 <title>팀소개</title>
 </head>
@@ -197,19 +201,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/4.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
-                  <span class="bold">생년월일</span> <span>07.25</span>
+                  <span class="bold">주요기능</span> <span>최근본방 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀장</p>
             <p class="recent-a-p2">
                <span>조수민</span>
             </p>
+            <p class="recent-a-p34">닉네임</p>
+            <p class="recent-a-p34">07.25</p>
             <p class="recent-a-p34">gju031@gmail.com</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
          </div>
       </div>
       <!-- 1번째 갤러리 끝 -->
@@ -223,19 +228,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/3.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
-                  <span class="bold">생년월일</span> <span>07.30</span>
+                  <span class="bold">주요기능</span> <span>공실등록 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀원</p>
             <p class="recent-a-p2">
                <span>김기홍</span>
             </p>
+            <p class="recent-a-p34">닉네임</p>
+            <p class="recent-a-p34">07.30</p>
             <p class="recent-a-p34">frozenof@gmail.com</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
          </div>
       </div>
       <!-- 두번째 갤러리 끝 -->
@@ -249,29 +255,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"><img src="https://i.pinimg.com/originals/d1/1e/c3/d11ec374c68f527bec9a5719e7043fe8.jpg"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/2.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
-               <div class="recent-a-confirm-div"> 
-                  <span class="bold">생년월일</span> <span>10.09</span>
+               <div class="recent-a-confirm-div">
+                  <span class="bold">주요기능</span> <span>DB 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀원</p>
             <p class="recent-a-p2">
                <span>이명섭</span>
             </p>
+            <p class="recent-a-p34">닉네임</p>
+            <p class="recent-a-p34">10.09</p>
             <p class="recent-a-p34">narabyeol@gmail.com</p>
-            <p class="recent-a-p34">▶▶데이터베이스◀◀</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-            <i class="fa fa-refresh fa-spin fa-fw"></i>
-            <i class="fa fa-spinner fa-pulse fa-fw"></i> 
-            <span class="fa-stack fa-lg">
-			<i class="fa fa-camera fa-stack-1x"></i> 
-			<i class="fa fa-ban fa-stack-2x text-danger"></i>
-			</span>
-			<i class="fas fa-angry"></i>
-            <a href="http://www.naver.com">검색</a>
          </div>
       </div>
       <!-- 4번째 갤러리 끝 -->
@@ -285,19 +282,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/7.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
-                  <span class="bold">생년월일</span> <span>07.15</span>
+                  <span class="bold">주요기능</span> <span>세션 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀원</p>
             <p class="recent-a-p2">
                <span>김상태</span>
             </p>
+            <p class="recent-a-p34">닉네임</p>
+            <p class="recent-a-p34">07.15</p>
             <p class="recent-a-p34">kst1330@gmail.com</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
          </div>
       </div>
       <!-- 4번째 갤러리 끝 -->
@@ -311,19 +309,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/5.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
-                  <span class="bold">생년월일</span> <span>02.17</span>
+                  <span class="bold">주요기능</span> <span>방찾기 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀원</p>
             <p class="recent-a-p2">
                <span>박지원</span>
             </p>
+            <p class="recent-a-p34">닉네임</p>
+            <p class="recent-a-p34">02.17</p>
             <p class="recent-a-p34">gwonp217@gmail.com</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
          </div>
       </div>
       <!-- 5번째 갤러리 끝 -->
@@ -337,19 +336,20 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/1.PNG"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
-                  <span class="bold">생년월일</span> <span>01.29</span>
+                  <span class="bold">주요기능</span> <span>하트 마스터</span>
                </div>
             </div> <!-- 생년월일 끝 -->
             <p class="recent-a-p1">팀원</p>
             <p class="recent-a-p2">
                <span>김수진</span>
             </p>
+            <p class="recent-a-p34">만두</p>
+            <p class="recent-a-p34">01.29</p>
             <p class="recent-a-p34">wkqk89@gmail.com</p>
-            <p class="recent-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
          </div>
       </div>
       <!-- 6번째 갤러리 끝 -->
