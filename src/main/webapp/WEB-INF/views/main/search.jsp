@@ -225,7 +225,7 @@ pageEncoding="UTF-8"%>
                                                         	<a href="${pageContext.request.contextPath}/modal/login.do"
 																data-toggle="modal" data-target="#loginModal">
                                                         	<div class="recent-div7">
-                                                               <div class="recent-div8 offff"></div>
+                                                               <div class="recent-div8 off"></div>
                                                            	</div>
                                                            	</a>
                                                         	</c:when>
@@ -244,13 +244,9 @@ pageEncoding="UTF-8"%>
                                                                     </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                    	<c:forEach var="h" items="${heart}" varStatus="status">
-                                                                        	<c:if test="${item.roomno==h.roomno}">
-                                                                        	<div class="recent-div7">
-                                                                        	    <div class="recent-div8 on" data-value="off"></div>
-                                                                        	</div>
-                                                                        	</c:if>
-                                                                    	</c:forEach>
+                                                                    	<div class="recent-div7">
+                                                                        	<div class="recent-div8 on" data-value="off"></div>
+                                                                        </div>
                                                                     </c:otherwise>
                                                                 </c:choose>
                                                         	</c:otherwise>
@@ -267,7 +263,7 @@ pageEncoding="UTF-8"%>
 
                                                             <!-- 이미지 -->
                                                             <div class="recent-a-div">
-                                                                <img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}" />
+                                                                <img src="${pageContext.request.contextPath}/assets/img/upload/${item.thumbnail}" />
                                                             </div>
                                                             <c:if test="${item.confirmdate != null}">
                                                                 <%-- 확인매물 div --%>
@@ -457,7 +453,7 @@ pageEncoding="UTF-8"%>
 			<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
 			{{!-- 이미지 --}}
 			<div class="recent-a-div">
-				<img src="${pageContext.request.contextPath}/assets/img/upload/{{filename}}" />
+				<img src="${pageContext.request.contextPath}/assets/img/upload/{{thumbnail}}" />
 			</div>
 			{{!-- 확인매물 div --}}
 			{{#if confirmdate}}

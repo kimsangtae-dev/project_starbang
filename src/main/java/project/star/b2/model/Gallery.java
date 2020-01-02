@@ -16,9 +16,6 @@ public class Gallery {
 	private String confirmdate;	// 확인매물 일자
 	private String address;		// 주소
 	private int status;			// 공실상태
-	
-	private int heartno;		// 하트넘버
-	private String regdate;		// 좋아요 클릭 일자
 
 
 	/** info */
@@ -43,6 +40,7 @@ public class Gallery {
 	/** file */
 	private int fileno;			// 첨부파일 일련번호
 	private String filename; 	// 첨부파일 이름
+	private String thumbnail;	// 첨부파일 썸네일
 
 	private String region_2depth_name;	// kakao api 를 위한 구 정보 저장
 	private double latitude;	// 위도
@@ -53,6 +51,9 @@ public class Gallery {
 	private String email;		// 방을 올린 유저의 이메일
 	private String name;		// 방을 올린 유저이 이름
 
+	/** heart */
+	private int heartno;		// 하트넘버
+	private String regdate;		// 좋아요 클릭 일자
 
     /** 페이지 구현이 필요한 경우 아래 속성들을 추가한다. (static)  */
     private static int offset;      // LIMIT 절에서 사용할 검색 시작 위치

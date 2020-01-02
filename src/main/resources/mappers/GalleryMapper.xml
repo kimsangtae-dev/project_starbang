@@ -39,6 +39,7 @@
 		<result property="price" column="price" />
 		
 		<result property="filename" column="filename" />
+		<result property="thumbnail" column="thumbnail" />
 		
 		<result property="heartno" column="heartno" />
 		<result property="regdate" column="regdate" />
@@ -50,7 +51,7 @@
 		SELECT
 		r.roomno, r.roomtype, r.title, r.floor, r.area, r.fee, DATE_FORMAT(confirmdate,
 		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
-		r.region_2depth_name, r.latitude, r.longitude, i.filename
+		r.region_2depth_name, r.latitude, r.longitude, i.thumbnail
 		FROM room AS r
 		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
 		INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
