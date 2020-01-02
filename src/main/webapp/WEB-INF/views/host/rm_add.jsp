@@ -41,7 +41,7 @@
 								<th>종류 선택</th>
 								<td class="bang_choice">
 									<label class="Square_box">
-										<input type="radio" name="roomtype" value="원룸" checked />
+										<input type="radio" name="roomtype" value="원룸" checked/>
 										<p>원룸</p>
 									</label> 
 									<label class="Square_box">
@@ -62,7 +62,7 @@
 								<th>건물 유형</th>
 								<td class="bang_choice">
 									<label class="Square_box">
-										<input id="buildtype" checked type="radio" name="buildtype" value="단독주택" >
+										<input id="buildtype" type="radio" name="buildtype" value="단독주택" >
 										<p>단독주택</p> 
 									</label> 
 									<label class="Square_box">
@@ -102,14 +102,14 @@
 										<input type="text" class="address1" placeholder=" 주소" readonly> 
 										<input type="button" class="address2" onclick="sample5_execDaumPostcode()" value="주소 검색">
 										<div class="loc_de">
-											<input type="text" style="border: none" name="address" id="point_address" placeholder="" value="광주 광산구 2순환로 2474" readonly>
+											<input type="text" style="border: none" name="address" id="point_address" placeholder="" readonly>
 										</div>
 										<div class="dongho_div">
 											<div class="dong">
-												<input type="text" class="dongho input_box" id="dong" name="dong" value="201" placeholder="예)101동">
+												<input type="text" class="dongho input_box" id="dong" name="dong" placeholder="예)101동">
 											</div>
 											<div class="ho">
-												<input type="text" class="dongho input_box" id="ho" name="ho" value="201" placeholder="예)201호">
+												<input type="text" class="dongho input_box" id="ho" name="ho" placeholder="예)201호">
 											</div>
 										</div>
 										<div class="loc_check">
@@ -148,13 +148,13 @@
 									<button type='button' class='deal_btn1'>전세</button>
 									<button type='button' class='deal_btn2'>매매</button>
 									<div class="short">
-										<label class="deal_check_box" size="22"><input
-											type="checkbox" class="PcMeW" name="short_room" value=""><span
-											class="CheckBox"></span> <span class="deal_text">단기가능</span>
+										<label class="deal_check_box" size="22"><input type="checkbox" class="PcMeW" name="short_room" value="">
+											<span class="CheckBox"></span>
+											<span class="deal_text">단기가능</span>
 										</label>
 										<p class="deal_text1">
-											<span class="glyphicon glyphicon-exclamation-sign"></span> <span>처음에
-												선택한 거래 종류가 우선노출됩니다.</span>
+											<span class="glyphicon glyphicon-exclamation-sign"></span> 
+											<span>처음에 선택한 거래 종류가 우선노출됩니다.</span>
 										</p>
 									</div>
 								</td>
@@ -174,7 +174,7 @@
 								</th>
 								<td class="base_line">
 									<p class="base_title">공급 면적</p> 
-									<input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);" value="15.0">
+									<input type="text" id="pyeong1" class="base_pd input_box" name="supplyarea" onkeyup="calculator(1);">
 									<p class="base_kiho">평</p> 
 									<input type="text" id="pyeong2" class="base_pd input_box" onkeyup="calculator(2);" >
 									<p class="base_kiho">㎡</p>
@@ -185,7 +185,7 @@
 									<select class="floor1 hRFrgm" id="maxfloor" name="maxfloor">
 										<option value="">건물 층수 선택</option>
 										<option value="1">1층</option>
-										<option value="2" selected>2층</option>
+										<option value="2">2층</option>
 										<option value="3">3층</option>
 										<option value="4">4층</option>
 										<option value="5">5층</option>
@@ -210,18 +210,18 @@
 							<tr>
 								<td class="base_line">
 									<p class="base_title">전용 면적</p>
-									<input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);" value="14.0">
+									<input type="text" id="ator1" class="base_pd input_box" name="area" onkeyup="ator(1);" >
 									<p class=" base_kiho">평</p> <input type="text" id="ator2"
 									class="base_pd input_box" onkeyup="ator(2);">
 									<p class="base_kiho">㎡</p>
 								</td>
 								<td class="base_line">
-									<p class=" base_title">해당 층수</p> <select class="floor1 hRFrgm"
-									id="floor" name="floor">
+									<p class=" base_title">해당 층수</p> 
+									<select class="floor1 hRFrgm" id="floor" name="floor">
 										<option value="">해당 층수 선택</option>
 										<option value="-1">반지층</option>
 										<option value="0">옥탑</option>
-										<option value="1" selected>1층</option>
+										<option value="1">1층</option>
 										<option value="2">2층</option>
 										<option value="3">3층</option>
 										<option value="4">4층</option>
@@ -249,7 +249,7 @@
 								<td class="base_line" colspan="3"><select id="heater"
 									class="heating hRFrgm" name="heater">
 										<option value="">난방 종류 선택</option>
-										<option value="1" selected>중앙 난방</option>
+										<option value="1">중앙 난방</option>
 										<option value="2">개별 난방</option>
 										<option value="3">지역 난방</option>
 								</select></td>
@@ -258,7 +258,7 @@
 								<th>입주 가능일</th>
 								<td class="base_line" colspan="3">
 									<label class="in_date">
-										<input type="radio" id="commingday0" name="commingday" checked value="0">
+										<input type="radio" id="commingday0" name="commingday" value="0">
 										<p>즉시 입주</p>
 									</label> 
 									<label class="in_date"> 
@@ -335,7 +335,7 @@
 								<th>주차여부</th>
 								<td class="add_info">
 									<label class="add1 Square_box">
-										<input type="radio" id="unparking" name="parking" value="-1" checked="">
+										<input type="radio" id="unparking" name="parking" value="-1" checked>
 										<p>불가능</p>
 									</label>
 									<label class="add1 Square_box"> <input type="radio" id="parkingok" name="parking" value="1">
@@ -348,12 +348,12 @@
 								<th>반려동물</th>
 								<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="pet" value="1" checked="">
-									<p>가능</p>
+									<input type="radio" name="pet" value="0" checked>
+									<p>불가능</p>
 								</label>
 								<label class="add1 Square_box">
-									<input type="radio" name="pet" value="0">
-									<p>불가능</p>
+									<input type="radio" name="pet" value="1">
+									<p>가능</p>
 								</label>
 							</td>
 						</tr>
@@ -361,7 +361,7 @@
 							<th>엘리베이터</th>
 							<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="elevator" value="0" checked="">
+									<input type="radio" name="elevator" value="0" checked>
 									<p>없음</p>
 								</label>
 								<label class="add1 Square_box">
@@ -372,7 +372,7 @@
 							<th>베란다/발코니</th>
 							<td class="add_info">
 								<label class="add1 Square_box">
-									<input type="radio" name="veranda" value="0" checked="">
+									<input type="radio" name="veranda" value="0" checked>
 									<p>없음</p>
 								</label>
 								<label class="add1 Square_box"><input type="radio" name="veranda" value="1">
@@ -384,7 +384,7 @@
 								<th>빌트인</th>
 								<td class="add_info" colspan="1">
 									<label class="add1 Square_box">
-										<input type="radio" name="builtin" value="0" checked="">
+										<input type="radio" name="builtin" value="0" checked>
 										<p>없음</p>
 									</label>
 									<label class="add1 Square_box">
@@ -449,7 +449,7 @@
 								<th>전세자금대출</th>
 								<td class="add_info" colspan="3">
 									<label class="add1 Square_box">
-										<input type="radio" name="loan" value="0" checked="">
+										<input type="radio" name="loan" value="0" checked>
 										<p>불가능</p>
 									</label>
 									<label class="add1 Square_box">
@@ -469,8 +469,8 @@
 						<tbody>
 							<tr>
 								<th>제목</th>
-								<td class="detail_box"><input type="text" id="title" class="detail_box1 input_box" name="title" value="제목"
-									placeholder="예)신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다.">
+								<td class="detail_box"><input type="text" id="title" class="detail_box1 input_box" name="title"
+									placeholder="예) 신논현역 도보 5분거리, 혼자 살기 좋은 방 입니다.">
 								</td>
 							</tr>
 							<tr>
@@ -524,14 +524,14 @@
                        	<p class="warning_text">
 						<span class="glyphicon glyphicon-exclamation-sign"></span>
 						<span>허위 매물을 등록할 경우 다방에서 임의로 계정 및 매물 전체 삭제 처리됩니다.</span>
-						<a href="#" target="_blank" rel="noopener noreferrer">허위매물 제재 정책 확인하기</a>
+						<a href="${pageContext.request.contextPath}/etc/fake.do" target="_blank">허위매물 제재 정책 확인하기</a>
 					</p>
 					</div>
 				</div>
 				
 				<div class="low_box">
 					<label class="low_text low_check_box" size="22"> 
-						<input type="checkbox" class="PcMeW" id="isAgree" name="isAgree" value="" checked> 
+						<input type="checkbox" class="PcMeW" id="isAgree" name="isAgree" value=""> 
 						<span class="CheckBox"></span> 
 						<span class="low_text1">매물관리규정을 확인하였으며, 입력한 정보는 실제 매물과 다름이 없습니다.</span>
 					</label>
