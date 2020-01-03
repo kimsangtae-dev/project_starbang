@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
                         <button type="button" class="btn dropdown-toggle btn-rt" data-toggle="dropdown">
-							원룸,투·쓰리룸,오피스텔<span class="caret"></span>
+                            원룸,투·쓰리룸,오피스텔<span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width1" role="menu">
                             <form id="room-type">
@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
                         <button type="button" class="btn dropdown-toggle btn-st" data-toggle="dropdown">
-							월세,전세,매매 <span class="caret"></span>
+                            월세,전세,매매 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width1" role="menu">
                             <h1>매물종류</h1>
@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-							가격대 <span class="caret"></span>
+                            가격대 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width2" role="menu">
                             <div class="filter-slide">
@@ -138,7 +138,7 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-							관리비 <span class="caret"></span>
+                            관리비 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu width2" role="menu">
                             <div class="filter-slide">
@@ -161,7 +161,7 @@ pageEncoding="UTF-8"%>
                     <!-- 개별 필터 -->
                     <div class="btn-group filter">
                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-							 방크기 <span class="caret"></span>
+                             방크기 <span class="caret"></span>
                         </button>
                         <div class="dropdown-menu pull-right width2" role="menu">
                             <div class="filter-slide">
@@ -199,6 +199,7 @@ pageEncoding="UTF-8"%>
                     <div class="gallery-container">
                         <!-- 갤러리 내용 영역 -->
                         <div class="gallery-content clearfix">
+                                    <ul id="gallery-list">
                                 <c:choose>
                                     <%-- 조회 결과가 없는 경우 --%>
                                     <c:when test="${output == null || fn:length(output) == 0}">
@@ -211,7 +212,6 @@ pageEncoding="UTF-8"%>
                                         </div>
                                     </c:when>
                                     <c:otherwise>
-                                    <ul id="gallery-list">
                                     <%-- 갤러리 시작 --%>
                                         <c:forEach var="item" items="${output}" varStatus="status">
                                             <li>
@@ -220,21 +220,21 @@ pageEncoding="UTF-8"%>
                                                         <%-- 좋아요 버튼 --%>
                                                         <input type="hidden" value="${item.roomno}">
                                                         <c:choose>
-                                                        	<%-- 세션 없을 때 --%>
-                                                        	<c:when test="${loginInfo == null}">
-                                                        	<a href="${pageContext.request.contextPath}/modal/login.do"
-																data-toggle="modal" data-target="#loginModal">
-                                                        	<div class="recent-div7">
+                                                            <%-- 세션 없을 때 --%>
+                                                            <c:when test="${loginInfo == null}">
+                                                            <a href="${pageContext.request.contextPath}/modal/login.do"
+                                                                data-toggle="modal" data-target="#loginModal">
+                                                            <div class="recent-div7">
                                                                <div class="recent-div8 off"></div>
-                                                           	</div>
-                                                           	</a>
-                                                        	</c:when>
-                                                        	<%-- 세션 있을 때 --%>
-                                                        	<c:otherwise>
-	                                                        	<c:set var="count" value="0" />
+                                                            </div>
+                                                            </a>
+                                                            </c:when>
+                                                            <%-- 세션 있을 때 --%>
+                                                            <c:otherwise>
+                                                                <c:set var="count" value="0" />
                                                                 <c:forEach var="h" items="${heart}" varStatus="status">
                                                                     <c:if test="${h.roomno==item.roomno}">
-                                                                  		<c:set var="count" value="${count + 1}" />
+                                                                        <c:set var="count" value="${count + 1}" />
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 <c:choose>
@@ -244,12 +244,12 @@ pageEncoding="UTF-8"%>
                                                                     </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                    	<div class="recent-div7">
-                                                                        	<div class="recent-div8 on" data-value="off"></div>
+                                                                        <div class="recent-div7">
+                                                                            <div class="recent-div8 on" data-value="off"></div>
                                                                         </div>
                                                                     </c:otherwise>
                                                                 </c:choose>
-                                                        	</c:otherwise>
+                                                            </c:otherwise>
                                                         </c:choose>
                                                         <%-- 좋아요 끝 --%>
                                                         <%-- 전체 링크화 --%>
@@ -302,9 +302,9 @@ pageEncoding="UTF-8"%>
                                             </li>
                                         </c:forEach>
                                         <%-- 각 갤러리 끝 --%>
-                                    </ul>
                                     </c:otherwise>
                                 </c:choose>
+                                    </ul>
                         </div>
                         <!-- 갤러리 내용 영역 -->
                         <!-- 갤러리 하단 영역 -->
@@ -369,33 +369,33 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
     
     <script type="text/javascript">
-    	function delectstar(x) {
-    		$.ajax({
+        function delectstar(x) {
+            $.ajax({
                 url: "delectstar.do",
                 method: "get",
                 data: {"x" : x},
                 success: function(req){
-                	console.log(x + "delectstar");
+                    console.log(x + "delectstar");
                 },
                 error : function() {
-                	console.log("delectstar발송에러 발생");
-				}
-    		});
-    	}
-    	
-    	function insertstar(x) {
-    		$.ajax({
+                    console.log("delectstar발송에러 발생");
+                }
+            });
+        }
+        
+        function insertstar(x) {
+            $.ajax({
                 url: "insertstar.do",
                 method: "get",
                 data: {"x" : x},
                 success: function(req){
-                	console.log( x + "insertstar");
+                    console.log( x + "insertstar");
                 },
                 error : function() {
-                	console.log("insertstar발송에러 발생");
-				}
-    		});
-    	}
+                    console.log("insertstar발송에러 발생");
+                }
+            });
+        }
     </script>
     
     <script type="text/javascript">
@@ -418,19 +418,19 @@ pageEncoding="UTF-8"%>
 
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
-            	var loginInfouser = "${loginInfo.userno}";
-            	if(loginInfouser != "") {            		
-	            	$(this).toggleClass('on off');
-    		        var onoff = $(this).hasClass("on");
-    		        console.log(onoff);
-            		var a = $(this).parent().prev().val();
-            		console.log(a);
-            	    if(onoff == true) {
-            	    	insertstar(a);
-					}else {
-						delectstar(a);
-	        	    }
-            	}
+                var loginInfouser = "${loginInfo.userno}";
+                if(loginInfouser != "") {                   
+                    $(this).toggleClass('on off');
+                    var onoff = $(this).hasClass("on");
+                    console.log(onoff);
+                    var a = $(this).parent().prev().val();
+                    console.log(a);
+                    if(onoff == true) {
+                        insertstar(a);
+                    }else {
+                        delectstar(a);
+                    }
+                }
             });
         });
     </script>
@@ -439,54 +439,54 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/plugin/ajax/ajax_helper.js"></script>
    <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
    <script id="gallery-data" type="text/x-handlebars-template">
-	{{#each output}}
-	<li>
-		<div class="recent-div5">
-		<div class="recent-div6">
-			{{!-- 좋아요 버튼 --}}
-			<input type="hidden" value="{{roomno}}" class="room_num">
-			{{#session roomno}}
-			{{else}}
-			{{/session}}
-			{{!-- 좋아요 끝 --}}
-			{{!-- 전체 링크화 --}}
-			<a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
-			{{!-- 이미지 --}}
-			<div class="recent-a-div">
-				<img src="${pageContext.request.contextPath}/assets/img/upload/{{thumbnail}}" />
-			</div>
-			{{!-- 확인매물 div --}}
-			{{#if confirmdate}}
-			<div class="recent-a-confirm">
-				<div class="recent-a-confirm-div">
-				<span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
-				</div>
-			</div>
-			{{/if}}
-			{{!-- 확인매물 끝 --}}
-			<p class="recent-a-p1">{{roomtype}}</p>
-			<p class="recent-a-p2">
-				{{#isMonth dealingtype}}
-				<span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
-				{{else}}
-				<span>{{dealingtype}} {{isOver price}}</span>
-				{{/isMonth}}
-			</p>
-			<p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
-			<p class="recent-a-p34">{{title}}</p>
-			</a>
-		</div>
-		</div>
-	</li>
-	{{/each}}
+    {{#each output}}
+    <li>
+        <div class="recent-div5">
+        <div class="recent-div6">
+            {{!-- 좋아요 버튼 --}}
+            <input type="hidden" value="{{roomno}}" class="room_num">
+            {{#session roomno}}
+            {{else}}
+            {{/session}}
+            {{!-- 좋아요 끝 --}}
+            {{!-- 전체 링크화 --}}
+            <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
+            {{!-- 이미지 --}}
+            <div class="recent-a-div">
+                <img src="${pageContext.request.contextPath}/assets/img/upload/{{thumbnail}}" />
+            </div>
+            {{!-- 확인매물 div --}}
+            {{#if confirmdate}}
+            <div class="recent-a-confirm">
+                <div class="recent-a-confirm-div">
+                <span class="bold">확인매물</span> <span class="confirm-date">{{confirmdate}}</span>
+                </div>
+            </div>
+            {{/if}}
+            {{!-- 확인매물 끝 --}}
+            <p class="recent-a-p1">{{roomtype}}</p>
+            <p class="recent-a-p2">
+                {{#isMonth dealingtype}}
+                <span>{{dealingtype}} {{isOver2 deposit}}/{{isOver price}}</span>
+                {{else}}
+                <span>{{dealingtype}} {{isOver price}}</span>
+                {{/isMonth}}
+            </p>
+            <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
+            <p class="recent-a-p34">{{title}}</p>
+            </a>
+        </div>
+        </div>
+    </li>
+    {{/each}}
    </script>
 
     <!-- 지도 api -->
     <script type="text/javascript">    
     var mapDefaultInfo = {
-    	lat: 37.5880618964351,
-    	lng: 126.987409633377,
-    	level: 5
+        lat: 37.5880618964351,
+        lng: 126.987409633377,
+        level: 5
     };
     
     /** ajax전송을 위한 파라미터 가져오기 **/
@@ -522,10 +522,12 @@ pageEncoding="UTF-8"%>
     
     var session = "${loginInfo}";
     var heart = "${heart}";
+    
+    var null_div;
 
     /** ajax 전송 메서드 **/
     function getMapPosition(west,east,south,north, page) {
-    	var params = {
+        var params = {
                 "roomtype": roomtype,
                 "dealingtype": dealingtype,
                 "depositFrom": deposit_from,
@@ -544,15 +546,26 @@ pageEncoding="UTF-8"%>
                 "south": south,
                 "page": page
             };
-    	
-    	console.log(params);
-    	
+        
+        console.log(params);
+        
         $.ajax({
             url: "${pageContext.request.contextPath}/main/search",
             method: "get",
             data: params,
             success: function(req){
-            	/** 월세인지 전세/매매인지 구분 **/
+                if (req.output.length == 0) {
+                    null_div = '<div class="noresultbox">';
+                    null_div += '<p class="noresulticon">';
+                    null_div += '<i class="glyphicon glyphicon-home noresulticon"></i>';
+                    null_div += '</p>';
+                    null_div += '<p class="noresult">조건에 맞는 방이 없습니다.</p>';
+                    null_div += '<p class="noresult">맞춤필터를 해제해보세요.</p>';
+                    null_div += '</div>';
+                    
+                    $("#gallery-list").html(null_div);
+                } else {
+                /** 월세인지 전세/매매인지 구분 **/
                 Handlebars.registerHelper('isMonth', function(dealingtype, options) {
                   if (dealingtype == '월세') { return options.fn(this); }
                   else { return options.inverse(this); }
@@ -577,44 +590,44 @@ pageEncoding="UTF-8"%>
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
-                    	var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
-                    		heart_div += '<div class="recent-div7">'
-                    		heart_div += '<div class="recent-div8 offff"></div>'
-                    		heart_div += '</div>'
-                    		heart_div += '</a>'
-                    	return heart_div;
+                        var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
+                            heart_div += '<div class="recent-div7">'
+                            heart_div += '<div class="recent-div8 offff"></div>'
+                            heart_div += '</div>'
+                            heart_div += '</a>'
+                        return heart_div;
                     }
                     else {
-                    	for (var i=0; i<req.heart.length; i++) {
-                    		if (req.heart[i].roomno == roomno) {
-                    			var heart_div = '<div class="recent-div7">'
-                            		heart_div += '<div class="recent-div8 on" data-value="off"></div>'
-                            		heart_div += '</div>'
-                            	return heart_div;
-                    		}
-                    	}
-                    	for (var i=0; i<req.heart.length; i++) {
-                    		if (req.heart[i].roomno != roomno) {
-                    			var heart_div = '<div class="recent-div7">'
-                            		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                            		heart_div += '</div>'
-                            	return heart_div;
-                    		}
-                    	}
-                    	if (json.heart.length == 0) {
-                        	var heart_div = '<div class="recent-div7">'
-                        		heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                        		heart_div += '</div>'
-                        	return heart_div;
-						}
+                        for (var i=0; i<req.heart.length; i++) {
+                            if (req.heart[i].roomno == roomno) {
+                                var heart_div = '<div class="recent-div7">'
+                                    heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                                    heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        for (var i=0; i<req.heart.length; i++) {
+                            if (req.heart[i].roomno != roomno) {
+                                var heart_div = '<div class="recent-div7">'
+                                    heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                                    heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        if (req.heart.length == 0) {
+                            var heart_div = '<div class="recent-div7">'
+                                heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                                heart_div += '</div>'
+                            return heart_div;
+                        }
                     }
                 });
 
                 var template = Handlebars.compile($("#gallery-data").html());
                 var html = template(req);
                 $("#gallery-list").html(html);
+                }
                 $("#room-count").html(req.totalCount);
-
                 /** 페이징을 위한 정보 가져오기 **/
                 startPage = req.pageData.startPage;
                 endPage = req.pageData.endPage;
@@ -636,19 +649,19 @@ pageEncoding="UTF-8"%>
                 $("#index-list").html(index_list);
                 /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
-                	var loginInfouser = "${loginInfo.userno}";
-                	if(loginInfouser != "") {         
-	                    $(this).toggleClass('on off');
-    	                var onoff = $(this).hasClass("on");
-    	                console.log(onoff);
-        	            var a = $(this).parent().prev().val();
-        	            console.log("a = " + a);
-            	        if(onoff == true) {
-                	    	insertstar(a);
-                    	}else {
-                    		delectstar(a);
-	                    }
-                	}
+                    var loginInfouser = "${loginInfo.userno}";
+                    if(loginInfouser != "") {         
+                        $(this).toggleClass('on off');
+                        var onoff = $(this).hasClass("on");
+                        console.log(onoff);
+                        var a = $(this).parent().prev().val();
+                        console.log("a = " + a);
+                        if(onoff == true) {
+                            insertstar(a);
+                        }else {
+                            delectstar(a);
+                        }
+                    }
                 });
             }
         });
@@ -691,18 +704,18 @@ pageEncoding="UTF-8"%>
 
             /** 매물 데이터 가져오기 **/
             var params = {
-                	roomtype: "${param.roomtype}", 
-                	dealingtype: "${param.dealingtype}", 
-                	depositFrom: "${param.depositFrom}", 
-                	depositTo: "${param.depositTo}", 
-                	monthFrom: "${param.monthFrom}", 
-                	monthTo: "${param.monthTo}", 
-                	buyingFrom: "${param.buyingFrom}", 
-                	buyingTo: "${param.buyingTo}", 
-                	feeFrom: "${param.feeFrom}", 
-                	feeTo: "${param.feeTo}", 
-                	sizeFrom: "${param.sizeFrom}", 
-                	sizeTo: "${param.sizeTo}",
+                    roomtype: "${param.roomtype}", 
+                    dealingtype: "${param.dealingtype}", 
+                    depositFrom: "${param.depositFrom}", 
+                    depositTo: "${param.depositTo}", 
+                    monthFrom: "${param.monthFrom}", 
+                    monthTo: "${param.monthTo}", 
+                    buyingFrom: "${param.buyingFrom}", 
+                    buyingTo: "${param.buyingTo}", 
+                    feeFrom: "${param.feeFrom}", 
+                    feeTo: "${param.feeTo}", 
+                    sizeFrom: "${param.sizeFrom}", 
+                    sizeTo: "${param.sizeTo}",
                     east: 0,
                     west: 0,
                     north: 0,
