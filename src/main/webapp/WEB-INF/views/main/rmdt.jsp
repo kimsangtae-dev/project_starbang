@@ -26,20 +26,19 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 		<div id="summury">
 			<!--상단 내용 시작-->
 			<ul id="box1">
-				<li class="pull-left abc"><span class="greyfont1">${price[0].dealingtype}</span>
+				<li class="pull-left abc"><span class="greyfont1">${room.roomtype}</span>
 					<h1 class="monthman">
 						<c:choose>
 						    <c:when test="${price[0].dealingtype == '월세'}">
-						    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
-					    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-						    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
+							    <fmt:formatNumber value="${price[0].deposit}" pattern="#,####" var="eok1"/>
+						    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+							    	${price[0].dealingtype}&nbsp;${patternprice1}/${price[0].price}
 						    </c:when>
-
-					    	<c:otherwise>
-					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2"></fmt:formatNumber>
-					    	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
-					    		${price[0].dealingtype}&nbsp;${patternprice2}
-					    	</c:otherwise>
+						    <c:otherwise>
+						    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2" />
+                                <c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> 
+                                ${price[0].dealingtype}&nbsp;${patternprice2}
+						    </c:otherwise>
 						</c:choose>
 						<span class="greyfontwon1"> 만원</span>
 					</h1></li>
