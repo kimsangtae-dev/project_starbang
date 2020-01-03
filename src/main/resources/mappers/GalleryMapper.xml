@@ -209,7 +209,7 @@
 		INNER JOIN room r ON h.roomno=r.roomno 
 		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
 		INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
-		GROUP BY roomno 
+		GROUP BY price, imageno,roomno,roomtype,title,floor,area,fee,dealingtype,deposit,filename,confirmdate
 		ORDER BY count(h.roomno) DESC
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
