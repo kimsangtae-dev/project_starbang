@@ -48,7 +48,7 @@ public class HeartServiceImpl implements HeartService{
         int result = 0;
         
         try {
-            result = sqlSession.selectOne("GalleryMapper.selectHeartCountAll", null);
+            result = sqlSession.selectOne("GalleryMapper.selectHeartCountAll", input);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
@@ -61,7 +61,7 @@ public class HeartServiceImpl implements HeartService{
         int result = 0;
         
         try {
-            result = sqlSession.selectOne("GalleryMapper.selectHeartCountAll", null);
+            result = sqlSession.selectOne("GalleryMapper.selectHeartCountAll", input);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");

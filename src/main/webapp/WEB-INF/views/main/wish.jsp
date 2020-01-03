@@ -104,7 +104,7 @@
                                                         </c:choose>
                                                     </p>
                                                     <p class="hit-a-p34">${item.floor}층,${item.area}m²,
-                                                        관리비 ${item.fee}만</p>
+                                                       	 관리비 ${item.fee}만</p>
                                                     <p class="hit-a-p34">${item.title}</p>
                                                 </a>
                                             </div>
