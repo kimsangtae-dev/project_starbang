@@ -40,11 +40,21 @@
 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
   	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
   	<script type="text/javascript">
-   $("#loginbtn").click(function(){
+    $("#loginbtn").click(function(){
         if($("#loginid").val() == "admin" && $("#passwd").val() == "admin") {
         	alert("관리자페이지로 이동합니다.");
     } 
 	}); 
- </script>
+    </script>
+    <!-- shift+enter 새창 뜨는 것 막기 -->
+	<script>
+	$(document).on('keypress', function(event) {
+		if( event.which === 13 && event.shiftKey ) {
+			alert('SHIFT키가 눌렸습니다.');
+			return false;
+		}
+	});
+	</script>
+	<!-- 끝 -->
 </body>
 </html>

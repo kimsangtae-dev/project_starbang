@@ -86,3 +86,13 @@
 })
 </script>
 <!-- ID저장하기 끝 -->
+<!-- shift+enter 새창 뜨는 것 막기 -->
+<script>
+$(document).on('keypress', function(event) {
+	if( event.which === 13 && event.shiftKey ) {
+		alert('SHIFT키가 눌렸습니다.');
+		return false;
+	}
+});
+</script>
+<!-- 끝 -->
