@@ -205,11 +205,11 @@
 	<select id="selectfameList"
 		parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
 		SELECT 
-		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,a.price,a.dealingtype,a.deposit,b.filename,DATE_FORMAT(r.confirmdate,'%Y.%m.%d') AS confirmdate
+		h.roomno,count(h.roomno),r.roomtype,r.title,r.floor,r.area,r.fee,p.price,p.dealingtype,p.deposit,i.filename,DATE_FORMAT(r.confirmdate,'%Y.%m.%d') AS confirmdate
 		FROM heart h 
 		INNER JOIN room r ON h.roomno=r.roomno 
-		INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno 
-		INNER JOIN ( SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno 
+	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+	INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
 		GROUP BY roomno 
 		ORDER BY count(h.roomno) DESC
 		<if test="listCount > 0">
@@ -220,13 +220,13 @@
      <!-- 찜목록을 보여주기 위한 기능 정의 -->
      <select id="selectHeartList" parameterType="project.star.b2.model.Gallery" resultMap="galleryMap">
      SELECT
-     u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, a.price, a.dealingtype, a.deposit, b.filename, h.roomno,h.heartno,DATE_FORMAT(r.confirmdate,
+     u.userno, r.title,r.roomtype, r.floor, r.area, r.fee, p.price, p.dealingtype, p.deposit, i.filename, h.roomno,h.heartno,DATE_FORMAT(r.confirmdate,
 		'%Y.%m.%d') AS confirmdate
-     from user u
+	from user u
      INNER JOIN heart h ON u.userno=h.userno
      INNER JOIN room r ON r.roomno=h.roomno
-     INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno
-     INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno
+	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+	INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
      WHERE u.userno=#{userno}
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -239,8 +239,8 @@
 	from user u
      INNER JOIN heart h ON u.userno=h.userno
      INNER JOIN room r ON r.roomno=h.roomno
-     INNER JOIN (SELECT * FROM price p group by p.roomno)A ON r.roomno=a.roomno
-     INNER JOIN (SELECT * FROM image i group by i.roomno)B ON r.roomno=b.roomno
+	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+	INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
      WHERE u.userno=#{userno}
      	<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -255,10 +255,8 @@
 			'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
 			r.region_2depth_name,i.filename
 			FROM room AS r
-			INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
-			ON r.roomno=p.roomno
-			INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i
-			ON r.roomno=i.roomno
+			INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+			INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
 			WHERE r.roomno IN
 		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
 			#{list}
@@ -277,10 +275,8 @@
 		'%Y.%m.%d') AS confirmdate, p.dealingtype, p.deposit, p.price,
 		r.region_2depth_name,i.filename
 		FROM room AS r
-		INNER JOIN (SELECT * FROM price GROUP BY roomno) AS p
-		ON r.roomno=p.roomno
-		INNER JOIN (SELECT * FROM image GROUP BY roomno) AS i
-		ON r.roomno=i.roomno
+		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+		INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
 		WHERE r.roomno IN
 		<foreach item="list" index="index" collection="list" open="(" separator="," close=")">
 			#{list}
