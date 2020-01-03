@@ -634,7 +634,6 @@ public class MainController {
 		Heart input = new Heart();
 		/* Gallery input2 = new Gallery(); */
 		input.setUserno(userno);
-		input.setRoomno(keyword);
 		input.setRoomtype(keyword2);
 
 		List<Heart> output = null;

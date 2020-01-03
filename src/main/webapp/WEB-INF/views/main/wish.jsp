@@ -44,7 +44,7 @@
 
         <!-- 총 카운트 count -->
         <p class="count-p">
-            총 <span class="room-count">0</span><span>개</span>의 찜한 방이 있습니다
+            총 <span class="room-count">${totalCount}</span><span>개</span>의 찜한 방이 있습니다
         </p>
 
         <!-- 메인 갤러리 시작 -->
@@ -526,13 +526,6 @@
         });
     });
 </script>
-    <script type="text/javascript">
-        /* 조건에 맞는 방 개수 */
-        $(function() {
-            var n = $(".hit-div5").length;
-            $(".room-count").html(n);
-        });
-        </script>
         <script>
 if ($('.hit-div5').length) {
 /*     alert('값이 있어요!'); */

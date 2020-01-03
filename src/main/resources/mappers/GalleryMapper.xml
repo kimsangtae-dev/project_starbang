@@ -241,9 +241,6 @@
 	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
 	INNER JOIN (SELECT * FROM image WHERE imageno IN (SELECT MIN(imageno) FROM image GROUP BY roomno)) AS i ON r.roomno=i.roomno
      WHERE u.userno=#{userno}
-     	<if test="listCount > 0">
-			LIMIT #{offset}, #{listCount}
-		</if>
 	</select>
 
 	<!-- 최근본방(쿠키용) 다중행 조회를 위한 기능 정의 -->
