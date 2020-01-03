@@ -260,7 +260,6 @@ public class MainController {
 
 		/** 3)View 처리 */
 		model.addAttribute("output", output);
-
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("pageData", pageData);
 		model.addAttribute("totalCount", totalCount);
