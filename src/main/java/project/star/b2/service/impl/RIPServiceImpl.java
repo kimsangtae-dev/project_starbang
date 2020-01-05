@@ -10,20 +10,19 @@ import project.star.b2.model.Price;
 import project.star.b2.model.Room;
 import project.star.b2.service.RIPService;
 
-
-
 /** 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
 @Slf4j
 @Service
 public class RIPServiceImpl implements RIPService {
 
-	/** MyBatis */
+    /** MyBatis */
     // --> import org.apache.ibatis.session.SqlSession
-	@Autowired
+    @Autowired
     SqlSession sqlSession;
-	
+
     /**
      * 데이터 등록하기
+     * 
      * @param Room 저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
@@ -33,7 +32,7 @@ public class RIPServiceImpl implements RIPService {
 
         try {
             result = sqlSession.insert("RoomMapper.insertItem", input);
-            
+
             if (result == 0) {
                 throw new NullPointerException("result=0");
             }
@@ -48,14 +47,13 @@ public class RIPServiceImpl implements RIPService {
         return result;
     }
 
-
-	@Override
-	public int addInfo(Info input) throws Exception {
-		int result = 0;
+    @Override
+    public int addInfo(Info input) throws Exception {
+        int result = 0;
 
         try {
             result = sqlSession.insert("InfoMapper.insertItem", input);
-            
+
             if (result == 0) {
                 throw new NullPointerException("result=0");
             }
@@ -68,28 +66,28 @@ public class RIPServiceImpl implements RIPService {
         }
 
         return result;
-	}
-	
-	@Override
-	public int addPrice(Price input) throws Exception {
-		int result = 0;
-		
-		try {
-			result = sqlSession.insert("PriceMapper.insertItem", input);
-			
-			if (result == 0) {
-				throw new NullPointerException("result=0");
-			}
-		} catch (NullPointerException e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("저장된 데이터가 없습니다.");
-		} catch (Exception e) {
-			log.error(e.getLocalizedMessage());
-			throw new Exception("데이터 저장에 실패했습니다.");
-		}
-		
-		return result;
-	}
+    }
+
+    @Override
+    public int addPrice(Price input) throws Exception {
+        int result = 0;
+
+        try {
+            result = sqlSession.insert("PriceMapper.insertItem", input);
+
+            if (result == 0) {
+                throw new NullPointerException("result=0");
+            }
+        } catch (NullPointerException e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("저장된 데이터가 없습니다.");
+        } catch (Exception e) {
+            log.error(e.getLocalizedMessage());
+            throw new Exception("데이터 저장에 실패했습니다.");
+        }
+
+        return result;
+    }
 
     @Override
     public Room getRoomItem(Room input) throws Exception {
@@ -112,7 +110,6 @@ public class RIPServiceImpl implements RIPService {
         return result;
     }
 
-
     @Override
     public Info getInfoItem(Info input) throws Exception {
         Info result = null;
@@ -133,5 +130,5 @@ public class RIPServiceImpl implements RIPService {
 
         return result;
     }
-	
+
 }

@@ -36,19 +36,19 @@ public class DownloadHelper {
     /**
      * 지정된 경로의 파일을 읽어들인다. 그 내용을 응답객체(response)를 사용해서 출력한다.
      *
-     * @param filePath  - 서버상의 파일 경로
+     * @param filePath   - 서버상의 파일 경로
      * @param originName - 원본 파일 이름
      * @throws Exception
      */
-    //public void download(HttpServletResponse response, String filePath, String originName) throws Exception {
+    // public void download(HttpServletResponse response, String filePath, String
+    // originName) throws Exception {
     public void download(String filePath, String originName) throws Exception {
-        
+
         /** JSP 내장객체를 담고 있는 Spring의 객체를 통해서 내장객체 획득하기 */
         // --> import org.springframework.web.context.request.RequestContextHolder;
         // --> import org.springframework.web.context.request.ServletRequestAttributes;
-        ServletRequestAttributes requestAttr 
-                = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        
+        ServletRequestAttributes requestAttr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+
         // JSP 내장객체 참조하기 --> getInstance()에 전달된 객체를 받는다.
         HttpServletResponse response = requestAttr.getResponse();
 
@@ -70,8 +70,8 @@ public class DownloadHelper {
             throw new FileNotFoundException(f.getAbsolutePath());
         }
 
-        long size = f.length();         // 파일의 크기 추출하기
-        String name = f.getName();      // 서버에 보관되어 있는 파일의 이름 추출하기
+        long size = f.length(); // 파일의 크기 추출하기
+        String name = f.getName(); // 서버에 보관되어 있는 파일의 이름 추출하기
 
         // 원본 파일명이 전달되지 않은 경우 서버상의 파일이름으로 대체
         if (originName == null) {
@@ -113,7 +113,7 @@ public class DownloadHelper {
         BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
 
         byte[] buffer = new byte[1024]; // 업로드 된 파일의 용량에 상관없이 1kbyte의 배열 생성한다.
-        int length = 0;                 // 버퍼링되는 동안 읽어들인 데이터 크기를 체크하기 위한 변수
+        int length = 0; // 버퍼링되는 동안 읽어들인 데이터 크기를 체크하기 위한 변수
 
         // --> 버퍼링 처리
         while ((length = bis.read(buffer)) != -1) {
@@ -121,8 +121,8 @@ public class DownloadHelper {
             bos.write(buffer, 0, length);
         }
 
-        bos.flush();    // 옮겨담은 내용을 웹 브라우저에 전송한다.
-        bos.close();    // 모든 스트림들을 닫는다.
+        bos.flush(); // 옮겨담은 내용을 웹 브라우저에 전송한다.
+        bos.close(); // 모든 스트림들을 닫는다.
         bis.close();
         is.close();
     }
@@ -139,24 +139,24 @@ public class DownloadHelper {
      */
     public String createThumbnail(String path, int width, int height, boolean crop) throws Exception {
 
-    	/** 1) 썸네일 생성 정보를 로그로 기록하기 */
+        /** 1) 썸네일 생성 정보를 로그로 기록하기 */
         log.debug(String.format("[Thumbnail] path: %s, size: %dx%d, crop: %s", path, width, height, String.valueOf(crop)));
 
         /** 2) 저장될 썸네일 이미지의 경로 문자열 만들기 */
-        File loadFile = new File(this.uploadDir, path);	// 원본파일의 전체경로 --> 업로드 폴더(상수값) + 파일명
-        String dirPath = loadFile.getParent();			// 전체 경로에서 파일이 위치한 폴더 경로 분리
-        String fileName = loadFile.getName();			// 전체 경로에서 파일 이름만 분리
-        int p = fileName.lastIndexOf(".");				// 파일이름에서 마지막 점(.)의 위치
-        String name = fileName.substring(0, p);			// 파일명 분리 --> 파일이름에서 마지막 점의 위치 전까지
-        String ext = fileName.substring(p + 1);			// 확장자 분리 --> 파일이름에서 마지막 점위 위치 다음부터 끝까지
-        String prefix = crop ? "_crop_" : "_resize_";	// 크롭인지 리사이즈 인지에 대한 문자열
+        File loadFile = new File(this.uploadDir, path); // 원본파일의 전체경로 --> 업로드 폴더(상수값) + 파일명
+        String dirPath = loadFile.getParent(); // 전체 경로에서 파일이 위치한 폴더 경로 분리
+        String fileName = loadFile.getName(); // 전체 경로에서 파일 이름만 분리
+        int p = fileName.lastIndexOf("."); // 파일이름에서 마지막 점(.)의 위치
+        String name = fileName.substring(0, p); // 파일명 분리 --> 파일이름에서 마지막 점의 위치 전까지
+        String ext = fileName.substring(p + 1); // 확장자 분리 --> 파일이름에서 마지막 점위 위치 다음부터 끝까지
+        String prefix = crop ? "_crop_" : "_resize_"; // 크롭인지 리사이즈 인지에 대한 문자열
 
         // 최종 파일이름을 구성한다. --> 원본이름 + 크롭여부 + 요청된 사이즈
         // -> ex) myphoto.jpg --> myphoto_resize_320x240.jpg
         String thumbName = name + prefix + width + "x" + height + "." + ext;
 
-        File f = new File(dirPath, thumbName);			// 생성될 썸네일 파일 객체 --> 업로드폴더 + 썸네일이름
-        String saveFile = f.getAbsolutePath();			// 생성될 썸네일 파일 객체로부터 절대경로 추출 (리턴할 값)
+        File f = new File(dirPath, thumbName); // 생성될 썸네일 파일 객체 --> 업로드폴더 + 썸네일이름
+        String saveFile = f.getAbsolutePath(); // 생성될 썸네일 파일 객체로부터 절대경로 추출 (리턴할 값)
 
         // 생성될 썸네일 이미지의 경로를 로그로 기록
         log.debug(String.format("[Thumbnail] saveFile: %s", saveFile));
@@ -170,14 +170,14 @@ public class DownloadHelper {
             Builder<File> builder = Thumbnails.of(loadFile);
             // 이미지 크롭 여부 파라미터에 따라 크롭 옵션을 지정한다.
             if (crop == true) {
-            	// import net.coobird.thumbnailator.geometry.Positions;
+                // import net.coobird.thumbnailator.geometry.Positions;
                 builder.crop(Positions.CENTER);
             }
 
-            builder.size(width, height);		// 축소할 사이즈 지정
-            builder.useExifOrientation(true);	// 세로로 촬영된 사진을 회전시킴
-            builder.outputFormat(ext);			// 파일의 확장명 지정
-            builder.toFile(saveFile);			// 저장할 파일경로 지정
+            builder.size(width, height); // 축소할 사이즈 지정
+            builder.useExifOrientation(true); // 세로로 촬영된 사진을 회전시킴
+            builder.outputFormat(ext); // 파일의 확장명 지정
+            builder.toFile(saveFile); // 저장할 파일경로 지정
         }
 
         // 최종적으로 생성된 경로에서 업로드 폴더까지의 경로를 제거한다.
@@ -195,7 +195,8 @@ public class DownloadHelper {
      * @param height   - 세로 크기
      * @throws IOException
      */
-    //public void download(HttpServletResponse response, String filePath, int width, int height, boolean crop) throws Exception {
+    // public void download(HttpServletResponse response, String filePath, int
+    // width, int height, boolean crop) throws Exception {
     public void download(String filePath, int width, int height, boolean crop) throws Exception {
 
         // 썸네일을 생성하고 경로를 리턴받는다.
@@ -205,7 +206,7 @@ public class DownloadHelper {
         // --> 이 메서드를 호출하기 위해서 try~catch가 요구되지만,
         // 현재 메서드 역시 throws를 명시했기 때문에
         // 예외처리가 현재 메서드를 호출하는 곳으로 이관된다.
-        //this.download(response, thumbPath, null);
+        // this.download(response, thumbPath, null);
         this.download(thumbPath, null);
     }
 }

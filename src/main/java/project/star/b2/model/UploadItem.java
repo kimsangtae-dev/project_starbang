@@ -8,17 +8,17 @@ import lombok.Data;
  */
 @Data
 public class UploadItem {
-	private int imageno;			// DB PK값
-	
-    private String fieldName;   	// <input type="file">의 name속성
-    private String originName;  	// 원본 파일 이름
-    private String filePath;    	// 서버상의 파일 경로
-    private String contentType; 	// 파일의 형식
-    private long fileSize;      	// 파일의 용량
-    private String fileName; 		// 저장된 파일 이름
-    private String regDate; 		// 등록일시
-    private String editDate; 		// 변경일시
+    private int imageno; // DB PK값
+
+    private String fieldName; // <input type="file">의 name속성
+    private String originName; // 원본 파일 이름
+    private String filePath; // 서버상의 파일 경로
+    private String contentType; // 파일의 형식
+    private long fileSize; // 파일의 용량
+    private String fileName; // 저장된 파일 이름
+    private String regDate; // 등록일시
+    private String editDate; // 변경일시
     private String thumbnail;
-    
-    private int roomno;				// 방 번호
+
+    private int roomno; // 방 번호
 }

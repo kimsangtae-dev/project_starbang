@@ -27,8 +27,7 @@ public class MailHelper {
      * @throws MessagingException
      */
     // --> import javax.mail.MessagingException;
-    public void sendMail(String receiver, String subject, String content) 
-        throws Exception {
+    public void sendMail(String receiver, String subject, String content) throws Exception {
 
         log.debug("----------------------------------------------------");
         log.debug(String.format("To: %s", receiver));

@@ -32,13 +32,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^[0-9]*$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 숫자 형식이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 숫자 형식이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 숫자 형식이 아닙니다. ", str));
         }
-        
+
         return result;
     }
 
@@ -53,13 +53,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^[a-zA-Z]*$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 영어로만 구성되어 있습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 영어로만 구성되어 있습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 영어로만 구성되어 있지 않습니다.", str));
         }
-        
+
         return result;
     }
 
@@ -74,13 +74,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^[ㄱ-ㅎ가-힣]*$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있지 않습니다.", str));
         }
-        
+
         return result;
     }
 
@@ -95,13 +95,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^[a-zA-Z0-9]*$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 영어+숫자 조합이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 영어+숫자 조합이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 영어+숫자 조합이 아닙니다.", str));
         }
-        
+
         return result;
     }
 
@@ -116,13 +116,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^[ㄱ-ㅎ가-힣0-9]*$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 한글로만 구성되어 있지 않습니다.", str));
         }
-        
+
         return result;
     }
 
@@ -137,13 +137,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 이메일 형식이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 이메일 형식이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 이메일 형식이 아닙니다.", str));
         }
-        
+
         return result;
     }
 
@@ -158,13 +158,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 핸드폰 번호 형식이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 핸드폰 번호 형식이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 핸드폰 번호 형식이 아닙니다.", str));
         }
-        
+
         return result;
     }
 
@@ -179,13 +179,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^\\d{2,3}\\d{3,4}\\d{4}$", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 전화번호 형식이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 전화번호 형식이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 전화번호 형식이 아닙니다.", str));
         }
-        
+
         return result;
     }
 
@@ -200,13 +200,13 @@ public class RegexHelper {
         if (isValue(str)) {
             result = Pattern.matches("^\\d{6}[1-4]\\d{6}", str);
         }
-        
+
         if (result) {
-            log.debug(String.format("(regex) -> `%s`(은)는 주민번호 형식이 맞습니다.", str));           
+            log.debug(String.format("(regex) -> `%s`(은)는 주민번호 형식이 맞습니다.", str));
         } else {
             log.debug(String.format("(regex) -> `%s`(은)는 주민번호 형식이 아닙니다.", str));
         }
-        
+
         return result;
     }
 }

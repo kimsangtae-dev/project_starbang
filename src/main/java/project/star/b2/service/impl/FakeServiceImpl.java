@@ -21,23 +21,24 @@ public class FakeServiceImpl implements FakeService {
 
     /**
      * 매물 데이터 목록 조회
+     * 
      * @return 조회 결과에 대한 컬렉션
      * @throws Exception
      */
-	@Override
-	public int addFake(FakeRoom input) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int addFake(FakeRoom input) throws Exception {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	@Override
-	public List<FakeRoom> getFakeItem(FakeRoom input) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<FakeRoom> getFakeItem(FakeRoom input) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public List<FakeRoom> getFakeList(FakeRoom input) throws Exception {
+    @Override
+    public List<FakeRoom> getFakeList(FakeRoom input) throws Exception {
         List<FakeRoom> result = null;
 
         try {
@@ -55,6 +56,6 @@ public class FakeServiceImpl implements FakeService {
         }
 
         return result;
-	}
+    }
 
 }

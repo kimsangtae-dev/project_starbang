@@ -1,50 +1,49 @@
 package project.star.b2.model;
 
 public class Gu {
-	private String guName;
-	private double guLat;
-	private double guLng;
-	private int guCount;
-	
-	public Gu(String guName, double guLat, double guLng, int guCount) {
-		super();
-		this.guName = guName;
-		this.guLat = guLat;
-		this.guLng = guLng;
-		this.guCount = guCount;
-	}
+    private String guName;
+    private double guLat;
+    private double guLng;
+    private int guCount;
 
-	public String getGuName() {
-		return guName;
-	}
+    public Gu(String guName, double guLat, double guLng, int guCount) {
+        super();
+        this.guName = guName;
+        this.guLat = guLat;
+        this.guLng = guLng;
+        this.guCount = guCount;
+    }
 
-	public void setGuName(String guName) {
-		this.guName = guName;
-	}
+    public String getGuName() {
+        return guName;
+    }
 
-	public double getGuLat() {
-		return guLat;
-	}
+    public void setGuName(String guName) {
+        this.guName = guName;
+    }
 
-	public void setGuLat(double guLat) {
-		this.guLat = guLat;
-	}
+    public double getGuLat() {
+        return guLat;
+    }
 
-	public double getGuLng() {
-		return guLng;
-	}
+    public void setGuLat(double guLat) {
+        this.guLat = guLat;
+    }
 
-	public void setGuLng(double guLng) {
-		this.guLng = guLng;
-	}
+    public double getGuLng() {
+        return guLng;
+    }
 
-	public int getGuCount() {
-		return guCount;
-	}
+    public void setGuLng(double guLng) {
+        this.guLng = guLng;
+    }
 
-	public void setGuCount(int guCount) {
-		this.guCount = guCount;
-	}
-	
-	
+    public int getGuCount() {
+        return guCount;
+    }
+
+    public void setGuCount(int guCount) {
+        this.guCount = guCount;
+    }
+
 }

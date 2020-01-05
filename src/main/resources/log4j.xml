@@ -14,7 +14,7 @@
     <!-- 파일로 기록되는 로그 설정 -->
     <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
         <!-- 로그 파일 생성위치 -->
-        <param name="file" value="log_b2/web.log" />
+        <param name="file" value="/Users/leekh/workspace-eclipse/log/web.log" />
         <param name="Append" value="true" />
         <!-- 로그 파일 하나당 사이즈 100m -->
         <param name="MaxFileSize" value="100mb" />
@@ -31,7 +31,7 @@
         <!-- 에러와 관련된 로그만 기록하도록 지정 -->
         <param name="Threshold" value="ERROR" />
         <!-- 로그 파일 생성위치 -->
-        <param name="File" value="log_b2/error.log" />
+        <param name="File" value="/Users/leekh/workspace-eclipse/log/error.log" />
         <!-- 하루에 한 개씩 날짜를 적용하며 파일이름이 생성되도록 함 -->
         <param name="Append" value="true" />
         <param name="DatePattern" value="'.'yyMMdd" />
@@ -46,7 +46,7 @@
     <logger name="study.jsp.model2">
         <level value="debug" />
     </logger>
-    
+
     <!-- DATABASE 연동 관련 로그 설정 시작 -->
     <logger name="org.apache.ibatis">
         <level value="DEBUG" />

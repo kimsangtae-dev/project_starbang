@@ -17,8 +17,8 @@ import uap_clj.java.api.OS;
 
 @Slf4j
 public class AppInterceptor extends HandlerInterceptorAdapter {
-    long startTime=0, endTime=0;
-    
+    long startTime = 0, endTime = 0;
+
     @Autowired
     WebHelper webHelper;
 
@@ -31,9 +31,9 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
     @SuppressWarnings("unchecked")
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //log.debug("AppInterceptor.preHandle 실행됨");
-    	
-    	webHelper.init();
+        // log.debug("AppInterceptor.preHandle 실행됨");
+
+        webHelper.init();
 
         // 컨트롤러 실행 직전에 현재 시각을 저장한다.
         startTime = System.currentTimeMillis();
@@ -86,14 +86,11 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
         Map<String, String> device = (Map<String, String>) Device.lookup(ua);
 
         // 추출된 정보들을 출력하기 위해 문자열로 묶기
-        String browserStr = String.format("- Browser: {family=%s, patch=%s, major=%s, minor=%s}", 
-            browser.get("family"), browser.get("patch"), browser.get("major"), browser.get("minor"));
+        String browserStr = String.format("- Browser: {family=%s, patch=%s, major=%s, minor=%s}", browser.get("family"), browser.get("patch"), browser.get("major"), browser.get("minor"));
 
-        String osStr = String.format("- OS: {family=%s, patch=%s, patch_minor=%s, major=%s, minor=%s}",
-            os.get("family"), os.get("patch"), os.get("patch_minor"), os.get("major"), os.get("minor"));
+        String osStr = String.format("- OS: {family=%s, patch=%s, patch_minor=%s, major=%s, minor=%s}", os.get("family"), os.get("patch"), os.get("patch_minor"), os.get("major"), os.get("minor"));
 
-        String deviceStr = String.format("- Device: {family=%s, model=%s, brand=%s}", 
-            device.get("family"), device.get("model"), device.get("brand"));
+        String deviceStr = String.format("- Device: {family=%s, model=%s, brand=%s}", device.get("family"), device.get("model"), device.get("brand"));
 
         // 로그 저장
         log.debug(browserStr);
@@ -105,19 +102,19 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
 
     /**
      * view 단으로 forward 되기 전에 수행.
-     * 컨트롤러 로직이 실행된 이후 호출된다. 
-     * 컨트롤러 단에서 에러 발생 시 해당 메서드는 수행되지 않는다. 
+     * 컨트롤러 로직이 실행된 이후 호출된다.
+     * 컨트롤러 단에서 에러 발생 시 해당 메서드는 수행되지 않는다.
      * request로 넘어온 데이터 가공 시 많이 사용된다.
      */
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        //log.debug("AppInterceptor.postHandle 실행됨");
+        // log.debug("AppInterceptor.postHandle 실행됨");
 
         // 컨트롤러 종료시의 시각을 가져온다.
         endTime = System.currentTimeMillis();
-        
+
         // 시작시간과 종료시간 사이의 차이를 구하면 페이지의 실행시간을 구할 수 있다.
-        log.debug(String.format("running time: %d(ms)\n", endTime-startTime));
+        log.debug(String.format("running time: %d(ms)\n", endTime - startTime));
 
         super.postHandle(request, response, handler, modelAndView);
     }
@@ -127,18 +124,18 @@ public class AppInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        //log.debug("AppInterceptor.afterCompletion 실행됨");
+        // log.debug("AppInterceptor.afterCompletion 실행됨");
         super.afterCompletion(request, response, handler, ex);
     }
 
     /**
-     * Servlet 3.0부터 비동기 요청이 가능해짐에 따라 비동기 요청 시 
+     * Servlet 3.0부터 비동기 요청이 가능해짐에 따라 비동기 요청 시
      * PostHandle와 afterCompletion메서드를 수행하지 않고 이 메서드를 수행하게 된다.
      * 거의 사용 안함.
      */
     @Override
     public void afterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //log.debug("AppInterceptor.afterConcurrentHandlingStarted 실행됨");
+        // log.debug("AppInterceptor.afterConcurrentHandlingStarted 실행됨");
         super.afterConcurrentHandlingStarted(request, response, handler);
     }
 }

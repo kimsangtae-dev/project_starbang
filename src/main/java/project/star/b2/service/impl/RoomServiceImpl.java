@@ -11,8 +11,6 @@ import project.star.b2.model.FakeRoom;
 import project.star.b2.model.Room;
 import project.star.b2.service.RoomService;
 
-
-
 /** Room테이블 데이터 관리 기능을 제공하기 위한 Service 계층에 대한 구현체 */
 @Slf4j
 @Service
@@ -20,12 +18,13 @@ public class RoomServiceImpl implements RoomService {
 
     /** MyBatis */
     // --> import org.apache.ibatis.session.SqlSession
-	@Autowired
+    @Autowired
     SqlSession sqlSession;
 
     /**
      * Room테이블 데이터 상세 조회
-     * @param  조회할 Room테이블의 일련번호를 담고 있는 Beans
+     * 
+     * @param 조회할 Room테이블의 일련번호를 담고 있는 Beans
      * @return 조회된 데이터가 저장된 Beans
      * @throws Exception
      */
@@ -52,6 +51,7 @@ public class RoomServiceImpl implements RoomService {
 
     /**
      * Room테이블 데이터 목록 조회
+     * 
      * @return 조회 결과에 대한 컬렉션
      * @throws Exception
      */
@@ -75,7 +75,7 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
     }
-    
+
     /**
      * 공실관리 전체 조회하기
      */
@@ -99,7 +99,7 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
     }
-    
+
     /**
      * 공실관리 공개 조회하기
      */
@@ -123,7 +123,7 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
     }
-    
+
     /**
      * 공실관리 비공개 조회하기
      */
@@ -147,11 +147,10 @@ public class RoomServiceImpl implements RoomService {
 
         return result;
     }
-    
 
-	@Override
-	public int updateStatus(Room input) throws Exception {
-		int result = 0;
+    @Override
+    public int updateStatus(Room input) throws Exception {
+        int result = 0;
 
         try {
             result = sqlSession.update("RoomMapper.updateStatus", input);
@@ -168,31 +167,32 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
-
+    }
 
     /**
      * Room테이블 데이터가 저장되어 있는 갯수 조회
+     * 
      * @return int
      * @throws Exception
      */
     @Override
     public int getRoomCount(Room input) throws Exception {
         int result = 0;
-        
+
         try {
             result = sqlSession.selectOne("RoomMapper.selectCountAll", input);
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("데이터 조회에 실패했습니다.");
         }
-        
+
         return result;
     }
 
     /**
      * Room테이블 데이터 등록하기
-     * @param  저장할 정보를 담고 있는 Beans
+     * 
+     * @param 저장할 정보를 담고 있는 Beans
      * @throws Exception
      */
     @Override
@@ -218,7 +218,8 @@ public class RoomServiceImpl implements RoomService {
 
     /**
      * Room테이블 데이터 수정하기
-     * @param  수정할 정보를 담고 있는 Beans
+     * 
+     * @param 수정할 정보를 담고 있는 Beans
      * @throws Exception
      */
     @Override
@@ -244,7 +245,8 @@ public class RoomServiceImpl implements RoomService {
 
     /**
      * Room테이블 데이터 삭제하기
-     * @param  삭제할 일련번호를 담고 있는 Beans
+     * 
+     * @param 삭제할 일련번호를 담고 있는 Beans
      * @throws Exception
      */
     @Override
@@ -268,10 +270,10 @@ public class RoomServiceImpl implements RoomService {
         return result;
     }
 
-	@Override
-	public int editConfirmRoom(Room input) throws Exception {
-		// TODO Auto-generated method stub
-		int result = 0;
+    @Override
+    public int editConfirmRoom(Room input) throws Exception {
+        // TODO Auto-generated method stub
+        int result = 0;
 
         try {
             result = sqlSession.update("RoomMapper.updateConfirmItem", input);
@@ -288,12 +290,12 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
+    }
 
-	@Override
-	public int editHiddenRoom(Room input) throws Exception {
-		// TODO Auto-generated method stub
-		int result = 0;
+    @Override
+    public int editHiddenRoom(Room input) throws Exception {
+        // TODO Auto-generated method stub
+        int result = 0;
 
         try {
             result = sqlSession.update("RoomMapper.updateHiddenItem", input);
@@ -310,11 +312,11 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
+    }
 
-	@Override
-	public List<Room> getRoomCheckList(Room input) throws Exception {
-		List<Room> result = null;
+    @Override
+    public List<Room> getRoomCheckList(Room input) throws Exception {
+        List<Room> result = null;
 
         try {
             result = sqlSession.selectList("RoomMapper.selectCheckList", input);
@@ -331,11 +333,11 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
-	
-	@Override
-	public List<Room> getRoomCheckConfirmList(Room input) throws Exception {
-		List<Room> result = null;
+    }
+
+    @Override
+    public List<Room> getRoomCheckConfirmList(Room input) throws Exception {
+        List<Room> result = null;
 
         try {
             result = sqlSession.selectList("RoomMapper.selectCheckConfirmList", input);
@@ -352,11 +354,11 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
-	
-	@Override
-	public int addFakeRoom(FakeRoom input) throws Exception {
-		int result = 0;
+    }
+
+    @Override
+    public int addFakeRoom(FakeRoom input) throws Exception {
+        int result = 0;
 
         try {
             result = sqlSession.insert("FakeRoomMapper.insertItem", input);
@@ -373,12 +375,12 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
+    }
 
-	@Override
-	public int editFakeRoom(Room input) throws Exception {
-		// TODO Auto-generated method stub
-		int result = 0;
+    @Override
+    public int editFakeRoom(Room input) throws Exception {
+        // TODO Auto-generated method stub
+        int result = 0;
 
         try {
             result = sqlSession.update("RoomMapper.updateFakeItem", input);
@@ -395,10 +397,11 @@ public class RoomServiceImpl implements RoomService {
         }
 
         return result;
-	}
-	
-	/**
+    }
+
+    /**
      * 허위매물 상세 조회
+     * 
      * @param FakeRoom 저장할 정보를 담고 있는 Beans
      * @return 조회된 데이터가 저장된 Beans
      * @throws Exception
