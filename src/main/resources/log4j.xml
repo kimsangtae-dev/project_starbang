@@ -13,8 +13,10 @@
 
     <!-- 파일로 기록되는 로그 설정 -->
     <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
-        <!-- 로그 파일 생성위치 -->
-        <param name="file" value="/Users/leekh/workspace-eclipse/log/web.log" />
+        <!-- 로그 파일 생성위치(로컬) -->
+        <!--<param name="file" value="D:/project/log/web.log" />-->
+        <!-- 로그 파일 생성위치(서버) -->
+        <param name="file" value="/home/student/b2/log/web.log" />
         <param name="Append" value="true" />
         <!-- 로그 파일 하나당 사이즈 100m -->
         <param name="MaxFileSize" value="100mb" />
@@ -30,8 +32,10 @@
     <appender name="errorFile" class="org.apache.log4j.DailyRollingFileAppender">
         <!-- 에러와 관련된 로그만 기록하도록 지정 -->
         <param name="Threshold" value="ERROR" />
-        <!-- 로그 파일 생성위치 -->
-        <param name="File" value="/Users/leekh/workspace-eclipse/log/error.log" />
+        <!-- 로그 파일 생성위치(로컬) -->
+        <!--<param name="File" value="/Users/leekh/workspace-eclipse/log/error.log" />-->
+        <!-- 로그 파일 생성위치(서버) -->
+        <param name="file" value="/home/student/b2/log/error.log" />
         <!-- 하루에 한 개씩 날짜를 적용하며 파일이름이 생성되도록 함 -->
         <param name="Append" value="true" />
         <param name="DatePattern" value="'.'yyMMdd" />
