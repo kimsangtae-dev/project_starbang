@@ -41,20 +41,20 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                                 <c:choose>
                                 	<c:when test="${fn:contains(price[0].price,'0000')}">
                                 		<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2" />
-                                		<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> 
+                                		<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" />
                                 		${price[0].dealingtype}&nbsp;${patternprice2}
                                 		<span class="greyfontwon1"> 원</span>
                                 	</c:when>
                                 	<c:otherwise>
                                 	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2" />
-                                	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" /> 
+                                	<c:set var="patternprice2" value="${fn:replace(eok2, ',', '억')}" />
                                 	${price[0].dealingtype}&nbsp;${patternprice2}
                                 	<span class="greyfontwon1"> 만원</span>
                                 	</c:otherwise>
                                 </c:choose>
 						    </c:otherwise>
 						</c:choose>
-						
+
 					</h1></li>
 				<li class="pull-left abc" id="month"><span class="greyfont1">전용면적</span>
 					<h1 id="chnum">
@@ -158,8 +158,8 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				</div>
 			</c:when>
 		</c:choose>
-		
-		
+
+
 		<!--확인매물 푸른색바 끝-->
 		<div id="summury-option">
 			<!--방등록시 상세 옵션값들 시작-->
@@ -283,7 +283,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				<li class="bigviewigli">
 				<div class="room_num"><p>매물번호 ${room.roomno}</p></div>
 					<a href="#">
-						<img src="${pageContext.request.contextPath}/assets/img/upload${img[0].thumbnail}" /></a></li>
+						<c:url value="/upload/download.do" var="thumbnail_url">
+                            <c:param name="file" value="${img[0].thumbnail}" />
+                        </c:url>
+						<img src="${thumbnail_url}" /></a></li>
 				<c:forEach var="i" begin="1" end="4" step="1">
 					<c:choose>
 						<c:when test="${img[i].thumbnail != null}">
@@ -293,12 +296,18 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 							<div class="roomnum"><div class="line1"></div><div class="line2"></div><p>전체보기</p></div>
 							</c:if>
 								<a href="#">
-									<img src="${pageContext.request.contextPath}/assets/img/upload${img[i].thumbnail}" /></a></li>
+									<c:url value="/upload/download.do" var="thumbnail_url">
+					                    <c:param name="file" value="${img[i].thumbnail}" />
+					                </c:url>
+									<img src="${thumbnail_url}" /></a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="bigviewiglism">
 								<a href="#">
-									<img src="${pageContext.request.contextPath}/assets/img/upload/nophoto.png" /></a></li>
+									<c:url value="/upload/download.do" var="thumbnail_url">
+					                    <c:param name="file" value="nophoto.png" />
+					                </c:url>
+									<img src="${thumbnail_url}" /></a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -340,7 +349,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 
 					    	<c:otherwise>
 					    	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok2" />
-					    	<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" /> 
+					    	<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" />
 					    		${price[0].dealingtype}&nbsp;${patternprice2}
 					    	</c:otherwise>
 						</c:choose>
@@ -580,7 +589,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                 <c:forEach var="i" items="${img}" varStatus="status">
 					<c:choose>
 						<c:when test="${i.thumbnail != null}">
-							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${pageContext.request.contextPath}/assets/img/upload${i.thumbnail})";></div></li>
+							<c:url value="/upload/download.do" var="thumbnail_url">
+								<c:param name="file" value="${i.thumbnail}" />
+							</c:url>
+							<li class="list"><div class="sm_thumnail index${status.index}" style="background-image:url(${thumbnail_url})";></div></li>
 						</c:when>
 					</c:choose>
 				</c:forEach>
@@ -594,7 +606,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                 </button>
             </div>
 
-            <div class="giantView" id="target" style="background: url(${pageContext.request.contextPath}/assets/img/upload${img[0].thumbnail}) center center / contain no-repeat;">  <!-- esRNDG -->
+			<c:url value="" var="thumbnail_url">
+				<c:param name="file" value="${img[0].thumbnail}" />
+			</c:url>
+            <div class="giantView" id="target" style="background: url(${thumbnail_url}) center center / contain no-repeat;">  <!-- esRNDG -->
                 <button class="giantBtn_left">  <!-- gmzACw *2 -->
                     <svg width="15" height="24" viewBox="0 0 10 16">
                         <path fill="none" fill-rule="evenodd" stroke="#FFF" d="M2 14l6-6-6-6"></path></svg></button>
@@ -680,10 +695,10 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa"></script>
-	
+
 	<script type="text/javascript">
 	var count_heart = ${heartint};
-	
+
 		function delectstar(x) {
 			$.ajax({
 				url: "delectstar.do",
@@ -701,7 +716,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 				}
 			});
 		}
-	
+
 		function insertstar(x) {
 			$.ajax({
             	url: "insertstar.do",
@@ -719,7 +734,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 			});
 		}
 	</script>
-		
+
 	<script type="text/javascript">
 		/* kakao map API */
 		$(function() {
@@ -820,7 +835,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
       $(function() {
          $(".recent-div9").click(function(e) {
             var loginInfouser = "${loginInfo.userno}";
-               if(loginInfouser != "") {                  
+               if(loginInfouser != "") {
                   $(this).toggleClass('on off');
                   var onoff = $(this).hasClass("on");
                   console.log(onoff);
@@ -849,7 +864,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
       $(function() {
          $(".recent-div8").click(function(e) {
             var loginInfouser = "${loginInfo.userno}";
-            if(loginInfouser != "") {                  
+            if(loginInfouser != "") {
                   $(this).toggleClass('on off');
                   var onoff = $(this).hasClass("on");
                   console.log(onoff);

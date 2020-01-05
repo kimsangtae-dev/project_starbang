@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -100,15 +101,16 @@ public class UploadController {
     // --> 다운로드 ex) /upload/download.do?file=이미지경로&origin=원본파일이름
     // --> 썸네일 ex) /upload/download.do?file=이미지경로&size=240x320&crop=true
     @RequestMapping(value = "/upload/download.do", method = RequestMethod.GET)
-    public ModelAndView download(Model model) {
+    public ModelAndView download(Model model, @RequestParam(value = "file") String filePath, @RequestParam(value = "origin", required = false) String originName, @RequestParam(value = "size", required = false) String size,
+            @RequestParam(value = "crop", defaultValue = "false", required = false) String crop) {
         // 서버상에 저장되어 있는 파일경로 (필수)
-        String filePath = webHelper.getString("file");
+        // String filePath = webHelper.getString("file");
         // 원본 파일이름 (미필수)
-        String originName = webHelper.getString("origin");
+        // String originName = webHelper.getString("origin");
         // 축소될 이미지 해상도 --> 320x320
-        String size = webHelper.getString("size");
+        // String size = webHelper.getString("size");
         // 이미지 크롭 여부 --> 값이 없을 경우 기본값 false
-        String crop = webHelper.getString("crop", "false");
+        // String crop = webHelper.getString("crop", "false");
 
         /** 다운로드 스트림 출력하기 */
         if (filePath != null) {

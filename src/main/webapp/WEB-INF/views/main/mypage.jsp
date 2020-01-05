@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!DOCTYPE html>
@@ -47,12 +47,15 @@ $(function () {
 						<img src="${pageContext.request.contextPath}/assets/img/ma_img/mypa.png" id="proflie">
 					</c:when>
 					<c:when test="${loginInfo.profile_img != null}">
-						<img src="${pageContext.request.contextPath}/assets/img/upload/${loginInfo.profile_img}" id="proflie" />
+                        <c:url value="/upload/download.do" var="thumbnail_url">
+                            <c:param name="file" value="${loginInfo.profile_img}" />
+                        </c:url>
+						<img src="${thumbnail_url}" id="proflie" />
 						<!-- "${pageContext.request.contextPath}/${fn:substring(output.profile_img ,63, fn:length(output.profile_img))}" -->
 					</c:when>
 				</c:choose>
        		</div>
-       		
+
        		<form method="post" action="${pageContext.request.contextPath}/main/Profileupload_ok.do" enctype="multipart/form-data">
 	       		<div class="div2">
 	    			<div class="filebox">
@@ -61,7 +64,7 @@ $(function () {
 	               		<input type="submit" value="보내기" id="inputsubmit" style="display:none;" ></label>
 	            	</div>
 	            </div>
-            </form> 
+            </form>
             </div>
             <br/>
             <div id="textcontent">
@@ -79,7 +82,7 @@ $(function () {
                   <button type="button" class="btn btn-default focse reemailinumber" id="reemailinumber">인증번호확인</button>
                </div>
                <h3 class="h33">휴대폰 번호</h3>
-               <input type="hidden" id="nowallpon" value="${loginInfo.tel}"> 
+               <input type="hidden" id="nowallpon" value="${loginInfo.tel}">
                 <select class="pon input" name="pont1" id="pon1" value="${fn:substring(loginInfo.tel,0,3)}" >
 					<option value="010" >010</option>
 					<option value="011" >011</option>
@@ -87,16 +90,16 @@ $(function () {
 					<option value="017" >017</option>
 					<option value="018" >018</option>
 					<option value="019" >019</option>
-				</select> - 
-               <input type="number" name="pont2" id="pon2" value="${fn:substring(loginInfo.tel,4,8)}" disabled class="pon input"> - 
+				</select> -
+               <input type="number" name="pont2" id="pon2" value="${fn:substring(loginInfo.tel,4,8)}" disabled class="pon input"> -
                <input type="number" name="pont3" id="pon3" value="${fn:substring(loginInfo.tel,9,13)}" disabled class="pon input">
                <button type="button" class="btn btn-default focse ponbutton" id="repon">변경</button>
-               <h3 class="h34">휴대폰 번호</h3>
+               <h3 class="h34">비밀번호</h3>
                <input type="hidden" value="${loginInfo.passwd}" id="pwd" >
                <input type="passwd" name="pwd1" id="pwd1" class="pwd input" placeholder="현재비밀번호를 입력하세요">
                <br/>
                <input type="passwd" name="pwd2" id="pwd2" class="pwd input" placeholder="변경될 비밀번호를 입력하세요" >
-               <br/>  
+               <br/>
                <input type="passwd" name="pwd3" id="pwd3" class="pwd2 input" placeholder="변경될 비밀번호를 한 번 더 입력하세요" >
                <br/>
             </div>
@@ -107,10 +110,10 @@ $(function () {
             <button id="out" class="btn btn-link bot outall" data-toggle="modal" data-target="#outall">회원탈퇴</button>
             <p class="rhdrks2"></p>
          </div>
-         
+
          <!-- 하단 영역 -->
    <%@ include file="../assets/inc/ma_bottom.jsp"%>
-    
+
    <!-- 모달창 -->
    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
    <script src="${pageContext.request.contextPath}/assets/js/regex.js"></script>
@@ -118,23 +121,23 @@ $(function () {
    $(function() {
        /** 변경 버튼 */
       $('#reemail').one("click", function() {
-         var reemail = document.getElementById('reemail'); 
-         var email = document.getElementById('email'); 
+         var reemail = document.getElementById('reemail');
+         var email = document.getElementById('email');
          var reemailinumber = document.getElementById("reemailinumber");
          var emailinumber = document.getElementById("emailinumber");
          var emailinumberdiv = document.getElementById("emailinumberdiv");
          var reemailaut = document.getElementById("reemailaut");
          /**email.readonly = true; */
-               
+
          $reemail = $('#email').attr('disabled', false);
          reemailinumber.style.display = 'block';
          emailinumber.style.display = 'block';
          emailinumberdiv.style.height = '60px';
           $("#reemail").html("인증");
          $reemail = $('#reemail').attr('display', none);
-         $reemailaut = $('#reemailaut').attr('display', inline-block); 
+         $reemailaut = $('#reemailaut').attr('display', inline-block);
       });
-       
+
       /** 랜덤값 함수 */
 		function random() {
 			var num = Math.floor(Math.random() * 10);
@@ -146,7 +149,7 @@ $(function () {
 		for (var i = 0; i < 6; i++) {
 			auth += random();
 		}
-		
+
 		/** 이메일인증확인창 */
 		$("#reemailinumber").click(function() {
 			var user = $('#emailinumber').val();
@@ -157,7 +160,7 @@ $(function () {
 
 			}
 		});
-       
+
        $('#reemail').on("click", function() {
     	   var email = $("#email").val();
 			swal("새로운 이메일에 인증번호를 발송했습니다");
@@ -177,35 +180,35 @@ $(function () {
 				}
 			});
       });
-      
+
        /** 휴대폰 번호 바꿈 */
       $("#repon").click(function(e) {
-         var repon = document.getElementById('repon'); 
+         var repon = document.getElementById('repon');
          var pon1 = document.getElementById('pon1');
          var pon2 = document.getElementById('pon2');
          var pon3 = document.getElementById('pon3');
-   
+
          $repon = $('#pon1').attr('disabled', true);
          $repon = $('#pon1').attr('disabled', false);
-         
+
          $repon = $('#pon2').attr('disabled', true);
          $repon = $('#pon2').attr('disabled', false);
-         
+
          $repon = $('#pon3').attr('disabled', true);
          $repon = $('#pon3').attr('disabled', false);
-         
+
       });
-      
 
 
-      $('#modal').modal("hide"); //닫기 
-      
-      var myname = document.getElementById('myname'); 
+
+      $('#modal').modal("hide"); //닫기
+
+      var myname = document.getElementById('myname');
       var mynamevalue = $('#myname').val();
-      
-      /** 회원  수정하기 */ 
+
+      /** 회원  수정하기 */
 		$("#submitedit").click(function() {
-								//if () db에서 가져온 값과 현재 input에 있는 값이 하나라도 다르다면 실행 
+								//if () db에서 가져온 값과 현재 input에 있는 값이 하나라도 다르다면 실행
 								//$("#form_useredit").submit(function() {
 													// 기본동작 수행 방식
 													/* e.preventDefault(); */
@@ -245,7 +248,7 @@ $(function () {
 				nowallpon = allpon;
 			}
 			/** 비밀번호 검사 */
-			var pwd = $('#pwd').val(); 
+			var pwd = $('#pwd').val();
 			var pwd1 = $('#pwd1').val(); // 유저 구비밀번호
 			var pwd2 = $('#pwd2').val(); // 유저 신비밀번호
 			var pwd3 = $('#pwd3').val(); // 유저 신비밀번호확인
@@ -260,13 +263,13 @@ $(function () {
 				if (!regex.compare_to('#pwd2', '#pwd3', '비밀번호 확인이 잘못되었습니다.')) {return false;}
 				pwd = pwd2;
 			}
-			
+
 			if ($('#nowmyname').val() == $('#myname').val() && $('#nowemail').val() == $('#email').val() && nowallpon == allpon && $('#pwd1').val() == "") {
 				alert("바뀐 정보가 없습니다.")
 				return false;
 			}
 
-		
+
 		var userno = $('#userno').val(); // 유저넘버
 		var d = new Date();
 		var noweditdate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
@@ -287,18 +290,18 @@ $(function () {
 		    	error:function(jqXHR, textStatus, errorThrown){
 		    		console.log("mypagesubmit회원수정 에러 발생~~ \n" + textStatus + " : " + errorThrown);
 		    		self.close();
-	        	}	
-	    	});	
+	        	}
+	    	});
 		}); //$("#mypagesubmit").click(function() {
-								
+
    });
 
 	</script>
-      
+
    <script type="text/javascript">
    $(function() {
 	   $("#modalsubmit").click(function() {
-			var outtextarea = $('#outtextarea').val(); 
+			var outtextarea = $('#outtextarea').val();
 			//alert(outtextarea);
 			if (!regex.value('#outtextarea', '탈퇴 이유를 입력하세요.')) {return false;}
 			if (outtextarea.trim() == "") {
@@ -333,21 +336,21 @@ $(function () {
             <div class="modal-header">
                    <h4>회원탈퇴</h4>
                 </div>
-            <div class="modal-body modalbody modalcont" id="modaloutcheck">               
+            <div class="modal-body modalbody modalcont" id="modaloutcheck">
                <h4 class="modal-title">회원탈퇴를 신청하기전에 아래 안내 사항을 한번 더 확인해주세요.</h4>
                <br/>
                <pre class="mypageoutpre">
-1. 회원 탈퇴 시, 현재 로그인된 아이디는 즉시 탈퇴 처리됩니다. 
-2. 회원 탈퇴 시, 회원 전용 웹 서비스 이용이 불가합니다. 
-3. 탈퇴 시 회원 정보 및 찜 서비스, 등록한 게시물 이용 기록이 모두 삭제됩니다. 
-4. 회원 정보 및 서비스 이용 기록은 모두 삭제되며, 삭제된 데이터는복구되지 않습니다. 
+1. 회원 탈퇴 시, 현재 로그인된 아이디는 즉시 탈퇴 처리됩니다.
+2. 회원 탈퇴 시, 회원 전용 웹 서비스 이용이 불가합니다.
+3. 탈퇴 시 회원 정보 및 찜 서비스, 등록한 게시물 이용 기록이 모두 삭제됩니다.
+4. 회원 정보 및 서비스 이용 기록은 모두 삭제되며, 삭제된 데이터는복구되지 않습니다.
 5. 광고를 위한 매물이 등록되어 있을 경우, 탈퇴 시 모든 정보는 삭제 처리됩니다.
                </pre>
                <textarea rows="10" cols="64" placeholder="탈퇴사유를 써주세요" class="outtextarea" id="outtextarea"></textarea>
                <input type="hidden" id="hiddentext">
                <!-- <button onClick="action();" class="actionbutton"><img src="ma_assets/ma_img/eede.png" width="16px" id="modelcheck" class="buttonimg"></button> -->
                <label>
-               		<input type="checkbox" name="room-type" value="oneroom" id="outokinput" /> 
+               		<input type="checkbox" name="room-type" value="oneroom" id="outokinput" />
                		<span class="checkBox"></span> <span class="checkText checkTextspan">안내사항을 모두 확인하였으며, 이에 동의합니다.</span>
 				</label>
                <!-- <p class="modelpp" >안내사항을 모두 확인하였으며, 이에 동의합니다.</p> -->
@@ -358,7 +361,7 @@ $(function () {
             </div>
          </div>
       </div>
-      
+
 </body>
 
 

@@ -98,7 +98,10 @@
 													<%-- -------------------쿠키 굽기---------------------- --%>
 													<!-- 이미지 -->
 													<div class="hit-a-div">
-														<img src="${pageContext.request.contextPath}/assets/img/upload/${item.filename}"/></div> 
+                            <c:url value="/upload/download.do" var="thumbnail_url">
+                              <c:param name="file" value="${item.filename}" />
+                            </c:url>
+                            <img src="${thumbnail_url}"/></div>
 													<c:if
 														test="${item.confirmdate != null}">
 														<%-- 확인매물 div --%>
@@ -133,7 +136,7 @@
 							<%-- 각 갤러리 끝 --%>
 						</c:choose>
 					</ul>
-					
+
 					<%--  <!-- 각각 갤러리 시작 -->
               <!-- 1번째 갤러리 -->
               <div class="hit-div5">
@@ -273,7 +276,7 @@
 			src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-		
+
 		<script type="text/javascript">
     	function delectstar(x) {
     		$.ajax({
@@ -288,7 +291,7 @@
 				}
     		});
     	}
-    	
+
     	function insertstar(x) {
     		$.ajax({
                 url: "insertstar.do",
@@ -302,14 +305,14 @@
 				}
     		});
     	}
-    </script>	
-			
+    </script>
+
 		<script type="text/javascript">
 			/* 좋아요 클릭 -> 하트 색 변경 */
 			$(function() {
 				$(".hit-div8").click(function(e) {
 					var loginInfouser = "${loginInfo.userno}";
-                	if(loginInfouser != "") {         
+                	if(loginInfouser != "") {
 	                    $(this).toggleClass('on off');
     	                var onoff = $(this).hasClass("on");
     	                console.log(onoff);
@@ -324,6 +327,6 @@
 				});
 			});
 		</script>
-		
+
 </body>
 </html>

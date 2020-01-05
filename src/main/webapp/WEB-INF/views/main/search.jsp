@@ -260,10 +260,12 @@ pageEncoding="UTF-8"%>
                                                             href="${pageContext.request.contextPath}/main/rmdt.do?roomno=${item.roomno}">
 
                                                             <%-- -------------------쿠키 굽기---------------------- --%>
-
                                                             <!-- 이미지 -->
                                                             <div class="recent-a-div">
-                                                                <img src="${pageContext.request.contextPath}/assets/img/upload/${item.thumbnail}" />
+                                                                <c:url value="/upload/download.do" var="thumbnail_url">
+                                                                    <c:param name="file" value="${item.thumbnail}" />
+                                                                </c:url>
+                                                                <img src="${thumbnail_url}" />
                                                             </div>
                                                             <c:if test="${item.confirmdate != null}">
                                                                 <%-- 확인매물 div --%>
@@ -367,7 +369,7 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=49ad4eb7ef14b56eb0eca723e4dd1eaa&libraries=clusterer,services"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/ion.rangeSlider.js"></script>
-    
+
     <script type="text/javascript">
         function delectstar(x) {
             $.ajax({
@@ -382,7 +384,7 @@ pageEncoding="UTF-8"%>
                 }
             });
         }
-        
+
         function insertstar(x) {
             $.ajax({
                 url: "insertstar.do",
@@ -397,7 +399,7 @@ pageEncoding="UTF-8"%>
             });
         }
     </script>
-    
+
     <script type="text/javascript">
         /* 브라우저 크기에 따라 갤러리와 지도영역 높이 변경 */
         function contentSize() {
@@ -419,7 +421,7 @@ pageEncoding="UTF-8"%>
             /** 좋아요 */
             $(".recent-div8").click(function(e) {
                 var loginInfouser = "${loginInfo.userno}";
-                if(loginInfouser != "") {                   
+                if(loginInfouser != "") {
                     $(this).toggleClass('on off');
                     var onoff = $(this).hasClass("on");
                     console.log(onoff);
@@ -453,7 +455,7 @@ pageEncoding="UTF-8"%>
             <a target="_blank" rel="" class="recent-a" href="${pageContext.request.contextPath}/main/rmdt.do?roomno={{roomno}}">
             {{!-- 이미지 --}}
             <div class="recent-a-div">
-                <img src="${pageContext.request.contextPath}/assets/img/upload/{{thumbnail}}" />
+                <img src="${pageContext.request.contextPath}/upload/download.do?file={{thumbnail}}" />
             </div>
             {{!-- 확인매물 div --}}
             {{#if confirmdate}}
@@ -482,13 +484,13 @@ pageEncoding="UTF-8"%>
    </script>
 
     <!-- 지도 api -->
-    <script type="text/javascript">    
+    <script type="text/javascript">
     var mapDefaultInfo = {
         lat: 37.5880618964351,
         lng: 126.987409633377,
         level: 5
     };
-    
+
     /** ajax전송을 위한 파라미터 가져오기 **/
     var roomtype = "${param.roomtype}";
     var dealingtype = "${param.dealingtype}";
@@ -506,7 +508,7 @@ pageEncoding="UTF-8"%>
     var centerLat = ${filter.centerLat};
     var centerLng = ${filter.centerLng};
     var level =${filter.level};
-    
+
     var west = ${filter.west};
     var east = ${filter.east};
     var south = ${filter.south};
@@ -519,10 +521,10 @@ pageEncoding="UTF-8"%>
     var nowPage;
     var nextPage;
     var prevPage;
-    
+
     var session = "${loginInfo}";
     var heart = "${heart}";
-    
+
     var null_div;
 
     /** ajax 전송 메서드 **/
@@ -546,9 +548,9 @@ pageEncoding="UTF-8"%>
                 "south": south,
                 "page": page
             };
-        
+
         console.log(params);
-        
+
         $.ajax({
             url: "${pageContext.request.contextPath}/main/search",
             method: "get",
@@ -562,7 +564,7 @@ pageEncoding="UTF-8"%>
                     null_div += '<p class="noresult">조건에 맞는 방이 없습니다.</p>';
                     null_div += '<p class="noresult">맞춤필터를 해제해보세요.</p>';
                     null_div += '</div>';
-                    
+
                     $("#gallery-list").html(null_div);
                 } else {
                 /** 월세인지 전세/매매인지 구분 **/
@@ -586,7 +588,7 @@ pageEncoding="UTF-8"%>
                         return deposit/10000 + "억";
                     } else { return deposit; }
                 });
-                
+
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
@@ -650,7 +652,7 @@ pageEncoding="UTF-8"%>
                 /** 좋아요 하트 토글 **/
                 $(".recent-div8").click(function(e) {
                     var loginInfouser = "${loginInfo.userno}";
-                    if(loginInfouser != "") {         
+                    if(loginInfouser != "") {
                         $(this).toggleClass('on off');
                         var onoff = $(this).hasClass("on");
                         console.log(onoff);
@@ -704,17 +706,17 @@ pageEncoding="UTF-8"%>
 
             /** 매물 데이터 가져오기 **/
             var params = {
-                    roomtype: "${param.roomtype}", 
-                    dealingtype: "${param.dealingtype}", 
-                    depositFrom: "${param.depositFrom}", 
-                    depositTo: "${param.depositTo}", 
-                    monthFrom: "${param.monthFrom}", 
-                    monthTo: "${param.monthTo}", 
-                    buyingFrom: "${param.buyingFrom}", 
-                    buyingTo: "${param.buyingTo}", 
-                    feeFrom: "${param.feeFrom}", 
-                    feeTo: "${param.feeTo}", 
-                    sizeFrom: "${param.sizeFrom}", 
+                    roomtype: "${param.roomtype}",
+                    dealingtype: "${param.dealingtype}",
+                    depositFrom: "${param.depositFrom}",
+                    depositTo: "${param.depositTo}",
+                    monthFrom: "${param.monthFrom}",
+                    monthTo: "${param.monthTo}",
+                    buyingFrom: "${param.buyingFrom}",
+                    buyingTo: "${param.buyingTo}",
+                    feeFrom: "${param.feeFrom}",
+                    feeTo: "${param.feeTo}",
+                    sizeFrom: "${param.sizeFrom}",
                     sizeTo: "${param.sizeTo}",
                     east: 0,
                     west: 0,
@@ -722,9 +724,9 @@ pageEncoding="UTF-8"%>
                     south: 0,
                     pagelist: 1
                 };
-            
+
             console.log(params);
-            
+
             $.get('${pageContext.request.contextPath}/main/search', params, function(data) {
                     var markers = $(data.output).map(function(i, position) {
                         return new kakao.maps.Marker({
@@ -767,7 +769,7 @@ pageEncoding="UTF-8"%>
                     centerLat = map.getCenter().getLat();
                     centerLng = map.getCenter().getLng();
                     level = map.getLevel();
-                    
+
 
 
 

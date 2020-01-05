@@ -11,7 +11,7 @@
         #header {
             min-width: 1366px;
         }
-        
+
         #header {
 	background-color: rgb(81, 136, 244);
 }
@@ -121,7 +121,7 @@
             width: 520px;
             padding-top: 0;
         }
-         /* #header a:hover { color: #666666; } */ 
+         /* #header a:hover { color: #666666; } */
 
     </style>
 </head>
@@ -158,7 +158,7 @@
                                     <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${loginInfo.profile_img}"/>
+                                    <img src="${pageContext.request.contextPath}/upload/download.do?file=${loginInfo.profile_img}"/>
                                 </c:otherwise>
                             </c:choose>
                             <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag" aria-expanded="false" data-target="#loginModal">

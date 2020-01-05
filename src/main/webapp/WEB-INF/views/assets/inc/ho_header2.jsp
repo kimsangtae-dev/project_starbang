@@ -157,7 +157,7 @@
                                     <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${loginInfo.profile_img}"/>
+                                    <img src="${pageContext.request.contextPath}/upload/download.do?file=${loginInfo.profile_img}"/>
                                 </c:otherwise>
                             </c:choose>
                             <a id="dLabel" data-target="#" data-toggle="dropdown" aria-haspopup="true" role="button" class="atag" aria-expanded="false" data-target="#loginModal">

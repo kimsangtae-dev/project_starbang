@@ -136,8 +136,8 @@ public class CookieUtils {
      * @description 쿠키들을 맵으로 반환한다.
      * @params
      */
-    public HashMap getValueMap(HttpServletRequest request) {
-        HashMap cookieMap = new HashMap();
+    public HashMap<String, Cookie> getValueMap(HttpServletRequest request) {
+        HashMap<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

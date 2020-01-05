@@ -47,7 +47,7 @@ public class DownloadHelper {
         /** JSP 내장객체를 담고 있는 Spring의 객체를 통해서 내장객체 획득하기 */
         // --> import org.springframework.web.context.request.RequestContextHolder;
         // --> import org.springframework.web.context.request.ServletRequestAttributes;
-        ServletRequestAttributes requestAttr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes requestAttr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
         // JSP 내장객체 참조하기 --> getInstance()에 전달된 객체를 받는다.
         HttpServletResponse response = requestAttr.getResponse();

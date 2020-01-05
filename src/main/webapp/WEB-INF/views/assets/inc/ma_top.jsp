@@ -9,7 +9,7 @@
 ----------------------------------*/
         /* 브라우저 최소 넓이 지정 */
         #header {
-             min-width: 1366px; 
+             min-width: 1366px;
         }
         /* 메뉴바 크기, 여백, 테두리 */
         #header .navbar {
@@ -113,13 +113,13 @@
             /* padding: 0px 20px; */
             text-align: left;
         }
-        
+
         #loginprofile {
         	height: 30px;
 		    width: 30px;
     		border-radius: 50%;
         }
-        
+
     </style>
 </head>
 <!---------------------------------
@@ -140,7 +140,7 @@
 <div class="menu-left small-font">
     <a href="${pageContext.request.contextPath}/host/main.do">방주인 사이트</a>
          <span>&nbsp | &nbsp</span>
-    <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>    
+    <a href="${pageContext.request.contextPath}/admin/main.do">관리자 사이트</a>
 </div>
 </c:otherwise>
 </c:choose>
@@ -167,7 +167,10 @@
                                     <img src="${pageContext.request.contextPath}/assets/img/ma_img/basic.svg"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="${pageContext.request.contextPath}/assets/img/upload/${loginInfo.profile_img}" id="loginprofile"/>
+                                    <c:url value="/upload/download.do" var="thumbnail_url">
+                                        <c:param name="file" value="${loginInfo.profile_img}" />
+                                    </c:url>
+                                    <img src="${thumbnail_url}" id="loginprofile"/>
                                 </c:otherwise>
                             </c:choose>
                          <!-- ********************************************************************************************** -->

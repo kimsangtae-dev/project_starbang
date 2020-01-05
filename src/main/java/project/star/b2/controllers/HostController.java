@@ -908,16 +908,22 @@ public class HostController {
         log.debug(output.getThumbnail() + ":::::::::::::::::::::::::");
 
         if (output.getThumbnail() != null) {
-
-            File thumbnail = new File("/Users/hope/Desktop/b2/src/main/webapp/WEB-INF/views/assets/img/upload" + output.getThumbnail());
+            String f = output.getThumbnail();
+            if (f.substring(0, 1).equals("/")) {
+                f = f.substring(1);
+            }
+            File thumbnail = new File(webHelper.getUploadDir(), f);
             boolean del_ok1 = thumbnail.delete();
             System.out.println("thumbnail 삭제성공여부 :" + del_ok1);
 
         }
 
         if (output.getFileName() != null) {
-
-            File originalFile = new File("/Users/hope/Desktop/b2/src/main/webapp/WEB-INF/views/assets/img/upload/" + output.getFileName());
+            String f = output.getFileName();
+            if (f.substring(0, 1).equals("/")) {
+                f = f.substring(1);
+            }
+            File originalFile = new File(webHelper.getUploadDir(), f);
             boolean del_ok2 = originalFile.delete();
             System.out.println("originalFile 삭제성공여부 :" + del_ok2);
 
