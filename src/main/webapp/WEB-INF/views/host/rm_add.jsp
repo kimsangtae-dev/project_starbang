@@ -940,7 +940,10 @@ $(function() {
 	    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
 	    
 	    /** 층수 < 건물층수 설정 */
-	    if($("#floor").val() > $("#maxfloor").val()) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+	    var floor = $("#floor option:selected").val();
+	    var maxFloor = $("#maxfloor option:selected").val();
+	    if( floor > maxFloor ) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+	    
 	    
 	    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
 	    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
@@ -984,7 +987,6 @@ $(function() {
         	$('.low_btn2').trigger('click');
         	
         	preventSubmit = false;
-        	console.log("바인드");
         }else {
         	alert('저장 중입니다.');
         	console.log("트루로 변환 보냈습니다.");

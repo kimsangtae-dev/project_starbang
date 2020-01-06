@@ -1280,14 +1280,11 @@ $(function() {
 	    if (!regex.value('#maxfloor', '전체 층수를 입력해주세요.')) { $("#maxfloor").focus(); return false; }	 		// 전체층수
 	    if (!regex.value('#floor', '해당 층수를 입력해주세요.')) { $("#floor").focus(); return false; }	 	 		// 해당층수
 
-	    console.log("해당층수" + $("#floor").val());
-	    console.log("전체층수" + $("#maxfloor").val());
 
-	    var what = Boolean($("#maxfloor").val() < $("#floor").val() );
-	    console.log(what);
-
-	    /** 층수 < 건물층수 설정 */
-	    //if( $("#floor").val() > $("#maxfloor").val() ) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
+	   /** 층수 < 건물층수 설정 */
+	    var floor = $("#floor option:selected").val();
+	    var maxFloor = $("#maxfloor option:selected").val();
+	    if( floor > maxFloor ) { alert("해당층수는 건물층수 보다 높을 수 없습니다."); $("#floor").focus(); return false; }
 
 	    if (!regex.value('#heater', '난방 종류를 입력해주세요.')) { $("#heater").focus(); return false; }	 				// 난방종류
 	    if (!regex.check("input[name='commingday']:checked", '입주 가능일을 입력해주세요.')) { 							//입주가능일
