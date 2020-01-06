@@ -326,6 +326,7 @@
                             success : function(req) {
                                 console.log(x + "delectstar");
                                 popularityroom();
+                                recentroom();
                             },
                             error : function() {
                                 console.log("delectstar발송에러 발생");
@@ -342,8 +343,9 @@
                             },
                             success : function(req) {
                                 console.log(x + "delectstar");
-                                $("#tab2").click();
                                 popularityroom();
+                                wishsh();
+                                $("#tab2").click();
                             },
                             error : function() {
                                 console.log("delectstar발송에러 발생");
@@ -361,6 +363,7 @@
                             success : function(req) {
                                 console.log(x + "insertstar");
                                 popularityroom();
+                                recentroom();
                             },
                             error : function() {
                                 console.log("insertstar발송에러 발생");
@@ -470,7 +473,22 @@
             
             /** 찜한방 **/
             $("#tab2").click(function() {
-                $.get("${pageContext.request.contextPath}/professor", {
+                wishsh();
+            });
+            
+            /** 최근본방 **/
+            $("#tab1").click(function() {
+                recentroom();
+            });
+            
+            $(document).ready(function() { //인기있는 방 AJAX
+                popularityroom();
+            });
+            
+        });
+
+        function wishsh() {
+            $.get("${pageContext.request.contextPath}/professor", {
                     "userno" : sessionuserno
                 }, function(json) {
                     Handlebars.registerHelper('isMonth', function(dealingtype, options) {
@@ -501,7 +519,7 @@
                         if (fee == 0) {
                             return "없음";
                         } else { 
-                        	return fee+"만"; }
+                            return fee+"만"; }
                     });
                     
                     /** 세션 식별하기 **/
@@ -558,18 +576,8 @@
                         });
                     });
                 });
-            });
-            
-            /** 최근본방 **/
-            $("#tab1").click(function() {
-                recentroom();
-            });
-            
-            $(document).ready(function() { //인기있는 방 AJAX
-                popularityroom();
-            });
-            
-        });
+        } // function wishsh() {
+
         /** 최근본방 ajax처리 함수 */
         function recentroom() {
             $.get("${pageContext.request.contextPath}/professor2", {}, function(json) {

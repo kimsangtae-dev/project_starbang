@@ -34,25 +34,35 @@
 
 <script type="text/javascript">
     $(function() {
+        var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
+        var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
+        var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
         $("#agreejoin").click(function() {
-	        var agreejoin = document.getElementById('agreejoin');
-            if ($('input:checkbox[id="room-type1"]').is(":checked") ==  false) {
-    	        alert("필수 항목을 체크해 주세요");
-    	        e.preventDefault();
-            } else if ($('input:checkbox[id="room-type2"]').is(":checked") ==  false) {
-    	        alert("필수 항목을 체크해 주세요");
-    	        e.preventDefault();
-            } else if ($('input:checkbox[id="room-type3"]').is(":checked") ==  false) {
-    	        alert("필수 항목을 체크해 주세요");
-    	        e.preventDefault();
+            var agreejoin = document.getElementById('agreejoin');
+            if (input1 == false && input2 == false && input3 == false) {
+                agreejoin.removeAttribute('href','<%=request.getContextPath()%>/modal/join.do');
+                agreejoin.removeAttribute('data-dismiss', 'modal');
+                agreejoin.removeAttribute('data-toggle', 'modal');
+                agreejoin.removeAttribute('data-target', '#joinModal');
+                alert("필수 항목을 체크해 주세요");
             } else {
-            	agreejoin.setAttribute('href','<%=request.getContextPath()%>/modal/join.do');
+                var all_check = document.getElementById('all_check');
+                $all_check = $('#all_check').setAttribute('checked', true);
+                agreejoin.setAttribute('href','<%=request.getContextPath()%>/modal/join.do');
                 agreejoin.setAttribute('data-dismiss', 'modal');
                 agreejoin.setAttribute('data-toggle', 'modal');
                 agreejoin.setAttribute('data-target', '#joinModal');
-                /* $("#element").hide(); */
             }
         });
+        
+        $(".agreecheck").click(function() {
+            if(input1 != false && input2 != false && input3 != false ) {
+               $("#all_check").prop("checked", "checked");
+             } else {
+               $("#all_check").prop("checked", false);
+             }
+        });
+        
     });
 </script>
 
