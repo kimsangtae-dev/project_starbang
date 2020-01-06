@@ -213,6 +213,10 @@ body, #root {
         font-size: 12px;
     }
 
+	.select-td{
+	cursor : pointer;
+	}
+
     .table-div > span {
         margin-left: 25px; 
     }

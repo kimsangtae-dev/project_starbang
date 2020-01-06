@@ -10,7 +10,9 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rmli.css" />
 <head>
 
-<%@ include file="../assets/inc/meta_host.jsp"%>
+<%@ include file="../assets/inc/meta.jsp"%>
+
+<title>공실관리</title>
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="" />
@@ -92,7 +94,7 @@
 	                       		<td class="text-center">${roomno}</td>
 	                       		
 	                       		<%-- 공실정보열 --%>
-	                           	<td>
+	                           	<td class="select-td">
 	                                <div class="table-div">
 	                                    <span class="table-span1">${roomtype}</span>
 	                                    <b class="table-span1-1">
@@ -100,7 +102,7 @@
 											    <c:when test="${dealingtype == '월세'}">
 												    <fmt:formatNumber value="${deposit}" pattern="#,####" var="eok1"/> 
 											    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-												    	${dealingtype}&nbsp;${patternprice1}/${price}만 원
+												    	${dealingtype}&nbsp;${patternprice1}/${k.price}만 원
 											    </c:when>
 										    	<c:otherwise>
 											    	<fmt:formatNumber value="${price}" pattern="#,####" var="eok2" /> 
@@ -317,6 +319,7 @@
 	   }
 	});
 </script>
+
 <script type="text/javascript">
 	/* 공실상태 전환하기 */
 	$(function() {
@@ -357,5 +360,20 @@
 		});
 	})
 </script>
+
+<script>
+// 새창띄워서 룸 디테일 들어가기 
+$(".select-td").click(function(){
+	
+	var url = "${pageContext.request.contextPath}/main/rmdt.do?roomno=";
+	var roomno = $(this).prev().html();
+	
+	window.open(url + roomno, "_blank");
+	
+	
+});
+
+</script>
+
 </body>
 </html>
