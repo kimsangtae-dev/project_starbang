@@ -120,7 +120,7 @@
         }
         .navbar > .pull-right {
             width: 520px;
-            padding-top: 0;
+            padding: 0 0 0 70px;
         }
         /*#header a:hover {
             color: #666666;

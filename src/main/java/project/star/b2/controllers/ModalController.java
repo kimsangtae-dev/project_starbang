@@ -204,6 +204,9 @@ public class ModalController {
 
         /* session 삭제 */
         session.removeAttribute("loginInfo");
+        
+        /* session 무효화 */
+        session.invalidate();
 
         String redirectUrl = contextPath + "/";
         return webHelper.redirect(redirectUrl, "로그아웃 되었습니다.");
