@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import project.star.b2.helper.CookieUtils;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
-import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Gu;
 import project.star.b2.model.Heart;
