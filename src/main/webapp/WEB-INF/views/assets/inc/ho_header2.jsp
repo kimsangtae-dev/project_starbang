@@ -186,26 +186,27 @@
         </div>
     </div>
     <!-- 로그인용 모달 로더 -->
-    <div class="modal fade" id="loginModal">
+    <div class="modal fade" id="loginModal" data-backdrop="static">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 비밀번호 찾기용 모달 로더 -->
-    <div class="modal fade" id="passwdModal">
+    <div class="modal fade" id="passwdModal" data-backdrop="static">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 동의하기용 모달 로더 -->
-    <div class="modal fade" id="agreeModal">
+    <div class="modal fade" id="agreeModal" data-backdrop="static">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 회원가입용 모달 로더 -->
-    <div class="modal fade" id="joinModal">
+    <div class="modal fade" id="joinModal" data-backdrop="static">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
+
