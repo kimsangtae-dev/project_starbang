@@ -89,7 +89,6 @@ a > img {
 .recent-a-div:after {
    content: "";
    height: 100%;
-   background-color: rgba(0, 0, 0, 0.1);
    position: absolute;
    top: 0px;
    left: 0px;
@@ -177,8 +176,8 @@ a > img {
 }
 
 .recent-a-div img {
-	width: 300px;
-	height: 150px
+	width: 280px;
+    height: 186px;
 }
 </style>
 <title>팀소개</title>
