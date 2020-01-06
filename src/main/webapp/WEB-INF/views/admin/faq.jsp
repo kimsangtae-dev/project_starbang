@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../assets/inc/meta.jsp" />
+<%@ include file="../assets/inc/meta_admin.jsp"%>
 
 <!-- css 참조 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/faq.css" />

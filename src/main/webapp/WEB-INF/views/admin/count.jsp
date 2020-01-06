@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ include file="../assets/inc/meta_admin.jsp"%>
 </head>
 <body>
 	<h1>회원정보</h1>

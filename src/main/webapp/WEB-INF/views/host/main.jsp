@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>별방 방주인 메인 페이지</title>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta_host.jsp"%>
 <!-- css 적용 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/main.css" />
 <style type="text/css">

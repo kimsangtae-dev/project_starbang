@@ -10,9 +10,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rmli.css" />
 <head>
 
-<%@ include file="../assets/inc/meta.jsp"%>
-
-<title>공실관리</title>
+<%@ include file="../assets/inc/meta_host.jsp"%>
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="" />
