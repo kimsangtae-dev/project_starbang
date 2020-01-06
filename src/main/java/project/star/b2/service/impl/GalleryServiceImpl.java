@@ -18,7 +18,6 @@ import project.star.b2.service.GalleryService;
 public class GalleryServiceImpl implements GalleryService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 

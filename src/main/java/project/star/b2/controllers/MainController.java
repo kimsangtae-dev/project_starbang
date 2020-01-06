@@ -45,13 +45,10 @@ import project.star.b2.service.UserService;
 @Controller
 public class MainController {
     /** WebHelper 주입 */
-    // --> import org.springframework.beans.factory.annotation.Autowired;
-    // --> import project.star.b2.helper.WebHelper;
     @Autowired
     WebHelper webHelper;
 
     /** Service 패턴 구현체 주입 */
-    // --> import project.star.b2.service.RoomService;
     @Autowired
     RoomService roomService;
     @Autowired
@@ -70,7 +67,6 @@ public class MainController {
     HeartService heartService;
 
     /** "/프로젝트이름" 에 해당하는 ContextPath 변수 주입 */
-    // --> import org.springframework.beans.factory.annotation.Value;
     @Value("#{servletContext.contextPath}")
     String contextPath;
 
