@@ -64,7 +64,7 @@
 			</if>
 		</where>
 
-		GROUP BY r.roomno
+		GROUP BY r.roomno, roomtype, dealingtype, price, title, floor, area, fee, confirmdate, address, dong, ho, latitude,longitude, region_2depth_name, region_3depth_name, userno, name, status,cnt
 		ORDER BY r.roomno ASC
 
 		<if test="listCount > 0">
