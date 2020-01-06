@@ -200,7 +200,7 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/4.PNG"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/4.jpg"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
@@ -281,7 +281,7 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/7.PNG"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/6.png"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
@@ -308,7 +308,7 @@ a > img {
             </div>
             <!-- 좋아요 끝 -->
             <!-- 이미지 -->
-            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/5.PNG"></div> 
+            <div class="recent-a-div"><img src="${pageContext.request.contextPath}/assets/ico/5.jpg"></div> 
             <!-- 생년월일 div -->
             <div class="recent-a-confirm">
                <div class="recent-a-confirm-div">
