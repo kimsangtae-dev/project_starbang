@@ -176,7 +176,7 @@ public class MainRestController {
         data.put("meta", pageData);
         data.put("heart", heartlist);
         data.put("cookie_size", cookie_size);
-        data.put("heart_size", heart_size);
+        data.put("heart_size", heart_size); 
 
         return webHelper.getJsonData(data);
     }

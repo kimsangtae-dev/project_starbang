@@ -228,7 +228,7 @@
                 <ul class="tabs" id="tabs">
                     <li id="tab1"><c:choose>
                             <c:when test="${loginInfo == null }">최근 본 방
-           </c:when>
+           			</c:when>
                             <%-- 컨트롤러에서 식별한 세션 있을 때 --%>
                             <c:otherwise>
                       ${loginInfo.name}님의 최근 본 방
@@ -464,6 +464,7 @@
         var session = "${logininfo}"; //세션 식별을 위한 값
         var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
         var heartlist = "${heart}"; //세션 식별을 위한 값
+        alert(session);
         
         $(function() {
             /** 최근본방 **/
