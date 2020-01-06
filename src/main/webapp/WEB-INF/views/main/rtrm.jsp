@@ -138,7 +138,12 @@
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </p>
-                                                        <p class="recent-a-p34">${item.floor}층,${item.area}m², 관리비 ${item.fee}만</p>
+                                                        <p class="recent-a-p34">${item.floor}층, ${item.area}m², 
+                                                        <c:choose>
+			                                            	<c:when test="${item.fee == 0}">관리비 없음</c:when>
+			                                                <c:otherwise>관리비 ${item.fee}만</c:otherwise>
+                                            			</c:choose>
+                                                        </p>
                                                         <p class="recent-a-p34">${item.title}</p>
                                                     </a>
                                                 </div>

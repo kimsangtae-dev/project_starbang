@@ -440,7 +440,7 @@
                 <span>{{dealingtype}} {{isOver price}}</span>
                 {{/isMonth}}
             </p>
-            <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee}}만</p>
+            <p class="recent-a-p34">{{floor}}층, {{area}}m², 관리비 {{fee fee}}</p>
             <p class="recent-a-p34">{{title}}</p>
             </a>
         </div>
@@ -495,6 +495,13 @@
                         } else {
                             return deposit;
                         }
+                    });
+                    
+                    Handlebars.registerHelper('fee', function(fee, options) {
+                        if (fee == 0) {
+                            return "없음";
+                        } else { 
+                        	return fee+"만"; }
                     });
                     
                     /** 세션 식별하기 **/
