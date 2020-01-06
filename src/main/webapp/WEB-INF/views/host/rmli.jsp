@@ -100,7 +100,7 @@
 											    <c:when test="${dealingtype == '월세'}">
 												    <fmt:formatNumber value="${deposit}" pattern="#,####" var="eok1"/> 
 											    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-												    	${dealingtype}&nbsp;${patternprice1}/${k.price}만 원
+												    	${dealingtype}&nbsp;${patternprice1}/${price}만 원
 											    </c:when>
 										    	<c:otherwise>
 											    	<fmt:formatNumber value="${price}" pattern="#,####" var="eok2" /> 
