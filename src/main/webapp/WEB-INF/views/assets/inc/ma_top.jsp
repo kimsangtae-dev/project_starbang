@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-    <style>
+	<style>
 /*---------------------------------
 |   header * css
 ----------------------------------*/
@@ -100,9 +100,14 @@
             left: -30px !important;
             top: 39px;
             z-index: 11;
-            border: 1px solid rgb(212, 212, 212);
+            border: 1px solid rgb(212, 212, 212) !important;
             border-radius: 4px;
         }
+        
+        .dropdown-menu > li {
+        	padding : 1px;
+        }
+        
         .small > li > .atag1 {
             width: 100%;
             height: 50px;
@@ -115,10 +120,11 @@
         }
 
         #loginprofile {
-            height: 30px;
-            width: 30px;
-            border-radius: 50%;
+        	height: 30px;
+		    width: 30px;
+    		border-radius: 50%;
         }
+        
 
     </style>
 </head>
@@ -197,27 +203,26 @@
         </div>
     </div>
     <!-- 로그인용 모달 로더 -->
-    <div class="modal fade" id="loginModal" data-backdrop="static">
+    <div class="modal fade" id="loginModal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 비밀번호 찾기용 모달 로더 -->
-    <div class="modal fade" id="passwdModal" data-backdrop="static">
+    <div class="modal fade" id="passwdModal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 동의하기용 모달 로더 -->
-    <div class="modal fade" id="agreeModal"  data-backdrop="static">
+    <div class="modal fade" id="agreeModal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
     <!-- 회원가입용 모달 로더 -->
-    <div class="modal fade" id="joinModal" data-backdrop="static">
+    <div class="modal fade" id="joinModal">
         <div class="modal-dialog modal-sm">
             <div class="modal-content"></div>
         </div>
     </div>
-
