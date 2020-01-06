@@ -58,6 +58,7 @@
                 <th width="100" class="text-center">회원번호</th>
                 <th class="text-center">이름</th>
                 <th class="text-center">이메일</th>
+                <th class="text-center">비밀번호</th>
                 <th class="text-center">전화번호</th>
                 <th class="text-center">등록날짜</th>
                 <th class="text-center">수정날짜</th>
@@ -79,11 +80,13 @@
                         <%-- 출력을 위해 준비한 유저이름과 위치 --%>
                         <c:set var="name" value="${item.name}" />
                         <c:set var="email" value="${item.email}" />
+                        <c:set var="passwd" value="${fn:replace(item.passwd, item.passwd, '****')}" />
                         <c:set var="userno" value="${item.userno}" />
                         <c:set var="tel" value="${item.tel}" />
                         <c:set var="regdate" value="${item.regdate}" />
                         <c:set var="editdate" value="${item.editdate}" />
                         <%-- <c:set var="profile_img" value="${item.profile_img}" /> --%>
+                        
 
                         <%--검색어가 있다면? --%>
                         <c:if test="${keyword != ''}">
@@ -100,6 +103,7 @@
                             <%-- <td align="center"><a href="${viewUrl}">${name}</a></td> --%>
                             <td align="center">${name}</td>
                             <td align="center">${email}</td>
+                            <td align="center">${passwd}</td>
                             <td align="center">${tel}</td>
                             <td align="center">${regdate}</td>
                             <td align="center">${editdate}</td>

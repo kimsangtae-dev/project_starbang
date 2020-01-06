@@ -26,7 +26,6 @@ public class MailController {
     WebHelper webHelper;
 
     /** RegexHelper 주입 */
-    // --> import study.spring.springhelper.helper.RegexHelper;
     @Autowired
     RegexHelper regexHelper;
 
@@ -36,17 +35,10 @@ public class MailController {
     @Autowired
     UserService userService;
 
-//	public int random(int n1, int n2) {
-//    	int num = (int) ((Math.random() * (n2 - n1 + 1)) + n1);
-//    	return num;
-//    }
     /** 회원가입 메일인증번호 action 페이지 */
     @RequestMapping(value = "/modal/joinema.do", method = RequestMethod.POST)
     public ModelAndView join(Model model) {
-//    	String auth = "";
-//    	for (int i = 0; i < 6; i++) {
-//    		auth += random(0, 9);
-//    	}
+
         /** 사용자의 입력값 받기 */
         String to = webHelper.getString("allemail");
         String subject = "별방의 회원가입 메일 확인번호 확인 메일입니다";
@@ -84,10 +76,7 @@ public class MailController {
     /** mypage 메일 인증 번호 action 페이지 */
     @RequestMapping(value = "/main/mypageema.do", method = RequestMethod.POST)
     public ModelAndView mypageema(Model model) {
-//    	String auth = "";
-//    	for (int i = 0; i < 6; i++) {
-//    		auth += random(0, 9);
-//    	}
+
         /** 사용자의 입력값 받기 */
         String to = webHelper.getString("email");
         String subject = "별방의 메일 변경 확인번호 확인 메일입니다";
@@ -157,11 +146,8 @@ public class MailController {
         User input = new User();
         input.setEmail(email);
 
-        // 조회결과를 저장할 객체 선언
-        // User output = null;
 
         try {
-            // output = userService.getUserEmail(input);
             userService.getUserEmail(input);
             /** 메일 발송 처리 */
             try {
