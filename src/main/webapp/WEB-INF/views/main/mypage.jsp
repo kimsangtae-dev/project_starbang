@@ -285,7 +285,7 @@ $(function () {
 		    		"pwd" : pwd},
 				success:function(data){
 					alert("정보가 수정되었습니다.");
-					alert(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
+					console.log(userno + myname + proflie + email + allpon + "비밀번호 수정" + pwd + "데이터 수정완료");
 		        	var http = "${pageContext.request.contextPath}/main/mypage.do"
 						location.replace(http);
 		    	},
