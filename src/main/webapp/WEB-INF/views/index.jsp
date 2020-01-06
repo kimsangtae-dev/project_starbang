@@ -597,6 +597,13 @@
                     }
                 });
                 
+                Handlebars.registerHelper('fee', function(fee, options) {
+                    if (fee == 0) {
+                        return "없음";
+                    } else { 
+                    	return fee+"만"; }
+                });
+                
                 /** 세션 식별하기 **/
                 Handlebars.registerHelper('session', function(roomno, options) {
                     if (session == null || session == "") {
@@ -701,6 +708,13 @@
                     } else {
                         return deposit;
                     }
+                });
+                
+                Handlebars.registerHelper('fee', function(fee, options) {
+                    if (fee == 0) {
+                        return "없음";
+                    } else { 
+                    	return fee+"만"; }
                 });
                 
                 /** 세션 식별하기 **/
