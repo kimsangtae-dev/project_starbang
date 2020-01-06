@@ -16,7 +16,6 @@ import project.star.b2.service.InfoService;
 public class InfoServiceImpl implements InfoService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 

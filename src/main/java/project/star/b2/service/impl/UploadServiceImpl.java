@@ -16,7 +16,6 @@ import project.star.b2.service.UploadService;
 public class UploadServiceImpl implements UploadService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 
@@ -64,7 +63,6 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public List<UploadItem> getUploadItemList(UploadItem input) throws Exception {
-        // TODO Auto-generated method stub
         return null;
     }
 

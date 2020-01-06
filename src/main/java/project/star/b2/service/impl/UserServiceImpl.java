@@ -16,7 +16,6 @@ import project.star.b2.service.UserService;
 public class UserServiceImpl implements UserService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 

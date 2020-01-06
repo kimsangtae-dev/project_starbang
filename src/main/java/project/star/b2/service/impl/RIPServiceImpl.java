@@ -16,7 +16,6 @@ import project.star.b2.service.RIPService;
 public class RIPServiceImpl implements RIPService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 

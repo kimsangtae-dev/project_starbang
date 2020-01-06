@@ -16,7 +16,6 @@ import project.star.b2.service.HeartService;
 public class HeartServiceImpl implements HeartService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 
@@ -43,7 +42,6 @@ public class HeartServiceImpl implements HeartService {
 
     @Override
     public List<Gallery> getGalleryList(Gallery input) throws Exception {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -218,9 +216,6 @@ public class HeartServiceImpl implements HeartService {
         try {
             result = sqlSession.selectOne("GalleryMapper.selectItemox", input);
 
-            /*
-             * if (result == 0) { throw new NullPointerException("result=0"); }
-             */
         } catch (NullPointerException e) {
             log.error(e.getLocalizedMessage());
             throw new Exception("getHeartitemox저장된 데이터가 없습니다.");

@@ -17,7 +17,6 @@ import project.star.b2.service.RoomService;
 public class RoomServiceImpl implements RoomService {
 
     /** MyBatis */
-    // --> import org.apache.ibatis.session.SqlSession
     @Autowired
     SqlSession sqlSession;
 
@@ -272,7 +271,6 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public int editConfirmRoom(Room input) throws Exception {
-        // TODO Auto-generated method stub
         int result = 0;
 
         try {
@@ -294,7 +292,6 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public int editHiddenRoom(Room input) throws Exception {
-        // TODO Auto-generated method stub
         int result = 0;
 
         try {
@@ -379,7 +376,6 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public int editFakeRoom(Room input) throws Exception {
-        // TODO Auto-generated method stub
         int result = 0;
 
         try {
