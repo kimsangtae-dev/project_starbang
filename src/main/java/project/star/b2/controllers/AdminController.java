@@ -596,7 +596,10 @@ public class AdminController {
 		if (email.equals(output.getEmail()) || passwd.equals(output.getPasswd())) {
 			session.setAttribute("loginInfo", output);
 		} 
-			
-		return new ModelAndView("admin/main");
+		
+		String redirectUrl = contextPath + "/admin/main.do";
+		return webHelper.redirect(redirectUrl, "관리자페이지로 이동합니다.");
+
+		/*return new ModelAndView("admin/main");*/
 	}
 }

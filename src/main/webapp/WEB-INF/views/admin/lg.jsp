@@ -42,7 +42,7 @@
   	<script type="text/javascript">
     $("#loginbtn").click(function(){
         if($("#loginid").val() == "admin" && $("#passwd").val() == "admin") {
-        	alert("관리자페이지로 이동합니다.");
+        	/*alert("관리자페이지로 이동합니다.");*/
     } 
 	}); 
     </script>
