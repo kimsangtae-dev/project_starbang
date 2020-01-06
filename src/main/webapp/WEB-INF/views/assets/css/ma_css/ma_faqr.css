@@ -87,6 +87,14 @@
 				text-align: left;
 				padding-top: 19px;
 			}
+			
+			.collapse-title a:hover {
+				color: #1564F9;
+			}
+			
+			.collapse-title a:focus {
+				color: #1564F9;
+			}
 
 			/** 내용영역의 여백, 글자크기, 태두리, 숨김 */
 			.content {
@@ -104,13 +112,6 @@
 				background-color: rgb(251, 251, 251);
 				color: rgb(102, 102, 102);
 			}
-
-			/** 마지막 내용 박스의 테두리 보정 */
-			/**
-			.content:last-child {
-				border-bottom: 1px solid #d5d5d5;
-			} 쓰면 마지막 내용 박스 누르면 이상해
-			*/
 
 			/** 여기서부터 추가*/
     	.collapse-item p {

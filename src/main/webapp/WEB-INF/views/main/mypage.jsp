@@ -82,8 +82,8 @@ $(function () {
                   <button type="button" class="btn btn-default focse reemailinumber" id="reemailinumber">인증번호확인</button>
                </div>
                <h3 class="h33">휴대폰 번호</h3>
-               <input type="hidden" id="nowallpon" value="${loginInfo.tel}">
-                <select class="pon input" name="pont1" id="pon1" value="${fn:substring(loginInfo.tel,0,3)}" >
+               <input type="hidden" id="nowallpon" value="${loginInfo.tel}" >
+                <select class="pon input" name="pont1" id="pon1" value="${fn:substring(loginInfo.tel,0,3)}" disabled >
 					<option value="010" >010</option>
 					<option value="011" >011</option>
 					<option value="016" >016</option>
@@ -91,8 +91,8 @@ $(function () {
 					<option value="018" >018</option>
 					<option value="019" >019</option>
 				</select> -
-               <input type="number" name="pont2" id="pon2" value="${fn:substring(loginInfo.tel,4,8)}" disabled class="pon input"> -
-               <input type="number" name="pont3" id="pon3" value="${fn:substring(loginInfo.tel,9,13)}" disabled class="pon input">
+               <input type="number" name="pont2" id="pon2" value="${fn:substring(loginInfo.tel,4,8)}" disabled class="pon input" onkeydown="javascript: return event.keyCode == 69  ? false : true"> -
+               <input type="number" name="pont3" id="pon3" value="${fn:substring(loginInfo.tel,9,13)}" disabled class="pon input" onkeydown="javascript: return event.keyCode == 69 ? false : true">
                <button type="button" class="btn btn-default focse ponbutton" id="repon">변경</button>
                <h3 class="h34">비밀번호</h3>
                <input type="hidden" value="${loginInfo.passwd}" id="pwd" >
@@ -133,9 +133,8 @@ $(function () {
          reemailinumber.style.display = 'block';
          emailinumber.style.display = 'block';
          emailinumberdiv.style.height = '60px';
-          $("#reemail").html("인증");
-         $reemail = $('#reemail').attr('display', none);
-         $reemailaut = $('#reemailaut').attr('display', inline-block);
+         $reemail = $('#reemail').css("display", "none");
+         $reemailaut = $('#reemailaut').css('display', "inline-block");
       });
 
       /** 랜덤값 함수 */
@@ -154,16 +153,17 @@ $(function () {
 		$("#reemailinumber").click(function() {
 			var user = $('#emailinumber').val();
 			if (auth == user) {
-				swal("인증되었습니다");
+				alert("인증되었습니다");
 			} else {
-				swal("인증번호를 다시 확인해 주세요");
+				alert("인증번호를 다시 확인해 주세요");
 
 			}
 		});
 
-       $('#reemail').on("click", function() {
+       $('#reemailaut').on("click", function() {
     	   var email = $("#email").val();
-			swal("새로운 이메일에 인증번호를 발송했습니다");
+    	   if (!regex.email('#email', '이메일 형식에 맞춰서 입력해주세요.')) {return false;}
+			alert("새로운 이메일에 인증번호를 발송했습니다");
 			$.ajax({
 				url : "mypageema.do",
 				type : 'POST',
@@ -172,7 +172,7 @@ $(function () {
 					"auth" : auth
 				},
 				success : function(data) {
-					swal(allemail + "으로 메일이 발송되었습니다");
+					alert(allemail + "으로 메일이 발송되었습니다");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					console.log("이메일발송에러 발생~~ \n" + textStatus + " : " + errorThrown);
@@ -208,10 +208,6 @@ $(function () {
 
       /** 회원  수정하기 */
 		$("#submitedit").click(function() {
-								//if () db에서 가져온 값과 현재 input에 있는 값이 하나라도 다르다면 실행
-								//$("#form_useredit").submit(function() {
-													// 기본동작 수행 방식
-													/* e.preventDefault(); */
 			/** 이름 검사 */
 			var nowmyname = $('#nowmyname').val(); // 유저 이름
 			var myname = $('#myname').val(); // 유저 이름
@@ -219,7 +215,6 @@ $(function () {
 				if (!regex.value('#myname','이름을 입력하세요.')) {return false;}
 				if (!regex.kor('#myname','이름은 한글만 입력 가능합니다.')) {return false;}
 				if (!regex.min_length('#myname', 2, '이름은 최소 2자 이상 입력 가능합니다.')) {return false;}
-				nowmyname = myname;
 			}
 			/** 이메일 검사 */
 			var nowemail = $('#nowemail').val(); // 유저 이메일
@@ -230,14 +225,13 @@ $(function () {
 				if (!regex.email('#email', '이메일 형식에 맞춰서 입력해주세요.')) {return false;}
 				if (!regex.value('#emailinumber', '인증번호를 입력하세요.')) { return false; }
 			        if (user != auth) {
-						alert("인증번호를 다시 입력해주세요.");
+			        	alert("인증번호를 다시 입력해주세요.");
 						return false;
 					}
-				nowemail = email;
 			}
 			/** 휴대폰 검사 */
 			var nowallpon = $('#nowallpon').val();
-			var pon1 = $('#pon1').val(); // 유저 휴대폰1
+			var pon1 = $('#pon1').val(); // 유저 휴대폰1pon1
 			var pon2 = $('#pon2').val(); // 유저 휴대폰2
 			var pon3 = $('#pon3').val(); // 유저 휴대폰3
 			var allpon = pon1 + "-" + pon2 + "-" + pon3; // 유저 all휴대폰
@@ -245,7 +239,9 @@ $(function () {
 				if (!regex.value('#pon1', '휴대폰번호를 입력하세요.')) {return false;}
 				if (!regex.value('#pon2', '휴대폰번호를 입력하세요.')) {return false;}
 				if (!regex.value('#pon3', '휴대폰번호를 입력하세요.')) {return false;}
-				nowallpon = allpon;
+				if (!regex.max_length('#pon2', 4, '휴대폰번호는 최소 4자 이상 입력 가능합니다.')) {return false;}
+				if (!regex.max_length('#pon3', 4, '휴대폰번호는 최소 4자 이상 입력 가능합니다.')) {return false;}
+				
 			}
 			/** 비밀번호 검사 */
 			var pwd = $('#pwd').val();
@@ -263,10 +259,16 @@ $(function () {
 				if (!regex.compare_to('#pwd2', '#pwd3', '비밀번호 확인이 잘못되었습니다.')) {return false;}
 				pwd = pwd2;
 			}
+			
+
 
 			if ($('#nowmyname').val() == $('#myname').val() && $('#nowemail').val() == $('#email').val() && nowallpon == allpon && $('#pwd1').val() == "") {
 				alert("바뀐 정보가 없습니다.")
 				return false;
+			}else {
+				nowmyname = myname;
+				nowemail = email;
+				nowallpon = allpon;
 			}
 
 
@@ -283,7 +285,7 @@ $(function () {
 		    		"pwd" : pwd},
 				success:function(data){
 					alert("정보가 수정되었습니다.");
-					console.log(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
+					alert(userno + myname + proflie + email + allpon + "비밍 수정" + pwd + "데이터 수정완료");
 		        	var http = "${pageContext.request.contextPath}/main/mypage.do"
 						location.replace(http);
 		    	},
@@ -297,6 +299,27 @@ $(function () {
    });
 
 	</script>
+	
+	<!-- 1. 전화번호 4자리 남기기 로직 -->
+<script>
+    $(function() {
+        function substring(target) {
+            $(target).keyup(function() {
+                var value = $(this).val(); // 입력값을 가져온다.
+                if (value.length >= 4) { // 글자수가 4자 이상이 되면?
+                    var input = value.substring(0, 4); // 4자만 남겨놓고 자른다.
+                    $(this).val(input); // 잘라낸 값을 다시 설정한다.
+                    $(target).focus(); // 포커스 이동
+                } // end if
+            }); // end keyup event
+        }
+
+        substring($('#pon2'));
+        substring($('#pon3'));
+
+    });
+</script>
+<!-- 끝 -->
 
    <script type="text/javascript">
    $(function() {

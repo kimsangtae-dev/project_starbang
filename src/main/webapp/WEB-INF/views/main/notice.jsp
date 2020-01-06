@@ -129,42 +129,9 @@
 			var target = $(this).attr('href');
             // 가져온 내용영역의 id를 화면에 표시한다.
 			$(target).slideToggle(100);
-            // 내용영역(.content)중에서	
-            // 클릭한 요소가 지정한 항목만 제외(not($(target)))
-            // 하고 화면에서 숨긴다.
-			//$(".content").not($(target)).slideUp(100);
 		});
-
-		/* $(".collapse-title3").click(function(e) {
-	        // 링크의 기본 동작(페이지 이동) 방지
-			e.preventDefault();
-
-           	// 클릭한 요소의 href 속성을 가져온다 -->
-
-           	 var con = document.getElementById("h2m");
-		       con.style.display = 'block';
-		}); */
 	});
 	
-	/** 페이지 이동*/
-/* 	$(document).ready(function () {
-		  $(document).on('click', '.control nav a', function (event) {
-		    history.pushState(null, null, event.target.href);
-		    $('article').load(event.target.href+' article>.content');
-		    event.preventDefault();
-		  })
-		  $(window).on('popstate', function(event){
-		    $('article').load(location.href+' article>.content');
-		  })
-		  var audio = new Audio('Tyburn - Eden.mp3');
-		  $(document).on('click', '.control .player .play', function(event){
-		    audio.play();
-		  });
-		  $(document).on('click', '.control .player .pause', function(event){
-		    audio.pause();
-		  });
-		}); */
-		</script>
 		
 </body>
 

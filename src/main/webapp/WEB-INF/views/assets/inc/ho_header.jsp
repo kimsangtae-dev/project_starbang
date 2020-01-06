@@ -63,6 +63,7 @@
         .pull-right .small-font1 img {
             width: 35px;
             height: 35px;
+            border-radius: 50%;
         }
         /* 회원가입 , 로그인 창 전체*/
         .small-font1 {
@@ -122,11 +123,6 @@
             padding-top: 0;
         }
          /* #header a:hover { color: #666666; } */
-         #loginprofile {
-        	height: 30px;
-		    width: 30px;
-    		border-radius: 50%;
-        }
 
     </style>
 </head>

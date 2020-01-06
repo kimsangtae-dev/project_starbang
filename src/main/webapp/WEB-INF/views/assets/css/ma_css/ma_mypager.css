@@ -194,12 +194,6 @@
 				background-color: white !important;
 				color: #1a5ae8 !important;
 			}
-			/**
-			.focse:focus {
-				border: 1px solid blue !important;
-				background-color: white !important;
-				color: blue !important;
-			}*/
 			
 			.modal-footerhw .btn-default:hover {
 			    color: white; 
@@ -294,13 +288,6 @@ pre {
 	background-color: #1a5ae8;
 	border-color: #1a5ae8;
 }
-/**
-.btnmodaloutsubmit:focus {
-	color: white !important;
-	background-color: blue !important;
-	border-color: blue !important;
-}
-**/
 	
 /** 인증버튼 */		
 .reemailaut {
@@ -384,8 +371,12 @@ pre {
 	margin-left: 30px;
 }
 			
-			
-			
+/** 화살표 삭제 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 			
 			
 			
