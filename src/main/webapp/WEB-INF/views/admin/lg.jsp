@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>별방 관리자 로그인</title>
-<%@ include file="../assets/inc/meta.jsp"%>
+<%@ include file="../assets/inc/meta_admin.jsp"%>
+
 <!-- CSS적용 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ad_css/lg.css">
 <style type="text/css">

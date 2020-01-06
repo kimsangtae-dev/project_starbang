@@ -370,36 +370,36 @@
                 </script>
 
     <script>
-                    /* 슬라이더 세팅 */
-                    $(".regular").slick({
-                        dots : true,
-                        infinite : true,
-                        slidesToShow : 6,
-                        slidesToScroll : 5
-                    });
+        /* 슬라이더 세팅 */
+        $(".regular").slick({
+            dots : true,
+            infinite : true,
+            slidesToShow : 6,
+            slidesToScroll : 5
+        });
 
-                    /* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
-                    $(function() {
-                        $(window).scroll(function() {
+        /* 스크롤 내렸을 때 방찾기 버튼 나타내기 */
+        $(function() {
+            $(window).scroll(function() {
 
-                            if ($(window).scrollTop() > 370) {
-                                $(".btn-searchrm").fadeIn(1).css("display", "block").css("bottom", "30px");
-                            } else {
-                                $(".btn-searchrm").fadeOut(1);
-                            }
+                if ($(window).scrollTop() > 370) {
+                    $(".btn-searchrm").fadeIn(1).css("display", "block").css("bottom", "30px");
+                } else {
+                    $(".btn-searchrm").fadeOut(1);
+                }
 
-                            if ($(document).height() < $(window).scrollTop() + $(window).height() + 250) {
-                                var control = 0;
-                                control = 280 - ($(document).height() - $(window).scrollTop() - $(window).height());
-                                $(".btn-searchrm").css("bottom", control + "px");
-                            }
-                        });
+                if ($(document).height() < $(window).scrollTop() + $(window).height() + 250) {
+                    var control = 0;
+                    control = 280 - ($(document).height() - $(window).scrollTop() - $(window).height());
+                    $(".btn-searchrm").css("bottom", control + "px");
+                }
+            });
 
-                        $(".btn-searchrm").click(function() {
-                            $("#searching-for").focus();
-                        });
-                    });
-                </script>
+            $(".btn-searchrm").click(function() {
+                $("#searching-for").focus();
+            });
+        });
+    </script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js">
                     $(document).ready(function() {
                         $("#tabs").tabs();
@@ -458,306 +458,306 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
     <script>
-                    var session = "${logininfo}"; //세션 식별을 위한 값
-                    var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
-                    var heartlist = "${heart}"; //세션 식별을 위한 값
-
-                    $(function() {
-                        /** 최근본방 **/
-                        $(document).ready(function() {
-                            recentroom();
-                        });
-
-                        /** 찜한방 **/
-                        $("#tab2").click(function() {
-                            $.get("${pageContext.request.contextPath}/professor", {
-                                "userno" : sessionuserno
-                            }, function(json) {
-                                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                                    if (dealingtype == '월세') {
-                                        return options.fn(this);
-                                    } else {
-                                        return options.inverse(this);
-                                    }
-                                });
-
-                                Handlebars.registerHelper('isOver', function(price, options) {
-                                    if (price >= 10000 && price % 10000 != 0) {
-                                        return Math.floor(price / 10000) + "억" + price % 10000;
-                                    } else {
-                                        return price;
-                                    }
-                                });
-
-                                Handlebars.registerHelper('isOver2', function(deposit, options) {
-                                    if (deposit >= 10000 && deposit % 10000 != 0) {
-                                        return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                                    } else {
-                                        return deposit;
-                                    }
-                                });
-
-                                /** 세션 식별하기 **/
-                                Handlebars.registerHelper('session', function(roomno, options) {
-                                    for (var i = 0; i < json.heart_size; i++) {
-                                        var heart_div = '<div class="wish-div7">'
-                                        heart_div += '<div class="wish-div8 on" data-value="off"></div>'
-                                        heart_div += '</div>'
-                                        return heart_div;
-                                    }
-                                    if (json.heart_size == 0) {
-                                        var heart_div = '<div class="recent-div7">'
-                                        heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                        heart_div += '</div>'
-                                        return heart_div;
-                                    }
-                                });
-                                var source = $("#prof-list-tmpl").html()//템플릿코드
-                                var template = Handlebars.compile(source);// 템플릿 컴파일
-                                var result = template(json);
-                                var a = Object.keys({
-                                    item : []
-                                });
-                                console.log(a); //json 데이터 알아보기
-                                $(".tabs > li:nth-child(2)").css("color", "black");
-                                $(".tabs > li:nth-child(1)").css("color", "gray");
-
-                                if (a == "item") {
-                                    var source2 = $("#no-list-tmpl").html()
-                                    var template = Handlebars.compile(source2);// 템플릿 컴파일
-                                    $(".recent-div4").append(template);
-                                }
-
-                                var empty_div = "";
-                                if (json.item.length < 4) {
-                                    for (var k = 0; k < 4 - json.item.length; k++) {
-                                        empty_div += '<li><div class="recent-div5-vacant margin">';
-                                        empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
-                                        empty_div += '</div></li>';
-                                    }
-                                }
-
-                                $(".recent-div4").empty();
-                                $(".recent-div4").append(result);
-                                $(".recent-div4").append(empty_div);
-
-                                /* 좋아요 클릭 -> 하트 색 변경 */
-                                $(function() {
-                                    $(".wish-div8").click(function(e) {
-                                        $(this).toggleClass('on off');
-                                        var onoff = $(this).hasClass("on");
-                                        var a = $(this).parent().prev().val();
-                                        delect3(a);
-                                    });
-                                });
-                            });
-                        });
-
-                        /** 최근본방 **/
-                        $("#tab1").click(function() {
-                            recentroom();
-                        });
-
-                        $(document).ready(function() { //인기있는 방 AJAX
-                            popularityroom();
-                        });
-
+        var session = "${logininfo}"; //세션 식별을 위한 값
+        var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
+        var heartlist = "${heart}"; //세션 식별을 위한 값
+        
+        $(function() {
+            /** 최근본방 **/
+            $(document).ready(function() {
+                recentroom();
+            });
+            
+            /** 찜한방 **/
+            $("#tab2").click(function() {
+                $.get("${pageContext.request.contextPath}/professor", {
+                    "userno" : sessionuserno
+                }, function(json) {
+                    Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                        if (dealingtype == '월세') {
+                            return options.fn(this);
+                        } else {
+                            return options.inverse(this);
+                        }
                     });
-                    /** 최근본방 ajax처리 함수 */
-                    function recentroom() {
-                        $.get("${pageContext.request.contextPath}/professor2", {}, function(json) {
-                            Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                                if (dealingtype == '월세') {
-                                    return options.fn(this);
-                                } else {
-                                    return options.inverse(this);
-                                }
-                            });
-
-                            Handlebars.registerHelper('isOver', function(price, options) {
-                                if (price >= 10000 && price % 10000 != 0) {
-                                    return Math.floor(price / 10000) + "억" + price % 10000;
-                                } else {
-                                    return price;
-                                }
-                            });
-
-                            Handlebars.registerHelper('isOver2', function(deposit, options) {
-                                if (deposit >= 10000 && deposit % 10000 != 0) {
-                                    return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                                } else {
-                                    return deposit;
-                                }
-                            });
-
-                            /** 세션 식별하기 **/
-                            Handlebars.registerHelper('session', function(roomno, options) {
-                                if (session == null || session == "") {
-                                    var heart_div = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
-                                    heart_div += '<div class="recent-div7">'
-                                    heart_div += '<div class="recent-div8 off"></div>'
-                                    heart_div += '</div>'
-                                    heart_div += '</a>'
-                                    return heart_div;
-                                } else if (json.heart_size == 0) {
-                                    var heart_div = '<div class="recent-div7">'
-                                    heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                    heart_div += '</div>'
-                                    return heart_div;
-                                } else {
-                                    for (var i = 0; i < json.heart_size; i++) {
-                                        if (json.heart[i].roomno == roomno) {
-                                            var heart_div = '<div class="recent-div7">'
-                                            heart_div += '<div class="recent-div8 on" data-value="off"></div>'
-                                            heart_div += '</div>'
-                                            return heart_div;
-                                        }
-                                    }
-                                    for (var i = 0; i < json.heart_size; i++) {
-                                        if (json.heart[i].roomno != roomno) {
-                                            var heart_div = '<div class="recent-div7">'
-                                            heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                            heart_div += '</div>'
-                                            return heart_div;
-                                        }
-                                    }
-                                    if (json.heart_size == 0) {
-                                        var heart_div = '<div class="recent-div7">'
-                                        heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                        heart_div += '</div>'
-                                        return heart_div;
-                                    }
-                                }
-
-                            });
-
-                            var empty_div = "";
-                            if (json.cookie_size < 4) {
-                                for (var k = 0; k < 4 - json.cookie_size; k++) {
-                                    empty_div += '<li><div class="recent-div5-vacant margin">';
-                                    empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
-                                    empty_div += '</div></li>';
-                                }
-                            }
-
-                            var source = $("#prof-list-tmpl").html()//템플릿코드
-                            var template = Handlebars.compile(source);// 템플릿 컴파일
-                            var result = template(json);
-
-                            $(".tabs > li:nth-child(1)").css("color", "black");
-                            $(".tabs > li:nth-child(2)").css("color", "gray");
-                            $(".recent-div4").empty();
-                            $(".recent-div4").append(result);
-                            $(".recent-div4").append(empty_div);
-
-                            /* 좋아요 클릭 -> 하트 색 변경 */
-                            $(function() {
-                                $(".recent-div8").click(function(e) {
-                                    var loginInfo = "${loginInfo}";
-                                    if (loginInfo != "") {
-                                        $(this).toggleClass('on off');
-                                        var onoff = $(this).hasClass("on");
-                                        var a = $(this).parent().prev().val();
-                                        if (onoff == true) {
-                                            insertstar(a);
-                                        } else {
-                                            delectstar(a);
-                                        }
-                                    }
-                                });
-                            });
-                        });
+                    
+                    Handlebars.registerHelper('isOver', function(price, options) {
+                        if (price >= 10000 && price % 10000 != 0) {
+                            return Math.floor(price / 10000) + "억" + price % 10000;
+                        } else {
+                            return price;
+                        }
+                    });
+                    
+                    Handlebars.registerHelper('isOver2', function(deposit, options) {
+                        if (deposit >= 10000 && deposit % 10000 != 0) {
+                            return Math.floor(deposit / 10000) + "억" + deposit % 10000;
+                        } else {
+                            return deposit;
+                        }
+                    });
+                    
+                    /** 세션 식별하기 **/
+                    Handlebars.registerHelper('session', function(roomno, options) {
+                        for (var i = 0; i < json.heart_size; i++) {
+                            var heart_div = '<div class="wish-div7">'
+                            heart_div += '<div class="wish-div8 on" data-value="off"></div>'
+                            heart_div += '</div>'
+                            return heart_div;
+                        }
+                        if (json.heart_size == 0) {
+                            var heart_div = '<div class="recent-div7">'
+                            heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            heart_div += '</div>'
+                            return heart_div;
+                        }
+                    });
+                    var source = $("#prof-list-tmpl").html()//템플릿코드
+                    var template = Handlebars.compile(source);// 템플릿 컴파일
+                    var result = template(json);
+                    var a = Object.keys({
+                        item : []
+                    });
+                    console.log(a); //json 데이터 알아보기
+                    $(".tabs > li:nth-child(2)").css("color", "black");
+                    $(".tabs > li:nth-child(1)").css("color", "gray");
+                    
+                    if (a == "item") {
+                        var source2 = $("#no-list-tmpl").html()
+                        var template = Handlebars.compile(source2);// 템플릿 컴파일
+                        $(".recent-div4").append(template);
                     }
-
-                    /** 인기있는 방 ajax처리 함수 */
-                    function popularityroom() {
-                        $.get("${pageContext.request.contextPath}/famous", {}, function(json) {
-                            Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                                if (dealingtype == '월세') {
-                                    return options.fn(this);
-                                } else {
-                                    return options.inverse(this);
-                                }
-                            });
-
-                            Handlebars.registerHelper('isOver', function(price, options) {
-                                if (price >= 10000 && price % 10000 != 0) {
-                                    return Math.floor(price / 10000) + "억" + price % 10000;
-                                } else {
-                                    return price;
-                                }
-                            });
-
-                            Handlebars.registerHelper('isOver2', function(deposit, options) {
-                                if (deposit >= 10000 && deposit % 10000 != 0) {
-                                    return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                                } else {
-                                    return deposit;
-                                }
-                            });
-
-                            /** 세션 식별하기 **/
-                            Handlebars.registerHelper('session', function(roomno, options) {
-                                if (session == null || session == "") {
-                                    var heart_div = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
-                                    heart_div += '<div class="hit-div7">'
-                                    heart_div += '<div class="hit-div8 off"></div>'
-                                    heart_div += '</div>'
-                                    heart_div += '</a>'
-                                    return heart_div;
-                                } else {
-                                    for (var i = 0; i < json.heart_size; i++) {
-                                        if (json.heart[i].roomno == roomno) {
-                                            var heart_div = '<div class="hit-div7">'
-                                            heart_div += '<div class="hit-div8 on" data-value="off"></div>'
-                                            heart_div += '</div>'
-                                            return heart_div;
-                                        }
-                                    }
-                                    for (var i = 0; i < json.heart_size; i++) {
-                                        if (json.heart[i].roomno != roomno) {
-                                            var heart_div = '<div class="hit-div7">'
-                                            heart_div += '<div class="hit-div8 off" data-value="on"></div>'
-                                            heart_div += '</div>'
-                                            return heart_div;
-                                        }
-                                    }
-                                    if (json.heart_size == 0) {
-                                        var heart_div = '<div class="recent-div7">'
-                                        heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                        heart_div += '</div>'
-                                        return heart_div;
-                                    }
-                                }
-                            });
-
-                            var source = $("#prof-list-tmpl").html()//템플릿코드
-                            var template = Handlebars.compile(source);// 템플릿 컴파일
-                            var result = template(json);
-
-                            $(".tabs > li:nth-child(1)").css("color", "black");
-                            $(".tabs > li:nth-child(2)").css("color", "gray");
-                            $(".popular-div4").empty();
-                            $(".popular-div4").append(result);
-
-                            /* 좋아요 클릭 -> 하트 색 변경 */
-                            $(function() {
-                                $(".hit-div8").click(function(e) {
-                                    var loginInfo = "${loginInfo}";
-                                    if (loginInfo != "") {
-                                        $(this).toggleClass('on off');
-                                        var onoff = $(this).hasClass("on");
-                                        var a = $(this).parent().prev().val();
-                                        if (onoff == true) {
-                                            insertstar(a);
-                                        } else {
-                                            delectstar(a);
-                                        }
-                                    }
-                                });
-                            });
+                    
+                    var empty_div = "";
+                    if (json.item.length < 4) {
+                        for (var k = 0; k < 4 - json.item.length; k++) {
+                            empty_div += '<li><div class="recent-div5-vacant margin">';
+                            empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
+                            empty_div += '</div></li>';
+                        }
+                    }
+                    
+                    $(".recent-div4").empty();
+                    $(".recent-div4").append(result);
+                    $(".recent-div4").append(empty_div);
+                    
+                    /* 좋아요 클릭 -> 하트 색 변경 */
+                    $(function() {
+                        $(".wish-div8").click(function(e) {
+                            $(this).toggleClass('on off');
+                            var onoff = $(this).hasClass("on");
+                            var a = $(this).parent().prev().val();
+                            delect3(a);
                         });
-                    }// popularityroom()끝
-                </script>
+                    });
+                });
+            });
+            
+            /** 최근본방 **/
+            $("#tab1").click(function() {
+                recentroom();
+            });
+            
+            $(document).ready(function() { //인기있는 방 AJAX
+                popularityroom();
+            });
+            
+        });
+        /** 최근본방 ajax처리 함수 */
+        function recentroom() {
+            $.get("${pageContext.request.contextPath}/professor2", {}, function(json) {
+                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                    if (dealingtype == '월세') {
+                        return options.fn(this);
+                    } else {
+                        return options.inverse(this);
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver', function(price, options) {
+                    if (price >= 10000 && price % 10000 != 0) {
+                        return Math.floor(price / 10000) + "억" + price % 10000;
+                    } else {
+                        return price;
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver2', function(deposit, options) {
+                    if (deposit >= 10000 && deposit % 10000 != 0) {
+                        return Math.floor(deposit / 10000) + "억" + deposit % 10000;
+                    } else {
+                        return deposit;
+                    }
+                });
+                
+                /** 세션 식별하기 **/
+                Handlebars.registerHelper('session', function(roomno, options) {
+                    if (session == null || session == "") {
+                        var heart_div = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
+                        heart_div += '<div class="recent-div7">'
+                        heart_div += '<div class="recent-div8 off"></div>'
+                        heart_div += '</div>'
+                        heart_div += '</a>'
+                        return heart_div;
+                    } else if (json.heart_size == 0) {
+                        var heart_div = '<div class="recent-div7">'
+                        heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                        heart_div += '</div>'
+                        return heart_div;
+                    } else {
+                        for (var i = 0; i < json.heart_size; i++) {
+                            if (json.heart[i].roomno == roomno) {
+                                var heart_div = '<div class="recent-div7">'
+                                heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                                heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        for (var i = 0; i < json.heart_size; i++) {
+                            if (json.heart[i].roomno != roomno) {
+                                var heart_div = '<div class="recent-div7">'
+                                heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                                heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        if (json.heart_size == 0) {
+                            var heart_div = '<div class="recent-div7">'
+                            heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            heart_div += '</div>'
+                            return heart_div;
+                        }
+                    }
+                    
+                });
+                
+                var empty_div = "";
+                if (json.cookie_size < 4) {
+                    for (var k = 0; k < 4 - json.cookie_size; k++) {
+                        empty_div += '<li><div class="recent-div5-vacant margin">';
+                        empty_div += '<p class="recent-div5-vacant-p">아직 못 본 더 많은 방이 있어요.</p>';
+                        empty_div += '</div></li>';
+                    }
+                }
+                
+                var source = $("#prof-list-tmpl").html()//템플릿코드
+                var template = Handlebars.compile(source);// 템플릿 컴파일
+                var result = template(json);
+                
+                $(".tabs > li:nth-child(1)").css("color", "black");
+                $(".tabs > li:nth-child(2)").css("color", "gray");
+                $(".recent-div4").empty();
+                $(".recent-div4").append(result);
+                $(".recent-div4").append(empty_div);
+                
+                /* 좋아요 클릭 -> 하트 색 변경 */
+                $(function() {
+                    $(".recent-div8").click(function(e) {
+                        var loginInfo = "${loginInfo}";
+                        if (loginInfo != "") {
+                            $(this).toggleClass('on off');
+                            var onoff = $(this).hasClass("on");
+                            var a = $(this).parent().prev().val();
+                            if (onoff == true) {
+                                insertstar(a);
+                            } else {
+                                delectstar(a);
+                            }
+                        }
+                    });
+                });
+            });
+        }
+        
+        /** 인기있는 방 ajax처리 함수 */
+        function popularityroom() {
+            $.get("${pageContext.request.contextPath}/famous", {}, function(json) {
+                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                    if (dealingtype == '월세') {
+                        return options.fn(this);
+                    } else {
+                        return options.inverse(this);
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver', function(price, options) {
+                    if (price >= 10000 && price % 10000 != 0) {
+                        return Math.floor(price / 10000) + "억" + price % 10000;
+                    } else {
+                        return price;
+                    }
+                });
+                
+                Handlebars.registerHelper('isOver2', function(deposit, options) {
+                    if (deposit >= 10000 && deposit % 10000 != 0) {
+                        return Math.floor(deposit / 10000) + "억" + deposit % 10000;
+                    } else {
+                        return deposit;
+                    }
+                });
+                
+                /** 세션 식별하기 **/
+                Handlebars.registerHelper('session', function(roomno, options) {
+                    if (session == null || session == "") {
+                        var heart_div = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
+                        heart_div += '<div class="hit-div7">'
+                        heart_div += '<div class="hit-div8 off"></div>'
+                        heart_div += '</div>'
+                        heart_div += '</a>'
+                        return heart_div;
+                    } else {
+                        for (var i = 0; i < json.heart_size; i++) {
+                            if (json.heart[i].roomno == roomno) {
+                                var heart_div = '<div class="hit-div7">'
+                                heart_div += '<div class="hit-div8 on" data-value="off"></div>'
+                                heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        for (var i = 0; i < json.heart_size; i++) {
+                            if (json.heart[i].roomno != roomno) {
+                                var heart_div = '<div class="hit-div7">'
+                                heart_div += '<div class="hit-div8 off" data-value="on"></div>'
+                                heart_div += '</div>'
+                                return heart_div;
+                            }
+                        }
+                        if (json.heart_size == 0) {
+                            var heart_div = '<div class="recent-div7">'
+                            heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            heart_div += '</div>'
+                            return heart_div;
+                        }
+                    }
+                });
+                
+                var source = $("#prof-list-tmpl").html()//템플릿코드
+                var template = Handlebars.compile(source);// 템플릿 컴파일
+                var result = template(json);
+                
+                $(".tabs > li:nth-child(1)").css("color", "black");
+                $(".tabs > li:nth-child(2)").css("color", "gray");
+                $(".popular-div4").empty();
+                $(".popular-div4").append(result);
+                
+                /* 좋아요 클릭 -> 하트 색 변경 */
+                $(function() {
+                    $(".hit-div8").click(function(e) {
+                        var loginInfo = "${loginInfo}";
+                        if (loginInfo != "") {
+                            $(this).toggleClass('on off');
+                            var onoff = $(this).hasClass("on");
+                            var a = $(this).parent().prev().val();
+                            if (onoff == true) {
+                                insertstar(a);
+                            } else {
+                                delectstar(a);
+                            }
+                        }
+                    });
+                });
+            });
+        }// popularityroom()끝
+    </script>
 </body>
 </html>

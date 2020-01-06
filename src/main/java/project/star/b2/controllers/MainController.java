@@ -516,29 +516,6 @@ public class MainController {
         List<Heart> heartlist = null;
 
         Filter filter = new Filter();
-        // 방종류
-        filter.setRoomtype(roomtypepate);
-        // 거래종류
-        filter.setDealingtype(dealingtypepate);
-        // 보증금/전세
-        filter.setDepositFrom(depositFrom);
-        filter.setDepositTo(depositTo);
-        // 월세
-        filter.setMonthFrom(monthFrom);
-        filter.setMonthTo(monthTo);
-        // 매매
-        filter.setBuyingFrom(buyingFrom);
-        filter.setBuyingTo(buyingTo);
-        // 관리비
-        filter.setFeeFrom(feeFrom);
-        filter.setFeeTo(feeTo);
-        // 방크기
-        filter.setSizeFrom(sizeFrom);
-        if (sizeTo == 999999) {
-            filter.setSizeTo(115);
-        } else {
-            filter.setSizeTo(sizeTo);
-        }
         // 좌표
         filter.setWest(west);
         filter.setEast(east);

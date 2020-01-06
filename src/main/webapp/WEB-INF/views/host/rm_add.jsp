@@ -5,8 +5,7 @@
 <html lang="ko">
 
 <head>
-<%@ include file="../assets/inc/meta.jsp"%>
-<title>방주인 방등록</title>
+<%@ include file="../assets/inc/meta_host.jsp"%>
 
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rm_add.css" />

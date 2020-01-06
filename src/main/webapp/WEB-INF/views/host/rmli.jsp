@@ -10,9 +10,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/ho_css/rmli.css" />
 <head>
 
-<%@ include file="../assets/inc/meta.jsp"%>
-
-<title>공실관리</title>
+<%@ include file="../assets/inc/meta_host.jsp"%>
  
 <!-- header, footer, ho_rmli css 참조 -->
 <link rel="stylesheet" type="text/css" href="" />
@@ -102,7 +100,7 @@
 											    <c:when test="${dealingtype == '월세'}">
 												    <fmt:formatNumber value="${deposit}" pattern="#,####" var="eok1"/> 
 											    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-												    	${dealingtype}&nbsp;${patternprice1}/${k.price}만 원
+												    	${dealingtype}&nbsp;${patternprice1}/${price}만 원
 											    </c:when>
 										    	<c:otherwise>
 											    	<fmt:formatNumber value="${price}" pattern="#,####" var="eok2" /> 

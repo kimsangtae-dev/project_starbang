@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import project.star.b2.helper.CookieUtils;
 import project.star.b2.helper.PageData;
 import project.star.b2.helper.WebHelper;
-import project.star.b2.model.Filter;
 import project.star.b2.model.Gallery;
 import project.star.b2.model.Gu;
 import project.star.b2.model.Heart;
@@ -412,8 +411,6 @@ public class MainRestController {
         int sizeFrom = webHelper.getInt("sizeFrom");
         int sizeTo = webHelper.getInt("sizeTo", 999999);
 
-        String region_2depth_name = webHelper.getString("region_2depth_name");
-
         /** 방 종류(roomtype) list */
         List<String> roomtypepate = new ArrayList<String>();
         String[] roomto = room.split(",");
@@ -438,36 +435,12 @@ public class MainRestController {
         input_heart.setUserno(userno);
         List<Heart> heartlist = null;
 
-        Filter filter = new Filter();
-        // 방종류
-        filter.setRoomtype(roomtypepate);
-        // 거래종류
-        filter.setDealingtype(dealingtypepate);
-        // 보증금/전세
-        filter.setDepositFrom(depositFrom);
-        filter.setDepositTo(depositTo);
-        // 월세
-        filter.setMonthFrom(monthFrom);
-        filter.setMonthTo(monthTo);
-        // 매매
-        filter.setBuyingFrom(buyingFrom);
-        filter.setBuyingTo(buyingTo);
-        // 관리비
-        filter.setFeeFrom(feeFrom);
-        filter.setFeeTo(feeTo);
-        // 방크기
-        filter.setSizeFrom(sizeFrom);
-        filter.setSizeTo(sizeTo);
-        if (sizeTo == 99999) {
-            filter.setSizeTo(115);
-        }
 
         /** 2) 데이터 조회하기 */
         // 조회에 필요한 조건값(검색어)를 Beans에 담는다.
         Gallery input = new Gallery();
         input.setRoomtype(room);
         input.setDealingtype(dealingtype);
-        input.setRegion_2depth_name(region_2depth_name);
 
         List<Gallery> output = null;
         PageData pageData = null;
@@ -524,7 +497,6 @@ public class MainRestController {
         data.put("output", output);
         data.put("pageData", pageData);
         data.put("totalCount", totalCount);
-        data.put("param", filter);
         data.put("heart", heartlist);
 
         return webHelper.getJsonData(data);
