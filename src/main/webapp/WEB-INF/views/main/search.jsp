@@ -492,19 +492,6 @@ pageEncoding="UTF-8"%>
     };
 
     /** ajax전송을 위한 파라미터 가져오기 **/
-    var roomtype = "${param.roomtype}";
-    var dealingtype = "${param.dealingtype}";
-    var deposit_from = ${param.depositFrom};
-    var deposit_to = ${param.depositTo};
-    var month_from = ${param.monthFrom};
-    var month_to= ${param.monthTo};
-    var buying_from = ${param.buyingFrom};
-    var buying_to = ${param.buyingTo};
-    var fee_from = ${param.feeFrom};
-    var fee_to = ${param.feeTo};
-    var size_from = ${param.sizeFrom};
-    var size_to = ${param.sizeTo};
-
     var centerLat = ${filter.centerLat};
     var centerLng = ${filter.centerLng};
     var level =${filter.level};
@@ -528,25 +515,25 @@ pageEncoding="UTF-8"%>
     var null_div;
 
     /** ajax 전송 메서드 **/
-    function getMapPosition(west,east,south,north, page) {
+    function getMapPosition(west,east,south,north,page) {
         var params = {
-                "roomtype": roomtype,
-                "dealingtype": dealingtype,
-                "depositFrom": deposit_from,
-                "depositTo": deposit_to,
-                "monthFrom": month_from,
-                "monthTo": month_to,
-                "buyingFrom": buying_from,
-                "buyingTo": buying_to,
-                "feeFrom": fee_from,
-                "feeTo": fee_to,
-                "sizeFrom": size_from,
-                "sizeTo": size_to,
-                "east": east,
-                "west": west,
-                "north": north,
-                "south": south,
-                "page": page
+                roomtype: "${param.roomtype}",
+                dealingtype: "${param.dealingtype}",
+                depositFrom: "${param.depositFrom}",
+                depositTo: "${param.depositTo}",
+                monthFrom: "${param.monthFrom}",
+                monthTo: "${param.monthTo}",
+                buyingFrom: "${param.buyingFrom}",
+                buyingTo: "${param.buyingTo}",
+                feeFrom: "${param.feeFrom}",
+                feeTo: "${param.feeTo}",
+                sizeFrom: "${param.sizeFrom}",
+                sizeTo: "${param.sizeTo}",
+                east: east,
+                west: west,
+                north: north,
+                south: south,
+                page: page
             };
 
         console.log(params);
@@ -567,68 +554,69 @@ pageEncoding="UTF-8"%>
 
                     $("#gallery-list").html(null_div);
                 } else {
-                /** 월세인지 전세/매매인지 구분 **/
-                Handlebars.registerHelper('isMonth', function(dealingtype, options) {
-                  if (dealingtype == '월세') { return options.fn(this); }
-                  else { return options.inverse(this); }
-                });
-                /** 억 단위 표현하기 price **/
-                Handlebars.registerHelper('isOver', function(price, options) {
-                    if (price >= 10000 && price%10000 != 0) {
-                        return Math.floor(price/10000) +"억" + price%10000;
-                    } else if (price >= 10000 && price%10000 == 0) {
-                        return price/10000 + "억";
-                    } else { return price; }
-                });
-                /** 억 단위 표현하기 deposit **/
-                Handlebars.registerHelper('isOver2', function(deposit, options) {
-                    if (deposit >= 10000 && deposit%10000 != 0) {
-                        return Math.floor(deposit/10000) +"억" + deposit%10000;
-                    } else if (deposit >= 10000 && deposit%10000 == 0) {
-                        return deposit/10000 + "억";
-                    } else { return deposit; }
-                });
-
-                /** 세션 식별하기 **/
-                Handlebars.registerHelper('session', function(roomno, options) {
-                    if (session == null || session == "") {
-                        var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
-                            heart_div += '<div class="recent-div7">'
-                            heart_div += '<div class="recent-div8 offff"></div>'
-                            heart_div += '</div>'
-                            heart_div += '</a>'
-                        return heart_div;
-                    }
-                    else {
-                        for (var i=0; i<req.heart.length; i++) {
-                            if (req.heart[i].roomno == roomno) {
-                                var heart_div = '<div class="recent-div7">'
-                                    heart_div += '<div class="recent-div8 on" data-value="off"></div>'
-                                    heart_div += '</div>'
-                                return heart_div;
-                            }
+                    /** 월세인지 전세/매매인지 구분 **/
+                    Handlebars.registerHelper('isMonth', function(dealingtype, options) {
+                      if (dealingtype == '월세') { return options.fn(this); }
+                      else { return options.inverse(this); }
+                    });
+                    /** 억 단위 표현하기 price **/
+                    Handlebars.registerHelper('isOver', function(price, options) {
+                        if (price >= 10000 && price%10000 != 0) {
+                            return Math.floor(price/10000) +"억" + price%10000;
+                        } else if (price >= 10000 && price%10000 == 0) {
+                            return price/10000 + "억";
+                        } else { return price; }
+                    });
+                    /** 억 단위 표현하기 deposit **/
+                    Handlebars.registerHelper('isOver2', function(deposit, options) {
+                        if (deposit >= 10000 && deposit%10000 != 0) {
+                            return Math.floor(deposit/10000) +"억" + deposit%10000;
+                        } else if (deposit >= 10000 && deposit%10000 == 0) {
+                            return deposit/10000 + "억";
+                        } else { return deposit; }
+                    });
+    
+                    /** 세션 식별하기 **/
+                    Handlebars.registerHelper('session', function(roomno, options) {
+                        if (session == null || session == "") {
+                            var heart_div  = '<a href="${pageContext.request.contextPath}/modal/login.do" data-toggle="modal" data-target="#loginModal">'
+                                heart_div += '<div class="recent-div7">'
+                                heart_div += '<div class="recent-div8 offff"></div>'
+                                heart_div += '</div>'
+                                heart_div += '</a>'
+                            return heart_div;
                         }
-                        for (var i=0; i<req.heart.length; i++) {
-                            if (req.heart[i].roomno != roomno) {
+                        else {
+                            for (var i=0; i<req.heart.length; i++) {
+                                if (req.heart[i].roomno == roomno) {
+                                    var heart_div = '<div class="recent-div7">'
+                                        heart_div += '<div class="recent-div8 on" data-value="off"></div>'
+                                        heart_div += '</div>'
+                                    return heart_div;
+                                }
+                            }
+                            for (var i=0; i<req.heart.length; i++) {
+                                if (req.heart[i].roomno != roomno) {
+                                    var heart_div = '<div class="recent-div7">'
+                                        heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                                        heart_div += '</div>'
+                                    return heart_div;
+                                }
+                            }
+                            if (req.heart.length == 0) {
                                 var heart_div = '<div class="recent-div7">'
                                     heart_div += '<div class="recent-div8 off" data-value="on"></div>'
                                     heart_div += '</div>'
                                 return heart_div;
                             }
                         }
-                        if (req.heart.length == 0) {
-                            var heart_div = '<div class="recent-div7">'
-                                heart_div += '<div class="recent-div8 off" data-value="on"></div>'
-                                heart_div += '</div>'
-                            return heart_div;
-                        }
-                    }
-                });
-
-                var template = Handlebars.compile($("#gallery-data").html());
-                var html = template(req);
-                $("#gallery-list").html(html);
+                    });
+    
+                    var template = Handlebars.compile($("#gallery-data").html());
+                    var html = template(req);
+                    $("#gallery-list").html(html);
                 }
+                
                 $("#room-count").html(req.totalCount);
                 /** 페이징을 위한 정보 가져오기 **/
                 startPage = req.pageData.startPage;
@@ -908,21 +896,21 @@ pageEncoding="UTF-8"%>
             // 페이지 번호 클릭
             $(document).on('click', ".index-indiv", function(e){
                 var index_no = $(this).html();
-                getMapPosition(west,east,south,north, index_no);
+                getMapPosition(west,east,south,north,index_no);
             });
             // 다음 그룹으로 가기 버튼 클릭
             $(document).on('click', ".next-btn", function(e){
                 if (nextPage == undefined) { nextPage = ${pageData.nextPage}; }
 
                 if (nextPage > 0) {
-                    getMapPosition(west,east,south,north, nextPage);
+                    getMapPosition(west,east,south,north,nextPage);
                     return;
                 } else { return false; }
             });
             // 이전 그룹으로 가기 버튼 클릭
             $(document).on('click', ".prev-btn", function(e){
                 if (prevPage > 0) {
-                    getMapPosition(west,east,south,north, prevPage);
+                    getMapPosition(west,east,south,north,prevPage);
                     return;
                 } else { return false; }
             });
