@@ -42,9 +42,9 @@
         <!-- 데이터베이스 비밀번호(로컬) -->
         <!-- <prop key="dbPassword">root</prop> -->
         <!-- 데이터베이스 계정명(이젠서버) -->
-        <prop key="dbUsername">b2</prop>
+        <prop key="dbUsername">root</prop>
         <!-- 데이터베이스 비밀번호(이젠서버) -->
-        <prop key="dbPassword">123qwe!@#</prop>
+        <prop key="dbPassword">root</prop>
         <!-- Mapper 파일들이 위치할 '/src/main/resources' 하위의 경로 -->
         <prop key="mapperPath">/mappers/**/*Mapper.xml</prop>
     </util:properties>
