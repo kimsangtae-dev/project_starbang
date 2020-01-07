@@ -39,7 +39,7 @@
             var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
             var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
             var agreejoin = document.getElementById('agreejoin');
-            if (input1 == false && input2 == false && input3 == false) {
+            if (input1 == false || input2 == false || input3 == false) {
                 agreejoin.removeAttribute('href','<%=request.getContextPath()%>/modal/join.do');
                 agreejoin.removeAttribute('data-dismiss', 'modal');
                 agreejoin.removeAttribute('data-toggle', 'modal');
@@ -53,10 +53,10 @@
             }
         });
         
-    	var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
-        var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
-        var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
         $(".agreecheck").click(function() {
+        	var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
+            var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
+            var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
             if(input1 != false && input2 != false && input3 != false ) {
                $("#all_check").prop("checked", "checked");
              } else {
