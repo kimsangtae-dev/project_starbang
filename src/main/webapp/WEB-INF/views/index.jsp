@@ -22,6 +22,9 @@
 
 </head>
 <body>
+    <input type="hidden" id="oksession" value="${loginInfo}">
+    <input type="hidden" id="oksessionno" value="${loginInfo.userno}">
+    <input type="hidden" id="inputheart" value="${heart}">
 
     <!----------------------------------------
     -   header                         -
@@ -461,9 +464,9 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/plugin/handlebars-v4.0.11.js"></script>
     <script>
-        var session = "${logininfo}"; //세션 식별을 위한 값
-        var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
-        var heartlist = "${heart}"; //세션 식별을 위한 값
+        var session = $("#oksession").val(); //세션 식별을 위한 값
+        var sessionuserno = $("#oksessionno").val(); //세션 식별을 위한 값
+        var heartlist = $("#inputheart").val(); //세션 식별을 위한 값
         
         $(function() {
             /** 최근본방 **/
