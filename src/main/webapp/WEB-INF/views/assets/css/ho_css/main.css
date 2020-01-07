@@ -8,51 +8,6 @@
     background: url(../../img/ho_img/cp_architecture.jpg) center center / cover no-repeat;
     background-size: cover;
     width: auto;
-}	
-
-/* ---------------------------------------
- / 상단 부분
-  ---------------------------------------- */
-  
-    /* 왼쪽 메뉴 박스 크기 및 위치 설정(absolute) */
-.leftf {
-    position: absolute;
-    left: 215px;
-    top: 4px;
-}
-
-    /* 왼쪽 메뉴 로고 이미지 설정 */
-.navbar>.leftf>a>img {
-    width: 65px;
-}
-
-    /* 왼쪽 메뉴 텍스트 박스 크기 위치 설정*/
-.navbar>.leftf> div {
-    position: absolute;
-    width: 100px;
-    top: 20px;
-    left: 80px;
-    font-size: 1.3em;
-}
-    /* 박스 내 a 링크 처리 */
-.navbar>.leftf> div > a{
-    text-decoration: none;
-    color:white;
-}
-
-    /* 오른쪽 메뉴 박스 a링크 설정 */
-.navbar>.pull-right>a{
-    display: inline-block;
-    font-size: 13.7px;
-    text-decoration: none;
-    color:white;
-    font-weight: 700;
-    padding: 0 17px;
-    
-}
-    /* 3번째 요소에 대한 텍스트 조정 */
-.navbar>.pull-right>a:nth-child(3){
-    font-weight: 500;
 }
 
 /* ---------------------------------------
