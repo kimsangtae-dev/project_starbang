@@ -124,7 +124,7 @@ public class MailController {
         session.setMaxInactiveInterval(60 * 60);
 
         String subject = "비밀번호 변경을 위한 링크 주소입니다";
-        String content = "http://localhost:8080/b2/main/repwd.do";
+        String content = "별방의 비밀번호 재설정입니다. 링크를 클릭해주세요." + "  http://itproject.ezenac.co.kr/b2/main/repwd.do";
 
         log.debug("----------------------------------------------------");
         log.debug(String.format("controlloer To: %s", email));
