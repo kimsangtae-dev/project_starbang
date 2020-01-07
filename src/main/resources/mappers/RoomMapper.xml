@@ -82,7 +82,7 @@
        	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
        	INNER JOIN (SELECT * FROM user WHERE userno IN (SELECT MIN(userno) FROM user GROUP BY userno)) AS u ON r.userno=#{userno}
 
-       	GROUP BY r.roomno
+       	GROUP BY r.roomno, userno, status, roomtype, confirmdate, address, dealingtype, deposit, price
        	ORDER BY r.roomno
 		<if test="listCount > 0">
 			LIMIT #{offset}, #{listCount}
@@ -95,8 +95,8 @@
         resultMap="roomMap">
         SELECT r.userno, r.status, r.roomno, r.roomtype, r.confirmdate, r.address, p.dealingtype, p.deposit, p.price 
        	FROM room r 
-       	INNER JOIN price p ON r.roomno=p.roomno
-       	INNER JOIN user u ON r.userno=#{userno}
+       	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+       	INNER JOIN (SELECT * FROM user WHERE userno IN (SELECT MIN(userno) FROM user GROUP BY userno)) AS u ON r.userno=#{userno}
 		WHERE status IN (0,1)
        	GROUP BY r.roomno, userno, status, roomtype, confirmdate, address, dealingtype, deposit, price
        	ORDER BY r.roomno
@@ -109,8 +109,8 @@
 
         SELECT r.userno, r.status, r.roomno, r.roomtype, r.confirmdate, r.address, p.dealingtype, p.deposit, p.price 
        	FROM room r 
-       	INNER JOIN price p ON r.roomno=p.roomno
-       	INNER JOIN user u ON r.userno=#{userno}
+       	INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
+       	INNER JOIN (SELECT * FROM user WHERE userno IN (SELECT MIN(userno) FROM user GROUP BY userno)) AS u ON r.userno=#{userno}
 		WHERE status IN (2,3,4)
        	GROUP BY r.roomno, userno, status, roomtype, confirmdate, address, dealingtype, deposit, price
        	ORDER BY r.roomno
