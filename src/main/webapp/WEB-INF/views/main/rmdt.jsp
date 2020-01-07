@@ -470,21 +470,31 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 						<tr class="bdlnbtr">
 							<td class="bdlntd">
 								<c:forEach var="k" items="${price}" varStatus="status">
-									<c:if test="${k.dealingtype == '월세'}">
-								    	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/>
-							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
-								    	<h6>${patternprice1}/${k.price}만 원</h6>
-								    </c:if>
+									<c:choose>
+									    <c:when test="${k.dealingtype == '월세'}">
+										   	<fmt:formatNumber value="${k.deposit}" pattern="#,####" var="eok1"/>
+									    	<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억')}" />
+										   	<h6>${patternprice1}/${k.price}만 원</h6>	
+									    </c:when>
+								    	<c:otherwise>
+									    	-
+								    	</c:otherwise>
+									</c:choose>
 								</c:forEach>
 							</td>
 							<td class="bdlntd">
-							<c:forEach var="k" items="${price}" varStatus="status">
-								<c:if test="${k.dealingtype == '전세'}">
-							    	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
-						    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
-							    	${patternprice1}만 원
-							    </c:if>
-							</c:forEach>
+								<c:forEach var="k" items="${price}" varStatus="status">
+									<c:choose>
+									    <c:when test="${k.dealingtype == '전세'}">
+										   	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
+								    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
+									    	${patternprice1}만 원
+									    </c:when>
+								    	<c:otherwise>
+									    	-
+								    	</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</td>
 							<td class="bdlntd">
 								<c:choose>
