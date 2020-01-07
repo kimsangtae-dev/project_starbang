@@ -91,10 +91,6 @@
 			.collapse-title a:hover {
 				color: #1564F9;
 			}
-			
-			.collapse-title a:focus {
-				color: #1564F9;
-			}
 
 			/** 내용영역의 여백, 글자크기, 태두리, 숨김 */
 			.content {
