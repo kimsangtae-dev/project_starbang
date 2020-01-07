@@ -483,18 +483,16 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
 								</c:forEach>
 							</td>
 							<td class="bdlntd">
-								<c:forEach var="k" items="${price}" varStatus="status">
-									<c:choose>
-									    <c:when test="${k.dealingtype == '전세'}">
-										   	<fmt:formatNumber value="${k.price}" pattern="#,####" var="eok1"/>
-								    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
-									    	${patternprice1}만 원
-									    </c:when>
-								    	<c:otherwise>
-									    	-
-								    	</c:otherwise>
-									</c:choose>
-								</c:forEach>
+								<c:choose>
+								    <c:when test="${price[0].dealingtype == '전세'}">
+									   	<fmt:formatNumber value="${price[0].price}" pattern="#,####" var="eok1"/>
+							    		<c:set var="patternprice1" value="${fn:replace(eok1, ',', '억 ')}" />
+								    	${patternprice1}만 원
+								    </c:when>
+							    	<c:otherwise>
+								    	-
+							    	</c:otherwise>
+								</c:choose>
 							</td>
 							<td class="bdlntd">
 								<c:choose>
