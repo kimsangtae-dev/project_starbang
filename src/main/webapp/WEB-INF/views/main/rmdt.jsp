@@ -614,7 +614,7 @@ javascript:alert(document.cookie);//요건 쿠키가 잘 됐는지 확인해 보
                 </button>
             </div>
 
-			<c:url value="" var="thumbnail_url">
+			<c:url value="/upload/download.do" var="thumbnail_url">
 				<c:param name="file" value="${img[0].thumbnail}" />
 			</c:url>
             <div class="giantView" id="target" style="background: url(${thumbnail_url}) center center / contain no-repeat;">  <!-- esRNDG -->
