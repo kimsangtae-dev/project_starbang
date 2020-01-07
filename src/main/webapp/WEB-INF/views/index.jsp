@@ -755,8 +755,8 @@
                             }
                         }
                         if (json.heart_size == 0) {
-                            var heart_div = '<div class="recent-div7">'
-                            heart_div += '<div class="recent-div8 off" data-value="on"></div>'
+                            var heart_div = '<div class="hit-div7">'
+                            heart_div += '<div class="hit-div8 off" data-value="on"></div>'
                             heart_div += '</div>'
                             return heart_div;
                         }
