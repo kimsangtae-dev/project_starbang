@@ -4,9 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
     <style>
-        /*---------------------------------
-|	header * css
-----------------------------------*/
+		/*------------------
+		|	header * css
+		-------------------*/
         /* 브라우저 최소 넓이 지정 */
         #header {
             min-width: 1366px;
@@ -69,8 +69,7 @@
         .small-font1 {
             min-width: 70px;
             height: 70px;
-            margin-left: 57px;
-            margin-right: 50px;
+            margin-left: 40px;
             cursor: pointer;
         }
         /* 이름 상자 */
@@ -119,8 +118,7 @@
             text-align: left;
         }
         .navbar > .pull-right {
-            width: 520px;
-            padding: 0 0 0 70px;
+            width: 450px;
         }
         /*#header a:hover {
             color: #666666;

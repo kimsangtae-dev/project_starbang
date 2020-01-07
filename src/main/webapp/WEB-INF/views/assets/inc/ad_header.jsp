@@ -69,8 +69,7 @@
         .small-font1 {
             min-width: 70px;
             height: 70px;
-            margin-left: 57px;
-            margin-right: 50px;
+            margin-left: 47px;
             cursor: pointer;
         }
         /* 이름 상자 */
@@ -118,7 +117,7 @@
             text-align: left;
         }
         .navbar > .pull-right {
-            width: 520px;
+            width: 420px;
             padding-top: 0;
         }
          /* #header a:hover { color: #666666; } */
