@@ -98,12 +98,12 @@
 													<%-- -------------------쿠키 굽기---------------------- --%>
 													<!-- 이미지 -->
 													<div class="hit-a-div">
-                            <c:url value="/upload/download.do" var="thumbnail_url">
-                              <c:param name="file" value="${item.filename}" />
-                            </c:url>
-                            <img src="${thumbnail_url}"/></div>
-													<c:if
-														test="${item.confirmdate != null}">
+							                            <c:url value="/upload/download.do" var="thumbnail_url">
+							                              <c:param name="file" value="${item.filename}" />
+							                            </c:url>
+                            							<img src="${thumbnail_url}"/>
+                            						</div>
+														<c:if test="${item.confirmdate != null}">
 														<%-- 확인매물 div --%>
 														<div class="hit-a-confirm">
 															<div class="hit-a-confirm-div">
@@ -115,14 +115,20 @@
 													<p class="hit-a-p1">${item.roomtype}</p>
 													<p class="hit-a-p2">
 														<c:choose>
-															<c:when test="${item.dealingtype == '월세'}">
-																<span>${item.dealingtype}&nbsp;${item.deposit}/${item.price}</span>
-															</c:when>
-															<c:otherwise>
-																<span>${item.dealingtype}&nbsp;</span>
-																<span id="prc">${item.price}</span>
-															</c:otherwise>
-														</c:choose>
+			                                                <c:when test="${item.dealingtype == '월세'}">
+			                                                    <span>${item.dealingtype}&nbsp;<!--
+			                                                    	--><fmt:formatNumber value="${item.deposit}" pattern="#,####" var="eok1" />
+			                                                        <c:set var="patternprice1" value="${fn:replace(fn:replace(eok1, ',', '억'), '0000', '')}" />
+			                                                        ${patternprice1}/${item.price}
+			                                                    </span>
+			                                                </c:when>
+			                                                <c:otherwise>
+			                                                    <span>${item.dealingtype}&nbsp;<!--
+			                                                    --><fmt:formatNumber value="${item.price}" pattern="#,####" var="eok2" /> 
+                                                        			<c:set var="patternprice2" value="${fn:replace(fn:replace(eok2, ',', '억'), '0000', '')}" />
+                                                        			${patternprice2}</span>
+                                                			</c:otherwise>
+                                            			</c:choose>
 													</p>
 													<p class="hit-a-p34">${item.floor}층, ${item.area}m²,
 			                                        	<c:choose>
@@ -137,134 +143,9 @@
 									</li>
 								</c:forEach>
 							</c:otherwise>
-							<%-- 각 갤러리 끝 --%>
+							<%-- 갤러리 끝 --%>
 						</c:choose>
 					</ul>
-
-					<%--  <!-- 각각 갤러리 시작 -->
-              <!-- 1번째 갤러리 -->
-              <div class="hit-div5">
-                <div class="hit-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="hit-div7">
-                    <div class="hit-div8 off" data-value="on"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
-                    <!-- 이미지 -->
-                    <div class="hit-a-div"></div>
-                    <!-- 확인매물 div -->
-                    <div class="hit-a-confirm">
-                      <div class="hit-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.25</span>
-                      </div>
-                    </div>
-                    <!-- 확인매물 끝 -->
-                    <p class="hit-a-p1">투룸</p>
-                    <p class="hit-a-p2">
-                      <span>전세 1억4000</span>
-                    </p>
-                    <p class="hit-a-p34">5층, 33.05m², 관리비 3만</p>
-                    <p class="hit-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 첫번째 갤러리 끝 -->
-
-              <!-- 2번째 갤러리 -->
-              <div class="hit-div5 margin">
-                <div class="hit-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="hit-div7">
-                    <div class="hit-div8 off" data-value="on"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
-                    <!-- 이미지 -->
-                    <div class="hit-a-div"></div>
-                    <!-- 확인매물 div -->
-                    <div class="hit-a-confirm">
-                      <div class="hit-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.25</span>
-                      </div>
-                    </div>
-                    <!-- 확인매물 끝 -->
-                    <p class="hit-a-p1">투룸</p>
-                    <p class="hit-a-p2">
-                      <span>전세 1억4000</span>
-                    </p>
-                    <p class="hit-a-p34">5층, 33.05m², 관리비 3만</p>
-                    <p class="hit-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 두번째 갤러리 끝 -->
-
-              <!-- 세번째 갤러리 -->
-              <div class="hit-div5 margin">
-                <div class="hit-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="hit-div7">
-                    <div class="hit-div8 off" data-value="on"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
-                    <!-- 이미지 -->
-                    <div class="hit-a-div"></div>
-                    <!-- 확인매물 div -->
-                    <div class="hit-a-confirm">
-                      <div class="hit-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.25</span>
-                      </div>
-                    </div>
-                    <!-- 확인매물 끝 -->
-                    <p class="hit-a-p1">투룸</p>
-                    <p class="hit-a-p2">
-                      <span>전세 1억4000</span>
-                    </p>
-                    <p class="hit-a-p34">5층, 33.05m², 관리비 3만</p>
-                    <p class="hit-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 세번째 갤러리 끝 -->
-
-              <!-- 네번째 갤러리 -->
-              <div class="hit-div5 margin">
-                <div class="hit-div6">
-                  <!-- 좋아요 버튼 -->
-                  <div class="hit-div7">
-                    <div class="hit-div8 off" data-value="on"></div>
-                  </div>
-                  <!-- 좋아요 끝 -->
-                  <!-- 전체 링크화 -->
-                  <a target="_blank" rel="" class="hit-a" href="${pageContext.request.contextPath}/main/rmdt.do">
-                    <!-- 이미지 -->
-                    <div class="hit-a-div"></div>
-                    <!-- 확인매물 div -->
-                <!--     <div class="hit-a-confirm">
-                      <div class="hit-a-confirm-div" type="">
-                        <span class="bold">확인매물</span>
-                        <span>19.09.25</span>
-                      </div>
-                    </div> -->
-                    <!-- 확인매물 끝 -->
-                    <p class="hit-a-p1">투룸</p>
-                    <p class="hit-a-p2">
-                      <span>전세 1억4000</span>
-                    </p>
-                    <p class="hit-a-p34">5층, 33.05m², 관리비 3만</p>
-                    <p class="hit-a-p34">▶▶화곡동 최저가 2룸 전세◀◀</p>
-                  </a>
-                </div>
-              </div>
-              <!-- 네번째 갤러리 끝 --> --%>
 				</div>
 				<!-- 갤러리 전체 끝 -->
 			</div>
