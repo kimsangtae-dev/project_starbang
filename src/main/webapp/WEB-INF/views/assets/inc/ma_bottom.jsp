@@ -204,7 +204,7 @@
 			<form class="pull-right" method="get" action="${pageContext.request.contextPath}/main/rmdt.do">
 				<label for="search-num">
 					<h1>매물번호 조회</h1>
-					<input id="search-num" type="text" name="roomno" value="${keyword}">
+					<input id="search-num" type="text" name="roomno">
 				</label>
 				<button>
 					<i class="glyphicon glyphicon-search"></i>
