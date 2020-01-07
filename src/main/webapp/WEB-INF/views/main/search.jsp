@@ -498,6 +498,19 @@ pageEncoding="UTF-8"%>
     };
 
     /** ajax전송을 위한 파라미터 가져오기 **/
+    var roomtype = "${param.roomtype}";
+    var dealingtype = "${param.dealingtype}";
+    var deposit_from = ${param.depositFrom};
+    var deposit_to = ${param.depositTo};
+    var month_from = ${param.monthFrom};
+    var month_to= ${param.monthTo};
+    var buying_from = ${param.buyingFrom};
+    var buying_to = ${param.buyingTo};
+    var fee_from = ${param.feeFrom};
+    var fee_to = ${param.feeTo};
+    var size_from = ${param.sizeFrom};
+    var size_to = ${param.sizeTo};
+    
     var centerLat = ${filter.centerLat};
     var centerLng = ${filter.centerLng};
     var level =${filter.level};
@@ -523,23 +536,23 @@ pageEncoding="UTF-8"%>
     /** ajax 전송 메서드 **/
     function getMapPosition(west,east,south,north,page) {
         var params = {
-                roomtype: "${param.roomtype}",
-                dealingtype: "${param.dealingtype}",
-                depositFrom: "${param.depositFrom}",
-                depositTo: "${param.depositTo}",
-                monthFrom: "${param.monthFrom}",
-                monthTo: "${param.monthTo}",
-                buyingFrom: "${param.buyingFrom}",
-                buyingTo: "${param.buyingTo}",
-                feeFrom: "${param.feeFrom}",
-                feeTo: "${param.feeTo}",
-                sizeFrom: "${param.sizeFrom}",
-                sizeTo: "${param.sizeTo}",
-                east: east,
-                west: west,
-                north: north,
-                south: south,
-                page: page
+        		"roomtype": roomtype,
+                "dealingtype": dealingtype,
+                "depositFrom": deposit_from,
+                "depositTo": deposit_to,
+                "monthFrom": month_from,
+                "monthTo": month_to,
+                "buyingFrom": buying_from,
+                "buyingTo": buying_to,
+                "feeFrom": fee_from,
+                "feeTo": fee_to,
+                "sizeFrom": size_from,
+                "sizeTo": size_to,
+                "east": east,
+                "west": west,
+                "north": north,
+                "south": south,
+                "page": page
             };
 
         console.log(params);
