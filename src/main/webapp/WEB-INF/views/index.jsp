@@ -464,7 +464,6 @@
         var session = "${logininfo}"; //세션 식별을 위한 값
         var sessionuserno = "${logininfo.userno}"; //세션 식별을 위한 값
         var heartlist = "${heart}"; //세션 식별을 위한 값
-        alert(session);
         
         $(function() {
             /** 최근본방 **/
