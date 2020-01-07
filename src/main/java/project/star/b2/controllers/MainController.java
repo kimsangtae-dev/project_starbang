@@ -601,7 +601,6 @@ public class MainController {
         /** 1) 필요한 변수값 생성 */
         int userno = loginInfo.getUserno();
         int keyword = webHelper.getInt("roomno");// 검색어
-        String keyword2 = webHelper.getString("roomtype");// 검색어
         int nowPage = webHelper.getInt("page", 1); // 페이지번호 (기본값 1)
         int totalCount = 0; // 전체 게시글 수
         int listCount = 24; // 한 페이지당 표시할 목록 수
@@ -612,7 +611,6 @@ public class MainController {
         Heart input = new Heart();
         /* Gallery input2 = new Gallery(); */
         input.setUserno(userno);
-        input.setRoomtype(keyword2);
 
         List<Heart> output = null;
         PageData pageData = null;
