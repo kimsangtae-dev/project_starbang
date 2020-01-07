@@ -34,10 +34,10 @@
 
 <script type="text/javascript">
     $(function() {
-        var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
-        var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
-        var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
         $("#agreejoin").click(function() {
+        	var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
+            var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
+            var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
             var agreejoin = document.getElementById('agreejoin');
             if (input1 == false && input2 == false && input3 == false) {
                 agreejoin.removeAttribute('href','<%=request.getContextPath()%>/modal/join.do');
@@ -46,8 +46,6 @@
                 agreejoin.removeAttribute('data-target', '#joinModal');
                 alert("필수 항목을 체크해 주세요");
             } else {
-                var all_check = document.getElementById('all_check');
-                $all_check = $('#all_check').setAttribute('checked', true);
                 agreejoin.setAttribute('href','<%=request.getContextPath()%>/modal/join.do');
                 agreejoin.setAttribute('data-dismiss', 'modal');
                 agreejoin.setAttribute('data-toggle', 'modal');
@@ -55,14 +53,16 @@
             }
         });
         
+    	var input1 = $('input:checkbox[id="room-type1"]').is(":checked");
+        var input2 = $('input:checkbox[id="room-type2"]').is(":checked");
+        var input3 = $('input:checkbox[id="room-type3"]').is(":checked");
         $(".agreecheck").click(function() {
             if(input1 != false && input2 != false && input3 != false ) {
                $("#all_check").prop("checked", "checked");
              } else {
                $("#all_check").prop("checked", false);
              }
-        });
-        
+        }); 
     });
 </script>
 
@@ -71,7 +71,7 @@
 
 <div class="siz" id="element">
     <div class="modal-content agreelove">
-        <div class="modaltop">
+        <div class="amodaltop">
             <h1 class="modal-title modal-title1">약관동의</h1>
             <!-- 닫기버튼 -->
             <button class="btnclose" data-dismiss="modal">
