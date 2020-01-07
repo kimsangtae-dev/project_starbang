@@ -460,7 +460,7 @@ public class MainController {
         }
 
         /** 지도 상태유지를 위한 중심좌표와 레벨 */
-        String mapTemp = webHelper.getString("map");
+        String mapTemp = webHelper.getString("map", "37.5642135,126.9743207,9");
         String[] map = mapTemp.split(",");
         double lat = Double.parseDouble(map[0]);
         double lng = Double.parseDouble(map[1]);
