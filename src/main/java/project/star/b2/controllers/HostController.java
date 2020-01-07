@@ -803,23 +803,26 @@ public class HostController {
                 }
 
             }
+            
             // 추가하는 경우의 수
             else if (priceno_size < deposit_size) {
-                // (p) <-- priceno = 361,362,364
-                // (p) <-- deposit = -1,1,3,500,-1
-
                 // 수정하기
                 for (int i = 0; i < priceno_size; i++) {
-
+                	
+                	// 가격테이블번호가 있다면 할당
                     if (pricenos[i] != null || pricenos[i] != "") {
                         priceno_temp = Integer.parseInt(pricenos[i]);
-                    } // 가격테이블번호가 있다면 할당
+                    } 
+                    
+                    // 보증금값이 있다면 할당
                     if (deposits[i] != null || deposits[i] != "") {
                         deposit_temp = Integer.parseInt(deposits[i]);
-                    } // 보증금값이 있다면 할당
+                    }
+                    
+                    // 가격값이 있다면 할당
                     if (prices[i] != null || prices[i] != "") {
                         price_temp = Integer.parseInt(prices[i]);
-                    } // 가격값이 있다면 할당
+                    }
 
                     // 빈즈에 담기
                     input_p.setPriceno(priceno_temp);
