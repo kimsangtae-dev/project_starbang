@@ -39,11 +39,7 @@
     text-decoration: none;
     color:white;
 }
-    /* 오른쪽 메뉴 박스 위치 설정 */
-.navbar>.pull-right{
-    width: 520px;
-    padding-top:24px;
-}
+
     /* 오른쪽 메뉴 박스 a링크 설정 */
 .navbar>.pull-right>a{
     display: inline-block;
