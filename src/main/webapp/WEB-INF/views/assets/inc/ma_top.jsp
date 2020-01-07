@@ -125,6 +125,11 @@
     		border-radius: 50%;
         }
         
+        #header .menu-left > span{    	
+		    font-size: 14px;
+		    font-weight: 200;
+		    color: #777777;
+        }
 
     </style>
 </head>
