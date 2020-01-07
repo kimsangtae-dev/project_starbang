@@ -47,7 +47,7 @@
 			r.status, cnt
 		FROM room r
 		INNER JOIN (SELECT * FROM price WHERE priceno IN (SELECT MIN(priceno) FROM price GROUP BY roomno)) AS p ON r.roomno=p.roomno
-       	INNER JOIN (SELECT * FROM user WHERE userno IN (SELECT MIN(userno) FROM user GROUP BY userno)) AS u ON r.userno=u.userno
+		INNER JOIN (SELECT * FROM user WHERE userno IN (SELECT MIN(userno) FROM user GROUP BY userno)) AS u ON r.userno=u.userno
 		LEFT OUTER JOIN (SELECT roomno, count(roomno) AS cnt from fakeroom group by roomno)f ON r.roomno=f.roomno
 
 		<where>
