@@ -18,7 +18,7 @@
         /* 메뉴바 크기, 여백, 테두리 */
        #header .navbar {
 	height: 70px;
-	padding: 0 30px;
+	padding: 0 110px;
 	border: 0;
 	/*border-bottom: 1px solid #eee;*/
         }
