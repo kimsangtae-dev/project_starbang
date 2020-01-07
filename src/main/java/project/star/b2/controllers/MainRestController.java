@@ -392,9 +392,9 @@ public class MainRestController {
 
         /******** 필터 ********/
         /** 방 종류(roomtype) */
-        String room = webHelper.getString("roomtype");
+        String room = webHelper.getString("roomtype", "원룸,투룸,쓰리룸,오피스텔");
         /** 거래 종류(dealingtype) */
-        String dealingtype = webHelper.getString("dealingtype");
+        String dealingtype = webHelper.getString("dealingtype", "월세,전세,매매");
         /** 보증금/전세가(deposit/price) */
         int depositFrom = webHelper.getInt("depositFrom");
         int depositTo = webHelper.getInt("depositTo", 999999);

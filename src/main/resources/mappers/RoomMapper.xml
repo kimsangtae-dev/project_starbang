@@ -62,6 +62,10 @@
 			<if test="name != null and name != ''">
 				OR name LIKE concat('%', #{name}, '%')
 			</if>
+			
+			<if test="roomno != 0 and roomno != ''">
+				OR r.roomno=#{roomno}
+			</if>
 		</where>
 
 		GROUP BY r.roomno, roomtype, dealingtype, price, title, floor, area, fee, confirmdate, address, dong, ho, latitude,longitude, region_2depth_name, region_3depth_name, userno, name, status,cnt
@@ -159,6 +163,10 @@
 			</if>
 			<if test="userno != null and userno != ''">
 				AND userno = #{userno}
+			</if>
+			
+			<if test="roomno != 0 and roomno != ''">
+				OR roomno=#{roomno}
 			</if>
 		</where>
 	</select>

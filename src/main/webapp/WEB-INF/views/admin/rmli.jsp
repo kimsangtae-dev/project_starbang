@@ -32,7 +32,7 @@
 								<span class="input-group-addon"> <span
 									class="glyphicon glyphicon-search"></span>
 								</span> <input type="search" class="form-control" id="keyword"
-									name="keyword" placeholder="이름 종류 검색" value="${keyword}" /> <span
+									name="keyword" placeholder="이름 종류 방번호 검색" value="${keyword}" /> <span
 									class="input-group-btn">
 									<button class="btn btn-default" type="submit">검색</button>
 								</span>
@@ -120,11 +120,10 @@
 								<%-- 검색어에 <mark> 태그를 적용하여 형광펜 효과 준비 --%>
 								<c:set var="mark" value="<mark>${keyword}</mark>" />
 								<%-- 출력을 위해 준비한 유저이름과 위치에서 검색어와 일치하는 단어를 형광펜 효과로 변경 --%>
-								<c:set var="roomtype"
-									value="${fn:replace(roomtype, keyword, mark)}" />
-								<c:set var="dealingtype"
-									value="${fn:replace(dealingtype, keyword, mark)}" />
+								<c:set var="roomtype" value="${fn:replace(roomtype, keyword, mark)}" />
+								<c:set var="dealingtype" value="${fn:replace(dealingtype, keyword, mark)}" />
 								<c:set var="name" value="${fn:replace(name, keyword, mark)}" />
+								<c:set var="roomno" value="${fn:replace(roomno, keyword, mark)}" />
 							</c:if>
 
 							<tr id="bbbb">

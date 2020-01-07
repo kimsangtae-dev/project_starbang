@@ -130,6 +130,7 @@ public class AdminController {
         
 		/** 1) 필요한 변수값 생성 */
 		String keyword = webHelper.getString("keyword", ""); // 검색어를 위한 변수 처리
+		int key_int = webHelper.getInt("keyword");
 		int raval = webHelper.getInt("check"); // 체크박스를 통한 값 조회를 위한 변수 생성, submit을 통해 파라미터로 받는다.
 		int nowPage = webHelper.getInt("page", 1); // 페이지 번호(기본값 1)
 		int totalCount = 0; // 전체 게시글 수
@@ -143,6 +144,7 @@ public class AdminController {
 		input.setRoomtype(keyword);
 		input.setName(keyword);
 		input.setDealingtype(keyword);
+		input.setRoomno(key_int);
 
 		List<Room> output = null; // 조회결과가 저장될 객체
 		PageData pageData = null; // 페이지 번호를 계산할 결과가 저장될 객체
