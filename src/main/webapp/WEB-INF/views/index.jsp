@@ -505,17 +505,17 @@
                     Handlebars.registerHelper('isOver', function(price, options) {
                         if (price >= 10000 && price % 10000 != 0) {
                             return Math.floor(price / 10000) + "억" + price % 10000;
-                        } else {
-                            return price;
-                        }
+                        } else if (price >= 10000 && price%10000 == 0) {
+                            return price/10000 + "억";
+                        } else { return price; }
                     });
                     
                     Handlebars.registerHelper('isOver2', function(deposit, options) {
                         if (deposit >= 10000 && deposit % 10000 != 0) {
                             return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                        } else {
-                            return deposit;
-                        }
+                        } else if (deposit >= 10000 && deposit%10000 == 0) {
+                            return deposit/10000 + "억";
+                        } else { return deposit; }
                     });
                     
                     Handlebars.registerHelper('fee', function(fee, options) {
@@ -595,17 +595,17 @@
                 Handlebars.registerHelper('isOver', function(price, options) {
                     if (price >= 10000 && price % 10000 != 0) {
                         return Math.floor(price / 10000) + "억" + price % 10000;
-                    } else {
-                        return price;
-                    }
+                    } else if (price >= 10000 && price%10000 == 0) {
+                        return price/10000 + "억";
+                    } else { return price; }
                 });
                 
                 Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit % 10000 != 0) {
                         return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                    } else {
-                        return deposit;
-                    }
+                    } else if (deposit >= 10000 && deposit%10000 == 0) {
+                        return deposit/10000 + "억";
+                    } else { return deposit; }
                 });
                 
                 Handlebars.registerHelper('fee', function(fee, options) {
@@ -708,17 +708,17 @@
                 Handlebars.registerHelper('isOver', function(price, options) {
                     if (price >= 10000 && price % 10000 != 0) {
                         return Math.floor(price / 10000) + "억" + price % 10000;
-                    } else {
-                        return price;
-                    }
+                    } else if (price >= 10000 && price%10000 == 0) {
+                        return price/10000 + "억";
+                    } else { return price; }
                 });
                 
                 Handlebars.registerHelper('isOver2', function(deposit, options) {
                     if (deposit >= 10000 && deposit % 10000 != 0) {
                         return Math.floor(deposit / 10000) + "억" + deposit % 10000;
-                    } else {
-                        return deposit;
-                    }
+                    } else if (deposit >= 10000 && deposit%10000 == 0) {
+                        return deposit/10000 + "억";
+                    } else { return deposit; }
                 });
                 
                 Handlebars.registerHelper('fee', function(fee, options) {
